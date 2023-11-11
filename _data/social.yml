@@ -4,5 +4,9 @@
 
 - sitename: 博客
   name: slience_me
-  url: http://slienceme.github.io
+  url: http://slienceme.xyz
+
+- sitename: CSDN博客
+  name: slience_me
+  url: http://blog.csdn.net/slience_me
 
