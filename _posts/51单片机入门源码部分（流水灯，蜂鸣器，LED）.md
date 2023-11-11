@@ -1,4 +1,18 @@
-﻿## 1. 流水灯实验
+---
+layout: post
+title: 硬件｜51单片机入门源码部分（流水灯，蜂鸣器，LED）
+categories: [硬件]
+description: 51单片机入门源码部分（流水灯，蜂鸣器，LED）
+keywords: 51单片机, 硬件
+mermaid: false
+sequence: false
+flow: false
+mathjax: false
+mindmap: false
+mindmap2: false
+---
+
+## 1. 流水灯实验
 ### 1.1 流水灯（位输出）
 ```c
 /***********************************************
