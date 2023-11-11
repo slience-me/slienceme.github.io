@@ -590,7 +590,7 @@ jquery将它封装成了一个方法$.ajax()，我们可以直接用这个方法
 });
 </script>
 ```
-![在这里插入图片描述](https://img-blog.csdnimg.cn/20210102214431701.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L1NsaWVuY2VfbWU=,size_16,color_FFFFFF,t_70)
+![Alt Text](../images/posts/20210102214431701.png)
 
 **ajax方法的参数说明:**
 

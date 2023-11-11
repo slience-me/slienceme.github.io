@@ -111,9 +111,9 @@ dog_t.shape
 to_pil(dog_t)
 ```
 **这是原图：**
-![在这里插入图片描述](https://img-blog.csdnimg.cn/f38cbdf22ca7456fadd47b689a31e330.jpeg  =400x)
+![Alt Text](./images/f38cbdf22ca7456fadd47b689a31e330.jpeg  =400x)
 **处理过后：**
-![在这里插入图片描述](https://img-blog.csdnimg.cn/88eef293e69f472d9769f9bcccc8f1d0.png)
+![Alt Text](../images/posts/88eef293e69f472d9769f9bcccc8f1d0.png)
 
 ```python
 # torchvision.transforms.CenterCrop
@@ -129,9 +129,9 @@ to_pil(dog_t)
 # Resize：缩放
 ```
 **这是原图：**
-![在这里插入图片描述](https://img-blog.csdnimg.cn/f38cbdf22ca7456fadd47b689a31e330.jpeg =400x)
+![Alt Text](./images/f38cbdf22ca7456fadd47b689a31e330.jpeg =400x)
 **处理过后：**
-![在这里插入图片描述](https://img-blog.csdnimg.cn/c1d9699648c34f8dac2383e329dcf0cf.png =400x)
+![Alt Text](./images/c1d9699648c34f8dac2383e329dcf0cf.png =400x)
 ## 3. transforms——Flip 翻转
 ### 3.1 `transforms.RandomHorizontalFlip`
 
@@ -172,9 +172,9 @@ dog_t.shape
 to_pil(dog_t)
 ```
 **这是原图：**
-![在这里插入图片描述](https://img-blog.csdnimg.cn/f38cbdf22ca7456fadd47b689a31e330.jpeg =400x)
+![Alt Text](./images/f38cbdf22ca7456fadd47b689a31e330.jpeg =400x)
 **处理过后：**
-![在这里插入图片描述](https://img-blog.csdnimg.cn/2865269626504c1b9096495c0ba9d7fe.png =400x)
+![Alt Text](./images/2865269626504c1b9096495c0ba9d7fe.png =400x)
 
 ```python
 # torchvision.transforms.RandomRotation
@@ -188,9 +188,9 @@ dog_t.shape
 to_pil(dog_t)
 ```
 **这是原图：**
-![在这里插入图片描述](https://img-blog.csdnimg.cn/f38cbdf22ca7456fadd47b689a31e330.jpeg =400x)
+![Alt Text](./images/f38cbdf22ca7456fadd47b689a31e330.jpeg =400x)
 **处理过后：**
-![在这里插入图片描述](https://img-blog.csdnimg.cn/e18640e6ec16488d81108fac732d5e34.png =400x) 
+![Alt Text](./images/e18640e6ec16488d81108fac732d5e34.png =400x)
 ## 4. 图像变换
 
 ### 4.1 `transforms.Pad`
@@ -210,18 +210,18 @@ torchvision.transforms.Pad(padding, fill=0, padding_mode='constant')
 transforms = T.Compose([T.Resize(224),T.Pad(padding=20, fill=(255, 0, 0), padding_mode='constant'),T.ToTensor()])  # Resize：缩放
 ```
 **这是原图：**
-![在这里插入图片描述](https://img-blog.csdnimg.cn/f38cbdf22ca7456fadd47b689a31e330.jpeg =400x)
+![Alt Text](./images/f38cbdf22ca7456fadd47b689a31e330.jpeg =400x)
 **处理过后：**
-![在这里插入图片描述](https://img-blog.csdnimg.cn/3269374e34f84fb8bf543d08f50ec6c9.png =400x)
+![Alt Text](./images/3269374e34f84fb8bf543d08f50ec6c9.png =400x)
 
 ```python
 # 镜像填充。这时`padding_mode`属性不是`constant`， fill 属性不再生效。
 transforms = T.Compose([T.Resize(224),T.Pad(padding=(6, 12, 24, 48), fill=(255, 0, 0), padding_mode='symmetric'),T.ToTensor()])  # Resize：缩放
 ```
 **这是原图：**
-![在这里插入图片描述](https://img-blog.csdnimg.cn/f38cbdf22ca7456fadd47b689a31e330.jpeg =400x)
+![Alt Text](./images/f38cbdf22ca7456fadd47b689a31e330.jpeg =400x)
 **处理过后：**
-![在这里插入图片描述](https://img-blog.csdnimg.cn/2a92fcdcb0c0498aa2c9904da9b14342.png =400x)
+![Alt Text](./images/2a92fcdcb0c0498aa2c9904da9b14342.png =400x)
 
 ### 4.2 `transforms.ColorJitter`
 ```python
@@ -242,9 +242,9 @@ transforms = T.Compose([T.Resize(224),T.ColorJitter(brightness=0.5, contrast=0.5
 ```
 **狗狗颜色不太明显，换成了一只猫**
 **这是原图：**
-![在这里插入图片描述](https://img-blog.csdnimg.cn/a7c92405073e466a8287f0517650f777.jpeg =400x)
+![Alt Text](./images/a7c92405073e466a8287f0517650f777.jpeg =400x)
 **处理过后：**
-![在这里插入图片描述](https://img-blog.csdnimg.cn/937e56c9c450483db4edaa89c044f05b.png =400x)
+![Alt Text](./images/937e56c9c450483db4edaa89c044f05b.png =400x)
 ### 4.3 `transforms.Grayscale`
 ```python
 torchvision.transforms.Grayscale(num_output_channels=1)
@@ -253,9 +253,9 @@ torchvision.transforms.Grayscale(num_output_channels=1)
 >   - **num_output_channels**: 输出的`通道数`。只能设置为 1 或者 3 (如果在后面使用了transforms.Normalize，则要设置为 3，因为transforms.Normalize只能接收 3 通道的输入)
 
 **这是原图：**
-![在这里插入图片描述](https://img-blog.csdnimg.cn/a7c92405073e466a8287f0517650f777.jpeg =400x)
+![Alt Text](./images/a7c92405073e466a8287f0517650f777.jpeg =400x)
 **处理过后：**
-![](https://img-blog.csdnimg.cn/bcc3606b0ea84a49b7569d11e6d96f4b.png =400x)
+![Alt Text](./images/bcc3606b0ea84a49b7569d11e6d96f4b.png =400x)
 
 
 ### 4.4 `transforms.RandomGrayscale`
@@ -288,44 +288,44 @@ torchvision.transforms.RandomAffine(degrees, translate=None, scale=None, shear=N
 transforms = T.Compose([T.Resize(224),T.RandomAffine(30),T.ToTensor()]) 
 ```
 **这是原图：**
-![在这里插入图片描述](https://img-blog.csdnimg.cn/a7c92405073e466a8287f0517650f777.jpeg =400x)
+![Alt Text](./images/a7c92405073e466a8287f0517650f777.jpeg =400x)
 **处理过后：**
-![在这里插入图片描述](https://img-blog.csdnimg.cn/34d1de54acc94043a80665fe3d816eda.png =400x)
+![Alt Text](./images/34d1de54acc94043a80665fe3d816eda.png =400x)
 
 ```python
 # 平移
 transforms = T.Compose([T.Resize(224),T.RandomAffine(degrees=0, translate=(0.5, 0.3)),T.ToTensor()])
 ```
 **这是原图：**
-![在这里插入图片描述](https://img-blog.csdnimg.cn/a7c92405073e466a8287f0517650f777.jpeg =400x)**处理过后：**
-![在这里插入图片描述](https://img-blog.csdnimg.cn/97e0d949ac224058af2af7497c6bdc4f.png =400x)
+![Alt Text](./images/a7c92405073e466a8287f0517650f777.jpeg =400x)
+![Alt Text](./images/97e0d949ac224058af2af7497c6bdc4f.png =400x)
 
 ```python
 # 缩放
 transforms = T.Compose([T.Resize(224),T.RandomAffine(degrees=0, scale=(0.6, 0.6)),T.ToTensor()])  # Resize：缩放
 ```
 **这是原图：**
-![在这里插入图片描述](https://img-blog.csdnimg.cn/a7c92405073e466a8287f0517650f777.jpeg =400x)
+![Alt Text](./images/a7c92405073e466a8287f0517650f777.jpeg =400x)
 **处理过后：**
-![在这里插入图片描述](https://img-blog.csdnimg.cn/7365b0ad9dc342a895b5acd4d6c1b6c1.png =400x)
+![Alt Text](./images/7365b0ad9dc342a895b5acd4d6c1b6c1.png =400x)
 
 ```python
 # 错切
 transforms = T.Compose([T.Resize(224),T.RandomAffine(degrees=0, shear=(0, 30, 0, 30)),T.ToTensor()]) 
 ```
 **这是原图：**
-![在这里插入图片描述](https://img-blog.csdnimg.cn/a7c92405073e466a8287f0517650f777.jpeg =400x)
+![Alt Text](./images/a7c92405073e466a8287f0517650f777.jpeg =400x)
 **处理过后：**
-![在这里插入图片描述](https://img-blog.csdnimg.cn/2de5d603099040e0a52fe81a46a3c505.png =400x)
+![Alt Text](./images/2de5d603099040e0a52fe81a46a3c505.png =400x)
 
 ```python
 # 错切
 transforms = T.Compose([T.Resize(224),T.RandomAffine(degrees=0, shear=30, fillcolor=(255, 0, 0)),T.ToTensor()])
 ```
 **这是原图：**
-![在这里插入图片描述](https://img-blog.csdnimg.cn/a7c92405073e466a8287f0517650f777.jpeg =400x)
+![Alt Text](./images/a7c92405073e466a8287f0517650f777.jpeg =400x)
 **处理过后：**
-![在这里插入图片描述](https://img-blog.csdnimg.cn/47b31e68544f44a7a43d23e9e7c10145.png =400x)
+![Alt Text](./images/47b31e68544f44a7a43d23e9e7c10145.png =400x)
 
 ### 4.6 `transforms.RandomErasing`
 ```python
@@ -343,14 +343,14 @@ torchvision.transforms.RandomErasing(p=0.5, scale=(0.02, 0.33), ratio=(0.3, 3.3)
 transforms = T.Compose([T.Resize(224), T.ToTensor(), T.RandomErasing(p=0.5, scale=(0.03, 0.32), ratio=(0.2, 3.0), value=0, inplace=False)])
 ```
 **这是原图：**
-![在这里插入图片描述](https://img-blog.csdnimg.cn/a7c92405073e466a8287f0517650f777.jpeg =400x)
+![Alt Text](./images/a7c92405073e466a8287f0517650f777.jpeg =400x)
 **处理过后：**
-![在这里插入图片描述](https://img-blog.csdnimg.cn/0b4172e0a459455ea13057abe250a2f4.png =400x)
+![Alt Text](./images/0b4172e0a459455ea13057abe250a2f4.png =400x)
 
 ```python
 transforms = T.Compose([T.Resize(224), T.ToTensor(), T.RandomErasing(p=1, scale=(0.03, 0.32), ratio=(0.2, 3.0), value='random')])
 ```
-![在这里插入图片描述](https://img-blog.csdnimg.cn/95ca6f13c63d47f9ae8ddf2d521380eb.png =400x)
+![Alt Text](./images/95ca6f13c63d47f9ae8ddf2d521380eb.png =400x)
 
 
 

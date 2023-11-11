@@ -14,18 +14,18 @@ mindmap2: false
 
 ## 一、多模块项目构建
 ### 1. 先建立父级目录demo-parent
-![在这里插入图片描述](https://img-blog.csdnimg.cn/c5f35302d3e84ad4b68fef07c387d167.png)
-![在这里插入图片描述](https://img-blog.csdnimg.cn/50c8077eaf2c44599258fe59d645879a.png)
-![在这里插入图片描述](https://img-blog.csdnimg.cn/27fce1e8dd1548738f9c7cd9e1c2fa82.png)
+![Alt Text](../images/posts/c5f35302d3e84ad4b68fef07c387d167.png)
+![Alt Text](../images/posts/50c8077eaf2c44599258fe59d645879a.png)
+![Alt Text](../images/posts/27fce1e8dd1548738f9c7cd9e1c2fa82.png)
 ### 2. 把父级目录src删除，再建立子级模块
-![在这里插入图片描述](https://img-blog.csdnimg.cn/6164eb4f1fd140eab26981828462df9c.png)
-![在这里插入图片描述](https://img-blog.csdnimg.cn/6133983cca254db293b08522c157694a.png)
+![Alt Text](../images/posts/6164eb4f1fd140eab26981828462df9c.png)
+![Alt Text](../images/posts/6133983cca254db293b08522c157694a.png)
 ### 3. 建立子级模块model,dao,service,common.utils等相同步骤
-![在这里插入图片描述](https://img-blog.csdnimg.cn/ba54aada51aa4492ab25d4651f7d3667.png)
+![Alt Text](../images/posts/ba54aada51aa4492ab25d4651f7d3667.png)
 ### 4. 建立启动模块boot, 创建Spring Boot 启动类
-![在这里插入图片描述](https://img-blog.csdnimg.cn/b842d89161024408b7899efa0abc98ee.png)
-![在这里插入图片描述](https://img-blog.csdnimg.cn/4c2918a45efd42c7a622644f700166b3.png)
-![在这里插入图片描述](https://img-blog.csdnimg.cn/2ca37e77878c435d9a5a53fa819ec9e8.png)
+![Alt Text](../images/posts/b842d89161024408b7899efa0abc98ee.png)
+![Alt Text](../images/posts/4c2918a45efd42c7a622644f700166b3.png)
+![Alt Text](../images/posts/2ca37e77878c435d9a5a53fa819ec9e8.png)
 
 ```java
 package com.example;
@@ -221,7 +221,7 @@ public class ControllerTest {
 
 ```
 #### 6.4 启动boot按钮
-![在这里插入图片描述](https://img-blog.csdnimg.cn/ec6c7c8fd7d049c897fa0c4e6fbaa09a.png)
-![在这里插入图片描述](https://img-blog.csdnimg.cn/9bafc241371a4574aed0226e5c06c2d5.png)
-![在这里插入图片描述](https://img-blog.csdnimg.cn/a308ccf45b4147a08bd573336175aae3.png)
-![在这里插入图片描述](https://img-blog.csdnimg.cn/8491687116ce4be9aa30b2e9f0eea4c4.png)
+![Alt Text](../images/posts/ec6c7c8fd7d049c897fa0c4e6fbaa09a.png)
+![Alt Text](../images/posts/9bafc241371a4574aed0226e5c06c2d5.png)
+![Alt Text](../images/posts/a308ccf45b4147a08bd573336175aae3.png)
+![Alt Text](../images/posts/8491687116ce4be9aa30b2e9f0eea4c4.png)

@@ -66,7 +66,7 @@ Could not find resource jdbcConfig.properties
 ```
 ### 问题分析
 找不到对应的jdbcConfig.properties文件，说明编译没有成功，对应的target文件classes下中没有该文件
-![在这里插入图片描述](https://img-blog.csdnimg.cn/20210704102247721.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L1NsaWVuY2VfbWU=,size_16,color_FFFFFF,t_70)
+![Alt Text](../images/posts/20210704102247721.png)
 然后发现真的没有
 ### 解决方案
 #### 方案一
@@ -74,5 +74,5 @@ Could not find resource jdbcConfig.properties
 
 #### 方案二
 把文件直接复制到classes下即可
-![在这里插入图片描述](https://img-blog.csdnimg.cn/20210704102436192.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L1NsaWVuY2VfbWU=,size_16,color_FFFFFF,t_70)
+![Alt Text](../images/posts/20210704102436192.png)
 

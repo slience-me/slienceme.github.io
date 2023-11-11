@@ -100,8 +100,8 @@ public ModelAndView testModelAndView(){
     return mv;
 }
 ```
-![在这里插入图片描述](https://img-blog.csdnimg.cn/20210703171623727.png)
-![在这里插入图片描述](https://img-blog.csdnimg.cn/20210703171610909.png)
+![Alt Text](../images/posts/20210703171623727.png)
+![Alt Text](../images/posts/20210703171610909.png)
 
 
 ### 1.2 SpringMVC框架提供的转发和重定向
@@ -196,7 +196,7 @@ public @ResponseBody User testAjax(@RequestBody User user){
     return user;
 }
 ```
-![在这里插入图片描述](https://img-blog.csdnimg.cn/20210703173904578.png)
+![Alt Text](../images/posts/20210703173904578.png)
 
 
 
@@ -218,7 +218,7 @@ public @ResponseBody User testAjax(@RequestBody User user){
      return user;
  }
 ```
-![在这里插入图片描述](https://img-blog.csdnimg.cn/20210703174207988.png)
+![Alt Text](../images/posts/20210703174207988.png)
 
 5. `json`字符串和JavaBean对象互相转换的过程中，需要使用`jackson的jar`包
 

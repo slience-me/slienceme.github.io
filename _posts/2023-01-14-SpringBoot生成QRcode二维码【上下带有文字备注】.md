@@ -211,9 +211,9 @@ public class QRCodeUtil {
     }
 ```
 ## 4. 效果图 
-![在这里插入图片描述](https://img-blog.csdnimg.cn/f9d10aa8ee8d4a2d99dc54f9ae41d556.png)
+![Alt Text](../images/posts/f9d10aa8ee8d4a2d99dc54f9ae41d556.png)
 
-![请添加图片描述](https://img-blog.csdnimg.cn/995c723003974dc38304f96a1e419994.png)
+![Alt Text](../images/posts/995c723003974dc38304f96a1e419994.png)
 
 ## 4. 注意部署Linux后，可能文字丢失Font
 解决方案

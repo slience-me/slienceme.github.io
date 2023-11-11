@@ -12,7 +12,7 @@ mindmap: false
 mindmap2: false
 ---
 
-![在这里插入图片描述](https://img-blog.csdnimg.cn/0d221d3c0a114fffa36c48e306e933e5.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L1NsaWVuY2VfbWU=,size_16,color_FFFFFF,t_70)
+![Alt Text](../images/posts/0d221d3c0a114fffa36c48e306e933e5.png)
 # Python--Pandas简单了解
 
 ## 1. Pandas介绍
@@ -39,10 +39,10 @@ mindmap2: false
       - 2）重设索引
       - 3）设置新索引
 
-![在这里插入图片描述](https://img-blog.csdnimg.cn/e15129ec6d824f7897e484ef39284797.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L1NsaWVuY2VfbWU=,size_16,color_FFFFFF,t_70)
+![Alt Text](../images/posts/e15129ec6d824f7897e484ef39284797.png)
 
 
-![在这里插入图片描述](https://img-blog.csdnimg.cn/a9c68521ec564280a224e82ff42782b6.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L1NsaWVuY2VfbWU=,size_16,color_FFFFFF,t_70)
+![Alt Text](../images/posts/a9c68521ec564280a224e82ff42782b6.png)
 
 
 
@@ -53,7 +53,7 @@ mindmap2: false
 		- `keys` : 列索引名称或者列索引名称的列表
 		- `drop`：boolean, default True. 当作新的索引，删除原来的列
 
-![在这里插入图片描述](https://img-blog.csdnimg.cn/b303a45e8a41410f85b66ea19449923d.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L1NsaWVuY2VfbWU=,size_16,color_FFFFFF,t_70)
+![Alt Text](../images/posts/b303a45e8a41410f85b66ea19449923d.png)
 
 
 
@@ -71,7 +71,7 @@ mindmap2: false
       - `DataFrame`是`Series`的容器
       - `Panel`是`DataFrame`的容器
 
-![在这里插入图片描述](https://img-blog.csdnimg.cn/c5134b0be19b4461aed583fe46fb3344.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L1NsaWVuY2VfbWU=,size_16,color_FFFFFF,t_70)
+![Alt Text](../images/posts/c5134b0be19b4461aed583fe46fb3344.png)
 
 
 ## 2. 基本数据操作
@@ -80,13 +80,13 @@ mindmap2: false
 ```python
 data = pd.read_csv("./stock_day/stock_day.csv")
 ```
-![在这里插入图片描述](https://img-blog.csdnimg.cn/5e19ae39d3c1468b8190a47dd8bcad52.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L1NsaWVuY2VfbWU=,size_16,color_FFFFFF,t_70)
+![Alt Text](../images/posts/5e19ae39d3c1468b8190a47dd8bcad52.png)
 
 -  **删除一些列，让数据更简单些，再去做后面的操作**
 ```python
 data = data.drop(["ma5","ma10","ma20","v_ma5","v_ma10","v_ma20"], axis=1)
 ```
-![在这里插入图片描述](https://img-blog.csdnimg.cn/865a9752e4544608be7ab5ec5bffc427.png)
+![Alt Text](../images/posts/865a9752e4544608be7ab5ec5bffc427.png)
 1. 直接索引
    - 先列后行
 2. 按名字索引
@@ -96,10 +96,10 @@ data = data.drop(["ma5","ma10","ma20","v_ma5","v_ma10","v_ma20"], axis=1)
 4. 组合索引
    - 数字、名字
 
-![在这里插入图片描述](https://img-blog.csdnimg.cn/c0d54d31a277480ba2fbe2bd3bdbc29b.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L1NsaWVuY2VfbWU=,size_16,color_FFFFFF,t_70)
-![在这里插入图片描述](https://img-blog.csdnimg.cn/e1c0bb8eb68e4b0db6ba53cadf5e0a2b.png)
+![Alt Text](../images/posts/c0d54d31a277480ba2fbe2bd3bdbc29b.png)
+![Alt Text](../images/posts/e1c0bb8eb68e4b0db6ba53cadf5e0a2b.png)
 ### 2.2 赋值
-![在这里插入图片描述](https://img-blog.csdnimg.cn/c7ea90fe96564eb4b9953f765fdcdc34.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L1NsaWVuY2VfbWU=,size_16,color_FFFFFF,t_70)
+![Alt Text](../images/posts/c7ea90fe96564eb4b9953f765fdcdc34.png)
 
 
 ### 2.3 排序
@@ -124,12 +124,12 @@ data = data.drop(["ma5","ma10","ma20","v_ma5","v_ma10","v_ma20"], axis=1)
 	- 与df一致
 
 
-![在这里插入图片描述](https://img-blog.csdnimg.cn/feba1ac33c4245998bb1becddf2c86a7.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L1NsaWVuY2VfbWU=,size_16,color_FFFFFF,t_70)
+![Alt Text](../images/posts/feba1ac33c4245998bb1becddf2c86a7.png)
 
 ## 3. DataFrame运算
 ### 算术运算
 
-![在这里插入图片描述](https://img-blog.csdnimg.cn/2e0e4531ceb640308fe6ab919abc4cad.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L1NsaWVuY2VfbWU=,size_16,color_FFFFFF,t_70)
+![Alt Text](../images/posts/2e0e4531ceb640308fe6ab919abc4cad.png)
 
 ### 逻辑运算
    - 逻辑运算符
@@ -138,7 +138,7 @@ data = data.drop(["ma5","ma10","ma20","v_ma5","v_ma10","v_ma20"], axis=1)
          -  `query()` 查询
          -  `isin()` 是不是在条件中
 
-![在这里插入图片描述](https://img-blog.csdnimg.cn/4bfd10e45af74fb9afdd3ad9f9bee637.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L1NsaWVuY2VfbWU=,size_16,color_FFFFFF,t_70)
+![Alt Text](../images/posts/4bfd10e45af74fb9afdd3ad9f9bee637.png)
 ### 统计运算
    - `min max mean median var std` 最小值，最大值，均值，中位数，方差，标准差
     - `np.argmax()`
@@ -162,14 +162,14 @@ data = data.drop(["ma5","ma10","ma20","v_ma5","v_ma10","v_ma20"], axis=1)
 | idxmin | compute the index labels with the minimum 计算索引标签的最小值 |
 
 - **对于单个函数去进行统计的时候，坐标轴还是按照这些默认为"columns"(axis=0, default), 如果要对行"index"需要指定(axis=1)**
-![在这里插入图片描述](https://img-blog.csdnimg.cn/74e0656076d44fa49442db3cf3a1c34c.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L1NsaWVuY2VfbWU=,size_16,color_FFFFFF,t_70)
+![Alt Text](../images/posts/74e0656076d44fa49442db3cf3a1c34c.png)
 ### 自定义运算
    - `apply(func, axis=0)`
         -  `func`:自定义函数
         - `axis=0`：默认是列，axis=1为行进行运算
    - 定义一个对列，最大值 最小值的函数 
 
-![在这里插入图片描述](https://img-blog.csdnimg.cn/6e46c1a9aab1441ab4dde848f9cb98df.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L1NsaWVuY2VfbWU=,size_16,color_FFFFFF,t_70)
+![Alt Text](../images/posts/6e46c1a9aab1441ab4dde848f9cb98df.png)
 
 ## 4. Pandas画图
 ### pandas.DataFrame.plot
@@ -204,7 +204,7 @@ data = data.drop(["ma5","ma10","ma20","v_ma5","v_ma10","v_ma20"], axis=1)
 ```python
 data = pd.read_csv("stock_day2.csv", names=["open", "high", "close", "low", "volume", "price_change", "p_change", "ma5", "ma10", "ma20", "v_ma5", "v_ma10", "v_ma20", "turnover"])
 ```
-![在这里插入图片描述](https://img-blog.csdnimg.cn/f58defe130204844ae817963ce43fc22.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L1NsaWVuY2VfbWU=,size_16,color_FFFFFF,t_70)
+![Alt Text](../images/posts/f58defe130204844ae817963ce43fc22.png)
 
 ### 5.2 HDF5
     hdf5 存储 3维数据的文件
@@ -236,7 +236,7 @@ pip install tables
 	- `mode`：打开文件的模式
 	- `return` ：Theselected object
 
-![在这里插入图片描述](https://img-blog.csdnimg.cn/31430762cfd2478ba36c7b4e58a55409.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L1NsaWVuY2VfbWU=,size_16,color_FFFFFF,t_70)
+![Alt Text](../images/posts/31430762cfd2478ba36c7b4e58a55409.png)
 
 
 
@@ -254,7 +254,7 @@ pip install tables
 		- 按照每行读取json对象
 	- `typ` ： default ‘frame’, 指定转换成的对象类型series或者dataframe 
 
-![在这里插入图片描述](https://img-blog.csdnimg.cn/6c9fc28718d8403b99de179ffc53a022.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L1NsaWVuY2VfbWU=,size_16,color_FFFFFF,t_70)
+![Alt Text](../images/posts/6c9fc28718d8403b99de179ffc53a022.png)
 #### 2. to_json()
-![在这里插入图片描述](https://img-blog.csdnimg.cn/0c12731b9f0a40aaa78cf1dd0b2d463b.png)
+![Alt Text](../images/posts/0c12731b9f0a40aaa78cf1dd0b2d463b.png)
 

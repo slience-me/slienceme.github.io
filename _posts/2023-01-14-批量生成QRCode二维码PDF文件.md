@@ -15,7 +15,7 @@ mindmap2: false
 ## 需求：导出产品二维码PDF文件
 
 ### 1. Anchor设置页眉标题 
-![在这里插入图片描述](https://img-blog.csdnimg.cn/751056a711e14a6a9a1461c4877fda37.png)
+![Alt Text](../images/posts/751056a711e14a6a9a1461c4877fda37.png)
 
 ## 工具包
 ```java
@@ -273,7 +273,7 @@ public class MyHeaderFooter extends PdfPageEventHelper {
 }
 ```
 ## 导出效果
-![在这里插入图片描述](https://img-blog.csdnimg.cn/37343e08fd014d6282c18508712023ca.png)
+![Alt Text](../images/posts/37343e08fd014d6282c18508712023ca.png)
 
 
 ## 其他问题

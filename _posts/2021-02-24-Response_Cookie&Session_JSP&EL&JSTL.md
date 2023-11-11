@@ -754,7 +754,7 @@ public class CookieTest extends HttpServlet {
 	 `void removeAttribute(String name)`  
 	 
 * `Session`依赖于`Cookie`的。
-![在这里插入图片描述](https://img-blog.csdnimg.cn/20210322131449444.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L1NsaWVuY2VfbWU=,size_16,color_FFFFFF,t_70)
+![Alt Text](../images/posts/20210322131449444.png)
 
 ```java
 package xyz.slienceme.session;
@@ -819,7 +819,7 @@ public class SessionDemo3 extends HttpServlet {
     }
 }
 ```
-![在这里插入图片描述](https://img-blog.csdnimg.cn/20210322132513871.png)
+![Alt Text](../images/posts/20210322132513871.png)
 
 #### 2. 客户端不关闭服务器关闭，session不同一个
 > 如果客户端不关闭，服务器关闭，两次获取的session不是同一个，但是如果要确保数据不丢失损失。
@@ -1092,7 +1092,7 @@ public class LoginServlet extends HttpServlet {
 
 ## 1.2 原理
 * `JSP`本质上就是一个`Servlet`
-![在这里插入图片描述](https://img-blog.csdnimg.cn/202103211511175.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L1NsaWVuY2VfbWU=,size_16,color_FFFFFF,t_70)
+![Alt Text](../images/posts/202103211511175.png)
 
 ## 1.3 JSP的脚本：JSP定义Java代码的方式
 1. `<%  代码 %>`：定义的`java`代码，在`service`方法中。`service`方法中可以定义什么，该脚本中就可以定义什么。
@@ -1205,7 +1205,7 @@ public class LoginServlet extends HttpServlet {
 
 ## 2.2 MVC
 - （django利用了该模式     [网址](https://blog.csdn.net/Slience_me/article/details/109277480)）：
-![在这里插入图片描述](https://img-blog.csdnimg.cn/20210323172811407.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L1NsaWVuY2VfbWU=,size_16,color_FFFFFF,t_70)
+![Alt Text](../images/posts/20210323172811407.png)
 
 1. M：`Model`，模型。`JavaBean`
 	* 完成具体的业务操作，如：查询数据库，封装对象
@@ -1504,7 +1504,7 @@ ${requestScope.u}<br>
 </body>
 </html>
 ```
-![在这里插入图片描述](https://img-blog.csdnimg.cn/2021032318195842.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L1NsaWVuY2VfbWU=,size_16,color_FFFFFF,t_70)
+![Alt Text](../images/posts/2021032318195842.png)
 #### 3. 隐式对象：
 * `el`表达式中有11个隐式对象
 * `pageContext`：
@@ -1571,7 +1571,7 @@ ${requestScope.u}<br>
 </body>
 </html>
 ```
-![在这里插入图片描述](https://img-blog.csdnimg.cn/2021032318523720.png)
+![Alt Text](../images/posts/2021032318523720.png)
 
  
 2. `choose`:相当于`java`代码的`switch`语句
@@ -1725,7 +1725,7 @@ ${requestScope.u}<br>
 </body>
 </html>
 ```
-![在这里插入图片描述](https://img-blog.csdnimg.cn/20210323185808823.png)
+![Alt Text](../images/posts/20210323185808823.png)
 
 # 5.  三层架构：软件设计架构
 1. 界面层(表示层)：用户看的得界面。用户可以通过界面上的组件和服务器进行交互

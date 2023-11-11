@@ -16,7 +16,7 @@ mindmap2: false
 
 进入到你的下载路径
 
-![请添加图片描述](https://img-blog.csdnimg.cn/8bd4658089174965af257a7bdc539836.png)
+![Alt Text](../images/posts/8bd4658089174965af257a7bdc539836.png)
 输入以下，命令开始解压文件
 
 ```
@@ -27,9 +27,9 @@ tar zxvf pycharm-professional-2021.2.tar.gz
 ```
 cd 文件名
 ```
-![请添加图片描述](https://img-blog.csdnimg.cn/eafc2f050edc456fa7d3b8c8eb4ed936.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L1NsaWVuY2VfbWU=,size_16,color_FFFFFF,t_70)
+![Alt Text](../images/posts/eafc2f050edc456fa7d3b8c8eb4ed936.png)
 可以看到bin里边就是可以执行的文件
-![请添加图片描述](https://img-blog.csdnimg.cn/ad2aa5e4dfb148cfac56f6340ccb9e99.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L1NsaWVuY2VfbWU=,size_16,color_FFFFFF,t_70)
+![Alt Text](../images/posts/ad2aa5e4dfb148cfac56f6340ccb9e99.png)
 执行以下命令即可运行
 ```
 ./pycharm.sh

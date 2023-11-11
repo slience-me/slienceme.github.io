@@ -13,7 +13,7 @@ mindmap2: false
 ---
 
 # JdbcTemplate的基本使用
-![在这里插入图片描述](https://img-blog.csdnimg.cn/20210701174404954.jpg?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L1NsaWVuY2VfbWU=,size_16,color_FFFFFF,t_70)
+![Alt Text](../images/posts/20210701174404954.jpg)
 
 ## 1. 基本使用
 ### 1.1 maven导入

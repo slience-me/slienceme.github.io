@@ -219,7 +219,7 @@ mindmap2: false
 </html>
 ```
 #### 示例: 表单样式
-![在这里插入图片描述](https://img-blog.csdnimg.cn/20210215113120373.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L1NsaWVuY2VfbWU=,size_16,color_FFFFFF,t_70)
+![Alt Text](../images/posts/20210215113120373.png)
 
 ```html
 <!DOCTYPE html>
@@ -307,7 +307,7 @@ mindmap2: false
 </html>
 ```
 #### 示例: 导航样式
-![在这里插入图片描述](https://img-blog.csdnimg.cn/20210215113728509.png)
+![Alt Text](../images/posts/20210215113728509.png)
 
 ```html
 <!DOCTYPE html>
@@ -382,7 +382,7 @@ mindmap2: false
 </html>
 ```
 #### 示例: 分页样式
-![在这里插入图片描述](https://img-blog.csdnimg.cn/20210215113757878.png)
+![Alt Text](../images/posts/20210215113757878.png)
 
 ```html
 <!DOCTYPE html>
@@ -426,7 +426,7 @@ mindmap2: false
 </body>
 </html>
 ```
-![在这里插入图片描述](https://img-blog.csdnimg.cn/20210215113821751.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L1NsaWVuY2VfbWU=,size_16,color_FFFFFF,t_70)
+![Alt Text](../images/posts/20210215113821751.png)
 
 ```html
 <!DOCTYPE html>
