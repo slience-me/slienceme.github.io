@@ -3,17 +3,23 @@
       - Java
       - C++
       - Python
+      - matlib
       - Design Patterns
+      - ...
 
 - name: Mobile Developer Keywords
   keywords:
       - Android
-      - Reverse Engineering
+      - MiniApp
+      - ...
 
-- name: Windows Developer Keywords
+- name: Other
   keywords:
-      - Win32 SDK
-      - DuiLib
-      - WTL
-      - COM
-      - WinDbg
+      - Linux
+      - Git
+      - Django
+      - MySQL
+      - Redis
+      - Nginx
+      - Docker
+      - ...
