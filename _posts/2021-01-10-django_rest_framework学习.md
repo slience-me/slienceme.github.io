@@ -1,7 +1,7 @@
 ﻿---
 layout: post
 title: Web｜django_rest_framework学习
-categories: [Python, Web服务器]
+categories: [Python, Web]
 description: django_rest_framework学习
 keywords: Python, 服务器, Web
 mermaid: false
