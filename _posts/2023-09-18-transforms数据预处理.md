@@ -113,7 +113,7 @@ to_pil(dog_t)
 **这是原图：**
 ![Alt Text](./images/f38cbdf22ca7456fadd47b689a31e330.jpeg  =400x)
 **处理过后：**
-![Alt Text](../images/posts/88eef293e69f472d9769f9bcccc8f1d0.png)
+![Alt Text](/images/posts/88eef293e69f472d9769f9bcccc8f1d0.png)
 
 ```python
 # torchvision.transforms.CenterCrop

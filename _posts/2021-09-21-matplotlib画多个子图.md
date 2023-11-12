@@ -39,7 +39,7 @@ C4 烯烃广泛应用于化工产品及医药的生产，乙醇是生产制备 C
 (4) 如果允许再增加 5 次实验，应如何设计，并给出详细理由。
 
 ### 例图
-![Alt Text](../images/posts/fd50833f6be2456f9f3562aaa23bfdb2.png)
+![Alt Text](/images/posts/fd50833f6be2456f9f3562aaa23bfdb2.png)
 ### 代码展示
 
 ```python
@@ -342,5 +342,5 @@ func_Ls(X_list_, Y_list__, Y_list___, label_list_, y_label, title_list_, int(15)
 
 
 
-![Alt Text](../images/posts/dca6ea5e524c4b178300678e0e6ac826.jpg)
+![Alt Text](/images/posts/dca6ea5e524c4b178300678e0e6ac826.jpg)
 

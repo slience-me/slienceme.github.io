@@ -13,7 +13,7 @@ mindmap2: false
 ---
 
 # JdbcTemplate的基本使用
-![Alt Text](../images/posts/20210701174404954.jpg)
+![Alt Text](/images/posts/20210701174404954.jpg)
 
 ## 1. 基本使用
 ### 1.1 maven导入

@@ -13,14 +13,14 @@ mindmap2: false
 ---
 
 ## xftp（sftp协议）
-![Alt Text](../images/posts/2021041919215284.png)
-![Alt Text](../images/posts/20210419192341329.png)
-![Alt Text](../images/posts/20210419192749191.png)
+![Alt Text](/images/posts/2021041919215284.png)
+![Alt Text](/images/posts/20210419192341329.png)
+![Alt Text](/images/posts/20210419192749191.png)
 然后点击接收并保存密钥就行了。
 
 
 # xshell（ssh协议）
 新建一个会话，基本与xftp类似
-![Alt Text](../images/posts/20210419192952745.png)
-![Alt Text](../images/posts/20210419193121865.png)
+![Alt Text](/images/posts/20210419192952745.png)
+![Alt Text](/images/posts/20210419193121865.png)
 然后点击接收并保存密钥就行了。

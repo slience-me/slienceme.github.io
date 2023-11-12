@@ -32,7 +32,7 @@ MySQL驱动和数据库字符集设置不搭配
 ```
 成功解决
 
-![Alt Text](../images/posts/20210418180124368.png)
+![Alt Text](/images/posts/20210418180124368.png)
 
 
 

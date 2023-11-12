@@ -1,6 +1,6 @@
 ﻿---
 layout: post
-title: Web服务器｜django_rest_framework学习
+title: Web｜django_rest_framework学习
 categories: [Python, Web服务器]
 description: django_rest_framework学习
 keywords: Python, 服务器, Web
@@ -18,12 +18,12 @@ mindmap2: false
 ## 1.1 Web应用模式
 
 ### 前后端不分离
-![Alt Text](../images/posts/20210110213438585.png)
-![Alt Text](../images/posts/20210110213538123.png)
+![Alt Text](/images/posts/20210110213438585.png)
+![Alt Text](/images/posts/20210110213538123.png)
 
 ### 前后端分离
-![Alt Text](../images/posts/20210110212957596.png)
-![Alt Text](../images/posts/20210110213243266.png)
+![Alt Text](/images/posts/20210110212957596.png)
+![Alt Text](/images/posts/20210110213243266.png)
 ## 1.2 认识RESTful
 **在前后端分离的应用模式里，API接口如何定义？**
 
@@ -35,7 +35,7 @@ mindmap2: false
 
 > 例如对于后端数据库中保存了商品的信息，前端可能需要对商品数据进行增删改查，那相应的每个操作后端都需要提供一个API接口：
 
-![Alt Text](../images/posts/20210110214140336.png)
+![Alt Text](/images/posts/20210110214140336.png)
 ## 1.3 RESTful设计方法
 ### 1. 域名
 
@@ -159,7 +159,7 @@ mindmap2: false
 > PATCH /collection/resource：返回完整的资源对象 
 > DELETE /collection/resource：返回一个空文档
 
-![Alt Text](../images/posts/20210110215759627.png)
+![Alt Text](/images/posts/20210110215759627.png)
 
 
 ### 10. 其他
@@ -739,7 +739,7 @@ book = BookInfo.objects.create(
 >  Django REST framework可以帮助我们简化上述两部分的代码编写，大大提高REST  API的开发速度。
 
 ### 认识Django REST framework
-![Alt Text](../images/posts/20210111123030136.png)
+![Alt Text](/images/posts/20210111123030136.png)
 
 
 > Django REST framework 框架是一个用于构建Web API 的强大而又灵活的工具。
@@ -849,24 +849,24 @@ python manage.py runserver
 ```
 
 > 在浏览器中输入网址127.0.0.1:8000，可以看到DRF提供的API Web浏览页面：
-![Alt Text](../images/posts/20210111125355866.png)
+![Alt Text](/images/posts/20210111125355866.png)
 1）点击链接127.0.0.1:8000/books/ 可以访问获取所有数据的接口，呈现如下页面：
-![Alt Text](../images/posts/20210111125412844.png)
-![Alt Text](../images/posts/20210111125424351.png)
+![Alt Text](/images/posts/20210111125412844.png)
+![Alt Text](/images/posts/20210111125424351.png)
 2）在页面底下表单部分填写图书信息，可以访问添加新图书的接口，保存新书：
-![Alt Text](../images/posts/20210111125438813.png)
+![Alt Text](/images/posts/20210111125438813.png)
 点击POST后，返回如下页面信息：
-![Alt Text](../images/posts/20210111125451124.png)
+![Alt Text](/images/posts/20210111125451124.png)
 3）在浏览器中输入网址127.0.0.1:8000/books/1/，可以访问获取单一图书信息的接口（id为1的图书），呈现如下页面：
-![Alt Text](../images/posts/20210111125501489.png)
+![Alt Text](/images/posts/20210111125501489.png)
 4）在页面底部表单中填写图书信息，可以访问修改图书的接口：
-![Alt Text](../images/posts/20210111125511348.png)
+![Alt Text](/images/posts/20210111125511348.png)
 点击PUT，返回如下页面信息：
-![Alt Text](../images/posts/20210111125520818.png)
+![Alt Text](/images/posts/20210111125520818.png)
 5）点击DELETE按钮，可以访问删除图书的接口：
-![Alt Text](../images/posts/20210111125530533.png)
+![Alt Text](/images/posts/20210111125530533.png)
 返回，如下页面：
-![Alt Text](../images/posts/20210111125541653.png)
+![Alt Text](/images/posts/20210111125541653.png)
 至此，是不是发现Django REST framework很好用！
 
 # 3. Serializer序列化器
@@ -906,10 +906,10 @@ class BookInfoSerializer(serializers.Serializer):
 > 注意：serializer不是只能为数据库模型类定义，也可以为非数据库模型类的数据定义。serializer是独立于数据库之外的存在。
 ### 2. 字段与选项
 常用字段类型：
-![Alt Text](../images/posts/2021011113015420.png)
-![Alt Text](../images/posts/20210111130210207.png)
-![Alt Text](../images/posts/20210111130231783.png)
-![Alt Text](../images/posts/20210111130240825.png)
+![Alt Text](/images/posts/2021011113015420.png)
+![Alt Text](/images/posts/20210111130210207.png)
+![Alt Text](/images/posts/20210111130231783.png)
+![Alt Text](/images/posts/20210111130240825.png)
 ### 3. 创建Serializer对象
 > 定义好Serializer类后，就可以创建Serializer对象了。
 
@@ -1072,8 +1072,8 @@ serializer = BookInfoSerializer(book)
 serializer.data
 # {'id': 2, 'btitle': '天龙八部', 'bpub_date': '1986-07-24', 'bread': 36, 'bcomment': 40, 'image': None, 'heroinfo_set': [6,8, 9]}
 ```
-![Alt Text](../images/posts/20210111181216798.png)
-![Alt Text](../images/posts/20210111203958439.png)
+![Alt Text](/images/posts/20210111181216798.png)
+![Alt Text](/images/posts/20210111203958439.png)
 
 ## 3.3 反序列化使用
 ###  1. 验证
@@ -1289,12 +1289,12 @@ serializer = BookInfoSerializer(instance=book, data={'btitle': 'hello django', '
 serializer = BookInfoSerializer(instance=book, data={'btitle': 'hello django'}, partial=True)
 
 ```
-![Alt Text](../images/posts/20210111201651905.png)
-![Alt Text](../images/posts/20210111201808555.png)
-![Alt Text](../images/posts/20210111203852259.png)
+![Alt Text](/images/posts/20210111201651905.png)
+![Alt Text](/images/posts/20210111201808555.png)
+![Alt Text](/images/posts/20210111203852259.png)
 
 ## 3.4 模型类序列化器ModelSerializer
-![Alt Text](../images/posts/20210111214117444.png)
+![Alt Text](/images/posts/20210111214117444.png)
 
 
 > 如果我们想要使用序列化器对应的是Django的模型类，DRF为我们提供了ModelSerializer模型类序列化器来帮助我们快速创建一个Serializer类。
@@ -1402,15 +1402,15 @@ class BookInfoSerializer(serializers.ModelSerializer):
 #    bread = IntegerField(label='阅读量', max_value=2147483647, min_value=0, required=True)
 #    bcomment = IntegerField(label='评论量', max_value=2147483647, min_value=0, required=True)
 ```
-![Alt Text](../images/posts/20210111212152667.png)
-![Alt Text](../images/posts/20210111212300139.png)
-![Alt Text](../images/posts/20210111212321953.png)
-![Alt Text](../images/posts/20210111212413408.png)
-![Alt Text](../images/posts/20210111212434345.png)
-![Alt Text](../images/posts/20210111212619409.png)
-![Alt Text](../images/posts/20210111212756291.png)
+![Alt Text](/images/posts/20210111212152667.png)
+![Alt Text](/images/posts/20210111212300139.png)
+![Alt Text](/images/posts/20210111212321953.png)
+![Alt Text](/images/posts/20210111212413408.png)
+![Alt Text](/images/posts/20210111212434345.png)
+![Alt Text](/images/posts/20210111212619409.png)
+![Alt Text](/images/posts/20210111212756291.png)
 
-![Alt Text](../images/posts/20210111212707999.png)
+![Alt Text](/images/posts/20210111212707999.png)
 
 # 4. 视图
 ## 4.1 Request 与 Response
@@ -1559,10 +1559,10 @@ HTTP_511_NETWORK_AUTHENTICATION_REQUIRED
 
 视图的继承关系：
 
-![Alt Text](../images/posts/20210111205635471.png)
+![Alt Text](/images/posts/20210111205635471.png)
 
 视图的方法与属性：
-![Alt Text](../images/posts/20210111205648529.png)
+![Alt Text](/images/posts/20210111205648529.png)
 ## 4.3 视图说明
 ### 1. 两个基类
 #### 1）APIView
@@ -2014,7 +2014,7 @@ def get_serializer_class(self):
         return OrderDataSerializer
 ```
 ### 4. 视图集的继承关系
-![Alt Text](../images/posts/20210112183339672.png)
+![Alt Text](/images/posts/20210112183339672.png)
 ## 4.5 路由Routers
 
 > 对于视图集ViewSet，我们除了可以自己手动指明请求方式与动作action之间的对应关系外，还可以使用Routers来帮助我们快速实现路由信息。
@@ -2113,9 +2113,9 @@ class BookInfoViewSet(mixins.ListModelMixin, mixins.RetrieveModelMixin, GenericV
 ```
 ### 3. 路由router形成URL的方式
 #### 1） SimpleRouter
-![Alt Text](../images/posts/2021011218383936.png)
+![Alt Text](/images/posts/2021011218383936.png)
 #### 2）DefaultRouter
-![Alt Text](../images/posts/202101121838562.png)
+![Alt Text](/images/posts/202101121838562.png)
 
 > DefaultRouter与SimpleRouter的区别是，DefaultRouter会多附带一个默认的API根视图，返回一个包含所有列表视图的超链接响应数据。
 
@@ -2628,7 +2628,7 @@ class BookInfoViewSet(mixins.ListModelMixin, mixins.RetrieveModelMixin, GenericV
 #### 4. 访问接口文档网页
 
 > 浏览器访问 127.0.0.1:8000/docs/，即可看到自动生成的接口文档。
-![Alt Text](../images/posts/20210112190338490.png)
+![Alt Text](/images/posts/20210112190338490.png)
 
 > ####  两点说明：
 > 1） 视图集ViewSet中的retrieve名称，在接口文档网站中叫做read

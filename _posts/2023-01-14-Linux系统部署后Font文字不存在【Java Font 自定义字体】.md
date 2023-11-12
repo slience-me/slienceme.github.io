@@ -19,7 +19,7 @@ mindmap2: false
 ## 解决方案
 在service层获取自己下载的文字路径，然后按照下面代码即可
 可以在自己windows下电脑`C:\Windows\Fonts`自行复制
-![Alt Text](../images/posts/211a145d4bec4cddb75f53623cd0d246.png)
+![Alt Text](/images/posts/211a145d4bec4cddb75f53623cd0d246.png)
 ### 具体内容
 
 ### 1. 在ServiceImpl层

@@ -14,7 +14,7 @@ mindmap2: false
 
 
 # Python--Numpy简单了解
-![Alt Text](../images/posts/6ef52d1585304c0bae1e66240dc77858.png)
+![Alt Text](/images/posts/6ef52d1585304c0bae1e66240dc77858.png)
 
 - `Numpy` 高效的运算工具
 - `Numpy`的优势
@@ -48,7 +48,7 @@ score = np.array([[80, 89, 86, 67, 79],
 [94, 92, 93, 67, 64],
 [86, 85, 83, 67, 80]])
 ```
-![Alt Text](../images/posts/cfd2a0a4cc884aaf8966c245b5bd6ccb.png)
+![Alt Text](/images/posts/cfd2a0a4cc884aaf8966c245b5bd6ccb.png)
 
 ###  1.3 ndarray与Python原生list运算效率对比
 
@@ -84,7 +84,7 @@ d2= 0.12980318069458008
  	 `ndarray`支持向量化运算
 3. 底层语言
  	 C语言，解除了GIL
-![Alt Text](../images/posts/07d247b7962143848ac0afe97cf623bf.png)
+![Alt Text](/images/posts/07d247b7962143848ac0afe97cf623bf.png)
 
 ## 2. 认识N维数组-ndarray属性
 ### 2.1 ndarray的属性
@@ -236,7 +236,7 @@ plt.hist(data1, 1000)
 # 3、显示图像
 plt.show()
 ```
-![Alt Text](../images/posts/10b0a51fcf454dfaaf73e06ebd2304f6.png)
+![Alt Text](/images/posts/10b0a51fcf454dfaaf73e06ebd2304f6.png)
 - 正态分布`normal`
 	- `low`：此概率的均值(对应着整个分布的中心centre)
 	- `scale`：float此概率分布的标准差(对应于分布的宽度，scale越大越矮胖，越小越瘦高)
@@ -253,7 +253,7 @@ plt.hist(data2, 1000)
 # 3、显示图像
 plt.show()
 ```
-![Alt Text](../images/posts/31db657ebc1b4004890cf3b199da1fce.png)
+![Alt Text](/images/posts/31db657ebc1b4004890cf3b199da1fce.png)
 
 ### 3.2 数组的索引、切片
 
@@ -549,7 +549,7 @@ array([0, 3, 2, 2])
 
 ## 5. 数组间运算
 ### 5.1 场景
-![Alt Text](../images/posts/2749708a5af24e1e9778cc34899931d7.png)
+![Alt Text](/images/posts/2749708a5af24e1e9778cc34899931d7.png)
 
 ### 5.2 数组与数的运算
 - `+-*/`
@@ -662,11 +662,11 @@ array([[84.2],
 ## 6. 合并、分割
 ### 6.1 合并
 - `numpy.hstack(tup)` 
-![Alt Text](../images/posts/31de1a2513454dde9a704e87190a361c.png)
+![Alt Text](/images/posts/31de1a2513454dde9a704e87190a361c.png)
 - `numpy.vstack(tup)` 
-![Alt Text](../images/posts/c6e31524bbb4484788321fe8dc19d288.png)
+![Alt Text](/images/posts/c6e31524bbb4484788321fe8dc19d288.png)
 - `numpy.concatenate((a1, a2 , ...), axis=0)` 
-![Alt Text](../images/posts/cd92f5f53b0d4eb887f8154d3a05ef5f.png)
+![Alt Text](/images/posts/cd92f5f53b0d4eb887f8154d3a05ef5f.png)
 
 ```python
 a = stock_change[:2, 0:4]

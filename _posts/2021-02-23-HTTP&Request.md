@@ -56,7 +56,7 @@ mindmap2: false
 	 作用：
 	1. 防盗链：
 	2. 统计工作：
-![Alt Text](../images/posts/20210222155745926.bmp.jpg)
+![Alt Text](/images/posts/20210222155745926.bmp.jpg)
 
 ### 2.3 请求空行
 - 空行，就是用于分割`POST`请求的请求头，和请求体的。
@@ -81,7 +81,7 @@ username=zhangsan
 
 ## 3. 响应消息数据格式
 ## 3.1 Request：
-![Alt Text](../images/posts/20210222160701981.png)
+![Alt Text](/images/posts/20210222160701981.png)
 ### 3.1.1 request对象和response对象的原理
 1. `request`和`response`对象是由服务器创建的。我们来使用它们
 2. `request`对象是来获取请求消息，`response`对象是来设置响应消息
@@ -414,7 +414,7 @@ public class RequestDemo7 extends HttpServlet {
     }
 }
 ```
-![Alt Text](../images/posts/20210222173537483.png)
+![Alt Text](/images/posts/20210222173537483.png)
 
 		
 ##### 2. 请求转发：一种在服务器内部的资源跳转方式

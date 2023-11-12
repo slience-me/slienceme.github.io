@@ -779,7 +779,7 @@ public class Demo03StreamFilter {
 
 ## 4.2 流式思想概述
 **注意：请暂时忘记对传统IO流的固有印象！**
-![Alt Text](../images/posts/20210129095838181.png)
+![Alt Text](/images/posts/20210129095838181.png)
 当需要对多个元素进行操作（特别是多步操作）的时候，考虑到性能及便利性，我们应该首先拼好一个“模型”步骤方案，然后再按照方案去执行它。
 
 [在这里插入图片描述](https://img-blog.csdnimg.cn/20210129095838181.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L1NsaWVuY2VfbWU=,size_16,color_FFFFFF,t_70)

@@ -14,7 +14,7 @@ mindmap2: false
 
 # Junit & 反射 & 注解
 ## 1. Junit单元测试：
-![Alt Text](../images/posts/20210624211153674.bmp.jpg)
+![Alt Text](/images/posts/20210624211153674.bmp.jpg)
 
 ### 1.1 测试分类：
 1. 黑盒测试：不需要写代码，给输入值，看程序是否能够输出期望的值。
@@ -170,7 +170,7 @@ public class CalculatorTest {
 - 结论：
 	同一个字节码文件`(*.class)`在一次程序运行过程中，只会被加载一次，不论通过哪一种方式获取的`Class`对象都是同一个。
 
-![Alt Text](../images/posts/20210624213837359.bmp.jpg)
+![Alt Text](/images/posts/20210624213837359.bmp.jpg)
 
 ```java
 package xyz.slienceme.reflect;

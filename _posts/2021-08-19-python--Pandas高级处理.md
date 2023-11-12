@@ -12,7 +12,7 @@ mindmap: false
 mindmap2: false
 ---
 
-![Alt Text](../images/posts/f1807458341444e795ee930fa81f9295.png)
+![Alt Text](/images/posts/f1807458341444e795ee930fa81f9295.png)
 
 # Pandas高级处理
 - 缺失值处理
@@ -32,7 +32,7 @@ mindmap2: false
 	- `pd.isnull(df)`
 	- `pd.notnull(df)`
 
-![Alt Text](../images/posts/223b6f48d9dd4465b93c69d9fb9b191f.png)
+![Alt Text](/images/posts/223b6f48d9dd4465b93c69d9fb9b191f.png)
 
 2. 删除含有缺失值的样本
 	- `df.dropna(inplace=False, axis='rows')` 不会修改原数据，需要接受返回值
@@ -41,7 +41,7 @@ mindmap2: false
 		- `values` ： 替换成的值
 		- `inplace` ：True 会修改原数据  False 不会修改原数据，生成新的对象 
 
-![Alt Text](../images/posts/6293619391b849678b1ee2419e0ddebe.png)
+![Alt Text](/images/posts/6293619391b849678b1ee2419e0ddebe.png)
 
 #### 不是缺失值nan，有默认标记的
 - 替换 `？-> np.nan`
@@ -57,7 +57,7 @@ name = ["Sample code number", "Clump Thickness", "Uniformity of Cell Size", "Uni
 
 data = pd.read_csv(path, names=name)
 ```
-![Alt Text](../images/posts/a542346dfccb4918b5e4c3892a325962.png)
+![Alt Text](/images/posts/a542346dfccb4918b5e4c3892a325962.png)
 
 ## 2. 高级处理-数据离散化
 |  |性别  | 年龄 |
@@ -106,8 +106,8 @@ data = pd.read_csv(path, names=name)
 # 1）准备数据
 data = pd.Series([165,174,160,180,159,163,192,184], index=['No1:165', 'No2:174','No3:160', 'No4:180', 'No5:159', 'No6:163', 'No7:192', 'No8:184']) 
 ```
-![Alt Text](../images/posts/ea3573dd4a324ab594d8fac87651cb8c.png)
-![Alt Text](../images/posts/77cc0633755b485e83da74dadfadf34f.png)
+![Alt Text](/images/posts/ea3573dd4a324ab594d8fac87651cb8c.png)
+![Alt Text](/images/posts/77cc0633755b485e83da74dadfadf34f.png)
 
 ## 3. 高级处理-合并
 -  numpy
@@ -124,9 +124,9 @@ data = pd.Series([165,174,160,180,159,163,192,184], index=['No1:165', 'No2:174',
 	- `pd.merge`实现合并
 
 - `pd.merge(left, right, how="inner", on=[索引])`
-![Alt Text](../images/posts/a4d8f48e25f14111aac3e0d716ddfb0a.png)
+![Alt Text](/images/posts/a4d8f48e25f14111aac3e0d716ddfb0a.png)
 
-![Alt Text](../images/posts/b6819159ffaf4b04abd6dd890bfbceee.png)
+![Alt Text](/images/posts/b6819159ffaf4b04abd6dd890bfbceee.png)
 
 ## 4. 高级处理-交叉表与透视表
   - 找到、探索两个变量之间的关系
@@ -135,7 +135,7 @@ data = pd.Series([165,174,160,180,159,163,192,184], index=['No1:165', 'No2:174',
    - `pd.crosstab(value1, value2)`
 ### 4.3 pivot_table
 
-![Alt Text](../images/posts/8a49f7ebeabc40579328f31a3e77dc67.png)
+![Alt Text](/images/posts/8a49f7ebeabc40579328f31a3e77dc67.png)
 
 ## 5. 高级处理-分组与聚合
 ### 5.1 什么是分组与聚合
@@ -148,9 +148,9 @@ data = pd.Series([165,174,160,180,159,163,192,184], index=['No1:165', 'No2:174',
 col =pd.DataFrame({'color': ['white','red','green','red','green'], 'object': ['pen','pencil','pencil','ashtray','pen'],'price1':[5.56,4.20,1.30,0.56,2.75],'price2':[4.75,4.12,1.60,0.75,3.15]})
 
 ```
-![Alt Text](../images/posts/c57467ac3cd14e308ce96327995af0b6.png)
+![Alt Text](/images/posts/c57467ac3cd14e308ce96327995af0b6.png)
 
 
 ## 6. 综合案例
-![Alt Text](../images/posts/7c626edaf0054feca43d7cd4e3874d58.png)
+![Alt Text](/images/posts/7c626edaf0054feca43d7cd4e3874d58.png)
 

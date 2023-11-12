@@ -13,7 +13,7 @@ mindmap2: false
 ---
 
 # Python--Matplotlib简单了解
-![Alt Text](../images/posts/6e8e0128dba745a3bfbd7f346851a397.png)
+![Alt Text](/images/posts/6e8e0128dba745a3bfbd7f346851a397.png)
 
 ## 一、数据挖掘基础环境安装与使用
 ### 1.1 库的安装
@@ -93,7 +93,7 @@ plt.figure()
 plt.plot([1,0,9],[4,5,6])
 plt.show()
 ```
-![Alt Text](../images/posts/9b13c951f88f40ca9ef4d9feebd1c590.png)
+![Alt Text](/images/posts/9b13c951f88f40ca9ef4d9feebd1c590.png)
 
 
 ####  2.1.4 认识Matplotlib图像结构
@@ -106,29 +106,29 @@ plt.show()
            - x、y轴张成的区域
 2. 辅助显示层
 3. 图像层
-![Alt Text](../images/posts/09de024856704f42a0e1138d1facd1cf.png)
+![Alt Text](/images/posts/09de024856704f42a0e1138d1facd1cf.png)
 
 ### 2.2 常见图形种类及意义
 - 折线图`plot`：以折线的上升或下降来表示统计数量的增减变化的统计图
 - **特点：能够显示数据的变化趋势，反映事物的变化情况**
-![Alt Text](../images/posts/7e5d41c702c04a838c5ac41c6bdb4216.png)
+![Alt Text](/images/posts/7e5d41c702c04a838c5ac41c6bdb4216.png)
 
 ---
 - 散点图`scatter`：用两组数据构成多个坐标点，考察坐标点的分布，判断两个变量之间是否存在某种关联或总结坐标点的分布模式
 - **特点：判断变量之间是否存在数量关联趋势，展示离群点（分布规律）**
-![Alt Text](../images/posts/9850314571dc44e4ba528db80a632d25.png)
+![Alt Text](/images/posts/9850314571dc44e4ba528db80a632d25.png)
 ---
 - 柱状图`bar`：排列在工作表的列或行中的数据可以绘制到柱状图中
 - **特点：绘制连离散的数据，能够一眼看出各个数据的大小，比较数据之间的差别。(统计/对比)**
-![Alt Text](../images/posts/37627f465f6c468dbe4ec43632983cac.png)
+![Alt Text](/images/posts/37627f465f6c468dbe4ec43632983cac.png)
 --- 
 - 直方图`histogram`： 由一系列高度不等的纵向条纹或线段标识数据分布的情况。一般用横轴标识数据范围，纵轴表示分布情况
 - **特点：绘制连续性的数据展示一组或者多组数据的分布情况(分布状况)**
-![Alt Text](../images/posts/7966febd4ce0493e8bcb81296895890e.png)
+![Alt Text](/images/posts/7966febd4ce0493e8bcb81296895890e.png)
 ---
 - 饼图`pie π`：用于表示不同分类的占比情况，通过弧度大小来对比各种分类。
 - **特点：分类数据的占比情况(占比)**
-![Alt Text](../images/posts/fe57e884b7f9439e8a08a92efbc82a3a.png)
+![Alt Text](/images/posts/fe57e884b7f9439e8a08a92efbc82a3a.png)
 
                     
 ###  2.3 折线图(plot)
@@ -150,8 +150,8 @@ plt.savefig("test78.png")
 # 3.显示图像
 plt.show()
 ```
-![Alt Text](../images/posts/0ebe2a875aad44f2ade17d8df954d03f.png)
-![Alt Text](../images/posts/a39fc43c25904e96ac000fcb30e1ff95.png)
+![Alt Text](/images/posts/0ebe2a875aad44f2ade17d8df954d03f.png)
+![Alt Text](/images/posts/a39fc43c25904e96ac000fcb30e1ff95.png)
 
 
 ##### 设置画布属性与图片保存
@@ -205,7 +205,7 @@ plt.title("中午11点0分到12点之间的温度变化图示")
 plt.show()
 ```
 效果：
-![Alt Text](../images/posts/5af04846b69f41189629d8234168b06d.png)
+![Alt Text](/images/posts/5af04846b69f41189629d8234168b06d.png)
 
 
 ##### 添加自定义刻度
@@ -236,7 +236,7 @@ plt.ylabel("温度")
 plt.title("中午11点0分到12点之间的温度变化图示")
 ```
 ##### 中文显示问题解决
-![Alt Text](../images/posts/f21c2cd3a78a41bb9746aa8c643e7b7f.png)
+![Alt Text](/images/posts/f21c2cd3a78a41bb9746aa8c643e7b7f.png)
 - [ ] mac的一次配置，一劳永逸
 - [ ] ubantu每创建一次新的虚拟环境，需要重新配置   
 - [ ] windows
@@ -324,11 +324,11 @@ plt.show()
 | 'right' | 5 |
 | 'center left'| 6 |
 
-![Alt Text](../images/posts/5bf4350a2c674e6bb9b1e7da23b50ee5.png)
+![Alt Text](/images/posts/5bf4350a2c674e6bb9b1e7da23b50ee5.png)
 
 ##### 多个坐标系显示
 相同图不同坐标系，效果图
-![Alt Text](../images/posts/0b77e41a3caf4202a89355139169f22c.png)
+![Alt Text](/images/posts/0b77e41a3caf4202a89355139169f22c.png)
 
 - `plt.subplots`(面向对象的画图方法)
 - `matplotlib.pyplot.subplots(nrows=1, ncols=1, **fig_kw)` 创建一个带有多个axes(坐标系/绘图区)的图
@@ -415,7 +415,7 @@ plt.grid(linestyle="--", alpha=0.5)
 # 4. 显示图像
 plt.show()
 ```
-![Alt Text](../images/posts/b8092b48f0a34650b70ce260fcce51f9.png)
+![Alt Text](/images/posts/b8092b48f0a34650b70ce260fcce51f9.png)
 
 ### 2.4 散点图(scatter)
 #### **需求:探究房屋面积和房屋价格的关系**
@@ -455,10 +455,10 @@ plt.scatter(x, y)
 # 4、显示图像
 plt.show()
 ```
-![Alt Text](../images/posts/e9fcfe52f3a7458e8907f69428b4a386.png)
+![Alt Text](/images/posts/e9fcfe52f3a7458e8907f69428b4a386.png)
 ### 2.5 柱状图(bar)
 #### **需求1-对比每部电影的票房收入**
-![Alt Text](../images/posts/ccc0580330f64d0ab2ad4db2972b3751.png)
+![Alt Text](/images/posts/ccc0580330f64d0ab2ad4db2972b3751.png)
 
 ```python
 # 1、准备数据
@@ -484,7 +484,7 @@ plt.grid(linestyle="--", alpha=0.5)
 # 4、显示图像
 plt.show()
 ```
-![Alt Text](../images/posts/75435c05ce92455d9e8d6b43a3eaf536.png)
+![Alt Text](/images/posts/75435c05ce92455d9e8d6b43a3eaf536.png)
 #### **需求2-如何对比电影票房收入才更能加有说服力？**
 比较相同天数的票房
 
@@ -516,11 +516,11 @@ plt.xticks([i+0.1 for i in x], movie_name)
 # 4、显示图像
 plt.show()
 ```
-![Alt Text](../images/posts/e5d36ebc5e3443369306d9fb3b806b1d.png)
+![Alt Text](/images/posts/e5d36ebc5e3443369306d9fb3b806b1d.png)
 
 ### 2.6 直方图(histogram)
 组数=(175.5-150.5) / 5 =5
-![Alt Text](../images/posts/b92e3d320e0848e5b276a32e4aa0c737.png)
+![Alt Text](/images/posts/b92e3d320e0848e5b276a32e4aa0c737.png)
 
 ```python
 # 需求：电影时长分布状况
@@ -548,7 +548,7 @@ plt.grid(linestyle="--", alpha=0.5)
 # 4、显示图像
 plt.show()
 ```
-![Alt Text](../images/posts/d1251570f8c94256b2386921d6ef8dd4.png)
+![Alt Text](/images/posts/d1251570f8c94256b2386921d6ef8dd4.png)
 
 ### 2.7 饼状图(pie Π)
 
@@ -574,4 +574,4 @@ plt.axis('equal')
 plt.show()
 ```
 
-![Alt Text](../images/posts/5a01eaa5b7f4444ea9c31eebbc8f519b.png)
+![Alt Text](/images/posts/5a01eaa5b7f4444ea9c31eebbc8f519b.png)

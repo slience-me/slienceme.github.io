@@ -66,7 +66,7 @@ Could not find resource jdbcConfig.properties
 ```
 ### 问题分析
 找不到对应的jdbcConfig.properties文件，说明编译没有成功，对应的target文件classes下中没有该文件
-![Alt Text](../images/posts/20210704102247721.png)
+![Alt Text](/images/posts/20210704102247721.png)
 然后发现真的没有
 ### 解决方案
 #### 方案一
@@ -74,5 +74,5 @@ Could not find resource jdbcConfig.properties
 
 #### 方案二
 把文件直接复制到classes下即可
-![Alt Text](../images/posts/20210704102436192.png)
+![Alt Text](/images/posts/20210704102436192.png)
 

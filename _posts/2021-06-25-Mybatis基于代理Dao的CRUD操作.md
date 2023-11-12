@@ -13,7 +13,7 @@ mindmap2: false
 ---
 
 # 代码架构
-![Alt Text](../images/posts/20210625114540639.png)
+![Alt Text](/images/posts/20210625114540639.png)
 # java
 ## xyz.slienceme.dao.IUserDao
 

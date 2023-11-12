@@ -240,7 +240,7 @@ function 函数名(参数[参数可选]){
 
 ### 6.3 比较运算符
 假如 x = 5, 查看比较后的结果:
-![Alt Text](../images/posts/20201230211518160.png)
+![Alt Text](/images/posts/20201230211518160.png)
 比较运算符示例代码:
 
 ```javascript
@@ -282,7 +282,7 @@ if (sFruit == "苹果") {
 ```
 ### 6.4 逻辑运算符
 假如 x=6, y=3, 查看比较后的结果:
-![Alt Text](../images/posts/20201230211559554.png)
+![Alt Text](/images/posts/20201230211559554.png)
 逻辑运算符示例代码:
 
 ```javascript

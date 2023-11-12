@@ -16,13 +16,13 @@ mindmap2: false
 # springmvc
 ## 1. 搭建开发环境
 ### 1.1 创建项目
-![Alt Text](../images/posts/20210703084549682.png)
+![Alt Text](/images/posts/20210703084549682.png)
 
 - 添加键值对，加快构建时间
 - `key:   archetypeCatalog`
 - `value: internal`
 
-![Alt Text](../images/posts/20210703084634859.png)
+![Alt Text](/images/posts/20210703084634859.png)
 ### 1.2 配置maven
 
 ```xml
@@ -115,8 +115,8 @@ mindmap2: false
 ```
 ### 1.4 创建springmvc配置文件
 
-![Alt Text](../images/posts/20210703090121356.png)
-![Alt Text](../images/posts/20210703090104355.png)
+![Alt Text](/images/posts/20210703090121356.png)
+![Alt Text](/images/posts/20210703090104355.png)
 
 ```xml
 <?xml version="1.0" encoding="UTF-8"?>
@@ -146,7 +146,7 @@ mindmap2: false
 5. `Tomcat`服务器渲染页面，做出响应
 
 ### 2.2 SpringMVC官方提供图形
-![Alt Text](../images/posts/20210703100325144.jpg)
+![Alt Text](/images/posts/20210703100325144.jpg)
 
 ### 2.3 入门案例中的组件分析
 7. 前端控制器（`DispatcherServlet`）
@@ -392,7 +392,7 @@ public String testPathVariable(@PathVariable(name="sid") String id){
     return "success";
 }
 ```
-![Alt Text](../images/posts/20210703155428477.png)
+![Alt Text](/images/posts/20210703155428477.png)
 
 ### 4.4 `@RequestHeader`注解
 1. 作用：获取指定请求头的值
@@ -417,7 +417,7 @@ public String testRequestHeader(@RequestHeader(value="Accept") String header, Ht
    return "redirect:/param.jsp";
 }
 ```
-![Alt Text](../images/posts/20210703155820333.png)
+![Alt Text](/images/posts/20210703155820333.png)
 
 ### 4.5 `@CookieValue`注解
 1. 作用：用于获取指定`cookie`的名称的值
@@ -439,7 +439,7 @@ public String testCookieValue(@CookieValue(value="JSESSIONID") String cookieValu
     return "success";
 }
 ```
-![Alt Text](../images/posts/20210703155933231.png)
+![Alt Text](/images/posts/20210703155933231.png)
 
 ### 4.5 `@ModelAttribute`注解
 1. 作用
@@ -514,7 +514,7 @@ public String updateUser(@ModelAttribute(value="abc") User user) {
 	return "success";
 }
 ```
-![Alt Text](../images/posts/20210703160356508.png)
+![Alt Text](/images/posts/20210703160356508.png)
 
 ### 4.5 `@SessionAttributes`注解
 1. 作用：用于多次执行控制器方法间的参数共享

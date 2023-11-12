@@ -219,7 +219,7 @@ mindmap2: false
 </html>
 ```
 #### 示例: 表单样式
-![Alt Text](../images/posts/20210215113120373.png)
+![Alt Text](/images/posts/20210215113120373.png)
 
 ```html
 <!DOCTYPE html>
@@ -307,7 +307,7 @@ mindmap2: false
 </html>
 ```
 #### 示例: 导航样式
-![Alt Text](../images/posts/20210215113728509.png)
+![Alt Text](/images/posts/20210215113728509.png)
 
 ```html
 <!DOCTYPE html>
@@ -382,7 +382,7 @@ mindmap2: false
 </html>
 ```
 #### 示例: 分页样式
-![Alt Text](../images/posts/20210215113757878.png)
+![Alt Text](/images/posts/20210215113757878.png)
 
 ```html
 <!DOCTYPE html>
@@ -426,7 +426,7 @@ mindmap2: false
 </body>
 </html>
 ```
-![Alt Text](../images/posts/20210215113821751.png)
+![Alt Text](/images/posts/20210215113821751.png)
 
 ```html
 <!DOCTYPE html>

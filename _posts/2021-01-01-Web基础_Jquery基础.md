@@ -590,7 +590,7 @@ jquery将它封装成了一个方法$.ajax()，我们可以直接用这个方法
 });
 </script>
 ```
-![Alt Text](../images/posts/20210102214431701.png)
+![Alt Text](/images/posts/20210102214431701.png)
 
 **ajax方法的参数说明:**
 
