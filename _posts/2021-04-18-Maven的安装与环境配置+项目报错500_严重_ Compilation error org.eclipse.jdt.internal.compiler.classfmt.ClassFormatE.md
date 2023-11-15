@@ -1,6 +1,6 @@
 ﻿---
 layout: post
-title: Java｜Maven的安装与环境配置报错Compilation_error_org.eclipse.jdt.internal.compiler.classfmt.ClassFormatE
+title: Java｜Maven的安装与环境配置报错Compilation_error
 categories: [Java]
 description: Maven的安装与环境配置报错Compilation_error_org.eclipse.jdt.internal.compiler.classfmt.ClassFormatE
 keywords: 编程语言, Java

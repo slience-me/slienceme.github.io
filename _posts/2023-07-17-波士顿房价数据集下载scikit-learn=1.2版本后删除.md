@@ -1,6 +1,6 @@
 ﻿---
 layout: post
-title: 机器学习｜波士顿房价数据集下载scikit-learn=1.2版本后删除【官方给出方案】
+title: 机器学习｜波士顿房价数据集下载scikit-learn=1.2版本后删除
 categories: [机器学习]
 description: 波士顿房价数据集下载 scikit-learn=1.2版本后删除【官方给出方案】
 keywords: 机器学习

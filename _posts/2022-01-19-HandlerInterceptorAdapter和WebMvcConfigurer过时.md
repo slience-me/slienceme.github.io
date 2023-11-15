@@ -1,6 +1,6 @@
 ﻿---
 layout: post
-title: Java｜关于HandlerInterceptorAdapter和WebMvcConfigurerAdapter过时
+title: Java｜HandlerInterceptorAdapter和WebMvcConfigurer过时
 categories: [Java]
 description: 关于HandlerInterceptorAdapter和WebMvcConfigurerAdapter过时
 keywords: 编程语言, Java

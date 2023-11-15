@@ -1,8 +1,8 @@
 ﻿---
 layout: post
-title: Java｜【较全面已成功部署】vue项目部署到服务器流程_ 用到Node&yarn
+title: Java｜vue项目部署到服务器流程_用到Node&yarn
 categories: [Java]
-description: 【较全面已成功部署】vue项目部署到服务器流程_ 用到Node&yarn
+description: 【较全面已成功部署】vue项目部署到服务器流程_用到Node&yarn
 keywords: 编程语言, Java
 mermaid: false
 sequence: false

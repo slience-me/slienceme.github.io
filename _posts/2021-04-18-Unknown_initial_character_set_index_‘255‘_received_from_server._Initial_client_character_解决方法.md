@@ -1,6 +1,6 @@
 ﻿---
 layout: post
-title: Java｜Unknown_initial_character_set_index_‘255‘_received_from_server._Initial_client_character_解决方法
+title: Java｜Unknown_initial_character解决方法
 categories: [Java]
 description: Unknown_initial_character_set_index_‘255‘_received_from_server._Initial_client_character_解决方法
 keywords: 编程语言, Java

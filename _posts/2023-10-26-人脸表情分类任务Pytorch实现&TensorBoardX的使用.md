@@ -1,6 +1,6 @@
 ---
 layout: post
-title: 机器学习｜【机器学习合集】人脸表情分类任务Pytorch实现&TensorBoardX的使用
+title: 机器学习｜【机器学习合集】人脸表情分类任务Pytorch实现
 categories: [机器学习]
 description: 【机器学习合集】人脸表情分类任务Pytorch实现&TensorBoardX的使用
 keywords: 机器学习
