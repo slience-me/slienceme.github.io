@@ -9,3 +9,5 @@ Gemfile.lock
 .jekyll-metadata
 .\$*.png.bkp
 .\$*.png.dtmp
+
+.idea
