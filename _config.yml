@@ -11,7 +11,8 @@ keywords: slience_me, Slience_me, slience-me, slienceme
 timezone: Asia/Shanghai
 encoding: "utf-8"
 # 页面左下角显示的年份
-since: 2020
+since: 2020-2024
+#since: 2021-2024 版权所有 冀ICP备2021000460号-1
 # 源码仓库，请替换成自己的
 repository: slience-me/slienceme.github.io
 # 对 css 和 js 资源的 cdn 加速配置
