@@ -4,10 +4,12 @@
 
         <div class="site-footer" role="contentinfo">
             <div class="copyright left mobile-block">
-<!--                    © {{ site.since }}-->
-                    © 2021-2024 slience_me 版权所有 冀ICP备2021000460号-1
-                <a href="https://beian.mps.gov.cn/#/query/webSearch?code=13102202000487" rel="noreferrer" target="_blank">冀公网安备13102202000487</a>
-                    <span title="{{ site.author}}">{{ site.author }}</span>
+                 <!--© {{ site.since }}-->
+                © 2019-2024 slience_me 版权所有
+                <img src="/web/assets/logo01.6189a29f.png" class="w-full" style="width: 16px;">
+                <a href="https://beian.mps.gov.cn/#/query/webSearch?code=13102202000487" target="_blank" rel="noreferrer">冀公网安备 13102202000487号</a>
+                <a href="https://beian.miit.gov.cn/#/Integrated/index" target="_blank" style="margin-left: 20px;" rel="noreferrer">冀ICP备2021000460号</a>
+                    <!--<span title="{{ site.author}}">{{ site.author }}</span>-->
                     <a href="javascript:window.scrollTo(0,0)" class="right mobile-visible">TOP</a>
             </div>
 
@@ -16,17 +18,17 @@
                     <a href="javascript:window.scrollTo(0,0)" >TOP</a>
                 </li>
             </ul>
-            <a href="{{ site.github.repository_url }}" target="_blank" aria-label="view source code">
+            <!--<a href="{{ site.github.repository_url }}" target="_blank" aria-label="view source code">
                 <span class="mega-octicon octicon-mark-github" title="GitHub"></span>
-            </a>
-            <ul class="site-footer-links mobile-hidden">
+            </a>-->
+            <!--<ul class="site-footer-links mobile-hidden">
                 {% for nav in site.navs %}
                 <li>
                     <a href="{{ site.url }}{{ nav.href }}" title="{{ nav.label }}" target="{{ nav.target | default: _self }}">{{ nav.label }}</a>
                 </li>
                 {% endfor %}
                 <li><a href="{{ site.url }}{{ site.subscribe_rss }}"><span class="octicon octicon-rss" style="color:orange;"></span></a></li>
-            </ul>
+            </ul>-->
 
           {% include visit-stat.html %}
 
