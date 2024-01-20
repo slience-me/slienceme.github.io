@@ -112,7 +112,7 @@ windows默认选择红框内的即可
 
 6. 图片右键点击上传即可
 
-![image-20240120183909360](images/image-20240120183909360.png)
+![image-20240120183909360](https://raw.githubusercontent.com/slience-me/picGo/master/images/image-20240120183909360.png)
 
 7. 或者统一上传
 
