@@ -1,0 +1,257 @@
+<!DOCTYPE html> <html lang="zh-cmn-Hans" prefix="og: http://ogp.me/ns#" class="han-init"> <head> <meta charset="utf-8"> <meta http-equiv="X-UA-Compatible" content="IE=edge"> <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1" /> <title>前端｜Web基础_CSS基础 &mdash; Slience_me的博客</title> <link rel="stylesheet" href="https://slienceme.cn/assets/vendor/primer-css/css/primer.css"> <link rel="stylesheet" href="https://slienceme.cn/assets/css/components/collection.css"> <link rel="stylesheet" href="https://slienceme.cn/assets/css/components/repo-card.css"> <link rel="stylesheet" href="https://slienceme.cn/assets/css/sections/repo-list.css"> <link rel="stylesheet" href="https://slienceme.cn/assets/css/components/boxed-group.css"> <link rel="stylesheet" href="https://slienceme.cn/assets/css/globals/common.css"> <link rel="stylesheet" href="https://slienceme.cn/assets/css/globals/responsive.css"> <link rel="stylesheet" href="https://slienceme.cn/assets/css/posts/index.css"> <link rel="stylesheet" href="https://slienceme.cn/assets/vendor/octicons/octicons/octicons.css"> <link rel="stylesheet" href="https://mazhuang.org/rouge-themes/dist/github.css"> <link rel="stylesheet" href="https://slienceme.cn/assets/vendor/share.js/dist/css/share.min.css"> <link rel="canonical" href="https://slienceme.cn/2020/11/26/Web%E5%9F%BA%E7%A1%80_CSS%E5%9F%BA%E7%A1%80/"> <link rel="alternate" type="application/atom+xml" title="Slience_me的博客" href="https://slienceme.cn/feed.xml"> <link rel="shortcut icon" href="https://slienceme.cn/favicon.ico"> <meta property="og:title" content="前端｜Web基础_CSS基础"> <meta name="keywords" content="前端, Web"> <meta name="og:keywords" content="前端, Web"> <meta name="description" content="CSS"> <meta name="og:description" content="CSS"> <meta property="og:url" content="https://slienceme.cn/2020/11/26/Web%E5%9F%BA%E7%A1%80_CSS%E5%9F%BA%E7%A1%80/"> <meta property="og:site_name" content="Slience_me的博客"> <meta property="og:type" content="article"> <meta property="og:locale" content="zh_CN" /> <meta property="article:published_time" content="2020-11-26"> <meta name="google-site-verification" content="2feHjT1GNs1Yi2JQfOtdYx7d048naG_-cMwZaDAopIA" /> <script src="https://slienceme.cn/assets/vendor/jquery/dist/jquery.min.js"></script> <script src="https://slienceme.cn/assets/js/main.js"></script> </head> <body class="" data-mz=""> <header class="site-header"> <div class="container"> <h1><a href="https://slienceme.cn/" title="Slience_me的博客"><span class="octicon octicon-mark-github"></span> Slience_me的博客</a></h1> <button class="collapsed mobile-visible" type="button" onclick="toggleMenu();"> <span class="icon-bar"></span> <span class="icon-bar"></span> <span class="icon-bar"></span> </button> <nav class="site-header-nav" role="navigation"> <a href="https://slienceme.cn/" class="site-header-nav-item" target="" title="首页">首页</a> <a href="https://slienceme.cn/categories/" class="site-header-nav-item" target="" title="分类">分类</a> <a href="https://slienceme.cn/archives/" class="mobile-hidden site-header-nav-item" target="" title="归档">归档</a> <a href="https://slienceme.cn/open-source/" class="mobile-hidden site-header-nav-item" target="" title="开源">开源</a> <a href="https://slienceme.cn/fragments/" class="site-header-nav-item" target="" title="片段">片段</a> <a href="https://slienceme.cn/wiki/" class="site-header-nav-item" target="" title="维基">维基</a> <a href="https://slienceme.cn/links/" class="mobile-hidden site-header-nav-item" target="" title="链接">链接</a> <a href="https://slienceme.cn/about/" class="site-header-nav-item" target="" title="关于">关于</a> <a class="mobile-hidden" href="https://slienceme.cn/feed.xml"><span class="octicon octicon-rss" style="color:orange;"></span></a> </nav> </div> </header> <section class="collection-head small geopattern" data-pattern-id="前端｜Web基础_CSS基础"> <div class="container"> <div class="columns"> <div class="column three-fourths"> <div class="collection-title"> <h1 class="collection-header">前端｜Web基础_CSS基础</h1> <div class="collection-info"> <span class="meta-info"> <span class="octicon octicon-calendar"></span> 2020/11/26 </span> <span class="meta-info"> <span class="octicon octicon-file-directory"></span> <a href="https://slienceme.cn/categories/#前端" title="前端">前端</a> </span> <span class="meta-info"> <span class="octicon octicon-clock"></span> 共 8477 字，约 25 分钟 </span> </div> </div> </div> <div class="column one-fourth mobile-hidden"> <div class="collection-title"> </div> </div> </div> </div> </section> <section class="container content"> <div class="columns"> <div class="column three-fourths" > <article class="article-content markdown-body"> <h1 id="css">CSS</h1> <h3 id="css的作用">css的作用</h3> <p><strong>1.美化界面，比如：设置标签文字大小、颜色、字体加粗等样式。 2.控制页面布局，比如：设置浮动、定位等样式。</strong></p> <h3 id="css的基本语法">css的基本语法</h3> <p><strong>选择器{ 样式标签 } 样式规则: 属性名1：属性值1； 属性名2：属性值2；· 属性名3：属性值3； … 选择器：是用来选择标签的，选出来以后给标签加样式。</strong></p> <p><strong>代码示例：</strong></p> <div class="language-css highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nt">div</span><span class="p">{</span>
+	<span class="nl">width</span><span class="p">:</span><span class="m">100px</span><span class="p">;</span>
+	<span class="nl">height</span><span class="p">:</span><span class="m">100px</span><span class="p">;</span>
+	<span class="nl">background</span><span class="p">:</span><span class="no">gold</span><span class="p">;</span>
+<span class="p">}</span>
+</code></pre></div></div> <p><strong>css样式表可以由一个或者多个选择器组成</strong> <strong>说明： css是由两主要的部分构成：选择器和一条或多条样式规则，注规则需要放到大括号里。</strong></p> <p><strong>小结 css是层叠样式表，他是用来美化网页和控制页面布局的 定义css的语法格式是：选择器{样式规则}</strong></p> <h2 id="1-css的引入方式">1. CSS的引入方式</h2> <h3 id="11-行内式">1.1 行内式</h3> <p>直接在标签的style属性中添加css样式 代码示例：</p> <div class="language-css highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="o">&lt;</span><span class="nt">div</span> <span class="nt">style</span><span class="o">=</span><span class="s1">"width:100px; height:100px; background:red "</span><span class="o">&gt;</span><span class="nt">hello</span><span class="o">&lt;/</span><span class="nt">div</span><span class="o">&gt;</span>
+</code></pre></div></div> <p><strong>优点：方便、直观。 缺点：缺乏可重用性。</strong></p> <h3 id="12-内嵌式内部样式">1.2 内嵌式（内部样式）</h3> <div class="language-css highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nt">在</span><span class="o">&lt;</span><span class="nt">head</span><span class="o">&gt;</span><span class="nt">标签内加入</span> <span class="o">&lt;</span><span class="nt">style</span><span class="o">&gt;</span> <span class="nt">标签</span><span class="err">，</span><span class="nt">在</span><span class="o">&lt;</span><span class="nt">style</span><span class="o">&gt;</span><span class="nt">标签中编写css代码</span><span class="err">。</span>
+</code></pre></div></div> <p><strong>代码示例：</strong></p> <div class="language-html highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nt">&lt;head&gt;</span>
+    <span class="nt">&lt;style </span><span class="na">type=</span><span class="s">"test/css"</span><span class="nt">&gt;</span>
+        <span class="nt">h3</span><span class="p">{</span>
+            <span class="nl">color</span><span class="p">:</span> <span class="no">red</span><span class="p">;</span>
+        <span class="p">}</span>
+    <span class="nt">&lt;/style&gt;</span>
+<span class="nt">&lt;/head&gt;</span>
+</code></pre></div></div> <p><strong>优点：在同一个页面内部便于复用和维护。 缺点：在多个页面之间的可重用性不够高。</strong></p> <h3 id="13-外链式">1.3 外链式</h3> <div class="language-html highlighter-rouge"><div class="highlight"><pre class="highlight"><code>将css代码写在一个单独的.css文件中，
+在<span class="nt">&lt;head&gt;</span> 标签中使用<span class="nt">&lt;link&gt;</span> 标签直接引入该文件到页面中。
+</code></pre></div></div> <p><strong>示例代码：</strong></p> <div class="language-html highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nt">&lt;link</span> <span class="na">rel=</span><span class="s">"stylesheet"</span> <span class="na">type=</span><span class="s">"text/css"</span> <span class="na">href=</span><span class="s">"css/main.css"</span><span class="nt">&gt;</span>
+</code></pre></div></div> <p><strong>优点：使得css样式与html分离，便于整个页面系统的规划和维护，可重用性高。 缺点：css代码由于分离到单独的css文件，容易出现css代码过于集中，若维护不 当则极容易造成混乱。</strong></p> <h3 id="14-css引入方式选择">1.4 css引入方式选择</h3> <p><strong>1.行内式几乎不用 2.内嵌式在学习css样式的阶段使用 3.外链式在公司开发的阶段使用，可以对css样式和html页面分别进行开发。</strong></p> <p><strong>代码测试</strong></p> <div class="language-html highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="cp">&lt;!DOCTYPE html&gt;</span>
+<span class="nt">&lt;html</span> <span class="na">lang=</span><span class="s">"en"</span><span class="nt">&gt;</span>
+<span class="nt">&lt;head&gt;</span>
+    <span class="nt">&lt;meta</span> <span class="na">charset=</span><span class="s">"UTF-8"</span><span class="nt">&gt;</span>
+    <span class="nt">&lt;meta</span> <span class="na">name=</span><span class="s">"viewport"</span> <span class="na">content=</span><span class="s">"width=device-width, initial-scale=1.0"</span><span class="nt">&gt;</span>
+    <span class="nt">&lt;title&gt;</span>Document<span class="nt">&lt;/title&gt;</span>
+    <span class="c">&lt;!-- 内嵌式 --&gt;</span>
+    <span class="nt">&lt;style&gt;</span>
+        <span class="c">/* css里边的注释 ctrl + / */</span>
+        <span class="c">/* 选择器， css样式表可以由很多选择器组成，选择器就是用来选择标签给标签添加样式 */</span>
+        <span class="nt">a</span><span class="p">{</span>
+            <span class="nl">color</span><span class="p">:</span> <span class="no">green</span><span class="p">;</span>
+        <span class="p">}</span>
+
+        <span class="nt">div</span><span class="p">{</span>
+            <span class="nl">width</span><span class="p">:</span> <span class="m">100px</span><span class="p">;</span>
+            <span class="nl">height</span><span class="p">:</span> <span class="m">100px</span><span class="p">;</span>
+            <span class="nl">background</span><span class="p">:</span> <span class="no">blue</span><span class="p">;</span>
+        <span class="p">}</span>
+    <span class="nt">&lt;/style&gt;</span>
+<span class="nt">&lt;/head&gt;</span>
+<span class="nt">&lt;body&gt;</span>
+    <span class="c">&lt;!-- 行内式 --&gt;</span>
+    <span class="nt">&lt;p</span> <span class="na">style=</span><span class="s">"color: red;"</span><span class="nt">&gt;</span>我是一个段落标签<span class="nt">&lt;/p&gt;</span>
+    <span class="nt">&lt;a</span> <span class="na">href=</span><span class="s">"http://www.baidu.com"</span><span class="nt">&gt;</span>百度<span class="nt">&lt;/a&gt;</span>
+    <span class="nt">&lt;a</span> <span class="na">href=</span><span class="s">"http://www.baidu.com"</span><span class="nt">&gt;</span>谷歌<span class="nt">&lt;/a&gt;</span>
+    <span class="nt">&lt;div&gt;</span>哈哈<span class="nt">&lt;/div&gt;</span>
+<span class="nt">&lt;/body&gt;</span>
+<span class="nt">&lt;/html&gt;</span>
+</code></pre></div></div> <p><img src="https://slienceme.cn/images/posts/20201126151135198.png" alt="在这里插入图片描述" /></p> <h2 id="2-css选择器">2. CSS选择器</h2> <h3 id="21-css-选择器的定义">2.1 css 选择器的定义</h3> <p>css 选择器是用来选择标签的，选出来以后给标签加样式。</p> <h3 id="22-css-选择器的种类">2.2 css 选择器的种类</h3> <ol> <li>标签选择器</li> <li>类选择器</li> <li>层级选择器(后代选择器)</li> <li>id选择器</li> <li>组选择器</li> <li>伪类选择器</li> </ol> <h3 id="23-标签选择器">2.3 标签选择器</h3> <p>根据标签来选择标签，以标签开头，此种选择器影响范围大，一般用来做一些通用设置。</p> <p><strong>示例代码</strong></p> <div class="language-html highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nt">&lt;style </span><span class="na">type=</span><span class="s">"text/css"</span><span class="nt">&gt;</span>
+    <span class="nt">p</span><span class="p">{</span>
+        <span class="nl">color</span><span class="p">:</span> <span class="no">red</span><span class="p">;</span>
+    <span class="p">}</span>
+<span class="nt">&lt;/style&gt;</span>
+
+<span class="nt">&lt;div&gt;</span>hello<span class="nt">&lt;/div&gt;</span>
+<span class="nt">&lt;p&gt;</span>hello<span class="nt">&lt;/p&gt;</span>
+</code></pre></div></div> <h3 id="24-类选择器">2.4 类选择器</h3> <p>根据类名来选择标签，以 . 开头, 一个类选择器可应用于多个标签上，一个标签上也可以使用多个类选择器，多个类选择器需要使用空格分割，应用灵活，可复用，是css中应用最多的一种选择器。</p> <p><strong>示例代码</strong></p> <div class="language-html highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nt">&lt;style </span><span class="na">type=</span><span class="s">"text/css"</span><span class="nt">&gt;</span>
+    <span class="nc">.blue</span><span class="p">{</span><span class="nl">color</span><span class="p">:</span><span class="no">blue</span><span class="p">}</span>
+    <span class="nc">.big</span><span class="p">{</span><span class="nl">font-size</span><span class="p">:</span><span class="m">20px</span><span class="p">}</span>
+    <span class="nc">.box</span><span class="p">{</span><span class="nl">width</span><span class="p">:</span><span class="m">100px</span><span class="p">;</span><span class="nl">height</span><span class="p">:</span><span class="m">100px</span><span class="p">;</span><span class="nl">background</span><span class="p">:</span><span class="no">gold</span><span class="p">}</span> 
+<span class="nt">&lt;/style&gt;</span>
+
+<span class="nt">&lt;div</span> <span class="na">class=</span><span class="s">"blue"</span><span class="nt">&gt;</span>这是一个div<span class="nt">&lt;/div&gt;</span>
+<span class="nt">&lt;h3</span> <span class="na">class=</span><span class="s">"blue big box"</span><span class="nt">&gt;</span>这是一个标题<span class="nt">&lt;/h3&gt;</span>
+<span class="nt">&lt;p</span> <span class="na">class=</span><span class="s">"blue box"</span><span class="nt">&gt;</span>这是一个段落<span class="nt">&lt;/p&gt;</span>
+</code></pre></div></div> <h3 id="25-层级选择器后代选择器">2.5 层级选择器(后代选择器)</h3> <p>根据层级关系选择后代标签，以选择器1 选择器2开头，主要应用在标签嵌套的结构中，减少命名。</p> <p><strong>示例代码</strong></p> <div class="language-html highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nt">&lt;style </span><span class="na">type=</span><span class="s">"text/css"</span><span class="nt">&gt;</span>
+    <span class="nt">div</span> <span class="nt">p</span><span class="p">{</span>
+        <span class="nl">color</span><span class="p">:</span> <span class="no">red</span><span class="p">;</span>
+    <span class="p">}</span>
+    <span class="nc">.con</span><span class="p">{</span><span class="nl">width</span><span class="p">:</span><span class="m">300px</span><span class="p">;</span><span class="nl">height</span><span class="p">:</span><span class="m">80px</span><span class="p">;</span><span class="nl">background</span><span class="p">:</span><span class="no">green</span><span class="p">}</span>
+    <span class="nc">.con</span> <span class="nt">span</span><span class="p">{</span><span class="nl">color</span><span class="p">:</span><span class="no">red</span><span class="p">}</span>
+    <span class="nc">.con</span> <span class="nc">.pink</span><span class="p">{</span><span class="nl">color</span><span class="p">:</span><span class="no">pink</span><span class="p">}</span>
+    <span class="nc">.con</span> <span class="nc">.gold</span><span class="p">{</span><span class="nl">color</span><span class="p">:</span><span class="no">gold</span><span class="p">}</span>    
+<span class="nt">&lt;/style&gt;</span>
+
+<span class="nt">&lt;div&gt;</span>
+    <span class="nt">&lt;p&gt;</span>hello<span class="nt">&lt;/p&gt;</span>
+<span class="nt">&lt;/div&gt;</span>
+
+<span class="nt">&lt;div</span> <span class="na">class=</span><span class="s">"con"</span><span class="nt">&gt;</span>
+    <span class="nt">&lt;span&gt;</span>哈哈<span class="nt">&lt;/span&gt;</span>
+    <span class="nt">&lt;a</span> <span class="na">href=</span><span class="s">"#"</span> <span class="na">class=</span><span class="s">"pink"</span><span class="nt">&gt;</span>百度<span class="nt">&lt;/a&gt;</span>
+    <span class="nt">&lt;a</span> <span class="na">href=</span><span class="s">"#"</span> <span class="na">class=</span><span class="s">"gold"</span><span class="nt">&gt;</span>谷歌<span class="nt">&lt;/a&gt;</span>
+<span class="nt">&lt;/div&gt;</span>
+<span class="nt">&lt;span&gt;</span>你好<span class="nt">&lt;/span&gt;</span>
+<span class="nt">&lt;a</span> <span class="na">href=</span><span class="s">"#"</span> <span class="na">class=</span><span class="s">"pink"</span><span class="nt">&gt;</span>新浪<span class="nt">&lt;/a&gt;</span>
+</code></pre></div></div> <p><strong>注意点: 这个层级关系不一定是父子关系，也有可能是祖孙关系，只要有后代关系都适用于这个层级选择器</strong></p> <h3 id="26-id选择器">2.6 id选择器</h3> <p>根据id选择标签，以#开头, 元素的id名称不能重复，所以id选择器只能对应于页面上一个元素，不能复用，id名一般给程序使用，所以不推荐使用id作为选择器。</p> <p><strong>示例代码</strong></p> <div class="language-html highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nt">&lt;style </span><span class="na">type=</span><span class="s">"text/css"</span><span class="nt">&gt;</span>
+    <span class="nf">#box</span><span class="p">{</span><span class="nl">color</span><span class="p">:</span><span class="no">red</span><span class="p">}</span> 
+<span class="nt">&lt;/style&gt;</span>
+
+<span class="nt">&lt;p</span> <span class="na">id=</span><span class="s">"box"</span><span class="nt">&gt;</span>这是一个段落标签<span class="nt">&lt;/p&gt;</span>   <span class="c">&lt;!-- 对应以上一条样式，其它元素不允许应用此样式 --&gt;</span>
+<span class="nt">&lt;p&gt;</span>这是第二个段落标签<span class="nt">&lt;/p&gt;</span> <span class="c">&lt;!-- 无法应用以上样式，每个标签只能有唯一的id名 --&gt;</span>
+<span class="nt">&lt;p&gt;</span>这是第三个段落标签<span class="nt">&lt;/p&gt;</span> <span class="c">&lt;!-- 无法应用以上样式，每个标签只能有唯一的id名  --&gt;</span>
+</code></pre></div></div> <p><strong>注意点: 虽然给其它标签设置id=“box”也可以设置样式，但是不推荐这样做，因为id是唯一的，以后js通过id只能获取一个唯一的标签对象。</strong></p> <h3 id="27-组选择器">2.7 组选择器</h3> <p>根据组合的选择器选择不同的标签，以 , 分割开, 如果有公共的样式设置，可以使用组选择器。</p> <p><strong>示例代码</strong></p> <div class="language-html highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nt">&lt;style </span><span class="na">type=</span><span class="s">"text/css"</span><span class="nt">&gt;</span>
+    <span class="nc">.box1</span><span class="o">,</span><span class="nc">.box2</span><span class="o">,</span><span class="nc">.box3</span><span class="p">{</span><span class="nl">width</span><span class="p">:</span><span class="m">100px</span><span class="p">;</span><span class="nl">height</span><span class="p">:</span><span class="m">100px</span><span class="p">}</span>
+    <span class="nc">.box1</span><span class="p">{</span><span class="nl">background</span><span class="p">:</span><span class="no">red</span><span class="p">}</span>
+    <span class="nc">.box2</span><span class="p">{</span><span class="nl">background</span><span class="p">:</span><span class="no">pink</span><span class="p">}</span>
+    <span class="nc">.box2</span><span class="p">{</span><span class="nl">background</span><span class="p">:</span><span class="no">gold</span><span class="p">}</span>
+<span class="nt">&lt;/style&gt;</span>
+
+<span class="nt">&lt;div</span> <span class="na">class=</span><span class="s">"box1"</span><span class="nt">&gt;</span>这是第一个div<span class="nt">&lt;/div&gt;</span>
+<span class="nt">&lt;div</span> <span class="na">class=</span><span class="s">"box2"</span><span class="nt">&gt;</span>这是第二个div<span class="nt">&lt;/div&gt;</span>
+<span class="nt">&lt;div</span> <span class="na">class=</span><span class="s">"box3"</span><span class="nt">&gt;</span>这是第三个div<span class="nt">&lt;/div&gt;</span>
+</code></pre></div></div> <h3 id="28-伪类选择器">2.8 伪类选择器</h3> <p>用于向选择器添加特殊的效果, 以 : 分割开, 当用户和网站交互的时候改变显示效果可以使用伪类选择器</p> <p><strong>示例代码</strong></p> <div class="language-html highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nt">&lt;style </span><span class="na">type=</span><span class="s">"text/css"</span><span class="nt">&gt;</span>
+    <span class="nc">.box1</span><span class="p">{</span><span class="nl">width</span><span class="p">:</span><span class="m">100px</span><span class="p">;</span><span class="nl">height</span><span class="p">:</span><span class="m">100px</span><span class="p">;</span><span class="nl">background</span><span class="p">:</span><span class="no">gold</span><span class="p">;}</span>
+    <span class="nc">.box1</span><span class="nd">:hover</span><span class="p">{</span><span class="nl">width</span><span class="p">:</span><span class="m">300px</span><span class="p">;}</span>
+<span class="nt">&lt;/style&gt;</span>
+
+<span class="nt">&lt;div</span> <span class="na">class=</span><span class="s">"box1"</span><span class="nt">&gt;</span>这是第一个div<span class="nt">&lt;/div&gt;</span>
+</code></pre></div></div> <h3 id="29-小结">2.9 小结</h3> <ul> <li>css 选择器就是用来选择标签设置样式的</li> <li>常用的 css 选择器有六种，分别是: <ol> <li>标签选择器</li> <li>类选择器</li> <li>层级选择器(后代选择器) <ol> <li>id选择器 5. 组选择器 6. 伪类选择器</li> </ol> </li> </ol> </li> </ul> <p>## 3. css 属性</p> <p>我们知道 css 作用是美化 HTML 网页和控制页面布局的,接下来我们来学习一下经常使用一些样式属性。</p> <h3 id="31-布局常用样式属性">3.1 布局常用样式属性</h3> <ul> <li>width 设置元素(标签)的宽度，如：width:100px;</li> <li>height 设置元素(标签)的高度，如：height:200px;</li> <li>background 设置元素背景色或者背景图片，如：background:gold; 设置元素的背景色, background: url(images/logo.png); 设置元素的背景图片。no-repeat 不重复拉伸</li> <li>border 设置元素四周的边框，如：border:1px solid black; 设置元素四周边框是1像素宽的黑色实线</li> <li>以上也可以拆分成四个边的写法，分别设置四个边的：</li> <li>border-top 设置顶边边框，如：border-top:10px solid red;</li> <li>border-left 设置左边边框，如：border-left:10px solid blue;</li> <li>border-right 设置右边边框，如：border-right:10px solid green;</li> <li>border-bottom 设置底边边框，如：border-bottom:10px solid pink;</li> <li>padding 设置元素包含的内容和元素边框的距离，也叫内边距，如padding:20px;padding是同时设置4个边的，也可以像border一样拆分成分别设置四个边:padding-top、padding-left、padding-right、padding-bottom。</li> <li>margin 设置元素和外界的距离，也叫外边距，如margin:20px;margin是同时设置4个边的，也可以像border一样拆分成分别设置四个边:margin-top、margin-left、margin-right、margin-bottom。</li> <li>float 设置元素浮动，浮动可以让块元素排列在一行，浮动分为左浮动：float:left; 右浮动：float:right;</li> </ul> <h3 id="32-文本常用样式属性">3.2 文本常用样式属性</h3> <ul> <li>color 设置文字的颜色，如： color:red;</li> <li>font-size 设置文字的大小，如：font-size:12px;</li> <li>font-family 设置文字的字体，如：font-family:’微软雅黑’;为了避免中文字不兼容，一般写成：font-family:’Microsoft Yahei’;</li> <li>font-weight 设置文字是否加粗，如：font-weight:bold; 设置加粗 font-weight:normal 设置不加粗</li> <li>line-height 设置文字的行高，如：line-height:24px; 表示文字高度加上文字上下的间距是24px，也就是每一行占有的高度是24px</li> <li>text-decoration 设置文字的下划线，如：text-decoration:none; 将文字下划线去掉</li> <li>text-align 设置文字水平对齐方式，如text-align:center 设置文字水平居中</li> <li>text-indent 设置文字首行缩进，如：text-indent:24px; 设置文字首行缩进24px</li> </ul> <h3 id="33-布局常用样式属性示例代码">3.3 布局常用样式属性示例代码</h3> <div class="language-html highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nt">&lt;style&gt;</span>
+
+    <span class="nc">.box1</span><span class="p">{</span>
+        <span class="nl">width</span><span class="p">:</span> <span class="m">200px</span><span class="p">;</span> 
+        <span class="nl">height</span><span class="p">:</span> <span class="m">200px</span><span class="p">;</span> 
+        <span class="nl">background</span><span class="p">:</span><span class="no">yellow</span><span class="p">;</span> 
+        <span class="nl">border</span><span class="p">:</span> <span class="m">1px</span> <span class="nb">solid</span> <span class="no">black</span><span class="p">;</span>
+    <span class="p">}</span>
+
+    <span class="nc">.box2</span><span class="p">{</span>
+        <span class="c">/* 这里是注释内容 */</span>
+        <span class="c">/* 设置宽度 */</span>
+        <span class="nl">width</span><span class="p">:</span> <span class="m">100px</span><span class="p">;</span>
+        <span class="c">/* 设置高度 */</span>
+        <span class="nl">height</span><span class="p">:</span> <span class="m">100px</span><span class="p">;</span>
+        <span class="c">/* 设置背景色 */</span>
+        <span class="nl">background</span><span class="p">:</span> <span class="no">red</span><span class="p">;</span>
+        <span class="c">/* 设置四边边框 */</span>
+        <span class="c">/* border: 10px solid black; */</span>
+        <span class="nl">border-top</span><span class="p">:</span> <span class="m">10px</span> <span class="nb">solid</span> <span class="no">black</span><span class="p">;</span>
+        <span class="nl">border-left</span><span class="p">:</span> <span class="m">10px</span> <span class="nb">solid</span> <span class="no">black</span><span class="p">;</span>
+        <span class="nl">border-right</span><span class="p">:</span> <span class="m">10px</span> <span class="nb">solid</span> <span class="no">black</span><span class="p">;</span>
+        <span class="nl">border-bottom</span><span class="p">:</span> <span class="m">10px</span> <span class="nb">solid</span> <span class="no">black</span><span class="p">;</span>
+        <span class="c">/* 设置内边距， 内容到边框的距离，如果设置四边是上右下左 */</span>
+        <span class="c">/* padding: 10px;   */</span>
+        <span class="nl">padding-left</span><span class="p">:</span> <span class="m">10px</span><span class="p">;</span>
+        <span class="nl">padding-top</span><span class="p">:</span> <span class="m">10px</span><span class="p">;</span>
+        <span class="c">/* 设置外边距，设置元素边框到外界元素边框的距离 */</span>
+        <span class="nl">margin</span><span class="p">:</span> <span class="m">10px</span><span class="p">;</span>
+        <span class="c">/* margin-top: 10px;
+        margin-left: 10px; */</span>
+        <span class="nl">float</span><span class="p">:</span> <span class="nb">left</span><span class="p">;</span>
+    <span class="p">}</span>
+
+    <span class="nc">.box3</span><span class="p">{</span>
+        <span class="nl">width</span><span class="p">:</span> <span class="m">48px</span><span class="p">;</span> 
+        <span class="nl">height</span><span class="p">:</span> <span class="m">48px</span><span class="p">;</span> 
+        <span class="nl">background</span><span class="p">:</span><span class="no">pink</span><span class="p">;</span> 
+        <span class="nl">border</span><span class="p">:</span> <span class="m">1px</span> <span class="nb">solid</span> <span class="no">black</span><span class="p">;</span>
+        <span class="c">/*让div在一行显示，可以用浮动*/</span>
+        <span class="nl">float</span><span class="p">:</span> <span class="nb">left</span><span class="p">;</span>
+    <span class="p">}</span>
+
+<span class="nt">&lt;/style&gt;</span>
+<span class="c">&lt;!-- div&gt;div*2  创建一个父div里面创建两个子div--&gt;</span>
+<span class="nt">&lt;div</span> <span class="na">class=</span><span class="s">"box1"</span><span class="nt">&gt;</span>
+    <span class="nt">&lt;div</span> <span class="na">class=</span><span class="s">"box2"</span><span class="nt">&gt;</span>
+        padding 设置元素包含的内容和元素边框的距离
+    <span class="nt">&lt;/div&gt;</span>
+    <span class="nt">&lt;div</span> <span class="na">class=</span><span class="s">"box3"</span><span class="nt">&gt;</span>
+    <span class="nt">&lt;/div&gt;</span>
+<span class="nt">&lt;/div&gt;</span>
+</code></pre></div></div> <h3 id="34-文本常用样式属性示例">3.4 文本常用样式属性示例</h3> <div class="language-html highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nt">&lt;style&gt;</span>
+    <span class="nt">p</span><span class="p">{</span>
+       <span class="c">/* 设置字体大小  浏览器默认是 16px */</span>
+       <span class="nl">font-size</span><span class="p">:</span><span class="m">20px</span><span class="p">;</span>
+       <span class="c">/* 设置字体 */</span>
+       <span class="nl">font-family</span><span class="p">:</span> <span class="s1">"Microsoft YaHei"</span><span class="p">;</span> 
+       <span class="c">/* 设置字体加粗 */</span>
+       <span class="nl">font-weight</span><span class="p">:</span> <span class="nb">bold</span><span class="p">;</span>
+       <span class="c">/* 设置字体颜色 */</span>
+       <span class="nl">color</span><span class="p">:</span> <span class="no">red</span><span class="p">;</span>
+       <span class="c">/* 增加掉下划线  还有中划线 line-through 
+       上划线overline */</span>
+       <span class="nl">text-decoration</span><span class="p">:</span> <span class="nb">underline</span><span class="p">;</span>
+       <span class="c">/* 设置行高  可以让文字垂直方向居中*/</span>
+       <span class="nl">line-height</span><span class="p">:</span> <span class="m">100px</span><span class="p">;</span>
+       <span class="c">/* 设置背景色 */</span>
+       <span class="nl">background</span><span class="p">:</span> <span class="no">green</span><span class="p">;</span>
+       <span class="c">/* 设置文字居中 */</span>
+       <span class="c">/* text-align: center; */</span>
+       <span class="c">/* 文本缩进 */</span>
+       <span class="nl">text-indent</span><span class="p">:</span> <span class="m">40px</span><span class="p">;</span>
+    <span class="p">}</span>
+
+    <span class="nt">a</span><span class="p">{</span>
+        <span class="c">/* 去掉下划线 */</span>
+        <span class="nl">text-decoration</span><span class="p">:</span> <span class="nb">none</span><span class="p">;</span>
+    <span class="p">}</span>
+<span class="nt">&lt;/style&gt;</span>
+
+<span class="nt">&lt;a</span> <span class="na">href=</span><span class="s">"#"</span><span class="nt">&gt;</span>连接标签<span class="nt">&lt;/a&gt;</span>
+<span class="nt">&lt;p&gt;</span>
+    你好，世界!
+<span class="nt">&lt;/p&gt;</span>
+</code></pre></div></div> <p><img src="https://slienceme.cn/images/posts/20201229103722946.png" alt="在这里插入图片描述" /></p> <h2 id="4-css-元素溢出">4. css 元素溢出</h2> <h3 id="41-什么是-css-元素溢出">4.1 什么是 css 元素溢出</h3> <p>当子元素(标签)的尺寸超过父元素(标签)的尺寸时，此时需要设置父元素显示溢出的子元素的方式，设置的方法是通过overflow属性来完成。</p> <p><strong>overflow的设置项：</strong></p> <ol> <li>visible 默认值, 显示子标签溢出部分。</li> <li>hidden 隐藏子标签溢出部分。</li> <li>auto 如果子标签溢出，则可以滚动查看其余的内容。</li> </ol> <h3 id="42-示例代码">4.2 示例代码</h3> <div class="language-html highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nt">&lt;style&gt;</span>
+    <span class="nc">.box1</span><span class="p">{</span>
+        <span class="nl">width</span><span class="p">:</span> <span class="m">100px</span><span class="p">;</span>
+        <span class="nl">height</span><span class="p">:</span> <span class="m">200px</span><span class="p">;</span>
+        <span class="nl">background</span><span class="p">:</span> <span class="no">red</span><span class="p">;</span>
+        <span class="c">/* 在父级上设置子元素溢出的部分如何显示 */</span>
+        <span class="c">/* overflow: hidden; */</span>
+        <span class="nl">overflow</span><span class="p">:</span> <span class="nb">auto</span><span class="p">;</span>
+    <span class="p">}</span>
+    <span class="nc">.box2</span><span class="p">{</span>
+        <span class="nl">width</span><span class="p">:</span> <span class="m">50px</span><span class="p">;</span>
+        <span class="nl">height</span><span class="p">:</span> <span class="m">300px</span><span class="p">;</span>
+        <span class="nl">background</span><span class="p">:</span> <span class="no">yellow</span><span class="p">;</span>
+    <span class="p">}</span>
+<span class="nt">&lt;/style&gt;</span>
+
+<span class="nt">&lt;div</span> <span class="na">class=</span><span class="s">"box1"</span><span class="nt">&gt;</span>
+    <span class="nt">&lt;div</span> <span class="na">class=</span><span class="s">"box2"</span><span class="nt">&gt;</span>hello<span class="nt">&lt;/div&gt;</span>
+<span class="nt">&lt;/div&gt;</span>
+</code></pre></div></div> <h2 id="5-css-显示特性">5. css 显示特性</h2> <h3 id="51-display-属性的使用">5.1 display 属性的使用</h3> <p>display 属性是用来设置元素的类型及隐藏的，常用的属性有：</p> <ul> <li>none 元素隐藏且不占位置</li> <li>inline 元素以行内元素显示</li> <li>block 元素以块元素显示</li> </ul> <h3 id="52-示例代码">5.2 示例代码</h3> <div class="language-html highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nt">&lt;style&gt;</span>
+    <span class="nc">.box</span><span class="p">{</span>
+        <span class="c">/* 将块元素转化为行内元素 
+	设置div可以和其它元素在一行显示，以后就不能设置宽高*/</span>
+<span class="c">/*以后既设置div的宽高又设置在一行显示，可以通过浮动来完成*/</span>
+        <span class="nl">display</span><span class="p">:</span><span class="nb">inline</span><span class="p">;</span>
+    <span class="p">}</span> 
+
+    <span class="nc">.link01</span><span class="p">{</span>
+        <span class="c">/* 将行内元素转化为块元素 设置标签自己单独占一行，不和其它标签在一行 */</span>
+        <span class="nl">display</span><span class="p">:</span><span class="nb">block</span><span class="p">;</span>
+        <span class="nl">background</span><span class="p">:</span> <span class="no">red</span><span class="p">;</span>
+
+    <span class="p">}</span>
+
+    <span class="nc">.con</span><span class="p">{</span>
+        <span class="nl">width</span><span class="p">:</span><span class="m">200px</span><span class="p">;</span>
+        <span class="nl">height</span><span class="p">:</span><span class="m">200px</span><span class="p">;</span>
+        <span class="nl">background</span><span class="p">:</span><span class="no">gold</span><span class="p">;</span>
+
+        <span class="c">/* 将元素隐藏 标签再次显示可以设置成block，删除display这个样式属性 div 默认block 自己霸占一行*/</span>
+        <span class="nl">display</span><span class="p">:</span><span class="nb">none</span><span class="p">;</span>
+    <span class="p">}</span>
+
+<span class="nt">&lt;/style&gt;</span>
+
+<span class="nt">&lt;div</span> <span class="na">class=</span><span class="s">"con"</span><span class="nt">&gt;&lt;/div&gt;</span>
+<span class="nt">&lt;div</span> <span class="na">class=</span><span class="s">"box"</span><span class="nt">&gt;</span>这是第一个div<span class="nt">&lt;/div&gt;</span>
+<span class="nt">&lt;div</span> <span class="na">class=</span><span class="s">"box"</span><span class="nt">&gt;</span>这是第二个div<span class="nt">&lt;/div&gt;</span>
+<span class="nt">&lt;a</span> <span class="na">href=</span><span class="s">"#"</span> <span class="na">class=</span><span class="s">"link01"</span><span class="nt">&gt;</span>这是第一个链接<span class="nt">&lt;/a&gt;</span>
+<span class="nt">&lt;a</span> <span class="na">href=</span><span class="s">"#"</span> <span class="na">class=</span><span class="s">"link01"</span><span class="nt">&gt;</span>这是第二个链接<span class="nt">&lt;/a&gt;</span>
+</code></pre></div></div> <p><strong>说明:</strong></p> <p>行内元素不能设置宽高， 块元素或者行内块元素可以设置宽高。</p> <h2 id="6-盒子模型">6. 盒子模型</h2> <h3 id="61-盒子模型的介绍">6.1 盒子模型的介绍</h3> <p>所谓的盒子模型就是把HTML页面的元素看作一个矩形盒子，矩形盒子是由内容(content)、内边距(padding)、边框(border)、外边距(margin)四部分组成。</p> <p><strong>盒子模型示意图如下：</strong> <img src="https://slienceme.cn/images/posts/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L1NsaWVuY2VfbWU=,size_16,color_FFFFFF,t_70" alt="在这里插入图片描述" /></p> <h3 id="62-盒子模型相关样式属性">6.2 盒子模型相关样式属性</h3> <ul> <li>盒子的内容宽度(width)，注意：不是盒子的宽度</li> <li>盒子的内容高度(height)，注意：不是盒子的高度</li> <li>盒子的边框(border)</li> <li>盒子内的内容和边框之间的间距(padding)</li> <li>盒子与盒子之间的间距(margin)</li> </ul> <p><strong>设置宽高：</strong></p> <p>设置盒子的宽高，此宽高是指盒子内容的宽高，不是盒子整体宽高</p> <div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>width:200px;  /* 设置盒子的宽度，此宽度是指盒子内容的宽度，不是盒子整体	宽度(难点) */ 
+height:200px; /* 设置盒子的高度，此高度是指盒子内容的高度，不是盒子整体	高度(难点) */
+</code></pre></div></div> <p><strong>设置边框:</strong> 设置一边的边框，比如顶部边框，可以按如下设置：</p> <div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>border-top:10px solid red;
+</code></pre></div></div> <p>说明:</p> <p>其中10px表示线框的粗细；solid表示线性；red表示边框的颜色</p> <p>设置其它三个边的方法和上面一样，把上面的’top’换成’left’就是设置左边，换成’right’就是设置右边，换成’bottom’就是设置底边。</p> <p>四个边如果设置一样，可以将四个边的设置合并成一句：</p> <div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>border:10px solid red;
+</code></pre></div></div> <p><strong>设置内间距padding</strong></p> <p>设置盒子四边的内间距，可设置如下：</p> <div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>padding-top：20px;     /* 设置顶部内间距20px */ 
+padding-left:30px;     /* 设置左边内间距30px */ 
+padding-right:40px;    /* 设置右边内间距40px */ 
+padding-bottom:50px;   /* 设置底部内间距50px */
+</code></pre></div></div> <p>上面的设置可以简写如下：</p> <div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>	padding：20px 40px 50px 30px; /* 
+	四个值按照顺时针方向，分别			设置的是 上 右 下 左  
+	四个方向的内边距值。 */
+</code></pre></div></div> <p>padding后面还可以跟3个值，2个值和1个值，它们分别设置的项目如下：</p> <div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>padding：20px 40px 50px; /* 设置顶部内边距为20px，左右内边距为40px，底部内边距为50px */ 
+padding：20px 40px; /* 设置上下内边距为20px，左右内边距为40px*/ 
+padding：20px; /* 设置四边内边距为20px */
+</code></pre></div></div> <p><strong>设置外间距margin</strong></p> <p>外边距的设置方法和padding的设置方法相同，将上面设置项中的’padding’换成’margin’就是外边距设置方法。</p> <p><strong>盒子的真实尺寸</strong></p> <p>盒子的width和height值固定时，如果盒子增加border和padding，盒子整体的尺寸会变大，所以盒子的真实尺寸为：</p> <ul> <li>盒子宽度 = width + padding左右 + border左右</li> <li>盒子高度 = height + padding上下 + border上下</li> </ul> <p><img src="https://slienceme.cn/images/posts/20201229110737502.png" alt="Alt Text" /></p> <div style="margin-top:2em;padding:0 1.5em;border:1px solid #d3d3d3;background-color:#deebf7"> <h3>文档信息</h3> <ul> <li>本文作者：<a href="https://slienceme.cn" target="_blank">slience_me</a></li> <li>本文链接：<a href="https://slienceme.cn/2020/11/26/Web%E5%9F%BA%E7%A1%80_CSS%E5%9F%BA%E7%A1%80/" target="_blank">https://slienceme.cn/2020/11/26/Web%E5%9F%BA%E7%A1%80_CSS%E5%9F%BA%E7%A1%80/</a></li> <li>版权声明：自由转载-非商用-非衍生-保持署名（<a href="http://creativecommons.org/licenses/by-nc-nd/3.0/deed.zh" target="_blank">创意共享3.0许可证</a>）</li> </ul> </div> </article> <div class="share"> <div class="share-component" data-disabled='qq,facebook'></div> </div> <div class="comment"> <script src="https://giscus.app/client.js" data-repo="slience-me/blog-comments" data-repo-id="MDEwOlJlcG9zaXRvcnk5MzEyNzkxNw==" data-category="Announcements" data-category-id="DIC_kwDOBY0E7c4CRtg9" data-mapping="title" data-strict="1" data-reactions-enabled="1" data-emit-metadata="0" data-input-position="top" data-theme="light" data-lang="zh-CN" data-loading="lazy" crossorigin="anonymous" async> </script> </div> </div> <div class="column one-fourth"> <h3>Search</h3> <div id="site_search"> <input style="width:96%" type="text" id="search_box" placeholder="Search"> </div> <ul id="search_results" style="font-size:14px;list-style-type:none;padding-top:10px;padding-left:10px;"></ul> <script src="https://slienceme.cn/assets/js/simple-jekyll-search.min.js"></script> <script type="text/javascript"> SimpleJekyllSearch({ searchInput: document.getElementById('search_box'), resultsContainer: document.getElementById('search_results'), json: 'https://slienceme.cn/assets/search_data.json?v=1736473997', searchResultTemplate: '<li><a href="{url}" title="{title}">{title}</a></li>', noResultsText: 'No results found', limit: 10, fuzzy: false, exclude: ['Welcome'] }) </script> <h3 class="post-directory-title mobile-hidden">Table of Contents</h3> <div id="post-directory-module" class="mobile-hidden"> <section class="post-directory"> <dl></dl> </section> </div> <script src="https://slienceme.cn/assets/js/jquery.toc.js"></script> </div> </div> </section> <footer class="container"> <div class="site-footer" role="contentinfo"> <div class="copyright left mobile-block"> Copyright@ 2019-2025 slience_me 版权所有&emsp; <img src="/images/logo/logo.png" class="w-full" style="width: 12px;"> <a href="https://beian.mps.gov.cn/#/query/webSearch?code=13102202000626" rel="noreferrer" target="_blank">冀公网安备13102202000626</a>&emsp; <a href="https://beian.miit.gov.cn/#/Integrated/index" target="_blank" rel="noreferrer">津ICP备2024026565号-1</a> <a href="javascript:window.scrollTo(0,0)" class="right mobile-visible">TOP</a> </div> <ul class="site-footer-links right mobile-hidden"> <li> <a href="javascript:window.scrollTo(0,0)" >TOP</a> </li> </ul> <br/> <script async src="https://slienceme.cn/assets/vendor/busuanzi/2.3/busuanzi.pure.mini.js"></script> <div class="mobile-hidden" style="margin-top:8px"> <span id="busuanzi_container_site_pv" style="display:none"> 本站访问量<span id="busuanzi_value_site_pv"></span>次 </span> <span id="busuanzi_container_site_uv" style="display:none"> / 本站访客数<span id="busuanzi_value_site_uv"></span>人 </span> <span id="busuanzi_container_page_pv" style="display:none"> / 本页访问量<span id="busuanzi_value_page_pv"></span>次 / 统计始于2024-12-01 </span> </div> </div> </footer> <div class="tools-wrapper"> <a class="gotop" href="#" title="回到顶部"><span class="octicon octicon-arrow-up"></span></a> </div> <script src="https://slienceme.cn/assets/vendor/share.js/dist/js/share.min.js"></script> <script src="https://slienceme.cn/assets/js/geopattern.js"></script> <script> jQuery(document).ready(function($) { $('.geopattern').each(function(){ $(this).geopattern($(this).data('pattern-id')); }); /* hljs.initHighlightingOnLoad(); */ }); </script> </body> </html>

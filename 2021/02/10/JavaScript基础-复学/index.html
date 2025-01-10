@@ -1,0 +1,401 @@
+<!DOCTYPE html> <html lang="zh-cmn-Hans" prefix="og: http://ogp.me/ns#" class="han-init"> <head> <meta charset="utf-8"> <meta http-equiv="X-UA-Compatible" content="IE=edge"> <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1" /> <title>前端｜Web基础_JavaScript基础复学 &mdash; Slience_me的博客</title> <link rel="stylesheet" href="https://slienceme.cn/assets/vendor/primer-css/css/primer.css"> <link rel="stylesheet" href="https://slienceme.cn/assets/css/components/collection.css"> <link rel="stylesheet" href="https://slienceme.cn/assets/css/components/repo-card.css"> <link rel="stylesheet" href="https://slienceme.cn/assets/css/sections/repo-list.css"> <link rel="stylesheet" href="https://slienceme.cn/assets/css/components/boxed-group.css"> <link rel="stylesheet" href="https://slienceme.cn/assets/css/globals/common.css"> <link rel="stylesheet" href="https://slienceme.cn/assets/css/globals/responsive.css"> <link rel="stylesheet" href="https://slienceme.cn/assets/css/posts/index.css"> <link rel="stylesheet" href="https://slienceme.cn/assets/vendor/octicons/octicons/octicons.css"> <link rel="stylesheet" href="https://mazhuang.org/rouge-themes/dist/github.css"> <link rel="stylesheet" href="https://slienceme.cn/assets/vendor/share.js/dist/css/share.min.css"> <link rel="canonical" href="https://slienceme.cn/2021/02/10/JavaScript%E5%9F%BA%E7%A1%80-%E5%A4%8D%E5%AD%A6/"> <link rel="alternate" type="application/atom+xml" title="Slience_me的博客" href="https://slienceme.cn/feed.xml"> <link rel="shortcut icon" href="https://slienceme.cn/favicon.ico"> <meta property="og:title" content="前端｜Web基础_JavaScript基础复学"> <meta name="keywords" content="前端, Web"> <meta name="og:keywords" content="前端, Web"> <meta name="description" content="JavaScript基础"> <meta name="og:description" content="JavaScript基础"> <meta property="og:url" content="https://slienceme.cn/2021/02/10/JavaScript%E5%9F%BA%E7%A1%80-%E5%A4%8D%E5%AD%A6/"> <meta property="og:site_name" content="Slience_me的博客"> <meta property="og:type" content="article"> <meta property="og:locale" content="zh_CN" /> <meta property="article:published_time" content="2021-02-10"> <meta name="google-site-verification" content="2feHjT1GNs1Yi2JQfOtdYx7d048naG_-cMwZaDAopIA" /> <script src="https://slienceme.cn/assets/vendor/jquery/dist/jquery.min.js"></script> <script src="https://slienceme.cn/assets/js/main.js"></script> </head> <body class="" data-mz=""> <header class="site-header"> <div class="container"> <h1><a href="https://slienceme.cn/" title="Slience_me的博客"><span class="octicon octicon-mark-github"></span> Slience_me的博客</a></h1> <button class="collapsed mobile-visible" type="button" onclick="toggleMenu();"> <span class="icon-bar"></span> <span class="icon-bar"></span> <span class="icon-bar"></span> </button> <nav class="site-header-nav" role="navigation"> <a href="https://slienceme.cn/" class="site-header-nav-item" target="" title="首页">首页</a> <a href="https://slienceme.cn/categories/" class="site-header-nav-item" target="" title="分类">分类</a> <a href="https://slienceme.cn/archives/" class="mobile-hidden site-header-nav-item" target="" title="归档">归档</a> <a href="https://slienceme.cn/open-source/" class="mobile-hidden site-header-nav-item" target="" title="开源">开源</a> <a href="https://slienceme.cn/fragments/" class="site-header-nav-item" target="" title="片段">片段</a> <a href="https://slienceme.cn/wiki/" class="site-header-nav-item" target="" title="维基">维基</a> <a href="https://slienceme.cn/links/" class="mobile-hidden site-header-nav-item" target="" title="链接">链接</a> <a href="https://slienceme.cn/about/" class="site-header-nav-item" target="" title="关于">关于</a> <a class="mobile-hidden" href="https://slienceme.cn/feed.xml"><span class="octicon octicon-rss" style="color:orange;"></span></a> </nav> </div> </header> <section class="collection-head small geopattern" data-pattern-id="前端｜Web基础_JavaSc"> <div class="container"> <div class="columns"> <div class="column three-fourths"> <div class="collection-title"> <h1 class="collection-header">前端｜Web基础_JavaScript基础复学</h1> <div class="collection-info"> <span class="meta-info"> <span class="octicon octicon-calendar"></span> 2021/02/10 </span> <span class="meta-info"> <span class="octicon octicon-file-directory"></span> <a href="https://slienceme.cn/categories/#前端" title="前端">前端</a> </span> <span class="meta-info"> <span class="octicon octicon-clock"></span> 共 9643 字，约 28 分钟 </span> </div> </div> </div> <div class="column one-fourth mobile-hidden"> <div class="collection-title"> </div> </div> </div> </div> </section> <section class="container content"> <div class="columns"> <div class="column three-fourths" > <article class="article-content markdown-body"> <h1 id="javascript基础">JavaScript基础</h1> <h2 id="概念-一门客户端脚本语言">概念： 一门客户端脚本语言</h2> <ul> <li>运行在客户端浏览器中的。每一个浏览器都有<code class="language-plaintext highlighter-rouge">JavaScript</code>的解析引擎</li> <li>脚本语言：不需要编译，直接就可以被浏览器解析执行了</li> </ul> <h2 id="功能">功能：</h2> <ul> <li>可以来增强用户和<code class="language-plaintext highlighter-rouge">html</code>页面的交互过程，可以来控制<code class="language-plaintext highlighter-rouge">html</code>元素，让页面有一些动态的效果，增强用户的体验。</li> </ul> <h2 id="javascript发展史">JavaScript发展史：</h2> <ol> <li>1992年，<code class="language-plaintext highlighter-rouge">Nombase</code>公司，开发出第一门客户端脚本语言，专门用于表单的校验。命名为 ： <code class="language-plaintext highlighter-rouge">C--</code> ，后来更名为：<code class="language-plaintext highlighter-rouge">ScriptEase</code></li> <li>1995年，<code class="language-plaintext highlighter-rouge">Netscape</code>(网景)公司，开发了一门客户端脚本语言：<code class="language-plaintext highlighter-rouge">LiveScript</code>。后来，请来<code class="language-plaintext highlighter-rouge">SUN</code>公司的专家，修改<code class="language-plaintext highlighter-rouge">LiveScript</code>，命名为<code class="language-plaintext highlighter-rouge">JavaScript</code></li> <li>1996年，微软抄袭<code class="language-plaintext highlighter-rouge">JavaScript</code>开发出<code class="language-plaintext highlighter-rouge">JScript</code>语言</li> <li>1997年，<code class="language-plaintext highlighter-rouge">ECMA</code>(欧洲计算机制造商协会)，制定出客户端脚本语言的标准：<code class="language-plaintext highlighter-rouge">ECMAScript</code>，就是统一了所有客户端脚本语言的编码方式。</li> </ol> <ul> <li><code class="language-plaintext highlighter-rouge">JavaScript = ECMAScript + JavaScript自己特有的东西(BOM+DOM)</code></li> </ul> <h2 id="ecmascript客户端脚本语言的标准">ECMAScript：客户端脚本语言的标准</h2> <h3 id="1-基本语法">1. 基本语法：</h3> <h4 id="11-与html结合方式">1.1 与html结合方式</h4> <ol> <li> <p>内部JS：</p> <p>定义<code class="language-plaintext highlighter-rouge">&lt;script&gt;</code>，标签体内容就是js代码</p> </li> <li> <p>外部JS：</p> <p>定义<code class="language-plaintext highlighter-rouge">&lt;script&gt;</code>，通过src属性引入外部的js文件</p> </li> </ol> <ul> <li> <p>注意：</p> <p><code class="language-plaintext highlighter-rouge">&lt;script</code>&gt;可以定义在html页面的任何地方。但是定义的位置会影响执行顺序。 <code class="language-plaintext highlighter-rouge">&lt;script&gt;</code>可以定义多个。</p> <h4 id="12-注释">1.2 注释</h4> <div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>  1. 单行注释：`//注释内容`
+  2. 多行注释：`/*注释内容*/` #### 1.3 数据类型： ##### 1.3.1 原始数据类型(基本数据类型)：
+  1. `number`：数字。 `整数/小数/NaN(not a number 一个不是数字的数字类型)`
+  2. `string`：字符串。 `字符串  "abc" "a" 'abc'`
+  3. `boolean`: `true和false`
+  4. `null`：一个对象为空的占位符
+  5. `undefined`：未定义。如果一个变量没有给初始化值，则会被默认赋值为`undefined`
+</code></pre></div> </div> </li> </ul> <div class="language-html highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="cp">&lt;!DOCTYPE html&gt;</span>
+<span class="nt">&lt;html</span> <span class="na">lang=</span><span class="s">"en"</span><span class="nt">&gt;</span>
+<span class="nt">&lt;head&gt;</span>
+    <span class="nt">&lt;meta</span> <span class="na">charset=</span><span class="s">"UTF-8"</span><span class="nt">&gt;</span>
+    <span class="nt">&lt;title&gt;</span>变量<span class="nt">&lt;/title&gt;</span>
+
+    <span class="nt">&lt;script &gt;</span>
+
+        <span class="c1">//定义变量</span>
+       <span class="cm">/* var a  = 3;
+        alert(a);
+
+        a = "abc";
+        alert(a);*/</span>
+
+       <span class="c1">//定义number类型</span>
+
+        <span class="kd">var</span> <span class="nx">num</span> <span class="o">=</span> <span class="mi">1</span><span class="p">;</span>
+        <span class="kd">var</span> <span class="nx">num2</span> <span class="o">=</span> <span class="mf">1.2</span><span class="p">;</span>
+        <span class="kd">var</span> <span class="nx">num3</span> <span class="o">=</span> <span class="kc">NaN</span><span class="p">;</span>
+
+        <span class="c1">//输出到页面上</span>
+        <span class="nb">document</span><span class="p">.</span><span class="nx">write</span><span class="p">(</span><span class="nx">num</span><span class="o">+</span><span class="dl">"</span><span class="s2">---</span><span class="dl">"</span><span class="o">+</span><span class="k">typeof</span><span class="p">(</span><span class="nx">num</span><span class="p">)</span><span class="o">+</span><span class="dl">"</span><span class="s2">&lt;br&gt;</span><span class="dl">"</span><span class="p">);</span>
+        <span class="nb">document</span><span class="p">.</span><span class="nx">write</span><span class="p">(</span><span class="nx">num2</span><span class="o">+</span><span class="dl">"</span><span class="s2">---</span><span class="dl">"</span><span class="o">+</span><span class="k">typeof</span><span class="p">(</span><span class="nx">num2</span><span class="p">)</span><span class="o">+</span><span class="dl">"</span><span class="s2">&lt;br&gt;</span><span class="dl">"</span><span class="p">);</span>
+        <span class="nb">document</span><span class="p">.</span><span class="nx">write</span><span class="p">(</span><span class="nx">num3</span><span class="o">+</span><span class="dl">"</span><span class="s2">---</span><span class="dl">"</span><span class="o">+</span><span class="k">typeof</span><span class="p">(</span><span class="nx">num3</span><span class="p">)</span><span class="o">+</span><span class="dl">"</span><span class="s2">&lt;br&gt;</span><span class="dl">"</span><span class="p">);</span>
+
+        <span class="c1">//定义string类型</span>
+
+        <span class="kd">var</span> <span class="nx">str</span> <span class="o">=</span> <span class="dl">"</span><span class="s2">abc</span><span class="dl">"</span><span class="p">;</span>
+        <span class="kd">var</span> <span class="nx">str2</span> <span class="o">=</span> <span class="dl">'</span><span class="s1">edf</span><span class="dl">'</span><span class="p">;</span>
+        <span class="nb">document</span><span class="p">.</span><span class="nx">write</span><span class="p">(</span><span class="nx">str</span><span class="o">+</span><span class="dl">"</span><span class="s2">---</span><span class="dl">"</span><span class="o">+</span><span class="k">typeof</span><span class="p">(</span><span class="nx">str</span><span class="p">)</span><span class="o">+</span><span class="dl">"</span><span class="s2">&lt;br&gt;</span><span class="dl">"</span><span class="p">);</span>
+        <span class="nb">document</span><span class="p">.</span><span class="nx">write</span><span class="p">(</span><span class="nx">str2</span><span class="o">+</span><span class="dl">"</span><span class="s2">---</span><span class="dl">"</span><span class="o">+</span><span class="k">typeof</span><span class="p">(</span><span class="nx">str2</span><span class="p">)</span><span class="o">+</span><span class="dl">"</span><span class="s2">&lt;br&gt;</span><span class="dl">"</span><span class="p">);</span>
+
+        <span class="c1">//定义boolean</span>
+        <span class="kd">var</span> <span class="nx">flag</span> <span class="o">=</span> <span class="kc">true</span><span class="p">;</span>
+        <span class="nb">document</span><span class="p">.</span><span class="nx">write</span><span class="p">(</span><span class="nx">flag</span><span class="o">+</span><span class="dl">"</span><span class="s2">---</span><span class="dl">"</span><span class="o">+</span><span class="k">typeof</span><span class="p">(</span><span class="nx">flag</span><span class="p">)</span><span class="o">+</span><span class="dl">"</span><span class="s2">&lt;br&gt;</span><span class="dl">"</span><span class="p">);</span>
+
+        <span class="c1">// 定义null,undefined</span>
+        <span class="kd">var</span> <span class="nx">obj</span> <span class="o">=</span> <span class="kc">null</span><span class="p">;</span>
+        <span class="kd">var</span> <span class="nx">obj2</span> <span class="o">=</span> <span class="kc">undefined</span><span class="p">;</span>
+        <span class="kd">var</span> <span class="nx">obj3</span> <span class="p">;</span>
+        <span class="nb">document</span><span class="p">.</span><span class="nx">write</span><span class="p">(</span><span class="nx">obj</span><span class="o">+</span><span class="dl">"</span><span class="s2">---</span><span class="dl">"</span><span class="o">+</span><span class="k">typeof</span><span class="p">(</span><span class="nx">obj</span><span class="p">)</span><span class="o">+</span><span class="dl">"</span><span class="s2">&lt;br&gt;</span><span class="dl">"</span><span class="p">);</span>
+        <span class="nb">document</span><span class="p">.</span><span class="nx">write</span><span class="p">(</span><span class="nx">obj2</span><span class="o">+</span><span class="dl">"</span><span class="s2">---</span><span class="dl">"</span><span class="o">+</span><span class="k">typeof</span><span class="p">(</span><span class="nx">obj2</span><span class="p">)</span><span class="o">+</span><span class="dl">"</span><span class="s2">&lt;br&gt;</span><span class="dl">"</span><span class="p">);</span>
+        <span class="nb">document</span><span class="p">.</span><span class="nx">write</span><span class="p">(</span><span class="nx">obj3</span><span class="o">+</span><span class="dl">"</span><span class="s2">---</span><span class="dl">"</span><span class="o">+</span><span class="k">typeof</span><span class="p">(</span><span class="nx">obj3</span><span class="p">)</span><span class="o">+</span><span class="dl">"</span><span class="s2">&lt;br&gt;</span><span class="dl">"</span><span class="p">);</span>
+
+    <span class="nt">&lt;/script&gt;</span>
+
+
+<span class="nt">&lt;/head&gt;</span>
+<span class="nt">&lt;body&gt;</span>
+
+<span class="nt">&lt;/body&gt;</span>
+<span class="nt">&lt;/html&gt;</span>
+</code></pre></div></div> <h5 id="132-引用数据类型对象">1.3.2 引用数据类型：对象</h5> <h4 id="14-变量">1.4 变量</h4> <ul> <li>变量：一小块存储数据的内存空间</li> <li><code class="language-plaintext highlighter-rouge">Java</code>语言是强类型语言，而<code class="language-plaintext highlighter-rouge">JavaScript</code>是弱类型语言。 <ul> <li>强类型：在开辟变量存储空间时，定义了空间将来存储的数据的数据类型。只能存储固定类型的数据</li> <li>弱类型：在开辟变量存储空间时，不定义空间将来的存储数据类型，可以存放任意类型的数据。</li> </ul> </li> <li>语法： <ul> <li><code class="language-plaintext highlighter-rouge">var 变量名 = 初始化值;</code></li> </ul> </li> <li><code class="language-plaintext highlighter-rouge">typeof</code>运算符：获取变量的类型。 <ul> <li>注：<code class="language-plaintext highlighter-rouge">null</code>运算后得到的是<code class="language-plaintext highlighter-rouge">object</code> <h4 id="15-运算符">1.5 运算符</h4> <h5 id="151-一元运算符只有一个运算数的运算符">1.5.1 一元运算符：只有一个运算数的运算符</h5> <p>++，– ， +(正号)</p> </li> </ul> </li> <li><code class="language-plaintext highlighter-rouge">++ --</code>: 自增(自减) <ul> <li><code class="language-plaintext highlighter-rouge">++(--)</code> 在前，先自增(自减)，再运算</li> <li><code class="language-plaintext highlighter-rouge">++(--)</code> 在后，先运算，再自增(自减)</li> </ul> </li> <li><code class="language-plaintext highlighter-rouge">+(-)</code>：正负号 <ul> <li>注意：在JS中，如果运算数不是运算符所要求的类型，那么js引擎会自动的将运算数进行类型转换</li> <li>其他类型转number： <ul> <li><code class="language-plaintext highlighter-rouge">string转number</code>：按照字面值转换。如果字面值不是数字，则转为NaN（不是数字的数字）</li> <li><code class="language-plaintext highlighter-rouge">boolean转number</code>：true转为1，false转为0</li> </ul> </li> </ul> </li> </ul> <div class="language-html highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nt">&lt;script&gt;</span>
+        <span class="kd">var</span> <span class="nx">num</span> <span class="o">=</span> <span class="mi">3</span><span class="p">;</span>
+        <span class="kd">var</span> <span class="nx">a</span> <span class="o">=</span> <span class="o">++</span> <span class="nx">num</span> <span class="p">;</span>
+
+        <span class="nb">document</span><span class="p">.</span><span class="nx">write</span><span class="p">(</span><span class="nx">num</span><span class="p">);</span><span class="c1">// 4</span>
+        <span class="nb">document</span><span class="p">.</span><span class="nx">write</span><span class="p">(</span><span class="nx">a</span><span class="p">);</span> <span class="c1">// 3 4</span>
+        <span class="nb">document</span><span class="p">.</span><span class="nx">write</span><span class="p">(</span><span class="dl">"</span><span class="s2">&lt;hr&gt;</span><span class="dl">"</span><span class="p">);</span>
+
+        <span class="kd">var</span> <span class="nx">b</span> <span class="o">=</span> <span class="o">+</span><span class="dl">"</span><span class="s2">123abc</span><span class="dl">"</span><span class="p">;</span>
+        <span class="nb">document</span><span class="p">.</span><span class="nx">write</span><span class="p">(</span><span class="k">typeof</span> <span class="p">(</span><span class="nx">b</span><span class="p">));</span>
+        <span class="nb">document</span><span class="p">.</span><span class="nx">write</span><span class="p">(</span><span class="nx">b</span> <span class="o">+</span> <span class="mi">1</span><span class="p">);</span>
+        <span class="nb">document</span><span class="p">.</span><span class="nx">write</span><span class="p">(</span><span class="dl">"</span><span class="s2">&lt;hr&gt;</span><span class="dl">"</span><span class="p">);</span>
+
+        <span class="kd">var</span> <span class="nx">flag</span> <span class="o">=</span> <span class="o">+</span> <span class="kc">true</span><span class="p">;</span>
+        <span class="kd">var</span> <span class="nx">f2</span> <span class="o">=</span> <span class="o">+</span> <span class="kc">false</span><span class="p">;</span>
+        <span class="nb">document</span><span class="p">.</span><span class="nx">write</span><span class="p">(</span><span class="k">typeof</span> <span class="p">(</span><span class="nx">flag</span><span class="p">)</span> <span class="o">+</span> <span class="dl">"</span><span class="s2">&lt;br&gt;</span><span class="dl">"</span><span class="p">);</span><span class="c1">//number</span>
+        <span class="nb">document</span><span class="p">.</span><span class="nx">write</span><span class="p">(</span><span class="nx">flag</span> <span class="o">+</span> <span class="dl">"</span><span class="s2">&lt;br&gt;</span><span class="dl">"</span><span class="p">);</span><span class="c1">// 1</span>
+        <span class="nb">document</span><span class="p">.</span><span class="nx">write</span><span class="p">(</span><span class="nx">f2</span> <span class="o">+</span> <span class="dl">"</span><span class="s2">&lt;br&gt;</span><span class="dl">"</span><span class="p">);</span><span class="c1">// 0</span>
+
+
+    <span class="nt">&lt;/script&gt;</span>
+</code></pre></div></div> <h5 id="152-算数运算符">1.5.2 算数运算符</h5> <div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>+ - * / % ... ```html
+&lt;script&gt;
+    var a = 3;
+    var b = 4;
+
+    document.write(a+b +"&lt;br&gt;");
+    document.write(a-b +"&lt;br&gt;");
+    document.write(a*b +"&lt;br&gt;");
+    document.write(a/b +"&lt;br&gt;");
+    document.write(a%b +"&lt;br&gt;");
+
+&lt;/script&gt; ```
+</code></pre></div></div> <h5 id="153-赋值运算符">1.5.3 赋值运算符</h5> <div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>= += -+....
+</code></pre></div></div> <h5 id="154-比较运算符">1.5.4 比较运算符</h5> <div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>&gt; &lt; &gt;= &lt;= == ===(全等于)  比较方式
+</code></pre></div></div> <ol> <li><code class="language-plaintext highlighter-rouge">类型相同</code>：直接比较 <ul> <li><code class="language-plaintext highlighter-rouge">字符串</code>：按照字典顺序比较。按位逐一比较，直到得出大小为止。</li> </ul> </li> <li><code class="language-plaintext highlighter-rouge">类型不同</code>：先进行类型转换，再比较 <ul> <li> <p><code class="language-plaintext highlighter-rouge">===</code>：全等于。在比较之前，先判断类型，如果类型不一样，则直接返回<code class="language-plaintext highlighter-rouge">false</code> ```html <script> document.write((3 &gt; 4) +"<br />");</script></p> <p>document.write((“abc” &lt; “acd”) +”<br />”);</p> <p>document.write((“123” == 123) +”<br />”);</p> <p>document.write((“123” === 123) +”<br />”);</p> </li> </ul> </li> </ol> <div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>&lt;/script&gt; ```
+</code></pre></div></div> <h5 id="155-逻辑运算符">1.5.5 逻辑运算符</h5> <div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>&amp;&amp; || !
+</code></pre></div></div> <ul> <li>其他类型转<code class="language-plaintext highlighter-rouge">boolean</code>： 1. <code class="language-plaintext highlighter-rouge">number</code>：<code class="language-plaintext highlighter-rouge">0</code>或<code class="language-plaintext highlighter-rouge">NaN</code>为假，其他为真 2. <code class="language-plaintext highlighter-rouge">string</code>：除了空字符串(“”)，其他都是<code class="language-plaintext highlighter-rouge">true</code> 3. <code class="language-plaintext highlighter-rouge">null&amp;undefined</code>:都是<code class="language-plaintext highlighter-rouge">false</code> 4. <code class="language-plaintext highlighter-rouge">对象</code>：所有对象都为<code class="language-plaintext highlighter-rouge">true</code> <div class="language-html highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nt">&lt;script&gt;</span>
+      <span class="kd">var</span> <span class="nx">flag</span> <span class="o">=</span> <span class="kc">true</span><span class="p">;</span>
+      <span class="nb">document</span><span class="p">.</span><span class="nx">write</span><span class="p">(</span><span class="nx">flag</span><span class="o">+</span><span class="dl">"</span><span class="s2">&lt;br&gt;</span><span class="dl">"</span><span class="p">);</span>
+      <span class="nb">document</span><span class="p">.</span><span class="nx">write</span><span class="p">(</span><span class="o">!</span><span class="nx">flag</span><span class="o">+</span><span class="dl">"</span><span class="s2">&lt;br&gt;</span><span class="dl">"</span><span class="p">);</span>
+
+      <span class="nb">document</span><span class="p">.</span><span class="nx">write</span><span class="p">(</span><span class="dl">"</span><span class="s2">&lt;hr&gt;</span><span class="dl">"</span><span class="p">);</span>
+      <span class="c1">//number</span>
+      <span class="kd">var</span> <span class="nx">num</span> <span class="o">=</span> <span class="mi">3</span><span class="p">;</span>
+      <span class="kd">var</span> <span class="nx">num2</span> <span class="o">=</span> <span class="mi">0</span><span class="p">;</span>
+      <span class="kd">var</span> <span class="nx">num3</span> <span class="o">=</span> <span class="kc">NaN</span><span class="p">;</span>
+      <span class="nb">document</span><span class="p">.</span><span class="nx">write</span><span class="p">(</span><span class="o">!!</span><span class="nx">num</span><span class="o">+</span><span class="dl">"</span><span class="s2">&lt;br&gt;</span><span class="dl">"</span><span class="p">);</span>
+      <span class="nb">document</span><span class="p">.</span><span class="nx">write</span><span class="p">(</span><span class="o">!!</span><span class="nx">num2</span><span class="o">+</span><span class="dl">"</span><span class="s2">&lt;br&gt;</span><span class="dl">"</span><span class="p">);</span>
+      <span class="nb">document</span><span class="p">.</span><span class="nx">write</span><span class="p">(</span><span class="o">!!</span><span class="nx">num3</span><span class="o">+</span><span class="dl">"</span><span class="s2">&lt;br&gt;</span><span class="dl">"</span><span class="p">);</span>
+
+      <span class="cm">/*while(1){
+
+      }*/</span>
+
+      <span class="nb">document</span><span class="p">.</span><span class="nx">write</span><span class="p">(</span><span class="dl">"</span><span class="s2">&lt;hr&gt;</span><span class="dl">"</span><span class="p">);</span>
+      <span class="c1">//string</span>
+
+      <span class="kd">var</span> <span class="nx">str1</span> <span class="o">=</span> <span class="dl">"</span><span class="s2">abc</span><span class="dl">"</span><span class="p">;</span>
+      <span class="kd">var</span> <span class="nx">str2</span> <span class="o">=</span> <span class="dl">""</span><span class="p">;</span>
+      <span class="nb">document</span><span class="p">.</span><span class="nx">write</span><span class="p">(</span><span class="o">!!</span><span class="nx">str1</span><span class="o">+</span><span class="dl">"</span><span class="s2">&lt;br&gt;</span><span class="dl">"</span><span class="p">);</span>
+      <span class="nb">document</span><span class="p">.</span><span class="nx">write</span><span class="p">(</span><span class="o">!!</span><span class="nx">str2</span><span class="o">+</span><span class="dl">"</span><span class="s2">&lt;br&gt;</span><span class="dl">"</span><span class="p">);</span>
+
+      <span class="nb">document</span><span class="p">.</span><span class="nx">write</span><span class="p">(</span><span class="dl">"</span><span class="s2">&lt;hr&gt;</span><span class="dl">"</span><span class="p">);</span>
+
+
+      <span class="c1">// null &amp; undefined</span>
+      <span class="kd">var</span> <span class="nx">obj</span> <span class="o">=</span> <span class="kc">null</span><span class="p">;</span>
+      <span class="kd">var</span> <span class="nx">obj2</span><span class="p">;</span>
+      <span class="nb">document</span><span class="p">.</span><span class="nx">write</span><span class="p">(</span><span class="o">!!</span><span class="nx">obj</span><span class="o">+</span><span class="dl">"</span><span class="s2">&lt;br&gt;</span><span class="dl">"</span><span class="p">);</span>
+      <span class="nb">document</span><span class="p">.</span><span class="nx">write</span><span class="p">(</span><span class="o">!!</span><span class="nx">obj2</span><span class="o">+</span><span class="dl">"</span><span class="s2">&lt;br&gt;</span><span class="dl">"</span><span class="p">);</span>
+
+      <span class="nb">document</span><span class="p">.</span><span class="nx">write</span><span class="p">(</span><span class="dl">"</span><span class="s2">&lt;hr&gt;</span><span class="dl">"</span><span class="p">);</span>
+
+      <span class="c1">// null &amp; undefined</span>
+      <span class="kd">var</span> <span class="nx">date</span> <span class="o">=</span> <span class="k">new</span> <span class="nb">Date</span><span class="p">();</span>
+      <span class="nb">document</span><span class="p">.</span><span class="nx">write</span><span class="p">(</span><span class="o">!!</span><span class="nx">date</span><span class="o">+</span><span class="dl">"</span><span class="s2">&lt;br&gt;</span><span class="dl">"</span><span class="p">);</span>
+
+      <span class="nb">document</span><span class="p">.</span><span class="nx">write</span><span class="p">(</span><span class="dl">"</span><span class="s2">&lt;hr&gt;</span><span class="dl">"</span><span class="p">);</span>
+
+
+
+      <span class="nx">obj</span> <span class="o">=</span> <span class="dl">"</span><span class="s2">123</span><span class="dl">"</span><span class="p">;</span>
+      <span class="k">if</span><span class="p">(</span><span class="nx">obj</span> <span class="o">!=</span> <span class="kc">null</span> <span class="o">&amp;&amp;</span> <span class="nx">obj</span><span class="p">.</span><span class="nx">length</span> <span class="o">&gt;</span> <span class="mi">0</span><span class="p">){</span><span class="c1">//防止空指针异常</span>
+          <span class="nx">alert</span><span class="p">(</span><span class="mi">123</span><span class="p">);</span>
+      <span class="p">}</span>
+      <span class="c1">//js中可以这样定义，简化书写。</span>
+      <span class="k">if</span><span class="p">(</span><span class="nx">obj</span><span class="p">){</span><span class="c1">//防止空指针异常</span>
+          <span class="nx">alert</span><span class="p">(</span><span class="mi">111</span><span class="p">);</span>
+      <span class="p">}</span>
+
+
+  <span class="nt">&lt;/script&gt;</span>
+</code></pre></div> </div> </li> </ul> <h5 id="156-三元运算符">1.5.6 三元运算符</h5> <div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>? : 表达式
+</code></pre></div></div> <div class="language-javascript highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kd">var</span> <span class="nx">a</span> <span class="o">=</span> <span class="mi">3</span><span class="p">;</span>
+<span class="kd">var</span> <span class="nx">b</span> <span class="o">=</span> <span class="mi">4</span><span class="p">;</span>
+<span class="kd">var</span> <span class="nx">c</span> <span class="o">=</span> <span class="nx">a</span> <span class="o">&gt;</span> <span class="nx">b</span> <span class="p">?</span> <span class="mi">1</span><span class="p">:</span><span class="mi">0</span><span class="p">;</span>
+</code></pre></div></div> <ul> <li>语法： <ul> <li><code class="language-plaintext highlighter-rouge">表达式? 值1:值2;</code></li> <li>判断表达式的值，如果是<code class="language-plaintext highlighter-rouge">true</code>则取值1，如果是<code class="language-plaintext highlighter-rouge">false</code>则取值2；</li> </ul> </li> </ul> <h4 id="16-流程控制语句">1.6 流程控制语句：</h4> <ol> <li><code class="language-plaintext highlighter-rouge">if...else...</code></li> <li><code class="language-plaintext highlighter-rouge">switch</code>: <ul> <li>在java中，<code class="language-plaintext highlighter-rouge">switch</code>语句可以接受的数据类型： <code class="language-plaintext highlighter-rouge">byte int shor char,枚举(1.5) ,String(1.7)</code> <ul> <li><code class="language-plaintext highlighter-rouge">switch</code>(变量): <code class="language-plaintext highlighter-rouge">case</code> 值:</li> </ul> </li> <li>在JS中,<code class="language-plaintext highlighter-rouge">switch</code>语句可以接受任意的原始数据类型</li> </ul> </li> <li><code class="language-plaintext highlighter-rouge">while</code></li> <li><code class="language-plaintext highlighter-rouge">do...while</code></li> <li><code class="language-plaintext highlighter-rouge">for</code></li> </ol> <p>switch</p> <div class="language-html highlighter-rouge"><div class="highlight"><pre class="highlight"><code>    <span class="nt">&lt;script&gt;</span>
+        <span class="kd">var</span> <span class="nx">a</span><span class="p">;</span>
+        <span class="k">switch</span> <span class="p">(</span><span class="nx">a</span><span class="p">){</span>
+            <span class="k">case</span> <span class="mi">1</span><span class="p">:</span>
+                <span class="nx">alert</span><span class="p">(</span><span class="dl">"</span><span class="s2">number</span><span class="dl">"</span><span class="p">);</span>
+                <span class="k">break</span><span class="p">;</span>
+            <span class="k">case</span> <span class="dl">"</span><span class="s2">abc</span><span class="dl">"</span><span class="p">:</span>
+                <span class="nx">alert</span><span class="p">(</span><span class="dl">"</span><span class="s2">string</span><span class="dl">"</span><span class="p">);</span>
+                <span class="k">break</span><span class="p">;</span>
+            <span class="k">case</span> <span class="kc">true</span><span class="p">:</span>
+                <span class="nx">alert</span><span class="p">(</span><span class="dl">"</span><span class="s2">true</span><span class="dl">"</span><span class="p">);</span>
+                <span class="k">break</span><span class="p">;</span>
+            <span class="k">case</span> <span class="kc">null</span><span class="p">:</span>
+                <span class="nx">alert</span><span class="p">(</span><span class="dl">"</span><span class="s2">null</span><span class="dl">"</span><span class="p">);</span>
+                <span class="k">break</span><span class="p">;</span>
+            <span class="k">case</span> <span class="kc">undefined</span><span class="p">:</span>
+                <span class="nx">alert</span><span class="p">(</span><span class="dl">"</span><span class="s2">undefined</span><span class="dl">"</span><span class="p">);</span>
+                <span class="k">break</span><span class="p">;</span>
+        <span class="p">}</span>
+    <span class="nt">&lt;/script&gt;</span> 
+</code></pre></div></div> <p>while</p> <div class="language-html highlighter-rouge"><div class="highlight"><pre class="highlight"><code> <span class="nt">&lt;script&gt;</span>
+
+       <span class="c1">//1 ~ 100 求和  5050</span>
+
+        <span class="kd">var</span> <span class="nx">sum</span> <span class="o">=</span> <span class="mi">0</span><span class="p">;</span>
+        <span class="kd">var</span> <span class="nx">num</span> <span class="o">=</span> <span class="mi">1</span><span class="p">;</span>
+
+        <span class="k">while</span><span class="p">(</span><span class="nx">num</span> <span class="o">&lt;=</span> <span class="mi">100</span><span class="p">){</span>
+            <span class="nx">sum</span> <span class="o">+=</span> <span class="nx">num</span><span class="p">;</span>
+            <span class="nx">num</span> <span class="o">++</span><span class="p">;</span>
+        <span class="p">}</span>
+        <span class="nx">alert</span><span class="p">(</span><span class="nx">sum</span><span class="p">);</span>
+
+    <span class="nt">&lt;/script&gt;</span>
+</code></pre></div></div> <p>for</p> <div class="language-html highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nt">&lt;script&gt;</span>
+
+       <span class="c1">//1 ~ 100 求和  5050</span>
+        <span class="kd">var</span> <span class="nx">sum</span> <span class="o">=</span> <span class="mi">0</span><span class="p">;</span>
+        <span class="k">for</span> <span class="p">(</span><span class="kd">var</span> <span class="nx">i</span> <span class="o">=</span> <span class="mi">1</span><span class="p">;</span> <span class="nx">i</span> <span class="o">&lt;=</span> <span class="mi">100</span><span class="p">;</span> <span class="nx">i</span> <span class="o">++</span><span class="p">){</span>
+            <span class="nx">sum</span> <span class="o">+=</span> <span class="nx">i</span><span class="p">;</span>
+        <span class="p">}</span>
+        <span class="nx">alert</span><span class="p">(</span><span class="nx">sum</span><span class="p">);</span>
+
+    <span class="nt">&lt;/script&gt;</span>
+</code></pre></div></div> <h4 id="17-js特殊语法">1.7 JS特殊语法：</h4> <ol> <li>语句以;结尾，如果一行只有一条语句则 ;可以省略 (不建议)</li> <li>变量的定义使用var关键字，也可以不使用 <ul> <li>用： 定义的变量是局部变量</li> <li>不用：定义的变量是全局变量(不建议) ```html <script> //1. 语句以;结尾，如果一行只有一条语句则 ;可以省略 (不建议) var a = 3; //alert(a);</script></li> </ul> <p>/* b = 4; alert(b);*/ var b ; function fun(){ b = 4; } fun();</p> <div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code> alert(b);  &lt;/script&gt; ```
+</code></pre></div> </div> </li> </ol> <h4 id="18-练习99乘法表">1.8 练习：99乘法表</h4> <div class="language-html highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="cp">&lt;!DOCTYPE html&gt;</span>
+<span class="nt">&lt;html</span> <span class="na">lang=</span><span class="s">"en"</span><span class="nt">&gt;</span>
+<span class="nt">&lt;head&gt;</span>
+   <span class="nt">&lt;meta</span> <span class="na">charset=</span><span class="s">"UTF-8"</span><span class="nt">&gt;</span>
+   <span class="nt">&lt;title&gt;</span>99乘法表<span class="nt">&lt;/title&gt;</span>
+   <span class="nt">&lt;style&gt;</span>
+       <span class="nt">td</span><span class="p">{</span>
+           <span class="nl">border</span><span class="p">:</span> <span class="m">1px</span> <span class="nb">solid</span><span class="p">;</span>
+       <span class="p">}</span>
+   <span class="nt">&lt;/style&gt;</span>
+   <span class="nt">&lt;script&gt;</span>
+       <span class="nb">document</span><span class="p">.</span><span class="nx">write</span><span class="p">(</span><span class="dl">"</span><span class="s2">&lt;table  align='center'&gt;</span><span class="dl">"</span><span class="p">);</span>
+
+       <span class="c1">//1.完成基本的for循环嵌套，展示乘法表</span>
+       <span class="k">for</span> <span class="p">(</span><span class="kd">var</span> <span class="nx">i</span> <span class="o">=</span> <span class="mi">1</span><span class="p">;</span> <span class="nx">i</span> <span class="o">&lt;=</span> <span class="mi">9</span> <span class="p">;</span> <span class="nx">i</span><span class="o">++</span><span class="p">)</span> <span class="p">{</span>
+           <span class="nb">document</span><span class="p">.</span><span class="nx">write</span><span class="p">(</span><span class="dl">"</span><span class="s2">&lt;tr&gt;</span><span class="dl">"</span><span class="p">);</span>
+           <span class="k">for</span> <span class="p">(</span><span class="kd">var</span> <span class="nx">j</span> <span class="o">=</span> <span class="mi">1</span><span class="p">;</span> <span class="nx">j</span> <span class="o">&lt;=</span><span class="nx">i</span> <span class="p">;</span> <span class="nx">j</span><span class="o">++</span><span class="p">)</span> <span class="p">{</span>
+               <span class="nb">document</span><span class="p">.</span><span class="nx">write</span><span class="p">(</span><span class="dl">"</span><span class="s2">&lt;td&gt;</span><span class="dl">"</span><span class="p">);</span>
+
+               <span class="c1">//输出  1 * 1 = 1</span>
+               <span class="nb">document</span><span class="p">.</span><span class="nx">write</span><span class="p">(</span><span class="nx">i</span> <span class="o">+</span> <span class="dl">"</span><span class="s2"> * </span><span class="dl">"</span> <span class="o">+</span> <span class="nx">j</span> <span class="o">+</span> <span class="dl">"</span><span class="s2"> = </span><span class="dl">"</span> <span class="o">+</span> <span class="p">(</span> <span class="nx">i</span><span class="o">*</span><span class="nx">j</span><span class="p">)</span> <span class="o">+</span><span class="dl">"</span><span class="s2">&amp;nbsp;&amp;nbsp;&amp;nbsp;</span><span class="dl">"</span><span class="p">);</span>
+
+               <span class="nb">document</span><span class="p">.</span><span class="nx">write</span><span class="p">(</span><span class="dl">"</span><span class="s2">&lt;/td&gt;</span><span class="dl">"</span><span class="p">);</span>
+           <span class="p">}</span>
+           <span class="cm">/*//输出换行
+           document.write("&lt;br&gt;");*/</span>
+
+           <span class="nb">document</span><span class="p">.</span><span class="nx">write</span><span class="p">(</span><span class="dl">"</span><span class="s2">&lt;/tr&gt;</span><span class="dl">"</span><span class="p">);</span>
+       <span class="p">}</span>
+
+       <span class="c1">//2.完成表格嵌套</span>
+       <span class="nb">document</span><span class="p">.</span><span class="nx">write</span><span class="p">(</span><span class="dl">"</span><span class="s2">&lt;/table&gt;</span><span class="dl">"</span><span class="p">);</span>
+
+   <span class="nt">&lt;/script&gt;</span>
+<span class="nt">&lt;/head&gt;</span>
+<span class="nt">&lt;body&gt;</span>
+<span class="nt">&lt;/body&gt;</span>
+<span class="nt">&lt;/html&gt;</span>
+</code></pre></div></div> <h3 id="2-基本对象">2. 基本对象：</h3> <h4 id="21-function函数方法对象">2.1 Function：函数(方法)对象</h4> <p>##### 1. 创建：</p> <ol> <li><code class="language-plaintext highlighter-rouge">var fun = new Function(形式参数列表,方法体); //忘掉吧</code></li> <li> <div class="language-javascript highlighter-rouge"><div class="highlight"><pre class="highlight"><code>  <span class="kd">function</span> <span class="nx">方法名称</span><span class="p">(</span><span class="nx">形式参数列表</span><span class="p">){</span>
+        <span class="nx">方法体</span>
+    <span class="p">}</span>  
+</code></pre></div> </div> </li> <li> <div class="language-javascript highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kd">var</span> <span class="nx">方法名</span> <span class="o">=</span> <span class="kd">function</span><span class="p">(</span><span class="nx">形式参数列表</span><span class="p">){</span>
+         <span class="nx">方法体</span>
+    <span class="p">}</span>
+</code></pre></div> </div> </li> </ol> <h5 id="2-方法">2. 方法：</h5> <h5 id="3-属性">3. 属性：</h5> <ul> <li><code class="language-plaintext highlighter-rouge">length</code>:代表形参的个数 <h5 id="4-特点">4. 特点：</h5> <ol> <li>方法定义是，形参的类型不用写,返回值类型也不写。</li> <li>方法是一个对象，如果定义名称相同的方法，会覆盖</li> <li>在JS中，<code class="language-plaintext highlighter-rouge">方法的调用只与方法的名称有关，和参数列表无关</code></li> <li>在方法声明中有一个隐藏的内置对象（数组），<code class="language-plaintext highlighter-rouge">arguments</code>,封装所有的实际参数 <h5 id="5-调用">5. 调用：</h5> </li> </ol> </li> <li><code class="language-plaintext highlighter-rouge">方法名称(实际参数列表);</code></li> </ul> <div class="language-html highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nt">&lt;script &gt;</span>
+
+        <span class="c1">//1.创建方式1</span>
+        <span class="kd">var</span> <span class="nx">fun1</span> <span class="o">=</span> <span class="k">new</span> <span class="nb">Function</span><span class="p">(</span><span class="dl">"</span><span class="s2">a</span><span class="dl">"</span><span class="p">,</span><span class="dl">"</span><span class="s2">b</span><span class="dl">"</span><span class="p">,</span><span class="dl">"</span><span class="s2">c</span><span class="dl">"</span><span class="p">,</span><span class="dl">"</span><span class="s2">alert(a);</span><span class="dl">"</span><span class="p">);</span>
+        <span class="c1">//调用方法</span>
+       <span class="c1">// fun1(3,4);</span>
+       <span class="c1">// alert(fun1.length);</span>
+       <span class="c1">//2. 创建方式2</span>
+        <span class="kd">function</span> <span class="nx">fun2</span><span class="p">(</span><span class="nx">a</span> <span class="p">,</span> <span class="nx">b</span><span class="p">){</span>
+            <span class="nx">alert</span><span class="p">(</span><span class="nx">a</span> <span class="o">+</span> <span class="nx">b</span><span class="p">);</span>
+        <span class="p">}</span>
+
+        <span class="c1">//fun2(3,4);</span>
+
+        <span class="c1">//alert(fun2.length);</span>
+        <span class="kd">var</span> <span class="nx">fun3</span> <span class="o">=</span> <span class="kd">function</span><span class="p">(</span><span class="nx">a</span><span class="p">,</span><span class="nx">b</span><span class="p">){</span>
+            <span class="nx">alert</span><span class="p">(</span><span class="nx">a</span><span class="o">+</span><span class="nx">b</span><span class="p">);</span>
+
+        <span class="p">}</span>
+        <span class="c1">//alert(fun3.length);</span>
+       <span class="c1">// fun3(3,4);</span>
+
+
+        <span class="cm">/*fun2 = function(a , b){
+            alert(a - b);
+        }*/</span>
+        <span class="kd">function</span> <span class="nx">fun2</span><span class="p">(</span><span class="nx">a</span> <span class="p">,</span> <span class="nx">b</span><span class="p">){</span>
+            <span class="c1">//alert(a - b);</span>
+            <span class="nx">alert</span><span class="p">(</span><span class="nx">a</span><span class="p">);</span>
+            <span class="nx">alert</span><span class="p">(</span><span class="nx">b</span><span class="p">);</span>
+        <span class="p">}</span>
+
+        <span class="c1">//fun2(3,4);</span>
+
+        <span class="c1">//方法调用</span>
+        <span class="c1">//fun2(1,2);</span>
+        <span class="c1">//fun2(1);</span>
+        <span class="c1">//fun2();</span>
+        <span class="c1">//fun2(1,2,3);</span>
+
+        <span class="cm">/*
+         * 求两个数的和
+         */</span>
+        <span class="cm">/*function  add(a , b){
+            return a + b;
+        }*/</span>
+        <span class="cm">/**
+         * 求任意个数的和
+         */</span>
+        <span class="kd">function</span> <span class="nx">add</span> <span class="p">(){</span>
+           <span class="kd">var</span> <span class="nx">sum</span> <span class="o">=</span> <span class="mi">0</span><span class="p">;</span>
+            <span class="k">for</span> <span class="p">(</span><span class="kd">var</span> <span class="nx">i</span> <span class="o">=</span> <span class="mi">0</span><span class="p">;</span> <span class="nx">i</span> <span class="o">&lt;</span> <span class="nx">arguments</span><span class="p">.</span><span class="nx">length</span><span class="p">;</span> <span class="nx">i</span><span class="o">++</span><span class="p">)</span> <span class="p">{</span>
+                <span class="nx">sum</span> <span class="o">+=</span> <span class="nx">arguments</span><span class="p">[</span><span class="nx">i</span><span class="p">];</span>
+            <span class="p">}</span>
+            <span class="k">return</span> <span class="nx">sum</span><span class="p">;</span>
+        <span class="p">}</span>
+
+        <span class="kd">var</span> <span class="nx">sum</span> <span class="o">=</span> <span class="nx">add</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span><span class="mi">2</span><span class="p">,</span><span class="mi">3</span><span class="p">,</span><span class="mi">4</span><span class="p">);</span>
+        <span class="nx">alert</span><span class="p">(</span><span class="nx">sum</span><span class="p">);</span>
+        <span class="c1">//add(1,3);</span>
+    <span class="nt">&lt;/script&gt;</span>
+</code></pre></div></div> <h4 id="22-array数组对象">2.2 Array:数组对象</h4> <p>##### 1. 创建：</p> <ul> <li><code class="language-plaintext highlighter-rouge">var arr = new Array(元素列表);</code></li> <li><code class="language-plaintext highlighter-rouge">var arr = new Array(默认长度);</code></li> <li><code class="language-plaintext highlighter-rouge">var arr = [元素列表];</code> ##### 2. 方法</li> <li><code class="language-plaintext highlighter-rouge">join(参数):</code>将数组中的元素按照指定的分隔符拼接为字符串 - <code class="language-plaintext highlighter-rouge">push()</code> 向数组的末尾添加一个或更多元素，并返回新的长度。 ##### 3. 属性</li> <li><code class="language-plaintext highlighter-rouge">length</code>:数组的长度 ##### 4. 特点： <ol> <li>JS中，数组元素的类型可变的。</li> <li>JS中，数组长度可变的。</li> </ol> </li> </ul> <div class="language-html highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nt">&lt;script &gt;</span>
+        <span class="c1">//1.创建方式1</span>
+       <span class="cm">/* var arr1 = new Array(1,2,3);
+        var arr2 = new Array(5);
+        var arr3 = [1,2,3,4];
+
+        var arr4 = new Array();
+
+        document.write(arr1 +"&lt;br&gt;");
+        document.write(arr2 +"&lt;br&gt;");
+        document.write(arr3 +"&lt;br&gt;");
+        document.write(arr4 +"&lt;br&gt;");*/</span>
+
+
+       <span class="kd">var</span> <span class="nx">arr</span> <span class="o">=</span> <span class="p">[</span><span class="mi">1</span><span class="p">,</span><span class="dl">"</span><span class="s2">abc</span><span class="dl">"</span><span class="p">,</span><span class="kc">true</span><span class="p">];</span>
+        <span class="nb">document</span><span class="p">.</span><span class="nx">write</span><span class="p">(</span><span class="nx">arr</span> <span class="o">+</span><span class="dl">"</span><span class="s2">&lt;br&gt;</span><span class="dl">"</span><span class="p">);</span>
+
+        <span class="nb">document</span><span class="p">.</span><span class="nx">write</span><span class="p">(</span><span class="nx">arr</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span> <span class="o">+</span><span class="dl">"</span><span class="s2">&lt;br&gt;</span><span class="dl">"</span><span class="p">);</span>
+        <span class="nb">document</span><span class="p">.</span><span class="nx">write</span><span class="p">(</span><span class="nx">arr</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span> <span class="o">+</span><span class="dl">"</span><span class="s2">&lt;br&gt;</span><span class="dl">"</span><span class="p">);</span>
+        <span class="nb">document</span><span class="p">.</span><span class="nx">write</span><span class="p">(</span><span class="nx">arr</span><span class="p">[</span><span class="mi">2</span><span class="p">]</span> <span class="o">+</span><span class="dl">"</span><span class="s2">&lt;br&gt;</span><span class="dl">"</span><span class="p">);</span>
+
+        <span class="c1">//document.write(arr[10] +"</span><span class="o">&lt;</span><span class="nx">br</span><span class="o">&gt;</span><span class="dl">"</span><span class="s2">);
+        arr[10] = </span><span class="dl">"</span><span class="nx">hehe</span><span class="dl">"</span><span class="s2">;
+        document.write(arr[10] +</span><span class="dl">"</span><span class="o">&lt;</span><span class="nx">br</span><span class="o">&gt;</span><span class="dl">"</span><span class="s2">);
+        document.write(arr[9] +</span><span class="dl">"</span><span class="o">&lt;</span><span class="nx">br</span><span class="o">&gt;</span><span class="dl">"</span><span class="s2">);
+
+        //alert(arr.length);//11
+        document.write(arr.join(</span><span class="dl">"</span><span class="o">--</span><span class="dl">"</span><span class="s2">)+</span><span class="dl">"</span><span class="o">&lt;</span><span class="nx">br</span><span class="o">&gt;</span><span class="dl">"</span><span class="s2">);
+        arr.push(11);
+        document.write(arr.join(</span><span class="dl">"</span><span class="o">--</span><span class="dl">"</span><span class="s2">)+</span><span class="dl">"</span><span class="o">&lt;</span><span class="nx">br</span><span class="o">&gt;</span><span class="dl">"</span><span class="s2">);
+    </span><span class="nt">&lt;/script&gt;</span>
+</code></pre></div></div> <h4 id="23-boolean">2.3 Boolean</h4> <ul> <li>没有什么方法</li> </ul> <h4 id="24-date日期对象">2.4 Date：日期对象</h4> <p>##### 1. 创建：</p> <ul> <li><code class="language-plaintext highlighter-rouge">var date = new Date();</code></li> </ul> <p>##### 2. 方法：</p> <ul> <li><code class="language-plaintext highlighter-rouge">toLocaleString()</code>：返回当前date对象对应的时间本地字符串格式</li> <li><code class="language-plaintext highlighter-rouge">getTime()</code>:获取毫秒值。返回当前如期对象描述的时间到1970年1月1日零点的毫秒值差</li> </ul> <div class="language-html highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nt">&lt;script &gt;</span>
+ 
+        <span class="kd">var</span> <span class="nx">date</span> <span class="o">=</span> <span class="k">new</span> <span class="nb">Date</span><span class="p">();</span>
+
+        <span class="nb">document</span><span class="p">.</span><span class="nx">write</span><span class="p">(</span><span class="nx">date</span> <span class="o">+</span> <span class="dl">"</span><span class="s2">&lt;br&gt;</span><span class="dl">"</span><span class="p">);</span>
+
+        <span class="nb">document</span><span class="p">.</span><span class="nx">write</span><span class="p">(</span><span class="nx">date</span><span class="p">.</span><span class="nx">toLocaleString</span><span class="p">()</span> <span class="o">+</span> <span class="dl">"</span><span class="s2">&lt;br&gt;</span><span class="dl">"</span><span class="p">);</span>
+
+        <span class="nb">document</span><span class="p">.</span><span class="nx">write</span><span class="p">(</span><span class="nx">date</span><span class="p">.</span><span class="nx">getTime</span><span class="p">()</span> <span class="o">+</span> <span class="dl">"</span><span class="s2">&lt;br&gt;</span><span class="dl">"</span><span class="p">);</span>
+
+    <span class="nt">&lt;/script&gt;</span>
+</code></pre></div></div> <h4 id="25-math数学对象">2.5 Math：数学对象</h4> <p>##### 1. 创建： 特点：Math对象不用创建，直接使用。 <code class="language-plaintext highlighter-rouge">Math.方法名();</code></p> <p>##### 2. 方法：</p> <ul> <li><code class="language-plaintext highlighter-rouge">random()</code>:返回 0 ~ 1 之间的随机数。 含0不含1</li> <li><code class="language-plaintext highlighter-rouge">ceil(x)</code>：对数进行上舍入。</li> <li><code class="language-plaintext highlighter-rouge">floor(x)</code>：对数进行下舍入。</li> <li><code class="language-plaintext highlighter-rouge">round(x)</code>：把数四舍五入为最接近的整数。 ##### 3. 属性：</li> <li><code class="language-plaintext highlighter-rouge">PI</code></li> </ul> <div class="language-html highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nt">&lt;script &gt;</span>
+
+        <span class="nb">document</span><span class="p">.</span><span class="nx">write</span><span class="p">(</span><span class="nb">Math</span><span class="p">.</span><span class="nx">PI</span> <span class="o">+</span><span class="dl">"</span><span class="s2">&lt;br&gt;</span><span class="dl">"</span><span class="p">);</span>
+        <span class="nb">document</span><span class="p">.</span><span class="nx">write</span><span class="p">(</span><span class="nb">Math</span><span class="p">.</span><span class="nx">random</span><span class="p">()</span> <span class="o">+</span><span class="dl">"</span><span class="s2">&lt;br&gt;</span><span class="dl">"</span><span class="p">);</span>
+        <span class="nb">document</span><span class="p">.</span><span class="nx">write</span><span class="p">(</span><span class="nb">Math</span><span class="p">.</span><span class="nx">round</span><span class="p">(</span><span class="mf">3.14</span><span class="p">)</span> <span class="o">+</span><span class="dl">"</span><span class="s2">&lt;br&gt;</span><span class="dl">"</span><span class="p">);</span>
+        <span class="nb">document</span><span class="p">.</span><span class="nx">write</span><span class="p">(</span><span class="nb">Math</span><span class="p">.</span><span class="nx">ceil</span><span class="p">(</span><span class="mf">3.14</span><span class="p">)</span> <span class="o">+</span><span class="dl">"</span><span class="s2">&lt;br&gt;</span><span class="dl">"</span><span class="p">);</span>
+        <span class="nb">document</span><span class="p">.</span><span class="nx">write</span><span class="p">(</span><span class="nb">Math</span><span class="p">.</span><span class="nx">floor</span><span class="p">(</span><span class="mf">3.14</span><span class="p">)</span> <span class="o">+</span><span class="dl">"</span><span class="s2">&lt;br&gt;</span><span class="dl">"</span><span class="p">);</span>
+
+        <span class="cm">/**
+         * 取 1~100之间的随机整数
+         *      1. Math.random()产生随机数：范围 [0,1)小数
+         *      2. 乘以 100 --&gt; [0,99.9999] 小数
+         *      3. 舍弃小数部分 ：floor --&gt; [0,99] 整数
+         *      4. +1 --&gt;[0,99] 整数 [1,100]
+         *
+         *
+         */</span>
+
+       <span class="kd">var</span> <span class="nx">number</span> <span class="o">=</span>  <span class="nb">Math</span><span class="p">.</span><span class="nx">floor</span><span class="p">((</span><span class="nb">Math</span><span class="p">.</span><span class="nx">random</span><span class="p">()</span> <span class="o">*</span> <span class="mi">100</span><span class="p">))</span> <span class="o">+</span> <span class="mi">1</span><span class="p">;</span>
+       <span class="nb">document</span><span class="p">.</span><span class="nx">write</span><span class="p">(</span><span class="nx">number</span><span class="p">);</span>
+       
+    <span class="nt">&lt;/script&gt;</span>
+</code></pre></div></div> <h4 id="26-number">2.6 Number</h4> <ul> <li>基本数据类型 <h4 id="26-string">2.6 String</h4> </li> <li>基本数据类型 <h4 id="28-regexp正则表达式对象">2.8 RegExp：正则表达式对象</h4> <h5 id="1-正则表达式定义字符串的组成规则">1. 正则表达式：定义字符串的组成规则。</h5> <ol> <li>单个字符:<code class="language-plaintext highlighter-rouge">[]</code> 如： <code class="language-plaintext highlighter-rouge">[a] [ab] [a-zA-Z0-9_]</code></li> </ol> <ul> <li>特殊符号代表特殊含义的单个字符: <ul> <li><code class="language-plaintext highlighter-rouge">\d:单个数字字符 [0-9]</code></li> <li><code class="language-plaintext highlighter-rouge">\w:单个单词字符[a-zA-Z0-9_]</code> <ol> <li>量词符号：</li> </ol> </li> </ul> </li> <li><code class="language-plaintext highlighter-rouge">?：表示出现0次或1次</code></li> <li><code class="language-plaintext highlighter-rouge">*：表示出现0次或多次</code></li> <li><code class="language-plaintext highlighter-rouge">+：出现1次或多次</code></li> <li><code class="language-plaintext highlighter-rouge">{m,n}:表示 m&lt;= 数量 &lt;= n</code> <ul> <li>m如果缺省： <code class="language-plaintext highlighter-rouge">{,n}:最多n次</code></li> <li>n如果缺省：<code class="language-plaintext highlighter-rouge">{m,} 最少m次</code> <ol> <li>开始结束符号</li> </ol> </li> </ul> </li> <li><code class="language-plaintext highlighter-rouge">^:开始</code></li> <li><code class="language-plaintext highlighter-rouge">$:结束</code></li> </ul> </li> <li><a href="https://www.w3school.com.cn/jsref/jsref_obj_regexp.asp">访问具体知识</a></li> </ul> <h5 id="2-正则对象">2. 正则对象：</h5> <ol> <li>创建 <ol> <li><code class="language-plaintext highlighter-rouge">var reg = new RegExp("正则表达式");</code></li> <li><code class="language-plaintext highlighter-rouge">var reg = /正则表达式/;</code></li> </ol> </li> <li>方法 <ol> <li> <p><code class="language-plaintext highlighter-rouge">test</code>(参数):验证指定的字符串是否符合正则定义的规范 ```html <script></script></p> <p>//1. var reg = new RegExp(“^\w{6,12}$”); //2. var reg2= /^\w{6,12}$/;</p> <p>/<em>alert(reg); alert(reg2);</em>/</p> <p>var username = “zhangsan”;</p> <p>//验证 var flag = reg.test(username); alert(flag);</p> </li> </ol> <p>&lt;/script&gt; ```</p> </li> </ol> <h4 id="29-global">2.9 Global</h4> <h5 id="1-特点">1. 特点：</h5> <ul> <li>全局对象，这个Global中封装的方法不需要对象就可以直接调用。 方法名(); <h5 id="2-方法-1">2. 方法：</h5> <ul> <li><code class="language-plaintext highlighter-rouge">encodeURI()</code>:url编码</li> <li> <p><code class="language-plaintext highlighter-rouge">decodeURI()</code>:url解码</p> </li> <li><code class="language-plaintext highlighter-rouge">encodeURIComponent()</code>:url编码,编码的字符更多</li> <li> <p><code class="language-plaintext highlighter-rouge">decodeURIComponent()</code>:url解码</p> </li> <li><code class="language-plaintext highlighter-rouge">parseInt()</code>:将字符串转为数字 <ul> <li>逐一判断每一个字符是否是数字，直到不是数字为止，将前边数字部分转为number</li> </ul> </li> <li><code class="language-plaintext highlighter-rouge">isNaN()</code>:判断一个值是否是NaN <ul> <li>NaN六亲不认，连自己都不认。NaN参与的( ==比较) 全部为false</li> </ul> </li> <li><code class="language-plaintext highlighter-rouge">eval()</code>:将 JavaScript 字符串，并把它作为脚本代码来执行。</li> </ul> <h5 id="3-url编码">3. URL编码</h5> </li> <li><code class="language-plaintext highlighter-rouge">我爱学习 = %E6%88%91%E7%88%B1%E5%AD%A6%E4%B9%A0</code></li> </ul> <div class="language-html highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nt">&lt;script &gt;</span>
+
+        <span class="kd">var</span> <span class="nx">str</span> <span class="o">=</span> <span class="dl">"</span><span class="s2">http://www.baidu.com?wd=我爱学习</span><span class="dl">"</span><span class="p">;</span>
+        <span class="kd">var</span> <span class="nx">encode</span> <span class="o">=</span> <span class="nb">encodeURI</span><span class="p">(</span><span class="nx">str</span><span class="p">);</span>
+        <span class="nb">document</span><span class="p">.</span><span class="nx">write</span><span class="p">(</span><span class="nx">encode</span> <span class="o">+</span><span class="dl">"</span><span class="s2">&lt;br&gt;</span><span class="dl">"</span><span class="p">);</span>
+        <span class="kd">var</span> <span class="nx">s</span> <span class="o">=</span> <span class="nb">decodeURI</span><span class="p">(</span><span class="nx">encode</span><span class="p">);</span><span class="c1">//%E6%88%91%E7%88%B1%E5%AD%A6%E4%B9%A0</span>
+        <span class="nb">document</span><span class="p">.</span><span class="nx">write</span><span class="p">(</span><span class="nx">s</span> <span class="o">+</span><span class="dl">"</span><span class="s2">&lt;br&gt;</span><span class="dl">"</span><span class="p">);</span><span class="c1">//我爱学习</span>
+
+
+        <span class="kd">var</span> <span class="nx">str1</span> <span class="o">=</span> <span class="dl">"</span><span class="s2">http://www.baidu.com?wd=我爱学习</span><span class="dl">"</span><span class="p">;</span>
+        <span class="kd">var</span> <span class="nx">encode1</span> <span class="o">=</span> <span class="nb">encodeURIComponent</span><span class="p">(</span><span class="nx">str1</span><span class="p">);</span>
+        <span class="nb">document</span><span class="p">.</span><span class="nx">write</span><span class="p">(</span><span class="nx">encode1</span> <span class="o">+</span><span class="dl">"</span><span class="s2">&lt;br&gt;</span><span class="dl">"</span><span class="p">);</span><span class="c1">//%E6%88%91%E7%88%B1%E5%AD%A6%E4%B9%A0</span>
+        <span class="kd">var</span> <span class="nx">s1</span> <span class="o">=</span> <span class="nb">decodeURIComponent</span><span class="p">(</span><span class="nx">encode</span><span class="p">);</span>
+        <span class="nb">document</span><span class="p">.</span><span class="nx">write</span><span class="p">(</span><span class="nx">s1</span> <span class="o">+</span><span class="dl">"</span><span class="s2">&lt;br&gt;</span><span class="dl">"</span><span class="p">);</span><span class="c1">//我爱学习</span>
+
+
+        <span class="kd">var</span> <span class="nx">str</span> <span class="o">=</span> <span class="dl">"</span><span class="s2">a234abc</span><span class="dl">"</span><span class="p">;</span>
+        <span class="kd">var</span> <span class="nx">number</span> <span class="o">=</span> <span class="nb">parseInt</span><span class="p">(</span><span class="nx">str</span><span class="p">);</span>
+        <span class="c1">//alert(number + 1);</span>
+
+        <span class="kd">var</span> <span class="nx">a</span> <span class="o">=</span> <span class="kc">NaN</span><span class="p">;</span>
+
+        <span class="nb">document</span><span class="p">.</span><span class="nx">write</span><span class="p">(</span><span class="nx">a</span> <span class="o">==</span> <span class="kc">NaN</span><span class="p">);</span>
+        <span class="nb">document</span><span class="p">.</span><span class="nx">write</span><span class="p">(</span><span class="nb">isNaN</span><span class="p">(</span><span class="nx">a</span><span class="p">));</span>
+
+        <span class="kd">var</span> <span class="nx">jscode</span> <span class="o">=</span> <span class="dl">"</span><span class="s2">alert(123)</span><span class="dl">"</span><span class="p">;</span>
+        <span class="nb">eval</span><span class="p">(</span><span class="nx">jscode</span><span class="p">);</span>
+
+    <span class="nt">&lt;/script&gt;</span>
+</code></pre></div></div> <div style="margin-top:2em;padding:0 1.5em;border:1px solid #d3d3d3;background-color:#deebf7"> <h3>文档信息</h3> <ul> <li>本文作者：<a href="https://slienceme.cn" target="_blank">slience_me</a></li> <li>本文链接：<a href="https://slienceme.cn/2021/02/10/JavaScript%E5%9F%BA%E7%A1%80-%E5%A4%8D%E5%AD%A6/" target="_blank">https://slienceme.cn/2021/02/10/JavaScript%E5%9F%BA%E7%A1%80-%E5%A4%8D%E5%AD%A6/</a></li> <li>版权声明：自由转载-非商用-非衍生-保持署名（<a href="http://creativecommons.org/licenses/by-nc-nd/3.0/deed.zh" target="_blank">创意共享3.0许可证</a>）</li> </ul> </div> </article> <div class="share"> <div class="share-component" data-disabled='qq,facebook'></div> </div> <div class="comment"> <script src="https://giscus.app/client.js" data-repo="slience-me/blog-comments" data-repo-id="MDEwOlJlcG9zaXRvcnk5MzEyNzkxNw==" data-category="Announcements" data-category-id="DIC_kwDOBY0E7c4CRtg9" data-mapping="title" data-strict="1" data-reactions-enabled="1" data-emit-metadata="0" data-input-position="top" data-theme="light" data-lang="zh-CN" data-loading="lazy" crossorigin="anonymous" async> </script> </div> </div> <div class="column one-fourth"> <h3>Search</h3> <div id="site_search"> <input style="width:96%" type="text" id="search_box" placeholder="Search"> </div> <ul id="search_results" style="font-size:14px;list-style-type:none;padding-top:10px;padding-left:10px;"></ul> <script src="https://slienceme.cn/assets/js/simple-jekyll-search.min.js"></script> <script type="text/javascript"> SimpleJekyllSearch({ searchInput: document.getElementById('search_box'), resultsContainer: document.getElementById('search_results'), json: 'https://slienceme.cn/assets/search_data.json?v=1736474000', searchResultTemplate: '<li><a href="{url}" title="{title}">{title}</a></li>', noResultsText: 'No results found', limit: 10, fuzzy: false, exclude: ['Welcome'] }) </script> <h3 class="post-directory-title mobile-hidden">Table of Contents</h3> <div id="post-directory-module" class="mobile-hidden"> <section class="post-directory"> <dl></dl> </section> </div> <script src="https://slienceme.cn/assets/js/jquery.toc.js"></script> </div> </div> </section> <footer class="container"> <div class="site-footer" role="contentinfo"> <div class="copyright left mobile-block"> Copyright@ 2019-2025 slience_me 版权所有&emsp; <img src="/images/logo/logo.png" class="w-full" style="width: 12px;"> <a href="https://beian.mps.gov.cn/#/query/webSearch?code=13102202000626" rel="noreferrer" target="_blank">冀公网安备13102202000626</a>&emsp; <a href="https://beian.miit.gov.cn/#/Integrated/index" target="_blank" rel="noreferrer">津ICP备2024026565号-1</a> <a href="javascript:window.scrollTo(0,0)" class="right mobile-visible">TOP</a> </div> <ul class="site-footer-links right mobile-hidden"> <li> <a href="javascript:window.scrollTo(0,0)" >TOP</a> </li> </ul> <br/> <script async src="https://slienceme.cn/assets/vendor/busuanzi/2.3/busuanzi.pure.mini.js"></script> <div class="mobile-hidden" style="margin-top:8px"> <span id="busuanzi_container_site_pv" style="display:none"> 本站访问量<span id="busuanzi_value_site_pv"></span>次 </span> <span id="busuanzi_container_site_uv" style="display:none"> / 本站访客数<span id="busuanzi_value_site_uv"></span>人 </span> <span id="busuanzi_container_page_pv" style="display:none"> / 本页访问量<span id="busuanzi_value_page_pv"></span>次 / 统计始于2024-12-01 </span> </div> </div> </footer> <div class="tools-wrapper"> <a class="gotop" href="#" title="回到顶部"><span class="octicon octicon-arrow-up"></span></a> </div> <script src="https://slienceme.cn/assets/vendor/share.js/dist/js/share.min.js"></script> <script src="https://slienceme.cn/assets/js/geopattern.js"></script> <script> jQuery(document).ready(function($) { $('.geopattern').each(function(){ $(this).geopattern($(this).data('pattern-id')); }); /* hljs.initHighlightingOnLoad(); */ }); </script> </body> </html>

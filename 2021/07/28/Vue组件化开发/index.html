@@ -1,0 +1,483 @@
+<!DOCTYPE html> <html lang="zh-cmn-Hans" prefix="og: http://ogp.me/ns#" class="han-init"> <head> <meta charset="utf-8"> <meta http-equiv="X-UA-Compatible" content="IE=edge"> <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1" /> <title>前端｜Web基础_Vue组件化开发 &mdash; Slience_me的博客</title> <link rel="stylesheet" href="https://slienceme.cn/assets/vendor/primer-css/css/primer.css"> <link rel="stylesheet" href="https://slienceme.cn/assets/css/components/collection.css"> <link rel="stylesheet" href="https://slienceme.cn/assets/css/components/repo-card.css"> <link rel="stylesheet" href="https://slienceme.cn/assets/css/sections/repo-list.css"> <link rel="stylesheet" href="https://slienceme.cn/assets/css/components/boxed-group.css"> <link rel="stylesheet" href="https://slienceme.cn/assets/css/globals/common.css"> <link rel="stylesheet" href="https://slienceme.cn/assets/css/globals/responsive.css"> <link rel="stylesheet" href="https://slienceme.cn/assets/css/posts/index.css"> <link rel="stylesheet" href="https://slienceme.cn/assets/vendor/octicons/octicons/octicons.css"> <link rel="stylesheet" href="https://mazhuang.org/rouge-themes/dist/github.css"> <link rel="stylesheet" href="https://slienceme.cn/assets/vendor/share.js/dist/css/share.min.css"> <link rel="canonical" href="https://slienceme.cn/2021/07/28/Vue%E7%BB%84%E4%BB%B6%E5%8C%96%E5%BC%80%E5%8F%91/"> <link rel="alternate" type="application/atom+xml" title="Slience_me的博客" href="https://slienceme.cn/feed.xml"> <link rel="shortcut icon" href="https://slienceme.cn/favicon.ico"> <meta property="og:title" content="前端｜Web基础_Vue组件化开发"> <meta name="keywords" content="前端, Web"> <meta name="og:keywords" content="前端, Web"> <meta name="description" content="Vue1. 组件化开发1.1 基本使用过程 注册组件的基本步骤： 创建组件 注册组件 使用组件 Vue.extend(): 调用Vue.extend()创建的是一个组件构造器。 通常在创建组件构造器时，传入template代表我们自定义组件的模板 改模板就是在使用到组件的地方，要显示的HTML代码 Vue.component(): 调用Vue.component()是将刚才的组件构造器注册为一个组件，并且给它起一个组件的标签名称 所以需要传递两个参数：1、注册组件的标签名 2、组件构造器 组件必须挂载在某个Vue实例下。否则他不会生效"> <meta name="og:description" content="Vue1. 组件化开发1.1 基本使用过程 注册组件的基本步骤： 创建组件 注册组件 使用组件 Vue.extend(): 调用Vue.extend()创建的是一个组件构造器。 通常在创建组件构造器时，传入template代表我们自定义组件的模板 改模板就是在使用到组件的地方，要显示的HTML代码 Vue.component(): 调用Vue.component()是将刚才的组件构造器注册为一个组件，并且给它起一个组件的标签名称 所以需要传递两个参数：1、注册组件的标签名 2、组件构造器 组件必须挂载在某个Vue实例下。否则他不会生效"> <meta property="og:url" content="https://slienceme.cn/2021/07/28/Vue%E7%BB%84%E4%BB%B6%E5%8C%96%E5%BC%80%E5%8F%91/"> <meta property="og:site_name" content="Slience_me的博客"> <meta property="og:type" content="article"> <meta property="og:locale" content="zh_CN" /> <meta property="article:published_time" content="2021-07-28"> <meta name="google-site-verification" content="2feHjT1GNs1Yi2JQfOtdYx7d048naG_-cMwZaDAopIA" /> <script src="https://slienceme.cn/assets/vendor/jquery/dist/jquery.min.js"></script> <script src="https://slienceme.cn/assets/js/main.js"></script> </head> <body class="" data-mz=""> <header class="site-header"> <div class="container"> <h1><a href="https://slienceme.cn/" title="Slience_me的博客"><span class="octicon octicon-mark-github"></span> Slience_me的博客</a></h1> <button class="collapsed mobile-visible" type="button" onclick="toggleMenu();"> <span class="icon-bar"></span> <span class="icon-bar"></span> <span class="icon-bar"></span> </button> <nav class="site-header-nav" role="navigation"> <a href="https://slienceme.cn/" class="site-header-nav-item" target="" title="首页">首页</a> <a href="https://slienceme.cn/categories/" class="site-header-nav-item" target="" title="分类">分类</a> <a href="https://slienceme.cn/archives/" class="mobile-hidden site-header-nav-item" target="" title="归档">归档</a> <a href="https://slienceme.cn/open-source/" class="mobile-hidden site-header-nav-item" target="" title="开源">开源</a> <a href="https://slienceme.cn/fragments/" class="site-header-nav-item" target="" title="片段">片段</a> <a href="https://slienceme.cn/wiki/" class="site-header-nav-item" target="" title="维基">维基</a> <a href="https://slienceme.cn/links/" class="mobile-hidden site-header-nav-item" target="" title="链接">链接</a> <a href="https://slienceme.cn/about/" class="site-header-nav-item" target="" title="关于">关于</a> <a class="mobile-hidden" href="https://slienceme.cn/feed.xml"><span class="octicon octicon-rss" style="color:orange;"></span></a> </nav> </div> </header> <section class="collection-head small geopattern" data-pattern-id="前端｜Web基础_Vue组件化"> <div class="container"> <div class="columns"> <div class="column three-fourths"> <div class="collection-title"> <h1 class="collection-header">前端｜Web基础_Vue组件化开发</h1> <div class="collection-info"> <span class="meta-info"> <span class="octicon octicon-calendar"></span> 2021/07/28 </span> <span class="meta-info"> <span class="octicon octicon-file-directory"></span> <a href="https://slienceme.cn/categories/#前端" title="前端">前端</a> </span> <span class="meta-info"> <span class="octicon octicon-clock"></span> 共 8675 字，约 25 分钟 </span> </div> </div> </div> <div class="column one-fourth mobile-hidden"> <div class="collection-title"> </div> </div> </div> </div> </section> <section class="container content"> <div class="columns"> <div class="column three-fourths" > <article class="article-content markdown-body"> <h1 id="vue">Vue</h1> <h2 id="1-组件化开发">1. 组件化开发</h2> <h3 id="11-基本使用过程">1.1 基本使用过程</h3> <ul> <li>注册组件的基本步骤： <ul> <li>创建组件</li> <li>注册组件</li> <li> <h2 id="使用组件">使用组件</h2> </li> </ul> </li> <li><code class="language-plaintext highlighter-rouge">Vue.extend()</code>: <ul> <li>调用<code class="language-plaintext highlighter-rouge">Vue.extend()</code>创建的是一个组件构造器。</li> <li>通常在创建组件构造器时，传入<code class="language-plaintext highlighter-rouge">template</code>代表我们自定义组件的模板</li> <li>改模板就是在使用到组件的地方，要显示的HTML代码</li> </ul> </li> <li><code class="language-plaintext highlighter-rouge">Vue.component()</code>: <ul> <li>调用<code class="language-plaintext highlighter-rouge">Vue.component()</code>是将刚才的组件构造器注册为一个组件，并且给它起一个组件的标签名称</li> <li>所以需要传递两个参数：1、注册组件的标签名 2、组件构造器</li> </ul> </li> <li>组件必须挂载在某个Vue实例下。否则他不会生效</li> </ul> <p><img src="https://slienceme.cn/images/posts/5a33043163de488e962b4ab590fc9a7e.png" alt="Alt Text" /></p> <div class="language-html highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nt">&lt;div</span> <span class="na">id=</span><span class="s">"app"</span><span class="nt">&gt;</span>
+  <span class="c">&lt;!-- 3.使用组件 --&gt;</span>
+  <span class="nt">&lt;my-cpn&gt;&lt;/my-cpn&gt;</span>
+  <span class="nt">&lt;my-cpn&gt;&lt;/my-cpn&gt;</span>
+  <span class="nt">&lt;my-cpn&gt;&lt;/my-cpn&gt;</span>
+  <span class="nt">&lt;my-cpn&gt;&lt;/my-cpn&gt;</span>
+  <span class="nt">&lt;my-cpn&gt;&lt;/my-cpn&gt;</span>
+<span class="nt">&lt;/div&gt;</span>
+<span class="nt">&lt;script </span><span class="na">src=</span><span class="s">"../js/vue.js"</span><span class="nt">&gt;&lt;/script&gt;</span>
+<span class="nt">&lt;script&gt;</span>
+  <span class="c1">//1.创建爱你组件构造器对象</span>
+  <span class="kd">const</span> <span class="nx">cpnC</span> <span class="o">=</span> <span class="nx">Vue</span><span class="p">.</span><span class="nx">extend</span><span class="p">({</span>
+    <span class="na">template</span><span class="p">:</span> <span class="s2">`
+        &lt;div&gt;
+          &lt;h2&gt;我是标题&lt;/h2&gt;
+          &lt;p&gt;我是内容，哈哈哈&lt;/p&gt;
+          &lt;p&gt;我是内容，呵呵呵&lt;/p&gt;
+        &lt;/div&gt;`</span>
+  <span class="p">})</span>
+  <span class="c1">//2.注册组件</span>
+  <span class="nx">Vue</span><span class="p">.</span><span class="nx">component</span><span class="p">(</span><span class="dl">'</span><span class="s1">my-cpn</span><span class="dl">'</span><span class="p">,</span> <span class="nx">cpnC</span><span class="p">);</span>
+  
+  <span class="kd">const</span> <span class="nx">app</span> <span class="o">=</span> <span class="k">new</span> <span class="nx">Vue</span><span class="p">({</span>
+    <span class="na">el</span><span class="p">:</span> <span class="dl">'</span><span class="s1">#app</span><span class="dl">'</span><span class="p">,</span>
+    <span class="na">data</span><span class="p">:</span> <span class="p">{</span>
+      <span class="na">message</span><span class="p">:</span> <span class="dl">'</span><span class="s1">你好啊！</span><span class="dl">'</span>
+    <span class="p">}</span>
+  <span class="p">})</span>
+<span class="nt">&lt;/script&gt;</span>
+</code></pre></div></div> <h3 id="12-全局组件和局部组件">1.2 全局组件和局部组件</h3> <ul> <li>全局组件：在Vue实例外注册，可以在多个Vue的实例下使用</li> <li>局部组件：在Vue实例内注册，可以在其Vue的实例下使用 ```html</li> </ul> <div id="app2"> <cpn></cpn> </div> <div id="app"> <cpn></cpn> <cpn></cpn> </div> <script src="../js/vue.js"></script> <script> //1.创建爱你组件构造器对象 const cpnC = Vue.extend({ template: ` <div> <h2>我是标题</h2> <p>我是内容，哈哈哈</p> </div>` }) //2.注册组件(全局组件，意味着可以在多个Vue的实例下使用) // Vue.component('cpn', cpnC); const app = new Vue({ el: '#app', data: { message: '你好啊！' }, components:{ //cpn 使用组件时的标签名（局部组件） cpn:cpnC } }) const app2 = new Vue({ el: '#app2' }) </script> <div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>### 1.3 父组件和子组件
+
+```html
+&lt;div id="app"&gt;
+  &lt;cpn2&gt;&lt;/cpn2&gt;
+&lt;/div&gt;
+&lt;script src="../js/vue.js"&gt;&lt;/script&gt;
+&lt;script&gt;
+  //1. 创建第一个组件
+  const cpnC1 = Vue.extend({
+    template: `
+      &lt;div&gt;
+        &lt;h2&gt;我是标题1&lt;/h2&gt;
+        &lt;p&gt;我是内容1&lt;/p&gt;
+      &lt;/div&gt;
+    `
+  })
+
+  //2. 创建第二个组件
+  const cpnC2 = Vue.extend({
+    template: `
+      &lt;div&gt;
+        &lt;h2&gt;我是标题2&lt;/h2&gt;
+        &lt;p&gt;我是内容2&lt;/p&gt;
+        &lt;cpn1&gt;&lt;/cpn1&gt;
+      &lt;/div&gt;`,
+    components:{
+      cpn1:cpnC1
+    }
+  })
+
+  const app = new Vue({
+    el: '#app',
+    data: {
+      message: '你好啊！'
+    },
+    components:{
+      cpn2:cpnC2
+    }
+  })
+&lt;/script&gt;
+</code></pre></div></div> <h3 id="14-注册组件的语法糖写法">1.4 注册组件的语法糖写法</h3> <ul> <li>省去<code class="language-plaintext highlighter-rouge">Vue.extend()</code> ```html</li> </ul> <div id="app"> <cpn1></cpn1> <cpn2></cpn2> </div> <script src="../js/vue.js"></script> <script> // 1. 全局组件注册的语法糖 // 1. 创建组件构造器 // const cpn1 = Vue.extend() // 2. 注册组件 //全局组件 Vue.component('cpn1',{ template: ` <div> <h2>我是标题1</h2> <p>我是内容1</p> </div> ` }); const app = new Vue({ el: '#app', data: { message: '你好啊！' }, //注册局部组件的语法糖 components:{ 'cpn2':{ template: ` <div> <h2>我是标题2</h2> <p>我是内容2</p> </div> ` } } }) </script> <div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>![Alt Text](/images/posts/3b1e41b795814644b85616fbe0e266d0.png)
+### 1.5 组件模板抽离
+- script标签
+- template标签
+```html
+&lt;div id="app"&gt;
+&lt;cpn&gt;&lt;/cpn&gt;
+&lt;cpn&gt;&lt;/cpn&gt;
+&lt;cpn&gt;&lt;/cpn&gt;
+&lt;/div&gt;
+&lt;!--1. script标签，注意：类型必须是text/x-template--&gt;
+&lt;script type="text/x-template" id="cpn"&gt;
+  &lt;div&gt;
+    &lt;h2&gt;我是标题2&lt;/h2&gt;
+    &lt;p&gt;我是内容2&lt;/p&gt;
+  &lt;/div&gt;
+&lt;/script&gt;
+&lt;!--2.template标签--&gt;
+&lt;template id="cpn1"&gt;
+  &lt;div&gt;
+    &lt;h2&gt;我是标题2&lt;/h2&gt;
+    &lt;p&gt;我是内容2&lt;/p&gt;
+  &lt;/div&gt;
+&lt;/template&gt;
+&lt;script src="../js/vue.js"&gt;&lt;/script&gt;
+&lt;script&gt;
+
+  //1.注册一个组件
+  Vue.component('cpn',{
+    template: '#cpn1'
+  })
+
+  const app = new Vue({
+    el: '#app',
+    data: {
+      message: '你好啊！'
+    }
+  })
+&lt;/script&gt;
+</code></pre></div></div> <h3 id="16-组件中的data">1.6 组件中的data</h3> <div class="language-html highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nt">&lt;div</span> <span class="na">id=</span><span class="s">"app"</span><span class="nt">&gt;</span>
+  <span class="nt">&lt;cpn&gt;&lt;/cpn&gt;</span>
+<span class="nt">&lt;/div&gt;</span>
+<span class="nt">&lt;template</span> <span class="na">id=</span><span class="s">"cpn"</span><span class="nt">&gt;</span>
+  <span class="nt">&lt;div&gt;</span>
+    <span class="nt">&lt;h2&gt;&lt;/h2&gt;</span>
+    <span class="nt">&lt;button</span> <span class="err">@</span><span class="na">click=</span><span class="s">"increment"</span><span class="nt">&gt;</span>+<span class="nt">&lt;/button&gt;</span>
+    <span class="nt">&lt;button</span> <span class="err">@</span><span class="na">click=</span><span class="s">"decrement"</span><span class="nt">&gt;</span>-<span class="nt">&lt;/button&gt;</span>
+  <span class="nt">&lt;/div&gt;</span>
+<span class="nt">&lt;/template&gt;</span>
+<span class="nt">&lt;script </span><span class="na">src=</span><span class="s">"../js/vue.js"</span><span class="nt">&gt;&lt;/script&gt;</span>
+<span class="nt">&lt;script&gt;</span>
+  <span class="nx">Vue</span><span class="p">.</span><span class="nx">component</span><span class="p">(</span><span class="dl">'</span><span class="s1">cpn</span><span class="dl">'</span><span class="p">,{</span>
+    <span class="na">template</span><span class="p">:</span> <span class="dl">'</span><span class="s1">#cpn</span><span class="dl">'</span><span class="p">,</span>
+    <span class="nx">data</span><span class="p">(){</span>
+      <span class="k">return</span><span class="p">{</span>
+        <span class="na">counter</span><span class="p">:</span><span class="mi">0</span>
+      <span class="p">}</span>
+    <span class="p">},</span>
+    <span class="na">methods</span><span class="p">:{</span>
+      <span class="nx">increment</span><span class="p">(){</span>
+        <span class="k">this</span><span class="p">.</span><span class="nx">counter</span><span class="o">++</span><span class="p">;</span>
+      <span class="p">},</span>
+      <span class="nx">decrement</span><span class="p">(){</span>
+        <span class="k">this</span><span class="p">.</span><span class="nx">counter</span><span class="o">--</span><span class="p">;</span>
+      <span class="p">}</span>
+    <span class="p">}</span>
+  <span class="p">})</span>
+  <span class="kd">const</span> <span class="nx">app</span> <span class="o">=</span> <span class="k">new</span> <span class="nx">Vue</span><span class="p">({</span>
+    <span class="na">el</span><span class="p">:</span> <span class="dl">'</span><span class="s1">#app</span><span class="dl">'</span><span class="p">,</span>
+    <span class="na">data</span><span class="p">:</span> <span class="p">{</span>
+      <span class="na">message</span><span class="p">:</span> <span class="dl">'</span><span class="s1">你好啊！</span><span class="dl">'</span>
+    <span class="p">}</span>
+  <span class="p">})</span>
+<span class="nt">&lt;/script&gt;</span>
+</code></pre></div></div> <h3 id="17-父子组件通信">1.7 父子组件通信</h3> <h4 id="父传子">父传子</h4> <ul> <li>方法 <ul> <li>通过<code class="language-plaintext highlighter-rouge">props</code>向子组件传递数据</li> <li>通过事件向父组件发送消息 <img src="https://slienceme.cn/images/posts/98d2ffc959d14529b3dde68911515262.png" alt="Alt Text" /></li> </ul> </li> <li><strong>Vue实例和子组件的通信 和 父组件和子组件的通信</strong>过程是一样的</li> </ul> <h5 id="props">props</h5> <ul> <li>不要用驼峰标识 v-bind无法识别，如必须使用<code class="language-plaintext highlighter-rouge">:c-info="info"</code> 组件内用驼峰<code class="language-plaintext highlighter-rouge">cInfo</code></li> <li>在组件中，使用选项props来声明需要从父级接收到的数据。</li> <li>props的值有两种方式： <ul> <li>方式一：字符串数组，数组中的字符串就是传递时的名称</li> <li> <h2 id="方式二对象对象可以设置传递时的类型也可以设置默认值等">方式二：对象，对象可以设置传递时的类型，也可以设置默认值等</h2> <p><strong>props数据验证</strong></p> </li> </ul> </li> <li>支持的类型 <ul> <li><code class="language-plaintext highlighter-rouge">String</code></li> <li><code class="language-plaintext highlighter-rouge">Number</code></li> <li><code class="language-plaintext highlighter-rouge">Boolean</code></li> <li><code class="language-plaintext highlighter-rouge">Array</code></li> <li><code class="language-plaintext highlighter-rouge">Object</code></li> <li><code class="language-plaintext highlighter-rouge">Date</code></li> <li><code class="language-plaintext highlighter-rouge">Function</code></li> <li><code class="language-plaintext highlighter-rouge">Symbol</code></li> </ul> </li> </ul> <div class="language-html highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nt">&lt;div</span> <span class="na">id=</span><span class="s">"app"</span><span class="nt">&gt;</span>
+  <span class="nt">&lt;cpn</span> <span class="na">:cmovies=</span><span class="s">"movies"</span> <span class="na">:cmessage=</span><span class="s">"message"</span><span class="nt">&gt;&lt;/cpn&gt;</span>
+<span class="nt">&lt;/div&gt;</span>
+<span class="nt">&lt;template</span> <span class="na">id=</span><span class="s">"cpn"</span><span class="nt">&gt;</span>
+  <span class="nt">&lt;div&gt;</span>
+    <span class="nt">&lt;ul&gt;</span>
+      <span class="nt">&lt;li</span> <span class="na">v-for=</span><span class="s">"item in cmovies"</span><span class="nt">&gt;&lt;/li&gt;</span>
+    <span class="nt">&lt;/ul&gt;</span>
+    <span class="nt">&lt;h2&gt;&lt;/h2&gt;</span>
+  <span class="nt">&lt;/div&gt;</span>
+<span class="nt">&lt;/template&gt;</span>
+<span class="nt">&lt;script </span><span class="na">src=</span><span class="s">"../js/vue.js"</span><span class="nt">&gt;&lt;/script&gt;</span>
+<span class="nt">&lt;script&gt;</span>
+  <span class="c1">//父传子 props</span>
+  <span class="kd">const</span> <span class="nx">cpn</span> <span class="o">=</span> <span class="p">{</span>
+    <span class="na">template</span><span class="p">:</span> <span class="dl">'</span><span class="s1">#cpn</span><span class="dl">'</span><span class="p">,</span>
+    <span class="c1">// props: ['cmovies','cmessage'],</span>
+    <span class="na">props</span><span class="p">:{</span>
+      <span class="c1">//1.类型限制</span>
+      <span class="c1">// cmovies: Array,</span>
+      <span class="c1">// cmessage: String,</span>
+
+      <span class="c1">//2.提供一些默认值</span>
+      <span class="na">cmessage</span><span class="p">:</span> <span class="p">{</span>
+        <span class="na">type</span><span class="p">:</span> <span class="nb">String</span><span class="p">,</span> <span class="c1">//类型</span>
+        <span class="na">default</span><span class="p">:</span><span class="dl">'</span><span class="s1">aaaaa</span><span class="dl">'</span><span class="p">,</span>  <span class="c1">//默认值</span>
+        <span class="na">required</span><span class="p">:</span> <span class="kc">true</span>
+      <span class="p">},</span>
+      <span class="c1">//类型是对象或者数组时，默认值必须是一个函数</span>
+      <span class="na">cmovies</span><span class="p">:</span> <span class="p">{</span>
+        <span class="na">type</span><span class="p">:</span><span class="nb">Array</span><span class="p">,</span>
+        <span class="k">default</span><span class="p">()</span> <span class="p">{</span>
+          <span class="k">return</span> <span class="p">[]</span>
+        <span class="p">}</span>
+      <span class="p">}</span>
+    <span class="p">},</span>
+    <span class="nx">data</span><span class="p">(){</span>
+      <span class="k">return</span><span class="p">{}</span>
+    <span class="p">},</span>
+  <span class="p">}</span>
+
+  <span class="kd">const</span> <span class="nx">app</span> <span class="o">=</span> <span class="k">new</span> <span class="nx">Vue</span><span class="p">({</span>
+    <span class="na">el</span><span class="p">:</span> <span class="dl">'</span><span class="s1">#app</span><span class="dl">'</span><span class="p">,</span>
+    <span class="na">data</span><span class="p">:</span> <span class="p">{</span>
+      <span class="na">message</span><span class="p">:</span> <span class="dl">'</span><span class="s1">你好啊！</span><span class="dl">'</span><span class="p">,</span>
+      <span class="na">movies</span><span class="p">:[</span><span class="dl">'</span><span class="s1">海王</span><span class="dl">'</span><span class="p">,</span><span class="dl">'</span><span class="s1">海贼王</span><span class="dl">'</span><span class="p">,</span><span class="dl">'</span><span class="s1">海尔兄弟</span><span class="dl">'</span><span class="p">]</span>
+    <span class="p">},</span>
+    <span class="na">components</span><span class="p">:{</span>
+      <span class="nx">cpn</span><span class="p">,</span>
+    <span class="p">}</span>
+  <span class="p">})</span>
+<span class="nt">&lt;/script&gt;</span>
+</code></pre></div></div> <h4 id="子传父">子传父</h4> <p><strong>自定义事件</strong></p> <ul> <li><code class="language-plaintext highlighter-rouge">$emit</code> ```html </li> </ul> <div id="app"> &lt;cpn @item-click="cpnClick"&gt;&lt;/cpn&gt; </div> <template id="cpn"> <div> &lt;button v-for="item in categories" @click="itemClick(item)"&gt; &lt;/button&gt; </div> </template> <script src="../js/vue.js"></script> <script> //子组件 const cpn = { template: '#cpn', data() { return { categories: [ {id: 'aaa', name: '热门推荐'}, {id: 'bbb', name: '手机数码'}, {id: 'ccc', name: '家用家电'}, {id: 'ddd', name: '电脑办公'}, ] } }, methods: { itemClick(item) { this.$emit('item-click',item) // console.log(item); } } } //父组件 const app = new Vue({ el: '#app', data: { message: '你好啊！', movies: ['海王', '海贼王', '海尔兄弟'] }, components: { cpn, }, methods: { cpnClick(item){ console.log('aaaaa',item); } } }) </script> <div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>#### 父子组件通信案例
+
+```html
+&lt;div id="app"&gt;
+  &lt;cpn :number1="num1"
+       :number2="num2"
+       @num1change="num1change"
+       @num2change="num2change"&gt;&lt;/cpn&gt;
+&lt;/div&gt;
+
+&lt;template id="cpn"&gt;
+  &lt;div&gt;
+    &lt;h2&gt;props:&lt;/h2&gt;
+    &lt;h2&gt;data:&lt;/h2&gt;
+&lt;!--    &lt;input type="text" v-model="dnumber1"&gt;--&gt;
+    &lt;input type="text" :value="dnumber1" @input="num1Input"&gt;
+    &lt;h2&gt;props:&lt;/h2&gt;
+    &lt;h2&gt;data:&lt;/h2&gt;
+&lt;!--    &lt;input type="text" v-model="dnumber2"&gt;--&gt;
+    &lt;input type="text" :value="dnumber2" @input="num2Input"&gt;
+  &lt;/div&gt;
+&lt;/template&gt;
+&lt;script src="../js/vue.js"&gt;&lt;/script&gt;
+&lt;script&gt;
+  const app = new Vue({
+    el: '#app',
+    data: {
+      message: '你好啊！',
+      num1:1,
+      num2:0
+    },
+    methods: {
+      num1change(value){
+        this.num1=parseInt(value);
+      },
+      num2change(value){
+        this.num2=parseInt(value);
+      }
+    },
+    components:{
+      cpn:{
+        template:'#cpn',
+        props:{
+          number1:Number,
+          number2:Number
+        },
+        data(){
+          return {
+            dnumber1:this.number1,
+            dnumber2:this.number2,
+          }
+        },
+        methods:{
+          num1Input(event){
+            this.dnumber1=event.target.value;
+            this.$emit('num1change', this.dnumber1);
+
+            this.dnumber2 = this.dnumber1*100;
+            this.$emit('num2change',this.dnumber2);
+          },
+          num2Input(event){
+            this.dnumber2=event.target.value;
+            this.$emit('num2change', this.dnumber2);
+
+            this.dnumber1 = this.dnumber2/100;
+            this.$emit('num1change',this.dnumber1)
+          },
+        }
+      }
+    },
+
+  })
+&lt;/script&gt;
+</code></pre></div></div> <h4 id="watch监听改变">watch监听改变</h4> <div class="language-js highlighter-rouge"><div class="highlight"><pre class="highlight"><code> <span class="nx">watch</span><span class="p">:{</span>
+          <span class="nx">dnumber1</span><span class="p">(</span><span class="nx">newValue</span><span class="p">){</span>
+            <span class="k">this</span><span class="p">.</span><span class="nx">dnumber2</span> <span class="o">=</span>  <span class="nx">newValue</span><span class="o">*</span><span class="mi">100</span><span class="p">;</span>
+            <span class="k">this</span><span class="p">.</span><span class="nx">$emit</span><span class="p">(</span><span class="dl">'</span><span class="s1">num1change</span><span class="dl">'</span><span class="p">,</span> <span class="nx">newValue</span><span class="p">);</span>
+          <span class="p">},</span>
+          <span class="nx">dnumber2</span><span class="p">(</span><span class="nx">newValue</span><span class="p">){</span>
+            <span class="k">this</span><span class="p">.</span><span class="nx">dnumber1</span> <span class="o">=</span>  <span class="nx">newValue</span><span class="o">*</span><span class="mi">100</span><span class="p">;</span>
+            <span class="k">this</span><span class="p">.</span><span class="nx">$emit</span><span class="p">(</span><span class="dl">'</span><span class="s1">num2change</span><span class="dl">'</span><span class="p">,</span> <span class="nx">newValue</span><span class="p">);</span>
+          <span class="p">}</span>
+        <span class="p">},</span>
+</code></pre></div></div> <h4 id="父子组件的访问方式-children">父子组件的访问方式: $children</h4> <ul> <li>父组件访问子组件：使用<code class="language-plaintext highlighter-rouge">$children</code>或<code class="language-plaintext highlighter-rouge">$refs</code>(引用)</li> <li>子组件访问父组件：使用<code class="language-plaintext highlighter-rouge">$parent</code></li> </ul> <h5 id="父访问子">父访问子</h5> <div class="language-html highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nt">&lt;div</span> <span class="na">id=</span><span class="s">"app"</span><span class="nt">&gt;</span>
+  <span class="nt">&lt;cpn&gt;&lt;/cpn&gt;</span>
+  <span class="nt">&lt;cpn&gt;&lt;/cpn&gt;</span>
+  <span class="nt">&lt;cpn</span> <span class="na">ref=</span><span class="s">"aaa"</span><span class="nt">&gt;&lt;/cpn&gt;</span>
+  <span class="nt">&lt;button</span> <span class="err">@</span><span class="na">click=</span><span class="s">"btnClick"</span><span class="nt">&gt;</span>按钮<span class="nt">&lt;/button&gt;</span>
+<span class="nt">&lt;/div&gt;</span>
+<span class="nt">&lt;template</span> <span class="na">id=</span><span class="s">"cpn"</span><span class="nt">&gt;</span>
+  <span class="nt">&lt;div&gt;</span>我是子组件<span class="nt">&lt;/div&gt;</span>
+<span class="nt">&lt;/template&gt;</span>
+<span class="nt">&lt;script </span><span class="na">src=</span><span class="s">"../js/vue.js"</span><span class="nt">&gt;&lt;/script&gt;</span>
+<span class="nt">&lt;script&gt;</span>
+  <span class="kd">const</span> <span class="nx">app</span> <span class="o">=</span> <span class="k">new</span> <span class="nx">Vue</span><span class="p">({</span>
+    <span class="na">el</span><span class="p">:</span> <span class="dl">'</span><span class="s1">#app</span><span class="dl">'</span><span class="p">,</span>
+    <span class="na">data</span><span class="p">:</span> <span class="p">{</span>
+      <span class="na">message</span><span class="p">:</span> <span class="dl">'</span><span class="s1">你好啊！</span><span class="dl">'</span>
+    <span class="p">},</span>
+    <span class="na">methods</span><span class="p">:</span> <span class="p">{</span>
+      <span class="nx">btnClick</span><span class="p">(){</span>
+        <span class="c1">//1.关于$children</span>
+        <span class="c1">// console.log(this.$children);</span>
+        <span class="c1">// for(let c of this.$children){</span>
+        <span class="c1">//   console.log(c.name);</span>
+        <span class="c1">//   c.showMessage();</span>
+        <span class="c1">// }</span>
+
+        <span class="c1">//2.$refs</span>
+        <span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="k">this</span><span class="p">.</span><span class="nx">$refs</span><span class="p">);</span>
+
+      <span class="p">}</span>
+    <span class="p">},</span>
+    <span class="na">components</span><span class="p">:{</span>
+      <span class="na">cpn</span><span class="p">:{</span>
+        <span class="na">template</span><span class="p">:</span><span class="dl">'</span><span class="s1">#cpn</span><span class="dl">'</span><span class="p">,</span>
+        <span class="nx">data</span><span class="p">()</span> <span class="p">{</span>
+          <span class="k">return</span><span class="p">{</span>
+            <span class="na">name</span><span class="p">:</span> <span class="dl">'</span><span class="s1">我是子组件的name</span><span class="dl">'</span>
+          <span class="p">}</span>
+        <span class="p">},</span>
+        <span class="na">methods</span><span class="p">:{</span>
+          <span class="nx">showMessage</span><span class="p">(){</span>
+            <span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="dl">'</span><span class="s1">showMessage</span><span class="dl">'</span><span class="p">);</span>
+          <span class="p">}</span>
+        <span class="p">}</span>
+      <span class="p">}</span>
+    <span class="p">}</span>
+  <span class="p">})</span>
+<span class="nt">&lt;/script&gt;</span>
+</code></pre></div></div> <h5 id="子访问父">子访问父</h5> <div class="language-html highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nt">&lt;div</span> <span class="na">id=</span><span class="s">"app"</span><span class="nt">&gt;</span>
+  <span class="nt">&lt;cpn&gt;&lt;/cpn&gt;</span>
+<span class="nt">&lt;/div&gt;</span>
+<span class="nt">&lt;template</span> <span class="na">id=</span><span class="s">"cpn"</span><span class="nt">&gt;</span>
+  <span class="nt">&lt;div&gt;</span>
+    <span class="nt">&lt;h2&gt;</span>我是cpn组件<span class="nt">&lt;/h2&gt;</span>
+    <span class="nt">&lt;ccpn&gt;&lt;/ccpn&gt;</span>
+  <span class="nt">&lt;/div&gt;</span>
+<span class="nt">&lt;/template&gt;</span>
+<span class="nt">&lt;template</span> <span class="na">id=</span><span class="s">"ccpn"</span><span class="nt">&gt;</span>
+  <span class="nt">&lt;div&gt;</span>
+    <span class="nt">&lt;h2&gt;</span>我是子组件<span class="nt">&lt;/h2&gt;</span>
+    <span class="nt">&lt;button</span> <span class="err">@</span><span class="na">click=</span><span class="s">"btnClick"</span><span class="nt">&gt;</span>按钮<span class="nt">&lt;/button&gt;</span>
+  <span class="nt">&lt;/div&gt;</span>
+<span class="nt">&lt;/template&gt;</span>
+<span class="nt">&lt;script </span><span class="na">src=</span><span class="s">"../js/vue.js"</span><span class="nt">&gt;&lt;/script&gt;</span>
+<span class="nt">&lt;script&gt;</span>
+  <span class="kd">const</span> <span class="nx">app</span> <span class="o">=</span> <span class="k">new</span> <span class="nx">Vue</span><span class="p">({</span>
+    <span class="na">el</span><span class="p">:</span> <span class="dl">'</span><span class="s1">#app</span><span class="dl">'</span><span class="p">,</span>
+    <span class="na">data</span><span class="p">:</span> <span class="p">{</span>
+      <span class="na">message</span><span class="p">:</span> <span class="dl">'</span><span class="s1">你好啊！</span><span class="dl">'</span>
+    <span class="p">},</span>
+    <span class="na">components</span><span class="p">:{</span>
+      <span class="na">cpn</span><span class="p">:{</span>
+        <span class="na">template</span><span class="p">:</span><span class="dl">'</span><span class="s1">#cpn</span><span class="dl">'</span><span class="p">,</span>
+        <span class="nx">data</span><span class="p">(){</span>
+          <span class="k">return</span><span class="p">{</span>
+            <span class="na">name</span><span class="p">:</span><span class="dl">'</span><span class="s1">我的cpn组件的name</span><span class="dl">'</span>
+          <span class="p">}</span>
+        <span class="p">},</span>
+        <span class="na">components</span><span class="p">:</span> <span class="p">{</span>
+          <span class="na">ccpn</span><span class="p">:{</span>
+            <span class="na">template</span><span class="p">:</span><span class="dl">'</span><span class="s1">#ccpn</span><span class="dl">'</span><span class="p">,</span>
+            <span class="na">methods</span><span class="p">:{</span>
+              <span class="nx">btnClick</span><span class="p">(){</span>
+                <span class="c1">//1.访问父组件</span>
+                <span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="k">this</span><span class="p">.</span><span class="nx">$parent</span><span class="p">);</span>
+                <span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="k">this</span><span class="p">.</span><span class="nx">$parent</span><span class="p">.</span><span class="nx">name</span><span class="p">);</span>
+
+                <span class="c1">//2.访问根组件$root</span>
+                <span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="k">this</span><span class="p">.</span><span class="nx">$root</span><span class="p">);</span>
+                <span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="k">this</span><span class="p">.</span><span class="nx">$root</span><span class="p">.</span><span class="nx">message</span><span class="p">);</span>
+              <span class="p">}</span>
+            <span class="p">},</span>
+          <span class="p">}</span>
+        <span class="p">}</span>
+      <span class="p">}</span>
+    <span class="p">}</span>
+  <span class="p">})</span>
+<span class="nt">&lt;/script&gt;</span>
+</code></pre></div></div> <h2 id="2-组件化高级">2. 组件化高级</h2> <h3 id="21-slot-插槽">2.1 slot 插槽</h3> <h4 id="211-基本使用">2.1.1 基本使用</h4> <ol> <li>插槽的基本使用<code class="language-plaintext highlighter-rouge">&lt;slot&gt;&lt;/slot&gt;</code></li> <li>插槽的默认值<code class="language-plaintext highlighter-rouge">&lt;slot&gt;button&lt;/slot&gt;</code></li> <li>多个值同时放入到组件中，则一起组我诶替换元素 ```html </li> </ol> <div id="app"> <cpn> <button>案例</button> </cpn> <cpn> <span>哈哈哈</span> </cpn> <cpn> <i>哈哈哈</i> <div>我是div元素</div> <p>我是p元素</p></cpn> <cpn> <button>新按钮</button> </cpn> <cpn></cpn> </div> <template id="cpn"> <div> <h2>我是组件</h2> <p>我是组件，哈哈哈</p> <slot> <button>默认按钮</button> </slot> </div> </template> <script src="../js/vue.js"></script> <script> const app = new Vue({ el: '#app', data: { message: '你好啊！' }, components: { cpn: { template: '#cpn', } } }) </script> <div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>#### 2.1.2 具名插槽
+- 多个插槽，区分通过添加`name`
+```html
+&lt;div id="app"&gt;
+  &lt;cpn&gt;
+    &lt;button slot="left"&gt;返回&lt;/button&gt;
+    &lt;span slot="center"&gt;标题&lt;/span&gt;
+  &lt;/cpn&gt;
+&lt;/div&gt;
+&lt;template id="cpn"&gt;
+  &lt;div&gt;
+    &lt;slot name="left"&gt;&lt;span&gt;左边&lt;/span&gt;&lt;/slot&gt;
+    &lt;slot name="center"&gt;&lt;span&gt;中间&lt;/span&gt;&lt;/slot&gt;
+    &lt;slot name="right"&gt;&lt;span&gt;右边&lt;/span&gt;&lt;/slot&gt;
+  &lt;/div&gt;
+&lt;/template&gt;
+&lt;script src="../js/vue.js"&gt;&lt;/script&gt;
+&lt;script&gt;
+  const app = new Vue({
+    el: '#app',
+    data: {
+      message: '你好啊！'
+    },
+    components:{
+      cpn:{
+        template:'#cpn'
+      }
+    }
+  })
+&lt;/script&gt;
+</code></pre></div></div> <h3 id="22-编译作用域">2.2 编译作用域</h3> <div class="language-html highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nt">&lt;div</span> <span class="na">id=</span><span class="s">"app"</span><span class="nt">&gt;</span>
+  <span class="nt">&lt;cpn</span> <span class="na">v-show=</span><span class="s">"isShow"</span><span class="nt">&gt;&lt;/cpn&gt;</span>
+<span class="nt">&lt;/div&gt;</span>
+<span class="nt">&lt;template</span> <span class="na">id=</span><span class="s">"cpn"</span><span class="nt">&gt;</span>
+  <span class="nt">&lt;div&gt;</span>
+    <span class="nt">&lt;h2&gt;</span>我是子组件<span class="nt">&lt;/h2&gt;</span>
+    <span class="nt">&lt;p&gt;</span>我是内容，哈哈哈<span class="nt">&lt;/p&gt;</span>
+    <span class="nt">&lt;button</span> <span class="na">v-show=</span><span class="s">"isShow"</span><span class="nt">&gt;</span>按钮<span class="nt">&lt;/button&gt;</span>
+  <span class="nt">&lt;/div&gt;</span>
+<span class="nt">&lt;/template&gt;</span>
+<span class="nt">&lt;script </span><span class="na">src=</span><span class="s">"../js/vue.js"</span><span class="nt">&gt;&lt;/script&gt;</span>
+<span class="nt">&lt;script&gt;</span>
+  <span class="kd">const</span> <span class="nx">app</span> <span class="o">=</span> <span class="k">new</span> <span class="nx">Vue</span><span class="p">({</span>
+    <span class="na">el</span><span class="p">:</span> <span class="dl">'</span><span class="s1">#app</span><span class="dl">'</span><span class="p">,</span>
+    <span class="na">data</span><span class="p">:</span> <span class="p">{</span>
+      <span class="na">message</span><span class="p">:</span> <span class="dl">'</span><span class="s1">你好啊！</span><span class="dl">'</span><span class="p">,</span>
+      <span class="na">isShow</span><span class="p">:</span><span class="kc">true</span>
+    <span class="p">},</span>
+    <span class="na">components</span><span class="p">:{</span>
+      <span class="na">cpn</span><span class="p">:{</span>
+        <span class="na">template</span><span class="p">:</span><span class="dl">'</span><span class="s1">#cpn</span><span class="dl">'</span><span class="p">,</span>
+        <span class="nx">data</span><span class="p">(){</span>
+          <span class="k">return</span><span class="p">{</span>
+            <span class="na">isShow</span><span class="p">:</span> <span class="kc">true</span>
+          <span class="p">}</span>
+        <span class="p">}</span>
+      <span class="p">}</span>
+    <span class="p">}</span>
+  <span class="p">})</span>
+<span class="nt">&lt;/script&gt;</span>
+</code></pre></div></div> <h3 id="23-作用域插槽">2.3 作用域插槽</h3> <div class="language-html highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nt">&lt;div</span> <span class="na">id=</span><span class="s">"app"</span><span class="nt">&gt;</span>
+  <span class="nt">&lt;cpn&gt;&lt;/cpn&gt;</span>
+  <span class="nt">&lt;cpn&gt;</span>
+    <span class="c">&lt;!--&lt;span v-for="item in pLanguages"&gt;&lt;/span&gt;--&gt;</span>
+    <span class="nt">&lt;template</span> <span class="na">slot-scope=</span><span class="s">"slot"</span><span class="nt">&gt;</span>
+<span class="c">&lt;!--      &lt;span v-for="item in slot.data"&gt; - &lt;/span&gt;--&gt;</span>
+      <span class="nt">&lt;span&gt;&lt;/span&gt;</span>
+    <span class="nt">&lt;/template&gt;</span>
+  <span class="nt">&lt;/cpn&gt;</span>
+
+  <span class="nt">&lt;cpn&gt;</span>
+    <span class="c">&lt;!--&lt;span v-for="item in pLanguages"&gt;&lt;/span&gt;--&gt;</span>
+    <span class="nt">&lt;template</span> <span class="na">slot-scope=</span><span class="s">"slot"</span><span class="nt">&gt;</span>
+<span class="c">&lt;!--      &lt;span v-for="item in slot.data"&gt; * &lt;/span&gt;--&gt;</span>
+      <span class="nt">&lt;span&gt;&lt;/span&gt;</span>
+    <span class="nt">&lt;/template&gt;</span>
+  <span class="nt">&lt;/cpn&gt;</span>
+<span class="nt">&lt;/div&gt;</span>
+<span class="nt">&lt;template</span> <span class="na">id=</span><span class="s">"cpn"</span><span class="nt">&gt;</span>
+  <span class="nt">&lt;div&gt;</span>
+    <span class="nt">&lt;slot</span> <span class="na">:data=</span><span class="s">"pLanguages"</span><span class="nt">&gt;</span>
+      <span class="nt">&lt;ul&gt;</span>
+        <span class="nt">&lt;li</span> <span class="na">v-for=</span><span class="s">"item in pLanguages"</span><span class="nt">&gt;&lt;/li&gt;</span>
+      <span class="nt">&lt;/ul&gt;</span>
+    <span class="nt">&lt;/slot&gt;</span>
+  <span class="nt">&lt;/div&gt;</span>
+<span class="nt">&lt;/template&gt;</span>
+<span class="nt">&lt;script </span><span class="na">src=</span><span class="s">"../js/vue.js"</span><span class="nt">&gt;&lt;/script&gt;</span>
+<span class="nt">&lt;script&gt;</span>
+  <span class="kd">const</span> <span class="nx">app</span> <span class="o">=</span> <span class="k">new</span> <span class="nx">Vue</span><span class="p">({</span>
+    <span class="na">el</span><span class="p">:</span> <span class="dl">'</span><span class="s1">#app</span><span class="dl">'</span><span class="p">,</span>
+    <span class="na">data</span><span class="p">:</span> <span class="p">{</span>
+      <span class="na">message</span><span class="p">:</span> <span class="dl">'</span><span class="s1">你好啊！</span><span class="dl">'</span>
+    <span class="p">},</span>
+    <span class="na">components</span><span class="p">:{</span>
+      <span class="na">cpn</span><span class="p">:{</span>
+        <span class="na">template</span><span class="p">:</span><span class="dl">"</span><span class="s2">#cpn</span><span class="dl">"</span><span class="p">,</span>
+        <span class="nx">data</span><span class="p">(){</span>
+          <span class="k">return</span><span class="p">{</span>
+            <span class="na">pLanguages</span><span class="p">:[</span><span class="dl">'</span><span class="s1">JavaScript</span><span class="dl">'</span><span class="p">,</span><span class="dl">'</span><span class="s1">C++</span><span class="dl">'</span><span class="p">,</span><span class="dl">'</span><span class="s1">Java</span><span class="dl">'</span><span class="p">,</span><span class="dl">'</span><span class="s1">C#</span><span class="dl">'</span><span class="p">,</span><span class="dl">'</span><span class="s1">Python</span><span class="dl">'</span><span class="p">,</span><span class="dl">'</span><span class="s1">Go</span><span class="dl">'</span><span class="p">,</span><span class="dl">'</span><span class="s1">Swift</span><span class="dl">'</span><span class="p">]</span>
+          <span class="p">}</span>
+        <span class="p">}</span>
+      <span class="p">}</span>
+    <span class="p">}</span>
+  <span class="p">})</span>
+<span class="nt">&lt;/script&gt;</span>
+</code></pre></div></div> <p><img src="https://slienceme.cn/images/posts/ac91df29eeb94196a4a0e37750df4eaf.png" alt="Alt Text" /></p> <div style="margin-top:2em;padding:0 1.5em;border:1px solid #d3d3d3;background-color:#deebf7"> <h3>文档信息</h3> <ul> <li>本文作者：<a href="https://slienceme.cn" target="_blank">slience_me</a></li> <li>本文链接：<a href="https://slienceme.cn/2021/07/28/Vue%E7%BB%84%E4%BB%B6%E5%8C%96%E5%BC%80%E5%8F%91/" target="_blank">https://slienceme.cn/2021/07/28/Vue%E7%BB%84%E4%BB%B6%E5%8C%96%E5%BC%80%E5%8F%91/</a></li> <li>版权声明：自由转载-非商用-非衍生-保持署名（<a href="http://creativecommons.org/licenses/by-nc-nd/3.0/deed.zh" target="_blank">创意共享3.0许可证</a>）</li> </ul> </div> </article> <div class="share"> <div class="share-component" data-disabled='qq,facebook'></div> </div> <div class="comment"> <script src="https://giscus.app/client.js" data-repo="slience-me/blog-comments" data-repo-id="MDEwOlJlcG9zaXRvcnk5MzEyNzkxNw==" data-category="Announcements" data-category-id="DIC_kwDOBY0E7c4CRtg9" data-mapping="title" data-strict="1" data-reactions-enabled="1" data-emit-metadata="0" data-input-position="top" data-theme="light" data-lang="zh-CN" data-loading="lazy" crossorigin="anonymous" async> </script> </div> </div> <div class="column one-fourth"> <h3>Search</h3> <div id="site_search"> <input style="width:96%" type="text" id="search_box" placeholder="Search"> </div> <ul id="search_results" style="font-size:14px;list-style-type:none;padding-top:10px;padding-left:10px;"></ul> <script src="https://slienceme.cn/assets/js/simple-jekyll-search.min.js"></script> <script type="text/javascript"> SimpleJekyllSearch({ searchInput: document.getElementById('search_box'), resultsContainer: document.getElementById('search_results'), json: 'https://slienceme.cn/assets/search_data.json?v=1736474001', searchResultTemplate: '<li><a href="{url}" title="{title}">{title}</a></li>', noResultsText: 'No results found', limit: 10, fuzzy: false, exclude: ['Welcome'] }) </script> <h3 class="post-directory-title mobile-hidden">Table of Contents</h3> <div id="post-directory-module" class="mobile-hidden"> <section class="post-directory"> <dl></dl> </section> </div> <script src="https://slienceme.cn/assets/js/jquery.toc.js"></script> </div> </div> </section> <footer class="container"> <div class="site-footer" role="contentinfo"> <div class="copyright left mobile-block"> Copyright@ 2019-2025 slience_me 版权所有&emsp; <img src="/images/logo/logo.png" class="w-full" style="width: 12px;"> <a href="https://beian.mps.gov.cn/#/query/webSearch?code=13102202000626" rel="noreferrer" target="_blank">冀公网安备13102202000626</a>&emsp; <a href="https://beian.miit.gov.cn/#/Integrated/index" target="_blank" rel="noreferrer">津ICP备2024026565号-1</a> <a href="javascript:window.scrollTo(0,0)" class="right mobile-visible">TOP</a> </div> <ul class="site-footer-links right mobile-hidden"> <li> <a href="javascript:window.scrollTo(0,0)" >TOP</a> </li> </ul> <br/> <script async src="https://slienceme.cn/assets/vendor/busuanzi/2.3/busuanzi.pure.mini.js"></script> <div class="mobile-hidden" style="margin-top:8px"> <span id="busuanzi_container_site_pv" style="display:none"> 本站访问量<span id="busuanzi_value_site_pv"></span>次 </span> <span id="busuanzi_container_site_uv" style="display:none"> / 本站访客数<span id="busuanzi_value_site_uv"></span>人 </span> <span id="busuanzi_container_page_pv" style="display:none"> / 本页访问量<span id="busuanzi_value_page_pv"></span>次 / 统计始于2024-12-01 </span> </div> </div> </footer> <div class="tools-wrapper"> <a class="gotop" href="#" title="回到顶部"><span class="octicon octicon-arrow-up"></span></a> </div> <script src="https://slienceme.cn/assets/vendor/share.js/dist/js/share.min.js"></script> <script src="https://slienceme.cn/assets/js/geopattern.js"></script> <script> jQuery(document).ready(function($) { $('.geopattern').each(function(){ $(this).geopattern($(this).data('pattern-id')); }); /* hljs.initHighlightingOnLoad(); */ }); </script> </body> </html>

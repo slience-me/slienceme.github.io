@@ -1,0 +1,628 @@
+<!DOCTYPE html> <html lang="zh-cmn-Hans" prefix="og: http://ogp.me/ns#" class="han-init"> <head> <meta charset="utf-8"> <meta http-equiv="X-UA-Compatible" content="IE=edge"> <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1" /> <title>Java｜Spring的新注解&基于接口的动态代理 &mdash; Slience_me的博客</title> <link rel="stylesheet" href="https://slienceme.cn/assets/vendor/primer-css/css/primer.css"> <link rel="stylesheet" href="https://slienceme.cn/assets/css/components/collection.css"> <link rel="stylesheet" href="https://slienceme.cn/assets/css/components/repo-card.css"> <link rel="stylesheet" href="https://slienceme.cn/assets/css/sections/repo-list.css"> <link rel="stylesheet" href="https://slienceme.cn/assets/css/components/boxed-group.css"> <link rel="stylesheet" href="https://slienceme.cn/assets/css/globals/common.css"> <link rel="stylesheet" href="https://slienceme.cn/assets/css/globals/responsive.css"> <link rel="stylesheet" href="https://slienceme.cn/assets/css/posts/index.css"> <link rel="stylesheet" href="https://slienceme.cn/assets/vendor/octicons/octicons/octicons.css"> <link rel="stylesheet" href="https://mazhuang.org/rouge-themes/dist/github.css"> <link rel="stylesheet" href="https://slienceme.cn/assets/vendor/share.js/dist/css/share.min.css"> <link rel="canonical" href="https://slienceme.cn/2021/06/30/Spring%E7%9A%84%E6%96%B0%E6%B3%A8%E8%A7%A3&%E5%9F%BA%E4%BA%8E%E6%8E%A5%E5%8F%A3%E7%9A%84%E5%8A%A8%E6%80%81%E4%BB%A3%E7%90%86/"> <link rel="alternate" type="application/atom+xml" title="Slience_me的博客" href="https://slienceme.cn/feed.xml"> <link rel="shortcut icon" href="https://slienceme.cn/favicon.ico"> <meta property="og:title" content="Java｜Spring的新注解&基于接口的动态代理"> <meta name="keywords" content="编程语言, Java"> <meta name="og:keywords" content="编程语言, Java"> <meta name="description" content="Spring的新注解&amp;基于接口的动态代理spring中的新注解 @Configuration 作用：指定当前类是一个配置类 细节：当配置类作为AnnotationConfigApplicationContext对象的参数时，该注解可用不写。 @ComponentScan 作用：用于通过注解指定spring在创建容器时要扫描的包 属性： value：它和basePackages的作用是一样的，都是用于指定创建容器时要扫描的包 我们使用此注解就等同于在xml文件中配置了 @Bean 作用：用于把当前方法的返回值作为bean对象存入spring的ioc容器中 属性: name:用于指定bean的id。当不写时，默认值是当前方法的名称 细节： 当我们使用注解配置方法时，如果方法有参数，spring框架会去容器中查找有没有可用的bean对象。 查找的方式和Autowired注解的作用是一样的， @Import 作用：用于导入其他的配置类 属性：value：用于指定其他配置类的字节码 当我们使用Import的注解之后，有Import注解的类就是父配置类，而导入的都是子配置类 @PropertySource 作用:用于指定properties文件的位置 属性： value：指定文件的名称和路径 关键字：classpath：表示类路径下 "> <meta name="og:description" content="Spring的新注解&amp;基于接口的动态代理spring中的新注解 @Configuration 作用：指定当前类是一个配置类 细节：当配置类作为AnnotationConfigApplicationContext对象的参数时，该注解可用不写。 @ComponentScan 作用：用于通过注解指定spring在创建容器时要扫描的包 属性： value：它和basePackages的作用是一样的，都是用于指定创建容器时要扫描的包 我们使用此注解就等同于在xml文件中配置了 @Bean 作用：用于把当前方法的返回值作为bean对象存入spring的ioc容器中 属性: name:用于指定bean的id。当不写时，默认值是当前方法的名称 细节： 当我们使用注解配置方法时，如果方法有参数，spring框架会去容器中查找有没有可用的bean对象。 查找的方式和Autowired注解的作用是一样的， @Import 作用：用于导入其他的配置类 属性：value：用于指定其他配置类的字节码 当我们使用Import的注解之后，有Import注解的类就是父配置类，而导入的都是子配置类 @PropertySource 作用:用于指定properties文件的位置 属性： value：指定文件的名称和路径 关键字：classpath：表示类路径下 "> <meta property="og:url" content="https://slienceme.cn/2021/06/30/Spring%E7%9A%84%E6%96%B0%E6%B3%A8%E8%A7%A3&%E5%9F%BA%E4%BA%8E%E6%8E%A5%E5%8F%A3%E7%9A%84%E5%8A%A8%E6%80%81%E4%BB%A3%E7%90%86/"> <meta property="og:site_name" content="Slience_me的博客"> <meta property="og:type" content="article"> <meta property="og:locale" content="zh_CN" /> <meta property="article:published_time" content="2021-06-30"> <meta name="google-site-verification" content="2feHjT1GNs1Yi2JQfOtdYx7d048naG_-cMwZaDAopIA" /> <script src="https://slienceme.cn/assets/vendor/jquery/dist/jquery.min.js"></script> <script src="https://slienceme.cn/assets/js/main.js"></script> </head> <body class="" data-mz=""> <header class="site-header"> <div class="container"> <h1><a href="https://slienceme.cn/" title="Slience_me的博客"><span class="octicon octicon-mark-github"></span> Slience_me的博客</a></h1> <button class="collapsed mobile-visible" type="button" onclick="toggleMenu();"> <span class="icon-bar"></span> <span class="icon-bar"></span> <span class="icon-bar"></span> </button> <nav class="site-header-nav" role="navigation"> <a href="https://slienceme.cn/" class="site-header-nav-item" target="" title="首页">首页</a> <a href="https://slienceme.cn/categories/" class="site-header-nav-item" target="" title="分类">分类</a> <a href="https://slienceme.cn/archives/" class="mobile-hidden site-header-nav-item" target="" title="归档">归档</a> <a href="https://slienceme.cn/open-source/" class="mobile-hidden site-header-nav-item" target="" title="开源">开源</a> <a href="https://slienceme.cn/fragments/" class="site-header-nav-item" target="" title="片段">片段</a> <a href="https://slienceme.cn/wiki/" class="site-header-nav-item" target="" title="维基">维基</a> <a href="https://slienceme.cn/links/" class="mobile-hidden site-header-nav-item" target="" title="链接">链接</a> <a href="https://slienceme.cn/about/" class="site-header-nav-item" target="" title="关于">关于</a> <a class="mobile-hidden" href="https://slienceme.cn/feed.xml"><span class="octicon octicon-rss" style="color:orange;"></span></a> </nav> </div> </header> <section class="collection-head small geopattern" data-pattern-id="Java｜Spring的新注解"> <div class="container"> <div class="columns"> <div class="column three-fourths"> <div class="collection-title"> <h1 class="collection-header">Java｜Spring的新注解&基于接口的动态代理</h1> <div class="collection-info"> <span class="meta-info"> <span class="octicon octicon-calendar"></span> 2021/06/30 </span> <span class="meta-info"> <span class="octicon octicon-file-directory"></span> <a href="https://slienceme.cn/categories/#Java" title="Java">Java</a> </span> <span class="meta-info"> <span class="octicon octicon-clock"></span> 共 13781 字，约 40 分钟 </span> </div> </div> </div> <div class="column one-fourth mobile-hidden"> <div class="collection-title"> </div> </div> </div> </div> </section> <section class="container content"> <div class="columns"> <div class="column three-fourths" > <article class="article-content markdown-body"> <h1 id="spring的新注解基于接口的动态代理">Spring的新注解&amp;基于接口的动态代理</h1> <h2 id="spring中的新注解">spring中的新注解</h2> <hr /> <ul> <li><code class="language-plaintext highlighter-rouge">@Configuration</code> <ul> <li>作用：指定当前类是一个配置类</li> <li>细节：当配置类作为<code class="language-plaintext highlighter-rouge">AnnotationConfigApplicationContext</code>对象的参数时，该注解可用不写。</li> </ul> </li> <li><code class="language-plaintext highlighter-rouge">@ComponentScan</code> <ul> <li>作用：用于通过注解指定spring在创建容器时要扫描的包</li> <li>属性： <ul> <li><code class="language-plaintext highlighter-rouge">value</code>：它和<code class="language-plaintext highlighter-rouge">basePackages</code>的作用是一样的，都是用于指定创建容器时要扫描的包</li> <li>我们使用此注解就等同于在xml文件中配置了</li> </ul> </li> </ul> </li> <li><code class="language-plaintext highlighter-rouge">@Bean</code> <ul> <li>作用：用于把当前方法的返回值作为bean对象存入spring的ioc容器中</li> <li>属性: <ul> <li><code class="language-plaintext highlighter-rouge">name</code>:用于指定bean的id。当不写时，默认值是当前方法的名称</li> </ul> </li> <li>细节： <ul> <li>当我们使用注解配置方法时，如果方法有参数，spring框架会去容器中查找有没有可用的bean对象。</li> <li>查找的方式和<code class="language-plaintext highlighter-rouge">Autowired</code>注解的作用是一样的，</li> </ul> </li> </ul> </li> <li><code class="language-plaintext highlighter-rouge">@Import</code> <ul> <li>作用：用于导入其他的配置类</li> <li>属性：value：用于指定其他配置类的字节码 <ul> <li>当我们使用Import的注解之后，有Import注解的类就是父配置类，而导入的都是子配置类</li> </ul> </li> </ul> </li> <li><code class="language-plaintext highlighter-rouge">@PropertySource</code> <ul> <li>作用:用于指定<code class="language-plaintext highlighter-rouge">properties</code>文件的位置</li> <li>属性： <ul> <li>value：指定文件的名称和路径 <ul> <li>关键字：<code class="language-plaintext highlighter-rouge">classpath</code>：表示类路径下</li> </ul> </li> </ul> </li> </ul> </li> </ul> <p><img src="https://slienceme.cn/images/posts/20210630111236479.png" alt="Alt Text" /></p> <h3 id="主配置文件">主配置文件</h3> <div class="language-java highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kn">package</span> <span class="nn">config</span><span class="o">;</span>
+<span class="kn">import</span> <span class="nn">org.springframework.context.annotation.*</span><span class="o">;</span>
+
+<span class="c1">//@Configuration</span>
+<span class="nd">@ComponentScan</span><span class="o">(</span><span class="s">"xyz.slienceme"</span><span class="o">)</span>
+<span class="nd">@Import</span><span class="o">(</span><span class="nc">JdbcConfig</span><span class="o">.</span><span class="na">class</span><span class="o">)</span>
+<span class="nd">@PropertySource</span><span class="o">(</span><span class="s">"classpath:jdbcConfig.properties"</span><span class="o">)</span>
+<span class="kd">public</span> <span class="kd">class</span> <span class="nc">SpringConfiguration</span> <span class="o">{</span>
+<span class="o">}</span>
+</code></pre></div></div> <h3 id="子配置文件">子配置文件</h3> <div class="language-java highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kn">package</span> <span class="nn">config</span><span class="o">;</span>
+
+<span class="kn">import</span> <span class="nn">com.mchange.v2.c3p0.ComboPooledDataSource</span><span class="o">;</span>
+<span class="kn">import</span> <span class="nn">org.apache.commons.dbutils.QueryRunner</span><span class="o">;</span>
+<span class="kn">import</span> <span class="nn">org.springframework.beans.factory.annotation.Qualifier</span><span class="o">;</span>
+<span class="kn">import</span> <span class="nn">org.springframework.beans.factory.annotation.Value</span><span class="o">;</span>
+<span class="kn">import</span> <span class="nn">org.springframework.context.annotation.Bean</span><span class="o">;</span>
+<span class="kn">import</span> <span class="nn">org.springframework.context.annotation.Scope</span><span class="o">;</span>
+<span class="kn">import</span> <span class="nn">javax.sql.DataSource</span><span class="o">;</span>
+<span class="kn">import</span> <span class="nn">java.beans.PropertyVetoException</span><span class="o">;</span>
+
+<span class="cm">/**
+ * @Author slience_me
+ * @Time : 2021/6/30  9:44
+ * 和spring连接数据库相关的配置类
+ */</span>
+<span class="kd">public</span> <span class="kd">class</span> <span class="nc">JdbcConfig</span> <span class="o">{</span>
+
+    <span class="nd">@Value</span><span class="o">(</span><span class="s">"${jdbc.driver}"</span><span class="o">)</span>
+    <span class="kd">private</span> <span class="nc">String</span> <span class="n">driver</span><span class="o">;</span>
+    <span class="nd">@Value</span><span class="o">(</span><span class="s">"${jdbc.url}"</span><span class="o">)</span>
+    <span class="kd">private</span> <span class="nc">String</span> <span class="n">url</span><span class="o">;</span>
+    <span class="nd">@Value</span><span class="o">(</span><span class="s">"${jdbc.username}"</span><span class="o">)</span>
+    <span class="kd">private</span> <span class="nc">String</span> <span class="n">username</span><span class="o">;</span>
+    <span class="nd">@Value</span><span class="o">(</span><span class="s">"${jdbc.password}"</span><span class="o">)</span>
+    <span class="kd">private</span> <span class="nc">String</span> <span class="n">password</span><span class="o">;</span>
+
+
+    <span class="cm">/**
+     * 用于创建一个QueryRunner对象
+     * @param dataSource
+     * @return
+     */</span>
+    <span class="nd">@Bean</span><span class="o">(</span><span class="n">name</span> <span class="o">=</span> <span class="s">"runner"</span><span class="o">)</span>
+    <span class="nd">@Scope</span><span class="o">(</span><span class="s">"prototype"</span><span class="o">)</span>
+    <span class="kd">public</span> <span class="nc">QueryRunner</span> <span class="nf">createQueryRunner</span><span class="o">(</span><span class="nd">@Qualifier</span><span class="o">(</span><span class="s">"ds1"</span><span class="o">)</span> <span class="nc">DataSource</span> <span class="n">dataSource</span><span class="o">){</span>
+        <span class="k">return</span> <span class="k">new</span> <span class="nf">QueryRunner</span><span class="o">(</span><span class="n">dataSource</span><span class="o">);</span>
+    <span class="o">}</span>
+
+    <span class="cm">/**
+     * 创建数据源对象
+     * @return
+     */</span>
+    <span class="nd">@Bean</span><span class="o">(</span><span class="n">name</span> <span class="o">=</span> <span class="s">"ds1"</span><span class="o">)</span>
+    <span class="kd">public</span> <span class="nc">DataSource</span> <span class="nf">createDataSource</span><span class="o">(){</span>
+        <span class="nc">ComboPooledDataSource</span> <span class="n">ds</span> <span class="o">=</span> <span class="k">new</span> <span class="nc">ComboPooledDataSource</span><span class="o">();</span>
+
+        <span class="k">try</span> <span class="o">{</span>
+            <span class="n">ds</span><span class="o">.</span><span class="na">setDriverClass</span><span class="o">(</span><span class="n">driver</span><span class="o">);</span>
+            <span class="n">ds</span><span class="o">.</span><span class="na">setJdbcUrl</span><span class="o">(</span><span class="n">url</span><span class="o">);</span>
+            <span class="n">ds</span><span class="o">.</span><span class="na">setUser</span><span class="o">(</span><span class="n">username</span><span class="o">);</span>
+            <span class="n">ds</span><span class="o">.</span><span class="na">setPassword</span><span class="o">(</span><span class="n">password</span><span class="o">);</span>
+            <span class="k">return</span> <span class="n">ds</span><span class="o">;</span>
+        <span class="o">}</span> <span class="k">catch</span> <span class="o">(</span><span class="nc">PropertyVetoException</span> <span class="n">e</span><span class="o">)</span> <span class="o">{</span>
+            <span class="k">throw</span> <span class="k">new</span> <span class="nf">RuntimeException</span><span class="o">(</span><span class="n">e</span><span class="o">);</span>
+        <span class="o">}</span>
+    <span class="o">}</span>
+
+    <span class="nd">@Bean</span><span class="o">(</span><span class="n">name</span> <span class="o">=</span> <span class="s">"ds2"</span><span class="o">)</span>
+    <span class="kd">public</span> <span class="nc">DataSource</span> <span class="nf">createDataSource1</span><span class="o">(){</span>
+        <span class="nc">ComboPooledDataSource</span> <span class="n">ds</span> <span class="o">=</span> <span class="k">new</span> <span class="nc">ComboPooledDataSource</span><span class="o">();</span>
+
+        <span class="k">try</span> <span class="o">{</span>
+            <span class="n">ds</span><span class="o">.</span><span class="na">setDriverClass</span><span class="o">(</span><span class="n">driver</span><span class="o">);</span>
+            <span class="n">ds</span><span class="o">.</span><span class="na">setJdbcUrl</span><span class="o">(</span><span class="s">"jdbc:mysql://localhost:3306/eesy02"</span><span class="o">);</span>
+            <span class="n">ds</span><span class="o">.</span><span class="na">setUser</span><span class="o">(</span><span class="n">username</span><span class="o">);</span>
+            <span class="n">ds</span><span class="o">.</span><span class="na">setPassword</span><span class="o">(</span><span class="n">password</span><span class="o">);</span>
+            <span class="k">return</span> <span class="n">ds</span><span class="o">;</span>
+        <span class="o">}</span> <span class="k">catch</span> <span class="o">(</span><span class="nc">PropertyVetoException</span> <span class="n">e</span><span class="o">)</span> <span class="o">{</span>
+            <span class="k">throw</span> <span class="k">new</span> <span class="nf">RuntimeException</span><span class="o">(</span><span class="n">e</span><span class="o">);</span>
+        <span class="o">}</span>
+    <span class="o">}</span>
+<span class="o">}</span>
+
+</code></pre></div></div> <h3 id="测试类">测试类</h3> <h4 id="maven配置">maven配置</h4> <ul> <li>新增<code class="language-plaintext highlighter-rouge">spring-test</code> <div class="language-xml highlighter-rouge"><div class="highlight"><pre class="highlight"><code>  <span class="nt">&lt;packaging&gt;</span>jar<span class="nt">&lt;/packaging&gt;</span>
+  <span class="nt">&lt;dependencies&gt;</span>
+      <span class="nt">&lt;dependency&gt;</span>
+          <span class="nt">&lt;groupId&gt;</span>org.springframework<span class="nt">&lt;/groupId&gt;</span>
+          <span class="nt">&lt;artifactId&gt;</span>spring-context<span class="nt">&lt;/artifactId&gt;</span>
+          <span class="nt">&lt;version&gt;</span>5.0.2.RELEASE<span class="nt">&lt;/version&gt;</span>
+      <span class="nt">&lt;/dependency&gt;</span>
+      <span class="nt">&lt;dependency&gt;</span>
+          <span class="nt">&lt;groupId&gt;</span>org.springframework<span class="nt">&lt;/groupId&gt;</span>
+          <span class="nt">&lt;artifactId&gt;</span>spring-test<span class="nt">&lt;/artifactId&gt;</span>
+          <span class="nt">&lt;version&gt;</span>5.0.2.RELEASE<span class="nt">&lt;/version&gt;</span>
+      <span class="nt">&lt;/dependency&gt;</span>
+      <span class="nt">&lt;dependency&gt;</span>
+          <span class="nt">&lt;groupId&gt;</span>junit<span class="nt">&lt;/groupId&gt;</span>
+          <span class="nt">&lt;artifactId&gt;</span>junit<span class="nt">&lt;/artifactId&gt;</span>
+          <span class="nt">&lt;version&gt;</span>4.12<span class="nt">&lt;/version&gt;</span>
+          <span class="nt">&lt;scope&gt;</span>test<span class="nt">&lt;/scope&gt;</span>
+      <span class="nt">&lt;/dependency&gt;</span>
+      <span class="nt">&lt;dependency&gt;</span>
+          <span class="nt">&lt;groupId&gt;</span>commons-dbutils<span class="nt">&lt;/groupId&gt;</span>
+          <span class="nt">&lt;artifactId&gt;</span>commons-dbutils<span class="nt">&lt;/artifactId&gt;</span>
+          <span class="nt">&lt;version&gt;</span>1.6<span class="nt">&lt;/version&gt;</span>
+      <span class="nt">&lt;/dependency&gt;</span>
+      <span class="nt">&lt;dependency&gt;</span>
+          <span class="nt">&lt;groupId&gt;</span>mysql<span class="nt">&lt;/groupId&gt;</span>
+          <span class="nt">&lt;artifactId&gt;</span>mysql-connector-java<span class="nt">&lt;/artifactId&gt;</span>
+          <span class="nt">&lt;version&gt;</span>8.0.23<span class="nt">&lt;/version&gt;</span>
+      <span class="nt">&lt;/dependency&gt;</span>
+      <span class="nt">&lt;dependency&gt;</span>
+          <span class="nt">&lt;groupId&gt;</span>c3p0<span class="nt">&lt;/groupId&gt;</span>
+          <span class="nt">&lt;artifactId&gt;</span>c3p0<span class="nt">&lt;/artifactId&gt;</span>
+          <span class="nt">&lt;version&gt;</span>0.9.1.2<span class="nt">&lt;/version&gt;</span>
+      <span class="nt">&lt;/dependency&gt;</span>
+  <span class="nt">&lt;/dependencies&gt;</span>
+</code></pre></div> </div> <h4 id="测试类代码">测试类代码</h4> </li> <li>Spring整合Junit的配置 <ol> <li>导入spring整合Junit的jar（坐标）</li> <li>使用Junit提供的一个注解把原有的main方法替换了，替换成spring提供的Runwith</li> <li>告知spring的运行器，spring和ioc创建的基于xml还是注解的，并且说明位置</li> </ol> </li> <li><code class="language-plaintext highlighter-rouge">@RunWith(SpringJUnit4ClassRunner.class)</code></li> <li><code class="language-plaintext highlighter-rouge">@ContextConfiguration</code> * <code class="language-plaintext highlighter-rouge">locations</code>：指定xml文件的位置，加上classpath关键字，表示在类路径下 <ul> <li><code class="language-plaintext highlighter-rouge">classes</code>：指定注解类所在地位置</li> </ul> </li> <li>当我们使用spring 5.x版本的时候，要求junit的jar必须是4.12及以上</li> </ul> <div class="language-java highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kn">package</span> <span class="nn">xyz.slienceme.test</span><span class="o">;</span>
+<span class="kn">import</span> <span class="nn">config.SpringConfiguration</span><span class="o">;</span>
+<span class="kn">import</span> <span class="nn">org.junit.Test</span><span class="o">;</span>
+<span class="kn">import</span> <span class="nn">org.junit.runner.RunWith</span><span class="o">;</span>
+<span class="kn">import</span> <span class="nn">org.springframework.beans.factory.annotation.Autowired</span><span class="o">;</span>
+<span class="kn">import</span> <span class="nn">org.springframework.test.context.ContextConfiguration</span><span class="o">;</span>
+<span class="kn">import</span> <span class="nn">org.springframework.test.context.junit4.SpringJUnit4ClassRunner</span><span class="o">;</span>
+<span class="kn">import</span> <span class="nn">xyz.slienceme.domain.Account</span><span class="o">;</span>
+<span class="kn">import</span> <span class="nn">xyz.slienceme.service.IAccountService</span><span class="o">;</span>
+<span class="kn">import</span> <span class="nn">java.util.List</span><span class="o">;</span>
+
+<span class="cm">/**
+ * @Author slience_me
+ * @Time : 2021/6/30  8:33
+ * 使用Junit单元测试，测试我们的配置
+ */</span>
+<span class="nd">@RunWith</span><span class="o">(</span><span class="nc">SpringJUnit4ClassRunner</span><span class="o">.</span><span class="na">class</span><span class="o">)</span>
+<span class="nd">@ContextConfiguration</span><span class="o">(</span><span class="n">classes</span> <span class="o">=</span> <span class="nc">SpringConfiguration</span><span class="o">.</span><span class="na">class</span><span class="o">)</span>
+<span class="kd">public</span> <span class="kd">class</span> <span class="nc">AccountServiceTest</span> <span class="o">{</span>
+
+    <span class="nd">@Autowired</span>
+    <span class="kd">private</span> <span class="nc">IAccountService</span> <span class="n">as</span> <span class="o">=</span> <span class="kc">null</span><span class="o">;</span>
+
+    <span class="nd">@Test</span>
+    <span class="kd">public</span> <span class="kt">void</span> <span class="nf">testFindAll</span><span class="o">(){</span>
+        <span class="c1">//3.执行方法</span>
+        <span class="nc">List</span><span class="o">&lt;</span><span class="nc">Account</span><span class="o">&gt;</span> <span class="n">accounts</span> <span class="o">=</span> <span class="n">as</span><span class="o">.</span><span class="na">findAllAccount</span><span class="o">();</span>
+        <span class="k">for</span> <span class="o">(</span><span class="nc">Account</span> <span class="n">account</span> <span class="o">:</span> <span class="n">accounts</span><span class="o">)</span> <span class="o">{</span>
+            <span class="nc">System</span><span class="o">.</span><span class="na">out</span><span class="o">.</span><span class="na">println</span><span class="o">(</span><span class="n">account</span><span class="o">);</span>
+        <span class="o">}</span>
+    <span class="o">}</span>
+<span class="o">}</span>
+
+</code></pre></div></div> <div class="language-java highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nd">@RunWith</span><span class="o">(</span><span class="nc">SpringJUnit4ClassRunner</span><span class="o">.</span><span class="na">class</span><span class="o">)</span>
+<span class="nd">@ContextConfiguration</span><span class="o">(</span><span class="n">locations</span> <span class="o">=</span> <span class="s">"classpath:bean.xml"</span><span class="o">)</span>
+<span class="kd">public</span> <span class="kd">class</span> <span class="nc">AccountServiceTest</span> <span class="o">{</span>
+
+    <span class="nd">@Autowired</span>
+    <span class="kd">private</span> <span class="nc">IAccountService</span> <span class="n">as</span> <span class="o">=</span> <span class="kc">null</span><span class="o">;</span>
+
+    <span class="nd">@Test</span>
+    <span class="kd">public</span> <span class="kt">void</span> <span class="nf">testFindAll</span><span class="o">(){</span>
+        <span class="c1">//3.执行方法</span>
+        <span class="nc">List</span><span class="o">&lt;</span><span class="nc">Account</span><span class="o">&gt;</span> <span class="n">accounts</span> <span class="o">=</span> <span class="n">as</span><span class="o">.</span><span class="na">findAllAccount</span><span class="o">();</span>
+        <span class="k">for</span> <span class="o">(</span><span class="nc">Account</span> <span class="n">account</span> <span class="o">:</span> <span class="n">accounts</span><span class="o">)</span> <span class="o">{</span>
+            <span class="nc">System</span><span class="o">.</span><span class="na">out</span><span class="o">.</span><span class="na">println</span><span class="o">(</span><span class="n">account</span><span class="o">);</span>
+        <span class="o">}</span>
+    <span class="o">}</span>
+<span class="o">}</span>
+
+</code></pre></div></div> <h2 id="基于接口的动态代理">基于接口的动态代理</h2> <h3 id="动态代理">动态代理：</h3> <ul> <li>特点：字节码随用随创建，随用随加载</li> <li>作用：不修改源码的基础上对方法增强</li> <li>分类： * 基于接口的动态代理 * 基于子类的动态代理 ———– <h4 id="基于接口的动态代理-1">基于接口的动态代理：</h4> </li> <li>基于接口的动态代理： <ul> <li>涉及的类：Proxy</li> <li> <h2 id="提供者jdk官方">提供者：JDK官方</h2> </li> </ul> </li> <li>如何创建代理对象： <ul> <li> <h2 id="使用proxy类中的newproxyinstance方法">使用Proxy类中的newProxyInstance方法</h2> </li> </ul> </li> <li> <p>创建代理对象的要求： * 被代理类最少实现一个接口，如果没有则不能使用 —-</p> </li> <li><code class="language-plaintext highlighter-rouge">newProxyInstance</code>方法的参数： * <code class="language-plaintext highlighter-rouge">ClassLoader</code>：类加载器 * 它是用于加载代理对象字节码的。和被代理对象使用相同的类加载器。固定写法。 * <code class="language-plaintext highlighter-rouge">Class[]</code>：字节码数组 * 它是用于让代理对象和被代理对象有相同方法。固定写法。 * <code class="language-plaintext highlighter-rouge">InvocationHandler</code>：用于提供增强的代码 * 它是让我们写如何代理。我们一般都是些一个该接口的实现类，通常情况下都是匿名内部类，但不是必须的。 * 此接口的实现类都是谁用谁写。</li> </ul> <div class="language-java highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kn">package</span> <span class="nn">xyz.slienceme.proxy</span><span class="o">;</span>
+
+<span class="kn">import</span> <span class="nn">java.lang.reflect.InvocationHandler</span><span class="o">;</span>
+<span class="kn">import</span> <span class="nn">java.lang.reflect.Method</span><span class="o">;</span>
+<span class="kn">import</span> <span class="nn">java.lang.reflect.Proxy</span><span class="o">;</span>
+
+<span class="cm">/**
+ * 模拟一个消费者
+ */</span>
+<span class="kd">public</span> <span class="kd">class</span> <span class="nc">Client</span> <span class="o">{</span>
+
+    <span class="kd">public</span> <span class="kd">static</span> <span class="kt">void</span> <span class="nf">main</span><span class="o">(</span><span class="nc">String</span><span class="o">[]</span> <span class="n">args</span><span class="o">)</span> <span class="o">{</span>
+        <span class="kd">final</span> <span class="nc">Producer</span> <span class="n">producer</span> <span class="o">=</span> <span class="k">new</span> <span class="nc">Producer</span><span class="o">();</span>
+       <span class="nc">IProducer</span> <span class="n">proxyProducer</span> <span class="o">=</span> <span class="o">(</span><span class="nc">IProducer</span><span class="o">)</span> <span class="nc">Proxy</span><span class="o">.</span><span class="na">newProxyInstance</span><span class="o">(</span><span class="n">producer</span><span class="o">.</span><span class="na">getClass</span><span class="o">().</span><span class="na">getClassLoader</span><span class="o">(),</span>
+                <span class="n">producer</span><span class="o">.</span><span class="na">getClass</span><span class="o">().</span><span class="na">getInterfaces</span><span class="o">(),</span>
+                <span class="k">new</span> <span class="nf">InvocationHandler</span><span class="o">()</span> <span class="o">{</span>
+                    <span class="cm">/**
+                     * 作用：执行被代理对象的任何接口方法都会经过该方法
+                     * 方法参数的含义
+                     * @param proxy   代理对象的引用
+                     * @param method  当前执行的方法
+                     * @param args    当前执行方法所需的参数
+                     * @return        和被代理对象方法有相同的返回值
+                     * @throws Throwable
+                     */</span>
+                    <span class="nd">@Override</span>
+                    <span class="kd">public</span> <span class="nc">Object</span> <span class="nf">invoke</span><span class="o">(</span><span class="nc">Object</span> <span class="n">proxy</span><span class="o">,</span> <span class="nc">Method</span> <span class="n">method</span><span class="o">,</span> <span class="nc">Object</span><span class="o">[]</span> <span class="n">args</span><span class="o">)</span> <span class="kd">throws</span> <span class="nc">Throwable</span> <span class="o">{</span>
+                        <span class="c1">//提供增强的代码</span>
+                        <span class="nc">Object</span> <span class="n">returnValue</span> <span class="o">=</span> <span class="kc">null</span><span class="o">;</span>
+
+                        <span class="c1">//1.获取方法执行的参数</span>
+                        <span class="nc">Float</span> <span class="n">money</span> <span class="o">=</span> <span class="o">(</span><span class="nc">Float</span><span class="o">)</span><span class="n">args</span><span class="o">[</span><span class="mi">0</span><span class="o">];</span>
+                        <span class="c1">//2.判断当前方法是不是销售</span>
+                        <span class="k">if</span><span class="o">(</span><span class="s">"saleProduct"</span><span class="o">.</span><span class="na">equals</span><span class="o">(</span><span class="n">method</span><span class="o">.</span><span class="na">getName</span><span class="o">()))</span> <span class="o">{</span>
+                            <span class="n">returnValue</span> <span class="o">=</span> <span class="n">method</span><span class="o">.</span><span class="na">invoke</span><span class="o">(</span><span class="n">producer</span><span class="o">,</span> <span class="n">money</span><span class="o">*</span><span class="mf">0.8f</span><span class="o">);</span>
+                        <span class="o">}</span>
+                        <span class="k">return</span> <span class="n">returnValue</span><span class="o">;</span>
+                    <span class="o">}</span>
+                <span class="o">});</span>
+        <span class="n">proxyProducer</span><span class="o">.</span><span class="na">saleProduct</span><span class="o">(</span><span class="mi">10000</span><span class="n">f</span><span class="o">);</span>
+    <span class="o">}</span>
+<span class="o">}</span>
+
+</code></pre></div></div> <div class="language-java highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kn">package</span> <span class="nn">xyz.slienceme.proxy</span><span class="o">;</span>
+
+<span class="cm">/**
+ * 对生产厂家要求的接口
+ */</span>
+<span class="kd">public</span> <span class="kd">interface</span> <span class="nc">IProducer</span> <span class="o">{</span>
+
+    <span class="cm">/**
+     * 销售
+     * @param money
+     */</span>
+    <span class="kd">public</span> <span class="kt">void</span> <span class="nf">saleProduct</span><span class="o">(</span><span class="kt">float</span> <span class="n">money</span><span class="o">);</span>
+
+    <span class="cm">/**
+     * 售后
+     * @param money
+     */</span>
+    <span class="kd">public</span> <span class="kt">void</span> <span class="nf">afterService</span><span class="o">(</span><span class="kt">float</span> <span class="n">money</span><span class="o">);</span>
+<span class="o">}</span>
+
+</code></pre></div></div> <div class="language-java highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kn">package</span> <span class="nn">xyz.slienceme.proxy</span><span class="o">;</span>
+
+<span class="cm">/**
+ * 一个生产者
+ */</span>
+<span class="kd">public</span> <span class="kd">class</span> <span class="nc">Producer</span> <span class="kd">implements</span> <span class="nc">IProducer</span><span class="o">{</span>
+
+    <span class="cm">/**
+     * 销售
+     * @param money
+     */</span>
+    <span class="kd">public</span> <span class="kt">void</span> <span class="nf">saleProduct</span><span class="o">(</span><span class="kt">float</span> <span class="n">money</span><span class="o">){</span>
+        <span class="nc">System</span><span class="o">.</span><span class="na">out</span><span class="o">.</span><span class="na">println</span><span class="o">(</span><span class="s">"销售产品，并拿到钱："</span><span class="o">+</span><span class="n">money</span><span class="o">);</span>
+    <span class="o">}</span>
+
+    <span class="cm">/**
+     * 售后
+     * @param money
+     */</span>
+    <span class="kd">public</span> <span class="kt">void</span> <span class="nf">afterService</span><span class="o">(</span><span class="kt">float</span> <span class="n">money</span><span class="o">){</span>
+        <span class="nc">System</span><span class="o">.</span><span class="na">out</span><span class="o">.</span><span class="na">println</span><span class="o">(</span><span class="s">"提供售后服务，并拿到钱："</span><span class="o">+</span><span class="n">money</span><span class="o">);</span>
+    <span class="o">}</span>
+<span class="o">}</span>
+
+</code></pre></div></div> <h4 id="基于子类的动态代理">基于子类的动态代理：</h4> <ul> <li>maven添加 ```xml</li> </ul> <dependency> <groupId>cglib</groupId> <artifactId>cglib</artifactId> <version>2.1_3</version> </dependency> <div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>
+---
+* 基于接口的动态代理：
+	* 涉及的类：`Enhancer`
+	* 提供者：第三方`cglib`库
+---
+*  如何创建代理对象：
+	* 使用`Enhancer`类中的`create`方法
+---
+ *  创建代理对象的要求：
+ 	* 被代理类不能是最终类
+----
+
+ *  `newProxyInstance`方法的参数：
+ 	* `Class`：字节码
+ 		* 它是用于指定被代理对象的字节码。
+ 	* `Callback`：用于提供增强的代码
+ 		* 它是让我们写如何代理。我们一般都是些一个该接口的实现类，通常情况下都是匿名内部类，但不是必须的。
+ 		* 此接口的实现类都是谁用谁写。
+ 		* 我们一般写的都是该接口的子接口实现类：`MethodInterceptor`
+
+```java
+package xyz.slienceme.cglib;
+import net.sf.cglib.proxy.Enhancer;
+import net.sf.cglib.proxy.MethodInterceptor;
+import net.sf.cglib.proxy.MethodProxy;
+import java.lang.reflect.Method;
+
+/**
+ * 模拟一个消费者
+ */
+public class Client {
+    public static void main(String[] args) {
+        final Producer producer = new Producer();
+        Producer cglibProducer = (Producer)Enhancer.create(producer.getClass(), new MethodInterceptor() {
+            /**
+             * 执行北地阿里对象的任何方法都会经过该方法
+             * @param proxy
+             * @param method
+             * @param args
+             *    以上三个参数和基于接口的动态代理中invoke方法的参数是一样的
+             * @param methodProxy ：当前执行方法的代理对象
+             * @return
+             * @throws Throwable
+             */
+            @Override
+            public Object intercept(Object proxy, Method method, Object[] args, MethodProxy methodProxy) throws Throwable {
+                //提供增强的代码
+                Object returnValue = null;
+
+                //1.获取方法执行的参数
+                Float money = (Float)args[0];
+                //2.判断当前方法是不是销售
+                if("saleProduct".equals(method.getName())) {
+                    returnValue = method.invoke(producer, money*0.8f);
+                }
+                return returnValue;
+            }
+        });
+        cglibProducer.saleProduct(12000f);
+    }
+}
+</code></pre></div></div> <div class="language-java highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kn">package</span> <span class="nn">xyz.slienceme.cglib</span><span class="o">;</span>
+
+<span class="cm">/**
+ * 一个生产者
+ */</span>
+<span class="kd">public</span> <span class="kd">class</span> <span class="nc">Producer</span> <span class="o">{</span>
+
+    <span class="cm">/**
+     * 销售
+     * @param money
+     */</span>
+    <span class="kd">public</span> <span class="kt">void</span> <span class="nf">saleProduct</span><span class="o">(</span><span class="kt">float</span> <span class="n">money</span><span class="o">){</span>
+        <span class="nc">System</span><span class="o">.</span><span class="na">out</span><span class="o">.</span><span class="na">println</span><span class="o">(</span><span class="s">"销售产品，并拿到钱："</span><span class="o">+</span><span class="n">money</span><span class="o">);</span>
+    <span class="o">}</span>
+
+    <span class="cm">/**
+     * 售后
+     * @param money
+     */</span>
+    <span class="kd">public</span> <span class="kt">void</span> <span class="nf">afterService</span><span class="o">(</span><span class="kt">float</span> <span class="n">money</span><span class="o">){</span>
+        <span class="nc">System</span><span class="o">.</span><span class="na">out</span><span class="o">.</span><span class="na">println</span><span class="o">(</span><span class="s">"提供售后服务，并拿到钱："</span><span class="o">+</span><span class="n">money</span><span class="o">);</span>
+    <span class="o">}</span>
+<span class="o">}</span>
+
+</code></pre></div></div> <hr /> <h5 id="使用动态代理减少重复代码">使用动态代理减少重复代码</h5> <h6 id="代理前重复代码">代理前：重复代码</h6> <div class="language-java highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kn">package</span> <span class="nn">xyz.slienceme.service.impl</span><span class="o">;</span>
+
+<span class="kn">import</span> <span class="nn">xyz.slienceme.dao.IAccountDao</span><span class="o">;</span>
+<span class="kn">import</span> <span class="nn">xyz.slienceme.domain.Account</span><span class="o">;</span>
+<span class="kn">import</span> <span class="nn">xyz.slienceme.service.IAccountService</span><span class="o">;</span>
+<span class="kn">import</span> <span class="nn">xyz.slienceme.utils.TransactionManager</span><span class="o">;</span>
+
+<span class="kn">import</span> <span class="nn">java.util.List</span><span class="o">;</span>
+
+<span class="cm">/**
+ * 账户的业务层实现类
+ *
+ * 事务控制应该都是在业务层
+ */</span>
+<span class="kd">public</span> <span class="kd">class</span> <span class="nc">AccountServiceImpl_OLD</span> <span class="kd">implements</span> <span class="nc">IAccountService</span><span class="o">{</span>
+
+    <span class="kd">private</span> <span class="nc">IAccountDao</span> <span class="n">accountDao</span><span class="o">;</span>
+    <span class="kd">private</span> <span class="nc">TransactionManager</span> <span class="n">txManager</span><span class="o">;</span>
+
+    <span class="kd">public</span> <span class="kt">void</span> <span class="nf">setTxManager</span><span class="o">(</span><span class="nc">TransactionManager</span> <span class="n">txManager</span><span class="o">)</span> <span class="o">{</span>
+        <span class="k">this</span><span class="o">.</span><span class="na">txManager</span> <span class="o">=</span> <span class="n">txManager</span><span class="o">;</span>
+    <span class="o">}</span>
+
+    <span class="kd">public</span> <span class="kt">void</span> <span class="nf">setAccountDao</span><span class="o">(</span><span class="nc">IAccountDao</span> <span class="n">accountDao</span><span class="o">)</span> <span class="o">{</span>
+        <span class="k">this</span><span class="o">.</span><span class="na">accountDao</span> <span class="o">=</span> <span class="n">accountDao</span><span class="o">;</span>
+    <span class="o">}</span>
+
+    <span class="nd">@Override</span>
+    <span class="kd">public</span> <span class="nc">List</span><span class="o">&lt;</span><span class="nc">Account</span><span class="o">&gt;</span> <span class="nf">findAllAccount</span><span class="o">()</span> <span class="o">{</span>
+        <span class="k">try</span> <span class="o">{</span>
+            <span class="c1">//1.开启事务</span>
+            <span class="n">txManager</span><span class="o">.</span><span class="na">beginTransaction</span><span class="o">();</span>
+            <span class="c1">//2.执行操作</span>
+            <span class="nc">List</span><span class="o">&lt;</span><span class="nc">Account</span><span class="o">&gt;</span> <span class="n">accounts</span> <span class="o">=</span> <span class="n">accountDao</span><span class="o">.</span><span class="na">findAllAccount</span><span class="o">();</span>
+            <span class="c1">//3.提交事务</span>
+            <span class="n">txManager</span><span class="o">.</span><span class="na">commit</span><span class="o">();</span>
+            <span class="c1">//4.返回结果</span>
+            <span class="k">return</span> <span class="n">accounts</span><span class="o">;</span>
+        <span class="o">}</span><span class="k">catch</span> <span class="o">(</span><span class="nc">Exception</span> <span class="n">e</span><span class="o">){</span>
+            <span class="c1">//5.回滚操作</span>
+            <span class="n">txManager</span><span class="o">.</span><span class="na">rollback</span><span class="o">();</span>
+            <span class="k">throw</span> <span class="k">new</span> <span class="nf">RuntimeException</span><span class="o">(</span><span class="n">e</span><span class="o">);</span>
+        <span class="o">}</span><span class="k">finally</span> <span class="o">{</span>
+            <span class="c1">//6.释放连接</span>
+            <span class="n">txManager</span><span class="o">.</span><span class="na">release</span><span class="o">();</span>
+        <span class="o">}</span>
+
+    <span class="o">}</span>
+
+    <span class="nd">@Override</span>
+    <span class="kd">public</span> <span class="nc">Account</span> <span class="nf">findAccountById</span><span class="o">(</span><span class="nc">Integer</span> <span class="n">accountId</span><span class="o">)</span> <span class="o">{</span>
+        <span class="k">try</span> <span class="o">{</span>
+            <span class="c1">//1.开启事务</span>
+            <span class="n">txManager</span><span class="o">.</span><span class="na">beginTransaction</span><span class="o">();</span>
+            <span class="c1">//2.执行操作</span>
+            <span class="nc">Account</span> <span class="n">account</span> <span class="o">=</span> <span class="n">accountDao</span><span class="o">.</span><span class="na">findAccountById</span><span class="o">(</span><span class="n">accountId</span><span class="o">);</span>
+            <span class="c1">//3.提交事务</span>
+            <span class="n">txManager</span><span class="o">.</span><span class="na">commit</span><span class="o">();</span>
+            <span class="c1">//4.返回结果</span>
+            <span class="k">return</span> <span class="n">account</span><span class="o">;</span>
+        <span class="o">}</span><span class="k">catch</span> <span class="o">(</span><span class="nc">Exception</span> <span class="n">e</span><span class="o">){</span>
+            <span class="c1">//5.回滚操作</span>
+            <span class="n">txManager</span><span class="o">.</span><span class="na">rollback</span><span class="o">();</span>
+            <span class="k">throw</span> <span class="k">new</span> <span class="nf">RuntimeException</span><span class="o">(</span><span class="n">e</span><span class="o">);</span>
+        <span class="o">}</span><span class="k">finally</span> <span class="o">{</span>
+            <span class="c1">//6.释放连接</span>
+            <span class="n">txManager</span><span class="o">.</span><span class="na">release</span><span class="o">();</span>
+        <span class="o">}</span>
+    <span class="o">}</span>
+
+    <span class="nd">@Override</span>
+    <span class="kd">public</span> <span class="kt">void</span> <span class="nf">saveAccount</span><span class="o">(</span><span class="nc">Account</span> <span class="n">account</span><span class="o">)</span> <span class="o">{</span>
+        <span class="k">try</span> <span class="o">{</span>
+            <span class="c1">//1.开启事务</span>
+            <span class="n">txManager</span><span class="o">.</span><span class="na">beginTransaction</span><span class="o">();</span>
+            <span class="c1">//2.执行操作</span>
+            <span class="n">accountDao</span><span class="o">.</span><span class="na">saveAccount</span><span class="o">(</span><span class="n">account</span><span class="o">);</span>
+            <span class="c1">//3.提交事务</span>
+            <span class="n">txManager</span><span class="o">.</span><span class="na">commit</span><span class="o">();</span>
+        <span class="o">}</span><span class="k">catch</span> <span class="o">(</span><span class="nc">Exception</span> <span class="n">e</span><span class="o">){</span>
+            <span class="c1">//4.回滚操作</span>
+            <span class="n">txManager</span><span class="o">.</span><span class="na">rollback</span><span class="o">();</span>
+        <span class="o">}</span><span class="k">finally</span> <span class="o">{</span>
+            <span class="c1">//5.释放连接</span>
+            <span class="n">txManager</span><span class="o">.</span><span class="na">release</span><span class="o">();</span>
+        <span class="o">}</span>
+
+    <span class="o">}</span>
+
+    <span class="nd">@Override</span>
+    <span class="kd">public</span> <span class="kt">void</span> <span class="nf">updateAccount</span><span class="o">(</span><span class="nc">Account</span> <span class="n">account</span><span class="o">)</span> <span class="o">{</span>
+        <span class="k">try</span> <span class="o">{</span>
+            <span class="c1">//1.开启事务</span>
+            <span class="n">txManager</span><span class="o">.</span><span class="na">beginTransaction</span><span class="o">();</span>
+            <span class="c1">//2.执行操作</span>
+            <span class="n">accountDao</span><span class="o">.</span><span class="na">updateAccount</span><span class="o">(</span><span class="n">account</span><span class="o">);</span>
+            <span class="c1">//3.提交事务</span>
+            <span class="n">txManager</span><span class="o">.</span><span class="na">commit</span><span class="o">();</span>
+        <span class="o">}</span><span class="k">catch</span> <span class="o">(</span><span class="nc">Exception</span> <span class="n">e</span><span class="o">){</span>
+            <span class="c1">//4.回滚操作</span>
+            <span class="n">txManager</span><span class="o">.</span><span class="na">rollback</span><span class="o">();</span>
+        <span class="o">}</span><span class="k">finally</span> <span class="o">{</span>
+            <span class="c1">//5.释放连接</span>
+            <span class="n">txManager</span><span class="o">.</span><span class="na">release</span><span class="o">();</span>
+        <span class="o">}</span>
+
+    <span class="o">}</span>
+
+    <span class="nd">@Override</span>
+    <span class="kd">public</span> <span class="kt">void</span> <span class="nf">deleteAccount</span><span class="o">(</span><span class="nc">Integer</span> <span class="n">acccountId</span><span class="o">)</span> <span class="o">{</span>
+        <span class="k">try</span> <span class="o">{</span>
+            <span class="c1">//1.开启事务</span>
+            <span class="n">txManager</span><span class="o">.</span><span class="na">beginTransaction</span><span class="o">();</span>
+            <span class="c1">//2.执行操作</span>
+            <span class="n">accountDao</span><span class="o">.</span><span class="na">deleteAccount</span><span class="o">(</span><span class="n">acccountId</span><span class="o">);</span>
+            <span class="c1">//3.提交事务</span>
+            <span class="n">txManager</span><span class="o">.</span><span class="na">commit</span><span class="o">();</span>
+        <span class="o">}</span><span class="k">catch</span> <span class="o">(</span><span class="nc">Exception</span> <span class="n">e</span><span class="o">){</span>
+            <span class="c1">//4.回滚操作</span>
+            <span class="n">txManager</span><span class="o">.</span><span class="na">rollback</span><span class="o">();</span>
+        <span class="o">}</span><span class="k">finally</span> <span class="o">{</span>
+            <span class="c1">//5.释放连接</span>
+            <span class="n">txManager</span><span class="o">.</span><span class="na">release</span><span class="o">();</span>
+        <span class="o">}</span>
+
+    <span class="o">}</span>
+
+    <span class="nd">@Override</span>
+    <span class="kd">public</span> <span class="kt">void</span> <span class="nf">transfer</span><span class="o">(</span><span class="nc">String</span> <span class="n">sourceName</span><span class="o">,</span> <span class="nc">String</span> <span class="n">targetName</span><span class="o">,</span> <span class="nc">Float</span> <span class="n">money</span><span class="o">)</span> <span class="o">{</span>
+        <span class="k">try</span> <span class="o">{</span>
+            <span class="c1">//1.开启事务</span>
+            <span class="n">txManager</span><span class="o">.</span><span class="na">beginTransaction</span><span class="o">();</span>
+            <span class="c1">//2.执行操作</span>
+
+            <span class="c1">//2.1根据名称查询转出账户</span>
+            <span class="nc">Account</span> <span class="n">source</span> <span class="o">=</span> <span class="n">accountDao</span><span class="o">.</span><span class="na">findAccountByName</span><span class="o">(</span><span class="n">sourceName</span><span class="o">);</span>
+            <span class="c1">//2.2根据名称查询转入账户</span>
+            <span class="nc">Account</span> <span class="n">target</span> <span class="o">=</span> <span class="n">accountDao</span><span class="o">.</span><span class="na">findAccountByName</span><span class="o">(</span><span class="n">targetName</span><span class="o">);</span>
+            <span class="c1">//2.3转出账户减钱</span>
+            <span class="n">source</span><span class="o">.</span><span class="na">setMoney</span><span class="o">(</span><span class="n">source</span><span class="o">.</span><span class="na">getMoney</span><span class="o">()-</span><span class="n">money</span><span class="o">);</span>
+            <span class="c1">//2.4转入账户加钱</span>
+            <span class="n">target</span><span class="o">.</span><span class="na">setMoney</span><span class="o">(</span><span class="n">target</span><span class="o">.</span><span class="na">getMoney</span><span class="o">()+</span><span class="n">money</span><span class="o">);</span>
+            <span class="c1">//2.5更新转出账户</span>
+            <span class="n">accountDao</span><span class="o">.</span><span class="na">updateAccount</span><span class="o">(</span><span class="n">source</span><span class="o">);</span>
+
+            <span class="kt">int</span> <span class="n">i</span><span class="o">=</span><span class="mi">1</span><span class="o">/</span><span class="mi">0</span><span class="o">;</span>
+
+            <span class="c1">//2.6更新转入账户</span>
+            <span class="n">accountDao</span><span class="o">.</span><span class="na">updateAccount</span><span class="o">(</span><span class="n">target</span><span class="o">);</span>
+            <span class="c1">//3.提交事务</span>
+            <span class="n">txManager</span><span class="o">.</span><span class="na">commit</span><span class="o">();</span>
+
+        <span class="o">}</span><span class="k">catch</span> <span class="o">(</span><span class="nc">Exception</span> <span class="n">e</span><span class="o">){</span>
+            <span class="c1">//4.回滚操作</span>
+            <span class="n">txManager</span><span class="o">.</span><span class="na">rollback</span><span class="o">();</span>
+            <span class="n">e</span><span class="o">.</span><span class="na">printStackTrace</span><span class="o">();</span>
+        <span class="o">}</span><span class="k">finally</span> <span class="o">{</span>
+            <span class="c1">//5.释放连接</span>
+            <span class="n">txManager</span><span class="o">.</span><span class="na">release</span><span class="o">();</span>
+        <span class="o">}</span>
+
+
+    <span class="o">}</span>
+<span class="o">}</span>
+
+</code></pre></div></div> <p><img src="https://slienceme.cn/images/posts/20210630170410722.png" alt="Alt Text" /></p> <h6 id="代理后">代理后：</h6> <div class="language-java highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="cm">/**
+ * 用于创建Service的代理对象的工厂
+ */</span>
+<span class="kd">public</span> <span class="kd">class</span> <span class="nc">BeanFactory</span> <span class="o">{</span>
+
+    <span class="kd">private</span> <span class="nc">IAccountService</span> <span class="n">accountService</span><span class="o">;</span>
+
+    <span class="kd">private</span> <span class="nc">TransactionManager</span> <span class="n">txManager</span><span class="o">;</span>
+
+    <span class="kd">public</span> <span class="kt">void</span> <span class="nf">setTxManager</span><span class="o">(</span><span class="nc">TransactionManager</span> <span class="n">txManager</span><span class="o">)</span> <span class="o">{</span>
+        <span class="k">this</span><span class="o">.</span><span class="na">txManager</span> <span class="o">=</span> <span class="n">txManager</span><span class="o">;</span>
+    <span class="o">}</span>
+
+
+    <span class="kd">public</span> <span class="kd">final</span> <span class="kt">void</span> <span class="nf">setAccountService</span><span class="o">(</span><span class="nc">IAccountService</span> <span class="n">accountService</span><span class="o">)</span> <span class="o">{</span>
+        <span class="k">this</span><span class="o">.</span><span class="na">accountService</span> <span class="o">=</span> <span class="n">accountService</span><span class="o">;</span>
+    <span class="o">}</span>
+
+    <span class="cm">/**
+     * 获取Service代理对象
+     * @return
+     */</span>
+    <span class="kd">public</span> <span class="nc">IAccountService</span> <span class="nf">getAccountService</span><span class="o">()</span> <span class="o">{</span>
+        <span class="k">return</span> <span class="o">(</span><span class="nc">IAccountService</span><span class="o">)</span><span class="nc">Proxy</span><span class="o">.</span><span class="na">newProxyInstance</span><span class="o">(</span><span class="n">accountService</span><span class="o">.</span><span class="na">getClass</span><span class="o">().</span><span class="na">getClassLoader</span><span class="o">(),</span>
+                <span class="n">accountService</span><span class="o">.</span><span class="na">getClass</span><span class="o">().</span><span class="na">getInterfaces</span><span class="o">(),</span>
+                <span class="k">new</span> <span class="nf">InvocationHandler</span><span class="o">()</span> <span class="o">{</span>
+                    <span class="cm">/**
+                     * 添加事务的支持
+                     *
+                     * @param proxy
+                     * @param method
+                     * @param args
+                     * @return
+                     * @throws Throwable
+                     */</span>
+                    <span class="nd">@Override</span>
+                    <span class="kd">public</span> <span class="nc">Object</span> <span class="nf">invoke</span><span class="o">(</span><span class="nc">Object</span> <span class="n">proxy</span><span class="o">,</span> <span class="nc">Method</span> <span class="n">method</span><span class="o">,</span> <span class="nc">Object</span><span class="o">[]</span> <span class="n">args</span><span class="o">)</span> <span class="kd">throws</span> <span class="nc">Throwable</span> <span class="o">{</span>
+
+                        <span class="k">if</span><span class="o">(</span><span class="s">"test"</span><span class="o">.</span><span class="na">equals</span><span class="o">(</span><span class="n">method</span><span class="o">.</span><span class="na">getName</span><span class="o">())){</span>
+                            <span class="k">return</span> <span class="n">method</span><span class="o">.</span><span class="na">invoke</span><span class="o">(</span><span class="n">accountService</span><span class="o">,</span><span class="n">args</span><span class="o">);</span>
+                        <span class="o">}</span>
+
+                        <span class="nc">Object</span> <span class="n">rtValue</span> <span class="o">=</span> <span class="kc">null</span><span class="o">;</span>
+                        <span class="k">try</span> <span class="o">{</span>
+                            <span class="c1">//1.开启事务</span>
+                            <span class="n">txManager</span><span class="o">.</span><span class="na">beginTransaction</span><span class="o">();</span>
+                            <span class="c1">//2.执行操作</span>
+                            <span class="n">rtValue</span> <span class="o">=</span> <span class="n">method</span><span class="o">.</span><span class="na">invoke</span><span class="o">(</span><span class="n">accountService</span><span class="o">,</span> <span class="n">args</span><span class="o">);</span>
+                            <span class="c1">//3.提交事务</span>
+                            <span class="n">txManager</span><span class="o">.</span><span class="na">commit</span><span class="o">();</span>
+                            <span class="c1">//4.返回结果</span>
+                            <span class="k">return</span> <span class="n">rtValue</span><span class="o">;</span>
+                        <span class="o">}</span> <span class="k">catch</span> <span class="o">(</span><span class="nc">Exception</span> <span class="n">e</span><span class="o">)</span> <span class="o">{</span>
+                            <span class="c1">//5.回滚操作</span>
+                            <span class="n">txManager</span><span class="o">.</span><span class="na">rollback</span><span class="o">();</span>
+                            <span class="k">throw</span> <span class="k">new</span> <span class="nf">RuntimeException</span><span class="o">(</span><span class="n">e</span><span class="o">);</span>
+                        <span class="o">}</span> <span class="k">finally</span> <span class="o">{</span>
+                            <span class="c1">//6.释放连接</span>
+                            <span class="n">txManager</span><span class="o">.</span><span class="na">release</span><span class="o">();</span>
+                        <span class="o">}</span>
+                    <span class="o">}</span>
+                <span class="o">});</span>
+
+    <span class="o">}</span>
+<span class="o">}</span>
+
+</code></pre></div></div> <ul> <li>测试类 ```java /**</li> <li>@Author slience_me</li> <li>@Time : 2021/6/30 8:33</li> <li> <p>使用Junit单元测试，测试我们的配置 */ @RunWith(SpringJUnit4ClassRunner.class) @ContextConfiguration(locations = “classpath:bean.xml”) public class AccountServiceTest {</p> <p>@Autowired @Qualifier(“proxyAccountService”) private IAccountService as;</p> <p>@Test public void testTransfer(){ as.transfer(“aaa”,”bbb”,100f); }</p> </li> </ul> <p>}</p> <div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>##### xml文件的配置
+```xml
+&lt;?xml version="1.0" encoding="UTF-8"?&gt;
+&lt;beans xmlns="http://www.springframework.org/schema/beans"
+       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+       xsi:schemaLocation="http://www.springframework.org/schema/beans
+        http://www.springframework.org/schema/beans/spring-beans.xsd"&gt;
+    &lt;!--配置代理的service--&gt;
+    &lt;bean id="proxyAccountService" factory-bean="beanFactory" factory-method="getAccountService"/&gt;
+
+    &lt;!--配置beanfactory--&gt;
+    &lt;bean id="beanFactory" class="xyz.slienceme.factory.BeanFactory"&gt;
+        &lt;!-- 注入service --&gt;
+        &lt;property name="accountService" ref="accountService"/&gt;
+        &lt;!-- 注入事务管理器 --&gt;
+        &lt;property name="txManager" ref="txManager"/&gt;
+    &lt;/bean&gt;
+
+    &lt;!-- 配置Service --&gt;
+    &lt;bean id="accountService" class="xyz.slienceme.service.impl.AccountServiceImpl"&gt;
+        &lt;!-- 注入dao --&gt;
+        &lt;property name="accountDao" ref="accountDao"/&gt;
+    &lt;/bean&gt;
+
+    &lt;!--配置Dao对象--&gt;
+    &lt;bean id="accountDao" class="xyz.slienceme.dao.impl.AccountDaoImpl"&gt;
+        &lt;!-- 注入QueryRunner --&gt;
+        &lt;property name="runner" ref="runner"/&gt;
+        &lt;!-- 注入ConnectionUtils --&gt;
+        &lt;property name="connectionUtils" ref="connectionUtils"/&gt;
+    &lt;/bean&gt;
+
+    &lt;!--配置QueryRunner--&gt;
+    &lt;bean id="runner" class="org.apache.commons.dbutils.QueryRunner" scope="prototype"/&gt;
+
+    &lt;!-- 配置数据源 --&gt;
+    &lt;bean id="dataSource" class="com.mchange.v2.c3p0.ComboPooledDataSource"&gt;
+        &lt;!--连接数据库的必备信息--&gt;
+        &lt;property name="driverClass" value="com.mysql.cj.jdbc.Driver"/&gt;
+        &lt;property name="jdbcUrl" value="jdbc:mysql://localhost:3306/eesy"/&gt;
+        &lt;property name="user" value="root"/&gt;
+        &lt;property name="password" value="*SbX+951*-98XX"/&gt;
+    &lt;/bean&gt;
+
+    &lt;!-- 配置Connection的工具类 ConnectionUtils --&gt;
+    &lt;bean id="connectionUtils" class="xyz.slienceme.utils.ConnectionUtils"&gt;
+        &lt;!-- 注入数据源--&gt;
+        &lt;property name="dataSource" ref="dataSource"/&gt;
+    &lt;/bean&gt;
+
+    &lt;!-- 配置事务管理器--&gt;
+    &lt;bean id="txManager" class="xyz.slienceme.utils.TransactionManager"&gt;
+        &lt;!-- 注入ConnectionUtils --&gt;
+        &lt;property name="connectionUtils" ref="connectionUtils"/&gt;
+    &lt;/bean&gt;
+&lt;/beans&gt;
+</code></pre></div></div> <div style="margin-top:2em;padding:0 1.5em;border:1px solid #d3d3d3;background-color:#deebf7"> <h3>文档信息</h3> <ul> <li>本文作者：<a href="https://slienceme.cn" target="_blank">slience_me</a></li> <li>本文链接：<a href="https://slienceme.cn/2021/06/30/Spring%E7%9A%84%E6%96%B0%E6%B3%A8%E8%A7%A3&%E5%9F%BA%E4%BA%8E%E6%8E%A5%E5%8F%A3%E7%9A%84%E5%8A%A8%E6%80%81%E4%BB%A3%E7%90%86/" target="_blank">https://slienceme.cn/2021/06/30/Spring%E7%9A%84%E6%96%B0%E6%B3%A8%E8%A7%A3&%E5%9F%BA%E4%BA%8E%E6%8E%A5%E5%8F%A3%E7%9A%84%E5%8A%A8%E6%80%81%E4%BB%A3%E7%90%86/</a></li> <li>版权声明：自由转载-非商用-非衍生-保持署名（<a href="http://creativecommons.org/licenses/by-nc-nd/3.0/deed.zh" target="_blank">创意共享3.0许可证</a>）</li> </ul> </div> </article> <div class="share"> <div class="share-component" data-disabled='qq,facebook'></div> </div> <div class="comment"> <script src="https://giscus.app/client.js" data-repo="slience-me/blog-comments" data-repo-id="MDEwOlJlcG9zaXRvcnk5MzEyNzkxNw==" data-category="Announcements" data-category-id="DIC_kwDOBY0E7c4CRtg9" data-mapping="title" data-strict="1" data-reactions-enabled="1" data-emit-metadata="0" data-input-position="top" data-theme="light" data-lang="zh-CN" data-loading="lazy" crossorigin="anonymous" async> </script> </div> </div> <div class="column one-fourth"> <h3>Search</h3> <div id="site_search"> <input style="width:96%" type="text" id="search_box" placeholder="Search"> </div> <ul id="search_results" style="font-size:14px;list-style-type:none;padding-top:10px;padding-left:10px;"></ul> <script src="https://slienceme.cn/assets/js/simple-jekyll-search.min.js"></script> <script type="text/javascript"> SimpleJekyllSearch({ searchInput: document.getElementById('search_box'), resultsContainer: document.getElementById('search_results'), json: 'https://slienceme.cn/assets/search_data.json?v=1736474001', searchResultTemplate: '<li><a href="{url}" title="{title}">{title}</a></li>', noResultsText: 'No results found', limit: 10, fuzzy: false, exclude: ['Welcome'] }) </script> <h3 class="post-directory-title mobile-hidden">Table of Contents</h3> <div id="post-directory-module" class="mobile-hidden"> <section class="post-directory"> <dl></dl> </section> </div> <script src="https://slienceme.cn/assets/js/jquery.toc.js"></script> </div> </div> </section> <footer class="container"> <div class="site-footer" role="contentinfo"> <div class="copyright left mobile-block"> Copyright@ 2019-2025 slience_me 版权所有&emsp; <img src="/images/logo/logo.png" class="w-full" style="width: 12px;"> <a href="https://beian.mps.gov.cn/#/query/webSearch?code=13102202000626" rel="noreferrer" target="_blank">冀公网安备13102202000626</a>&emsp; <a href="https://beian.miit.gov.cn/#/Integrated/index" target="_blank" rel="noreferrer">津ICP备2024026565号-1</a> <a href="javascript:window.scrollTo(0,0)" class="right mobile-visible">TOP</a> </div> <ul class="site-footer-links right mobile-hidden"> <li> <a href="javascript:window.scrollTo(0,0)" >TOP</a> </li> </ul> <br/> <script async src="https://slienceme.cn/assets/vendor/busuanzi/2.3/busuanzi.pure.mini.js"></script> <div class="mobile-hidden" style="margin-top:8px"> <span id="busuanzi_container_site_pv" style="display:none"> 本站访问量<span id="busuanzi_value_site_pv"></span>次 </span> <span id="busuanzi_container_site_uv" style="display:none"> / 本站访客数<span id="busuanzi_value_site_uv"></span>人 </span> <span id="busuanzi_container_page_pv" style="display:none"> / 本页访问量<span id="busuanzi_value_page_pv"></span>次 / 统计始于2024-12-01 </span> </div> </div> </footer> <div class="tools-wrapper"> <a class="gotop" href="#" title="回到顶部"><span class="octicon octicon-arrow-up"></span></a> </div> <script src="https://slienceme.cn/assets/vendor/share.js/dist/js/share.min.js"></script> <script src="https://slienceme.cn/assets/js/geopattern.js"></script> <script> jQuery(document).ready(function($) { $('.geopattern').each(function(){ $(this).geopattern($(this).data('pattern-id')); }); /* hljs.initHighlightingOnLoad(); */ }); </script> </body> </html>

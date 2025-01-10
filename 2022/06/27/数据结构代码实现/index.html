@@ -1,0 +1,1267 @@
+<!DOCTYPE html> <html lang="zh-cmn-Hans" prefix="og: http://ogp.me/ns#" class="han-init"> <head> <meta charset="utf-8"> <meta http-equiv="X-UA-Compatible" content="IE=edge"> <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1" /> <title>C语言｜数据结构代码实现 &mdash; Slience_me的博客</title> <link rel="stylesheet" href="https://slienceme.cn/assets/vendor/primer-css/css/primer.css"> <link rel="stylesheet" href="https://slienceme.cn/assets/css/components/collection.css"> <link rel="stylesheet" href="https://slienceme.cn/assets/css/components/repo-card.css"> <link rel="stylesheet" href="https://slienceme.cn/assets/css/sections/repo-list.css"> <link rel="stylesheet" href="https://slienceme.cn/assets/css/components/boxed-group.css"> <link rel="stylesheet" href="https://slienceme.cn/assets/css/globals/common.css"> <link rel="stylesheet" href="https://slienceme.cn/assets/css/globals/responsive.css"> <link rel="stylesheet" href="https://slienceme.cn/assets/css/posts/index.css"> <link rel="stylesheet" href="https://slienceme.cn/assets/vendor/octicons/octicons/octicons.css"> <link rel="stylesheet" href="https://mazhuang.org/rouge-themes/dist/github.css"> <link rel="stylesheet" href="https://slienceme.cn/assets/vendor/share.js/dist/css/share.min.css"> <link rel="canonical" href="https://slienceme.cn/2022/06/27/%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84%E4%BB%A3%E7%A0%81%E5%AE%9E%E7%8E%B0/"> <link rel="alternate" type="application/atom+xml" title="Slience_me的博客" href="https://slienceme.cn/feed.xml"> <link rel="shortcut icon" href="https://slienceme.cn/favicon.ico"> <meta property="og:title" content="C语言｜数据结构代码实现"> <meta name="keywords" content="编程语言, C语言, C++, C, 数据结构"> <meta name="og:keywords" content="编程语言, C语言, C++, C, 数据结构"> <meta name="description" content="数据结构一、线性表1. 顺序表(静态分配)"> <meta name="og:description" content="数据结构一、线性表1. 顺序表(静态分配)"> <meta property="og:url" content="https://slienceme.cn/2022/06/27/%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84%E4%BB%A3%E7%A0%81%E5%AE%9E%E7%8E%B0/"> <meta property="og:site_name" content="Slience_me的博客"> <meta property="og:type" content="article"> <meta property="og:locale" content="zh_CN" /> <meta property="article:published_time" content="2022-06-27"> <meta name="google-site-verification" content="2feHjT1GNs1Yi2JQfOtdYx7d048naG_-cMwZaDAopIA" /> <script src="https://slienceme.cn/assets/vendor/jquery/dist/jquery.min.js"></script> <script src="https://slienceme.cn/assets/js/main.js"></script> </head> <body class="" data-mz=""> <header class="site-header"> <div class="container"> <h1><a href="https://slienceme.cn/" title="Slience_me的博客"><span class="octicon octicon-mark-github"></span> Slience_me的博客</a></h1> <button class="collapsed mobile-visible" type="button" onclick="toggleMenu();"> <span class="icon-bar"></span> <span class="icon-bar"></span> <span class="icon-bar"></span> </button> <nav class="site-header-nav" role="navigation"> <a href="https://slienceme.cn/" class="site-header-nav-item" target="" title="首页">首页</a> <a href="https://slienceme.cn/categories/" class="site-header-nav-item" target="" title="分类">分类</a> <a href="https://slienceme.cn/archives/" class="mobile-hidden site-header-nav-item" target="" title="归档">归档</a> <a href="https://slienceme.cn/open-source/" class="mobile-hidden site-header-nav-item" target="" title="开源">开源</a> <a href="https://slienceme.cn/fragments/" class="site-header-nav-item" target="" title="片段">片段</a> <a href="https://slienceme.cn/wiki/" class="site-header-nav-item" target="" title="维基">维基</a> <a href="https://slienceme.cn/links/" class="mobile-hidden site-header-nav-item" target="" title="链接">链接</a> <a href="https://slienceme.cn/about/" class="site-header-nav-item" target="" title="关于">关于</a> <a class="mobile-hidden" href="https://slienceme.cn/feed.xml"><span class="octicon octicon-rss" style="color:orange;"></span></a> </nav> </div> </header> <section class="collection-head small geopattern" data-pattern-id="C语言｜数据结构代码实现"> <div class="container"> <div class="columns"> <div class="column three-fourths"> <div class="collection-title"> <h1 class="collection-header">C语言｜数据结构代码实现</h1> <div class="collection-info"> <span class="meta-info"> <span class="octicon octicon-calendar"></span> 2022/06/27 </span> <span class="meta-info"> <span class="octicon octicon-file-directory"></span> <a href="https://slienceme.cn/categories/#C语言" title="C语言">C语言</a> </span> <span class="meta-info"> <span class="octicon octicon-file-directory"></span> <a href="https://slienceme.cn/categories/#数据结构" title="数据结构">数据结构</a> </span> <span class="meta-info"> <span class="octicon octicon-clock"></span> 共 18889 字，约 54 分钟 </span> </div> </div> </div> <div class="column one-fourth mobile-hidden"> <div class="collection-title"> </div> </div> </div> </div> </section> <section class="container content"> <div class="columns"> <div class="column three-fourths" > <article class="article-content markdown-body"> <h1 id="数据结构">数据结构</h1> <h2 id="一线性表">一、线性表</h2> <h3 id="1-顺序表静态分配">1. 顺序表(静态分配)</h3> <div class="language-cpp highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="cp">#include</span> <span class="cpf">&lt;iostream&gt;</span><span class="cp">
+</span><span class="k">using</span> <span class="k">namespace</span> <span class="n">std</span><span class="p">;</span>
+<span class="cp">#define  TRUE         1      //逻辑真
+#define  FALSE        0      //逻辑假
+#define  OK           1      //正确
+#define  ERROR        0      //错误
+#define  INFEASIBLE  -1      //不可能，非法操作
+#define  OVERFLOW    -2      //溢出
+</span><span class="k">typedef</span> <span class="kt">int</span> <span class="n">Status</span><span class="p">;</span>
+<span class="k">typedef</span> <span class="kt">int</span> <span class="n">ElemType</span><span class="p">;</span>
+<span class="cp">#define  MaxSize  100
+</span>
+<span class="k">typedef</span> <span class="k">struct</span> <span class="p">{</span>
+    <span class="kt">int</span> <span class="n">data</span><span class="p">[</span><span class="n">MaxSize</span><span class="p">];</span>
+    <span class="kt">int</span> <span class="n">Length</span><span class="p">;</span>
+<span class="p">}</span> <span class="n">SqList</span><span class="p">;</span>
+
+<span class="n">Status</span> <span class="n">InitList</span><span class="p">(</span><span class="n">SqList</span> <span class="o">&amp;</span><span class="n">L</span><span class="p">)</span> <span class="p">{</span>
+    <span class="k">for</span> <span class="p">(</span><span class="kt">int</span> <span class="n">i</span> <span class="o">=</span> <span class="mi">0</span><span class="p">;</span> <span class="n">i</span> <span class="o">&lt;</span> <span class="n">MaxSize</span><span class="p">;</span> <span class="n">i</span><span class="o">++</span><span class="p">)</span> <span class="p">{</span>
+        <span class="n">L</span><span class="p">.</span><span class="n">data</span><span class="p">[</span><span class="n">i</span><span class="p">]</span> <span class="o">=</span> <span class="mi">0</span><span class="p">;</span>       <span class="p">}</span>
+    <span class="n">L</span><span class="p">.</span><span class="n">Length</span> <span class="o">=</span> <span class="mi">0</span><span class="p">;</span>        <span class="c1">//顺序表初始长度为0</span>
+    <span class="k">return</span> <span class="n">OK</span><span class="p">;</span>
+<span class="p">}</span>
+
+<span class="n">Status</span> <span class="n">TraverseListSq_Static</span><span class="p">(</span><span class="n">SqList</span> <span class="n">L</span><span class="p">)</span> <span class="p">{</span>
+    <span class="kt">int</span> <span class="n">i</span><span class="p">;</span>
+    <span class="k">for</span> <span class="p">(</span><span class="n">i</span> <span class="o">=</span> <span class="mi">0</span><span class="p">;</span> <span class="n">i</span> <span class="o">&lt;</span> <span class="n">L</span><span class="p">.</span><span class="n">Length</span><span class="p">;</span> <span class="o">++</span><span class="n">i</span><span class="p">)</span> <span class="p">{</span>
+        <span class="n">cout</span> <span class="o">&lt;&lt;</span> <span class="n">L</span><span class="p">.</span><span class="n">data</span><span class="p">[</span><span class="n">i</span><span class="p">]</span> <span class="o">&lt;&lt;</span> <span class="s">" "</span><span class="p">;</span>
+    <span class="p">}</span>
+    <span class="n">cout</span> <span class="o">&lt;&lt;</span> <span class="n">endl</span><span class="p">;</span>
+    <span class="k">return</span> <span class="n">OK</span><span class="p">;</span>
+<span class="p">}</span>
+
+<span class="n">Status</span> <span class="n">ListInsert</span><span class="p">(</span><span class="n">SqList</span> <span class="o">&amp;</span><span class="n">L</span><span class="p">,</span> <span class="kt">int</span> <span class="n">i</span><span class="p">,</span> <span class="kt">int</span> <span class="n">e</span><span class="p">)</span> <span class="p">{</span>
+    <span class="k">if</span> <span class="p">(</span><span class="n">i</span> <span class="o">&lt;</span> <span class="mi">1</span> <span class="o">||</span> <span class="n">i</span> <span class="o">&gt;</span> <span class="n">L</span><span class="p">.</span><span class="n">Length</span> <span class="o">+</span> <span class="mi">1</span><span class="p">)</span> <span class="p">{</span><span class="k">return</span> <span class="n">FALSE</span><span class="p">;}</span>
+    <span class="k">if</span> <span class="p">(</span><span class="n">L</span><span class="p">.</span><span class="n">Length</span> <span class="o">&gt;</span> <span class="n">MaxSize</span><span class="p">)</span> <span class="p">{</span><span class="k">return</span> <span class="n">FALSE</span><span class="p">;}</span>
+    <span class="k">for</span> <span class="p">(</span><span class="kt">int</span> <span class="n">j</span> <span class="o">=</span> <span class="n">L</span><span class="p">.</span><span class="n">Length</span><span class="p">;</span> <span class="n">j</span> <span class="o">&gt;</span> <span class="n">i</span> <span class="o">-</span> <span class="mi">1</span><span class="p">;</span> <span class="n">j</span><span class="o">--</span><span class="p">)</span> <span class="p">{</span>
+        <span class="n">L</span><span class="p">.</span><span class="n">data</span><span class="p">[</span><span class="n">j</span><span class="p">]</span> <span class="o">=</span> <span class="n">L</span><span class="p">.</span><span class="n">data</span><span class="p">[</span><span class="n">j</span><span class="o">-</span><span class="mi">1</span><span class="p">];</span>
+    <span class="p">}</span>
+    <span class="n">L</span><span class="p">.</span><span class="n">data</span><span class="p">[</span><span class="n">i</span><span class="o">-</span><span class="mi">1</span><span class="p">]</span> <span class="o">=</span> <span class="n">e</span><span class="p">;</span>
+    <span class="n">L</span><span class="p">.</span><span class="n">Length</span><span class="o">++</span><span class="p">;</span>
+    <span class="k">return</span> <span class="n">OK</span><span class="p">;</span>
+<span class="p">}</span>
+
+<span class="n">Status</span> <span class="n">GetElem</span><span class="p">(</span><span class="n">SqList</span> <span class="n">L</span><span class="p">,</span> <span class="kt">int</span> <span class="n">i</span><span class="p">,</span> <span class="kt">int</span> <span class="o">&amp;</span><span class="n">e</span><span class="p">)</span> <span class="p">{</span>
+    <span class="k">if</span> <span class="p">(</span><span class="n">i</span><span class="o">&lt;</span><span class="mi">1</span> <span class="o">||</span> <span class="n">i</span><span class="o">&gt;</span><span class="n">L</span><span class="p">.</span><span class="n">Length</span><span class="o">+</span><span class="mi">1</span><span class="p">){</span>
+        <span class="k">return</span> <span class="n">ERROR</span><span class="p">;</span>
+    <span class="p">}</span>
+    <span class="n">e</span> <span class="o">=</span> <span class="n">L</span><span class="p">.</span><span class="n">data</span><span class="p">[</span><span class="n">i</span> <span class="o">-</span> <span class="mi">1</span><span class="p">];</span>
+    <span class="k">return</span> <span class="n">OK</span><span class="p">;</span>      <span class="c1">//注意是i-1</span>
+<span class="p">}</span>
+ 
+<span class="kt">int</span> <span class="n">LocateListSq_Static</span><span class="p">(</span><span class="n">SqList</span> <span class="n">L</span><span class="p">,</span> <span class="n">ElemType</span> <span class="n">e</span><span class="p">)</span> <span class="p">{</span>
+    <span class="kt">int</span> <span class="n">i</span><span class="p">;</span>
+    <span class="k">for</span> <span class="p">(</span><span class="n">i</span> <span class="o">=</span> <span class="mi">0</span><span class="p">;</span> <span class="n">i</span> <span class="o">&lt;</span> <span class="n">L</span><span class="p">.</span><span class="n">Length</span><span class="p">;</span> <span class="o">++</span><span class="n">i</span><span class="p">)</span> <span class="p">{</span>
+        <span class="k">if</span> <span class="p">(</span><span class="n">L</span><span class="p">.</span><span class="n">data</span><span class="p">[</span><span class="n">i</span><span class="p">]</span> <span class="o">==</span> <span class="n">e</span><span class="p">)</span> <span class="p">{</span>
+            <span class="k">break</span><span class="p">;</span>
+        <span class="p">}</span>
+    <span class="p">}</span>
+    <span class="k">return</span> <span class="n">i</span><span class="p">;</span>
+<span class="p">}</span>
+
+<span class="n">Status</span> <span class="n">ListDelete</span><span class="p">(</span><span class="n">SqList</span> <span class="o">&amp;</span><span class="n">L</span><span class="p">,</span> <span class="kt">int</span> <span class="n">i</span><span class="p">,</span> <span class="kt">int</span> <span class="o">&amp;</span><span class="n">e</span><span class="p">)</span> <span class="p">{</span> <span class="c1">// e用引用型参数</span>
+    <span class="c1">//判断i的范围是否有效</span>
+    <span class="k">if</span> <span class="p">(</span><span class="n">i</span> <span class="o">&lt;</span> <span class="mi">1</span> <span class="o">||</span> <span class="n">i</span> <span class="o">&gt;</span> <span class="n">L</span><span class="p">.</span><span class="n">Length</span> <span class="o">+</span> <span class="mi">1</span><span class="p">)</span> <span class="p">{</span> <span class="k">return</span> <span class="n">FALSE</span><span class="p">;</span> <span class="p">}</span>
+    <span class="n">e</span> <span class="o">=</span> <span class="n">L</span><span class="p">.</span><span class="n">data</span><span class="p">[</span><span class="n">i</span> <span class="o">-</span> <span class="mi">1</span><span class="p">];</span>    <span class="c1">//将被删除的元素赋值给e</span>
+    <span class="k">for</span> <span class="p">(</span><span class="kt">int</span> <span class="n">j</span> <span class="o">=</span> <span class="n">i</span><span class="o">-</span><span class="mi">1</span><span class="p">;</span> <span class="n">j</span> <span class="o">&lt;</span> <span class="n">L</span><span class="p">.</span><span class="n">Length</span> <span class="o">-</span> <span class="mi">1</span><span class="p">;</span> <span class="n">j</span><span class="o">++</span><span class="p">)</span> <span class="p">{</span>    <span class="c1">//将第i个后的元素前移</span>
+        <span class="n">L</span><span class="p">.</span><span class="n">data</span><span class="p">[</span><span class="n">j</span><span class="p">]</span> <span class="o">=</span> <span class="n">L</span><span class="p">.</span><span class="n">data</span><span class="p">[</span><span class="n">j</span><span class="o">+</span><span class="mi">1</span><span class="p">];</span>
+    <span class="p">}</span>
+    <span class="n">L</span><span class="p">.</span><span class="n">Length</span><span class="o">--</span><span class="p">;</span>      <span class="c1">//长度减1</span>
+    <span class="k">return</span> <span class="n">OK</span><span class="p">;</span>
+<span class="p">}</span>
+
+<span class="kt">int</span> <span class="n">LengthListSq_Static</span><span class="p">(</span><span class="n">SqList</span> <span class="n">L</span><span class="p">)</span> <span class="p">{</span>
+    <span class="k">return</span> <span class="n">L</span><span class="p">.</span><span class="n">Length</span><span class="p">;</span>
+<span class="p">}</span>
+
+<span class="n">Status</span> <span class="n">EmptyListSq_Static</span><span class="p">(</span><span class="n">SqList</span> <span class="n">L</span><span class="p">)</span> <span class="p">{</span>
+    <span class="k">return</span> <span class="n">L</span><span class="p">.</span><span class="n">Length</span> <span class="o">==</span> <span class="mi">0</span><span class="p">;</span>
+<span class="p">}</span>
+ 
+<span class="n">Status</span> <span class="n">ClearListSq_Static</span><span class="p">(</span><span class="n">SqList</span> <span class="o">&amp;</span><span class="n">L</span><span class="p">)</span> <span class="p">{</span>
+    <span class="n">L</span><span class="p">.</span><span class="n">Length</span> <span class="o">=</span> <span class="mi">0</span><span class="p">;</span>
+    <span class="k">return</span> <span class="n">OK</span><span class="p">;</span>
+<span class="p">}</span>
+
+</code></pre></div></div> <h3 id="2-顺序表动态分配">2. 顺序表(动态分配)</h3> <div class="language-cpp highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="cp">#include</span> <span class="cpf">&lt;iostream&gt;</span><span class="cp">
+</span><span class="k">using</span> <span class="k">namespace</span> <span class="n">std</span><span class="p">;</span> 
+<span class="cp">#define  TRUE         1      //逻辑真
+#define  FALSE        0      //逻辑假
+#define  OK           1      //正确
+#define  ERROR        0      //错误
+#define  INFEASIBLE  -1      //不可能，非法操作
+#define  OVERFLOW    -2      //溢出
+</span><span class="k">typedef</span> <span class="kt">int</span> <span class="n">Status</span><span class="p">;</span>
+<span class="k">typedef</span> <span class="kt">int</span> <span class="n">ElemType</span><span class="p">;</span>
+<span class="cp">#define  ListMaxSize  100
+</span>
+<span class="c1">//顺序表存储类型描述，SqList为顺序表类型</span>
+<span class="k">typedef</span> <span class="k">struct</span> <span class="p">{</span>
+    <span class="n">ElemType</span> <span class="o">*</span><span class="n">elem</span><span class="p">;</span>   <span class="c1">//存储空间基址</span>
+    <span class="kt">int</span> <span class="n">length</span><span class="p">;</span>  <span class="c1">//当前长度</span>
+    <span class="kt">int</span> <span class="n">listsize</span><span class="p">;</span> <span class="c1">//当前分配的存储容量</span>
+<span class="p">}</span> <span class="n">SqList</span><span class="p">;</span>
+
+<span class="n">Status</span> <span class="n">InitListSq</span><span class="p">(</span><span class="n">SqList</span> <span class="o">&amp;</span><span class="n">L</span><span class="p">)</span> <span class="p">{</span>
+    <span class="n">L</span><span class="p">.</span><span class="n">elem</span> <span class="o">=</span> <span class="k">new</span> <span class="n">ElemType</span><span class="p">[</span><span class="n">ListMaxSize</span><span class="p">];</span>
+    <span class="k">if</span> <span class="p">(</span><span class="o">!</span><span class="n">L</span><span class="p">.</span><span class="n">elem</span><span class="p">)</span> <span class="k">return</span> <span class="n">OVERFLOW</span><span class="p">;</span>
+
+    <span class="n">L</span><span class="p">.</span><span class="n">length</span> <span class="o">=</span> <span class="mi">0</span><span class="p">;</span>
+    <span class="n">L</span><span class="p">.</span><span class="n">listsize</span> <span class="o">=</span> <span class="n">ListMaxSize</span><span class="p">;</span>
+    <span class="k">return</span> <span class="n">OK</span><span class="p">;</span>
+<span class="p">}</span>
+
+<span class="c1">//取元素</span>
+<span class="n">Status</span> <span class="n">GetListSq</span><span class="p">(</span><span class="n">SqList</span> <span class="n">L</span><span class="p">,</span> <span class="kt">int</span> <span class="n">i</span><span class="p">,</span> <span class="n">ElemType</span> <span class="o">&amp;</span><span class="n">e</span><span class="p">)</span> <span class="p">{</span>
+    <span class="k">if</span> <span class="p">(</span><span class="n">i</span> <span class="o">&lt;</span> <span class="mi">1</span> <span class="o">||</span> <span class="n">i</span> <span class="o">&gt;</span> <span class="n">L</span><span class="p">.</span><span class="n">length</span><span class="p">)</span> <span class="k">return</span> <span class="n">ERROR</span><span class="p">;</span>
+    <span class="n">e</span> <span class="o">=</span> <span class="o">*</span><span class="p">(</span><span class="n">L</span><span class="p">.</span><span class="n">elem</span> <span class="o">+</span> <span class="n">i</span> <span class="o">-</span> <span class="mi">1</span><span class="p">);</span>
+    <span class="k">return</span> <span class="n">OK</span><span class="p">;</span>
+<span class="p">}</span>
+
+<span class="c1">//定位</span>
+<span class="kt">int</span> <span class="n">LocateListSq</span><span class="p">(</span><span class="n">SqList</span> <span class="n">L</span><span class="p">,</span> <span class="n">ElemType</span> <span class="n">e</span><span class="p">)</span> <span class="p">{</span>
+    <span class="kt">int</span> <span class="n">i</span><span class="p">;</span>
+    <span class="n">ElemType</span> <span class="o">*</span><span class="n">p</span><span class="p">;</span>
+    <span class="n">i</span> <span class="o">=</span> <span class="mi">1</span><span class="p">;</span>
+    <span class="n">p</span> <span class="o">=</span> <span class="n">L</span><span class="p">.</span><span class="n">elem</span><span class="p">;</span>
+    <span class="k">while</span> <span class="p">(</span><span class="n">i</span> <span class="o">&lt;=</span> <span class="n">L</span><span class="p">.</span><span class="n">length</span> <span class="o">&amp;&amp;</span> <span class="o">*</span><span class="n">p</span><span class="o">++</span> <span class="o">!=</span> <span class="n">e</span><span class="p">)</span> <span class="n">i</span><span class="o">++</span><span class="p">;</span>
+    <span class="k">if</span> <span class="p">(</span><span class="n">i</span> <span class="o">&lt;=</span> <span class="n">L</span><span class="p">.</span><span class="n">length</span><span class="p">)</span> <span class="k">return</span> <span class="n">i</span><span class="p">;</span>
+    <span class="k">else</span> <span class="k">return</span> <span class="mi">0</span><span class="p">;</span>
+<span class="p">}</span>
+
+<span class="c1">//插入</span>
+<span class="n">Status</span> <span class="n">InsertListSq</span><span class="p">(</span><span class="n">SqList</span> <span class="o">&amp;</span><span class="n">L</span><span class="p">,</span> <span class="kt">int</span> <span class="n">i</span><span class="p">,</span> <span class="n">ElemType</span> <span class="n">e</span><span class="p">)</span> <span class="p">{</span>
+    <span class="n">ElemType</span> <span class="o">*</span><span class="n">p</span><span class="p">,</span> <span class="o">*</span><span class="n">q</span><span class="p">;</span>
+
+    <span class="k">if</span> <span class="p">(</span><span class="n">i</span> <span class="o">&lt;</span> <span class="mi">1</span> <span class="o">||</span> <span class="n">i</span> <span class="o">&gt;</span> <span class="n">L</span><span class="p">.</span><span class="n">length</span> <span class="o">+</span> <span class="mi">1</span><span class="p">)</span> <span class="k">return</span> <span class="n">ERROR</span><span class="p">;</span>
+    <span class="k">if</span> <span class="p">(</span><span class="n">L</span><span class="p">.</span><span class="n">length</span> <span class="o">&gt;=</span> <span class="n">L</span><span class="p">.</span><span class="n">listsize</span><span class="p">)</span> <span class="k">return</span> <span class="n">OVERFLOW</span><span class="p">;</span>
+    <span class="n">q</span> <span class="o">=</span> <span class="n">L</span><span class="p">.</span><span class="n">elem</span> <span class="o">+</span> <span class="n">i</span> <span class="o">-</span> <span class="mi">1</span><span class="p">;</span>
+    <span class="k">for</span> <span class="p">(</span><span class="n">p</span> <span class="o">=</span> <span class="n">L</span><span class="p">.</span><span class="n">elem</span> <span class="o">+</span> <span class="n">L</span><span class="p">.</span><span class="n">length</span> <span class="o">-</span> <span class="mi">1</span><span class="p">;</span> <span class="n">p</span> <span class="o">&gt;=</span> <span class="n">q</span><span class="p">;</span> <span class="n">p</span><span class="o">--</span><span class="p">)</span> <span class="o">*</span><span class="p">(</span><span class="n">p</span> <span class="o">+</span> <span class="mi">1</span><span class="p">)</span> <span class="o">=</span> <span class="o">*</span><span class="n">p</span><span class="p">;</span>
+    <span class="o">*</span><span class="n">q</span> <span class="o">=</span> <span class="n">e</span><span class="p">;</span>
+    <span class="n">L</span><span class="p">.</span><span class="n">length</span><span class="o">++</span><span class="p">;</span>
+    <span class="k">return</span> <span class="n">OK</span><span class="p">;</span>
+<span class="p">}</span>
+
+<span class="c1">//删除</span>
+<span class="n">Status</span> <span class="n">DeleteListSq</span><span class="p">(</span><span class="n">SqList</span> <span class="o">&amp;</span><span class="n">L</span><span class="p">,</span> <span class="kt">int</span> <span class="n">i</span><span class="p">,</span> <span class="n">ElemType</span> <span class="o">&amp;</span><span class="n">e</span><span class="p">)</span> <span class="p">{</span>
+    <span class="n">ElemType</span> <span class="o">*</span><span class="n">p</span><span class="p">,</span> <span class="o">*</span><span class="n">q</span><span class="p">;</span>
+
+    <span class="k">if</span> <span class="p">(</span><span class="n">i</span> <span class="o">&lt;</span> <span class="mi">1</span> <span class="o">||</span> <span class="n">i</span> <span class="o">&gt;</span> <span class="n">L</span><span class="p">.</span><span class="n">length</span><span class="p">)</span> <span class="k">return</span> <span class="n">ERROR</span><span class="p">;</span>
+    <span class="n">p</span> <span class="o">=</span> <span class="n">L</span><span class="p">.</span><span class="n">elem</span> <span class="o">+</span> <span class="n">i</span> <span class="o">-</span> <span class="mi">1</span><span class="p">;</span>
+    <span class="n">e</span> <span class="o">=</span> <span class="o">*</span><span class="n">p</span><span class="p">;</span>
+    <span class="n">q</span> <span class="o">=</span> <span class="n">L</span><span class="p">.</span><span class="n">elem</span> <span class="o">+</span> <span class="n">L</span><span class="p">.</span><span class="n">length</span> <span class="o">-</span> <span class="mi">1</span><span class="p">;</span>
+    <span class="k">for</span> <span class="p">(</span><span class="o">++</span><span class="n">p</span><span class="p">;</span> <span class="n">p</span> <span class="o">&lt;=</span> <span class="n">q</span><span class="p">;</span> <span class="n">p</span><span class="o">++</span><span class="p">)</span> <span class="o">*</span><span class="p">(</span><span class="n">p</span> <span class="o">-</span> <span class="mi">1</span><span class="p">)</span> <span class="o">=</span> <span class="o">*</span><span class="n">p</span><span class="p">;</span>
+    <span class="n">L</span><span class="p">.</span><span class="n">length</span><span class="o">--</span><span class="p">;</span>
+    <span class="k">return</span> <span class="n">OK</span><span class="p">;</span>
+<span class="p">}</span>
+
+<span class="c1">//遍历，这里是输出顺序表</span>
+<span class="kt">void</span> <span class="n">TraverseListSq</span><span class="p">(</span><span class="n">SqList</span> <span class="n">L</span><span class="p">)</span> <span class="p">{</span>
+    <span class="n">ElemType</span> <span class="o">*</span><span class="n">p</span><span class="p">;</span>
+
+    <span class="n">p</span> <span class="o">=</span> <span class="n">L</span><span class="p">.</span><span class="n">elem</span><span class="p">;</span>
+    <span class="k">while</span> <span class="p">(</span><span class="n">p</span> <span class="o">&lt;=</span> <span class="n">L</span><span class="p">.</span><span class="n">elem</span> <span class="o">+</span> <span class="n">L</span><span class="p">.</span><span class="n">length</span> <span class="o">-</span> <span class="mi">1</span><span class="p">)</span>
+        <span class="n">cout</span> <span class="o">&lt;&lt;</span> <span class="o">*</span><span class="n">p</span><span class="o">++</span> <span class="o">&lt;&lt;</span> <span class="s">"  "</span><span class="p">;</span>
+    <span class="n">cout</span> <span class="o">&lt;&lt;</span> <span class="n">endl</span><span class="p">;</span>
+<span class="p">}</span>
+
+<span class="c1">//求长度</span>
+<span class="kt">int</span> <span class="n">LengthListSq</span><span class="p">(</span><span class="n">SqList</span> <span class="n">L</span><span class="p">)</span> <span class="p">{</span>
+    <span class="k">return</span> <span class="n">L</span><span class="p">.</span><span class="n">length</span><span class="p">;</span>
+<span class="p">}</span>
+
+<span class="c1">//判空</span>
+<span class="n">Status</span> <span class="n">EmptyListSq</span><span class="p">(</span><span class="n">SqList</span> <span class="n">L</span><span class="p">)</span> <span class="p">{</span>
+    <span class="k">return</span> <span class="n">L</span><span class="p">.</span><span class="n">length</span> <span class="o">==</span> <span class="mi">0</span><span class="p">;</span>
+<span class="p">}</span>
+
+<span class="c1">//清空</span>
+<span class="kt">void</span> <span class="n">ClearListSq</span><span class="p">(</span><span class="n">SqList</span> <span class="o">&amp;</span><span class="n">L</span><span class="p">)</span> <span class="p">{</span>
+    <span class="n">L</span><span class="p">.</span><span class="n">length</span> <span class="o">=</span> <span class="mi">0</span><span class="p">;</span>
+<span class="p">}</span>
+
+<span class="c1">//销毁</span>
+<span class="kt">void</span> <span class="n">DestroyListSq</span><span class="p">(</span><span class="n">SqList</span> <span class="o">&amp;</span><span class="n">L</span><span class="p">)</span> <span class="p">{</span>
+    <span class="n">L</span><span class="p">.</span><span class="n">length</span> <span class="o">=</span> <span class="n">L</span><span class="p">.</span><span class="n">listsize</span> <span class="o">=</span> <span class="mi">0</span><span class="p">;</span>
+    <span class="k">delete</span><span class="p">[]</span> <span class="n">L</span><span class="p">.</span><span class="n">elem</span><span class="p">;</span>
+    <span class="n">L</span><span class="p">.</span><span class="n">elem</span> <span class="o">==</span> <span class="nb">NULL</span><span class="p">;</span>
+<span class="p">}</span>
+
+
+<span class="c1">//复杂操作的实现</span>
+<span class="c1">//顺序表逆置，即将顺序表首尾颠倒存放</span>
+<span class="kt">void</span> <span class="n">InverseListSq</span><span class="p">(</span><span class="n">SqList</span> <span class="o">&amp;</span><span class="n">L</span><span class="p">)</span> <span class="p">{</span>
+    <span class="n">ElemType</span> <span class="o">*</span><span class="n">p</span><span class="p">,</span> <span class="o">*</span><span class="n">q</span><span class="p">,</span> <span class="n">temp</span><span class="p">;</span>
+
+    <span class="k">for</span> <span class="p">(</span><span class="n">p</span> <span class="o">=</span> <span class="n">L</span><span class="p">.</span><span class="n">elem</span><span class="p">,</span> <span class="n">q</span> <span class="o">=</span> <span class="n">L</span><span class="p">.</span><span class="n">elem</span> <span class="o">+</span> <span class="n">L</span><span class="p">.</span><span class="n">length</span> <span class="o">-</span> <span class="mi">1</span><span class="p">;</span> <span class="n">p</span> <span class="o">&lt;</span> <span class="n">q</span><span class="p">;</span> <span class="n">p</span><span class="o">++</span><span class="p">,</span> <span class="n">q</span><span class="o">--</span><span class="p">)</span> <span class="p">{</span>
+        <span class="n">temp</span> <span class="o">=</span> <span class="o">*</span><span class="n">p</span><span class="p">;</span>
+        <span class="o">*</span><span class="n">p</span> <span class="o">=</span> <span class="o">*</span><span class="n">q</span><span class="p">;</span>
+        <span class="o">*</span><span class="n">q</span> <span class="o">=</span> <span class="n">temp</span><span class="p">;</span>
+    <span class="p">}</span>
+<span class="p">}</span>
+
+<span class="c1">//顺序表的逆置，对start，end之间的元素逆置</span>
+<span class="kt">void</span> <span class="n">Inverse</span><span class="p">(</span><span class="n">SqList</span> <span class="o">&amp;</span><span class="n">L</span><span class="p">,</span> <span class="kt">int</span> <span class="n">start</span><span class="p">,</span> <span class="kt">int</span> <span class="n">end</span><span class="p">)</span> <span class="p">{</span>
+    <span class="kt">int</span> <span class="n">i</span><span class="p">,</span> <span class="n">j</span><span class="p">;</span>
+    <span class="n">ElemType</span> <span class="n">temp</span><span class="p">;</span>
+
+    <span class="k">for</span> <span class="p">(</span><span class="n">i</span> <span class="o">=</span> <span class="n">start</span><span class="p">,</span> <span class="n">j</span> <span class="o">=</span> <span class="n">end</span><span class="p">;</span> <span class="n">i</span> <span class="o">&lt;</span> <span class="n">j</span><span class="p">;</span> <span class="n">i</span><span class="o">++</span><span class="p">,</span> <span class="n">j</span><span class="o">--</span><span class="p">)</span> <span class="p">{</span>
+        <span class="n">temp</span> <span class="o">=</span> <span class="n">L</span><span class="p">.</span><span class="n">elem</span><span class="p">[</span><span class="n">i</span> <span class="o">-</span> <span class="mi">1</span><span class="p">];</span>
+        <span class="n">L</span><span class="p">.</span><span class="n">elem</span><span class="p">[</span><span class="n">i</span> <span class="o">-</span> <span class="mi">1</span><span class="p">]</span> <span class="o">=</span> <span class="n">L</span><span class="p">.</span><span class="n">elem</span><span class="p">[</span><span class="n">j</span> <span class="o">-</span> <span class="mi">1</span><span class="p">];</span>
+        <span class="n">L</span><span class="p">.</span><span class="n">elem</span><span class="p">[</span><span class="n">j</span> <span class="o">-</span> <span class="mi">1</span><span class="p">]</span> <span class="o">=</span> <span class="n">temp</span><span class="p">;</span>
+    <span class="p">}</span>
+<span class="p">}</span>
+
+<span class="c1">//顺序表的左循环移位， m 表示向左移位个数，利用逆置算法</span>
+<span class="kt">void</span> <span class="n">CycMoveListSq</span><span class="p">(</span><span class="n">SqList</span> <span class="o">&amp;</span><span class="n">L</span><span class="p">,</span> <span class="kt">int</span> <span class="n">m</span><span class="p">)</span> <span class="p">{</span>
+    <span class="k">if</span> <span class="p">(</span><span class="n">m</span> <span class="o">&lt;</span> <span class="mi">0</span><span class="p">)</span> <span class="p">{</span>
+        <span class="n">cout</span> <span class="o">&lt;&lt;</span> <span class="s">"输入的左移位个数错误！"</span> <span class="o">&lt;&lt;</span> <span class="n">endl</span><span class="p">;</span>
+        <span class="k">return</span><span class="p">;</span>
+    <span class="p">}</span>
+    <span class="k">if</span> <span class="p">(</span><span class="n">L</span><span class="p">.</span><span class="n">length</span> <span class="o">&lt;=</span> <span class="mi">1</span><span class="p">)</span> <span class="k">return</span><span class="p">;</span>
+
+    <span class="n">m</span> <span class="o">%=</span> <span class="n">L</span><span class="p">.</span><span class="n">length</span><span class="p">;</span>
+    <span class="n">Inverse</span><span class="p">(</span><span class="n">L</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="n">L</span><span class="p">.</span><span class="n">length</span><span class="p">);</span>
+    <span class="n">Inverse</span><span class="p">(</span><span class="n">L</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="n">L</span><span class="p">.</span><span class="n">length</span> <span class="o">-</span> <span class="n">m</span><span class="p">);</span>
+    <span class="n">Inverse</span><span class="p">(</span><span class="n">L</span><span class="p">,</span> <span class="n">L</span><span class="p">.</span><span class="n">length</span> <span class="o">-</span> <span class="n">m</span> <span class="o">+</span> <span class="mi">1</span><span class="p">,</span> <span class="n">L</span><span class="p">.</span><span class="n">length</span><span class="p">);</span>
+<span class="p">}</span>
+
+
+<span class="c1">//顺序表排序，采用选择排序方法</span>
+<span class="kt">void</span> <span class="n">SortListSq</span><span class="p">(</span><span class="n">SqList</span> <span class="o">&amp;</span><span class="n">L</span><span class="p">)</span> <span class="p">{</span>
+    <span class="kt">int</span> <span class="n">i</span><span class="p">,</span> <span class="n">j</span><span class="p">,</span> <span class="n">k</span><span class="p">;</span>
+    <span class="n">ElemType</span> <span class="n">temp</span><span class="p">;</span>
+
+    <span class="k">for</span> <span class="p">(</span><span class="n">i</span> <span class="o">=</span> <span class="mi">0</span><span class="p">;</span> <span class="n">i</span> <span class="o">&lt;</span> <span class="n">L</span><span class="p">.</span><span class="n">length</span> <span class="o">-</span> <span class="mi">1</span><span class="p">;</span> <span class="n">i</span><span class="o">++</span><span class="p">)</span> <span class="p">{</span>
+        <span class="n">k</span> <span class="o">=</span> <span class="n">i</span><span class="p">;</span>
+        <span class="k">for</span> <span class="p">(</span><span class="n">j</span> <span class="o">=</span> <span class="n">i</span> <span class="o">+</span> <span class="mi">1</span><span class="p">;</span> <span class="n">j</span> <span class="o">&lt;</span> <span class="n">L</span><span class="p">.</span><span class="n">length</span><span class="p">;</span> <span class="n">j</span><span class="o">++</span><span class="p">)</span>
+            <span class="k">if</span> <span class="p">(</span><span class="o">*</span><span class="p">(</span><span class="n">L</span><span class="p">.</span><span class="n">elem</span> <span class="o">+</span> <span class="n">k</span><span class="p">)</span> <span class="o">&gt;</span> <span class="o">*</span><span class="p">(</span><span class="n">L</span><span class="p">.</span><span class="n">elem</span> <span class="o">+</span> <span class="n">j</span><span class="p">))</span> <span class="n">k</span> <span class="o">=</span> <span class="n">j</span><span class="p">;</span>
+        <span class="k">if</span> <span class="p">(</span><span class="n">k</span> <span class="o">!=</span> <span class="n">i</span><span class="p">)</span> <span class="p">{</span>
+            <span class="n">temp</span> <span class="o">=</span> <span class="o">*</span><span class="p">(</span><span class="n">L</span><span class="p">.</span><span class="n">elem</span> <span class="o">+</span> <span class="n">i</span><span class="p">);</span>
+            <span class="o">*</span><span class="p">(</span><span class="n">L</span><span class="p">.</span><span class="n">elem</span> <span class="o">+</span> <span class="n">i</span><span class="p">)</span> <span class="o">=</span> <span class="o">*</span><span class="p">(</span><span class="n">L</span><span class="p">.</span><span class="n">elem</span> <span class="o">+</span> <span class="n">k</span><span class="p">);</span>
+            <span class="o">*</span><span class="p">(</span><span class="n">L</span><span class="p">.</span><span class="n">elem</span> <span class="o">+</span> <span class="n">k</span><span class="p">)</span> <span class="o">=</span> <span class="n">temp</span><span class="p">;</span>
+        <span class="p">}</span>
+    <span class="p">}</span>
+<span class="p">}</span>
+
+<span class="c1">//约瑟夫环问题，n表示圆桌上人的个数，s表示从第几个人开始报数，m表示数到几的人离开桌子</span>
+<span class="kt">void</span> <span class="n">Josephus</span><span class="p">(</span><span class="n">SqList</span> <span class="o">&amp;</span><span class="n">L</span><span class="p">,</span> <span class="kt">int</span> <span class="n">n</span><span class="p">,</span> <span class="kt">int</span> <span class="n">m</span><span class="p">,</span> <span class="kt">int</span> <span class="n">s</span><span class="p">)</span> <span class="p">{</span>
+    <span class="c1">//初始化圆桌</span>
+    <span class="n">L</span><span class="p">.</span><span class="n">length</span> <span class="o">=</span> <span class="n">n</span><span class="p">;</span>
+    <span class="k">for</span> <span class="p">(</span><span class="kt">int</span> <span class="n">i</span> <span class="o">=</span> <span class="mi">0</span><span class="p">;</span> <span class="n">i</span> <span class="o">&lt;</span> <span class="n">n</span><span class="p">;</span> <span class="n">i</span><span class="o">++</span><span class="p">)</span>
+        <span class="n">L</span><span class="p">.</span><span class="n">elem</span><span class="p">[</span><span class="n">i</span><span class="p">]</span> <span class="o">=</span> <span class="n">i</span> <span class="o">+</span> <span class="mi">1</span><span class="p">;</span>
+
+    <span class="n">cout</span> <span class="o">&lt;&lt;</span> <span class="s">"圆桌初始状态："</span> <span class="o">&lt;&lt;</span> <span class="n">endl</span><span class="p">;</span>
+    <span class="n">TraverseListSq</span><span class="p">(</span><span class="n">L</span><span class="p">);</span>
+
+    <span class="kt">int</span> <span class="n">len</span> <span class="o">=</span> <span class="n">n</span><span class="p">;</span>
+    <span class="kt">int</span> <span class="n">i</span><span class="p">;</span>
+    <span class="kt">int</span> <span class="n">p</span> <span class="o">=</span> <span class="p">(</span><span class="n">s</span> <span class="o">-</span> <span class="mi">1</span><span class="p">)</span> <span class="o">%</span> <span class="n">len</span><span class="p">;</span>
+    <span class="k">while</span> <span class="p">(</span><span class="n">len</span> <span class="o">&gt;</span> <span class="mi">1</span><span class="p">)</span> <span class="p">{</span>
+        <span class="n">p</span> <span class="o">=</span> <span class="p">(</span><span class="n">p</span> <span class="o">+</span> <span class="n">m</span> <span class="o">-</span> <span class="mi">1</span><span class="p">)</span> <span class="o">%</span> <span class="n">len</span><span class="p">;</span>
+        <span class="kt">int</span> <span class="n">t</span> <span class="o">=</span> <span class="n">L</span><span class="p">.</span><span class="n">elem</span><span class="p">[</span><span class="n">p</span><span class="p">];</span>
+        <span class="k">for</span> <span class="p">(</span><span class="n">i</span> <span class="o">=</span> <span class="n">p</span> <span class="o">+</span> <span class="mi">1</span><span class="p">;</span> <span class="n">i</span> <span class="o">&lt;</span> <span class="n">len</span><span class="p">;</span> <span class="n">i</span><span class="o">++</span><span class="p">)</span>
+            <span class="n">L</span><span class="p">.</span><span class="n">elem</span><span class="p">[</span><span class="n">i</span> <span class="o">-</span> <span class="mi">1</span><span class="p">]</span> <span class="o">=</span> <span class="n">L</span><span class="p">.</span><span class="n">elem</span><span class="p">[</span><span class="n">i</span><span class="p">];</span>
+        <span class="n">L</span><span class="p">.</span><span class="n">elem</span><span class="p">[</span><span class="n">len</span> <span class="o">-</span> <span class="mi">1</span><span class="p">]</span> <span class="o">=</span> <span class="n">t</span><span class="p">;</span>
+        <span class="n">len</span><span class="o">--</span><span class="p">;</span>
+    <span class="p">}</span>
+    <span class="n">InverseListSq</span><span class="p">(</span><span class="n">L</span><span class="p">);</span>
+    <span class="n">cout</span> <span class="o">&lt;&lt;</span> <span class="s">"离开圆桌的顺序为："</span> <span class="o">&lt;&lt;</span> <span class="n">endl</span><span class="p">;</span>
+    <span class="n">TraverseListSq</span><span class="p">(</span><span class="n">L</span><span class="p">);</span>
+<span class="p">}</span>
+
+
+</code></pre></div></div> <h3 id="3-单链表">3. 单链表</h3> <div class="language-cpp highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="cp">#include</span> <span class="cpf">&lt;iostream&gt;</span><span class="cp">
+</span><span class="k">using</span> <span class="k">namespace</span> <span class="n">std</span><span class="p">;</span>
+<span class="c1">//定义必须的常量和类型</span>
+<span class="cp">#define TRUE 1 //逻辑真
+#define FALSE 0 //逻辑假
+#define OK 1 //正确
+#define ERROR 0 //错误
+#define INTEASIBLE -1 //不可能，非法操作
+#define OVERFLOW -2 //溢出
+</span>
+<span class="c1">//定义状态类型</span>
+<span class="k">typedef</span> <span class="kt">int</span> <span class="n">Status</span><span class="p">;</span>
+
+<span class="c1">//链表的数据元素类型为整型（可根据需要修改为其他类型）</span>
+<span class="k">typedef</span> <span class="kt">int</span> <span class="n">ElemType</span><span class="p">;</span>
+
+<span class="c1">//链表存储类型描述</span>
+<span class="k">typedef</span> <span class="k">struct</span> <span class="nc">LNode</span> <span class="p">{</span>
+    <span class="n">ElemType</span> <span class="n">data</span><span class="p">;</span> <span class="c1">//数据域</span>
+    <span class="k">struct</span> <span class="nc">LNode</span> <span class="o">*</span><span class="n">next</span><span class="p">;</span> <span class="c1">//指针域</span>
+<span class="p">}</span> <span class="n">LNode</span><span class="p">,</span> <span class="o">*</span><span class="n">LinkList</span><span class="p">;</span>
+
+<span class="c1">//基本操作的实现</span>
+<span class="c1">//初始化</span>
+<span class="n">Status</span> <span class="n">InitList_L</span><span class="p">(</span><span class="n">LinkList</span> <span class="o">&amp;</span><span class="n">L</span><span class="p">)</span> <span class="p">{</span>
+    <span class="n">L</span> <span class="o">=</span> <span class="k">new</span> <span class="n">LNode</span><span class="p">;</span>
+    <span class="n">L</span><span class="o">-&gt;</span><span class="n">next</span> <span class="o">=</span> <span class="nb">NULL</span><span class="p">;</span>
+    <span class="k">if</span><span class="p">(</span><span class="o">!</span><span class="n">L</span><span class="p">){</span><span class="k">return</span> <span class="n">ERROR</span><span class="p">;}</span>
+    <span class="k">return</span> <span class="n">OK</span><span class="p">;</span>
+<span class="p">}</span>
+
+<span class="kt">void</span> <span class="n">visit</span><span class="p">(</span><span class="n">LinkList</span> <span class="n">L</span><span class="p">)</span> <span class="c1">//访问单个元素</span>
+<span class="p">{</span>
+    <span class="n">cout</span><span class="o">&lt;&lt;</span><span class="n">L</span><span class="o">-&gt;</span><span class="n">data</span><span class="o">&lt;&lt;</span><span class="n">endl</span><span class="p">;</span>
+<span class="p">}</span>
+
+<span class="c1">//遍历，这里是输出顺序表</span>
+<span class="kt">void</span> <span class="n">TraverseList_L</span><span class="p">(</span><span class="n">LinkList</span> <span class="n">L</span><span class="p">)</span> <span class="p">{</span>
+    <span class="n">LinkList</span> <span class="n">p</span><span class="o">=</span><span class="n">L</span><span class="o">-&gt;</span><span class="n">next</span><span class="p">;</span>
+    <span class="k">while</span> <span class="p">(</span><span class="n">p</span><span class="p">)</span> <span class="p">{</span>
+        <span class="n">cout</span> <span class="o">&lt;&lt;</span> <span class="n">p</span><span class="o">-&gt;</span><span class="n">data</span> <span class="o">&lt;&lt;</span> <span class="s">"  "</span><span class="p">;</span>
+        <span class="n">p</span> <span class="o">=</span> <span class="n">p</span><span class="o">-&gt;</span><span class="n">next</span><span class="p">;</span>
+    <span class="p">}</span>
+    <span class="n">cout</span> <span class="o">&lt;&lt;</span> <span class="n">endl</span><span class="p">;</span>
+<span class="p">}</span>
+
+<span class="c1">//插入</span>
+<span class="n">Status</span> <span class="n">ListInsert_L</span><span class="p">(</span><span class="n">LinkList</span> <span class="o">&amp;</span><span class="n">L</span><span class="p">,</span> <span class="kt">int</span> <span class="n">i</span><span class="p">,</span> <span class="n">ElemType</span> <span class="n">e</span><span class="p">)</span> <span class="p">{</span>
+<span class="c1">//    cout&lt;&lt;" ListInsert_L 执行了！";</span>
+    <span class="n">LinkList</span> <span class="n">p</span> <span class="o">=</span> <span class="n">L</span><span class="p">,</span><span class="n">s</span><span class="p">;</span>
+    <span class="kt">int</span> <span class="n">j</span> <span class="o">=</span> <span class="mi">0</span><span class="p">;</span>
+    <span class="k">while</span> <span class="p">(</span><span class="n">p</span> <span class="o">&amp;&amp;</span> <span class="n">j</span> <span class="o">&lt;</span> <span class="n">i</span> <span class="o">-</span> <span class="mi">1</span><span class="p">)</span> <span class="p">{</span>
+        <span class="n">p</span> <span class="o">=</span> <span class="n">p</span><span class="o">-&gt;</span><span class="n">next</span><span class="p">;</span>
+        <span class="o">++</span><span class="n">j</span><span class="p">;</span> <span class="c1">//寻找第i-1个结点</span>
+    <span class="p">}</span>
+    <span class="k">if</span> <span class="p">(</span><span class="o">!</span><span class="n">p</span> <span class="o">||</span> <span class="n">j</span><span class="o">&gt;</span><span class="n">i</span><span class="o">-</span><span class="mi">1</span><span class="p">){</span>
+        <span class="k">return</span> <span class="n">ERROR</span><span class="p">;</span> <span class="c1">//i大于表长+1或者小于1</span>
+    <span class="p">}</span>
+    <span class="n">s</span> <span class="o">=</span> <span class="k">new</span> <span class="n">LNode</span><span class="p">;</span> <span class="c1">//生成新结点s</span>
+    <span class="n">s</span><span class="o">-&gt;</span><span class="n">data</span> <span class="o">=</span> <span class="n">e</span><span class="p">;</span> <span class="c1">//将结点s的数据域置为e</span>
+    <span class="n">s</span><span class="o">-&gt;</span><span class="n">next</span><span class="o">=</span><span class="n">p</span><span class="o">-&gt;</span><span class="n">next</span><span class="p">;</span><span class="c1">//将结点s插入L中</span>
+    <span class="n">p</span><span class="o">-&gt;</span><span class="n">next</span><span class="o">=</span><span class="n">s</span><span class="p">;</span>
+    <span class="k">return</span> <span class="n">OK</span><span class="p">;</span>
+<span class="p">}</span>
+
+<span class="c1">//删除</span>
+<span class="n">Status</span> <span class="n">DeleteList_L</span><span class="p">(</span><span class="n">LinkList</span> <span class="o">&amp;</span><span class="n">L</span><span class="p">,</span> <span class="kt">int</span> <span class="n">i</span><span class="p">,</span> <span class="n">ElemType</span> <span class="o">&amp;</span><span class="n">e</span><span class="p">){</span>
+    <span class="n">LinkList</span> <span class="n">p</span><span class="o">=</span><span class="n">L</span><span class="p">,</span><span class="n">q</span><span class="p">;</span>
+    <span class="kt">int</span> <span class="n">j</span><span class="o">=</span><span class="mi">0</span><span class="p">;</span>
+    <span class="k">while</span> <span class="p">(</span><span class="n">p</span><span class="o">-&gt;</span><span class="n">next</span> <span class="o">&amp;&amp;</span> <span class="n">j</span><span class="o">&lt;</span><span class="n">i</span><span class="o">-</span><span class="mi">1</span><span class="p">){</span><span class="c1">//寻找第i个结点，并令p指向其前驱</span>
+        <span class="n">p</span> <span class="o">=</span> <span class="n">p</span><span class="o">-&gt;</span><span class="n">next</span><span class="p">;</span>
+        <span class="o">++</span><span class="n">j</span><span class="p">;</span>
+    <span class="p">}</span>
+    <span class="k">if</span> <span class="p">(</span><span class="o">!</span><span class="p">(</span><span class="n">p</span><span class="o">-&gt;</span><span class="n">next</span><span class="p">)</span><span class="o">||</span><span class="n">j</span><span class="o">&gt;</span><span class="n">i</span><span class="o">-</span><span class="mi">1</span><span class="p">){</span>
+        <span class="k">return</span> <span class="n">ERROR</span><span class="p">;</span><span class="c1">//删除位置不合理</span>
+    <span class="p">}</span>
+    <span class="n">q</span><span class="o">=</span><span class="n">p</span><span class="o">-&gt;</span><span class="n">next</span><span class="p">;</span><span class="c1">//临时保存被删除结点的地址以备释放</span>
+    <span class="n">p</span><span class="o">-&gt;</span><span class="n">next</span><span class="o">=</span><span class="n">q</span><span class="o">-&gt;</span><span class="n">next</span><span class="p">;</span> <span class="c1">//改变删除结点前驱结点的指针域</span>
+    <span class="n">e</span><span class="o">=</span><span class="n">q</span><span class="o">-&gt;</span><span class="n">data</span><span class="p">;</span> <span class="c1">//保存删除结点的数据域</span>
+    <span class="k">delete</span> <span class="n">q</span><span class="p">;</span><span class="c1">//释放删除结点的空间</span>
+    <span class="k">return</span> <span class="n">OK</span><span class="p">;</span>
+<span class="p">}</span>
+
+<span class="n">Status</span> <span class="n">LocateElem_L</span><span class="p">(</span><span class="n">LinkList</span> <span class="n">L</span><span class="p">,</span> <span class="n">ElemType</span> <span class="o">&amp;</span><span class="n">e</span><span class="p">)</span> <span class="p">{</span>
+    <span class="n">LinkList</span> <span class="n">p</span><span class="p">;</span>
+    <span class="n">p</span> <span class="o">=</span> <span class="n">L</span><span class="o">-&gt;</span><span class="n">next</span><span class="p">;</span>
+    <span class="kt">int</span> <span class="n">i</span><span class="o">=</span><span class="mi">0</span><span class="p">;</span>
+    <span class="k">while</span> <span class="p">(</span><span class="n">p</span> <span class="o">&amp;&amp;</span> <span class="n">p</span><span class="o">-&gt;</span><span class="n">data</span> <span class="o">!=</span> <span class="n">e</span><span class="p">)</span> <span class="p">{</span>
+        <span class="n">p</span> <span class="o">=</span> <span class="n">p</span><span class="o">-&gt;</span><span class="n">next</span><span class="p">;</span>
+        <span class="n">i</span><span class="o">++</span><span class="p">;</span>
+    <span class="p">}</span>
+    <span class="k">return</span> <span class="n">i</span><span class="p">;</span><span class="c1">//返回L中值为e的数据元素的位置，查找失败返回NULL</span>
+<span class="p">}</span>
+
+<span class="c1">//头插发</span>
+<span class="kt">void</span> <span class="n">CreateList_F</span><span class="p">(</span><span class="n">LinkList</span> <span class="o">&amp;</span><span class="n">L</span><span class="p">,</span><span class="kt">int</span> <span class="n">n</span><span class="p">){</span>
+    <span class="n">L</span><span class="o">=</span><span class="k">new</span> <span class="n">LNode</span><span class="p">;</span>
+    <span class="n">L</span><span class="o">-&gt;</span><span class="n">next</span><span class="o">=</span><span class="nb">NULL</span><span class="p">;</span> <span class="c1">//先建立一个带头结点的单链表</span>
+    <span class="k">for</span><span class="p">(</span><span class="kt">int</span> <span class="n">i</span><span class="o">=</span><span class="n">n</span><span class="p">;</span><span class="n">i</span><span class="o">&gt;</span><span class="mi">0</span><span class="p">;</span><span class="o">--</span><span class="n">i</span><span class="p">){</span>
+        <span class="n">LinkList</span> <span class="n">p</span><span class="o">=</span><span class="k">new</span> <span class="n">LNode</span><span class="p">;</span> <span class="c1">//生成新结点</span>
+        <span class="n">cin</span><span class="o">&gt;&gt;</span><span class="n">p</span><span class="o">-&gt;</span><span class="n">data</span><span class="p">;</span> <span class="c1">//输入元素值</span>
+        <span class="n">p</span><span class="o">-&gt;</span><span class="n">next</span><span class="o">=</span><span class="n">L</span><span class="o">-&gt;</span><span class="n">next</span><span class="p">;</span>
+        <span class="n">L</span><span class="o">-&gt;</span><span class="n">next</span><span class="o">=</span><span class="n">p</span><span class="p">;</span>     <span class="c1">//插入到表头</span>
+    <span class="p">}</span>
+<span class="p">}</span>
+
+<span class="kt">void</span> <span class="n">CreateList_L</span><span class="p">(</span><span class="n">LinkList</span> <span class="o">&amp;</span><span class="n">L</span><span class="p">,</span><span class="kt">int</span> <span class="n">n</span><span class="p">){</span>
+    <span class="c1">//正位序输入n个元素的值，建立带表头结点的单链表L</span>
+    <span class="n">L</span><span class="o">=</span><span class="k">new</span> <span class="n">LNode</span><span class="p">;</span>
+    <span class="n">L</span><span class="o">-&gt;</span><span class="n">next</span><span class="o">=</span><span class="nb">NULL</span><span class="p">;</span>
+    <span class="n">LinkList</span> <span class="n">r</span><span class="o">=</span><span class="n">L</span><span class="p">;</span>  <span class="c1">//尾指针r指向头结点</span>
+    <span class="k">for</span><span class="p">(</span><span class="kt">int</span> <span class="n">i</span><span class="o">=</span><span class="mi">0</span><span class="p">;</span><span class="n">i</span><span class="o">&lt;</span><span class="n">n</span><span class="p">;</span><span class="o">++</span><span class="n">i</span><span class="p">){</span>
+        <span class="n">LinkList</span> <span class="n">p</span><span class="o">=</span><span class="k">new</span> <span class="n">LNode</span><span class="p">;</span> <span class="c1">//生成新结点</span>
+        <span class="n">cin</span><span class="o">&gt;&gt;</span><span class="n">p</span><span class="o">-&gt;</span><span class="n">data</span><span class="p">;</span>         <span class="c1">//输入元素值</span>
+        <span class="n">p</span><span class="o">-&gt;</span><span class="n">next</span><span class="o">=</span><span class="nb">NULL</span><span class="p">;</span> <span class="n">r</span><span class="o">-&gt;</span><span class="n">next</span><span class="o">=</span><span class="n">p</span><span class="p">;</span>          <span class="c1">//插入到表尾</span>
+        <span class="n">r</span><span class="o">=</span><span class="n">p</span><span class="p">;</span>   <span class="c1">//r指向新的尾结点</span>
+    <span class="p">}</span>
+<span class="p">}</span>
+
+<span class="n">Status</span> <span class="n">GetElem_L</span><span class="p">(</span><span class="n">LinkList</span> <span class="n">L</span><span class="p">,</span> <span class="kt">int</span> <span class="n">i</span><span class="p">,</span> <span class="n">ElemType</span> <span class="o">&amp;</span><span class="n">e</span><span class="p">)</span> <span class="p">{</span>
+    <span class="n">LinkList</span> <span class="n">p</span><span class="p">;</span>
+    <span class="n">p</span> <span class="o">=</span> <span class="n">L</span><span class="o">-&gt;</span><span class="n">next</span><span class="p">;</span>
+    <span class="kt">int</span> <span class="n">j</span> <span class="o">=</span> <span class="mi">1</span><span class="p">;</span><span class="c1">//初始化</span>
+    <span class="k">while</span> <span class="p">(</span><span class="n">p</span> <span class="o">&amp;&amp;</span> <span class="n">j</span> <span class="o">&lt;</span> <span class="n">i</span><span class="p">)</span> <span class="p">{</span><span class="c1">//向后扫描，直到p指向第i个元素或p为空</span>
+        <span class="n">p</span> <span class="o">=</span> <span class="n">p</span><span class="o">-&gt;</span><span class="n">next</span><span class="p">;</span>
+        <span class="o">++</span><span class="n">j</span><span class="p">;</span>
+    <span class="p">}</span>
+    <span class="k">if</span> <span class="p">(</span><span class="o">!</span><span class="n">p</span> <span class="o">||</span> <span class="n">j</span> <span class="o">&gt;</span> <span class="n">i</span><span class="p">)</span> <span class="p">{</span>
+        <span class="k">return</span> <span class="n">ERROR</span><span class="p">;</span><span class="c1">//第i个元素不存在</span>
+    <span class="p">}</span>
+    <span class="n">e</span> <span class="o">=</span> <span class="n">p</span><span class="o">-&gt;</span><span class="n">data</span><span class="p">;</span><span class="c1">//取第i个元素</span>
+    <span class="k">return</span> <span class="n">OK</span><span class="p">;</span>
+<span class="p">}</span>
+
+<span class="c1">//求长度</span>
+<span class="kt">int</span> <span class="n">LengthList_L</span><span class="p">(</span><span class="n">LinkList</span> <span class="n">L</span><span class="p">)</span> <span class="p">{</span>
+    <span class="c1">// 返回L中元素个数</span>
+    <span class="n">LinkList</span> <span class="n">p</span><span class="p">;</span>
+    <span class="n">p</span> <span class="o">=</span> <span class="n">L</span><span class="o">-&gt;</span><span class="n">next</span><span class="p">;</span><span class="c1">//p指向第一个结点</span>
+    <span class="kt">int</span> <span class="n">i</span> <span class="o">=</span> <span class="mi">0</span><span class="p">;</span>
+    <span class="k">while</span> <span class="p">(</span><span class="n">p</span><span class="p">)</span> <span class="p">{</span>
+        <span class="n">i</span><span class="o">++</span><span class="p">;</span>
+        <span class="n">p</span> <span class="o">=</span> <span class="n">p</span><span class="o">-&gt;</span><span class="n">next</span><span class="p">;</span>
+    <span class="p">}</span>
+    <span class="k">return</span> <span class="n">i</span><span class="p">;</span>
+<span class="p">}</span>
+
+<span class="c1">//清空</span>
+<span class="n">Status</span> <span class="n">ClearList</span><span class="p">(</span><span class="n">LinkList</span> <span class="o">&amp;</span><span class="n">L</span><span class="p">)</span> <span class="p">{</span>
+    <span class="c1">//将L重置为空表</span>
+    <span class="n">LinkList</span> <span class="n">p</span><span class="p">,</span> <span class="n">q</span><span class="p">;</span>
+    <span class="n">p</span> <span class="o">=</span> <span class="n">L</span><span class="o">-&gt;</span><span class="n">next</span><span class="p">;</span><span class="c1">//p指向第一个结点</span>
+    <span class="k">while</span> <span class="p">(</span><span class="n">p</span><span class="p">)</span> <span class="c1">//没到表尾</span>
+    <span class="p">{</span>
+        <span class="n">q</span> <span class="o">=</span> <span class="n">p</span><span class="o">-&gt;</span><span class="n">next</span><span class="p">;</span>
+        <span class="k">delete</span> <span class="n">p</span><span class="p">;</span>
+        <span class="n">p</span> <span class="o">=</span> <span class="n">q</span><span class="p">;</span>
+    <span class="p">}</span>
+    <span class="n">L</span><span class="o">-&gt;</span><span class="n">next</span> <span class="o">=</span> <span class="nb">NULL</span><span class="p">;</span>
+    <span class="k">return</span> <span class="n">OK</span><span class="p">;</span>
+<span class="p">}</span>
+
+<span class="n">Status</span> <span class="n">ListEmpty</span><span class="p">(</span><span class="n">LinkList</span> <span class="n">L</span><span class="p">)</span> <span class="p">{</span>
+    <span class="c1">//若L为空表，则返回OK，否则返回ERROR</span>
+    <span class="k">if</span> <span class="p">(</span><span class="n">L</span><span class="o">-&gt;</span><span class="n">next</span><span class="p">)</span> <span class="p">{</span><span class="c1">//非空</span>
+        <span class="k">return</span> <span class="n">OK</span><span class="p">;</span>
+    <span class="p">}</span> <span class="k">else</span> <span class="p">{</span>
+        <span class="k">return</span> <span class="n">ERROR</span><span class="p">;</span>
+    <span class="p">}</span>
+<span class="p">}</span>
+
+<span class="c1">//销毁</span>
+<span class="n">Status</span> <span class="n">DestroyList_L</span><span class="p">(</span><span class="n">LinkList</span> <span class="o">&amp;</span><span class="n">L</span><span class="p">)</span> <span class="p">{</span>
+    <span class="k">while</span> <span class="p">(</span><span class="n">L</span><span class="p">)</span> <span class="p">{</span>
+        <span class="n">LinkList</span> <span class="n">p</span><span class="p">;</span>
+        <span class="n">p</span> <span class="o">=</span> <span class="n">L</span><span class="p">;</span>
+        <span class="n">L</span> <span class="o">=</span> <span class="n">L</span><span class="o">-&gt;</span><span class="n">next</span><span class="p">;</span>
+        <span class="k">delete</span> <span class="n">p</span><span class="p">;</span>
+    <span class="p">}</span>
+    <span class="k">return</span> <span class="n">OK</span><span class="p">;</span>
+<span class="p">}</span>
+
+<span class="c1">//查找一个元素</span>
+<span class="kt">int</span> <span class="n">find</span><span class="p">(</span><span class="n">LinkList</span> <span class="o">&amp;</span><span class="n">L</span><span class="p">,</span><span class="kt">int</span> <span class="n">s</span><span class="p">)</span><span class="c1">//查找元素s</span>
+<span class="p">{</span>
+    <span class="n">LinkList</span> <span class="n">p</span><span class="o">=</span><span class="n">L</span><span class="o">-&gt;</span><span class="n">next</span><span class="p">;</span>
+    <span class="kt">int</span> <span class="n">i</span><span class="o">=</span><span class="mi">0</span><span class="p">;</span>
+    <span class="kt">int</span> <span class="n">j</span><span class="o">=</span> <span class="n">LengthList_L</span><span class="p">(</span><span class="n">L</span><span class="p">);</span>
+    <span class="k">while</span><span class="p">(</span><span class="n">p</span><span class="o">-&gt;</span><span class="n">data</span><span class="o">!=</span><span class="n">s</span> <span class="o">&amp;&amp;</span> <span class="n">i</span><span class="o">!=</span><span class="n">j</span><span class="p">)</span>
+    <span class="p">{</span>
+        <span class="n">p</span><span class="o">=</span><span class="n">p</span><span class="o">-&gt;</span><span class="n">next</span><span class="p">;</span>
+        <span class="n">i</span><span class="o">++</span><span class="p">;</span>
+    <span class="p">}</span>
+    <span class="k">if</span><span class="p">(</span><span class="n">i</span><span class="o">==</span><span class="n">j</span><span class="p">)</span> <span class="n">cout</span><span class="o">&lt;&lt;</span><span class="s">"未找到"</span><span class="p">;</span>
+    <span class="k">else</span> <span class="n">cout</span><span class="o">&lt;&lt;</span><span class="s">"第"</span><span class="o">&lt;&lt;</span><span class="n">i</span><span class="o">+</span><span class="mi">1</span><span class="o">&lt;&lt;</span><span class="s">"个元素"</span><span class="o">&lt;&lt;</span><span class="n">endl</span><span class="p">;</span>
+    <span class="k">return</span> <span class="mi">0</span><span class="p">;</span>
+<span class="p">}</span>
+
+<span class="kt">int</span> <span class="n">reverse</span><span class="p">(</span><span class="n">LinkList</span> <span class="o">&amp;</span><span class="n">L</span><span class="p">)</span><span class="c1">//链表逆置</span>
+<span class="p">{</span>
+    <span class="n">LinkList</span> <span class="n">p</span><span class="o">=</span><span class="n">L</span><span class="o">-&gt;</span><span class="n">next</span><span class="p">;</span>
+    <span class="n">L</span><span class="o">-&gt;</span><span class="n">next</span><span class="o">=</span><span class="nb">NULL</span><span class="p">;</span>
+    <span class="k">while</span><span class="p">(</span><span class="n">p</span><span class="p">)</span>
+    <span class="p">{</span>
+        <span class="n">LinkList</span> <span class="n">q</span><span class="o">=</span><span class="n">p</span><span class="o">-&gt;</span><span class="n">next</span><span class="p">;</span>
+        <span class="n">p</span><span class="o">-&gt;</span><span class="n">next</span><span class="o">=</span><span class="n">L</span><span class="o">-&gt;</span><span class="n">next</span><span class="p">;</span>
+        <span class="n">L</span><span class="o">-&gt;</span><span class="n">next</span><span class="o">=</span><span class="n">p</span><span class="p">;</span>
+        <span class="n">p</span><span class="o">=</span><span class="n">q</span><span class="p">;</span>
+    <span class="p">}</span>
+
+    <span class="k">return</span> <span class="mi">0</span><span class="p">;</span>
+<span class="p">}</span>
+
+<span class="kt">int</span> <span class="n">merge</span><span class="p">(</span><span class="n">LinkList</span> <span class="o">&amp;</span><span class="n">L</span><span class="p">,</span><span class="n">LinkList</span> <span class="o">&amp;</span><span class="n">s</span><span class="p">)</span><span class="c1">//归并排序  从小到大</span>
+<span class="p">{</span>
+    <span class="n">LinkList</span> <span class="n">p</span><span class="o">=</span><span class="n">L</span><span class="o">-&gt;</span><span class="n">next</span><span class="p">;</span>
+    <span class="n">L</span><span class="o">-&gt;</span><span class="n">next</span><span class="o">=</span><span class="nb">NULL</span><span class="p">;</span>
+    <span class="kt">int</span> <span class="n">L_len</span> <span class="o">=</span> <span class="n">LengthList_L</span><span class="p">(</span><span class="n">L</span><span class="p">);</span>
+    <span class="kt">int</span> <span class="n">S_len</span> <span class="o">=</span> <span class="n">LengthList_L</span><span class="p">(</span><span class="n">s</span><span class="p">);</span>
+    <span class="n">L_len</span><span class="o">+=</span><span class="n">S_len</span><span class="p">;</span>
+
+    <span class="n">s</span><span class="o">=</span><span class="n">s</span><span class="o">-&gt;</span><span class="n">next</span><span class="p">;</span>
+
+    <span class="n">LinkList</span> <span class="n">o</span><span class="o">=</span><span class="n">L</span><span class="p">;</span>
+    <span class="k">while</span><span class="p">(</span><span class="n">s</span><span class="o">&amp;&amp;</span><span class="n">p</span><span class="p">)</span>
+    <span class="p">{</span>
+        <span class="k">if</span><span class="p">(</span><span class="n">s</span><span class="o">-&gt;</span><span class="n">data</span><span class="o">&lt;</span><span class="n">p</span><span class="o">-&gt;</span><span class="n">data</span><span class="p">)</span>
+        <span class="p">{</span>
+            <span class="n">LinkList</span> <span class="n">q</span><span class="o">=</span><span class="n">s</span><span class="o">-&gt;</span><span class="n">next</span><span class="p">;</span>
+            <span class="n">s</span><span class="o">-&gt;</span><span class="n">next</span><span class="o">=</span><span class="n">L</span><span class="o">-&gt;</span><span class="n">next</span><span class="p">;</span>
+            <span class="n">L</span><span class="o">-&gt;</span><span class="n">next</span><span class="o">=</span><span class="n">s</span><span class="p">;</span>
+            <span class="n">s</span><span class="o">=</span><span class="n">q</span><span class="p">;</span>
+        <span class="p">}</span>
+        <span class="k">else</span>
+        <span class="p">{</span>
+            <span class="n">LinkList</span> <span class="n">q</span><span class="o">=</span><span class="n">p</span><span class="o">-&gt;</span><span class="n">next</span><span class="p">;</span>
+            <span class="n">p</span><span class="o">-&gt;</span><span class="n">next</span><span class="o">=</span><span class="n">L</span><span class="o">-&gt;</span><span class="n">next</span><span class="p">;</span>
+            <span class="n">L</span><span class="o">-&gt;</span><span class="n">next</span><span class="o">=</span><span class="n">p</span><span class="p">;</span>
+            <span class="n">p</span><span class="o">=</span><span class="n">q</span><span class="p">;</span>
+        <span class="p">}</span>
+        <span class="n">L</span><span class="o">=</span><span class="n">L</span><span class="o">-&gt;</span><span class="n">next</span><span class="p">;</span>
+    <span class="p">}</span>
+    <span class="k">if</span><span class="p">(</span><span class="n">p</span><span class="p">)</span> <span class="n">L</span><span class="o">-&gt;</span><span class="n">next</span><span class="o">=</span><span class="n">p</span><span class="p">;</span>
+    <span class="k">else</span> <span class="n">L</span><span class="o">-&gt;</span><span class="n">next</span><span class="o">=</span><span class="n">s</span><span class="p">;</span>
+    <span class="n">L</span><span class="o">=</span><span class="n">o</span><span class="p">;</span>
+
+    <span class="k">return</span> <span class="mi">0</span><span class="p">;</span>
+<span class="p">}</span>
+
+</code></pre></div></div> <h3 id="4-双链表">4. 双链表</h3> <div class="language-cpp highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="cp">#include</span> <span class="cpf">&lt;iostream&gt;</span><span class="cp">
+</span><span class="k">using</span> <span class="k">namespace</span> <span class="n">std</span><span class="p">;</span>
+<span class="c1">//定义必须的常量和类型</span>
+<span class="cp">#define TRUE 1 //逻辑真
+#define FALSE 0 //逻辑假
+#define OK 1 //正确
+#define ERROR 0 //错误
+#define INTEASIBLE -1 //不可能，非法操作
+#define OVERFLOW -2 //溢出
+</span><span class="c1">//定义状态类型</span>
+<span class="k">typedef</span> <span class="kt">int</span> <span class="n">Status</span><span class="p">;</span>
+<span class="c1">//链表的数据元素类型为整型（可根据需要修改为其他类型）</span>
+<span class="k">typedef</span> <span class="kt">int</span> <span class="n">ElemType</span><span class="p">;</span>
+
+<span class="c1">//链表存储类型描述</span>
+<span class="k">typedef</span> <span class="k">struct</span> <span class="nc">DulNode</span> <span class="p">{</span>
+    <span class="n">ElemType</span> <span class="n">data</span><span class="p">;</span> <span class="c1">//数据域</span>
+    <span class="k">struct</span> <span class="nc">DulNode</span> <span class="o">*</span><span class="n">prior</span><span class="p">,</span> <span class="o">*</span><span class="n">next</span><span class="p">;</span> <span class="c1">//前驱和后继指针</span>
+<span class="p">}</span> <span class="n">DulNode</span><span class="p">,</span> <span class="o">*</span><span class="n">DulLinkList</span><span class="p">;</span>
+
+<span class="c1">//基本操作的实现</span>
+<span class="c1">//初始化</span>
+<span class="n">Status</span> <span class="n">InitDLinkList</span><span class="p">(</span><span class="n">DulLinkList</span> <span class="o">&amp;</span><span class="n">L</span><span class="p">)</span> <span class="p">{</span>
+    <span class="cm">/* 产生空的双向循环链表L */</span>
+    <span class="n">L</span> <span class="o">=</span> <span class="k">new</span> <span class="n">DulNode</span><span class="p">;</span>
+    <span class="k">if</span> <span class="p">(</span><span class="o">!</span><span class="n">L</span><span class="p">)</span> <span class="p">{</span> <span class="k">return</span> <span class="n">ERROR</span><span class="p">;</span> <span class="p">}</span>
+    <span class="n">L</span><span class="o">-&gt;</span><span class="n">prior</span> <span class="o">=</span> <span class="n">L</span><span class="p">;</span> <span class="c1">//头结点的prior指针永远指向NULL</span>
+    <span class="n">L</span><span class="o">-&gt;</span><span class="n">next</span> <span class="o">=</span> <span class="n">L</span><span class="p">;</span>  <span class="c1">//头结点之后暂时还没有结点</span>
+    <span class="k">return</span> <span class="n">OK</span><span class="p">;</span>
+<span class="p">}</span>
+
+<span class="kt">int</span> <span class="n">ListLength</span><span class="p">(</span><span class="n">DulLinkList</span> <span class="n">L</span><span class="p">)</span> <span class="p">{</span> <span class="cm">/* 初始条件：L已存在。操作结果： */</span>
+    <span class="kt">int</span> <span class="n">i</span> <span class="o">=</span> <span class="mi">0</span><span class="p">;</span>
+    <span class="n">DulLinkList</span> <span class="n">p</span> <span class="o">=</span> <span class="n">L</span><span class="o">-&gt;</span><span class="n">next</span><span class="p">;</span> <span class="cm">/* p指向第一个结点 */</span>
+    <span class="k">while</span> <span class="p">(</span><span class="n">p</span> <span class="o">!=</span> <span class="n">L</span><span class="p">)</span> <span class="cm">/* p没到表头 */</span>
+    <span class="p">{</span>
+        <span class="n">i</span><span class="o">++</span><span class="p">;</span>
+        <span class="n">p</span> <span class="o">=</span> <span class="n">p</span><span class="o">-&gt;</span><span class="n">next</span><span class="p">;</span>
+    <span class="p">}</span>
+    <span class="k">return</span> <span class="n">i</span><span class="p">;</span>
+<span class="p">}</span>
+
+<span class="c1">//遍历，这里是输出顺序表</span>
+<span class="kt">void</span> <span class="n">TraverseList_L</span><span class="p">(</span><span class="n">DulLinkList</span> <span class="n">L</span><span class="p">)</span> <span class="p">{</span>
+    <span class="n">DulLinkList</span> <span class="n">p</span> <span class="o">=</span> <span class="n">L</span><span class="o">-&gt;</span><span class="n">next</span><span class="p">;</span>
+    <span class="k">while</span> <span class="p">(</span><span class="n">p</span><span class="o">!=</span><span class="n">L</span><span class="p">)</span> <span class="p">{</span>
+        <span class="n">cout</span> <span class="o">&lt;&lt;</span> <span class="n">p</span><span class="o">-&gt;</span><span class="n">data</span> <span class="o">&lt;&lt;</span> <span class="s">"  "</span><span class="p">;</span>
+        <span class="n">p</span> <span class="o">=</span> <span class="n">p</span><span class="o">-&gt;</span><span class="n">next</span><span class="p">;</span>
+    <span class="p">}</span>
+    <span class="n">cout</span> <span class="o">&lt;&lt;</span> <span class="n">endl</span><span class="p">;</span>
+<span class="p">}</span>
+
+<span class="n">Status</span> <span class="n">GetElem</span><span class="p">(</span><span class="n">DulLinkList</span> <span class="n">L</span><span class="p">,</span> <span class="kt">int</span> <span class="n">i</span><span class="p">,</span> <span class="n">ElemType</span> <span class="o">&amp;</span><span class="n">e</span><span class="p">)</span> <span class="p">{</span> <span class="cm">/* 当第i个元素存在时，其值赋给e并返回OK，否则返回ERROR */</span>
+    <span class="kt">int</span> <span class="n">j</span> <span class="o">=</span> <span class="mi">1</span><span class="p">;</span> <span class="cm">/* j为计数器 */</span>
+    <span class="n">DulLinkList</span> <span class="n">p</span> <span class="o">=</span> <span class="n">L</span><span class="o">-&gt;</span><span class="n">next</span><span class="p">;</span> <span class="cm">/* p指向第一个结点 */</span>
+    <span class="k">while</span> <span class="p">(</span><span class="n">p</span> <span class="o">!=</span> <span class="n">L</span> <span class="o">&amp;&amp;</span> <span class="n">j</span> <span class="o">&lt;</span> <span class="n">i</span><span class="p">)</span> <span class="p">{</span>
+        <span class="n">p</span> <span class="o">=</span> <span class="n">p</span><span class="o">-&gt;</span><span class="n">next</span><span class="p">;</span>
+        <span class="n">j</span><span class="o">++</span><span class="p">;</span>
+    <span class="p">}</span>
+    <span class="k">if</span> <span class="p">(</span><span class="n">p</span> <span class="o">==</span> <span class="n">L</span> <span class="o">||</span> <span class="n">j</span> <span class="o">&gt;</span> <span class="n">i</span><span class="p">)</span> <span class="cm">/* 第i个元素不存在 */</span>
+        <span class="k">return</span> <span class="n">ERROR</span><span class="p">;</span>
+    <span class="n">e</span> <span class="o">=</span> <span class="n">p</span><span class="o">-&gt;</span><span class="n">data</span><span class="p">;</span> <span class="cm">/* 取第i个元素 */</span>
+    <span class="k">return</span> <span class="n">OK</span><span class="p">;</span>
+<span class="p">}</span>
+
+<span class="n">DulLinkList</span> <span class="n">GetElemP</span><span class="p">(</span><span class="n">DulLinkList</span> <span class="n">L</span><span class="p">,</span><span class="kt">int</span> <span class="n">i</span><span class="p">)</span> <span class="cm">/* 另加 */</span>
+<span class="p">{</span> <span class="cm">/* 在双向链表L中返回第i个元素的地址。i为0，返回头结点的地址。若第i个元素不存在，*/</span>
+<span class="cm">/* 返回NULL */</span>
+    <span class="kt">int</span> <span class="n">j</span><span class="p">;</span>
+    <span class="n">DulLinkList</span> <span class="n">p</span><span class="o">=</span><span class="n">L</span><span class="p">;</span> <span class="cm">/* p指向头结点 */</span>
+    <span class="k">if</span><span class="p">(</span><span class="n">i</span><span class="o">&lt;</span><span class="mi">0</span><span class="o">||</span><span class="n">i</span><span class="o">&gt;</span><span class="n">ListLength</span><span class="p">(</span><span class="n">L</span><span class="p">))</span> <span class="cm">/* i值不合法 */</span>
+        <span class="k">return</span> <span class="nb">NULL</span><span class="p">;</span>
+    <span class="k">for</span><span class="p">(</span><span class="n">j</span><span class="o">=</span><span class="mi">1</span><span class="p">;</span><span class="n">j</span><span class="o">&lt;=</span><span class="n">i</span><span class="p">;</span><span class="n">j</span><span class="o">++</span><span class="p">)</span>
+        <span class="n">p</span><span class="o">=</span><span class="n">p</span><span class="o">-&gt;</span><span class="n">next</span><span class="p">;</span>
+    <span class="k">return</span> <span class="n">p</span><span class="p">;</span>
+<span class="p">}</span>
+
+<span class="kt">int</span> <span class="n">LocateElem</span><span class="p">(</span><span class="n">DulLinkList</span> <span class="n">L</span><span class="p">,</span> <span class="n">ElemType</span> <span class="n">e</span><span class="p">,</span> <span class="n">Status</span><span class="p">(</span><span class="o">*</span><span class="n">compare</span><span class="p">)(</span><span class="n">ElemType</span><span class="p">,</span> <span class="n">ElemType</span><span class="p">))</span> <span class="p">{</span> <span class="cm">/* 初始条件：L已存在，compare()是数据元素判定函数 */</span>
+<span class="cm">/* 操作结果：返回L中第1个与e满足关系compare()的数据元素的位序。 */</span>
+<span class="cm">/* 若这样的数据元素不存在，则返回值为0 */</span>
+    <span class="kt">int</span> <span class="n">i</span> <span class="o">=</span> <span class="mi">0</span><span class="p">;</span>
+    <span class="n">DulLinkList</span> <span class="n">p</span> <span class="o">=</span> <span class="n">L</span><span class="o">-&gt;</span><span class="n">next</span><span class="p">;</span> <span class="cm">/* p指向第1个元素 */</span>
+    <span class="k">while</span> <span class="p">(</span><span class="n">p</span> <span class="o">!=</span> <span class="n">L</span><span class="p">)</span> <span class="p">{</span>
+        <span class="n">i</span><span class="o">++</span><span class="p">;</span>
+        <span class="k">if</span> <span class="p">(</span><span class="n">compare</span><span class="p">(</span><span class="n">p</span><span class="o">-&gt;</span><span class="n">data</span><span class="p">,</span> <span class="n">e</span><span class="p">))</span> <span class="cm">/* 找到这样的数据元素*/</span>
+            <span class="k">return</span> <span class="n">i</span><span class="p">;</span>
+        <span class="n">p</span> <span class="o">=</span> <span class="n">p</span><span class="o">-&gt;</span><span class="n">next</span><span class="p">;</span>
+    <span class="p">}</span>
+    <span class="k">return</span> <span class="mi">0</span><span class="p">;</span>
+<span class="p">}</span>
+
+<span class="c1">//插入</span>
+<span class="n">Status</span> <span class="n">InsertDulLink</span><span class="p">(</span><span class="n">DulLinkList</span> <span class="o">&amp;</span><span class="n">L</span><span class="p">,</span> <span class="kt">int</span> <span class="n">i</span><span class="p">,</span> <span class="n">ElemType</span> <span class="n">e</span><span class="p">)</span> <span class="p">{</span>
+    <span class="n">DulLinkList</span> <span class="n">p</span><span class="p">,</span> <span class="n">s</span><span class="p">;</span>
+    <span class="k">if</span> <span class="p">(</span><span class="n">i</span> <span class="o">&lt;</span> <span class="mi">1</span> <span class="o">||</span> <span class="n">i</span> <span class="o">&gt;</span> <span class="n">ListLength</span><span class="p">(</span><span class="n">L</span><span class="p">)</span> <span class="o">+</span> <span class="mi">1</span><span class="p">)</span> <span class="p">{</span>
+        <span class="k">return</span> <span class="n">ERROR</span><span class="p">;</span>
+    <span class="p">}</span>
+    <span class="n">p</span> <span class="o">=</span> <span class="n">GetElemP</span><span class="p">(</span><span class="n">L</span><span class="p">,</span> <span class="n">i</span> <span class="o">-</span> <span class="mi">1</span><span class="p">);</span> <span class="cm">/* 在L中确定第i个元素前驱的位置指针p */</span>
+    <span class="k">if</span> <span class="p">(</span><span class="o">!</span><span class="n">p</span><span class="p">)</span> <span class="cm">/* p=NULL,即第i个元素的前驱不存在(设头结点为第1个元素的前驱) */</span>
+        <span class="k">return</span> <span class="n">ERROR</span><span class="p">;</span>
+    <span class="n">s</span> <span class="o">=</span> <span class="k">new</span> <span class="n">DulNode</span><span class="p">;</span> <span class="c1">//生成新结点s</span>
+    <span class="n">s</span><span class="o">-&gt;</span><span class="n">data</span> <span class="o">=</span> <span class="n">e</span><span class="p">;</span>
+    <span class="n">s</span><span class="o">-&gt;</span><span class="n">prior</span> <span class="o">=</span> <span class="n">p</span><span class="p">;</span>
+    <span class="n">s</span><span class="o">-&gt;</span><span class="n">next</span> <span class="o">=</span> <span class="n">p</span><span class="o">-&gt;</span><span class="n">next</span><span class="p">;</span>
+    <span class="n">p</span><span class="o">-&gt;</span><span class="n">next</span><span class="o">-&gt;</span><span class="n">prior</span> <span class="o">=</span> <span class="n">s</span><span class="p">;</span>
+    <span class="n">p</span><span class="o">-&gt;</span><span class="n">next</span> <span class="o">=</span> <span class="n">s</span><span class="p">;</span>
+    <span class="k">return</span> <span class="n">OK</span><span class="p">;</span>
+<span class="p">}</span>
+
+<span class="c1">//删除</span>
+<span class="n">Status</span> <span class="n">DeleteDulList</span><span class="p">(</span><span class="n">DulLinkList</span> <span class="o">&amp;</span><span class="n">L</span><span class="p">,</span> <span class="kt">int</span> <span class="n">i</span><span class="p">,</span> <span class="n">ElemType</span> <span class="o">&amp;</span><span class="n">e</span><span class="p">)</span> <span class="p">{</span>
+    <span class="n">DulLinkList</span> <span class="n">p</span><span class="p">;</span>
+    <span class="k">if</span> <span class="p">(</span><span class="n">i</span><span class="o">&lt;</span><span class="mi">1</span><span class="p">){</span>
+        <span class="k">return</span> <span class="n">ERROR</span><span class="p">;</span>
+    <span class="p">}</span>
+    <span class="n">p</span> <span class="o">=</span> <span class="n">GetElemP</span><span class="p">(</span><span class="n">L</span><span class="p">,</span><span class="n">i</span><span class="p">);</span>
+    <span class="k">if</span> <span class="p">(</span><span class="o">!</span><span class="n">p</span><span class="p">){</span>
+        <span class="k">return</span> <span class="n">ERROR</span><span class="p">;</span>
+    <span class="p">}</span>
+    <span class="n">e</span> <span class="o">=</span> <span class="n">p</span><span class="o">-&gt;</span><span class="n">data</span><span class="p">;</span> <span class="c1">//保存删除结点的数据域</span>
+    <span class="n">p</span><span class="o">-&gt;</span><span class="n">prior</span><span class="o">-&gt;</span><span class="n">next</span> <span class="o">=</span> <span class="n">p</span><span class="o">-&gt;</span><span class="n">next</span><span class="p">;</span>
+    <span class="n">p</span><span class="o">-&gt;</span><span class="n">next</span><span class="o">-&gt;</span><span class="n">prior</span> <span class="o">=</span> <span class="n">p</span><span class="o">-&gt;</span><span class="n">prior</span><span class="p">;</span>
+    <span class="k">delete</span> <span class="n">p</span><span class="p">;</span><span class="c1">//释放删除结点的空间</span>
+    <span class="k">return</span> <span class="n">OK</span><span class="p">;</span>
+<span class="p">}</span>
+
+<span class="c1">//销毁</span>
+<span class="n">Status</span> <span class="n">DestroyList_L</span><span class="p">(</span><span class="n">DulLinkList</span> <span class="o">&amp;</span><span class="n">L</span><span class="p">)</span> <span class="p">{</span>
+    <span class="n">DulLinkList</span> <span class="n">q</span><span class="p">,</span> <span class="n">p</span> <span class="o">=</span> <span class="n">L</span><span class="o">-&gt;</span><span class="n">next</span><span class="p">;</span> <span class="cm">/*p指向第一个结点*/</span>
+    <span class="k">while</span> <span class="p">(</span><span class="n">p</span> <span class="o">!=</span> <span class="n">L</span><span class="p">)</span> <span class="p">{</span>
+        <span class="n">q</span> <span class="o">=</span> <span class="n">p</span><span class="o">-&gt;</span><span class="n">next</span><span class="p">;</span>
+        <span class="k">delete</span> <span class="n">p</span><span class="p">;</span>
+        <span class="n">p</span> <span class="o">=</span> <span class="n">q</span><span class="p">;</span>
+    <span class="p">}</span>
+    <span class="k">delete</span> <span class="n">L</span><span class="p">;</span>
+    <span class="n">L</span> <span class="o">=</span> <span class="nb">NULL</span><span class="p">;</span>
+    <span class="k">return</span> <span class="n">OK</span><span class="p">;</span>
+<span class="p">}</span>
+
+</code></pre></div></div> <h3 id="5-静态链表">5. 静态链表</h3> <div class="language-cpp highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="cp">#include</span> <span class="cpf">&lt;iostream&gt;</span><span class="cp">
+</span><span class="k">using</span> <span class="k">namespace</span> <span class="n">std</span><span class="p">;</span>
+<span class="cp">#define TRUE 1 //逻辑真
+#define FALSE 0 //逻辑假
+#define OK 1 //正确
+#define ERROR 0 //错误
+#define INTEASIBLE -1 //不可能，非法操作
+#define OVERFLOW -2 //溢出
+</span><span class="c1">//定义状态类型</span>
+<span class="k">typedef</span> <span class="kt">int</span> <span class="n">Status</span><span class="p">;</span>
+<span class="c1">//链表的数据元素类型为整型（可根据需要修改为其他类型）</span>
+<span class="k">typedef</span> <span class="kt">int</span> <span class="n">ElemType</span><span class="p">;</span>
+<span class="cp">#define MAXSIZE 1000  </span><span class="cm">/*假设链表的最大长度是1000*/</span><span class="cp">
+</span><span class="k">typedef</span> <span class="k">struct</span> <span class="p">{</span>
+    <span class="n">ElemType</span> <span class="n">data</span><span class="p">;</span>
+    <span class="kt">int</span> <span class="n">cur</span><span class="p">;</span> <span class="cm">/*游标(Cursor)，为0时表示无指向*/</span>
+<span class="p">}</span> <span class="n">Component</span><span class="p">,</span> <span class="n">StaticLinkList</span><span class="p">[</span><span class="n">MAXSIZE</span><span class="p">];</span>
+
+<span class="cm">/*将一维数组space中各分量链成一备用链表*/</span>
+<span class="cm">/*space[0].cur为头指针，"0"表示空指针*/</span>
+<span class="n">Status</span> <span class="n">InitList</span><span class="p">(</span><span class="n">StaticLinkList</span> <span class="o">&amp;</span><span class="n">space</span><span class="p">)</span> <span class="p">{</span>
+    <span class="kt">int</span> <span class="n">i</span><span class="p">;</span>
+    <span class="k">for</span> <span class="p">(</span><span class="n">i</span> <span class="o">=</span> <span class="mi">0</span><span class="p">;</span> <span class="n">i</span> <span class="o">&lt;</span> <span class="n">MAXSIZE</span> <span class="o">-</span> <span class="mi">1</span><span class="p">;</span> <span class="o">++</span><span class="n">i</span><span class="p">)</span> <span class="p">{</span>
+        <span class="n">space</span><span class="p">[</span><span class="n">i</span><span class="p">].</span><span class="n">data</span><span class="o">=</span><span class="mi">0</span><span class="p">;</span>
+        <span class="n">space</span><span class="p">[</span><span class="n">i</span><span class="p">].</span><span class="n">cur</span> <span class="o">=</span> <span class="n">i</span> <span class="o">+</span> <span class="mi">1</span><span class="p">;</span>
+    <span class="p">}</span>
+    <span class="n">space</span><span class="p">[</span><span class="n">MAXSIZE</span> <span class="o">-</span> <span class="mi">1</span><span class="p">].</span><span class="n">cur</span> <span class="o">=</span> <span class="mi">0</span><span class="p">;</span>     <span class="cm">/*目前静态链表为空，最后一个元素的cur为0*/</span>
+    <span class="k">return</span> <span class="n">OK</span><span class="p">;</span>
+<span class="p">}</span>
+
+<span class="cm">/*若备用空间链表非空，则返会分配的结点下标，否则返会0*/</span>
+<span class="kt">int</span> <span class="n">Malloc_SLL</span><span class="p">(</span><span class="n">StaticLinkList</span> <span class="o">&amp;</span><span class="n">space</span><span class="p">)</span> <span class="p">{</span>
+    <span class="kt">int</span> <span class="n">i</span> <span class="o">=</span> <span class="n">space</span><span class="p">[</span><span class="mi">0</span><span class="p">].</span><span class="n">cur</span><span class="p">;</span>   <span class="cm">/*当前数组第一个元素的cur存的值，就是要返回的第一个备用空间的下标*/</span>
+    <span class="k">if</span> <span class="p">(</span><span class="n">space</span><span class="p">[</span><span class="mi">0</span><span class="p">].</span><span class="n">cur</span><span class="p">)</span> <span class="p">{</span>
+        <span class="n">space</span><span class="p">[</span><span class="mi">0</span><span class="p">].</span><span class="n">cur</span> <span class="o">=</span> <span class="n">space</span><span class="p">[</span><span class="n">i</span><span class="p">].</span><span class="n">cur</span><span class="p">;</span>    <span class="cm">/*由于要拿出一个分量来使用了，所以我们就得把它的下一个分量用来做备用*/</span>
+    <span class="p">}</span>
+    <span class="k">return</span> <span class="n">i</span><span class="p">;</span>
+<span class="p">}</span>
+
+<span class="kt">int</span> <span class="n">ListLength</span><span class="p">(</span><span class="n">StaticLinkList</span> <span class="n">L</span><span class="p">)</span> <span class="p">{</span>
+    <span class="kt">int</span> <span class="n">j</span> <span class="o">=</span> <span class="mi">0</span><span class="p">;</span>
+    <span class="kt">int</span> <span class="n">i</span> <span class="o">=</span> <span class="n">L</span><span class="p">[</span><span class="n">MAXSIZE</span> <span class="o">-</span> <span class="mi">1</span><span class="p">].</span><span class="n">cur</span><span class="p">;</span>
+    <span class="k">while</span> <span class="p">(</span><span class="n">i</span><span class="p">)</span> <span class="p">{</span>
+        <span class="n">i</span> <span class="o">=</span> <span class="n">L</span><span class="p">[</span><span class="n">i</span><span class="p">].</span><span class="n">cur</span><span class="p">;</span>
+        <span class="n">j</span><span class="o">++</span><span class="p">;</span>
+    <span class="p">}</span>
+    <span class="k">return</span> <span class="n">j</span><span class="p">;</span>
+<span class="p">}</span>
+
+<span class="cm">/*在L中第i个元素前插入新的数据元素e    */</span>
+<span class="n">Status</span> <span class="n">ListInsert</span><span class="p">(</span><span class="n">StaticLinkList</span> <span class="o">&amp;</span><span class="n">L</span><span class="p">,</span> <span class="kt">int</span> <span class="n">i</span><span class="p">,</span> <span class="n">ElemType</span> <span class="n">e</span><span class="p">)</span> <span class="p">{</span>
+    <span class="kt">int</span> <span class="n">j</span><span class="p">,</span> <span class="n">k</span><span class="p">,</span> <span class="n">l</span><span class="p">;</span>
+    <span class="n">k</span> <span class="o">=</span> <span class="n">MAXSIZE</span> <span class="o">-</span> <span class="mi">1</span><span class="p">;</span><span class="cm">/*注意k首先是最后一个元素的下标*/</span>
+    <span class="k">if</span> <span class="p">(</span><span class="n">i</span> <span class="o">&lt;</span> <span class="mi">1</span> <span class="o">||</span> <span class="n">i</span> <span class="o">&gt;</span> <span class="n">ListLength</span><span class="p">(</span><span class="n">L</span><span class="p">)</span> <span class="o">+</span> <span class="mi">1</span><span class="p">)</span> <span class="p">{</span>
+        <span class="k">return</span> <span class="n">ERROR</span><span class="p">;</span>
+    <span class="p">}</span>
+    <span class="n">j</span> <span class="o">=</span> <span class="n">Malloc_SLL</span><span class="p">(</span><span class="n">L</span><span class="p">);</span><span class="cm">/*获得空闲分量的下标*/</span>
+    <span class="k">if</span> <span class="p">(</span><span class="n">j</span><span class="p">)</span> <span class="p">{</span>
+        <span class="n">L</span><span class="p">[</span><span class="n">j</span><span class="p">].</span><span class="n">data</span> <span class="o">=</span> <span class="n">e</span><span class="p">;</span><span class="cm">/*将数据赋值给此分量的data*/</span>
+
+        <span class="k">for</span> <span class="p">(</span><span class="n">l</span> <span class="o">=</span> <span class="mi">1</span><span class="p">;</span> <span class="n">l</span> <span class="o">&lt;</span> <span class="n">i</span> <span class="o">-</span> <span class="mi">1</span><span class="p">;</span> <span class="o">++</span><span class="n">l</span><span class="p">)</span> <span class="p">{</span><span class="cm">/*找到第i个元素之前的位置*/</span>
+            <span class="n">k</span> <span class="o">=</span> <span class="n">L</span><span class="p">[</span><span class="n">k</span><span class="p">].</span><span class="n">cur</span><span class="p">;</span>
+        <span class="p">}</span>
+        <span class="n">L</span><span class="p">[</span><span class="n">j</span><span class="p">].</span><span class="n">cur</span> <span class="o">=</span> <span class="n">L</span><span class="p">[</span><span class="n">k</span><span class="p">].</span><span class="n">cur</span><span class="p">;</span><span class="cm">/*把第i个元素之前的cur赋值给新元素的cur*/</span>
+        <span class="n">L</span><span class="p">[</span><span class="n">k</span><span class="p">].</span><span class="n">cur</span> <span class="o">=</span> <span class="n">j</span><span class="p">;</span><span class="cm">/*把新元素的下标赋值给第i个元素之前元素的cur*/</span>
+
+        <span class="k">return</span> <span class="n">OK</span><span class="p">;</span>
+    <span class="p">}</span>
+    <span class="k">return</span> <span class="n">ERROR</span><span class="p">;</span>
+<span class="p">}</span>
+
+<span class="kt">void</span> <span class="n">Free_SSL</span><span class="p">(</span><span class="n">StaticLinkList</span> <span class="o">&amp;</span><span class="n">space</span><span class="p">,</span> <span class="kt">int</span> <span class="n">k</span><span class="p">)</span> <span class="p">{</span>
+    <span class="n">space</span><span class="p">[</span><span class="n">k</span><span class="p">].</span><span class="n">cur</span> <span class="o">=</span> <span class="n">space</span><span class="p">[</span><span class="mi">0</span><span class="p">].</span><span class="n">cur</span><span class="p">;</span><span class="cm">/*把第一个元素cur值赋给要删除的分量cur*/</span>
+    <span class="n">space</span><span class="p">[</span><span class="mi">0</span><span class="p">].</span><span class="n">cur</span> <span class="o">=</span> <span class="n">k</span><span class="p">;</span><span class="cm">/*把要输出的分量下标赋值给第一个元素的cur*/</span>
+<span class="p">}</span>
+
+<span class="n">Status</span> <span class="n">ListDelete</span><span class="p">(</span><span class="n">StaticLinkList</span> <span class="o">&amp;</span><span class="n">L</span><span class="p">,</span> <span class="kt">int</span> <span class="n">i</span><span class="p">,</span> <span class="n">ElemType</span> <span class="o">&amp;</span><span class="n">e</span><span class="p">)</span> <span class="p">{</span>
+    <span class="kt">int</span> <span class="n">j</span><span class="p">,</span> <span class="n">k</span><span class="p">;</span>
+    <span class="k">if</span> <span class="p">(</span><span class="n">i</span> <span class="o">&lt;</span> <span class="mi">1</span> <span class="o">||</span> <span class="n">i</span> <span class="o">&gt;</span> <span class="n">ListLength</span><span class="p">(</span><span class="n">L</span><span class="p">)</span> <span class="o">+</span> <span class="mi">1</span><span class="p">)</span> <span class="p">{</span>
+        <span class="k">return</span> <span class="n">ERROR</span><span class="p">;</span>
+    <span class="p">}</span>
+    <span class="n">k</span> <span class="o">=</span> <span class="n">MAXSIZE</span> <span class="o">-</span> <span class="mi">1</span><span class="p">;</span><span class="cm">/*注意k首先是最后一个元素的下标*/</span>
+    <span class="k">for</span> <span class="p">(</span><span class="n">j</span> <span class="o">=</span> <span class="mi">1</span><span class="p">;</span> <span class="n">j</span> <span class="o">&lt;=</span> <span class="n">i</span> <span class="o">-</span> <span class="mi">1</span><span class="p">;</span> <span class="o">++</span><span class="n">j</span><span class="p">)</span> <span class="p">{</span>
+        <span class="n">k</span> <span class="o">=</span> <span class="n">L</span><span class="p">[</span><span class="n">k</span><span class="p">].</span><span class="n">cur</span><span class="p">;</span>
+    <span class="p">}</span>
+    <span class="n">j</span> <span class="o">=</span> <span class="n">L</span><span class="p">[</span><span class="n">k</span><span class="p">].</span><span class="n">cur</span><span class="p">;</span>
+    <span class="n">e</span> <span class="o">=</span> <span class="n">L</span><span class="p">[</span><span class="n">j</span><span class="p">].</span><span class="n">data</span><span class="p">;</span>
+    <span class="n">L</span><span class="p">[</span><span class="n">k</span><span class="p">].</span><span class="n">cur</span> <span class="o">=</span> <span class="n">L</span><span class="p">[</span><span class="n">j</span><span class="p">].</span><span class="n">cur</span><span class="p">;</span>
+    <span class="n">Free_SSL</span><span class="p">(</span><span class="n">L</span><span class="p">,</span> <span class="n">j</span><span class="p">);</span>
+    <span class="k">return</span> <span class="n">OK</span><span class="p">;</span>
+<span class="p">}</span>
+
+<span class="n">Status</span> <span class="n">ListTraverse_LS</span><span class="p">(</span><span class="n">StaticLinkList</span> <span class="n">L</span><span class="p">)</span> <span class="p">{</span> <span class="cm">/* 初始条件:L已存在。操作结果:依次对L的每个数据元素调用函数vi()。一旦vi()失败,则操作失败 */</span>
+    <span class="kt">int</span> <span class="n">k</span><span class="o">=</span><span class="n">MAXSIZE</span><span class="o">-</span><span class="mi">1</span><span class="p">;</span>
+    <span class="k">while</span> <span class="p">(</span><span class="n">L</span><span class="p">[</span><span class="n">k</span><span class="p">].</span><span class="n">cur</span><span class="p">){</span>
+        <span class="n">k</span> <span class="o">=</span> <span class="n">L</span><span class="p">[</span><span class="n">k</span><span class="p">].</span><span class="n">cur</span><span class="p">;</span>
+        <span class="n">cout</span><span class="o">&lt;&lt;</span><span class="n">L</span><span class="p">[</span><span class="n">k</span><span class="p">].</span><span class="n">data</span><span class="o">&lt;&lt;</span><span class="s">" "</span><span class="p">;</span>
+    <span class="p">}</span>
+    <span class="n">cout</span><span class="o">&lt;&lt;</span><span class="n">endl</span><span class="p">;</span>
+    <span class="k">return</span> <span class="n">OK</span><span class="p">;</span>
+<span class="p">}</span>
+
+<span class="kt">int</span> <span class="n">GetElem_LS</span><span class="p">(</span><span class="n">StaticLinkList</span> <span class="n">L</span><span class="p">,</span> <span class="kt">int</span> <span class="n">i</span><span class="p">,</span> <span class="n">ElemType</span> <span class="o">&amp;</span><span class="n">e</span><span class="p">)</span> <span class="p">{</span> <span class="cm">/* 初始条件:L已存在。操作结果:依次对L的每个数据元素调用函数vi()。一旦vi()失败,则操作失败 */</span>
+    <span class="kt">int</span> <span class="n">j</span><span class="p">;</span>
+    <span class="k">for</span> <span class="p">(</span><span class="n">j</span> <span class="o">=</span> <span class="mi">0</span><span class="p">;</span> <span class="n">j</span> <span class="o">&lt;</span> <span class="n">ListLength</span><span class="p">(</span><span class="n">L</span><span class="p">);</span> <span class="o">++</span><span class="n">j</span><span class="p">)</span> <span class="p">{</span>
+        <span class="k">if</span> <span class="p">(</span><span class="n">i</span> <span class="o">-</span> <span class="mi">1</span> <span class="o">==</span> <span class="n">j</span><span class="p">)</span> <span class="p">{</span>
+            <span class="k">return</span> <span class="n">L</span><span class="p">[</span><span class="n">j</span><span class="p">].</span><span class="n">data</span><span class="p">;</span>
+        <span class="p">}</span>
+        <span class="n">j</span> <span class="o">=</span> <span class="n">L</span><span class="p">[</span><span class="n">j</span><span class="p">].</span><span class="n">cur</span><span class="p">;</span>
+    <span class="p">}</span>
+    <span class="k">return</span> <span class="o">-</span><span class="mi">1</span><span class="p">;</span>
+<span class="p">}</span>
+
+<span class="kt">int</span> <span class="n">LocateElem_LS</span><span class="p">(</span><span class="n">StaticLinkList</span> <span class="n">L</span><span class="p">,</span> <span class="n">ElemType</span> <span class="o">&amp;</span><span class="n">e</span><span class="p">)</span> <span class="p">{</span> <span class="cm">/* 初始条件:L已存在。操作结果:依次对L的每个数据元素调用函数vi()。一旦vi()失败,则操作失败 */</span>
+    <span class="kt">int</span> <span class="n">j</span><span class="p">;</span>
+    <span class="k">for</span> <span class="p">(</span><span class="n">j</span> <span class="o">=</span> <span class="mi">0</span><span class="p">;</span> <span class="n">j</span> <span class="o">&lt;</span> <span class="n">ListLength</span><span class="p">(</span><span class="n">L</span><span class="p">);</span> <span class="o">++</span><span class="n">j</span><span class="p">)</span> <span class="p">{</span>
+        <span class="k">if</span> <span class="p">(</span><span class="n">L</span><span class="p">[</span><span class="n">j</span><span class="p">].</span><span class="n">data</span> <span class="o">==</span> <span class="n">e</span><span class="p">)</span> <span class="p">{</span>
+            <span class="k">return</span> <span class="n">L</span><span class="p">[</span><span class="n">j</span><span class="p">].</span><span class="n">cur</span><span class="p">;</span>
+        <span class="p">}</span>
+        <span class="n">j</span> <span class="o">=</span> <span class="n">L</span><span class="p">[</span><span class="n">j</span><span class="p">].</span><span class="n">cur</span><span class="p">;</span>
+    <span class="p">}</span>
+    <span class="k">return</span> <span class="o">-</span><span class="mi">1</span><span class="p">;</span>
+<span class="p">}</span>
+
+</code></pre></div></div> <h3 id="6-循环链表">6. 循环链表</h3> <div class="language-cpp highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="cp">#include</span> <span class="cpf">&lt;iostream&gt;</span><span class="cp">
+</span><span class="k">using</span> <span class="k">namespace</span> <span class="n">std</span><span class="p">;</span>
+<span class="c1">//定义必须的常量和类型</span>
+<span class="cp">#define TRUE 1 //逻辑真
+#define FALSE 0 //逻辑假
+#define OK 1 //正确
+#define ERROR 0 //错误
+#define INTEASIBLE -1 //不可能，非法操作
+#define OVERFLOW -2 //溢出
+</span>
+<span class="c1">//定义状态类型</span>
+<span class="k">typedef</span> <span class="kt">int</span> <span class="n">Status</span><span class="p">;</span>
+
+<span class="c1">//链表的数据元素类型为整型（可根据需要修改为其他类型）</span>
+<span class="k">typedef</span> <span class="kt">int</span> <span class="n">ElemType</span><span class="p">;</span>
+
+<span class="c1">//链表存储类型描述</span>
+<span class="k">typedef</span> <span class="k">struct</span> <span class="nc">LNode</span> <span class="p">{</span>
+    <span class="n">ElemType</span> <span class="n">data</span><span class="p">;</span> <span class="c1">//数据域</span>
+    <span class="k">struct</span> <span class="nc">LNode</span> <span class="o">*</span><span class="n">next</span><span class="p">;</span> <span class="c1">//指针域</span>
+<span class="p">}</span> <span class="n">LNode</span><span class="p">,</span> <span class="o">*</span><span class="n">LinkList</span><span class="p">;</span>
+
+<span class="cm">/*初始化循环*/</span>
+<span class="n">Status</span> <span class="n">InitList_CL</span><span class="p">(</span><span class="n">LinkList</span> <span class="o">&amp;</span><span class="n">L</span><span class="p">)</span>
+<span class="p">{</span> <span class="cm">/* 操作结果：构造一个空的线性表L */</span>
+    <span class="n">L</span><span class="o">=</span><span class="k">new</span> <span class="n">LNode</span><span class="p">;</span> <span class="cm">/* 产生头结点,并使L指向此头结点 */</span>
+    <span class="k">if</span><span class="p">(</span><span class="o">!</span><span class="n">L</span><span class="p">)</span> <span class="cm">/* 存储分配失败 */</span>
+        <span class="k">return</span> <span class="n">OVERFLOW</span><span class="p">;</span>
+    <span class="n">L</span><span class="o">-&gt;</span><span class="n">next</span><span class="o">=</span><span class="n">L</span><span class="p">;</span> <span class="cm">/* 指针域指向头结点 循环链表的特性*/</span>
+    <span class="k">return</span> <span class="n">OK</span><span class="p">;</span>
+<span class="p">}</span>
+
+<span class="n">Status</span> <span class="n">DestroyList_CL</span><span class="p">(</span><span class="n">LinkList</span> <span class="o">&amp;</span><span class="n">L</span><span class="p">)</span>
+<span class="p">{</span> <span class="cm">/* 操作结果：销毁线性表L */</span>
+    <span class="n">LinkList</span> <span class="n">q</span><span class="p">,</span><span class="n">p</span><span class="o">=</span><span class="n">L</span><span class="o">-&gt;</span><span class="n">next</span><span class="p">;</span> <span class="cm">/* p指向头结点 */</span>
+    <span class="k">while</span><span class="p">(</span><span class="n">p</span><span class="o">!=</span><span class="n">L</span><span class="p">)</span> <span class="cm">/* 没到表尾 */</span>
+    <span class="p">{</span>
+        <span class="n">q</span><span class="o">=</span><span class="n">p</span><span class="o">-&gt;</span><span class="n">next</span><span class="p">;</span>
+        <span class="n">free</span><span class="p">(</span><span class="n">p</span><span class="p">);</span>
+        <span class="n">p</span><span class="o">=</span><span class="n">q</span><span class="p">;</span>
+    <span class="p">}</span>
+    <span class="k">delete</span> <span class="n">L</span><span class="p">;</span>
+    <span class="n">L</span><span class="o">=</span><span class="nb">NULL</span><span class="p">;</span>
+    <span class="k">return</span> <span class="n">OK</span><span class="p">;</span>
+<span class="p">}</span>
+
+<span class="n">Status</span> <span class="n">ClearList_CL</span><span class="p">(</span><span class="n">LinkList</span> <span class="o">*</span><span class="n">L</span><span class="p">)</span> <span class="cm">/* 改变L */</span>
+<span class="p">{</span> <span class="cm">/* 初始条件：线性表L已存在。操作结果：将L重置为空表 */</span>
+    <span class="n">LinkList</span> <span class="n">p</span><span class="p">,</span><span class="n">q</span><span class="p">;</span>
+    <span class="o">*</span><span class="n">L</span><span class="o">=</span><span class="p">(</span><span class="o">*</span><span class="n">L</span><span class="p">)</span><span class="o">-&gt;</span><span class="n">next</span><span class="p">;</span> <span class="cm">/* L指向头结点 */</span>
+    <span class="n">p</span><span class="o">=</span><span class="p">(</span><span class="o">*</span><span class="n">L</span><span class="p">)</span><span class="o">-&gt;</span><span class="n">next</span><span class="p">;</span> <span class="cm">/* p指向第一个结点 */</span>
+    <span class="k">while</span><span class="p">(</span><span class="n">p</span><span class="o">!=*</span><span class="n">L</span><span class="p">)</span> <span class="cm">/* 没到表尾 */</span>
+    <span class="p">{</span>
+        <span class="n">q</span><span class="o">=</span><span class="n">p</span><span class="o">-&gt;</span><span class="n">next</span><span class="p">;</span>
+        <span class="n">free</span><span class="p">(</span><span class="n">p</span><span class="p">);</span>
+        <span class="n">p</span><span class="o">=</span><span class="n">q</span><span class="p">;</span>
+    <span class="p">}</span>
+    <span class="p">(</span><span class="o">*</span><span class="n">L</span><span class="p">)</span><span class="o">-&gt;</span><span class="n">next</span><span class="o">=*</span><span class="n">L</span><span class="p">;</span> <span class="cm">/* 头结点指针域指向自身 */</span>
+    <span class="k">return</span> <span class="n">OK</span><span class="p">;</span>
+<span class="p">}</span>
+
+<span class="n">Status</span> <span class="n">ListEmpty_CL</span><span class="p">(</span><span class="n">LinkList</span> <span class="n">L</span><span class="p">)</span>
+<span class="p">{</span> <span class="cm">/* 初始条件：线性表L已存在。操作结果：若L为空表，则返回TRUE，否则返回FALSE */</span>
+    <span class="k">if</span><span class="p">(</span><span class="n">L</span><span class="o">-&gt;</span><span class="n">next</span><span class="o">==</span><span class="n">L</span><span class="p">)</span> <span class="cm">/* 空 */</span>
+        <span class="k">return</span> <span class="n">TRUE</span><span class="p">;</span>
+    <span class="k">else</span>
+        <span class="k">return</span> <span class="n">FALSE</span><span class="p">;</span>
+<span class="p">}</span>
+
+<span class="kt">int</span> <span class="n">ListLength_CL</span><span class="p">(</span><span class="n">LinkList</span> <span class="n">L</span><span class="p">)</span>
+<span class="p">{</span> <span class="cm">/* 初始条件：L已存在。操作结果：返回L中数据元素个数 */</span>
+    <span class="kt">int</span> <span class="n">i</span><span class="o">=</span><span class="mi">0</span><span class="p">;</span>
+    <span class="n">LinkList</span> <span class="n">p</span><span class="o">=</span><span class="n">L</span><span class="o">-&gt;</span><span class="n">next</span><span class="p">;</span> <span class="cm">/* p指向头结点 */</span>
+    <span class="k">while</span><span class="p">(</span><span class="n">p</span><span class="o">!=</span><span class="n">L</span><span class="p">)</span> <span class="cm">/* 没到表尾 */</span>
+    <span class="p">{</span>
+        <span class="n">i</span><span class="o">++</span><span class="p">;</span>
+        <span class="n">p</span><span class="o">=</span><span class="n">p</span><span class="o">-&gt;</span><span class="n">next</span><span class="p">;</span>
+    <span class="p">}</span>
+    <span class="k">return</span> <span class="n">i</span><span class="p">;</span>
+<span class="p">}</span>
+
+<span class="n">Status</span> <span class="n">GetElem_CL</span><span class="p">(</span><span class="n">LinkList</span> <span class="n">L</span><span class="p">,</span><span class="kt">int</span> <span class="n">i</span><span class="p">,</span><span class="n">ElemType</span> <span class="o">&amp;</span><span class="n">e</span><span class="p">)</span>
+<span class="p">{</span> <span class="cm">/* 当第i个元素存在时,其值赋给e并返回OK,否则返回ERROR */</span>
+    <span class="kt">int</span> <span class="n">j</span><span class="o">=</span><span class="mi">1</span><span class="p">;</span> <span class="cm">/* 初始化,j为计数器 */</span>
+    <span class="n">LinkList</span> <span class="n">p</span><span class="o">=</span><span class="n">L</span><span class="o">-&gt;</span><span class="n">next</span><span class="o">-&gt;</span><span class="n">next</span><span class="p">;</span> <span class="cm">/* p指向第一个结点 */</span>
+    <span class="k">if</span><span class="p">(</span><span class="n">i</span><span class="o">&lt;=</span><span class="mi">0</span><span class="o">||</span><span class="n">i</span><span class="o">&gt;</span><span class="n">ListLength_CL</span><span class="p">(</span><span class="n">L</span><span class="p">))</span> <span class="cm">/* 第i个元素不存在 */</span>
+        <span class="k">return</span> <span class="n">ERROR</span><span class="p">;</span>
+    <span class="k">while</span><span class="p">(</span><span class="n">j</span><span class="o">&lt;</span><span class="n">i</span><span class="p">)</span>
+    <span class="p">{</span> <span class="cm">/* 顺指针向后查找,直到p指向第i个元素 */</span>
+        <span class="n">p</span><span class="o">=</span><span class="n">p</span><span class="o">-&gt;</span><span class="n">next</span><span class="p">;</span>
+        <span class="n">j</span><span class="o">++</span><span class="p">;</span>
+    <span class="p">}</span>
+    <span class="n">e</span><span class="o">=</span><span class="n">p</span><span class="o">-&gt;</span><span class="n">data</span><span class="p">;</span> <span class="cm">/* 取第i个元素 */</span>
+    <span class="k">return</span> <span class="n">OK</span><span class="p">;</span>
+<span class="p">}</span>
+
+<span class="kt">int</span> <span class="n">LocateElem_CL</span><span class="p">(</span><span class="n">LinkList</span> <span class="n">L</span><span class="p">,</span><span class="n">ElemType</span> <span class="n">e</span><span class="p">)</span>
+<span class="p">{</span> <span class="cm">/* 初始条件：线性表L已存在，compare()是数据元素判定函数 */</span>
+    <span class="cm">/* 操作结果：返回L中第1个与e满足关系compare()的数据元素的位序。 */</span>
+    <span class="cm">/*      若这样的数据元素不存在，则返回值为0 */</span>
+    <span class="kt">int</span> <span class="n">i</span><span class="o">=</span><span class="mi">0</span><span class="p">;</span>
+    <span class="n">LinkList</span> <span class="n">p</span><span class="o">=</span><span class="n">L</span><span class="o">-&gt;</span><span class="n">next</span><span class="o">-&gt;</span><span class="n">next</span><span class="p">;</span> <span class="cm">/* p指向第一个结点 */</span>
+    <span class="k">while</span><span class="p">(</span><span class="n">p</span><span class="o">!=</span><span class="n">L</span><span class="o">-&gt;</span><span class="n">next</span><span class="p">)</span>
+    <span class="p">{</span>
+        <span class="n">i</span><span class="o">++</span><span class="p">;</span>
+        <span class="k">if</span><span class="p">(</span><span class="n">p</span><span class="o">-&gt;</span><span class="n">data</span><span class="o">==</span><span class="n">e</span><span class="p">)</span> <span class="cm">/* 满足关系 */</span>
+            <span class="k">return</span> <span class="n">i</span><span class="p">;</span>
+        <span class="n">p</span><span class="o">=</span><span class="n">p</span><span class="o">-&gt;</span><span class="n">next</span><span class="p">;</span>
+    <span class="p">}</span>
+    <span class="k">return</span> <span class="mi">0</span><span class="p">;</span>
+<span class="p">}</span>
+
+<span class="n">Status</span> <span class="n">PriorElem_CL</span><span class="p">(</span><span class="n">LinkList</span> <span class="n">L</span><span class="p">,</span><span class="n">ElemType</span> <span class="n">cur_e</span><span class="p">,</span><span class="n">ElemType</span> <span class="o">*</span><span class="n">pre_e</span><span class="p">)</span>
+<span class="p">{</span> <span class="cm">/* 初始条件：线性表L已存在 */</span>
+    <span class="cm">/* 操作结果：若cur_e是L的数据元素，且不是第一个，则用pre_e返回它的前驱， */</span>
+    <span class="cm">/*      否则操作失败，pre_e无定义 */</span>
+    <span class="n">LinkList</span> <span class="n">q</span><span class="p">,</span><span class="n">p</span><span class="o">=</span><span class="n">L</span><span class="o">-&gt;</span><span class="n">next</span><span class="o">-&gt;</span><span class="n">next</span><span class="p">;</span> <span class="cm">/* p指向第一个结点 */</span>
+    <span class="n">q</span><span class="o">=</span><span class="n">p</span><span class="o">-&gt;</span><span class="n">next</span><span class="p">;</span>
+    <span class="k">while</span><span class="p">(</span><span class="n">q</span><span class="o">!=</span><span class="n">L</span><span class="o">-&gt;</span><span class="n">next</span><span class="p">)</span> <span class="cm">/* p没到表尾 */</span>
+    <span class="p">{</span>
+        <span class="k">if</span><span class="p">(</span><span class="n">q</span><span class="o">-&gt;</span><span class="n">data</span><span class="o">==</span><span class="n">cur_e</span><span class="p">)</span>
+        <span class="p">{</span>
+            <span class="o">*</span><span class="n">pre_e</span><span class="o">=</span><span class="n">p</span><span class="o">-&gt;</span><span class="n">data</span><span class="p">;</span>
+            <span class="k">return</span> <span class="n">TRUE</span><span class="p">;</span>
+        <span class="p">}</span>
+        <span class="n">p</span><span class="o">=</span><span class="n">q</span><span class="p">;</span>
+        <span class="n">q</span><span class="o">=</span><span class="n">q</span><span class="o">-&gt;</span><span class="n">next</span><span class="p">;</span>
+    <span class="p">}</span>
+    <span class="k">return</span> <span class="n">FALSE</span><span class="p">;</span>
+<span class="p">}</span>
+
+<span class="n">Status</span> <span class="n">NextElem_CL</span><span class="p">(</span><span class="n">LinkList</span> <span class="n">L</span><span class="p">,</span><span class="n">ElemType</span> <span class="n">cur_e</span><span class="p">,</span><span class="n">ElemType</span> <span class="o">*</span><span class="n">next_e</span><span class="p">)</span>
+<span class="p">{</span> <span class="cm">/* 初始条件：线性表L已存在 */</span>
+    <span class="cm">/* 操作结果：若cur_e是L的数据元素,且不是最后一个,则用next_e返回它的后继， */</span>
+    <span class="cm">/*      否则操作失败，next_e无定义 */</span>
+    <span class="n">LinkList</span> <span class="n">p</span><span class="o">=</span><span class="n">L</span><span class="o">-&gt;</span><span class="n">next</span><span class="o">-&gt;</span><span class="n">next</span><span class="p">;</span> <span class="cm">/* p指向第一个结点 */</span>
+    <span class="k">while</span><span class="p">(</span><span class="n">p</span><span class="o">!=</span><span class="n">L</span><span class="p">)</span> <span class="cm">/* p没到表尾 */</span>
+    <span class="p">{</span>
+        <span class="k">if</span><span class="p">(</span><span class="n">p</span><span class="o">-&gt;</span><span class="n">data</span><span class="o">==</span><span class="n">cur_e</span><span class="p">)</span>
+        <span class="p">{</span>
+            <span class="o">*</span><span class="n">next_e</span><span class="o">=</span><span class="n">p</span><span class="o">-&gt;</span><span class="n">next</span><span class="o">-&gt;</span><span class="n">data</span><span class="p">;</span>
+            <span class="k">return</span> <span class="n">TRUE</span><span class="p">;</span>
+        <span class="p">}</span>
+        <span class="n">p</span><span class="o">=</span><span class="n">p</span><span class="o">-&gt;</span><span class="n">next</span><span class="p">;</span>
+    <span class="p">}</span>
+    <span class="k">return</span> <span class="n">FALSE</span><span class="p">;</span>
+<span class="p">}</span>
+
+<span class="n">Status</span> <span class="n">ListInsert_CL</span><span class="p">(</span><span class="n">LinkList</span> <span class="o">&amp;</span><span class="n">L</span><span class="p">,</span><span class="kt">int</span> <span class="n">i</span><span class="p">,</span><span class="n">ElemType</span> <span class="n">e</span><span class="p">)</span> <span class="cm">/* 改变L */</span>
+<span class="p">{</span> <span class="cm">/* 在L的第i个位置之前插入元素e */</span>
+    <span class="n">LinkList</span> <span class="n">p</span><span class="o">=</span><span class="n">L</span><span class="o">-&gt;</span><span class="n">next</span><span class="p">,</span><span class="n">s</span><span class="p">;</span> <span class="cm">/* p指向头结点 */</span>
+    <span class="kt">int</span> <span class="n">j</span><span class="o">=</span><span class="mi">0</span><span class="p">;</span>
+    <span class="k">if</span><span class="p">(</span><span class="n">i</span><span class="o">&lt;=</span><span class="mi">0</span><span class="o">||</span><span class="n">i</span><span class="o">&gt;</span><span class="n">ListLength_CL</span><span class="p">(</span><span class="n">L</span><span class="p">)</span><span class="o">+</span><span class="mi">1</span><span class="p">)</span> <span class="cm">/* 无法在第i个元素之前插入 */</span>
+        <span class="k">return</span> <span class="n">ERROR</span><span class="p">;</span>
+    <span class="k">while</span><span class="p">(</span><span class="n">j</span><span class="o">&lt;</span><span class="n">i</span><span class="o">-</span><span class="mi">1</span><span class="p">)</span> <span class="cm">/* 寻找第i-1个结点 */</span>
+    <span class="p">{</span>
+        <span class="n">p</span><span class="o">=</span><span class="n">p</span><span class="o">-&gt;</span><span class="n">next</span><span class="p">;</span>
+        <span class="n">j</span><span class="o">++</span><span class="p">;</span>
+    <span class="p">}</span>
+    <span class="n">s</span><span class="o">=</span><span class="p">(</span><span class="n">LinkList</span><span class="p">)</span><span class="n">malloc</span><span class="p">(</span><span class="k">sizeof</span><span class="p">(</span><span class="k">struct</span> <span class="nc">LNode</span><span class="p">));</span> <span class="cm">/* 生成新结点 */</span>
+    <span class="n">s</span><span class="o">-&gt;</span><span class="n">data</span><span class="o">=</span><span class="n">e</span><span class="p">;</span> <span class="cm">/* 插入L中 */</span>
+    <span class="n">s</span><span class="o">-&gt;</span><span class="n">next</span><span class="o">=</span><span class="n">p</span><span class="o">-&gt;</span><span class="n">next</span><span class="p">;</span>
+    <span class="n">p</span><span class="o">-&gt;</span><span class="n">next</span><span class="o">=</span><span class="n">s</span><span class="p">;</span>
+    <span class="k">if</span><span class="p">(</span><span class="n">p</span><span class="o">==</span><span class="n">L</span><span class="p">)</span> <span class="cm">/* 改变尾结点 */</span>
+        <span class="n">L</span><span class="o">=</span><span class="n">s</span><span class="p">;</span>
+    <span class="k">return</span> <span class="n">OK</span><span class="p">;</span>
+<span class="p">}</span>
+
+<span class="n">Status</span> <span class="n">ListDelete_CL</span><span class="p">(</span><span class="n">LinkList</span> <span class="o">&amp;</span><span class="n">L</span><span class="p">,</span><span class="kt">int</span> <span class="n">i</span><span class="p">,</span><span class="n">ElemType</span> <span class="o">&amp;</span><span class="n">e</span><span class="p">)</span> <span class="cm">/* 改变L */</span>
+<span class="p">{</span> <span class="cm">/* 删除L的第i个元素,并由e返回其值 */</span>
+    <span class="n">LinkList</span> <span class="n">p</span><span class="o">=</span><span class="n">L</span><span class="o">-&gt;</span><span class="n">next</span><span class="p">,</span><span class="n">q</span><span class="p">;</span> <span class="cm">/* p指向头结点 */</span>
+    <span class="kt">int</span> <span class="n">j</span><span class="o">=</span><span class="mi">0</span><span class="p">;</span>
+    <span class="k">if</span><span class="p">(</span><span class="n">i</span><span class="o">&lt;=</span><span class="mi">0</span><span class="o">||</span><span class="n">i</span><span class="o">&gt;</span><span class="n">ListLength_CL</span><span class="p">(</span><span class="n">L</span><span class="p">))</span> <span class="cm">/* 第i个元素不存在 */</span>
+        <span class="k">return</span> <span class="n">ERROR</span><span class="p">;</span>
+    <span class="k">while</span><span class="p">(</span><span class="n">j</span><span class="o">&lt;</span><span class="n">i</span><span class="o">-</span><span class="mi">1</span><span class="p">)</span> <span class="cm">/* 寻找第i-1个结点 */</span>
+    <span class="p">{</span>
+        <span class="n">p</span><span class="o">=</span><span class="n">p</span><span class="o">-&gt;</span><span class="n">next</span><span class="p">;</span>
+        <span class="n">j</span><span class="o">++</span><span class="p">;</span>
+    <span class="p">}</span>
+    <span class="n">q</span><span class="o">=</span><span class="n">p</span><span class="o">-&gt;</span><span class="n">next</span><span class="p">;</span> <span class="cm">/* q指向待删除结点 */</span>
+    <span class="n">p</span><span class="o">-&gt;</span><span class="n">next</span><span class="o">=</span><span class="n">q</span><span class="o">-&gt;</span><span class="n">next</span><span class="p">;</span>
+    <span class="n">e</span><span class="o">=</span><span class="n">q</span><span class="o">-&gt;</span><span class="n">data</span><span class="p">;</span>
+    <span class="k">if</span><span class="p">(</span><span class="n">L</span><span class="o">==</span><span class="n">q</span><span class="p">)</span> <span class="cm">/* 删除的是表尾元素 */</span>
+        <span class="n">L</span><span class="o">=</span><span class="n">p</span><span class="p">;</span>
+    <span class="k">delete</span> <span class="n">q</span><span class="p">;</span> <span class="cm">/* 释放待删除结点 */</span>
+    <span class="k">return</span> <span class="n">OK</span><span class="p">;</span>
+<span class="p">}</span>
+
+<span class="n">Status</span> <span class="n">ListTraverse_CL</span><span class="p">(</span><span class="n">LinkList</span> <span class="n">L</span><span class="p">)</span>
+<span class="p">{</span> <span class="cm">/* 初始条件:L已存在。操作结果:依次对L的每个数据元素调用函数vi()。一旦vi()失败,则操作失败 */</span>
+    <span class="n">LinkList</span> <span class="n">p</span><span class="o">=</span><span class="n">L</span><span class="o">-&gt;</span><span class="n">next</span><span class="o">-&gt;</span><span class="n">next</span><span class="p">;</span>
+    <span class="k">while</span><span class="p">(</span><span class="n">p</span><span class="o">!=</span><span class="n">L</span><span class="o">-&gt;</span><span class="n">next</span><span class="p">)</span>
+    <span class="p">{</span>
+        <span class="n">cout</span><span class="o">&lt;&lt;</span><span class="n">p</span><span class="o">-&gt;</span><span class="n">data</span><span class="o">&lt;&lt;</span><span class="s">"  "</span><span class="p">;</span>
+        <span class="n">p</span><span class="o">=</span><span class="n">p</span><span class="o">-&gt;</span><span class="n">next</span><span class="p">;</span>
+    <span class="p">}</span>
+    <span class="n">printf</span><span class="p">(</span><span class="s">"</span><span class="se">\n</span><span class="s">"</span><span class="p">);</span>
+    <span class="k">return</span> <span class="n">OK</span><span class="p">;</span>
+<span class="p">}</span>
+
+</code></pre></div></div> <h2 id="二栈">二、栈</h2> <h3 id="1-顺序栈">1. 顺序栈</h3> <div class="language-cpp highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="cp">#include</span> <span class="cpf">&lt;iostream&gt;</span><span class="cp">
+</span><span class="k">using</span> <span class="k">namespace</span> <span class="n">std</span><span class="p">;</span>
+<span class="cp">#define TRUE 1
+#define FALSE 0
+#define OK 1
+#define ERROR 0
+#define INTEASIBLE -1
+#define OVERFLOW -2
+</span>
+<span class="cp">#define MAXSIZE 100
+</span>
+<span class="c1">//定义状态类型</span>
+<span class="k">typedef</span> <span class="kt">int</span> <span class="n">Status</span><span class="p">;</span>
+
+<span class="c1">//链表的数据元素类型为整型（可根据需要修改为其他类型）</span>
+<span class="k">typedef</span> <span class="kt">int</span> <span class="n">SElemType</span><span class="p">;</span>
+
+<span class="k">typedef</span> <span class="k">struct</span> <span class="p">{</span>
+    <span class="n">SElemType</span> <span class="n">data</span><span class="p">[</span><span class="n">MAXSIZE</span><span class="p">];</span>
+    <span class="kt">int</span> <span class="n">top</span><span class="p">;</span>    <span class="cm">/*  用于栈顶指针    */</span>
+<span class="p">}</span> <span class="n">SqStack</span><span class="p">;</span>
+
+<span class="cm">/*初始化表*/</span>
+<span class="n">Status</span> <span class="n">InitStack</span><span class="p">(</span><span class="n">SqStack</span> <span class="o">&amp;</span><span class="n">S</span><span class="p">){</span>
+    <span class="n">S</span><span class="p">.</span><span class="n">top</span> <span class="o">=</span> <span class="o">-</span><span class="mi">1</span><span class="p">;</span>    <span class="c1">//初始化栈顶指针</span>
+    <span class="k">return</span> <span class="n">OK</span><span class="p">;</span>
+<span class="p">}</span>
+
+<span class="cm">/*判栈空*/</span>
+<span class="n">Status</span> <span class="n">StackEmpty</span><span class="p">(</span><span class="n">SqStack</span> <span class="n">S</span><span class="p">){</span>
+    <span class="k">if</span> <span class="p">(</span><span class="n">S</span><span class="p">.</span><span class="n">top</span> <span class="o">==-</span><span class="mi">1</span><span class="p">){</span>
+        <span class="k">return</span> <span class="n">TRUE</span><span class="p">;</span>
+    <span class="p">}</span> <span class="k">else</span> <span class="p">{</span>
+        <span class="k">return</span> <span class="n">FALSE</span><span class="p">;</span>
+    <span class="p">}</span>
+<span class="p">}</span>
+
+<span class="cm">/*插入元素e为新的栈顶元素*/</span>
+<span class="n">Status</span> <span class="n">Push</span><span class="p">(</span><span class="n">SqStack</span> <span class="o">&amp;</span><span class="n">S</span><span class="p">,</span> <span class="n">SElemType</span> <span class="n">e</span><span class="p">)</span> <span class="p">{</span>
+
+    <span class="k">if</span> <span class="p">(</span><span class="n">S</span><span class="p">.</span><span class="n">top</span> <span class="o">==</span> <span class="n">MAXSIZE</span> <span class="o">-</span> <span class="mi">1</span><span class="p">)</span> <span class="p">{</span> <span class="cm">/*栈满*/</span>
+        <span class="k">return</span> <span class="n">ERROR</span><span class="p">;</span>
+    <span class="p">}</span>
+    <span class="n">S</span><span class="p">.</span><span class="n">top</span><span class="o">++</span><span class="p">;</span> <span class="cm">/*栈顶指针增加一*/</span>
+    <span class="n">S</span><span class="p">.</span><span class="n">data</span><span class="p">[</span><span class="n">S</span><span class="p">.</span><span class="n">top</span><span class="p">]</span> <span class="o">=</span> <span class="n">e</span><span class="p">;</span> <span class="cm">/*将新插入元素赋值给栈顶空间*/</span>
+    <span class="k">return</span> <span class="n">OK</span><span class="p">;</span>
+<span class="p">}</span>
+
+<span class="cm">/*若栈不空，则删除S的栈顶元素，用e返回其值，并返回OK，否则返回ERROR */</span>
+<span class="n">Status</span> <span class="n">Pop</span><span class="p">(</span><span class="n">SqStack</span> <span class="o">&amp;</span><span class="n">S</span><span class="p">,</span> <span class="n">SElemType</span> <span class="o">&amp;</span><span class="n">e</span><span class="p">)</span> <span class="p">{</span>
+    <span class="k">if</span> <span class="p">(</span><span class="n">S</span><span class="p">.</span><span class="n">top</span> <span class="o">==</span> <span class="o">-</span><span class="mi">1</span><span class="p">)</span> <span class="p">{</span>
+        <span class="k">return</span> <span class="n">ERROR</span><span class="p">;</span>
+    <span class="p">}</span>
+    <span class="n">e</span> <span class="o">=</span> <span class="n">S</span><span class="p">.</span><span class="n">data</span><span class="p">[</span><span class="n">S</span><span class="p">.</span><span class="n">top</span><span class="p">];</span> <span class="cm">/*将要删除的栈顶元素赋值给e*/</span>
+    <span class="n">S</span><span class="p">.</span><span class="n">top</span><span class="o">--</span><span class="p">;</span> <span class="cm">/*栈顶指针减一*/</span>
+    <span class="n">cout</span><span class="o">&lt;&lt;</span><span class="s">"弹出栈:"</span><span class="o">&lt;&lt;</span><span class="n">e</span><span class="o">&lt;&lt;</span><span class="n">endl</span><span class="p">;</span>
+    <span class="k">return</span> <span class="n">OK</span><span class="p">;</span>
+<span class="p">}</span>
+
+<span class="n">Status</span> <span class="n">GetTop</span><span class="p">(</span><span class="n">SqStack</span> <span class="n">S</span><span class="p">,</span> <span class="n">SElemType</span> <span class="o">&amp;</span><span class="n">e</span><span class="p">){</span>
+    <span class="k">if</span> <span class="p">(</span><span class="n">S</span><span class="p">.</span><span class="n">top</span> <span class="o">==</span> <span class="o">-</span><span class="mi">1</span><span class="p">){</span>
+        <span class="k">return</span> <span class="n">FALSE</span><span class="p">;</span>
+    <span class="p">}</span>
+    <span class="n">e</span> <span class="o">=</span> <span class="n">S</span><span class="p">.</span><span class="n">data</span><span class="p">[</span><span class="n">S</span><span class="p">.</span><span class="n">top</span><span class="p">];</span>
+    <span class="k">return</span> <span class="n">TRUE</span><span class="p">;</span>
+<span class="p">}</span>
+
+</code></pre></div></div> <h3 id="2-链栈">2. 链栈</h3> <div class="language-cpp highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="cp">#include</span> <span class="cpf">&lt;iostream&gt;</span><span class="cp">
+</span><span class="k">using</span> <span class="k">namespace</span> <span class="n">std</span><span class="p">;</span>
+<span class="cp">#define TRUE 1
+#define FALSE 0
+#define OK 1
+#define ERROR 0
+#define INTEASIBLE -1
+#define OVERFLOW -2
+</span>
+<span class="cp">#define MAXSIZE 100
+</span>
+<span class="c1">//定义状态类型</span>
+<span class="k">typedef</span> <span class="kt">int</span> <span class="n">Status</span><span class="p">;</span>
+
+<span class="c1">//链表的数据元素类型为整型（可根据需要修改为其他类型）</span>
+<span class="k">typedef</span> <span class="kt">int</span> <span class="n">SElemType</span><span class="p">;</span>
+
+<span class="k">typedef</span> <span class="k">struct</span> <span class="nc">StackNode</span><span class="p">{</span>
+    <span class="n">SElemType</span> <span class="n">data</span><span class="p">;</span>
+    <span class="k">struct</span> <span class="nc">StackNode</span> <span class="o">*</span><span class="n">next</span><span class="p">;</span>
+<span class="p">}</span><span class="n">StackNode</span><span class="p">,</span> <span class="o">*</span><span class="n">LinkStack</span><span class="p">;</span>
+
+<span class="n">Status</span> <span class="n">InitStack</span><span class="p">(</span><span class="n">LinkStack</span> <span class="o">&amp;</span><span class="n">S</span><span class="p">){</span>
+    <span class="n">S</span><span class="o">=</span><span class="nb">NULL</span><span class="p">;</span>
+    <span class="k">return</span> <span class="n">OK</span><span class="p">;</span>
+<span class="p">}</span>
+
+<span class="n">Status</span> <span class="n">StackEmpty</span><span class="p">(</span><span class="n">LinkStack</span> <span class="o">&amp;</span><span class="n">S</span><span class="p">){</span>
+    <span class="k">if</span> <span class="p">(</span><span class="n">S</span><span class="o">==</span><span class="nb">NULL</span><span class="p">){</span>
+        <span class="k">return</span> <span class="n">TRUE</span><span class="p">;</span>
+    <span class="p">}</span> <span class="k">else</span> <span class="p">{</span>
+        <span class="k">return</span> <span class="n">FALSE</span><span class="p">;</span>
+    <span class="p">}</span>
+<span class="p">}</span>
+
+<span class="n">Status</span> <span class="n">Push</span><span class="p">(</span><span class="n">LinkStack</span> <span class="o">&amp;</span><span class="n">S</span><span class="p">,</span> <span class="n">SElemType</span> <span class="n">e</span><span class="p">){</span>
+    <span class="n">LinkStack</span> <span class="n">p</span><span class="p">;</span>
+    <span class="n">p</span> <span class="o">=</span> <span class="k">new</span> <span class="n">StackNode</span><span class="p">;</span> <span class="c1">//生成新结点</span>
+    <span class="k">if</span> <span class="p">(</span><span class="o">!</span><span class="n">p</span><span class="p">){</span>
+        <span class="k">return</span> <span class="n">OVERFLOW</span><span class="p">;</span>
+    <span class="p">}</span>
+    <span class="n">p</span><span class="o">-&gt;</span><span class="n">data</span><span class="o">=</span><span class="n">e</span><span class="p">;</span>
+    <span class="n">p</span><span class="o">-&gt;</span><span class="n">next</span><span class="o">=</span><span class="n">S</span><span class="p">;</span>
+    <span class="n">S</span><span class="o">=</span><span class="n">p</span><span class="p">;</span>
+    <span class="k">return</span> <span class="n">OK</span><span class="p">;</span>
+<span class="p">}</span>
+
+<span class="n">Status</span> <span class="n">Pop</span><span class="p">(</span><span class="n">LinkStack</span> <span class="o">&amp;</span><span class="n">S</span><span class="p">,</span> <span class="n">SElemType</span> <span class="o">&amp;</span><span class="n">e</span><span class="p">){</span>
+    <span class="n">LinkStack</span> <span class="n">p</span><span class="p">;</span>
+    <span class="k">if</span> <span class="p">(</span><span class="n">S</span><span class="o">==</span><span class="nb">NULL</span><span class="p">){</span>
+        <span class="k">return</span> <span class="n">ERROR</span><span class="p">;</span>
+    <span class="p">}</span>
+    <span class="n">e</span> <span class="o">=</span> <span class="n">S</span><span class="o">-&gt;</span><span class="n">data</span><span class="p">;</span>
+    <span class="n">p</span><span class="o">=</span><span class="n">S</span><span class="p">;</span>
+    <span class="n">S</span><span class="o">=</span><span class="n">S</span><span class="o">-&gt;</span><span class="n">next</span><span class="p">;</span>
+    <span class="k">delete</span> <span class="n">p</span><span class="p">;</span>
+    <span class="k">return</span> <span class="n">OK</span><span class="p">;</span>
+<span class="p">}</span>
+
+<span class="n">Status</span> <span class="n">GetTop</span><span class="p">(</span><span class="n">LinkStack</span> <span class="n">S</span><span class="p">,</span> <span class="n">SElemType</span> <span class="o">&amp;</span><span class="n">e</span><span class="p">){</span>
+    <span class="k">if</span> <span class="p">(</span><span class="n">S</span><span class="o">==</span><span class="nb">NULL</span><span class="p">){</span>
+        <span class="n">exit</span><span class="p">(</span><span class="mi">1</span><span class="p">);</span>
+    <span class="p">}</span> <span class="k">else</span> <span class="p">{</span>
+        <span class="k">return</span> <span class="n">S</span><span class="o">-&gt;</span><span class="n">data</span><span class="p">;</span>
+    <span class="p">}</span>
+<span class="p">}</span>
+
+</code></pre></div></div> <h3 id="3-共享空间">3. 共享空间</h3> <div class="language-cpp highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="cp">#include</span> <span class="cpf">&lt;iostream&gt;</span><span class="cp">
+</span><span class="k">using</span> <span class="k">namespace</span> <span class="n">std</span><span class="p">;</span>
+<span class="cp">#define TRUE 1
+#define FALSE 0
+#define OK 1
+#define ERROR 0
+#define INTEASIBLE -1
+#define OVERFLOW -2
+</span>
+<span class="cp">#define MAXSIZE 100
+</span>
+<span class="c1">//定义状态类型</span>
+<span class="k">typedef</span> <span class="kt">int</span> <span class="n">Status</span><span class="p">;</span>
+
+<span class="c1">//链表的数据元素类型为整型（可根据需要修改为其他类型）</span>
+<span class="k">typedef</span> <span class="kt">int</span> <span class="n">SElemType</span><span class="p">;</span>
+
+<span class="k">typedef</span> <span class="k">struct</span> <span class="p">{</span>
+    <span class="n">SElemType</span> <span class="n">data</span><span class="p">[</span><span class="n">MAXSIZE</span><span class="p">];</span>
+    <span class="kt">int</span> <span class="n">top1</span><span class="p">;</span>    <span class="cm">/*  用于栈1  栈顶指针    */</span>
+    <span class="kt">int</span> <span class="n">top2</span><span class="p">;</span>    <span class="cm">/*  用于栈2  栈顶指针    */</span>
+<span class="p">}</span> <span class="n">SqDoubleStack</span><span class="p">;</span>
+
+<span class="cm">/*
+弹栈
+*/</span>
+<span class="n">Status</span> <span class="n">Pop</span><span class="p">(</span><span class="n">SqDoubleStack</span> <span class="o">&amp;</span><span class="n">S</span><span class="p">,</span> <span class="n">SElemType</span> <span class="o">&amp;</span><span class="n">e</span><span class="p">,</span> <span class="kt">int</span> <span class="n">stackNum</span><span class="p">)</span> <span class="p">{</span>
+
+    <span class="c1">//栈不为空的情况，根据栈编号，pop相应的栈的元素。</span>
+    <span class="c1">//栈1空栈判断stack-&gt;top1!=-1 栈2空栈判断stack-&gt;top2 != MAXSIZE</span>
+    <span class="k">if</span> <span class="p">(</span><span class="n">stackNum</span> <span class="o">==</span> <span class="mi">1</span> <span class="o">&amp;&amp;</span> <span class="n">S</span><span class="p">.</span><span class="n">top1</span> <span class="o">!=</span> <span class="o">-</span><span class="mi">1</span><span class="p">)</span> <span class="p">{</span>
+        <span class="n">e</span> <span class="o">=</span> <span class="n">S</span><span class="p">.</span><span class="n">data</span><span class="p">[</span><span class="n">S</span><span class="p">.</span><span class="n">top1</span><span class="p">];</span>
+        <span class="n">S</span><span class="p">.</span><span class="n">top1</span><span class="o">--</span><span class="p">;</span>
+        <span class="k">return</span> <span class="n">OK</span><span class="p">;</span>
+    <span class="p">}</span>
+    <span class="k">if</span> <span class="p">(</span><span class="n">stackNum</span> <span class="o">==</span> <span class="mi">2</span> <span class="o">&amp;&amp;</span> <span class="n">S</span><span class="p">.</span><span class="n">top2</span> <span class="o">!=</span> <span class="n">MAXSIZE</span><span class="p">)</span> <span class="p">{</span>
+        <span class="n">e</span> <span class="o">=</span> <span class="n">S</span><span class="p">.</span><span class="n">data</span><span class="p">[</span><span class="n">S</span><span class="p">.</span><span class="n">top2</span><span class="p">];</span>
+        <span class="n">S</span><span class="p">.</span><span class="n">top2</span><span class="o">++</span><span class="p">;</span>
+        <span class="k">return</span> <span class="n">OK</span><span class="p">;</span>
+    <span class="p">}</span>
+    <span class="c1">//栈为空或者编号不对</span>
+    <span class="k">return</span> <span class="n">ERROR</span><span class="p">;</span>
+<span class="p">}</span>
+
+<span class="cm">/*
+压栈操作
+*/</span>
+<span class="n">Status</span> <span class="n">Push</span><span class="p">(</span><span class="n">SqDoubleStack</span> <span class="o">&amp;</span><span class="n">S</span><span class="p">,</span> <span class="n">SElemType</span> <span class="n">e</span><span class="p">,</span> <span class="kt">int</span> <span class="n">stackNum</span><span class="p">)</span> <span class="p">{</span>
+
+    <span class="c1">//栈没有满的情况，根据栈编号，push相应的栈的元素。</span>
+    <span class="c1">//栈未满的条件都是stack-&gt;top1+1 &lt; stack-&gt;top2</span>
+    <span class="k">if</span> <span class="p">(</span><span class="n">stackNum</span> <span class="o">==</span> <span class="mi">1</span> <span class="o">&amp;&amp;</span> <span class="n">S</span><span class="p">.</span><span class="n">top1</span> <span class="o">+</span> <span class="mi">1</span> <span class="o">&lt;</span> <span class="n">S</span><span class="p">.</span><span class="n">top2</span><span class="p">)</span> <span class="p">{</span>
+        <span class="n">S</span><span class="p">.</span><span class="n">top1</span><span class="o">++</span><span class="p">;</span>
+        <span class="n">S</span><span class="p">.</span><span class="n">data</span><span class="p">[</span><span class="n">S</span><span class="p">.</span><span class="n">top1</span><span class="p">]</span> <span class="o">=</span> <span class="n">e</span><span class="p">;</span>
+        <span class="k">return</span> <span class="n">OK</span><span class="p">;</span>
+    <span class="p">}</span>
+    <span class="k">if</span> <span class="p">(</span><span class="n">stackNum</span> <span class="o">==</span> <span class="mi">2</span> <span class="o">&amp;&amp;</span> <span class="n">S</span><span class="p">.</span><span class="n">top1</span> <span class="o">+</span> <span class="mi">1</span> <span class="o">&lt;</span> <span class="n">S</span><span class="p">.</span><span class="n">top2</span><span class="p">)</span> <span class="p">{</span>
+        <span class="n">S</span><span class="p">.</span><span class="n">top2</span><span class="o">--</span><span class="p">;</span>
+        <span class="n">S</span><span class="p">.</span><span class="n">data</span><span class="p">[</span><span class="n">S</span><span class="p">.</span><span class="n">top2</span><span class="p">]</span> <span class="o">=</span> <span class="n">e</span><span class="p">;</span>
+        <span class="k">return</span> <span class="n">OK</span><span class="p">;</span>
+    <span class="p">}</span>
+    <span class="c1">//栈已满或者编号不对</span>
+    <span class="k">return</span> <span class="n">ERROR</span><span class="p">;</span>
+<span class="p">}</span>
+
+<span class="cm">/*
+展示2个栈的元素
+*/</span>
+<span class="kt">void</span> <span class="n">ShowStack</span><span class="p">(</span><span class="n">SqDoubleStack</span> <span class="o">&amp;</span><span class="n">S</span><span class="p">)</span> <span class="p">{</span>
+    <span class="k">for</span> <span class="p">(</span><span class="kt">int</span> <span class="n">i</span> <span class="o">=</span> <span class="mi">0</span><span class="p">;</span> <span class="n">i</span> <span class="o">&lt;=</span> <span class="n">S</span><span class="p">.</span><span class="n">top1</span><span class="p">;</span> <span class="n">i</span><span class="o">++</span><span class="p">)</span> <span class="p">{</span>
+        <span class="n">cout</span> <span class="o">&lt;&lt;</span> <span class="n">S</span><span class="p">.</span><span class="n">data</span><span class="p">[</span><span class="n">i</span><span class="p">]</span> <span class="o">&lt;&lt;</span> <span class="n">endl</span><span class="p">;</span>
+    <span class="p">}</span>
+    <span class="k">for</span> <span class="p">(</span><span class="kt">int</span> <span class="n">i</span> <span class="o">=</span> <span class="n">S</span><span class="p">.</span><span class="n">top2</span><span class="p">;</span> <span class="n">i</span> <span class="o">&lt;=</span> <span class="n">MAXSIZE</span> <span class="o">-</span> <span class="mi">1</span><span class="p">;</span> <span class="n">i</span><span class="o">++</span><span class="p">)</span> <span class="p">{</span>
+        <span class="n">cout</span> <span class="o">&lt;&lt;</span> <span class="n">S</span><span class="p">.</span><span class="n">data</span><span class="p">[</span><span class="n">i</span><span class="p">]</span> <span class="o">&lt;&lt;</span> <span class="n">endl</span><span class="p">;</span>
+    <span class="p">}</span>
+    <span class="n">cout</span> <span class="o">&lt;&lt;</span> <span class="n">endl</span><span class="p">;</span>
+<span class="p">}</span>
+
+<span class="cm">/*
+清空栈元素
+*/</span>
+<span class="n">Status</span> <span class="n">ClearSeqDoubleStack</span><span class="p">(</span><span class="n">SqDoubleStack</span> <span class="o">&amp;</span><span class="n">S</span><span class="p">)</span> <span class="p">{</span>
+
+    <span class="n">S</span><span class="p">.</span><span class="n">top1</span> <span class="o">=</span> <span class="o">-</span><span class="mi">1</span><span class="p">;</span>
+    <span class="n">S</span><span class="p">.</span><span class="n">top2</span> <span class="o">=</span> <span class="n">MAXSIZE</span><span class="p">;</span>
+    <span class="k">return</span> <span class="n">OK</span><span class="p">;</span>
+<span class="p">}</span>
+
+<span class="cm">/*
+初始化栈
+*/</span>
+<span class="n">Status</span> <span class="n">InitSeqDoubleStack</span><span class="p">(</span><span class="n">SqDoubleStack</span> <span class="o">&amp;</span><span class="n">S</span><span class="p">)</span> <span class="p">{</span>
+    <span class="n">S</span><span class="p">.</span><span class="n">top1</span> <span class="o">=</span> <span class="o">-</span><span class="mi">1</span><span class="p">;</span>
+    <span class="n">S</span><span class="p">.</span><span class="n">top2</span> <span class="o">=</span> <span class="n">MAXSIZE</span><span class="p">;</span>
+    <span class="k">return</span> <span class="n">OK</span><span class="p">;</span>
+<span class="p">}</span>
+
+<span class="cm">/*
+栈元素个数
+*/</span>
+<span class="kt">int</span> <span class="n">GetLengthSeqDoubleStack</span><span class="p">(</span><span class="n">SqDoubleStack</span> <span class="o">&amp;</span><span class="n">S</span><span class="p">)</span> <span class="p">{</span>
+
+    <span class="c1">//stack-&gt;top1+1;//栈1元素个数</span>
+    <span class="c1">//MAXSIZE - stack-&gt;top2;//栈2元素个数</span>
+    <span class="k">return</span> <span class="n">S</span><span class="p">.</span><span class="n">top1</span> <span class="o">+</span> <span class="mi">1</span> <span class="o">+</span> <span class="n">MAXSIZE</span> <span class="o">-</span> <span class="n">S</span><span class="p">.</span><span class="n">top2</span><span class="p">;</span>
+<span class="p">}</span>
+
+
+<span class="kt">int</span> <span class="n">main</span><span class="p">()</span> <span class="p">{</span>
+<span class="c1">//int demo2() {</span>
+    <span class="kt">int</span> <span class="n">n</span><span class="p">,</span><span class="n">e</span><span class="p">;</span>
+    <span class="n">SqDoubleStack</span> <span class="n">S</span><span class="p">;</span>
+    <span class="n">cout</span> <span class="o">&lt;&lt;</span> <span class="s">"创建顺序栈(分享空间)成功！</span><span class="se">\n</span><span class="s">"</span><span class="p">;</span>
+    <span class="k">if</span> <span class="p">(</span><span class="n">InitSeqDoubleStack</span><span class="p">(</span><span class="n">S</span><span class="p">))</span> <span class="p">{</span>
+        <span class="n">cout</span> <span class="o">&lt;&lt;</span> <span class="s">"初始化顺序栈(分享空间)成功！</span><span class="se">\n</span><span class="s">"</span><span class="p">;</span>
+    <span class="p">}</span>
+    <span class="c1">//压栈</span>
+    <span class="n">Push</span><span class="p">(</span><span class="n">S</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">1</span><span class="p">);</span>
+    <span class="n">Push</span><span class="p">(</span><span class="n">S</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">1</span><span class="p">);</span>
+    <span class="n">Push</span><span class="p">(</span><span class="n">S</span><span class="p">,</span> <span class="mi">3</span><span class="p">,</span> <span class="mi">1</span><span class="p">);</span>
+    <span class="n">Push</span><span class="p">(</span><span class="n">S</span><span class="p">,</span> <span class="mi">4</span><span class="p">,</span> <span class="mi">1</span><span class="p">);</span>
+    <span class="n">Push</span><span class="p">(</span><span class="n">S</span><span class="p">,</span> <span class="mi">5</span><span class="p">,</span> <span class="mi">1</span><span class="p">);</span>
+    <span class="n">Push</span><span class="p">(</span><span class="n">S</span><span class="p">,</span> <span class="mi">9</span><span class="p">,</span> <span class="mi">2</span><span class="p">);</span>
+    <span class="n">Push</span><span class="p">(</span><span class="n">S</span><span class="p">,</span> <span class="mi">8</span><span class="p">,</span> <span class="mi">2</span><span class="p">);</span>
+    <span class="n">Push</span><span class="p">(</span><span class="n">S</span><span class="p">,</span> <span class="mi">7</span><span class="p">,</span> <span class="mi">2</span><span class="p">);</span>
+    <span class="n">Push</span><span class="p">(</span><span class="n">S</span><span class="p">,</span> <span class="mi">6</span><span class="p">,</span> <span class="mi">2</span><span class="p">);</span>
+    <span class="n">puts</span><span class="p">(</span><span class="s">"展示元素:"</span><span class="p">);</span>
+
+    <span class="n">ShowStack</span><span class="p">(</span><span class="n">S</span><span class="p">);</span>
+    <span class="n">printf</span><span class="p">(</span><span class="s">"元素个数：%d</span><span class="se">\n</span><span class="s">"</span><span class="p">,</span> <span class="n">GetLengthSeqDoubleStack</span><span class="p">(</span><span class="n">S</span><span class="p">));</span>
+    <span class="n">SElemType</span> <span class="n">e1</span><span class="p">;</span>
+    <span class="n">SElemType</span> <span class="n">e2</span><span class="p">;</span>
+    <span class="c1">//弹栈</span>
+    <span class="n">cout</span><span class="o">&lt;&lt;</span><span class="s">"弹栈</span><span class="se">\n</span><span class="s">"</span><span class="p">;</span>
+    <span class="n">cout</span><span class="o">&lt;&lt;</span><span class="s">"--------------------------------</span><span class="se">\n</span><span class="s">"</span><span class="p">;</span>
+    <span class="k">for</span> <span class="p">(</span><span class="kt">int</span> <span class="n">i</span> <span class="o">=</span> <span class="mi">0</span><span class="p">;</span> <span class="n">i</span> <span class="o">&lt;</span> <span class="n">n</span><span class="p">;</span> <span class="o">++</span><span class="n">i</span><span class="p">)</span> <span class="p">{</span>
+        <span class="n">Pop</span><span class="p">(</span><span class="n">S</span><span class="p">,</span><span class="n">i</span><span class="p">,</span><span class="n">e</span><span class="p">);</span>
+        <span class="n">cout</span><span class="o">&lt;&lt;</span><span class="s">"栈顶数据为"</span><span class="o">&lt;&lt;</span><span class="n">e</span><span class="o">&lt;&lt;</span><span class="n">endl</span><span class="p">;</span>
+    <span class="p">}</span>
+    <span class="n">ShowStack</span><span class="p">(</span><span class="n">S</span><span class="p">);</span>
+    <span class="c1">//清空</span>
+    <span class="n">ClearSeqDoubleStack</span><span class="p">(</span><span class="n">S</span><span class="p">);</span>
+    <span class="n">cout</span> <span class="o">&lt;&lt;</span> <span class="n">endl</span><span class="p">;</span>
+
+    <span class="k">return</span> <span class="mi">0</span><span class="p">;</span>
+<span class="p">}</span>
+</code></pre></div></div> <div style="margin-top:2em;padding:0 1.5em;border:1px solid #d3d3d3;background-color:#deebf7"> <h3>文档信息</h3> <ul> <li>本文作者：<a href="https://slienceme.cn" target="_blank">slience_me</a></li> <li>本文链接：<a href="https://slienceme.cn/2022/06/27/%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84%E4%BB%A3%E7%A0%81%E5%AE%9E%E7%8E%B0/" target="_blank">https://slienceme.cn/2022/06/27/%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84%E4%BB%A3%E7%A0%81%E5%AE%9E%E7%8E%B0/</a></li> <li>版权声明：自由转载-非商用-非衍生-保持署名（<a href="http://creativecommons.org/licenses/by-nc-nd/3.0/deed.zh" target="_blank">创意共享3.0许可证</a>）</li> </ul> </div> </article> <div class="share"> <div class="share-component" data-disabled='qq,facebook'></div> </div> <div class="comment"> <script src="https://giscus.app/client.js" data-repo="slience-me/blog-comments" data-repo-id="MDEwOlJlcG9zaXRvcnk5MzEyNzkxNw==" data-category="Announcements" data-category-id="DIC_kwDOBY0E7c4CRtg9" data-mapping="title" data-strict="1" data-reactions-enabled="1" data-emit-metadata="0" data-input-position="top" data-theme="light" data-lang="zh-CN" data-loading="lazy" crossorigin="anonymous" async> </script> </div> </div> <div class="column one-fourth"> <h3>Search</h3> <div id="site_search"> <input style="width:96%" type="text" id="search_box" placeholder="Search"> </div> <ul id="search_results" style="font-size:14px;list-style-type:none;padding-top:10px;padding-left:10px;"></ul> <script src="https://slienceme.cn/assets/js/simple-jekyll-search.min.js"></script> <script type="text/javascript"> SimpleJekyllSearch({ searchInput: document.getElementById('search_box'), resultsContainer: document.getElementById('search_results'), json: 'https://slienceme.cn/assets/search_data.json?v=1736474002', searchResultTemplate: '<li><a href="{url}" title="{title}">{title}</a></li>', noResultsText: 'No results found', limit: 10, fuzzy: false, exclude: ['Welcome'] }) </script> <h3 class="post-directory-title mobile-hidden">Table of Contents</h3> <div id="post-directory-module" class="mobile-hidden"> <section class="post-directory"> <dl></dl> </section> </div> <script src="https://slienceme.cn/assets/js/jquery.toc.js"></script> </div> </div> </section> <footer class="container"> <div class="site-footer" role="contentinfo"> <div class="copyright left mobile-block"> Copyright@ 2019-2025 slience_me 版权所有&emsp; <img src="/images/logo/logo.png" class="w-full" style="width: 12px;"> <a href="https://beian.mps.gov.cn/#/query/webSearch?code=13102202000626" rel="noreferrer" target="_blank">冀公网安备13102202000626</a>&emsp; <a href="https://beian.miit.gov.cn/#/Integrated/index" target="_blank" rel="noreferrer">津ICP备2024026565号-1</a> <a href="javascript:window.scrollTo(0,0)" class="right mobile-visible">TOP</a> </div> <ul class="site-footer-links right mobile-hidden"> <li> <a href="javascript:window.scrollTo(0,0)" >TOP</a> </li> </ul> <br/> <script async src="https://slienceme.cn/assets/vendor/busuanzi/2.3/busuanzi.pure.mini.js"></script> <div class="mobile-hidden" style="margin-top:8px"> <span id="busuanzi_container_site_pv" style="display:none"> 本站访问量<span id="busuanzi_value_site_pv"></span>次 </span> <span id="busuanzi_container_site_uv" style="display:none"> / 本站访客数<span id="busuanzi_value_site_uv"></span>人 </span> <span id="busuanzi_container_page_pv" style="display:none"> / 本页访问量<span id="busuanzi_value_page_pv"></span>次 / 统计始于2024-12-01 </span> </div> </div> </footer> <div class="tools-wrapper"> <a class="gotop" href="#" title="回到顶部"><span class="octicon octicon-arrow-up"></span></a> </div> <script src="https://slienceme.cn/assets/vendor/share.js/dist/js/share.min.js"></script> <script src="https://slienceme.cn/assets/js/geopattern.js"></script> <script> jQuery(document).ready(function($) { $('.geopattern').each(function(){ $(this).geopattern($(this).data('pattern-id')); }); /* hljs.initHighlightingOnLoad(); */ }); </script> </body> </html>

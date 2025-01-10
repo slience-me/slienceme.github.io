@@ -1,0 +1,411 @@
+<!DOCTYPE html> <html lang="zh-cmn-Hans" prefix="og: http://ogp.me/ns#" class="han-init"> <head> <meta charset="utf-8"> <meta http-equiv="X-UA-Compatible" content="IE=edge"> <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1" /> <title>机器学习｜PyTorch之张量的相关操作大全 &mdash; Slience_me的博客</title> <link rel="stylesheet" href="https://slienceme.cn/assets/vendor/primer-css/css/primer.css"> <link rel="stylesheet" href="https://slienceme.cn/assets/css/components/collection.css"> <link rel="stylesheet" href="https://slienceme.cn/assets/css/components/repo-card.css"> <link rel="stylesheet" href="https://slienceme.cn/assets/css/sections/repo-list.css"> <link rel="stylesheet" href="https://slienceme.cn/assets/css/components/boxed-group.css"> <link rel="stylesheet" href="https://slienceme.cn/assets/css/globals/common.css"> <link rel="stylesheet" href="https://slienceme.cn/assets/css/globals/responsive.css"> <link rel="stylesheet" href="https://slienceme.cn/assets/css/posts/index.css"> <link rel="stylesheet" href="https://slienceme.cn/assets/vendor/octicons/octicons/octicons.css"> <link rel="stylesheet" href="https://mazhuang.org/rouge-themes/dist/github.css"> <link rel="stylesheet" href="https://slienceme.cn/assets/vendor/share.js/dist/css/share.min.css"> <link rel="canonical" href="https://slienceme.cn/2023/09/14/PyTorch%E4%B9%8B%E5%BC%A0%E9%87%8F%E7%9A%84%E7%9B%B8%E5%85%B3%E6%93%8D%E4%BD%9C%E5%A4%A7%E5%85%A8/"> <link rel="alternate" type="application/atom+xml" title="Slience_me的博客" href="https://slienceme.cn/feed.xml"> <link rel="shortcut icon" href="https://slienceme.cn/favicon.ico"> <meta property="og:title" content="机器学习｜PyTorch之张量的相关操作大全"> <meta name="keywords" content="机器学习"> <meta name="og:keywords" content="机器学习"> <meta name="description" content="Torch1. 张量的创建1.1 直接创建1.1.1 torch.tensortorch.tensor(data, dtype=None, device=None, requires_grad=False, pin_memory=False) 功能：从data创建tensor data: 数据，可以是list，numpy dtype: 数据类型，默认与data的一致 device: 所在设备，cuda/cpu requires_grad: 是否需要梯度 pin_memory: 是否存于锁页内存 "> <meta name="og:description" content="Torch1. 张量的创建1.1 直接创建1.1.1 torch.tensortorch.tensor(data, dtype=None, device=None, requires_grad=False, pin_memory=False) 功能：从data创建tensor data: 数据，可以是list，numpy dtype: 数据类型，默认与data的一致 device: 所在设备，cuda/cpu requires_grad: 是否需要梯度 pin_memory: 是否存于锁页内存 "> <meta property="og:url" content="https://slienceme.cn/2023/09/14/PyTorch%E4%B9%8B%E5%BC%A0%E9%87%8F%E7%9A%84%E7%9B%B8%E5%85%B3%E6%93%8D%E4%BD%9C%E5%A4%A7%E5%85%A8/"> <meta property="og:site_name" content="Slience_me的博客"> <meta property="og:type" content="article"> <meta property="og:locale" content="zh_CN" /> <meta property="article:published_time" content="2023-09-14"> <meta name="google-site-verification" content="2feHjT1GNs1Yi2JQfOtdYx7d048naG_-cMwZaDAopIA" /> <script src="https://slienceme.cn/assets/vendor/jquery/dist/jquery.min.js"></script> <script src="https://slienceme.cn/assets/js/main.js"></script> </head> <body class="" data-mz=""> <header class="site-header"> <div class="container"> <h1><a href="https://slienceme.cn/" title="Slience_me的博客"><span class="octicon octicon-mark-github"></span> Slience_me的博客</a></h1> <button class="collapsed mobile-visible" type="button" onclick="toggleMenu();"> <span class="icon-bar"></span> <span class="icon-bar"></span> <span class="icon-bar"></span> </button> <nav class="site-header-nav" role="navigation"> <a href="https://slienceme.cn/" class="site-header-nav-item" target="" title="首页">首页</a> <a href="https://slienceme.cn/categories/" class="site-header-nav-item" target="" title="分类">分类</a> <a href="https://slienceme.cn/archives/" class="mobile-hidden site-header-nav-item" target="" title="归档">归档</a> <a href="https://slienceme.cn/open-source/" class="mobile-hidden site-header-nav-item" target="" title="开源">开源</a> <a href="https://slienceme.cn/fragments/" class="site-header-nav-item" target="" title="片段">片段</a> <a href="https://slienceme.cn/wiki/" class="site-header-nav-item" target="" title="维基">维基</a> <a href="https://slienceme.cn/links/" class="mobile-hidden site-header-nav-item" target="" title="链接">链接</a> <a href="https://slienceme.cn/about/" class="site-header-nav-item" target="" title="关于">关于</a> <a class="mobile-hidden" href="https://slienceme.cn/feed.xml"><span class="octicon octicon-rss" style="color:orange;"></span></a> </nav> </div> </header> <section class="collection-head small geopattern" data-pattern-id="机器学习｜PyTorch之张量"> <div class="container"> <div class="columns"> <div class="column three-fourths"> <div class="collection-title"> <h1 class="collection-header">机器学习｜PyTorch之张量的相关操作大全</h1> <div class="collection-info"> <span class="meta-info"> <span class="octicon octicon-calendar"></span> 2023/09/14 </span> <span class="meta-info"> <span class="octicon octicon-file-directory"></span> <a href="https://slienceme.cn/categories/#机器学习" title="机器学习">机器学习</a> </span> <span class="meta-info"> <span class="octicon octicon-clock"></span> 共 11197 字，约 32 分钟 </span> </div> </div> </div> <div class="column one-fourth mobile-hidden"> <div class="collection-title"> </div> </div> </div> </div> </section> <section class="container content"> <div class="columns"> <div class="column three-fourths" > <article class="article-content markdown-body"> <h1 id="torch">Torch</h1> <h2 id="1-张量的创建">1. 张量的创建</h2> <h3 id="11-直接创建">1.1 直接创建</h3> <h4 id="111-torchtensor">1.1.1 <code class="language-plaintext highlighter-rouge">torch.tensor</code></h4> <div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">torch</span><span class="p">.</span><span class="n">tensor</span><span class="p">(</span><span class="n">data</span><span class="p">,</span> <span class="n">dtype</span><span class="o">=</span><span class="bp">None</span><span class="p">,</span> <span class="n">device</span><span class="o">=</span><span class="bp">None</span><span class="p">,</span> <span class="n">requires_grad</span><span class="o">=</span><span class="bp">False</span><span class="p">,</span> <span class="n">pin_memory</span><span class="o">=</span><span class="bp">False</span><span class="p">)</span>
+</code></pre></div></div> <blockquote> <ul> <li><strong>功能</strong>：从data创建tensor</li> <li><strong>data</strong>: 数据，可以是list，numpy</li> <li><strong>dtype</strong>: 数据类型，默认与data的一致</li> <li><strong>device</strong>: 所在设备，cuda/cpu</li> <li><strong>requires_grad</strong>: 是否需要梯度</li> <li><strong>pin_memory</strong>: 是否存于锁页内存</li> </ul> </blockquote> <p>样例：</p> <div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">torch</span><span class="p">.</span><span class="n">tensor</span><span class="p">([[</span><span class="mf">0.2</span><span class="p">,</span> <span class="mf">0.2</span><span class="p">],</span> <span class="p">[</span><span class="mf">1.2</span><span class="p">,</span> <span class="mf">2.3</span><span class="p">],</span> <span class="p">[</span><span class="mf">3.2</span><span class="p">,</span> <span class="mf">1.3</span><span class="p">]])</span>
+<span class="s">'''
+tensor([[0.2, 0.2],
+		[1.2, 2.3],
+		[3.2, 1.3]])
+'''</span>
+</code></pre></div></div> <h4 id="112-torchfrom_numpyndarray">1.1.2 <code class="language-plaintext highlighter-rouge">torch.from_numpy(ndarray)</code></h4> <div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">torch</span><span class="p">.</span><span class="n">from_numpy</span><span class="p">(</span><span class="n">ndarray</span><span class="p">)</span>
+</code></pre></div></div> <blockquote> <ul> <li><strong>功能</strong>：从numpy创建tensor</li> <li><strong>注意事项</strong>：从torch.from_numpy创建的tensor于原ndarray共享内存，当修改其中一个数据，另一个也将会被改动。</li> </ul> <p>样例：</p> <div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">array</span> <span class="o">=</span> <span class="n">numpy</span><span class="p">.</span><span class="n">array</span><span class="p">([</span><span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">3</span><span class="p">,</span> <span class="mi">4</span><span class="p">])</span>
+<span class="n">t</span> <span class="o">=</span> <span class="n">torch</span><span class="p">.</span><span class="n">from_numpy</span><span class="p">(</span><span class="n">array</span><span class="p">)</span>
+</code></pre></div> </div> <h3 id="12-依据数值创建">1.2 依据数值创建</h3> <h4 id="121-torchzeros">1.2.1 <code class="language-plaintext highlighter-rouge">torch.zeros</code></h4> <div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">torch</span><span class="p">.</span><span class="n">zeros</span><span class="p">(</span><span class="o">*</span><span class="n">size</span><span class="p">,</span> <span class="n">out</span><span class="o">=</span><span class="bp">None</span><span class="p">,</span> <span class="n">dtype</span><span class="o">=</span><span class="bp">None</span><span class="p">,</span> <span class="n">layout</span><span class="o">=</span><span class="n">torch</span><span class="p">.</span><span class="n">strided</span><span class="p">,</span> <span class="n">device</span><span class="o">=</span><span class="bp">None</span><span class="p">,</span> <span class="n">requires_grad</span><span class="o">=</span><span class="bp">False</span><span class="p">)</span>
+</code></pre></div> </div> </blockquote> <blockquote> <ul> <li><strong>功能</strong>：依size创建全0张量</li> <li><strong>size</strong>: 张量的形状，如(3, 3)、(3, 224, 224)</li> <li><strong>out</strong>: 输出的张量</li> <li><strong>layout</strong>: 内存中布局形式，有strided, sparse_coo等</li> <li><strong>device</strong>: 所在设备，gpu/cpu</li> <li><strong>requires_grad</strong>: 是否需要梯度</li> </ul> </blockquote> <p>样例：</p> <div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">torch</span><span class="p">.</span><span class="n">zeros</span><span class="p">(</span><span class="mi">2</span><span class="p">,</span> <span class="mi">3</span><span class="p">)</span>  <span class="c1"># 2行3列
+</span><span class="s">'''
+tensor([[0, 0, 0],
+		[0, 0, 0]])
+'''</span>
+</code></pre></div></div> <h4 id="122-torchzeros_like">1.2.2 <code class="language-plaintext highlighter-rouge">torch.zeros_like</code></h4> <div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">torch</span><span class="p">.</span><span class="n">zeros_like</span><span class="p">(</span><span class="nb">input</span><span class="p">,</span> <span class="n">dtype</span><span class="o">=</span><span class="bp">None</span><span class="p">,</span> <span class="n">layout</span><span class="o">=</span><span class="bp">None</span><span class="p">,</span> <span class="n">device</span><span class="o">=</span><span class="bp">None</span><span class="p">,</span> <span class="n">requires_grad</span><span class="o">=</span><span class="bp">False</span><span class="p">)</span>
+</code></pre></div></div> <blockquote> <ul> <li><strong>功能</strong>：依input形状创建全0张量</li> <li><strong>input</strong>: 创建与input同形状的全0张量</li> <li><strong>dtype</strong>: 数据类型</li> <li><strong>layout</strong>: 内存中布局形式</li> <li><strong>device</strong>: 所在设备，gpu/cpu</li> <li><strong>requires_grad</strong>: 是否需要梯度</li> </ul> </blockquote> <p>样例：</p> <div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nb">input</span> <span class="o">=</span> <span class="n">torch</span><span class="p">.</span><span class="n">empty</span><span class="p">(</span><span class="mi">3</span><span class="p">,</span> <span class="mi">2</span><span class="p">)</span>
+<span class="n">torch</span><span class="p">.</span><span class="n">zeros_like</span><span class="p">(</span><span class="nb">input</span><span class="p">)</span>
+<span class="s">'''
+tensor([[0, 0],
+		[0, 0],
+		[0, 0]])
+'''</span>
+</code></pre></div></div> <h4 id="123-torchones">1.2.3 <code class="language-plaintext highlighter-rouge">torch.ones</code></h4> <div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">torch</span><span class="p">.</span><span class="n">ones</span><span class="p">(</span><span class="o">*</span><span class="n">size</span><span class="p">,</span> <span class="n">out</span><span class="o">=</span><span class="bp">None</span><span class="p">,</span> <span class="n">dtype</span><span class="o">=</span><span class="bp">None</span><span class="p">,</span> <span class="n">layout</span><span class="o">=</span><span class="n">torch</span><span class="p">.</span><span class="n">strided</span><span class="p">,</span> <span class="n">device</span><span class="o">=</span><span class="bp">None</span><span class="p">,</span> <span class="n">requires_grad</span><span class="o">=</span><span class="bp">False</span><span class="p">)</span>
+</code></pre></div></div> <blockquote> <ul> <li><strong>功能</strong>：依size创建全1张量</li> <li><strong>size</strong>: 张量的形状，如(3, 3)、(3, 224, 224)</li> <li><strong>out</strong>: 输出的张量</li> <li><strong>layout</strong>: 内存中布局形式，有strided, sparse_coo等</li> <li><strong>device</strong>: 所在设备，gpu/cpu</li> <li><strong>requires_grad</strong>: 是否需要梯度</li> </ul> </blockquote> <p>样例：</p> <div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">torch</span><span class="p">.</span><span class="n">ones</span><span class="p">(</span><span class="mi">2</span><span class="p">,</span> <span class="mi">3</span><span class="p">)</span>  <span class="c1"># 2行3列
+</span><span class="s">'''
+tensor([[1, 1, 1],
+		[1, 1, 1]])
+'''</span>
+</code></pre></div></div> <h4 id="124-torchones_like">1.2.4 <code class="language-plaintext highlighter-rouge">torch.ones_like</code></h4> <div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">torch</span><span class="p">.</span><span class="n">ones_like</span><span class="p">(</span><span class="nb">input</span><span class="p">,</span> <span class="n">dtype</span><span class="o">=</span><span class="bp">None</span><span class="p">,</span> <span class="n">layout</span><span class="o">=</span><span class="bp">None</span><span class="p">,</span> <span class="n">device</span><span class="o">=</span><span class="bp">None</span><span class="p">,</span> <span class="n">requires_grad</span><span class="o">=</span><span class="bp">False</span><span class="p">)</span>
+</code></pre></div></div> <blockquote> <ul> <li><strong>功能</strong>：依input形状创建全1张量</li> <li><strong>input</strong>: 创建与input同形状的全0张量</li> <li><strong>dtype</strong>: 数据类型</li> <li><strong>layout</strong>: 内存中局形式</li> <li><strong>device</strong>: 所在设备，gpu/cpu</li> <li><strong>requires_grad</strong>: 是否需要梯度</li> </ul> </blockquote> <p>样例：</p> <div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nb">input</span> <span class="o">=</span> <span class="n">torch</span><span class="p">.</span><span class="n">empty</span><span class="p">(</span><span class="mi">2</span><span class="p">,</span> <span class="mi">3</span><span class="p">)</span>
+<span class="n">torch</span><span class="p">.</span><span class="n">ones_like</span><span class="p">(</span><span class="nb">input</span><span class="p">)</span>
+<span class="s">'''
+tensor([[1, 1, 1],
+		[1, 1, 1]])
+'''</span>
+</code></pre></div></div> <h4 id="125-torchfull">1.2.5 <code class="language-plaintext highlighter-rouge">torch.full</code></h4> <div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">torch</span><span class="p">.</span><span class="n">full</span><span class="p">(</span><span class="n">size</span><span class="p">,</span> <span class="n">fill_value</span><span class="p">,</span> <span class="n">out</span><span class="o">=</span><span class="bp">None</span><span class="p">,</span> <span class="n">dtype</span><span class="o">=</span><span class="bp">None</span><span class="p">,</span> <span class="n">layout</span><span class="o">=</span><span class="n">torch</span><span class="p">.</span><span class="n">strided</span><span class="p">,</span> <span class="n">device</span><span class="o">=</span><span class="bp">None</span><span class="p">,</span> <span class="n">requires_grad</span><span class="o">=</span><span class="bp">False</span><span class="p">)</span>
+</code></pre></div></div> <blockquote> <ul> <li><strong>功能</strong>：依size创建值全为fill_value的张量</li> <li><strong>size</strong>: 张量的形状，如(3, 3)、(3, 224, 224)</li> <li><strong>fill_value</strong>: 张量的值</li> <li><strong>out</strong>: 输出的张量</li> <li><strong>dtype</strong>: 数据类型</li> <li><strong>layout</strong>: 内存中布局形式，有strided, sparse_coo等</li> <li><strong>device</strong>: 所在设备，gpu/cpu</li> <li><strong>requires_grad</strong>: 是否需要梯度</li> </ul> </blockquote> <p>样例：</p> <div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">torch</span><span class="p">.</span><span class="n">full</span><span class="p">((</span><span class="mi">3</span><span class="p">,</span> <span class="mi">2</span><span class="p">),</span> <span class="mf">1.23</span><span class="p">)</span>
+
+<span class="s">'''
+tensor([[1.23, 1.23],
+		[1.23, 1.23],
+		[1.23, 1.23]])
+'''</span>
+</code></pre></div></div> <h4 id="126-torchfull_like">1.2.6 <code class="language-plaintext highlighter-rouge">torch.full_like</code></h4> <div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">torch</span><span class="p">.</span><span class="n">full_like</span><span class="p">(</span><span class="nb">input</span><span class="p">,</span> <span class="n">dtype</span><span class="o">=</span><span class="bp">None</span><span class="p">,</span> <span class="n">layout</span><span class="o">=</span><span class="n">torch</span><span class="p">.</span><span class="n">strided</span><span class="p">,</span> <span class="n">device</span><span class="o">=</span><span class="bp">None</span><span class="p">,</span> <span class="n">requires_grad</span><span class="o">=</span><span class="bp">False</span><span class="p">)</span>
+</code></pre></div></div> <blockquote> <ul> <li><strong>功能</strong>：依input形状创建指定数据的张量</li> <li><strong>dtype</strong>: 数据类型</li> <li><strong>layout</strong>: 内存中布局形式，有strided, sparse_coo等</li> <li><strong>device</strong>: 所在设备，gpu/cpu</li> <li><strong>requires_grad</strong>: 是否需要梯度</li> </ul> </blockquote> <h4 id="127-torcharange">1.2.7 <code class="language-plaintext highlighter-rouge">torch.arange</code></h4> <div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">torch</span><span class="p">.</span><span class="n">arange</span><span class="p">(</span><span class="n">start</span><span class="o">=</span><span class="mi">0</span><span class="p">,</span> <span class="n">end</span><span class="p">.</span> <span class="n">step</span><span class="o">=</span><span class="mi">1</span><span class="p">,</span> <span class="n">out</span><span class="o">=</span><span class="bp">None</span><span class="p">,</span> <span class="n">dtype</span><span class="o">=</span><span class="bp">None</span><span class="p">,</span> <span class="n">layout</span><span class="o">=</span><span class="n">torch</span><span class="p">.</span><span class="n">strided</span><span class="p">,</span> <span class="n">device</span><span class="o">=</span><span class="bp">None</span><span class="p">,</span> <span class="n">requires_grad</span><span class="o">=</span><span class="bp">False</span><span class="p">)</span>
+</code></pre></div></div> <blockquote> <ul> <li><strong>功能</strong>：创建<code class="language-plaintext highlighter-rouge">等差</code>的1维张量</li> <li><strong>start</strong>: 数列起始值</li> <li><strong>end</strong>: 数列“结束值”</li> <li><strong>step</strong>: 数列公差，默认为1</li> <li><strong>注意事项</strong>：数值区间为 <code class="language-plaintext highlighter-rouge">[𝑠𝑡𝑎𝑟𝑡,𝑒𝑛𝑑)</code> !!!!!</li> </ul> </blockquote> <p>样例;</p> <div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">torch</span><span class="p">.</span><span class="n">arange</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="mi">3</span><span class="p">,</span> <span class="mi">1</span><span class="p">)</span>
+<span class="s">'''
+tensor([0, 1, 2])
+'''</span>
+</code></pre></div></div> <h4 id="128-torchlinspace">1.2.8 <code class="language-plaintext highlighter-rouge">torch.linspace</code></h4> <div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">torch</span><span class="p">.</span><span class="n">linspace</span><span class="p">(</span><span class="n">start</span><span class="p">,</span> <span class="n">end</span><span class="p">,</span> <span class="n">steps</span><span class="o">=</span><span class="mi">100</span><span class="p">,</span> <span class="n">out</span><span class="o">=</span><span class="bp">None</span><span class="p">,</span> <span class="n">dtype</span><span class="o">=</span><span class="bp">None</span><span class="p">,</span> <span class="n">layout</span><span class="o">=</span><span class="n">torch</span><span class="p">.</span><span class="n">strided</span><span class="p">,</span> <span class="n">device</span><span class="o">=</span><span class="bp">None</span><span class="p">,</span> <span class="n">requires_grad</span><span class="o">=</span><span class="bp">False</span><span class="p">)</span>
+</code></pre></div></div> <blockquote> <ul> <li><strong>功能</strong>：创建<code class="language-plaintext highlighter-rouge">均分</code>的1维张量</li> <li><strong>start</strong>: 数列起始值</li> <li><strong>end</strong>: 数列“结束值”</li> <li><strong>step</strong>: 数列长度</li> </ul> </blockquote> <p>样例：</p> <div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">torch</span><span class="p">.</span><span class="n">linspace</span><span class="p">(</span><span class="n">start</span><span class="o">=-</span><span class="mi">5</span><span class="p">,</span> <span class="n">end</span><span class="o">=</span><span class="mi">5</span><span class="p">,</span> <span class="n">steps</span><span class="o">=</span><span class="mi">3</span><span class="p">)</span>
+<span class="s">'''
+tensor([-5.,   0.,   5.])
+'''</span>
+</code></pre></div></div> <h4 id="129-torchlogspace">1.2.9 <code class="language-plaintext highlighter-rouge">torch.logspace</code></h4> <div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">torch</span><span class="p">.</span><span class="n">logspace</span><span class="p">(</span><span class="n">start</span><span class="p">,</span> <span class="n">end</span><span class="p">,</span> <span class="n">steps</span><span class="o">=</span><span class="mi">100</span><span class="p">,</span> <span class="n">base</span><span class="o">=</span><span class="mf">10.0</span><span class="p">,</span> <span class="n">out</span><span class="o">=</span><span class="bp">None</span><span class="p">,</span> <span class="n">dtype</span><span class="o">=</span><span class="bp">None</span><span class="p">,</span> <span class="n">layout</span><span class="o">=</span><span class="n">torch</span><span class="p">.</span><span class="n">strided</span><span class="p">,</span> <span class="n">device</span><span class="o">=</span><span class="bp">None</span><span class="p">,</span> <span class="n">requires_grad</span><span class="o">=</span><span class="bp">False</span><span class="p">)</span>
+</code></pre></div></div> <blockquote> <ul> <li><strong>功能</strong>：创建<code class="language-plaintext highlighter-rouge">对数均分</code>的1维张量</li> <li><strong>start</strong>: 数列起始值</li> <li><strong>end</strong>: 数列“结束值”</li> <li><strong>step</strong>: 数列长度</li> <li><strong>base</strong>: 对数函数的底，默认为10</li> <li><strong>注意事项</strong>：长度为<code class="language-plaintext highlighter-rouge">steps</code>，底为<code class="language-plaintext highlighter-rouge">base</code></li> </ul> </blockquote> <p>样例：</p> <div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">torch</span><span class="p">.</span><span class="n">logspace</span><span class="p">(</span><span class="n">start</span><span class="o">=</span><span class="mf">0.1</span><span class="p">,</span> <span class="n">end</span><span class="o">=</span><span class="mi">1</span><span class="p">,</span> <span class="n">steps</span><span class="o">=</span><span class="mi">4</span><span class="p">)</span>
+<span class="s">'''
+tensor([ 1.2589,  2.5119,  5.0119, 10.0000])
+'''</span>
+</code></pre></div></div> <h4 id="1210-torcheye">1.2.10 <code class="language-plaintext highlighter-rouge">torch.eye</code></h4> <div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">torch</span><span class="p">.</span><span class="n">eye</span><span class="p">(</span><span class="n">n</span><span class="p">,</span> <span class="n">m</span><span class="o">=</span><span class="bp">None</span><span class="p">,</span> <span class="n">out</span><span class="o">=</span><span class="bp">None</span><span class="p">,</span> <span class="n">dtype</span><span class="o">=</span><span class="bp">None</span><span class="p">,</span> <span class="n">layout</span><span class="o">=</span><span class="n">torch</span><span class="p">.</span><span class="n">strided</span><span class="p">,</span> <span class="n">device</span><span class="o">=</span><span class="bp">None</span><span class="p">,</span> <span class="n">requires_grad</span><span class="o">=</span><span class="bp">False</span><span class="p">)</span>
+</code></pre></div></div> <blockquote> <ul> <li><strong>功能</strong>：创建<code class="language-plaintext highlighter-rouge">单位对角矩阵</code>（2维张量）</li> <li><strong>n</strong>: 矩阵行数</li> <li><strong>m</strong>: 矩阵列数</li> <li><strong>注意事项</strong>：默认为<code class="language-plaintext highlighter-rouge">方阵</code></li> </ul> </blockquote> <div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">torch</span><span class="p">.</span><span class="n">eye</span><span class="p">(</span><span class="mi">3</span><span class="p">)</span>
+<span class="s">'''
+tensor([[1., 0., 0.],
+        [0., 1., 0.],
+        [0., 0., 1.]])
+'''</span>
+</code></pre></div></div> <h3 id="13-依概率分布创建张量">1.3 依概率分布创建张量</h3> <h4 id="131-torchnormal">1.3.1 <code class="language-plaintext highlighter-rouge">torch.normal</code></h4> <div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">torch</span><span class="p">.</span><span class="n">normal</span><span class="p">(</span><span class="n">mean</span><span class="p">,</span> <span class="n">std</span><span class="p">,</span> <span class="n">out</span><span class="o">=</span><span class="bp">None</span><span class="p">)</span>
+</code></pre></div></div> <blockquote> <ul> <li><strong>功能</strong>：生成<code class="language-plaintext highlighter-rouge">正态分布（高斯分布）</code></li> <li><strong>mean</strong>: 均值</li> <li><strong>std</strong>: 标准差</li> <li><strong>四种模式：</strong>： <ul> <li>mean为<code class="language-plaintext highlighter-rouge">标量</code>，std为<code class="language-plaintext highlighter-rouge">标量</code></li> <li>mean为<code class="language-plaintext highlighter-rouge">标量</code>，std为<code class="language-plaintext highlighter-rouge">张量</code></li> <li>mean为<code class="language-plaintext highlighter-rouge">张量</code>，std为<code class="language-plaintext highlighter-rouge">标量</code></li> <li>mean为<code class="language-plaintext highlighter-rouge">张量</code>，std为<code class="language-plaintext highlighter-rouge">张量</code></li> </ul> </li> </ul> </blockquote> <p>样例：</p> <div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="c1"># 1. mean为标量，std为标量
+</span><span class="n">mean1</span> <span class="o">=</span> <span class="n">torch</span><span class="p">.</span><span class="n">tensor</span><span class="p">([</span><span class="mf">1.0</span><span class="p">])</span>
+<span class="n">std1</span> <span class="o">=</span> <span class="n">torch</span><span class="p">.</span><span class="n">tensor</span><span class="p">([</span><span class="mf">2.0</span><span class="p">])</span>
+<span class="n">normal1</span> <span class="o">=</span> <span class="n">torch</span><span class="p">.</span><span class="n">normal</span><span class="p">(</span><span class="n">mean</span><span class="o">=</span><span class="n">mean1</span><span class="p">,</span> <span class="n">std</span><span class="o">=</span><span class="n">std1</span><span class="p">)</span>
+<span class="k">print</span><span class="p">(</span><span class="sa">f</span><span class="s">'mean为标量，std为标量:  </span><span class="si">{</span><span class="n">normal1</span><span class="si">}</span><span class="s">'</span><span class="p">)</span>
+<span class="c1"># 2. mean为标量，std为张量
+</span><span class="n">mean2</span> <span class="o">=</span> <span class="n">torch</span><span class="p">.</span><span class="n">tensor</span><span class="p">([</span><span class="mf">1.0</span><span class="p">])</span>
+<span class="n">std2</span> <span class="o">=</span> <span class="n">torch</span><span class="p">.</span><span class="n">arange</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="o">-</span><span class="mf">0.1</span><span class="p">)</span>
+<span class="n">normal2</span> <span class="o">=</span> <span class="n">torch</span><span class="p">.</span><span class="n">normal</span><span class="p">(</span><span class="n">mean</span><span class="o">=</span><span class="n">mean2</span><span class="p">,</span> <span class="n">std</span><span class="o">=</span><span class="n">std2</span><span class="p">)</span>
+<span class="k">print</span><span class="p">(</span><span class="sa">f</span><span class="s">'mean为标量，std为张量:  </span><span class="si">{</span><span class="n">normal2</span><span class="si">}</span><span class="s">'</span><span class="p">)</span>
+<span class="c1"># 3. mean为张量，std为标量
+</span><span class="n">mean3</span> <span class="o">=</span> <span class="n">torch</span><span class="p">.</span><span class="n">arange</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="o">-</span><span class="mf">0.1</span><span class="p">)</span>
+<span class="n">std3</span> <span class="o">=</span> <span class="n">torch</span><span class="p">.</span><span class="n">tensor</span><span class="p">([</span><span class="mf">1.0</span><span class="p">])</span>
+<span class="n">normal3</span> <span class="o">=</span> <span class="n">torch</span><span class="p">.</span><span class="n">normal</span><span class="p">(</span><span class="n">mean</span><span class="o">=</span><span class="n">mean3</span><span class="p">,</span> <span class="n">std</span><span class="o">=</span><span class="n">std3</span><span class="p">)</span>
+<span class="k">print</span><span class="p">(</span><span class="sa">f</span><span class="s">'mean为张量，std为标量:  </span><span class="si">{</span><span class="n">normal3</span><span class="si">}</span><span class="s">'</span><span class="p">)</span>
+<span class="c1"># 4. mean为张量，std为张量
+</span><span class="n">mean4</span> <span class="o">=</span> <span class="n">torch</span><span class="p">.</span><span class="n">arange</span><span class="p">(</span><span class="mf">1.</span><span class="p">,</span> <span class="mf">11.</span><span class="p">)</span>
+<span class="n">std4</span> <span class="o">=</span> <span class="n">torch</span><span class="p">.</span><span class="n">arange</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="o">-</span><span class="mf">0.1</span><span class="p">)</span>
+<span class="n">normal4</span> <span class="o">=</span> <span class="n">torch</span><span class="p">.</span><span class="n">normal</span><span class="p">(</span><span class="n">mean</span><span class="o">=</span><span class="n">mean4</span><span class="p">,</span> <span class="n">std</span><span class="o">=</span><span class="n">std4</span><span class="p">)</span>
+<span class="k">print</span><span class="p">(</span><span class="sa">f</span><span class="s">'mean为张量，std为张量:  </span><span class="si">{</span><span class="n">normal4</span><span class="si">}</span><span class="s">'</span><span class="p">)</span>
+<span class="s">'''
+mean为标量，std为标量:  
+	tensor([0.8404])
+mean为标量，std为张量:  
+	tensor([ 1.9674,  0.3015,  1.4441,  1.1592, -0.3160,  0.8436,  1.1548,  1.1149, 0.8569,  0.8924])
+mean为张量，std为标量:  
+	tensor([-1.1098,  0.0993,  0.7905,  1.5703, -0.2797, -0.5459, -0.7058, -1.1746, 0.1725,  1.2089])
+mean为张量，std为张量:  
+	tensor([-0.1302,  1.2099,  1.6807,  2.5063,  5.4447,  6.4120,  6.9074,  8.2245, 8.9090, 10.0049])
+'''</span>
+</code></pre></div></div> <h4 id="132-torchnormal">1.3.2 <code class="language-plaintext highlighter-rouge">torch.normal</code></h4> <div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">torch</span><span class="p">.</span><span class="n">normal</span><span class="p">(</span><span class="n">mean</span><span class="p">,</span> <span class="n">std</span><span class="p">,</span> <span class="n">size</span><span class="p">,</span> <span class="n">out</span><span class="o">=</span><span class="bp">None</span><span class="p">)</span>
+</code></pre></div></div> <blockquote> <ul> <li><strong>功能</strong>：生成一定大小的生成<code class="language-plaintext highlighter-rouge">正态分布（高斯分布）</code></li> <li><strong>size</strong>: 张量的形状，如(3, 3)、(3, 224, 224)</li> </ul> </blockquote> <p>样例：</p> <div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">torch</span><span class="p">.</span><span class="n">normal</span><span class="p">(</span><span class="mi">3</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="n">size</span><span class="o">=</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="mi">3</span><span class="p">))</span>
+<span class="s">'''
+tensor([[3.6354, 3.2656, 3.2746]])
+'''</span>
+</code></pre></div></div> <h4 id="133-torchrandn">1.3.3 <code class="language-plaintext highlighter-rouge">torch.randn</code></h4> <div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">torch</span><span class="p">.</span><span class="n">randn</span><span class="p">(</span><span class="o">*</span><span class="n">size</span><span class="p">,</span> <span class="n">out</span><span class="o">=</span><span class="bp">None</span><span class="p">,</span> <span class="n">dtype</span><span class="o">=</span><span class="bp">None</span><span class="p">,</span> <span class="n">layout</span><span class="o">=</span><span class="n">torch</span><span class="p">.</span><span class="n">strided</span><span class="p">,</span> <span class="n">device</span><span class="o">=</span><span class="bp">None</span><span class="p">,</span> <span class="n">requires_grad</span><span class="o">=</span><span class="bp">False</span><span class="p">)</span>
+</code></pre></div></div> <blockquote> <ul> <li><strong>功能</strong>：生成<code class="language-plaintext highlighter-rouge">标准正态分布</code></li> <li><strong>size</strong>: 张量的形状，如(3, 3)、(3, 224, 224)</li> </ul> </blockquote> <p>样例：</p> <div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">torch</span><span class="p">.</span><span class="n">randn</span><span class="p">(</span><span class="mi">3</span><span class="p">,</span> <span class="mi">2</span><span class="p">)</span>
+<span class="s">'''
+tensor([[0.2405, 1.3955],
+        [1.3470, 2.4382],
+        [0.2028, 2.4505]])
+'''</span>
+</code></pre></div></div> <h4 id="134-torchrand">1.3.4 <code class="language-plaintext highlighter-rouge">torch.rand</code></h4> <div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">torch</span><span class="p">.</span><span class="n">rand</span><span class="p">(</span><span class="o">*</span><span class="n">size</span><span class="p">,</span> <span class="n">out</span><span class="o">=</span><span class="bp">None</span><span class="p">,</span> <span class="n">dtype</span><span class="o">=</span><span class="bp">None</span><span class="p">,</span> <span class="n">layout</span><span class="o">=</span><span class="n">torch</span><span class="p">.</span><span class="n">strided</span><span class="p">,</span> <span class="n">device</span><span class="o">=</span><span class="bp">None</span><span class="p">,</span> <span class="n">requires_grad</span><span class="o">=</span><span class="bp">False</span><span class="p">)</span>
+</code></pre></div></div> <blockquote> <ul> <li><strong>功能</strong>：在区间 <code class="language-plaintext highlighter-rouge">[0,1)</code> 上，生成<code class="language-plaintext highlighter-rouge">均匀分布</code></li> <li><strong>size</strong>: 张量的形状，如(3, 3)、(3, 224, 224)</li> </ul> </blockquote> <p>样例：</p> <div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">torch</span><span class="p">.</span><span class="n">normal</span><span class="p">(</span><span class="mi">3</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="n">size</span><span class="o">=</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="mi">3</span><span class="p">))</span>
+<span class="s">'''
+tensor([[3.6354, 3.2656, 3.2746]])
+'''</span>
+</code></pre></div></div> <h4 id="135-torchrandint">1.3.5 <code class="language-plaintext highlighter-rouge">torch.randint</code></h4> <div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">torch</span><span class="p">.</span><span class="n">randint</span><span class="p">(</span><span class="n">low</span><span class="o">=</span><span class="mi">0</span><span class="p">,</span> <span class="n">high</span><span class="p">,</span> <span class="n">size</span><span class="p">,</span> <span class="n">out</span><span class="o">=</span><span class="bp">None</span><span class="p">,</span> <span class="n">dtype</span><span class="o">=</span><span class="bp">None</span><span class="p">,</span> <span class="n">layout</span><span class="o">=</span><span class="n">torch</span><span class="p">.</span><span class="n">strided</span><span class="p">,</span> <span class="n">device</span><span class="o">=</span><span class="bp">None</span><span class="p">,</span> <span class="n">requires_grad</span><span class="o">=</span><span class="bp">False</span><span class="p">)</span>
+</code></pre></div></div> <blockquote> <ul> <li><strong>功能</strong>：区间 <code class="language-plaintext highlighter-rouge">[𝑙𝑜𝑤,ℎ𝑖𝑔ℎ)</code> 生成<code class="language-plaintext highlighter-rouge">整数均匀分布</code></li> <li><strong>size</strong>: 张量的形状，如(3, 3)、(3, 224, 224)</li> </ul> </blockquote> <p>样例：</p> <div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">torch</span><span class="p">.</span><span class="n">randint</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="mi">10</span><span class="p">,</span> <span class="p">(</span><span class="mi">2</span><span class="p">,</span> <span class="mi">2</span><span class="p">))</span>
+<span class="s">'''
+tensor([[8, 6],
+        [1, 3]])
+'''</span>
+</code></pre></div></div> <h4 id="136-torchrandperm">1.3.6 <code class="language-plaintext highlighter-rouge">torch.randperm</code></h4> <div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">torch</span><span class="p">.</span><span class="n">randperm</span><span class="p">(</span><span class="n">n</span><span class="p">,</span> <span class="n">out</span><span class="o">=</span><span class="bp">None</span><span class="p">,</span> <span class="n">dtype</span><span class="o">=</span><span class="n">torch</span><span class="p">.</span><span class="n">int64</span><span class="p">,</span> <span class="n">layout</span><span class="o">=</span><span class="n">torch</span><span class="p">.</span><span class="n">strided</span><span class="p">,</span> <span class="n">device</span><span class="o">=</span><span class="bp">None</span><span class="p">,</span> <span class="n">requires_grad</span><span class="o">=</span><span class="bp">False</span><span class="p">)</span>
+</code></pre></div></div> <blockquote> <ul> <li><strong>功能</strong>：生成从<code class="language-plaintext highlighter-rouge">0到n-1的随机排列</code></li> <li><strong>n</strong>: 张量的长度</li> </ul> </blockquote> <p>样例：</p> <div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">torch</span><span class="p">.</span><span class="n">randperm</span><span class="p">(</span><span class="mi">6</span><span class="p">)</span>
+<span class="s">'''
+tensor([2, 0, 4, 5, 1, 3])
+'''</span>
+</code></pre></div></div> <h4 id="137-torchbernoulli">1.3.7 <code class="language-plaintext highlighter-rouge">torch.bernoulli</code></h4> <div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">torch</span><span class="p">.</span><span class="n">bernoulli</span><span class="p">(</span><span class="nb">input</span><span class="p">,</span> <span class="o">*</span><span class="p">,</span> <span class="n">generator</span><span class="o">=</span><span class="bp">None</span><span class="p">,</span> <span class="n">out</span><span class="o">=</span><span class="bp">None</span><span class="p">)</span>
+</code></pre></div></div> <blockquote> <ul> <li><strong>功能</strong>：以<code class="language-plaintext highlighter-rouge">input</code>为概率，生成<code class="language-plaintext highlighter-rouge">伯努利分布（0-1分布，两点分布）</code></li> <li><strong>input</strong>: 概率值</li> </ul> </blockquote> <p>样例：</p> <div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">a</span> <span class="o">=</span> <span class="n">torch</span><span class="p">.</span><span class="n">empty</span><span class="p">(</span><span class="mi">2</span><span class="p">,</span> <span class="mi">2</span><span class="p">).</span><span class="n">uniform_</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="mi">1</span><span class="p">)</span>  <span class="c1"># 生成2×2的概率矩阵
+</span><span class="n">torch</span><span class="p">.</span><span class="n">bernoulli</span><span class="p">(</span><span class="n">a</span><span class="p">)</span>
+<span class="s">'''
+tensor([[0., 1.],
+        [1., 0.]])
+'''</span>
+</code></pre></div></div> <h2 id="2-张量的操作">2. 张量的操作</h2> <h3 id="21-张量拼接与切分">2.1 张量拼接与切分</h3> <h4 id="211-torchcat">2.1.1 <code class="language-plaintext highlighter-rouge">torch.cat</code></h4> <div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">torch</span><span class="p">.</span><span class="n">cat</span><span class="p">(</span><span class="n">tensors</span><span class="p">,</span> <span class="n">dim</span><span class="o">=</span><span class="mi">0</span><span class="p">,</span> <span class="n">out</span><span class="o">=</span><span class="bp">None</span><span class="p">)</span>
+</code></pre></div></div> <blockquote> <ul> <li><strong>功能</strong>：将张量<code class="language-plaintext highlighter-rouge">按维度dim</code>进行拼接</li> <li><strong>tensors</strong>: 张量序列seq</li> <li><strong>dim</strong>: 要拼接的维度 <code class="language-plaintext highlighter-rouge">dim=0按行拼接 dim=1按列拼接 dim=n按维度拼接</code></li> </ul> </blockquote> <div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">x</span> <span class="o">=</span> <span class="n">torch</span><span class="p">.</span><span class="n">randn</span><span class="p">(</span><span class="mi">2</span><span class="p">,</span> <span class="mi">3</span><span class="p">)</span>
+<span class="k">print</span><span class="p">(</span><span class="n">x</span><span class="p">.</span><span class="n">shape</span><span class="p">)</span>
+<span class="n">a</span> <span class="o">=</span> <span class="n">torch</span><span class="p">.</span><span class="n">cat</span><span class="p">((</span><span class="n">x</span><span class="p">,</span> <span class="n">x</span><span class="p">,</span> <span class="n">x</span><span class="p">),</span> <span class="mi">1</span><span class="p">)</span>
+<span class="n">a</span><span class="p">.</span><span class="n">shape</span>
+<span class="s">'''
+torch.Size([2, 3])
+torch.Size([2, 9])
+'''</span>
+</code></pre></div></div> <h4 id="212-torchstack">2.1.2 <code class="language-plaintext highlighter-rouge">torch.stack</code></h4> <div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">torch</span><span class="p">.</span><span class="n">stack</span><span class="p">(</span><span class="n">tensors</span><span class="p">,</span> <span class="n">dim</span><span class="o">=</span><span class="mi">0</span><span class="p">,</span> <span class="n">out</span><span class="o">=</span><span class="bp">None</span><span class="p">)</span>
+</code></pre></div></div> <blockquote> <ul> <li><strong>功能</strong>：对序列数据内部的张量进行<code class="language-plaintext highlighter-rouge">扩维拼接</code>，指定维度由程序员选择、大小是生成后数据的维度区间。</li> <li><strong>tensors</strong>: 张量序列seq</li> <li><strong>dim</strong>: 指定扩张的维度 <code class="language-plaintext highlighter-rouge">dim=0按行扩张 dim=1按列扩张 dim=n按维度扩张</code> 拼接后的tensor形状，会根据不同的dim发生变化。 <img src="https://slienceme.cn/images/posts/839df557bbd5421ca8029a2617fa9287.png" alt="Alt Text" /> 参考：<a href="https://blog.csdn.net/sweet_tea_/article/details/128551245">pytorch拼接函数：torch.stack()和torch.cat()详解</a></li> </ul> </blockquote> <div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">T1</span><span class="p">:</span>
+ <span class="n">tensor</span><span class="p">([[</span><span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">3</span><span class="p">],</span>
+         <span class="p">[</span><span class="mi">4</span><span class="p">,</span> <span class="mi">5</span><span class="p">,</span> <span class="mi">6</span><span class="p">],</span>
+         <span class="p">[</span><span class="mi">7</span><span class="p">,</span> <span class="mi">8</span><span class="p">,</span> <span class="mi">9</span><span class="p">]])</span>
+<span class="n">T2</span><span class="p">:</span>
+ <span class="n">tensor</span><span class="p">([[</span><span class="mi">10</span><span class="p">,</span> <span class="mi">20</span><span class="p">,</span> <span class="mi">30</span><span class="p">],</span>
+         <span class="p">[</span><span class="mi">40</span><span class="p">,</span> <span class="mi">50</span><span class="p">,</span> <span class="mi">60</span><span class="p">],</span>
+         <span class="p">[</span><span class="mi">70</span><span class="p">,</span> <span class="mi">80</span><span class="p">,</span> <span class="mi">90</span><span class="p">]])</span>
+<span class="o">----------------------------------------------</span>
+<span class="n">R0</span> <span class="o">=</span> <span class="n">torch</span><span class="p">.</span><span class="n">stack</span><span class="p">((</span><span class="n">T1</span><span class="p">,</span> <span class="n">T2</span><span class="p">),</span> <span class="n">dim</span><span class="o">=</span><span class="mi">0</span><span class="p">)</span>
+<span class="s">'''
+ tensor([[[1,  2,  3],
+          [4,  5,  6],
+          [7,  8,  9]],
+         [[10, 20, 30],
+          [40, 50, 60],
+          [70, 80, 90]]])
+torch.Size([2, 3, 3])
+----------------------------------------------
+'''</span>
+<span class="n">R1</span> <span class="o">=</span> <span class="n">torch</span><span class="p">.</span><span class="n">stack</span><span class="p">((</span><span class="n">T1</span><span class="p">,</span> <span class="n">T2</span><span class="p">),</span> <span class="n">dim</span><span class="o">=</span><span class="mi">1</span><span class="p">)</span>
+<span class="s">'''
+ tensor([[[1,  2,  3],[10, 20, 30]],
+         [[4,  5,  6],[40, 50, 60]],
+         [[7,  8,  9],[70, 80, 90]]])
+ torch.Size([3, 2, 3])
+'''</span>
+<span class="o">----------------------------------------------</span>
+<span class="n">R2</span> <span class="o">=</span> <span class="n">torch</span><span class="p">.</span><span class="n">stack</span><span class="p">((</span><span class="n">T1</span><span class="p">,</span> <span class="n">T2</span><span class="p">),</span> <span class="n">dim</span><span class="o">=</span><span class="mi">2</span><span class="p">)</span>
+<span class="s">'''
+ tensor([[[1, 10],[2, 20],[3, 30]],
+         [[4, 40],[5, 50],[6, 60]],
+         [[7, 70],[8, 80],[9, 90]]])
+ torch.Size([3, 3, 2])
+'''</span>
+
+<span class="n">R3</span> <span class="o">=</span> <span class="n">torch</span><span class="p">.</span><span class="n">stack</span><span class="p">((</span><span class="n">T1</span><span class="p">,</span> <span class="n">T2</span><span class="p">),</span> <span class="n">dim</span><span class="o">=</span><span class="mi">3</span><span class="p">)</span>
+<span class="s">'''
+IndexError: Dimension out of range (expected to be in range of [-3, 2], but got 3)
+'''</span>
+
+</code></pre></div></div> <h4 id="213-torchchunk">2.1.3 <code class="language-plaintext highlighter-rouge">torch.chunk</code></h4> <div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">torch</span><span class="p">.</span><span class="n">chunk</span><span class="p">(</span><span class="nb">input</span><span class="p">,</span> <span class="n">chunks</span><span class="p">,</span> <span class="n">dim</span><span class="o">=</span><span class="mi">0</span><span class="p">)</span>
+</code></pre></div></div> <blockquote> <ul> <li><strong>功能</strong>：将张量按维度<code class="language-plaintext highlighter-rouge">dim</code>进行平均切分</li> <li><strong>返回值</strong>: 张量列表</li> <li><strong>注意事项</strong>：若不能整除，最后一份张量小于其他张量</li> <li><strong>input</strong>: 要切分的<code class="language-plaintext highlighter-rouge">张量</code></li> <li><strong>chunks</strong>: 要切分的<code class="language-plaintext highlighter-rouge">份数</code></li> <li><strong>dim</strong>: 要切分的<code class="language-plaintext highlighter-rouge">维度</code> 0按照列切分 1按照行切分</li> </ul> </blockquote> <div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">a</span> <span class="o">=</span> <span class="n">torch</span><span class="p">.</span><span class="n">arange</span><span class="p">(</span><span class="mi">10</span><span class="p">).</span><span class="n">reshape</span><span class="p">(</span><span class="mi">5</span><span class="p">,</span><span class="mi">2</span><span class="p">)</span>
+<span class="n">torch</span><span class="p">.</span><span class="n">chunk</span><span class="p">(</span><span class="n">a</span><span class="p">,</span> <span class="mi">2</span><span class="p">)</span>
+<span class="s">'''
+tensor([[0, 1],
+        [2, 3],
+        [4, 5],
+        [6, 7],
+        [8, 9]])
+(tensor([[0, 1],
+         [2, 3],
+         [4, 5]]),
+ tensor([[6, 7],
+         [8, 9]]))
+'''</span>
+<span class="o">---------------------------------------</span>
+<span class="n">torch</span><span class="p">.</span><span class="n">chunk</span><span class="p">(</span><span class="n">a</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">1</span><span class="p">)</span>
+<span class="s">'''
+(tensor([[0],
+         [2],
+         [4],
+         [6],
+         [8]]),
+ tensor([[1],
+         [3],
+         [5],
+         [7],
+         [9]]))
+'''</span>
+</code></pre></div></div> <h4 id="214-torchsplit">2.1.4 <code class="language-plaintext highlighter-rouge">torch.split</code></h4> <div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">torch</span><span class="p">.</span><span class="n">split</span><span class="p">(</span><span class="n">tensor</span><span class="p">,</span> <span class="n">split_size_or_sections</span><span class="p">,</span> <span class="n">dim</span><span class="o">=</span><span class="mi">0</span><span class="p">)</span>
+</code></pre></div></div> <blockquote> <ul> <li><strong>功能</strong>：将张量按维度<code class="language-plaintext highlighter-rouge">dim</code>进行切分</li> <li><strong>返回值</strong>: 张量列表</li> <li><strong>tensor</strong>: 要切分的<code class="language-plaintext highlighter-rouge">张量</code></li> <li><strong>split_size_or_sections</strong>: 为<code class="language-plaintext highlighter-rouge">int</code>时，表示每一份的长度；为<code class="language-plaintext highlighter-rouge">list</code>时，按list元素切分</li> <li><strong>dim</strong>: 要切分的<code class="language-plaintext highlighter-rouge">维度</code> 0按照列切分 1按照行切分</li> </ul> </blockquote> <div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">a</span> <span class="o">=</span> <span class="n">torch</span><span class="p">.</span><span class="n">arange</span><span class="p">(</span><span class="mi">10</span><span class="p">).</span><span class="n">reshape</span><span class="p">(</span><span class="mi">5</span><span class="p">,</span><span class="mi">2</span><span class="p">)</span>
+<span class="n">torch</span><span class="p">.</span><span class="n">split</span><span class="p">(</span><span class="n">a</span><span class="p">,</span> <span class="mi">2</span><span class="p">)</span>
+<span class="s">''' 
+tensor([[0, 1],
+        [2, 3],
+        [4, 5],
+        [6, 7],
+        [8, 9]])
+(tensor([[0, 1],
+         [2, 3]]),
+ tensor([[4, 5],
+         [6, 7]]),
+ tensor([[8, 9]]))
+'''</span>
+<span class="n">torch</span><span class="p">.</span><span class="n">split</span><span class="p">(</span><span class="n">a</span><span class="p">,</span> <span class="p">[</span><span class="mi">3</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">1</span><span class="p">])</span>
+<span class="s">'''
+(tensor([[0, 1],
+         [2, 3],
+         [4, 5]]),
+ tensor([[6, 7]]),
+ tensor([[8, 9]]))
+'''</span>
+</code></pre></div></div> <h3 id="22-张量索引">2.2 张量索引</h3> <h4 id="221-torchindex_select">2.2.1 <code class="language-plaintext highlighter-rouge">torch.index_select</code></h4> <div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">torch</span><span class="p">.</span><span class="n">index_select</span><span class="p">(</span><span class="nb">input</span><span class="p">,</span> <span class="n">dim</span><span class="p">,</span> <span class="n">index</span><span class="p">,</span> <span class="n">out</span><span class="o">=</span><span class="bp">None</span><span class="p">)</span>
+</code></pre></div></div> <blockquote> <ul> <li><strong>功能</strong>：在维度<code class="language-plaintext highlighter-rouge">dim</code>上，按index索引数据</li> <li><strong>返回值</strong>: 依index索引数据拼接的张量</li> <li><strong>input</strong>: 要索引的张量</li> <li><strong>dim</strong>: 要索引的<code class="language-plaintext highlighter-rouge">维度</code> 0按照列切分 1按照行切分</li> <li><strong>index</strong>: 要索引数据的序号</li> </ul> </blockquote> <div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">x</span> <span class="o">=</span> <span class="n">torch</span><span class="p">.</span><span class="n">randn</span><span class="p">(</span><span class="mi">3</span><span class="p">,</span> <span class="mi">4</span><span class="p">)</span>
+<span class="n">indices</span> <span class="o">=</span> <span class="n">torch</span><span class="p">.</span><span class="n">tensor</span><span class="p">([</span><span class="mi">0</span><span class="p">,</span> <span class="mi">2</span><span class="p">])</span>
+<span class="n">torch</span><span class="p">.</span><span class="n">index_select</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="n">indices</span><span class="p">)</span>
+<span class="s">'''
+x: tensor([[-0.1468,  0.7861,  0.9468, -1.1143],
+           [ 1.6908, -0.8948, -0.3556,  1.2324],
+           [ 0.1382, -1.6822,  0.3177,  0.1328]])
+indices: tensor([0, 2])
+tensor([[-0.1468,  0.7861,  0.9468, -1.1143],
+        [ 0.1382, -1.6822,  0.3177,  0.1328]])
+'''</span>
+</code></pre></div></div> <h4 id="222-torchmasked_select">2.2.2 <code class="language-plaintext highlighter-rouge">torch.masked_select</code></h4> <div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">torch</span><span class="p">.</span><span class="n">masked_select</span><span class="p">(</span><span class="nb">input</span><span class="p">,</span> <span class="n">mask</span><span class="p">,</span> <span class="n">out</span><span class="o">=</span><span class="bp">None</span><span class="p">)</span>
+</code></pre></div></div> <blockquote> <ul> <li><strong>功能</strong>：按mask中的True进行索引</li> <li><strong>返回值</strong>: 一维张量</li> <li><strong>input</strong>: 要索引的张量</li> <li><strong>mask</strong>: 与input同形状的布尔类型张量</li> </ul> </blockquote> <div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">x</span> <span class="o">=</span> <span class="n">torch</span><span class="p">.</span><span class="n">randn</span><span class="p">(</span><span class="mi">3</span><span class="p">,</span> <span class="mi">4</span><span class="p">)</span>
+<span class="k">print</span><span class="p">(</span><span class="s">'x:'</span><span class="p">,</span><span class="n">x</span><span class="p">)</span>
+<span class="n">mask</span> <span class="o">=</span> <span class="n">x</span><span class="p">.</span><span class="n">ge</span><span class="p">(</span><span class="mf">0.5</span><span class="p">)</span>
+<span class="k">print</span><span class="p">(</span><span class="s">'mask:'</span><span class="p">,</span><span class="n">mask</span><span class="p">)</span>
+<span class="n">torch</span><span class="p">.</span><span class="n">masked_select</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="n">mask</span><span class="p">)</span>
+<span class="s">'''
+x: tensor([[ 0.1373,  0.2405,  1.3955,  1.3470],
+           [ 2.4382,  0.2028,  2.4505,  2.0256],
+           [ 1.7792, -0.9179, -0.4578, -0.7245]])
+mask: tensor([[False, False,  True,  True],
+              [ True, False,  True,  True],
+              [ True, False, False, False]])
+tensor([1.3955, 1.3470, 2.4382, 2.4505, 2.0256, 1.7792])
+'''</span>
+</code></pre></div></div> <h3 id="23-张量变换">2.3 张量变换</h3> <h4 id="231-torchreshape">2.3.1 <code class="language-plaintext highlighter-rouge">torch.reshape</code></h4> <div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">torch</span><span class="p">.</span><span class="n">reshape</span><span class="p">(</span><span class="nb">input</span><span class="p">,</span> <span class="n">shape</span><span class="p">)</span>
+</code></pre></div></div> <blockquote> <ul> <li><strong>功能</strong>：<code class="language-plaintext highlighter-rouge">变换张量形状</code></li> <li><strong>注意事项</strong>: 当张量在内存中是连续时，新张量与input共享数据内存</li> <li><strong>input</strong>: 要变换的张量</li> <li><strong>shape</strong>: 新张量的形状</li> </ul> </blockquote> <div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">a</span> <span class="o">=</span> <span class="n">torch</span><span class="p">.</span><span class="n">arange</span><span class="p">(</span><span class="mf">4.</span><span class="p">)</span>
+<span class="n">torch</span><span class="p">.</span><span class="n">reshape</span><span class="p">(</span><span class="n">a</span><span class="p">,</span> <span class="p">(</span><span class="mi">2</span><span class="p">,</span> <span class="mi">2</span><span class="p">))</span>
+<span class="s">'''
+tensor([0., 1., 2., 3.])
+tensor([[0., 1.],
+        [2., 3.]])
+'''</span>
+</code></pre></div></div> <h4 id="232-torchtranspose">2.3.2 <code class="language-plaintext highlighter-rouge">torch.transpose</code></h4> <div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">torch</span><span class="p">.</span><span class="n">transpose</span><span class="p">(</span><span class="nb">input</span><span class="p">,</span> <span class="n">dim0</span><span class="p">,</span> <span class="n">dim1</span><span class="p">)</span>
+</code></pre></div></div> <blockquote> <ul> <li><strong>功能</strong>：<code class="language-plaintext highlighter-rouge">交换张量</code>的两个<code class="language-plaintext highlighter-rouge">维度</code></li> <li><strong>input</strong>: 要交换的张量</li> <li><strong>dim0</strong>: 要交换的维度</li> <li><strong>dim1</strong>: 要交换的维度</li> </ul> </blockquote> <div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">x</span> <span class="o">=</span> <span class="n">torch</span><span class="p">.</span><span class="n">randn</span><span class="p">(</span><span class="mi">2</span><span class="p">,</span> <span class="mi">3</span><span class="p">)</span>
+<span class="n">torch</span><span class="p">.</span><span class="n">transpose</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">1</span><span class="p">)</span>
+<span class="s">'''
+x:
+tensor([[ 1.2799, -0.9941,  1.8150],
+        [-0.6028,  1.6148,  1.9302]])
+torch.Size([2, 3])
+tensor([[ 1.2799, -0.6028],
+        [-0.9941,  1.6148],
+        [ 1.8150,  1.9302]])
+torch.Size([3, 2])
+'''</span>
+<span class="n">x</span> <span class="o">=</span> <span class="n">torch</span><span class="p">.</span><span class="n">randn</span><span class="p">(</span><span class="mi">2</span><span class="p">,</span> <span class="mi">3</span><span class="p">,</span> <span class="mi">4</span><span class="p">)</span>
+<span class="k">print</span><span class="p">(</span><span class="n">x</span><span class="p">)</span>
+<span class="k">print</span><span class="p">(</span><span class="n">x</span><span class="p">.</span><span class="n">shape</span><span class="p">)</span>
+<span class="n">a</span> <span class="o">=</span> <span class="n">torch</span><span class="p">.</span><span class="n">transpose</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">2</span><span class="p">)</span>
+<span class="k">print</span><span class="p">(</span><span class="n">a</span><span class="p">)</span>
+<span class="k">print</span><span class="p">(</span><span class="n">a</span><span class="p">.</span><span class="n">shape</span><span class="p">)</span>
+<span class="s">'''
+tensor([[[ 0.8885, -1.4867, -0.8898,  0.9005],
+         [ 0.2615, -0.1494,  1.1523, -1.1309],
+         [ 1.4025, -0.4167,  0.1655, -0.7157]],
+
+        [[ 1.2425, -1.3332,  0.2961, -0.0937],
+         [-0.7556, -0.1198,  0.9545,  0.1492],
+         [ 1.6222,  0.1947, -1.5953,  0.5859]]])
+torch.Size([2, 3, 4])
+tensor([[[ 0.8885,  1.2425],
+         [ 0.2615, -0.7556],
+         [ 1.4025,  1.6222]],
+
+        [[-1.4867, -1.3332],
+         [-0.1494, -0.1198],
+         [-0.4167,  0.1947]],
+
+        [[-0.8898,  0.2961],
+         [ 1.1523,  0.9545],
+         [ 0.1655, -1.5953]],
+
+        [[ 0.9005, -0.0937],
+         [-1.1309,  0.1492],
+         [-0.7157,  0.5859]]])
+torch.Size([4, 3, 2])
+'''</span>
+</code></pre></div></div> <h4 id="233-torcht">2.3.3 <code class="language-plaintext highlighter-rouge">torch.t</code></h4> <div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">torch</span><span class="p">.</span><span class="n">t</span><span class="p">(</span><span class="nb">input</span><span class="p">)</span>
+</code></pre></div></div> <blockquote> <ul> <li><strong>功能</strong>：2维张量转置，对矩阵而言，等价于torch.transpose(input, 0, 1)</li> </ul> </blockquote> <div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">x</span> <span class="o">=</span> <span class="n">torch</span><span class="p">.</span><span class="n">randn</span><span class="p">((</span><span class="mi">2</span><span class="p">,</span> <span class="mi">2</span><span class="p">))</span>
+<span class="k">print</span><span class="p">(</span><span class="n">x</span><span class="p">)</span>
+<span class="n">torch</span><span class="p">.</span><span class="n">t</span><span class="p">(</span><span class="n">x</span><span class="p">)</span>
+<span class="s">'''
+tensor([[ 0.5740, -0.0798],
+        [ 0.9674, -0.7761]])
+tensor([[ 0.5740,  0.9674],
+        [-0.0798, -0.7761]])
+'''</span>
+</code></pre></div></div> <h4 id="234-torchsqueeze">2.3.4 <code class="language-plaintext highlighter-rouge">torch.squeeze</code></h4> <div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">torch</span><span class="p">.</span><span class="n">squeeze</span><span class="p">(</span><span class="nb">input</span><span class="p">,</span> <span class="n">dim</span><span class="o">=</span><span class="bp">None</span><span class="p">,</span> <span class="n">out</span><span class="o">=</span><span class="bp">None</span><span class="p">)</span>
+</code></pre></div></div> <blockquote> <ul> <li><strong>功能</strong>：压缩长度为1的维度（轴） <code class="language-plaintext highlighter-rouge">维度压缩</code></li> <li><strong>dim</strong>: 若为None，移除所有长度为1的轴；若指定维度，当且仅当该轴长度为1时，可以被移除</li> </ul> </blockquote> <div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">x</span> <span class="o">=</span> <span class="n">torch</span><span class="p">.</span><span class="n">zeros</span><span class="p">(</span><span class="mi">2</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">)</span>
+<span class="k">print</span><span class="p">(</span><span class="n">x</span><span class="p">)</span>
+<span class="k">print</span><span class="p">(</span><span class="n">x</span><span class="p">.</span><span class="n">shape</span><span class="p">)</span>
+<span class="n">y</span> <span class="o">=</span> <span class="n">torch</span><span class="p">.</span><span class="n">squeeze</span><span class="p">(</span><span class="n">x</span><span class="p">)</span>
+<span class="k">print</span><span class="p">(</span><span class="n">y</span><span class="p">)</span>
+<span class="k">print</span><span class="p">(</span><span class="n">y</span><span class="p">.</span><span class="n">shape</span><span class="p">)</span>
+<span class="s">'''
+tensor([[[[[0., 0.]],
+
+          [[0., 0.]]]],
+
+
+
+        [[[[0., 0.]],
+
+          [[0., 0.]]]]])
+torch.Size([2, 1, 2, 1, 2])
+tensor([[[0., 0.],
+         [0., 0.]],
+
+        [[0., 0.],
+         [0., 0.]]])
+torch.Size([2, 2, 2])
+'''</span>
+</code></pre></div></div> <h4 id="235-torchunsqueeze">2.3.5 <code class="language-plaintext highlighter-rouge">torch.unsqueeze</code></h4> <div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">torch</span><span class="p">.</span><span class="n">unsqueeze</span><span class="p">(</span><span class="nb">input</span><span class="p">,</span> <span class="n">dim</span><span class="p">,</span> <span class="n">out</span><span class="o">=</span><span class="bp">None</span><span class="p">)</span>
+</code></pre></div></div> <blockquote> <ul> <li><strong>功能</strong>：依据dim<code class="language-plaintext highlighter-rouge">扩展维度</code></li> <li><strong>dim</strong>: 扩展的维度 0行扩展 1列扩展 -1最后一个维度扩展</li> </ul> </blockquote> <div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">x</span> <span class="o">=</span> <span class="n">torch</span><span class="p">.</span><span class="n">tensor</span><span class="p">([</span><span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">3</span><span class="p">])</span>
+<span class="k">print</span><span class="p">(</span><span class="n">x</span><span class="p">.</span><span class="n">shape</span><span class="p">)</span>
+<span class="n">t0</span> <span class="o">=</span> <span class="n">torch</span><span class="p">.</span><span class="n">unsqueeze</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="mi">0</span><span class="p">)</span>
+<span class="k">print</span><span class="p">(</span><span class="n">t0</span><span class="p">.</span><span class="n">shape</span><span class="p">)</span>
+<span class="n">t1</span> <span class="o">=</span> <span class="n">torch</span><span class="p">.</span><span class="n">unsqueeze</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="mi">1</span><span class="p">)</span>
+<span class="k">print</span><span class="p">(</span><span class="n">t1</span><span class="p">.</span><span class="n">shape</span><span class="p">)</span>
+<span class="n">t2</span> <span class="o">=</span> <span class="n">torch</span><span class="p">.</span><span class="n">unsqueeze</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="o">-</span><span class="mi">1</span><span class="p">)</span>
+<span class="k">print</span><span class="p">(</span><span class="n">t2</span><span class="p">.</span><span class="n">shape</span><span class="p">)</span>
+<span class="n">t0</span><span class="p">,</span> <span class="n">t1</span><span class="p">,</span> <span class="n">t2</span>
+<span class="s">'''
+x:
+	torch.Size([3])
+t0:
+	tensor([[1, 2, 3]])
+	torch.Size([1, 3])
+t1: 
+	tensor([[1],
+	        [2],
+	        [3]])
+	torch.Size([3, 1])
+t2:
+	tensor([[1],
+	        [2],
+	        [3]]))
+	torch.Size([3, 1])
+'''</span>
+</code></pre></div></div> <h2 id="线性回归模型">线性回归模型</h2> <ul> <li>线性回归是分析一个变量与另外一（多）个变量之间关系的方法。 <ul> <li>因变量是$y$，自变量是$x$，关系线性：$y=w\times x + b$，任务是求解 $w$，$b$。</li> </ul> </li> <li>我们的求解步骤是：</li> <li>确定模型：$Model \to y = w \times x + b$</li> <li>选择损失函数：这里用$MSE:\frac{1}{m}\sum_{i=1}^m(y_i-\hat y_i)^2$</li> <li>求解梯度并更新$w$，$b$： \(\begin{array}{lcl} w &amp;=&amp; w - lr \times w.grad \\ b &amp;=&amp; b - lr \times w.grad \end{array}\)</li> <li>下面我们开始写一个线性回归模型：</li> </ul> <div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="c1"># 首先我们得有训练样本X，Y， 这里我们随机生成
+</span><span class="n">x</span> <span class="o">=</span> <span class="n">torch</span><span class="p">.</span><span class="n">rand</span><span class="p">(</span><span class="mi">20</span><span class="p">,</span> <span class="mi">1</span><span class="p">)</span> <span class="o">*</span> <span class="mi">10</span>
+<span class="n">y</span> <span class="o">=</span> <span class="mi">2</span> <span class="o">*</span> <span class="n">x</span> <span class="o">+</span> <span class="p">(</span><span class="mi">5</span> <span class="o">+</span> <span class="n">torch</span><span class="p">.</span><span class="n">randn</span><span class="p">(</span><span class="mi">20</span><span class="p">,</span> <span class="mi">1</span><span class="p">))</span>
+
+<span class="c1"># 构建线性回归函数的参数
+</span><span class="n">w</span> <span class="o">=</span> <span class="n">torch</span><span class="p">.</span><span class="n">randn</span><span class="p">((</span><span class="mi">1</span><span class="p">),</span> <span class="n">requires_grad</span><span class="o">=</span><span class="bp">True</span><span class="p">)</span>
+<span class="n">b</span> <span class="o">=</span> <span class="n">torch</span><span class="p">.</span><span class="n">zeros</span><span class="p">((</span><span class="mi">1</span><span class="p">),</span> <span class="n">requires_grad</span><span class="o">=</span><span class="bp">True</span><span class="p">)</span>   <span class="c1"># 这俩都需要求梯度
+</span>
+<span class="c1"># 设置学习率lr为0.1
+</span><span class="n">lr</span> <span class="o">=</span> <span class="mf">0.1</span>
+
+<span class="k">for</span> <span class="n">iteration</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">100</span><span class="p">):</span>
+    <span class="c1"># 前向传播
+</span>    <span class="n">wx</span> <span class="o">=</span> <span class="n">torch</span><span class="p">.</span><span class="n">mul</span><span class="p">(</span><span class="n">w</span><span class="p">,</span> <span class="n">x</span><span class="p">)</span>
+    <span class="n">y_pred</span> <span class="o">=</span> <span class="n">torch</span><span class="p">.</span><span class="n">add</span><span class="p">(</span><span class="n">wx</span><span class="p">,</span> <span class="n">b</span><span class="p">)</span>
+ 
+    <span class="c1"># 计算loss  均方误差
+</span>    <span class="n">loss</span> <span class="o">=</span> <span class="p">(</span><span class="mf">0.5</span> <span class="o">*</span> <span class="p">(</span><span class="n">y</span><span class="o">-</span><span class="n">y_pred</span><span class="p">)</span><span class="o">**</span><span class="mi">2</span><span class="p">).</span><span class="n">mean</span><span class="p">()</span>
+ 
+    <span class="c1"># 反向传播
+</span>    <span class="n">loss</span><span class="p">.</span><span class="n">backward</span><span class="p">()</span>
+ 
+    <span class="c1"># 更新参数
+</span>    <span class="n">b</span><span class="p">.</span><span class="n">data</span><span class="p">.</span><span class="n">sub_</span><span class="p">(</span><span class="n">lr</span> <span class="o">*</span> <span class="n">b</span><span class="p">.</span><span class="n">grad</span><span class="p">)</span>    <span class="c1"># 这种_的加法操作时从自身减，相当于-=
+</span>    <span class="n">w</span><span class="p">.</span><span class="n">data</span><span class="p">.</span><span class="n">sub_</span><span class="p">(</span><span class="n">lr</span> <span class="o">*</span> <span class="n">w</span><span class="p">.</span><span class="n">grad</span><span class="p">)</span>
+
+    <span class="c1"># 梯度清零
+</span>    <span class="n">w</span><span class="p">.</span><span class="n">grad</span><span class="p">.</span><span class="n">data</span><span class="p">.</span><span class="n">zero_</span><span class="p">()</span>
+    <span class="n">b</span><span class="p">.</span><span class="n">grad</span><span class="p">.</span><span class="n">data</span><span class="p">.</span><span class="n">zero_</span><span class="p">()</span>
+
+<span class="k">print</span><span class="p">(</span><span class="n">w</span><span class="p">.</span><span class="n">data</span><span class="p">,</span> <span class="n">b</span><span class="p">.</span><span class="n">data</span><span class="p">)</span>
+</code></pre></div></div> <blockquote> <p>部分学习内容来自： 天池实验室</p> </blockquote> <div style="margin-top:2em;padding:0 1.5em;border:1px solid #d3d3d3;background-color:#deebf7"> <h3>文档信息</h3> <ul> <li>本文作者：<a href="https://slienceme.cn" target="_blank">slience_me</a></li> <li>本文链接：<a href="https://slienceme.cn/2023/09/14/PyTorch%E4%B9%8B%E5%BC%A0%E9%87%8F%E7%9A%84%E7%9B%B8%E5%85%B3%E6%93%8D%E4%BD%9C%E5%A4%A7%E5%85%A8/" target="_blank">https://slienceme.cn/2023/09/14/PyTorch%E4%B9%8B%E5%BC%A0%E9%87%8F%E7%9A%84%E7%9B%B8%E5%85%B3%E6%93%8D%E4%BD%9C%E5%A4%A7%E5%85%A8/</a></li> <li>版权声明：自由转载-非商用-非衍生-保持署名（<a href="http://creativecommons.org/licenses/by-nc-nd/3.0/deed.zh" target="_blank">创意共享3.0许可证</a>）</li> </ul> </div> </article> <div class="share"> <div class="share-component" data-disabled='qq,facebook'></div> </div> <div class="comment"> <script src="https://giscus.app/client.js" data-repo="slience-me/blog-comments" data-repo-id="MDEwOlJlcG9zaXRvcnk5MzEyNzkxNw==" data-category="Announcements" data-category-id="DIC_kwDOBY0E7c4CRtg9" data-mapping="title" data-strict="1" data-reactions-enabled="1" data-emit-metadata="0" data-input-position="top" data-theme="light" data-lang="zh-CN" data-loading="lazy" crossorigin="anonymous" async> </script> </div> </div> <div class="column one-fourth"> <h3>Search</h3> <div id="site_search"> <input style="width:96%" type="text" id="search_box" placeholder="Search"> </div> <ul id="search_results" style="font-size:14px;list-style-type:none;padding-top:10px;padding-left:10px;"></ul> <script src="https://slienceme.cn/assets/js/simple-jekyll-search.min.js"></script> <script type="text/javascript"> SimpleJekyllSearch({ searchInput: document.getElementById('search_box'), resultsContainer: document.getElementById('search_results'), json: 'https://slienceme.cn/assets/search_data.json?v=1736474003', searchResultTemplate: '<li><a href="{url}" title="{title}">{title}</a></li>', noResultsText: 'No results found', limit: 10, fuzzy: false, exclude: ['Welcome'] }) </script> <h3 class="post-directory-title mobile-hidden">Table of Contents</h3> <div id="post-directory-module" class="mobile-hidden"> <section class="post-directory"> <dl></dl> </section> </div> <script src="https://slienceme.cn/assets/js/jquery.toc.js"></script> </div> </div> </section> <footer class="container"> <div class="site-footer" role="contentinfo"> <div class="copyright left mobile-block"> Copyright@ 2019-2025 slience_me 版权所有&emsp; <img src="/images/logo/logo.png" class="w-full" style="width: 12px;"> <a href="https://beian.mps.gov.cn/#/query/webSearch?code=13102202000626" rel="noreferrer" target="_blank">冀公网安备13102202000626</a>&emsp; <a href="https://beian.miit.gov.cn/#/Integrated/index" target="_blank" rel="noreferrer">津ICP备2024026565号-1</a> <a href="javascript:window.scrollTo(0,0)" class="right mobile-visible">TOP</a> </div> <ul class="site-footer-links right mobile-hidden"> <li> <a href="javascript:window.scrollTo(0,0)" >TOP</a> </li> </ul> <br/> <script async src="https://slienceme.cn/assets/vendor/busuanzi/2.3/busuanzi.pure.mini.js"></script> <div class="mobile-hidden" style="margin-top:8px"> <span id="busuanzi_container_site_pv" style="display:none"> 本站访问量<span id="busuanzi_value_site_pv"></span>次 </span> <span id="busuanzi_container_site_uv" style="display:none"> / 本站访客数<span id="busuanzi_value_site_uv"></span>人 </span> <span id="busuanzi_container_page_pv" style="display:none"> / 本页访问量<span id="busuanzi_value_page_pv"></span>次 / 统计始于2024-12-01 </span> </div> </div> </footer> <div class="tools-wrapper"> <a class="gotop" href="#" title="回到顶部"><span class="octicon octicon-arrow-up"></span></a> </div> <script src="https://slienceme.cn/assets/vendor/share.js/dist/js/share.min.js"></script> <script src="https://slienceme.cn/assets/js/geopattern.js"></script> <script> jQuery(document).ready(function($) { $('.geopattern').each(function(){ $(this).geopattern($(this).data('pattern-id')); }); /* hljs.initHighlightingOnLoad(); */ }); </script> </body> </html>

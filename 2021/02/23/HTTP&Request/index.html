@@ -1,0 +1,524 @@
+<!DOCTYPE html> <html lang="zh-cmn-Hans" prefix="og: http://ogp.me/ns#" class="han-init"> <head> <meta charset="utf-8"> <meta http-equiv="X-UA-Compatible" content="IE=edge"> <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1" /> <title>Java｜HTTP&Request &mdash; Slience_me的博客</title> <link rel="stylesheet" href="https://slienceme.cn/assets/vendor/primer-css/css/primer.css"> <link rel="stylesheet" href="https://slienceme.cn/assets/css/components/collection.css"> <link rel="stylesheet" href="https://slienceme.cn/assets/css/components/repo-card.css"> <link rel="stylesheet" href="https://slienceme.cn/assets/css/sections/repo-list.css"> <link rel="stylesheet" href="https://slienceme.cn/assets/css/components/boxed-group.css"> <link rel="stylesheet" href="https://slienceme.cn/assets/css/globals/common.css"> <link rel="stylesheet" href="https://slienceme.cn/assets/css/globals/responsive.css"> <link rel="stylesheet" href="https://slienceme.cn/assets/css/posts/index.css"> <link rel="stylesheet" href="https://slienceme.cn/assets/vendor/octicons/octicons/octicons.css"> <link rel="stylesheet" href="https://mazhuang.org/rouge-themes/dist/github.css"> <link rel="stylesheet" href="https://slienceme.cn/assets/vendor/share.js/dist/css/share.min.css"> <link rel="canonical" href="https://slienceme.cn/2021/02/23/HTTP&Request/"> <link rel="alternate" type="application/atom+xml" title="Slience_me的博客" href="https://slienceme.cn/feed.xml"> <link rel="shortcut icon" href="https://slienceme.cn/favicon.ico"> <meta property="og:title" content="Java｜HTTP&Request"> <meta name="keywords" content="编程语言, Java"> <meta name="og:keywords" content="编程语言, Java"> <meta name="description" content="HTTP：1. 概念：Hyper Text Transfer Protocol 超文本传输协议 传输协议：定义了，客户端和服务器端通信时，发送数据的格式 特点： 基于TCP/IP的高级协议 默认端口号:80 基于请求/响应模型的:一次请求对应一次响应 无状态的：每次请求之间相互独立，不能交互数据 "> <meta name="og:description" content="HTTP：1. 概念：Hyper Text Transfer Protocol 超文本传输协议 传输协议：定义了，客户端和服务器端通信时，发送数据的格式 特点： 基于TCP/IP的高级协议 默认端口号:80 基于请求/响应模型的:一次请求对应一次响应 无状态的：每次请求之间相互独立，不能交互数据 "> <meta property="og:url" content="https://slienceme.cn/2021/02/23/HTTP&Request/"> <meta property="og:site_name" content="Slience_me的博客"> <meta property="og:type" content="article"> <meta property="og:locale" content="zh_CN" /> <meta property="article:published_time" content="2021-02-23"> <meta name="google-site-verification" content="2feHjT1GNs1Yi2JQfOtdYx7d048naG_-cMwZaDAopIA" /> <script src="https://slienceme.cn/assets/vendor/jquery/dist/jquery.min.js"></script> <script src="https://slienceme.cn/assets/js/main.js"></script> </head> <body class="" data-mz=""> <header class="site-header"> <div class="container"> <h1><a href="https://slienceme.cn/" title="Slience_me的博客"><span class="octicon octicon-mark-github"></span> Slience_me的博客</a></h1> <button class="collapsed mobile-visible" type="button" onclick="toggleMenu();"> <span class="icon-bar"></span> <span class="icon-bar"></span> <span class="icon-bar"></span> </button> <nav class="site-header-nav" role="navigation"> <a href="https://slienceme.cn/" class="site-header-nav-item" target="" title="首页">首页</a> <a href="https://slienceme.cn/categories/" class="site-header-nav-item" target="" title="分类">分类</a> <a href="https://slienceme.cn/archives/" class="mobile-hidden site-header-nav-item" target="" title="归档">归档</a> <a href="https://slienceme.cn/open-source/" class="mobile-hidden site-header-nav-item" target="" title="开源">开源</a> <a href="https://slienceme.cn/fragments/" class="site-header-nav-item" target="" title="片段">片段</a> <a href="https://slienceme.cn/wiki/" class="site-header-nav-item" target="" title="维基">维基</a> <a href="https://slienceme.cn/links/" class="mobile-hidden site-header-nav-item" target="" title="链接">链接</a> <a href="https://slienceme.cn/about/" class="site-header-nav-item" target="" title="关于">关于</a> <a class="mobile-hidden" href="https://slienceme.cn/feed.xml"><span class="octicon octicon-rss" style="color:orange;"></span></a> </nav> </div> </header> <section class="collection-head small geopattern" data-pattern-id="Java｜HTTP&Reque"> <div class="container"> <div class="columns"> <div class="column three-fourths"> <div class="collection-title"> <h1 class="collection-header">Java｜HTTP&Request</h1> <div class="collection-info"> <span class="meta-info"> <span class="octicon octicon-calendar"></span> 2021/02/23 </span> <span class="meta-info"> <span class="octicon octicon-file-directory"></span> <a href="https://slienceme.cn/categories/#Java" title="Java">Java</a> </span> <span class="meta-info"> <span class="octicon octicon-clock"></span> 共 18554 字，约 54 分钟 </span> </div> </div> </div> <div class="column one-fourth mobile-hidden"> <div class="collection-title"> </div> </div> </div> </div> </section> <section class="container content"> <div class="columns"> <div class="column three-fourths" > <article class="article-content markdown-body"> <h1 id="http">HTTP：</h1> <h2 id="1--概念hyper-text-transfer-protocol-超文本传输协议">1. 概念：Hyper Text Transfer Protocol 超文本传输协议</h2> <ul> <li>传输协议：定义了，客户端和服务器端通信时，发送数据的格式</li> <li>特点： <ol> <li>基于TCP/IP的高级协议</li> <li>默认端口号:80</li> <li>基于请求/响应模型的:一次请求对应一次响应</li> <li>无状态的：每次请求之间相互独立，不能交互数据</li> </ol> </li> <li>历史版本： <ul> <li>1.0：每一次请求响应都会建立新的连接</li> <li>1.1：复用连接</li> </ul> </li> </ul> <h2 id="2-请求消息数据格式">2. 请求消息数据格式</h2> <h3 id="21-请求行">2.1 请求行</h3> <ul> <li>请求方式 请求<code class="language-plaintext highlighter-rouge">url</code> 请求协议/版本</li> <li> <p><code class="language-plaintext highlighter-rouge">GET /login.html HTTP/1.1</code></p> </li> <li>请求方式： <ul> <li><code class="language-plaintext highlighter-rouge">HTTP</code>协议有7中请求方式，常用的有2种 <ul> <li><code class="language-plaintext highlighter-rouge">GET</code>： <ol> <li>请求参数在请求行中，在<code class="language-plaintext highlighter-rouge">url</code>后。</li> <li>请求的<code class="language-plaintext highlighter-rouge">url</code>长度有限制的</li> <li>不太安全</li> </ol> </li> <li><code class="language-plaintext highlighter-rouge">POST</code>： <ol> <li>请求参数在请求体中</li> <li>请求的<code class="language-plaintext highlighter-rouge">url</code>长度没有限制的</li> <li>相对安全 <h3 id="22-请求头客户端浏览器告诉服务器一些信息">2.2 请求头：客户端浏览器告诉服务器一些信息</h3> <p>请求头名称: 请求头值</p> </li> </ol> </li> </ul> </li> </ul> </li> </ul> <p>常见的请求头：</p> <ol> <li> <p><code class="language-plaintext highlighter-rouge">User-Agent</code>：浏览器告诉服务器，我访问你使用的浏览器版本信息</p> <p>可以在服务器端获取该头的信息，解决浏览器的兼容性问题</p> </li> <li> <p><code class="language-plaintext highlighter-rouge">Referer</code>：<code class="language-plaintext highlighter-rouge">http://localhost/login.html</code></p> <p>告诉服务器，我(当前请求)从哪里来？</p> <p>作用：</p> <ol> <li>防盗链：</li> <li>统计工作： <img src="https://slienceme.cn/images/posts/20210222155745926.bmp.jpg" alt="Alt Text" /></li> </ol> </li> </ol> <h3 id="23-请求空行">2.3 请求空行</h3> <ul> <li>空行，就是用于分割<code class="language-plaintext highlighter-rouge">POST</code>请求的请求头，和请求体的。 <h3 id="24-请求体正文">2.4 请求体(正文)：</h3> </li> <li> <p>封装<code class="language-plaintext highlighter-rouge">POST</code>请求消息的请求参数的</p> </li> <li>字符串格式： ``` POST /login.html HTTP/1.1 Host: localhost User-Agent: Mozilla/5.0 (Windows NT 6.1; Win64; x64; rv:60.0) Gecko/20100101 Firefox/60.0 Accept: text/html,application/xhtml+xml,application/xml;q=0.9,<em>/</em>;q=0.8 Accept-Language: zh-CN,zh;q=0.8,zh-TW;q=0.7,zh-HK;q=0.5,en-US;q=0.3,en;q=0.2 Accept-Encoding: gzip, deflate Referer: http://localhost/login.html Connection: keep-alive Upgrade-Insecure-Requests: 1</li> </ul> <p>username=zhangsan</p> <div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>
+
+## 3. 响应消息数据格式
+## 3.1 Request：
+![Alt Text](/images/posts/20210222160701981.png)
+### 3.1.1 request对象和response对象的原理
+1. `request`和`response`对象是由服务器创建的。我们来使用它们
+2. `request`对象是来获取请求消息，`response`对象是来设置响应消息
+
+### 3.1.2 request对象继承体系结构：	
+
+| ||
+|--|--|
+| ServletRequest		 |接口  |
+|	继承
+| HttpServletRequest	  | 接口  |
+|	实现
+
+- `org.apache.catalina.connector.RequestFacade@5b3cad0e`
+- `org.apache.catalina.connector.RequestFacade 类(tomcat)`
+
+### 3.1.3 request功能：
+
+#### 3.1.3.1 获取请求消息数据
+##### 1. 获取请求行数据
+* `GET /day14/demo1?name=zhangsan HTTP/1.1`
+* 方法：
+	1. 获取请求方式 ：`GET`
+		 `String getMethod()`  
+	2. `(*)`获取虚拟目录：`/day14`
+		 `String getContextPath()`
+	3. 获取`Servlet`路径: `/demo1`
+		 `String getServletPath()`
+	4. 获取`get`方式请求参数：`name=zhangsan`
+		 `String getQueryString()`
+	5. `(*)`获取请求URI：`/day14/demo1`
+		 `String getRequestURI():	/day14/demo1`
+		 `StringBuffer getRequestURL()  :http://localhost/day14/demo1`
+
+		 `URL`:统一资源定位符 ： `http://localhost/day14/demo1	中华人民共和国`（范围小）
+		 `URI`:统一资源标识符 : `/day14/demo1	   共和国`(范围大)
+	
+	6. 获取协议及版本：`HTTP/1.1`
+		 `String getProtocol()`
+
+	7. 获取客户机的IP地址：
+		 `String getRemoteAddr()`
+```java
+package com.example.request;
+import javax.servlet.ServletException;
+import javax.servlet.annotation.WebServlet;
+import javax.servlet.http.HttpServlet;
+import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpServletResponse;
+import java.io.IOException;
+
+/**
+ * 演示Request对象获取请求行数据
+ */
+
+@WebServlet("/requestDemo1")
+public class RequestDemo1 extends HttpServlet {
+    protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+
+    }
+
+    protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+        /*
+            1. 获取请求方式 ：GET
+                * String getMethod()
+            2. (*)获取虚拟目录：/day14
+                * String getContextPath()
+            3. 获取Servlet路径: /requestDemo1
+                * String getServletPath()
+            4. 获取get方式请求参数：name=zhangsan
+                * String getQueryString()
+            5. (*)获取请求URI：/day14/demo1
+                * String getRequestURI():		/day14/requestDemo1
+                * StringBuffer getRequestURL()  :http://localhost/day14/requestDemo1
+            6. 获取协议及版本：HTTP/1.1
+                * String getProtocol()
+
+            7. 获取客户机的IP地址：
+                * String getRemoteAddr()
+
+         */
+        //1. 获取请求方式 ：GET
+        String method = request.getMethod();
+        System.out.println(method);
+        //2.(*)获取虚拟目录：/day14
+        String contextPath = request.getContextPath();
+        System.out.println(contextPath);
+        //3. 获取Servlet路径: /demo1
+        String servletPath = request.getServletPath();
+        System.out.println(servletPath);
+        //4. 获取get方式请求参数：name=zhangsan
+        String queryString = request.getQueryString();
+        System.out.println(queryString);
+        //5.(*)获取请求URI：/day14/demo1
+        String requestURI = request.getRequestURI();
+        StringBuffer requestURL = request.getRequestURL();
+        System.out.println(requestURI);
+        System.out.println(requestURL);
+        //6. 获取协议及版本：HTTP/1.1
+        String protocol = request.getProtocol();
+        System.out.println(protocol);
+        //7. 获取客户机的IP地址：
+        String remoteAddr = request.getRemoteAddr();
+        System.out.println(remoteAddr);
+    }
+}
+/*
+		GET
+		/day14
+		/requestDemo1
+		name=zhangsan
+		/day14/requestDemo1
+		http://localhost:8080/day14/requestDemo1
+		HTTP/1.1
+		0:0:0:0:0:0:0:1
+*/
+</code></pre></div></div> <h5 id="2-获取请求头数据">2. 获取请求头数据</h5> <ul> <li>方法： <ul> <li><code class="language-plaintext highlighter-rouge">(*)String getHeader(String name)</code>:通过请求头的名称获取请求头的值</li> <li><code class="language-plaintext highlighter-rouge">Enumeration&lt;String&gt; getHeaderNames():</code>获取所有的请求头名称 ```java import javax.servlet.ServletException; import javax.servlet.annotation.WebServlet; import javax.servlet.http.HttpServlet; import javax.servlet.http.HttpServletRequest; import javax.servlet.http.HttpServletResponse; import java.io.IOException; import java.util.Enumeration;</li> </ul> </li> </ul> <p>@WebServlet(“/requestDemo2”) public class RequestDemo2 extends HttpServlet { protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {</p> <div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>}
+
+protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+    //演示获取请求头数据
+    
+    //1.获取所有请求头名称
+    Enumeration&lt;String&gt; headerNames = request.getHeaderNames();
+    //2.遍历
+    while(headerNames.hasMoreElements()){
+        String name = headerNames.nextElement();
+        //根据名称获取请求头的值
+        String value = request.getHeader(name);
+        System.out.println(name+"---"+value);
+    }
+
+} } ``` ```java package com.example.request; import javax.servlet.ServletException; import javax.servlet.annotation.WebServlet; import javax.servlet.http.HttpServlet; import javax.servlet.http.HttpServletRequest; import javax.servlet.http.HttpServletResponse; import java.io.IOException; import java.util.Enumeration;
+</code></pre></div></div> <p>@WebServlet(“/requestDemo3”) public class RequestDemo3 extends HttpServlet { protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException { } protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException { //演示获取请求头数据:user-agent</p> <div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>    String agent = request.getHeader("user-agent");
+    //判断agent的浏览器版本
+    if(agent.contains("Chrome")){
+        //谷歌
+        System.out.println("谷歌来了...");
+    }else if(agent.contains("Firefox")){
+        //火狐
+        System.out.println("火狐来了...");
+    }
+} } ``` ```java import javax.servlet.ServletContext; import javax.servlet.ServletException; import javax.servlet.annotation.WebServlet; import javax.servlet.http.HttpServlet; import javax.servlet.http.HttpServletRequest; import javax.servlet.http.HttpServletResponse; import java.io.IOException;
+</code></pre></div></div> <p>@WebServlet(“/requestDemo4”) public class RequestDemo4 extends HttpServlet { protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {</p> <div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>}
+
+protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+    //演示获取请求头数据:referer
+
+    String referer = request.getHeader("referer");
+    System.out.println(referer);//http://localhost/day14/login.html
+
+    //防盗链
+    if(referer != null ){
+        if(referer.contains("/day14")){
+            //正常访问
+           // System.out.println("播放电影....");
+            response.setContentType("text/html;charset=utf-8");
+            response.getWriter().write("播放电影....");
+        }else{
+            //盗链
+            //System.out.println("想看电影吗？来优酷吧...");
+            response.setContentType("text/html;charset=utf-8");
+            response.getWriter().write("想看电影吗？来优酷吧...");
+        }
+    }
+
+} } ```
+</code></pre></div></div> <h5 id="3-获取请求体数据">3. 获取请求体数据:</h5> <ul> <li>请求体：只有<code class="language-plaintext highlighter-rouge">POST</code>请求方式，才有请求体，在请求体中封装了<code class="language-plaintext highlighter-rouge">POST</code>请求的请求参数</li> <li>步骤： <ol> <li> <p>获取流对象 <code class="language-plaintext highlighter-rouge">BufferedReader getReader()</code>：获取字符输入流，只能操作字符数据 <code class="language-plaintext highlighter-rouge">ServletInputStream getInputStream()</code>：获取字节输入流，可以操作所有类型数据</p> </li> <li> <p>再从流对象中拿数据</p> </li> </ol> </li> </ul> <h4 id="3132-其他功能">3.1.3.2 其他功能：</h4> <h5 id="1-获取请求参数通用方式不论get还是post请求方式都可以使用下列方法来获取请求参数">1. 获取请求参数通用方式：不论get还是post请求方式都可以使用下列方法来获取请求参数</h5> <ol> <li><code class="language-plaintext highlighter-rouge">String getParameter(String name)</code>:根据参数名称获取参数值 <code class="language-plaintext highlighter-rouge">username=zs&amp;password=123</code></li> <li><code class="language-plaintext highlighter-rouge">String[] getParameterValues(String name)</code>:根据参数名称获取参数值的数组 <code class="language-plaintext highlighter-rouge">hobby=xx&amp;hobby=game</code></li> <li><code class="language-plaintext highlighter-rouge">Enumeration&lt;String&gt; getParameterNames()</code>:获取所有请求的参数名称</li> <li><code class="language-plaintext highlighter-rouge">Map&lt;String,String[]&gt; getParameterMap()</code>:获取所有参数的<code class="language-plaintext highlighter-rouge">map</code>集合</li> </ol> <div class="language-java highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kn">import</span> <span class="nn">javax.servlet.ServletException</span><span class="o">;</span>
+<span class="kn">import</span> <span class="nn">javax.servlet.annotation.WebServlet</span><span class="o">;</span>
+<span class="kn">import</span> <span class="nn">javax.servlet.http.HttpServlet</span><span class="o">;</span>
+<span class="kn">import</span> <span class="nn">javax.servlet.http.HttpServletRequest</span><span class="o">;</span>
+<span class="kn">import</span> <span class="nn">javax.servlet.http.HttpServletResponse</span><span class="o">;</span>
+<span class="kn">import</span> <span class="nn">java.io.BufferedReader</span><span class="o">;</span>
+<span class="kn">import</span> <span class="nn">java.io.IOException</span><span class="o">;</span>
+<span class="kn">import</span> <span class="nn">java.util.Enumeration</span><span class="o">;</span>
+<span class="kn">import</span> <span class="nn">java.util.Map</span><span class="o">;</span>
+<span class="kn">import</span> <span class="nn">java.util.Set</span><span class="o">;</span>
+
+<span class="nd">@WebServlet</span><span class="o">(</span><span class="s">"/requestDemo6"</span><span class="o">)</span>
+<span class="kd">public</span> <span class="kd">class</span> <span class="nc">RequestDemo6</span> <span class="kd">extends</span> <span class="nc">HttpServlet</span> <span class="o">{</span>
+    <span class="kd">protected</span> <span class="kt">void</span> <span class="nf">doPost</span><span class="o">(</span><span class="nc">HttpServletRequest</span> <span class="n">request</span><span class="o">,</span> <span class="nc">HttpServletResponse</span> <span class="n">response</span><span class="o">)</span> <span class="kd">throws</span> <span class="nc">ServletException</span><span class="o">,</span> <span class="nc">IOException</span> <span class="o">{</span>
+        <span class="c1">//post 获取请求参数</span>
+
+        <span class="c1">//根据参数名称获取参数值</span>
+        <span class="nc">String</span> <span class="n">username</span> <span class="o">=</span> <span class="n">request</span><span class="o">.</span><span class="na">getParameter</span><span class="o">(</span><span class="s">"username"</span><span class="o">);</span>
+
+        <span class="c1">//根据参数名称获取参数值的数组</span>
+        <span class="nc">String</span><span class="o">[]</span> <span class="n">hobbies</span> <span class="o">=</span> <span class="n">request</span><span class="o">.</span><span class="na">getParameterValues</span><span class="o">(</span><span class="s">"hobby"</span><span class="o">);</span>
+        <span class="cm">/*for (String hobby : hobbies) {
+            System.out.println(hobby);
+        }*/</span>
+
+        <span class="c1">//获取所有请求的参数名称</span>
+
+        <span class="nc">Enumeration</span><span class="o">&lt;</span><span class="nc">String</span><span class="o">&gt;</span> <span class="n">parameterNames</span> <span class="o">=</span> <span class="n">request</span><span class="o">.</span><span class="na">getParameterNames</span><span class="o">();</span>
+        <span class="cm">/*while(parameterNames.hasMoreElements()){
+            String name = parameterNames.nextElement();
+            System.out.println(name);
+            String value = request.getParameter(name);
+            System.out.println(value);
+            System.out.println("----------------");
+        }*/</span>
+
+        <span class="c1">// 获取所有参数的map集合</span>
+        <span class="nc">Map</span><span class="o">&lt;</span><span class="nc">String</span><span class="o">,</span> <span class="nc">String</span><span class="o">[]&gt;</span> <span class="n">parameterMap</span> <span class="o">=</span> <span class="n">request</span><span class="o">.</span><span class="na">getParameterMap</span><span class="o">();</span>
+        <span class="c1">//遍历</span>
+        <span class="nc">Set</span><span class="o">&lt;</span><span class="nc">String</span><span class="o">&gt;</span> <span class="n">keyset</span> <span class="o">=</span> <span class="n">parameterMap</span><span class="o">.</span><span class="na">keySet</span><span class="o">();</span>
+        <span class="k">for</span> <span class="o">(</span><span class="nc">String</span> <span class="n">name</span> <span class="o">:</span> <span class="n">keyset</span><span class="o">)</span> <span class="o">{</span>
+
+            <span class="c1">//获取键获取值</span>
+            <span class="nc">String</span><span class="o">[]</span> <span class="n">values</span> <span class="o">=</span> <span class="n">parameterMap</span><span class="o">.</span><span class="na">get</span><span class="o">(</span><span class="n">name</span><span class="o">);</span>
+            <span class="nc">System</span><span class="o">.</span><span class="na">out</span><span class="o">.</span><span class="na">println</span><span class="o">(</span><span class="n">name</span><span class="o">);</span>
+            <span class="k">for</span> <span class="o">(</span><span class="nc">String</span> <span class="n">value</span> <span class="o">:</span> <span class="n">values</span><span class="o">)</span> <span class="o">{</span>
+                <span class="nc">System</span><span class="o">.</span><span class="na">out</span><span class="o">.</span><span class="na">println</span><span class="o">(</span><span class="n">value</span><span class="o">);</span>
+            <span class="o">}</span>
+
+            <span class="nc">System</span><span class="o">.</span><span class="na">out</span><span class="o">.</span><span class="na">println</span><span class="o">(</span><span class="s">"-----------------"</span><span class="o">);</span>
+        <span class="o">}</span>
+
+
+    <span class="o">}</span>
+    <span class="kd">protected</span> <span class="kt">void</span> <span class="nf">doGet</span><span class="o">(</span><span class="nc">HttpServletRequest</span> <span class="n">request</span><span class="o">,</span> <span class="nc">HttpServletResponse</span> <span class="n">response</span><span class="o">)</span> <span class="kd">throws</span> <span class="nc">ServletException</span><span class="o">,</span> <span class="nc">IOException</span> <span class="o">{</span>
+        <span class="k">this</span><span class="o">.</span><span class="na">doPost</span><span class="o">(</span><span class="n">request</span><span class="o">,</span><span class="n">response</span><span class="o">);</span>
+    <span class="o">}</span>
+<span class="o">}</span>
+</code></pre></div></div> <ul> <li>中文乱码问题： <ul> <li><code class="language-plaintext highlighter-rouge">get</code>方式：<code class="language-plaintext highlighter-rouge">tomcat 8</code> 已经将<code class="language-plaintext highlighter-rouge">get</code>方式乱码问题解决了</li> <li><code class="language-plaintext highlighter-rouge">post</code>方式：会乱码 <ul> <li>解决：在获取参数前，设置<code class="language-plaintext highlighter-rouge">request</code>的编码<code class="language-plaintext highlighter-rouge">request.setCharacterEncoding("utf-8");</code> ```java import javax.servlet.ServletException; import javax.servlet.annotation.WebServlet; import javax.servlet.http.HttpServlet; import javax.servlet.http.HttpServletRequest; import javax.servlet.http.HttpServletResponse; import java.io.IOException;</li> </ul> </li> </ul> </li> </ul> <p>@WebServlet(“/requestDemo7”) public class RequestDemo7 extends HttpServlet { protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException { //1.设置流的编码 request.setCharacterEncoding(“utf-8”);</p> <div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>    //获取请求参数username
+    String username = request.getParameter("username");
+
+    System.out.println(username);
+}
+
+protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+
+    this.doPost(request,response);
+} } ``` ![Alt Text](/images/posts/20210222173537483.png)
+</code></pre></div></div> <h5 id="2-请求转发一种在服务器内部的资源跳转方式">2. 请求转发：一种在服务器内部的资源跳转方式</h5> <ol> <li>步骤： <ol> <li>通过<code class="language-plaintext highlighter-rouge">request</code>对象获取请求转发器对象：<code class="language-plaintext highlighter-rouge">RequestDispatcher getRequestDispatcher(String path)</code></li> <li>使用<code class="language-plaintext highlighter-rouge">RequestDispatcher</code>对象来进行转发 <code class="language-plaintext highlighter-rouge">forward(ServletRequest request, ServletResponse response)</code></li> </ol> </li> <li>特点： <ol> <li>浏览器地址栏路径不发生变化</li> <li><strong>只能</strong>转发到当前服务器<strong>内部资源</strong>中。</li> <li>转发是<strong>一次</strong>请求</li> </ol> </li> </ol> <div class="language-java highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kn">import</span> <span class="nn">javax.servlet.RequestDispatcher</span><span class="o">;</span>
+<span class="kn">import</span> <span class="nn">javax.servlet.ServletException</span><span class="o">;</span>
+<span class="kn">import</span> <span class="nn">javax.servlet.annotation.WebServlet</span><span class="o">;</span>
+<span class="kn">import</span> <span class="nn">javax.servlet.http.HttpServlet</span><span class="o">;</span>
+<span class="kn">import</span> <span class="nn">javax.servlet.http.HttpServletRequest</span><span class="o">;</span>
+<span class="kn">import</span> <span class="nn">javax.servlet.http.HttpServletResponse</span><span class="o">;</span>
+<span class="kn">import</span> <span class="nn">java.io.IOException</span><span class="o">;</span>
+
+<span class="nd">@WebServlet</span><span class="o">(</span><span class="s">"/requestDemo8"</span><span class="o">)</span>
+<span class="kd">public</span> <span class="kd">class</span> <span class="nc">RequestDemo8</span> <span class="kd">extends</span> <span class="nc">HttpServlet</span> <span class="o">{</span>
+    <span class="kd">protected</span> <span class="kt">void</span> <span class="nf">doPost</span><span class="o">(</span><span class="nc">HttpServletRequest</span> <span class="n">request</span><span class="o">,</span> <span class="nc">HttpServletResponse</span> <span class="n">response</span><span class="o">)</span> <span class="kd">throws</span> <span class="nc">ServletException</span><span class="o">,</span> <span class="nc">IOException</span> <span class="o">{</span>
+        <span class="nc">System</span><span class="o">.</span><span class="na">out</span><span class="o">.</span><span class="na">println</span><span class="o">(</span><span class="s">"demo8888被访问了。。。"</span><span class="o">);</span>
+        <span class="c1">//转发到demo9资源</span>
+<span class="cm">/*
+        RequestDispatcher requestDispatcher = request.getRequestDispatcher("/requestDemo9");
+        requestDispatcher.forward(request,response);
+        */</span>
+
+        <span class="c1">//存储数据到request域中</span>
+        <span class="n">request</span><span class="o">.</span><span class="na">setAttribute</span><span class="o">(</span><span class="s">"msg"</span><span class="o">,</span><span class="s">"hello"</span><span class="o">);</span>
+
+        <span class="n">request</span><span class="o">.</span><span class="na">getRequestDispatcher</span><span class="o">(</span><span class="s">"/requestDemo9"</span><span class="o">).</span><span class="na">forward</span><span class="o">(</span><span class="n">request</span><span class="o">,</span><span class="n">response</span><span class="o">);</span>
+        <span class="c1">//request.getRequestDispatcher("https://www.baidu.com").forward(request,response);</span>
+
+    <span class="o">}</span>
+
+    <span class="kd">protected</span> <span class="kt">void</span> <span class="nf">doGet</span><span class="o">(</span><span class="nc">HttpServletRequest</span> <span class="n">request</span><span class="o">,</span> <span class="nc">HttpServletResponse</span> <span class="n">response</span><span class="o">)</span> <span class="kd">throws</span> <span class="nc">ServletException</span><span class="o">,</span> <span class="nc">IOException</span> <span class="o">{</span>
+
+        <span class="k">this</span><span class="o">.</span><span class="na">doPost</span><span class="o">(</span><span class="n">request</span><span class="o">,</span><span class="n">response</span><span class="o">);</span>
+    <span class="o">}</span>
+<span class="o">}</span>
+</code></pre></div></div> <div class="language-java highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kn">import</span> <span class="nn">javax.servlet.ServletException</span><span class="o">;</span>
+<span class="kn">import</span> <span class="nn">javax.servlet.annotation.WebServlet</span><span class="o">;</span>
+<span class="kn">import</span> <span class="nn">javax.servlet.http.HttpServlet</span><span class="o">;</span>
+<span class="kn">import</span> <span class="nn">javax.servlet.http.HttpServletRequest</span><span class="o">;</span>
+<span class="kn">import</span> <span class="nn">javax.servlet.http.HttpServletResponse</span><span class="o">;</span>
+<span class="kn">import</span> <span class="nn">java.io.IOException</span><span class="o">;</span>
+
+<span class="nd">@WebServlet</span><span class="o">(</span><span class="s">"/requestDemo9"</span><span class="o">)</span>
+<span class="kd">public</span> <span class="kd">class</span> <span class="nc">RequestDemo9</span> <span class="kd">extends</span> <span class="nc">HttpServlet</span> <span class="o">{</span>
+    <span class="kd">protected</span> <span class="kt">void</span> <span class="nf">doPost</span><span class="o">(</span><span class="nc">HttpServletRequest</span> <span class="n">request</span><span class="o">,</span> <span class="nc">HttpServletResponse</span> <span class="n">response</span><span class="o">)</span> <span class="kd">throws</span> <span class="nc">ServletException</span><span class="o">,</span> <span class="nc">IOException</span> <span class="o">{</span>
+
+        <span class="c1">//获取数据</span>
+        <span class="nc">Object</span> <span class="n">msg</span> <span class="o">=</span> <span class="n">request</span><span class="o">.</span><span class="na">getAttribute</span><span class="o">(</span><span class="s">"msg"</span><span class="o">);</span>
+        <span class="nc">System</span><span class="o">.</span><span class="na">out</span><span class="o">.</span><span class="na">println</span><span class="o">(</span><span class="n">msg</span><span class="o">);</span>
+
+        <span class="nc">System</span><span class="o">.</span><span class="na">out</span><span class="o">.</span><span class="na">println</span><span class="o">(</span><span class="s">"demo9999被访问了。。。"</span><span class="o">);</span>
+
+    <span class="o">}</span>
+
+    <span class="kd">protected</span> <span class="kt">void</span> <span class="nf">doGet</span><span class="o">(</span><span class="nc">HttpServletRequest</span> <span class="n">request</span><span class="o">,</span> <span class="nc">HttpServletResponse</span> <span class="n">response</span><span class="o">)</span> <span class="kd">throws</span> <span class="nc">ServletException</span><span class="o">,</span> <span class="nc">IOException</span> <span class="o">{</span>
+
+        <span class="k">this</span><span class="o">.</span><span class="na">doPost</span><span class="o">(</span><span class="n">request</span><span class="o">,</span><span class="n">response</span><span class="o">);</span>
+    <span class="o">}</span>
+<span class="o">}</span>
+</code></pre></div></div> <h5 id="3-共享数据">3. 共享数据：</h5> <ul> <li>域对象：一个有作用范围的对象，可以在范围内共享数据</li> <li><code class="language-plaintext highlighter-rouge">request</code>域：代表一次请求的范围，一般用于请求转发的多个资源中共享数据</li> <li>方法： <ol> <li><code class="language-plaintext highlighter-rouge">void setAttribute(String name,Object obj)</code>:存储数据</li> <li><code class="language-plaintext highlighter-rouge">Object getAttitude(String name)</code>:通过键获取值</li> <li><code class="language-plaintext highlighter-rouge">void removeAttribute(String name)</code>:通过键移除键值对</li> </ol> </li> </ul> <h5 id="4-获取servletcontext">4. 获取ServletContext：</h5> <ul> <li><code class="language-plaintext highlighter-rouge">ServletContext getServletContext()</code></li> </ul> <div class="language-java highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kn">import</span> <span class="nn">javax.servlet.ServletContext</span><span class="o">;</span>
+<span class="kn">import</span> <span class="nn">javax.servlet.ServletException</span><span class="o">;</span>
+<span class="kn">import</span> <span class="nn">javax.servlet.annotation.WebServlet</span><span class="o">;</span>
+<span class="kn">import</span> <span class="nn">javax.servlet.http.HttpServlet</span><span class="o">;</span>
+<span class="kn">import</span> <span class="nn">javax.servlet.http.HttpServletRequest</span><span class="o">;</span>
+<span class="kn">import</span> <span class="nn">javax.servlet.http.HttpServletResponse</span><span class="o">;</span>
+<span class="kn">import</span> <span class="nn">java.io.IOException</span><span class="o">;</span>
+
+<span class="nd">@WebServlet</span><span class="o">(</span><span class="s">"/requestDemo10"</span><span class="o">)</span>
+<span class="kd">public</span> <span class="kd">class</span> <span class="nc">RequestDemo10</span> <span class="kd">extends</span> <span class="nc">HttpServlet</span> <span class="o">{</span>
+    <span class="kd">protected</span> <span class="kt">void</span> <span class="nf">doPost</span><span class="o">(</span><span class="nc">HttpServletRequest</span> <span class="n">request</span><span class="o">,</span> <span class="nc">HttpServletResponse</span> <span class="n">response</span><span class="o">)</span> <span class="kd">throws</span> <span class="nc">ServletException</span><span class="o">,</span> <span class="nc">IOException</span> <span class="o">{</span>
+
+
+        <span class="nc">ServletContext</span> <span class="n">servletContext</span> <span class="o">=</span> <span class="n">request</span><span class="o">.</span><span class="na">getServletContext</span><span class="o">();</span>
+
+        <span class="nc">System</span><span class="o">.</span><span class="na">out</span><span class="o">.</span><span class="na">println</span><span class="o">(</span><span class="n">servletContext</span><span class="o">);</span>
+
+    <span class="o">}</span>
+
+    <span class="kd">protected</span> <span class="kt">void</span> <span class="nf">doGet</span><span class="o">(</span><span class="nc">HttpServletRequest</span> <span class="n">request</span><span class="o">,</span> <span class="nc">HttpServletResponse</span> <span class="n">response</span><span class="o">)</span> <span class="kd">throws</span> <span class="nc">ServletException</span><span class="o">,</span> <span class="nc">IOException</span> <span class="o">{</span>
+
+        <span class="k">this</span><span class="o">.</span><span class="na">doPost</span><span class="o">(</span><span class="n">request</span><span class="o">,</span><span class="n">response</span><span class="o">);</span>
+    <span class="o">}</span>
+<span class="o">}</span>
+</code></pre></div></div> <h2 id="案例用户登录">案例：用户登录</h2> <ul> <li> <p>用户登录案例需求：</p> <ol> <li>编写<code class="language-plaintext highlighter-rouge">login.html</code>登录页面 <code class="language-plaintext highlighter-rouge">username &amp; password</code> 两个输入框</li> <li>使用<code class="language-plaintext highlighter-rouge">Druid</code>数据库连接池技术,操作<code class="language-plaintext highlighter-rouge">mysql，day14</code>数据库中<code class="language-plaintext highlighter-rouge">user</code>表</li> <li>使用<code class="language-plaintext highlighter-rouge">JdbcTemplate</code>技术封装<code class="language-plaintext highlighter-rouge">JDBC</code></li> <li>登录成功跳转到<code class="language-plaintext highlighter-rouge">SuccessServlet</code>展示：登录成功！用户名,欢迎您</li> <li>登录失败跳转到<code class="language-plaintext highlighter-rouge">FailServlet</code>展示：登录失败，用户名或密码错误</li> </ol> </li> <li> <p>分析</p> </li> <li> <p>开发步骤</p> </li> </ul> <ol> <li><strong>创建项目，导入html页面，配置文件，jar包</strong></li> <li><strong>创建数据库环境</strong></li> </ol> <div class="language-sql highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="k">CREATE</span> <span class="k">DATABASE</span> <span class="n">day14</span><span class="p">;</span>
+			<span class="n">USE</span> <span class="n">day14</span><span class="p">;</span>
+			<span class="k">CREATE</span> <span class="k">TABLE</span> <span class="k">USER</span><span class="p">(</span>
+				<span class="n">id</span> <span class="nb">INT</span> <span class="k">PRIMARY</span> <span class="k">KEY</span> <span class="n">AUTO_INCREMENT</span><span class="p">,</span>
+				<span class="n">username</span> <span class="nb">VARCHAR</span><span class="p">(</span><span class="mi">32</span><span class="p">)</span> <span class="k">UNIQUE</span> <span class="k">NOT</span> <span class="k">NULL</span><span class="p">,</span>
+				<span class="n">PASSWORD</span> <span class="nb">VARCHAR</span><span class="p">(</span><span class="mi">32</span><span class="p">)</span> <span class="k">NOT</span> <span class="k">NULL</span>
+			<span class="p">);</span>
+</code></pre></div></div> <ol> <li><strong>创建包cn.example.domain,创建类User</strong> ```java /** <ul> <li>用户的实体类 */ public class User {</li> </ul> <p>private int id; private String username; private String password;</p> <p>public int getId() { return id; }</p> <p>public void setId(int id) { this.id = id; }</p> <p>public String getUsername() { return username; }</p> <p>public void setUsername(String username) { this.username = username; }</p> <p>public String getPassword() { return password; }</p> <p>public void setPassword(String password) { this.password = password; }</p> <p>@Override public String toString() { return “User{“ + “id=” + id + “, username=’” + username + ‘'’ + “, password=’” + password + ‘'’ + ‘}’; } }</p> </li> </ol> <div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>4. **创建包cn.example.util,编写工具类JDBCUtils**
+```java
+import com.alibaba.druid.pool.DruidDataSourceFactory;
+
+import javax.sql.DataSource;
+import javax.xml.crypto.Data;
+import java.io.IOException;
+import java.io.InputStream;
+import java.sql.Connection;
+import java.sql.SQLException;
+import java.util.Properties;
+
+/**
+ * JDBC工具类 使用Durid连接池
+ */
+public class JDBCUtils {
+
+    private static DataSource ds ;
+
+    static {
+
+        try {
+            //1.加载配置文件
+            Properties pro = new Properties();
+            //使用ClassLoader加载配置文件，获取字节输入流
+            InputStream is = JDBCUtils.class.getClassLoader().getResourceAsStream("druid.properties");
+            pro.load(is);
+
+            //2.初始化连接池对象
+            ds = DruidDataSourceFactory.createDataSource(pro);
+
+        } catch (IOException e) {
+            e.printStackTrace();
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+    }
+
+    /**
+     * 获取连接池对象
+     */
+    public static DataSource getDataSource(){
+        return ds;
+    }
+
+
+    /**
+     * 获取连接Connection对象
+     */
+    public static Connection getConnection() throws SQLException {
+        return  ds.getConnection();
+    }
+}
+</code></pre></div></div> <ol> <li><strong>创建包cn.example.dao,创建类UserDao,提供login方法</strong> ```java import cn.example.domain.User; import cn.example.util.JDBCUtils; import org.springframework.dao.DataAccessException; import org.springframework.jdbc.core.BeanPropertyRowMapper; import org.springframework.jdbc.core.JdbcTemplate;</li> </ol> <p>/**</p> <ul> <li> <p>操作数据库中User表的类 */ public class UserDao {</p> <p>//声明JDBCTemplate对象共用 private JdbcTemplate template = new JdbcTemplate(JDBCUtils.getDataSource());</p> <p>/**</p> <ul> <li>登录方法</li> <li>@param loginUser 只有用户名和密码</li> <li> <p>@return user包含用户全部数据,没有查询到，返回null */ public User login(User loginUser){ try { //1.编写sql String sql = “select * from user where username = ? and password = ?”; //2.调用query方法 User user = template.queryForObject(sql, new BeanPropertyRowMapper<User>(User.class), loginUser.getUsername(), loginUser.getPassword());</User></p> <div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code> return user;  } catch (DataAccessException e) {
+ e.printStackTrace();//记录日志
+ return null;  }  } }
+</code></pre></div> </div> </li> </ul> </li> </ul> <div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>
+6. **编写cn.example.web.servlet.LoginServlet类**
+```java
+import cn.example.dao.UserDao;
+import cn.example.domain.User;
+
+import javax.servlet.ServletException;
+import javax.servlet.annotation.WebServlet;
+import javax.servlet.http.HttpServlet;
+import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpServletResponse;
+import java.io.IOException;
+
+
+@WebServlet("/loginServlet")
+public class LoginServlet extends HttpServlet {
+
+
+    @Override
+    protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
+        //1.设置编码
+        req.setCharacterEncoding("utf-8");
+        //2.获取请求参数
+        String username = req.getParameter("username");
+        String password = req.getParameter("password");
+        //3.封装user对象
+        User loginUser = new User();
+        loginUser.setUsername(username);
+        loginUser.setPassword(password);
+
+        //4.调用UserDao的login方法
+        UserDao dao = new UserDao();
+        User user = dao.login(loginUser);
+
+        //5.判断user
+        if(user == null){
+            //登录失败
+            req.getRequestDispatcher("/failServlet").forward(req,resp);
+        }else{
+            //登录成功
+            //存储数据
+            req.setAttribute("user",user);
+            //转发
+            req.getRequestDispatcher("/successServlet").forward(req,resp);
+        }
+
+    }
+
+    @Override
+    protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
+        this.doGet(req,resp);
+    }
+}			
+</code></pre></div></div> <ol> <li> <p><strong>编写FailServlet和SuccessServlet类</strong> ```java @WebServlet(“/successServlet”) public class SuccessServlet extends HttpServlet { protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException { //获取request域中共享的user对象 User user = (User) request.getAttribute(“user”);</p> <div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code> if(user != null){
+     //给页面写一句话
+
+     //设置编码
+     response.setContentType("text/html;charset=utf-8");
+     //输出
+     response.getWriter().write("登录成功！"+user.getUsername()+",欢迎您");
+ }
+</code></pre></div> </div> <p>}</p> </li> </ol> <p>@WebServlet(“/failServlet”) public class FailServlet extends HttpServlet { protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException { //给页面写一句话</p> <div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>    //设置编码
+    response.setContentType("text/html;charset=utf-8");
+    //输出
+    response.getWriter().write("登录失败，用户名或密码错误");
+
+}
+
+protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+    this.doPost(request,response);
+} } ```
+</code></pre></div></div> <ol> <li> <p><code class="language-plaintext highlighter-rouge">login.html</code>中<code class="language-plaintext highlighter-rouge">form</code>表单的<code class="language-plaintext highlighter-rouge">action</code>路径的写法</p> <ul> <li><code class="language-plaintext highlighter-rouge">虚拟目录+Servlet的资源路径</code></li> </ul> </li> <li> <p><code class="language-plaintext highlighter-rouge">BeanUtils</code>工具类，简化数据封装</p> <ul> <li>用于封装<code class="language-plaintext highlighter-rouge">JavaBean</code>的 <ol> <li><code class="language-plaintext highlighter-rouge">JavaBean</code>：标准的<code class="language-plaintext highlighter-rouge">Java</code>类</li> </ol> <ol> <li>要求： <ol> <li>类必须被<code class="language-plaintext highlighter-rouge">public</code>修饰</li> <li>必须提供空参的构造器</li> <li>成员变量必须使用<code class="language-plaintext highlighter-rouge">private</code>修饰</li> <li>提供公共<code class="language-plaintext highlighter-rouge">setter</code>和<code class="language-plaintext highlighter-rouge">getter</code>方法</li> </ol> </li> <li>功能：封装数据</li> </ol> </li> </ul> <ol> <li> <p>概念： 成员变量： 属性：<code class="language-plaintext highlighter-rouge">setter</code>和<code class="language-plaintext highlighter-rouge">getter</code>方法截取后的产物 例如：<code class="language-plaintext highlighter-rouge">getUsername() --&gt; Username--&gt; username</code></p> </li> <li> <p>方法：</p> <ol> <li><code class="language-plaintext highlighter-rouge">setProperty()</code></li> <li><code class="language-plaintext highlighter-rouge">getProperty()</code></li> <li><code class="language-plaintext highlighter-rouge">populate(Object obj , Map map):</code>将<code class="language-plaintext highlighter-rouge">map</code>集合的键值对信息，封装到对应的<code class="language-plaintext highlighter-rouge">JavaBean</code>对象中</li> </ol> </li> </ol> </li> </ol> <div class="language-java highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kn">package</span> <span class="nn">com.example.web.servlet</span><span class="o">;</span>
+<span class="kn">import</span> <span class="nn">com.example.damain.User</span><span class="o">;</span>
+<span class="kn">import</span> <span class="nn">com.example.dao.UserDao</span><span class="o">;</span>
+<span class="kn">import</span> <span class="nn">org.apache.commons.beanutils.BeanUtils</span><span class="o">;</span>
+<span class="kn">import</span> <span class="nn">javax.servlet.ServletException</span><span class="o">;</span>
+<span class="kn">import</span> <span class="nn">javax.servlet.annotation.WebServlet</span><span class="o">;</span>
+<span class="kn">import</span> <span class="nn">javax.servlet.http.HttpServlet</span><span class="o">;</span>
+<span class="kn">import</span> <span class="nn">javax.servlet.http.HttpServletRequest</span><span class="o">;</span>
+<span class="kn">import</span> <span class="nn">javax.servlet.http.HttpServletResponse</span><span class="o">;</span>
+<span class="kn">import</span> <span class="nn">java.io.IOException</span><span class="o">;</span>
+<span class="kn">import</span> <span class="nn">java.lang.reflect.InvocationTargetException</span><span class="o">;</span>
+<span class="kn">import</span> <span class="nn">java.util.Map</span><span class="o">;</span>
+
+<span class="nd">@WebServlet</span><span class="o">(</span><span class="s">"/loginServlet"</span><span class="o">)</span>
+<span class="kd">public</span> <span class="kd">class</span> <span class="nc">LoginServlet</span> <span class="kd">extends</span> <span class="nc">HttpServlet</span> <span class="o">{</span>
+    <span class="nd">@Override</span>
+    <span class="kd">protected</span> <span class="kt">void</span> <span class="nf">doPost</span><span class="o">(</span><span class="nc">HttpServletRequest</span> <span class="n">req</span><span class="o">,</span> <span class="nc">HttpServletResponse</span> <span class="n">resp</span><span class="o">)</span> <span class="kd">throws</span> <span class="nc">ServletException</span><span class="o">,</span> <span class="nc">IOException</span> <span class="o">{</span>
+
+        <span class="n">req</span><span class="o">.</span><span class="na">setCharacterEncoding</span><span class="o">(</span><span class="s">"utf-8"</span><span class="o">);</span>
+        <span class="c1">//2.获取所有请求参数</span>
+        <span class="nc">Map</span><span class="o">&lt;</span><span class="nc">String</span><span class="o">,</span> <span class="nc">String</span><span class="o">[]&gt;</span> <span class="n">map</span> <span class="o">=</span> <span class="n">req</span><span class="o">.</span><span class="na">getParameterMap</span><span class="o">();</span>
+        <span class="c1">//3.创建User对象</span>
+        <span class="nc">User</span> <span class="n">loginUser</span> <span class="o">=</span> <span class="k">new</span> <span class="nc">User</span><span class="o">();</span>
+        <span class="c1">//3.2 使用BeanUtils封装</span>
+        <span class="k">try</span> <span class="o">{</span>
+            <span class="nc">BeanUtils</span><span class="o">.</span><span class="na">populate</span><span class="o">(</span><span class="n">loginUser</span><span class="o">,</span><span class="n">map</span><span class="o">);</span>
+        <span class="o">}</span> <span class="k">catch</span> <span class="o">(</span><span class="nc">IllegalAccessException</span> <span class="n">e</span><span class="o">)</span> <span class="o">{</span>
+            <span class="n">e</span><span class="o">.</span><span class="na">printStackTrace</span><span class="o">();</span>
+        <span class="o">}</span> <span class="k">catch</span> <span class="o">(</span><span class="nc">InvocationTargetException</span> <span class="n">e</span><span class="o">)</span> <span class="o">{</span>
+            <span class="n">e</span><span class="o">.</span><span class="na">printStackTrace</span><span class="o">();</span>
+        <span class="o">}</span>
+
+        <span class="nc">UserDao</span> <span class="n">dao</span> <span class="o">=</span> <span class="k">new</span> <span class="nc">UserDao</span><span class="o">();</span>
+        <span class="nc">User</span> <span class="n">user</span> <span class="o">=</span> <span class="n">dao</span><span class="o">.</span><span class="na">login</span><span class="o">(</span><span class="n">loginUser</span><span class="o">);</span>
+
+        <span class="k">if</span><span class="o">(</span><span class="n">user</span> <span class="o">==</span> <span class="kc">null</span><span class="o">){</span>
+            <span class="n">req</span><span class="o">.</span><span class="na">getRequestDispatcher</span><span class="o">(</span><span class="s">"/failServlet"</span><span class="o">).</span><span class="na">forward</span><span class="o">(</span><span class="n">req</span><span class="o">,</span><span class="n">resp</span><span class="o">);</span>
+        <span class="o">}</span><span class="k">else</span><span class="o">{</span>
+            <span class="n">req</span><span class="o">.</span><span class="na">setAttribute</span><span class="o">(</span><span class="s">"user"</span><span class="o">,</span><span class="n">user</span><span class="o">);</span>
+            <span class="n">req</span><span class="o">.</span><span class="na">getRequestDispatcher</span><span class="o">(</span><span class="s">"/successServlet"</span><span class="o">).</span><span class="na">forward</span><span class="o">(</span><span class="n">req</span><span class="o">,</span><span class="n">resp</span><span class="o">);</span>
+        <span class="o">}</span>
+    <span class="o">}</span>
+
+    <span class="nd">@Override</span>
+    <span class="kd">protected</span> <span class="kt">void</span> <span class="nf">doGet</span><span class="o">(</span><span class="nc">HttpServletRequest</span> <span class="n">req</span><span class="o">,</span> <span class="nc">HttpServletResponse</span> <span class="n">resp</span><span class="o">)</span> <span class="kd">throws</span> <span class="nc">ServletException</span><span class="o">,</span> <span class="nc">IOException</span> <span class="o">{</span>
+        <span class="kd">super</span><span class="o">.</span><span class="na">doPost</span><span class="o">(</span><span class="n">req</span><span class="o">,</span> <span class="n">resp</span><span class="o">);</span>
+    <span class="o">}</span>
+<span class="o">}</span>
+
+</code></pre></div></div> <div class="language-java highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kd">public</span> <span class="kd">class</span> <span class="nc">BeanUtilsTest</span> <span class="o">{</span>
+
+    <span class="nd">@Test</span>
+    <span class="kd">public</span> <span class="kt">void</span> <span class="nf">test</span><span class="o">(){</span>
+
+        <span class="nc">User</span> <span class="n">user</span> <span class="o">=</span> <span class="k">new</span> <span class="nc">User</span><span class="o">();</span>
+        <span class="k">try</span> <span class="o">{</span>
+            <span class="nc">BeanUtils</span><span class="o">.</span><span class="na">setProperty</span><span class="o">(</span><span class="n">user</span><span class="o">,</span><span class="s">"hehe"</span><span class="o">,</span><span class="s">"male"</span><span class="o">);</span>
+            <span class="nc">System</span><span class="o">.</span><span class="na">out</span><span class="o">.</span><span class="na">println</span><span class="o">(</span><span class="n">user</span><span class="o">);</span>
+
+            <span class="nc">String</span> <span class="n">gender</span> <span class="o">=</span> <span class="nc">BeanUtils</span><span class="o">.</span><span class="na">getProperty</span><span class="o">(</span><span class="n">user</span><span class="o">,</span> <span class="s">"hehe"</span><span class="o">);</span>
+            <span class="nc">System</span><span class="o">.</span><span class="na">out</span><span class="o">.</span><span class="na">println</span><span class="o">(</span><span class="n">gender</span><span class="o">);</span>
+        <span class="o">}</span> <span class="k">catch</span> <span class="o">(</span><span class="nc">IllegalAccessException</span> <span class="n">e</span><span class="o">)</span> <span class="o">{</span>
+            <span class="n">e</span><span class="o">.</span><span class="na">printStackTrace</span><span class="o">();</span>
+        <span class="o">}</span> <span class="k">catch</span> <span class="o">(</span><span class="nc">InvocationTargetException</span> <span class="n">e</span><span class="o">)</span> <span class="o">{</span>
+            <span class="n">e</span><span class="o">.</span><span class="na">printStackTrace</span><span class="o">();</span>
+        <span class="o">}</span> <span class="k">catch</span> <span class="o">(</span><span class="nc">NoSuchMethodException</span> <span class="n">e</span><span class="o">)</span> <span class="o">{</span>
+            <span class="n">e</span><span class="o">.</span><span class="na">printStackTrace</span><span class="o">();</span>
+        <span class="o">}</span>
+    <span class="o">}</span>
+<span class="o">}</span>
+
+</code></pre></div></div> <div style="margin-top:2em;padding:0 1.5em;border:1px solid #d3d3d3;background-color:#deebf7"> <h3>文档信息</h3> <ul> <li>本文作者：<a href="https://slienceme.cn" target="_blank">slience_me</a></li> <li>本文链接：<a href="https://slienceme.cn/2021/02/23/HTTP&Request/" target="_blank">https://slienceme.cn/2021/02/23/HTTP&Request/</a></li> <li>版权声明：自由转载-非商用-非衍生-保持署名（<a href="http://creativecommons.org/licenses/by-nc-nd/3.0/deed.zh" target="_blank">创意共享3.0许可证</a>）</li> </ul> </div> </article> <div class="share"> <div class="share-component" data-disabled='qq,facebook'></div> </div> <div class="comment"> <script src="https://giscus.app/client.js" data-repo="slience-me/blog-comments" data-repo-id="MDEwOlJlcG9zaXRvcnk5MzEyNzkxNw==" data-category="Announcements" data-category-id="DIC_kwDOBY0E7c4CRtg9" data-mapping="title" data-strict="1" data-reactions-enabled="1" data-emit-metadata="0" data-input-position="top" data-theme="light" data-lang="zh-CN" data-loading="lazy" crossorigin="anonymous" async> </script> </div> </div> <div class="column one-fourth"> <h3>Search</h3> <div id="site_search"> <input style="width:96%" type="text" id="search_box" placeholder="Search"> </div> <ul id="search_results" style="font-size:14px;list-style-type:none;padding-top:10px;padding-left:10px;"></ul> <script src="https://slienceme.cn/assets/js/simple-jekyll-search.min.js"></script> <script type="text/javascript"> SimpleJekyllSearch({ searchInput: document.getElementById('search_box'), resultsContainer: document.getElementById('search_results'), json: 'https://slienceme.cn/assets/search_data.json?v=1736474000', searchResultTemplate: '<li><a href="{url}" title="{title}">{title}</a></li>', noResultsText: 'No results found', limit: 10, fuzzy: false, exclude: ['Welcome'] }) </script> <h3 class="post-directory-title mobile-hidden">Table of Contents</h3> <div id="post-directory-module" class="mobile-hidden"> <section class="post-directory"> <dl></dl> </section> </div> <script src="https://slienceme.cn/assets/js/jquery.toc.js"></script> </div> </div> </section> <footer class="container"> <div class="site-footer" role="contentinfo"> <div class="copyright left mobile-block"> Copyright@ 2019-2025 slience_me 版权所有&emsp; <img src="/images/logo/logo.png" class="w-full" style="width: 12px;"> <a href="https://beian.mps.gov.cn/#/query/webSearch?code=13102202000626" rel="noreferrer" target="_blank">冀公网安备13102202000626</a>&emsp; <a href="https://beian.miit.gov.cn/#/Integrated/index" target="_blank" rel="noreferrer">津ICP备2024026565号-1</a> <a href="javascript:window.scrollTo(0,0)" class="right mobile-visible">TOP</a> </div> <ul class="site-footer-links right mobile-hidden"> <li> <a href="javascript:window.scrollTo(0,0)" >TOP</a> </li> </ul> <br/> <script async src="https://slienceme.cn/assets/vendor/busuanzi/2.3/busuanzi.pure.mini.js"></script> <div class="mobile-hidden" style="margin-top:8px"> <span id="busuanzi_container_site_pv" style="display:none"> 本站访问量<span id="busuanzi_value_site_pv"></span>次 </span> <span id="busuanzi_container_site_uv" style="display:none"> / 本站访客数<span id="busuanzi_value_site_uv"></span>人 </span> <span id="busuanzi_container_page_pv" style="display:none"> / 本页访问量<span id="busuanzi_value_page_pv"></span>次 / 统计始于2024-12-01 </span> </div> </div> </footer> <div class="tools-wrapper"> <a class="gotop" href="#" title="回到顶部"><span class="octicon octicon-arrow-up"></span></a> </div> <script src="https://slienceme.cn/assets/vendor/share.js/dist/js/share.min.js"></script> <script src="https://slienceme.cn/assets/js/geopattern.js"></script> <script> jQuery(document).ready(function($) { $('.geopattern').each(function(){ $(this).geopattern($(this).data('pattern-id')); }); /* hljs.initHighlightingOnLoad(); */ }); </script> </body> </html>

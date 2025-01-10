@@ -1,0 +1,1001 @@
+<!DOCTYPE html> <html lang="zh-cmn-Hans" prefix="og: http://ogp.me/ns#" class="han-init"> <head> <meta charset="utf-8"> <meta http-equiv="X-UA-Compatible" content="IE=edge"> <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1" /> <title>指令汇总｜常用执行指令汇总大全 &mdash; Slience_me的博客</title> <link rel="stylesheet" href="https://slienceme.cn/assets/vendor/primer-css/css/primer.css"> <link rel="stylesheet" href="https://slienceme.cn/assets/css/components/collection.css"> <link rel="stylesheet" href="https://slienceme.cn/assets/css/components/repo-card.css"> <link rel="stylesheet" href="https://slienceme.cn/assets/css/sections/repo-list.css"> <link rel="stylesheet" href="https://slienceme.cn/assets/css/components/boxed-group.css"> <link rel="stylesheet" href="https://slienceme.cn/assets/css/globals/common.css"> <link rel="stylesheet" href="https://slienceme.cn/assets/css/globals/responsive.css"> <link rel="stylesheet" href="https://slienceme.cn/assets/css/posts/index.css"> <link rel="stylesheet" href="https://slienceme.cn/assets/vendor/octicons/octicons/octicons.css"> <link rel="stylesheet" href="https://mazhuang.org/rouge-themes/dist/github.css"> <link rel="stylesheet" href="https://slienceme.cn/assets/vendor/share.js/dist/css/share.min.css"> <link rel="canonical" href="https://slienceme.cn/2019/01/01/readme/"> <link rel="alternate" type="application/atom+xml" title="Slience_me的博客" href="https://slienceme.cn/feed.xml"> <link rel="shortcut icon" href="https://slienceme.cn/favicon.ico"> <meta property="og:title" content="指令汇总｜常用执行指令汇总大全"> <meta name="keywords" content="指令汇总"> <meta name="og:keywords" content="指令汇总"> <meta name="description" content="常用指令大全"> <meta name="og:description" content="常用指令大全"> <meta property="og:url" content="https://slienceme.cn/2019/01/01/readme/"> <meta property="og:site_name" content="Slience_me的博客"> <meta property="og:type" content="article"> <meta property="og:locale" content="zh_CN" /> <meta property="article:published_time" content="2019-01-01"> <meta name="google-site-verification" content="2feHjT1GNs1Yi2JQfOtdYx7d048naG_-cMwZaDAopIA" /> <script src="https://slienceme.cn/assets/vendor/jquery/dist/jquery.min.js"></script> <script src="https://slienceme.cn/assets/js/main.js"></script> </head> <body class="" data-mz=""> <header class="site-header"> <div class="container"> <h1><a href="https://slienceme.cn/" title="Slience_me的博客"><span class="octicon octicon-mark-github"></span> Slience_me的博客</a></h1> <button class="collapsed mobile-visible" type="button" onclick="toggleMenu();"> <span class="icon-bar"></span> <span class="icon-bar"></span> <span class="icon-bar"></span> </button> <nav class="site-header-nav" role="navigation"> <a href="https://slienceme.cn/" class="site-header-nav-item" target="" title="首页">首页</a> <a href="https://slienceme.cn/categories/" class="site-header-nav-item" target="" title="分类">分类</a> <a href="https://slienceme.cn/archives/" class="mobile-hidden site-header-nav-item" target="" title="归档">归档</a> <a href="https://slienceme.cn/open-source/" class="mobile-hidden site-header-nav-item" target="" title="开源">开源</a> <a href="https://slienceme.cn/fragments/" class="site-header-nav-item" target="" title="片段">片段</a> <a href="https://slienceme.cn/wiki/" class="site-header-nav-item" target="" title="维基">维基</a> <a href="https://slienceme.cn/links/" class="mobile-hidden site-header-nav-item" target="" title="链接">链接</a> <a href="https://slienceme.cn/about/" class="site-header-nav-item" target="" title="关于">关于</a> <a class="mobile-hidden" href="https://slienceme.cn/feed.xml"><span class="octicon octicon-rss" style="color:orange;"></span></a> </nav> </div> </header> <section class="collection-head small geopattern" data-pattern-id="指令汇总｜常用执行指令汇总大全"> <div class="container"> <div class="columns"> <div class="column three-fourths"> <div class="collection-title"> <h1 class="collection-header">指令汇总｜常用执行指令汇总大全</h1> <div class="collection-info"> <span class="meta-info"> <span class="octicon octicon-calendar"></span> 2019/01/01 </span> <span class="meta-info"> <span class="octicon octicon-file-directory"></span> <a href="https://slienceme.cn/categories/#指令汇总" title="指令汇总">指令汇总</a> </span> <span class="meta-info"> <span class="octicon octicon-clock"></span> 共 25996 字，约 75 分钟 </span> </div> </div> </div> <div class="column one-fourth mobile-hidden"> <div class="collection-title"> </div> </div> </div> </div> </section> <section class="container content"> <div class="columns"> <div class="column three-fourths" > <article class="article-content markdown-body"> <h1 id="常用指令大全">常用指令大全</h1> <blockquote> <p>更新时间: 2025-01-09 14:00:00</p> </blockquote> <h2 id="1-anaconda常用指令">1. Anaconda常用指令</h2> <h3 id="11-激活环境">1.1 激活环境</h3> <div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="c"># 咱们的服务器一般都是默认dash脚本，所以我们先执行一下</span>
+<span class="c"># 激活环境</span>
+/bin/bash
+
+<span class="c"># 激活的过程</span>
+<span class="nb">source</span> ~/.bashrc
+<span class="nb">source </span>activate torch
+
+<span class="c"># 退出环境</span>
+conda deactivate
+
+<span class="c"># 多shell指令 先激活环境然后打开文件路径，最后启动notebook</span>
+activate torch&amp;&amp;d:&amp;&amp;cd D:<span class="se">\c</span>odeHub<span class="se">\m</span>achine-learning&amp;&amp;jupyter notebook
+
+<span class="c"># 查看安装了哪些包  </span>
+conda list    
+
+<span class="c"># 查看当前存在哪些虚拟环境</span>
+conda <span class="nb">env </span>list
+conda info <span class="nt">-e</span>
+
+<span class="c"># 对虚拟环境中安装额外的包</span>
+conda <span class="nb">install</span> <span class="nt">-n</span> your_env_name <span class="o">[</span>package]
+
+<span class="c"># 检查更新当前conda</span>
+conda update conda
+
+<span class="c"># 创建python版本为x.x，名字为your_env_name的虚拟环境</span>
+
+conda create <span class="nt">-n</span> your_env_name <span class="nv">python</span><span class="o">=</span>x.x
+
+<span class="c"># 删除虚拟环境</span>
+conda remove <span class="nt">-n</span> your_env_name <span class="nt">--all</span>
+
+<span class="c"># 删除环境钟的某个包</span>
+conda remove <span class="nt">--name</span> <span class="nv">$your_env_name</span> <span class="nv">$package_name</span> 
+
+<span class="c"># anaconda命令创建python版本为x.x，名字为your_env_name的虚拟环境。**your_env_name文件可以在Anaconda安装目录envs文件下找到**。</span>
+
+<span class="c"># 打开命令行，输入python --version检查当前 python 版本。</span>
+
+<span class="c"># 设置国内镜像</span>
+<span class="o">[</span>http://Anaconda.org]<span class="o">(</span>https://link.zhihu.com/?target<span class="o">=</span>http%3A//Anaconda.org<span class="o">)</span>的服务器在国外，安装多个packages时，conda下载的速度经常很慢。清华TUNA镜像源有Anaconda仓库的镜像，将其加入conda的配置即可：
+<span class="c"># 添加Anaconda的TUNA镜像</span>
+conda config <span class="nt">--add</span> channels <span class="o">[</span>https://mirrors.tuna.tsinghua.edu.cn/anaconda/pkgs/free/]<span class="o">(</span>https://link.zhihu.com/?target<span class="o">=</span>https%3A//mirrors.tuna.tsinghua.edu.cn/anaconda/pkgs/free/<span class="o">)</span>
+
+<span class="c"># TUNA的help中镜像地址加有引号，需要去掉</span>
+<span class="c"># 设置搜索时显示通道地址</span>
+conda config <span class="nt">--set</span> show_channel_urls <span class="nb">yes</span>
+
+<span class="c"># 恢复默认镜像</span>
+conda config <span class="nt">--remove-key</span> channels
+
+<span class="c"># 查看需要安装的模块的所有版本</span>
+pip index versions <span class="o">[</span>your python module name]
+
+<span class="c"># 创建虚拟环境venv</span>
+python3 <span class="nt">-m</span> venv 包名
+conda create <span class="nt">-n</span> 虚拟环境名字 <span class="nv">python</span><span class="o">=</span>版本
+conda remove <span class="nt">-n</span> 虚拟环境名字 <span class="nt">--all</span>
+
+<span class="c"># 导出/入包环境为文件</span>
+pip freeze <span class="o">&gt;</span> requirements.txt         
+pip <span class="nb">install</span> <span class="nt">-r</span> requirements.txt
+conda <span class="nb">install</span> <span class="nt">--yes</span> <span class="nt">--file</span> requirements.txt
+conda <span class="nb">install</span> <span class="nt">--use-local</span> 包名称    <span class="c"># 安装根目录的pkgs文件下的本地包</span>
+pip list <span class="nt">--format</span><span class="o">=</span>freeze <span class="o">&gt;</span> requirements.txt
+
+<span class="c"># 导出conda环境</span>
+conda activate pytorch  <span class="c"># 先进入需要导出的环境</span>
+conda <span class="nb">env export</span> <span class="o">&gt;</span> env.yaml
+<span class="nb">cat </span>env.yaml
+
+<span class="c"># 导入conda环境</span>
+conda <span class="nb">env </span>create <span class="nt">-f</span> /mnt/hgfs/虚拟机/PaddleRobotics-main/env.yaml
+
+<span class="c"># 换源 豆瓣源</span>
+pip3 <span class="nb">install </span>模块 <span class="nt">-i</span> http://pypi.douban.com/simple/ <span class="nt">--trusted-host</span> pypi.douban.com
+pip3 <span class="nb">install </span>模块 <span class="nt">-i</span> http://pypi.tuna.tsinghua.edu.cn/simple/ <span class="nt">--trusted-host</span> tuna.tsinghua.edu.cn
+pip3 <span class="nb">install </span>模块 <span class="nt">-i</span> http://mirrors.aliyun.com/pypi/simple/ <span class="nt">--trusted-host</span> aliyun.com
+  
+防止权限不足 加 <span class="nt">--user</span>
+
+<span class="c"># pip相关</span>
+pip <span class="nt">-V</span>  <span class="c"># 查询</span>
+pip list
+
+<span class="c"># 如果发现激活环境后，pip list -v 有base环境的包，关闭用户的环境变量</span>
+vim ~/.bashrc
+i
+<span class="nb">export </span><span class="nv">PYTHONNOUSERSITE</span><span class="o">=</span>1
+:wq
+
+<span class="c"># 设置工作路径</span>
+<span class="nb">export </span><span class="nv">PYTHONPATH</span><span class="o">=</span><span class="sb">`</span><span class="nb">readlink</span> <span class="nt">-f</span> ./
+
+<span class="c"># 注意</span>
+用户目录下的.local文件下为用户的环境可以删除, <span class="sb">`</span>pip list<span class="sb">`</span>的指令会显示这个环境的包,使得创建的Anaconda的虚拟环境的piplist不是空的
+</code></pre></div></div> <p>相关源:</p> <div class="language-text highlighter-rouge"><div class="highlight"><pre class="highlight"><code>清华：https://pypi.tuna.tsinghua.edu.cn/simple/
+
+阿里云：http://mirrors.aliyun.com/pypi/simple/
+
+中国科技大学 https://pypi.mirrors.ustc.edu.cn/simple/
+
+华中科技大学：http://pypi.hustunique.com/
+
+山东理工大学：http://pypi.sdutlinux.org/
+
+豆瓣：http://pypi.douban.com/simple/
+
+中科大：https://pypi.mirrors.ustc.edu.cn
+</code></pre></div></div> <h2 id="2-github相关">2. github相关</h2> <div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nb">cd</span> ~/.ssh
+<span class="nb">mkdir </span>key_backup
+<span class="nb">mv </span>id_rsa<span class="k">*</span> key_backup
+ssh-keygen <span class="nt">-t</span> rsa <span class="nt">-C</span> <span class="s2">"your_email@youremail.com"</span>
+
+Generating public/private rsa key pair.
+Enter file <span class="k">in </span>which to save the key <span class="o">(</span>/c/Users/slien/.ssh/id_rsa<span class="o">)</span>: &lt;press enter&gt; 直接回车，不要修改默认路径
+Enter passphrase <span class="o">(</span>empty <span class="k">for </span>no passphrase<span class="o">)</span>:&lt;enter a passphrase&gt; 不设置密码，直接回车，下同
+Enter same passphrase again:&lt;enter passphrase again&gt; 设置一个密码短语，在每次远程操作之前会要求输入密码短语！
+闲麻烦可以直接回车，不设置。
+
+
+ssh-keygen <span class="nt">-t</span> rsa <span class="c"># 生成密钥 用公钥上传github</span>
+git remote set-url origin <span class="s1">'git@github.com:slience-me/machine-learning.git'</span>
+git remote <span class="nt">-v</span>
+</code></pre></div></div> <p>The authenticity of host ‘github.com (20.205.243.166)’ can’t be established. ED25519 key fingerprint is SHA256:+DiY3wvvV6TuJJhbpZisF/zLDA0zPMSvHdkr4UvCOqU. This key is not known by any other names.</p> <h2 id="3-linux相关指令">3. Linux相关指令</h2> <h3 id="31-常见指令">3.1 常见指令</h3> <div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="c"># 查看相关进程</span>
+ps aux|grep uwsgi<span class="o">(</span>管道过滤<span class="o">)</span>
+netstat <span class="nt">-unltp</span> | <span class="nb">grep </span>nginx<span class="o">(</span>管道过滤<span class="o">)</span>
+<span class="nb">whoami
+</span>ps <span class="nt">-ef</span> | <span class="nb">grep</span> <span class="s2">"uwsgi"</span>
+
+<span class="c"># 查询端口占用状态</span>
+lsof <span class="nt">-i</span>:端口号
+
+<span class="c"># 杀死进程</span>
+<span class="nb">kill</span> <span class="nt">-9</span> 进程号
+
+<span class="c"># 查看sudo操作</span>
+<span class="nb">cat</span> /var/log/auth.log | <span class="nb">grep sudo</span>
+
+<span class="c"># 更改文件的所有者和所属组</span>
+<span class="nb">chown</span> <span class="o">[</span>新的所有者用户名]:[新的所属组名] <span class="o">[</span>文件名]
+<span class="nb">chown </span>newuser:newgroup example.txt
+
+<span class="c"># 更改文件的权限 `u` 表示所有者权限，`go` 表示所属组和其他用户权限，`rw` 表示读取和写入权限，`r` 表示只读权限。</span>
+<span class="nb">chmod</span> <span class="o">[</span>权限设置] <span class="o">[</span>文件名]
+<span class="nb">chmod </span><span class="nv">u</span><span class="o">=</span>rw,go<span class="o">=</span>r example.txt
+<span class="nb">chmod </span>644 example.txt
+
+<span class="c"># 查看命令的手册页</span>
+man
+
+<span class="c"># 查看命令的详细信息</span>
+info
+
+<span class="c">#打印文本或变量</span>
+<span class="nb">echo</span> 
+
+<span class="c"># 设置环境变量</span>
+<span class="nb">export </span><span class="nv">PATH</span><span class="o">=</span><span class="nv">$PATH</span>:/new/directory
+
+<span class="c">## 常用命令</span>
+<span class="nb">ls</span> <span class="nt">-l</span>
+<span class="nb">cd
+pwd
+mkdir
+rm</span> <span class="nt">-rf</span>
+<span class="nb">cp</span>    <span class="c"># cp file.txt /path/to/destination 复制文件或目录</span>
+<span class="nb">mv</span>    <span class="c"># mv file.txt /new/path/ 移动文件或目录</span>
+<span class="nb">cat</span>   <span class="c"># cat file.txt  连接文件并打印到标准输出设备上</span>
+more  <span class="c"># less largefile.txt  分页显示文件内容</span>
+less
+<span class="nb">head</span>  <span class="c"># head -n 10 file.txt  显示文件开头或结尾的内容</span>
+<span class="nb">tail</span>
+
+<span class="c">## 系统信息</span>
+<span class="nb">uname</span>        <span class="c"># 显示系统信息 uname -a</span>
+lsb_release  <span class="c"># 显示发行版信息 lsb_release -a</span>
+<span class="nb">hostname</span>     <span class="c"># 显示主机名 hostname</span>
+
+<span class="c">## 系统操作</span>
+shutdown    <span class="c"># 关机或重启系统 shutdown -h now</span>
+reboot      <span class="c"># 重新启动系统 reboot</span>
+
+<span class="c">## 用户相关</span>
+su      	<span class="c"># 切换用户 su root</span>
+<span class="nb">who</span>         <span class="c"># 显示当前登录用户信息</span>
+useradd     <span class="c"># 添加新用户 useradd -m newuser</span>
+userdel     <span class="c"># 删除用户 userdel -r newuser</span>
+passwd      <span class="c"># 修改用户密码 passwd [选项] 用户名 -l 禁用账号 -u 口令解锁 -d 使账号无口令 -f 强迫用户下次登录时修改口令。</span>
+
+
+<span class="c">## 文件相关</span>
+<span class="nb">chmod</span>       <span class="c"># 修改文件权限 chmod 777 file.txt</span>
+<span class="nb">chown</span>       <span class="c"># 修改文件所有者和所属组 chown newuser:newgroup file.txt</span>
+find        <span class="c"># 在文件系统中查找文件 find / -name "*.txt"</span>
+
+<span class="c">## 程序相关</span>
+ps          <span class="c"># 显示进程状态 ps -ef | grep "uwsgi"</span>
+<span class="nb">kill</span>        <span class="c"># 终止进程 kill -9 1234</span>
+top         <span class="c"># 实时显示系统运行进程信息 top</span>
+
+<span class="c">## 网络相关</span>
+ifconfig    <span class="c"># 显示网络接口信息 ifconfig -a</span>
+ping        <span class="c"># 测试与目标主机之间的连通性 ping www.baidu.com</span>
+netstat     <span class="c"># 显示网络状态信息 netstat -an</span>
+netstat <span class="nt">-antlp</span>
+
+<span class="c">## 其他</span>
+<span class="nb">date</span>        <span class="c"># 显示系统日期和时间</span>
+<span class="nb">tar</span>         <span class="c"># 压缩和解压文件</span>
+<span class="nb">gzip</span>/gunzip <span class="c"># 压缩和解压缩文件</span>
+
+<span class="c">## 系统管理</span>
+traceroute  <span class="c"># 显示数据包到达目标主机所经过的路由信息 traceroute www.baidu.com</span>
+iftop       <span class="c"># 显示网络带宽使用情况 iftop</span>
+systemctl   <span class="c"># 管理系统服务</span>
+journalctl  <span class="c"># 查询和检查系统日志</span>
+
+<span class="c">## 系统监控</span>
+iostat      <span class="c"># 显示系统IO统计信息 iostat -x 1</span>
+free        <span class="c"># 显示系统内存使用情况 free -m</span>
+<span class="nb">df</span>          <span class="c"># 显示文件系统使用情况 df -h  </span>
+
+<span class="c">## 软件管理</span>
+dpkg        <span class="c"># 安装、更新和卸载软件包 dpkg -i package.deb</span>
+apt         <span class="c"># 软件包管理器 apt install package</span>
+yum         <span class="c"># 软件包管理器 yum install package</span>
+
+<span class="c">##  系统配置</span>
+crontab     <span class="c"># 配置系统定时任务 crontab -e</span>
+vi/vim       <span class="c"># 编辑文件 vi/vim file.txt</span>
+<span class="nb">sudo</span>        <span class="c"># 以管理员身份执行命令 sudo command</span>
+
+<span class="c"># 先将本地yum仓库换成阿里云的yum仓库</span>
+wget <span class="nt">-O</span> /etc/yum.repos.d/CentOS-Base.repo http://mirrors.aliyun.com/repo/Centos-7.repo
+yum clean all
+yum makecache
+</code></pre></div></div> <h3 id="32-配置相关">3.2 配置相关</h3> <h4 id="321-目录介绍">3.2.1 目录介绍</h4> <div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="c"># Linux根目录下每个文件夹的功能</span>
+/bin:   <span class="c"># 存放二进制可执行文件</span>
+/boot:  <span class="c"># 存放系统引导必需的文件</span>
+/dev:   <span class="c"># 存放设备文件</span>
+/etc:   <span class="c"># 存放系统配置文件</span>
+/home:  <span class="c"># 存放所有用户文件的根目录</span>
+/lib:   <span class="c"># 存放系统共享库和内核模块</span>
+/media: <span class="c"># 用于挂载可移动媒体设备</span>
+/mnt:   <span class="c"># 用于临时挂载文件系统</span>
+/opt:   <span class="c"># 用于存放可选的软件包</span>
+/proc:  <span class="c"># 虚拟文件系统,存放系统运行时信息</span>
+/root:  <span class="c"># 超级用户目录</span>
+/run:   <span class="c"># 存放系统运行时所需的文件</span>
+/sbin:  <span class="c"># 存放二进制可执行文件,只有root才能访问</span>
+/srv:   <span class="c"># 存放服务启动之后需要提取的数据</span>
+/sys:   <span class="c"># 虚拟文件系统,存放系统运行时信息</span>
+/tmp:   <span class="c"># 用于存放各种临时文件</span>
+/usr:   <span class="c"># 用于存放共享文件</span>
+/var:   <span class="c"># 用于存放运行时需要改变数据的文件</span>
+/lost+found:   <span class="c"># 用于存放系统异常退出时保存的文件</span>
+/media/cdrom:  <span class="c"># 挂载光盘时的默认目录</span>
+/media/floppy: <span class="c"># 挂载软盘时的默认目录</span>
+/media/usb:    <span class="c"># 挂载U盘时的默认目录</span>
+/media/usb0:   <span class="c"># 挂载U盘0时的默认目录</span>
+</code></pre></div></div> <h4 id="ubuntu中使用apt-get进行软件包管理">Ubuntu中使用apt-get进行软件包管理：</h4> <div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code>安装：apt-get <span class="nb">install </span>name
+更新：apt-get update name
+卸载：apt-get remove name
+查找：apt-cache search name
+
+<span class="c"># 查看服务列表</span>
+systemctl list-unit-files <span class="nt">--type</span><span class="o">=</span>service
+</code></pre></div></div> <h4 id="322-配置linux环境变量">3.2.2 配置Linux环境变量</h4> <div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="c"># 配置Linux环境变量</span>
+<span class="nb">export </span><span class="nv">PATH</span><span class="o">=</span><span class="nv">$PATH</span>:/usr/local/bin  <span class="c"># 添加到PATH环境变量中</span>
+<span class="nb">source</span> ~/.bashrc                  <span class="c"># 使环境变量生效</span>
+</code></pre></div></div> <h4 id="333-配置防火墙操作">3.3.3 配置防火墙操作</h4> <div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="c"># 配置防火墙操作 ubuntu</span>
+ufw <span class="nb">help</span>  <span class="c"># 帮助清单</span>
+<span class="nb">sudo </span>apt <span class="nb">install </span>firewalld  <span class="c"># 安装</span>
+ufw status    <span class="c"># 查看防火墙状态和开放的端口</span>
+ufw <span class="nb">enable</span>    <span class="c"># 启动防火墙</span>
+ufw disable   <span class="c"># 关闭防火墙</span>
+ufw allow 22
+ufw reload
+netstat <span class="nt">-antp</span>          <span class="c"># 查看开放端口</span>
+</code></pre></div></div> <h4 id="334-查看ip">3.3.4 查看IP</h4> <div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="c"># 查看IP ubuntu</span>
+ip addr show
+ip a
+<span class="nb">hostname</span> <span class="nt">-I</span>  <span class="c"># 最精简的</span>
+ifconfig     <span class="c"># 需要安装 apt-get install net-tools</span>
+route <span class="nt">-n</span>     <span class="c"># 查看网关 </span>
+
+<span class="c"># centos </span>
+ifconfig     <span class="c"># 需要安装 yum install net-tools</span>
+</code></pre></div></div> <h4 id="335-配置静态ip操作-ubuntu">3.3.5 配置静态IP操作 ubuntu</h4> <div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="c"># 配置静态IP操作 ubuntu</span>
+<span class="nb">cd</span> /etc/netplan
+<span class="nb">sudo cp </span>01-network-manager-all.yaml 01-network-manager-all.yaml-before
+<span class="nb">sudo </span>vim 01-network-manager-all.yaml
+<span class="nt">------------------------------------------------------------</span>
+network:
+  ethernets:
+    ens33:
+      addresses: <span class="o">[</span>192.168.5.130/24]  <span class="c"># 设置静态IP地址和掩码</span>
+      routes:
+        - to: default
+          via: 192.168.5.2
+      <span class="c"># gateway4: 192.168.5.2 禁用了</span>
+      dhcp4: <span class="nb">false</span>                   <span class="c"># 禁用dhcp</span>
+      nameservers:
+        addresses: <span class="o">[</span>114.114.114.114, 8.8.8.8]  <span class="c"># 设置主、备DNS</span>
+  version: 2
+  renderer: NetworkManager
+<span class="nt">-------------------------------------------------------------</span>
+<span class="nb">sudo </span>netplan apply
+
+
+<span class="c"># centos</span>
+vi /etc/sysconfig/network-scripts/ifcfg-ens33  <span class="c"># 编辑网络配置文件</span>
+<span class="nv">BOOTPROTO</span><span class="o">=</span>static         <span class="c"># 设置静态IP</span>
+<span class="nv">ONBOOT</span><span class="o">=</span><span class="nb">yes</span>               <span class="c"># 设置自动启用网络连接</span>
+<span class="nv">IPADDR</span><span class="o">=</span>192.168.1.100     <span class="c"># 设置IP地址</span>
+<span class="nv">GATEWAY</span><span class="o">=</span>192.168.1.254    <span class="c"># 设置网关</span>
+<span class="nv">DNS1</span><span class="o">=</span>8.8.8.8             <span class="c"># 设置DNS服务器</span>
+service network restart  <span class="c"># 重启网络服务</span>
+</code></pre></div></div> <h4 id="336-配置nginx操作">3.3.6 配置nginx操作</h4> <div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="c"># 配置nginx操作 ubuntu</span>
+service nginx start    <span class="c"># 启动nginx服务</span>
+service nginx status   <span class="c"># 查看nginx状态</span>
+service nginx restart  <span class="c"># 重启服务</span>
+nginx <span class="nt">-s</span> reload        <span class="c"># 重新加载nginx配置</span>
+nginx <span class="nt">-s</span> stop          <span class="c"># 停止nginx服务</span>
+</code></pre></div></div> <h4 id="337-配置mysql操作">3.3.7 配置MySQL操作</h4> <div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="c"># 配置MySQL操作  ubuntu系统</span>
+<span class="nb">sudo </span>apt <span class="nb">install </span>mysql-server  <span class="c"># 安装  也可以指定版本=5.6</span>
+<span class="nb">sudo </span>mysql_secure_installation  <span class="c"># 初始化操作</span>
+<span class="nt">------------------------------------</span>
+Securing the MySQL server deployment....
+Would you like to setup VALIDATE PASSWORD component?
+Press y|Y <span class="k">for </span>Yes, any other key <span class="k">for </span>No: <span class="o">(</span>写 NO 不进行密码的强校验<span class="o">)</span>
+
+Skipping....Remove anonymous <span class="nb">users</span>? <span class="o">(</span>Press y|Y <span class="k">for </span>Yes, any other key <span class="k">for </span>No<span class="o">)</span> : <span class="o">(</span>选择Y，删除匿名用户<span class="o">)</span>
+
+Normally......Disallow root login remotely? <span class="o">(</span>选择N，允许root远程连接<span class="o">)</span>
+
+By default, Remove <span class="nb">test </span>database and access to it? <span class="o">(</span>选择N，不删除test数据库<span class="o">)</span>
+
+Reloading t....Reload privilege tables now? Y <span class="o">(</span>选择Y，修改权限立即生效<span class="o">)</span>
+
+<span class="nb">sudo </span>vi /etc/mysql/mysql.conf.d/mysqld.cnf
+<span class="c">#找到 bind-address 修改值为 0.0.0.0(如果需要远程访问)</span>
+<span class="c"># 修改密码</span>
+<span class="nb">sudo </span>mysql <span class="nt">-u</span> root  回车  <span class="c"># 以 root 用户身份登录 MySQL</span>
+USE mysql<span class="p">;</span>               <span class="c"># 择 MySQL 数据库</span>
+
+UPDATE user SET <span class="nv">authentication_string</span><span class="o">=</span>PASSWORD<span class="o">(</span><span class="s1">'new_password'</span><span class="o">)</span> WHERE <span class="nv">User</span><span class="o">=</span><span class="s1">'root'</span><span class="p">;</span>  <span class="c"># 更新 root 用户的密码 </span>
+<span class="c"># 在MySQL 8.04前，执行：SET PASSWORD=PASSWORD(‘[新密码]’);但是MySQL8.0.4开始，这样默认是不行的。因为之前，MySQL的密码认证插件是“mysql_native_password”，而现在使用的是“caching_sha2_password”。</span>
+
+ALTER USER <span class="s1">'root'</span>@<span class="s1">'localhost'</span> IDENTIFIED WITH mysql_native_password BY <span class="s1">'新密码'</span><span class="p">;</span>
+
+FLUSH PRIVILEGES<span class="p">;</span>        <span class="c"># 刷新权限：</span>
+<span class="nb">exit</span><span class="p">;</span>                    <span class="c"># 退出 MySQL</span>
+
+<span class="c"># 若要让其他主机登录数据库   host='%' 开放访问  host='localhost' 本机访问</span>
+USE mysql<span class="p">;</span>  
+update user <span class="nb">set </span><span class="nv">host</span><span class="o">=</span><span class="s1">'%'</span> where <span class="nv">user</span><span class="o">=</span><span class="s1">'root'</span> and <span class="nv">host</span><span class="o">=</span><span class="s1">'localhost'</span> limit 1<span class="p">;</span>
+FLUSH PRIVILEGES<span class="p">;</span>     
+<span class="nt">------------------------------------</span>
+
+service mysql start   <span class="c"># 启动MySQL服务</span>
+service mysql status  <span class="c"># 查看MySQL状态</span>
+service mysql restart  <span class="c"># 重启服务</span>
+service mysql stop    <span class="c"># 停止MySQL状态</span>
+mysql <span class="nt">-u</span> root <span class="nt">-p</span>        <span class="c"># 连接MySQL数据库</span>
+</code></pre></div></div> <h4 id="338-配置tomcat操作">3.3.8 配置Tomcat操作</h4> <div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="c"># 配置Tomcat操作</span>
+systemctl start tomcat  <span class="c"># 启动Tomcat服务</span>
+systemctl status tomcat <span class="c"># 查看Tomcat状态</span>
+tomcat/bin/startup.sh   <span class="c"># 启动Tomcat服务</span>
+tomcat/bin/shutdown.sh  <span class="c"># 停止Tomcat服务</span>
+</code></pre></div></div> <h4 id="339-配置docker操作">3.3.9 配置Docker操作</h4> <div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="c"># 配置Docker操作</span>
+docker pull image_name  <span class="c"># 拉取镜像</span>
+docker run image_name   <span class="c"># 运行镜像</span>
+docker ps              <span class="c"># 查看运行中的容器</span>
+docker stop container_id  <span class="c"># 停止容器</span>
+docker <span class="nb">rm </span>container_id   <span class="c"># 删除容器</span>
+
+<span class="c"># 将用户添加到Docker组 </span>
+<span class="c"># 系统管理员可以将用户添加到Docker组，以便用户能够运行Docker命令：</span>
+<span class="nb">sudo </span>usermod <span class="nt">-aG</span> docker &lt;username&gt;
+
+
+<span class="c"># 1. 卸载旧版</span>
+apt-get remove docker docker-engine docker.io containerd runc
+<span class="c"># 2. 安装Docker</span>
+<span class="nb">sudo </span>apt update
+<span class="nb">sudo </span>apt <span class="nb">install </span>apt-transport-https ca-certificates curl software-properties-common
+<span class="c"># 3. 安装证书</span>
+curl <span class="nt">-fsSL</span> http://mirrors.aliyun.com/docker-ce/linux/ubuntu/gpg | <span class="nb">sudo </span>apt-key add -
+<span class="c"># 4. 写入软件源信息</span>
+<span class="nb">sudo </span>add-apt-repository <span class="s2">"deb [arch=amd64] http://mirrors.aliyun.com/docker-ce/linux/ubuntu </span><span class="si">$(</span>lsb_release <span class="nt">-cs</span><span class="si">)</span><span class="s2"> stable"</span>
+<span class="c"># 5. 安装</span>
+<span class="nb">sudo </span>apt update
+<span class="nb">sudo </span>apt-get <span class="nb">install </span>docker-ce docker-ce-cli containerd.io
+<span class="c"># 6. 启动docker</span>
+sysemctl start docker
+<span class="c"># 7. 安装工具</span>
+apt-get <span class="nt">-y</span> <span class="nb">install </span>apt-transport-https ca-certificates curl software-properties-common
+<span class="c"># 8. 重启docker</span>
+service docker restart
+<span class="nb">sudo </span>docker run hello-world 显示以下信息则成功
+<span class="c"># 10.查看docker版本 </span>
+<span class="nb">sudo </span>docker version
+<span class="c"># 11.查看镜像，可以看到刚才创建的镜像</span>
+<span class="nb">sudo </span>docker images
+
+
+<span class="c"># docker 换源</span>
+vim /etc/docker/daemon.json 
+<span class="nt">---</span>
+<span class="o">{</span>
+  <span class="s2">"registry-mirrors"</span>: <span class="o">[</span>
+    <span class="s2">"https://atomhub.openatom.cn"</span>
+  <span class="o">]</span>
+<span class="o">}</span>
+<span class="nt">---</span>
+<span class="nb">sudo </span>systemctl daemon-reload
+<span class="nb">sudo </span>systemctl restart docker
+
+<span class="c"># 查看镜像源</span>
+docker info|grep Mirrors <span class="nt">-A</span> 1
+</code></pre></div></div> <h4 id="3310-配置redis操作">3.3.10 配置Redis操作</h4> <div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="c"># 配置Redis操作</span>
+<span class="nb">sudo </span>apt <span class="nb">install </span>redis-server   <span class="c"># 安装</span>
+service redis start   <span class="c"># 启动Redis服务</span>
+service redis status  <span class="c"># 查看Redis状态</span>
+service redis restart  <span class="c"># 重启服务</span>
+service redis stop    <span class="c"># 停止Redis状态</span>
+redis-server /etc/redis/redis.conf  <span class="c"># 启动Redis服务</span>
+redis-cli                          <span class="c"># 连接Redis数据库</span>
+
+
+</code></pre></div></div> <p>redis开启远程服务的操作方法：</p> <div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>1.打开redis的配置文件“redis.conf”。
+
+2.将“bind 127.0.0.1”注释掉。
+
+3.将“protected-mode yes”改成“protected-mode no”。
+
+4.添加以下一行代码。
+daemonize no
+
+5.重启redis服务即可。
+</code></pre></div></div> <h4 id="3311-配置uwsgi操作">3.3.11 配置uwsgi操作</h4> <div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="c"># 配置uwsgi操作</span>
+uwsgi <span class="nt">--ini</span> uwsgi.ini  <span class="c"># 启动uwsgi服务</span>
+uwsgi <span class="nt">--stop</span> uwsgi.pid  <span class="c"># 停止uwsgi服务</span>
+</code></pre></div></div> <h4 id="3312-安装ssh服务">3.3.12 安装SSH服务</h4> <div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="c"># 安装SSH服务 ubuntu</span>
+<span class="nb">sudo </span>apt-get <span class="nb">install </span>openssh-server
+ps <span class="nt">-e</span> |grep ssh
+service ssh start
+service ssh status
+service ssh restart  <span class="c"># 重启服务</span>
+</code></pre></div></div> <h4 id="3313-安装tree指令">3.3.13 安装tree指令</h4> <div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="c"># 安装tree指令</span>
+<span class="nb">sudo </span>apt <span class="nb">install </span>tree
+</code></pre></div></div> <h2 id="4-git相关指令">4. Git相关指令</h2> <div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nb">sudo </span>apt <span class="nb">install </span>git  <span class="c"># 安装</span>
+
+<span class="c"># 查看配置信息</span>
+git config <span class="nt">--list</span>
+git config <span class="nt">--global</span> <span class="nt">--list</span>
+git config <span class="nt">-l</span>  
+git config <span class="nt">--global</span> <span class="nt">-l</span>	
+
+<span class="c"># 初始化Git配置</span>
+git config <span class="nt">--global</span> user.name <span class="s2">"Your Name"</span>
+git config <span class="nt">--global</span> user.email <span class="s2">"email@example.com"</span>
+
+<span class="c"># 创建本地仓库</span>
+git init
+
+<span class="c"># 添加文件到暂存区</span>
+git add &lt;file&gt;
+git add xxx 	<span class="c"># 把某一个文件或者文件夹提交到暂存区</span>
+git add <span class="nb">.</span> 	    <span class="c"># 把当前仓库中所有最新修改的文件都提交到暂存区</span>
+git add <span class="nt">-A</span>	    <span class="c"># 把所有最新修改的文件都提交到暂存区</span>
+
+<span class="c"># 查看当前文件的状态（红色代表在工作区，绿色代表在暂存区，看不见表示已经提交到历史区）</span>
+git status 
+
+<span class="c"># 提交文件到本地仓库</span>
+git commit <span class="nt">-m</span> <span class="s2">"Commit message"</span>
+
+<span class="c"># 设置远程仓库</span>
+git remote add origin &lt;url&gt;
+
+<span class="c"># 查看远程仓库</span>
+git remote show origin
+git remote <span class="nt">-v</span> 	        <span class="c"># 查看本地仓库和哪些远程仓库保持链接</span>
+git remote <span class="nb">rm </span>origin 	<span class="c"># 删除origin这个关联信息</span>
+git ls-remote <span class="nt">--heads</span> &lt;repository_url&gt;  <span class="c"># 查看有哪些分支</span>
+
+<span class="c"># 推送本地仓库到远程仓库</span>
+git push <span class="nt">-u</span> origin master
+
+<span class="c"># 克隆远程仓库到本地</span>
+git clone &lt;url&gt;
+git clone <span class="nt">-b</span> develop &lt;repository_url&gt;  <span class="c"># -b 指定分支</span>
+
+<span class="c"># 拉取远程仓库的更新</span>
+git pull
+git pull origin 分支名  拉取远程仓库文件到本地   master
+git pull origin main <span class="nt">--allow-unrelated-histories</span> <span class="c"># 允许合并不相关的历史记录</span>
+
+
+<span class="c"># 创建分支并切换到该分支</span>
+git checkout <span class="nt">-b</span> &lt;branch&gt;
+
+<span class="c"># 切换到主分支</span>
+git checkout master
+
+<span class="c"># 合并分支到主分支</span>
+git merge &lt;branch&gt;
+
+<span class="c"># 删除分支</span>
+git branch <span class="nt">-d</span> &lt;branch&gt;
+
+<span class="c"># 删除远程分支</span>
+git push origin <span class="nt">--delete</span> &lt;branch&gt;
+
+<span class="c"># 查看分支</span>
+git branch
+
+<span class="c"># 查看远程分支</span>
+git branch <span class="nt">-r</span>
+
+<span class="c"># 查看提交历史</span>
+git log
+git reflog   <span class="c"># 包含回滚的信息</span>
+
+<span class="c"># 回滚到指定版本</span>
+git reset <span class="nt">--hard</span> &lt;commit_id&gt;
+git reset <span class="nt">--hard</span>  <span class="c"># 重置暂存区与工作区，与上一次commit保持一致</span>
+git reset <span class="nt">--hard</span> 版本号  <span class="c"># 回退到某个版本</span>
+
+<span class="c"># 撤销未提交的修改</span>
+git checkout <span class="nt">--</span> &lt;file&gt;
+
+<span class="c"># 配置别名</span>
+git config <span class="nt">--global</span> alias.&lt;shortcut&gt; &lt;full_command&gt;
+</code></pre></div></div> <div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="c"># 常用的几个指令</span>
+<span class="nt">-------------------------------------------------------------</span>
+git init
+git add README.md
+git commit <span class="nt">-m</span> <span class="s2">"first commit"</span>
+git branch <span class="nt">-M</span> main  <span class="c"># 重命名分支</span>
+git remote add origin git@github.com:slience-me/notebooks.git
+git push <span class="nt">-u</span> origin main  <span class="c"># -u 参数用于设置当前分支与远程分支的关联</span>
+<span class="nt">-------------------------------------------------------------</span>
+git pull origin main <span class="c"># 拉取并合并分支</span>
+
+git tag                <span class="c"># 查看标签</span>
+git tag v1.0           <span class="c"># 创建标签</span>
+git push origin v1.0   <span class="c"># 推送标签到远程仓库</span>
+git push origin <span class="nt">--tags</span> <span class="c"># 推送所有标签到远程仓库</span>
+
+<span class="c"># 设置远程仓库的默认分支为master</span>
+git push <span class="nt">--set-upstream</span> origin master 
+</code></pre></div></div> <blockquote> <p>项目开发流程</p> <p>1.项目负责人先创建中央仓库并增加协作者</p> <p>2.小组成员基于$ git clone 把远程仓库及其内容克隆到本地一份（解决了三件事情：初始化本地仓库；与对应的远程仓库保持了关联；把远程仓库默认内容拉取到本地）</p> <p>3.每个成员写完自己的程序后，基于“git add / git commit”把自己修改的内容存放到历史区，然后通过“git pull / git push”把本地信息和远程仓库信息保持同步（可能涉及冲突s的处理）</p> </blockquote> <h3 id="gitignore相关语法">.gitignore相关语法</h3> <div class="language-text highlighter-rouge"><div class="highlight"><pre class="highlight"><code># .gitignore文件使用一些简单的规则来指定哪些文件或目录应该被忽略，不纳入版本控制。
+# 以下是一些常用的 `.gitignore` 语法和模式：
+
+1. 通配符:
+    - `*`: 匹配任意数量的字符（不包括路径分隔符）。
+    - `?`: 匹配任意单个字符。
+    - `**`: 匹配任意数量的字符，包括路径分隔符。
+
+2. 目录和文件:
+   - `/dirname`: 忽略根目录下的指定目录。
+   - `filename`: 忽略根目录下的指定文件。
+   - `dirname/`: 忽略根目录下的指定目录及其内容。
+   - `dir*/`: 匹配以 "dir" 开头的目录。
+
+3. 注释:
+   - `#`: 以 `#` 开头的行将被视为注释。
+
+4. 取反:
+   - `!`: 取反，表示不忽略匹配到的文件或目录。
+
+5. 模式匹配:
+   - `*.ext`: 匹配任意文件名以 `.ext` 结尾的文件。
+   - `/*.ext`: 匹配根目录下的任意文件名以 `.ext` 结尾的文件。
+   - `**/*.ext`: 匹配任意目录下的任意文件名以 `.ext` 结尾的文件。
+
+6. 文件夹匹配:
+   - `/logs/`: 匹配根目录下的 `logs` 目录及其内容。
+
+7. 忽略所有文件:
+   - `*`: 忽略所有文件。
+   - `*/`: 忽略所有目录。
+
+8. 忽略特定类型文件:
+   - `*.log`: 忽略所有以 `.log` 结尾的文件。
+
+9. 忽略特定文件或目录:
+   - `file.txt`: 忽略根目录下的 `file.txt` 文件。
+   - `dir/`: 忽略根目录下的 `dir` 目录。
+
+10. 匹配多个模式:
+    - 可以在一行中使用多个模式，以空格或制表符分隔
+</code></pre></div></div> <p>示例：</p><pre><code class="language-gitignore"># 忽略所有日志文件
+*.log
+
+# 忽略所有临时文件
+temp/
+
+# 忽略根目录下的build文件夹
+/build
+
+# 忽略根目录下的所有build文件夹
+/build*/
+
+# 忽略根目录下的.idea文件夹及其内容
+.idea/
+
+# 不忽略根目录下的test.txt文件
+!test.txt
+</code></pre><p>这些是常用的 <code class="language-plaintext highlighter-rouge">.gitignore</code> 语法和模式，你可以根据项目的需要进行适当的配置。如果需要更详细的信息，可以查阅 Git 官方文档中的 <a href="https://git-scm.com/docs/gitignore">.gitignore 文档</a>。</p> <h2 id="5-显卡">5. 显卡</h2> <div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="c">#  查看显卡信息</span>
+nvidia-smi
+
+<span class="c"># 查看cuda版本</span>
+nvcc <span class="nt">--version</span>
+nvcc <span class="nt">-V</span>
+
+<span class="c"># 查看cudnn版本</span>
+<span class="nb">cat</span> /usr/local/cuda/include/cudnn.h | <span class="nb">grep </span>CUDNN_MAJOR <span class="nt">-A</span> 2
+
+<span class="c"># 检查当前使用的CUDA路径</span>
+<span class="nb">echo</span> <span class="nv">$PATH</span> | <span class="nb">grep</span> <span class="nt">-o</span> <span class="s1">'cuda-[0-9\.]*'</span>
+<span class="nb">echo</span> <span class="nv">$LD_LIBRARY_PATH</span> | <span class="nb">grep</span> <span class="nt">-o</span> <span class="s1">'cuda-[0-9\.]*'</span>
+
+<span class="c"># 切换到正确的CUDA版本 配置环境变量</span>
+<span class="nb">export </span><span class="nv">CUDA_HOME</span><span class="o">=</span>/usr/local/cuda-12.4
+<span class="nb">export </span><span class="nv">PATH</span><span class="o">=</span><span class="nv">$CUDA_HOME</span>/bin:<span class="nv">$PATH</span>
+<span class="nb">export </span><span class="nv">LD_LIBRARY_PATH</span><span class="o">=</span><span class="nv">$CUDA_HOME</span>/lib64:<span class="nv">$LD_LIBRARY_PATH</span>
+
+</code></pre></div></div> <div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="c1"># 查询系统中是否安装了CUDA
+</span><span class="kn">import</span> <span class="nn">torch</span>
+
+<span class="n">torch</span><span class="p">.</span><span class="n">cuda</span><span class="p">.</span><span class="n">is_available</span><span class="p">()</span>
+<span class="bp">True</span>
+</code></pre></div></div> <p>英伟达官网 驱动下载</p> <p>https://www.nvidia.cn/Download/index.aspx?lang=cn</p> <h2 id="6-系统重装操作合集">6. 系统重装操作合集</h2> <hr /> <h3 id="61-系统安装">6.1 系统安装：</h3> <p>https://blog.csdn.net/Flag_ing/article/details/121908340</p> <p>/boot : 1G 1024MB 主分区。系统的boot启动引导项安装位置</p> <p>efi: 1G 主分区</p> <p>/ : 剩余 主分区。根目录，所有目录的根节点，其下包含很多子目录，如/usr /tmp等</p> <p>/home : 2T 逻辑分区。一般放置自己的数据</p> <p>swap : 64G 65536MB 逻辑分区。交换空间，一般是物理内存的1~2倍就行了</p> <hr /> <h3 id="62-安装openssh-server">6.2 安装openssh-server</h3> <blockquote> <p>在Ubuntu上安装和配置SSH服务器非常简单。以下是详细的步骤：</p> <h3 id="1-更新系统包">1. 更新系统包</h3> <p>在安装任何新软件之前，最好更新现有的软件包，以确保你获得最新的版本。打开终端并运行以下命令：</p> <div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nb">sudo </span>apt update
+</code></pre></div> </div> <h3 id="2-安装openssh服务器">2. 安装OpenSSH服务器</h3> <p>Ubuntu使用<code class="language-plaintext highlighter-rouge">openssh-server</code>作为SSH服务器。可以使用以下命令进行安装：</p> <div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nb">sudo </span>apt <span class="nb">install </span>openssh-server
+</code></pre></div> </div> <h3 id="3-检查ssh服务的状态">3. 检查SSH服务的状态</h3> <p>安装完成后，可以检查SSH服务是否正在运行：</p> <div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nb">sudo </span>systemctl status ssh
+</code></pre></div> </div> <p>如果显示类似以下内容，说明SSH服务器已成功启动并正在运行：</p> <div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>● ssh.service - OpenBSD Secure Shell server
+     Loaded: loaded (/lib/systemd/system/ssh.service; enabled; vendor preset: enabled)
+     Active: active (running) since ...
+</code></pre></div> </div> <p>如果SSH服务未运行，可以使用以下命令启动它：</p> <div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nb">sudo </span>systemctl start ssh
+</code></pre></div> </div> <p>要确保每次启动系统时SSH自动启动，可以使用：</p> <div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nb">sudo </span>systemctl <span class="nb">enable </span>ssh
+</code></pre></div> </div> <h3 id="4-配置防火墙以允许ssh">4. 配置防火墙以允许SSH</h3> <p>如果你使用<code class="language-plaintext highlighter-rouge">ufw</code>防火墙，可能需要显式允许SSH流量。运行以下命令：</p> <div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nb">sudo </span>ufw allow ssh
+</code></pre></div> </div> <h3 id="5-测试ssh连接">5. 测试SSH连接</h3> <p>在本地计算机或其他设备上，可以通过以下命令测试连接到你的Ubuntu系统：</p> <div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code>ssh username@server_ip_address
+</code></pre></div> </div> <p>将<code class="language-plaintext highlighter-rouge">username</code>替换为Ubuntu系统的用户名，将<code class="language-plaintext highlighter-rouge">server_ip_address</code>替换为该系统的IP地址。</p> <p>你可以通过以下命令查找服务器的IP地址：</p> <div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code>ip a
+</code></pre></div> </div> <h3 id="6-配置ssh可选">6. 配置SSH（可选）</h3> <p>默认情况下，SSH配置文件位于<code class="language-plaintext highlighter-rouge">/etc/ssh/sshd_config</code>。可以通过编辑该文件来更改默认设置，例如修改默认的SSH端口、禁用密码认证、启用密钥认证等。</p> <p>编辑文件：</p> <div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nb">sudo </span>nano /etc/ssh/sshd_config
+</code></pre></div> </div> <p>修改后，重新加载SSH服务以应用更改：</p> <div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nb">sudo </span>systemctl restart ssh
+</code></pre></div> </div> <p>至此，Ubuntu上的SSH服务器已经成功安装并运行。</p> </blockquote> <h3 id="63-安装远程连接桌面">6.3 安装远程连接桌面</h3> <blockquote> <p>在Ubuntu上安装并配置远程桌面可以通过多种方式实现，最常见的选项是使用<code class="language-plaintext highlighter-rouge">xrdp</code> 与桌面环境结合，让Windows用户通过远程桌面连接（RDP协议）访问Ubuntu桌面。以下是安装和配置远程桌面的详细步骤：</p> <h3 id="1-安装桌面环境如果需要">1. 安装桌面环境（如果需要）</h3> <p>如果你使用的是Ubuntu Server或最小化安装版本，你需要首先安装一个桌面环境。最常用的桌面环境是<code class="language-plaintext highlighter-rouge">GNOME</code> ，它是Ubuntu默认的桌面环境。你可以通过以下命令来安装完整的Ubuntu桌面：</p> <div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nb">sudo </span>apt <span class="nb">install </span>ubuntu-desktop
+</code></pre></div> </div> <p>如果你希望安装较轻量的桌面环境，比如<code class="language-plaintext highlighter-rouge">Xfce</code>，可以执行以下命令：</p> <div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nb">sudo </span>apt <span class="nb">install </span>xfce4
+</code></pre></div> </div> <h3 id="2-安装xrdp">2. 安装<code class="language-plaintext highlighter-rouge">xrdp</code></h3> <p>安装<code class="language-plaintext highlighter-rouge">xrdp</code>（远程桌面协议服务器），它允许你通过RDP协议远程连接到Ubuntu桌面。</p> <div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nb">sudo </span>apt <span class="nb">install </span>xrdp
+</code></pre></div> </div> <h3 id="3-启动和配置xrdp">3. 启动和配置<code class="language-plaintext highlighter-rouge">xrdp</code></h3> <p>安装完成后，启动并启用<code class="language-plaintext highlighter-rouge">xrdp</code>服务，使其每次启动系统时自动运行：</p> <div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nb">sudo </span>systemctl <span class="nb">enable </span>xrdp
+<span class="nb">sudo </span>systemctl start xrdp
+</code></pre></div> </div> <p>你还可以检查<code class="language-plaintext highlighter-rouge">xrdp</code>服务的状态，以确保它正在运行：</p> <div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nb">sudo </span>systemctl status xrdp
+</code></pre></div> </div> <h3 id="4-将xrdp与桌面环境关联">4. 将<code class="language-plaintext highlighter-rouge">xrdp</code>与桌面环境关联</h3> <p>在<code class="language-plaintext highlighter-rouge">xrdp</code>默认配置中，使用的是<code class="language-plaintext highlighter-rouge">Xfce</code>或<code class="language-plaintext highlighter-rouge">GNOME</code>桌面环境。你可以根据安装的桌面环境来配置<code class="language-plaintext highlighter-rouge">xrdp</code>。</p> <p>如果你安装的是<code class="language-plaintext highlighter-rouge">Xfce</code>，需要为<code class="language-plaintext highlighter-rouge">xrdp</code>配置启动Xfce桌面。执行以下命令来创建一个<code class="language-plaintext highlighter-rouge">.xsession</code>文件并将其内容设置为 <code class="language-plaintext highlighter-rouge">xfce4-session</code>：</p> <div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nb">echo </span>xfce4-session <span class="o">&gt;</span>~/.xsession
+</code></pre></div> </div> <p>对于GNOME桌面，默认情况下应该无需额外配置。</p> <h3 id="5-配置防火墙以允许rdp">5. 配置防火墙以允许RDP</h3> <p>如果你使用<code class="language-plaintext highlighter-rouge">ufw</code>防火墙，需要允许RDP连接（默认端口是3389）：</p> <div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nb">sudo </span>ufw allow 3389
+</code></pre></div> </div> <h3 id="6-使用远程桌面客户端连接">6. 使用远程桌面客户端连接</h3> <p>在Windows、macOS或Linux的远程桌面客户端中输入你的Ubuntu服务器的IP地址，使用RDP协议进行连接。</p> <p>在Windows中，打开“远程桌面连接”，输入Ubuntu的IP地址：</p> <div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>IP_ADDRESS:3389
+</code></pre></div> </div> <p>你将看到登录界面，输入Ubuntu的用户名和密码即可访问远程桌面。</p> <h3 id="7-可选配置修改xrdp会话配置文件">7. 可选配置：修改<code class="language-plaintext highlighter-rouge">xrdp</code>会话配置文件</h3> <p>如果遇到黑屏或登录失败等问题，可以尝试修改<code class="language-plaintext highlighter-rouge">xrdp</code>配置文件。例如，编辑<code class="language-plaintext highlighter-rouge">/etc/xrdp/startwm.sh</code>文件，在其中找到以下几行并注释掉：</p> <div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nb">test</span> <span class="nt">-x</span> /etc/X11/Xsession <span class="o">&amp;&amp;</span> <span class="nb">exec</span> /etc/X11/Xsession
+<span class="nb">exec</span> /bin/sh /etc/X11/Xsession
+</code></pre></div> </div> <p>然后在这些行的下方添加你想使用的桌面环境。例如，如果你使用<code class="language-plaintext highlighter-rouge">Xfce</code>，可以添加以下内容：</p> <div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code>startxfce4
+</code></pre></div> </div> <p>保存并重新启动<code class="language-plaintext highlighter-rouge">xrdp</code>服务：</p> <div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nb">sudo </span>systemctl restart xrdp
+</code></pre></div> </div> <h3 id="8-重新连接远程桌面">8. 重新连接远程桌面</h3> <p>完成上述步骤后，你应该可以顺利通过远程桌面客户端连接到Ubuntu的桌面环境。</p> <p>这样你就完成了Ubuntu的远程桌面配置，之后可以使用任何支持RDP的客户端工具进行远程桌面连接。</p> </blockquote> <h3 id="64-用户操作">6.4 用户操作</h3> <p>查看全部用户<code class="language-plaintext highlighter-rouge">cat /etc/passwd</code> 修改密码<code class="language-plaintext highlighter-rouge"> sudo passwd user</code></p> <p>新增用户<code class="language-plaintext highlighter-rouge">sudo adduser user</code></p> <blockquote> <p>由于重装系统，原始的用户信息丢失，需要重新创建用户，与home的用户对应上，但是会出现问题，user1:1001旧的，user1:1007 新的，用户目录权限对不上，所以需要该指令<code class="language-plaintext highlighter-rouge">sudo chown -R new_owner:new_group /home/username</code></p> </blockquote> <h3 id="65-cuda">6.5 Cuda</h3> <blockquote> <p>CUDA 是 NVIDIA 的并行计算平台和编程模型，用于 GPU 加速计算。安装 CUDA 工具包可以让你使用 GPU 进行高性能计算，<code class="language-plaintext highlighter-rouge">nvcc</code> 则是 CUDA 的编译器。以下是 Ubuntu 上安装 CUDA、<code class="language-plaintext highlighter-rouge">nvcc</code> 等相关工具的详细步骤。</p> <h3 id="1-检查硬件和操作系统兼容性">1. 检查硬件和操作系统兼容性</h3> <p>在安装 CUDA 之前，确保你的系统满足以下条件：</p> <ul> <li>你有一个支持 CUDA 的 NVIDIA 显卡。</li> <li>你使用的是 Ubuntu（例如 18.04、20.04 或 22.04 等版本）。</li> <li>你已经安装了合适的显卡驱动。</li> </ul> <h3 id="2-更新系统">2. 更新系统</h3> <p>首先，更新系统的包列表和软件包，确保一切都是最新的：</p> <div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nb">sudo </span>apt update
+<span class="nb">sudo </span>apt upgrade
+</code></pre></div> </div> <h3 id="3-安装-nvidia-驱动">3. 安装 NVIDIA 驱动</h3> <p>通常 CUDA 工具包包含 NVIDIA 驱动，但是你也可以手动安装，建议确保安装的驱动是最新的兼容版本。</p> <ul> <li>检查 NVIDIA 显卡是否被识别： <blockquote> <div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code>lspci | <span class="nb">grep</span> <span class="nt">-i</span> nvidia
+</code></pre></div> </div> </blockquote> </li> <li>安装最新版本的驱动： <blockquote> <div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nb">sudo </span>apt <span class="nb">install </span>nvidia-driver-###    <span class="c"># 将 ### 替换为推荐的驱动版本</span>
+</code></pre></div> </div> </blockquote> </li> </ul> <p>你可以使用 <code class="language-plaintext highlighter-rouge">ubuntu-drivers devices</code> 查看推荐的 NVIDIA 驱动版本。</p> <h3 id="4-添加-cuda-相关的存储库">4. 添加 CUDA 相关的存储库</h3> <p>访问 <a href="https://developer.nvidia.com/cuda-downloads">NVIDIA CUDA Toolkit 下载页面</a>，选择你对应的操作系统版本并跟随提示。通常可以使用以下步骤添加 CUDA 的存储库：</p> <ul> <li>访问 CUDA 的下载页面，选择你的操作系统，通常会得到类似以下的安装命令： <blockquote> <div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code>wget https://developer.download.nvidia.com/compute/cuda/repos/ubuntu<span class="si">$(</span>lsb_release <span class="nt">-sr</span> | <span class="nb">cut</span> <span class="nt">-d</span><span class="nb">.</span> <span class="nt">-f1</span><span class="si">)</span>/x86_64/cuda-repo-ubuntu<span class="si">$(</span>lsb_release <span class="nt">-sr</span> | <span class="nb">cut</span> <span class="nt">-d</span><span class="nb">.</span> <span class="nt">-f1</span><span class="si">)</span>_&lt;version&gt;_amd64.deb
+<span class="nb">sudo </span>dpkg <span class="nt">-i</span> cuda-repo-ubuntu<span class="si">$(</span>lsb_release <span class="nt">-sr</span> | <span class="nb">cut</span> <span class="nt">-d</span><span class="nb">.</span> <span class="nt">-f1</span><span class="si">)</span>_&lt;version&gt;_amd64.deb
+<span class="nb">sudo </span>apt-key adv <span class="nt">--fetch-keys</span> https://developer.download.nvidia.com/compute/cuda/repos/ubuntu<span class="si">$(</span>lsb_release <span class="nt">-sr</span> | <span class="nb">cut</span> <span class="nt">-d</span><span class="nb">.</span> <span class="nt">-f1</span><span class="si">)</span>/x86_64/7fa2af80.pub
+<span class="nb">sudo </span>apt update
+</code></pre></div> </div> </blockquote> </li> <li>我的版本 <blockquote> <div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code>wget https://developer.download.nvidia.com/compute/cuda/repos/ubuntu2004/x86_64/cuda-ubuntu2004.pin
+<span class="nb">sudo mv </span>cuda-ubuntu2004.pin /etc/apt/preferences.d/cuda-repository-pin-600
+wget https://developer.download.nvidia.com/compute/cuda/12.6.2/local_installers/cuda-repo-ubuntu2004-12-6-local_12.6.2-560.35.03-1_amd64.deb
+<span class="nb">sudo </span>dpkg <span class="nt">-i</span> cuda-repo-ubuntu2004-12-6-local_12.6.2-560.35.03-1_amd64.deb
+<span class="nb">sudo cp</span> /var/cuda-repo-ubuntu2004-12-6-local/cuda-<span class="k">*</span><span class="nt">-keyring</span>.gpg /usr/share/keyrings/
+<span class="nb">sudo </span>apt-get update
+<span class="nb">sudo </span>apt-get <span class="nt">-y</span> <span class="nb">install </span>cuda-toolkit-12-6
+</code></pre></div> </div> </blockquote> </li> </ul> <h3 id="5-安装-cuda-工具包">5. 安装 CUDA 工具包</h3> <p>使用以下命令安装 CUDA 工具包：</p> <div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nb">sudo </span>apt <span class="nb">install </span>cuda
+</code></pre></div> </div> <p>这会安装 CUDA 相关的工具，包括编译器 <code class="language-plaintext highlighter-rouge">nvcc</code>。</p> <h3 id="6-设置环境变量">6. 设置环境变量</h3> <p>安装完成后，还需要配置环境变量，才能正确地调用 CUDA 和 <code class="language-plaintext highlighter-rouge">nvcc</code>。可以在 <code class="language-plaintext highlighter-rouge">.bashrc</code> 中添加以下路径：</p> <ul> <li>编辑 <code class="language-plaintext highlighter-rouge">.bashrc</code> 文件： <blockquote> <div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code>nano ~/.bashrc
+</code></pre></div> </div> </blockquote> </li> <li>添加以下行以设置 CUDA 环境变量（假设安装在默认位置 <code class="language-plaintext highlighter-rouge">/usr/local/cuda</code>）： <blockquote> <div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nb">export </span><span class="nv">PATH</span><span class="o">=</span>/usr/local/cuda/bin:<span class="nv">$PATH</span>
+<span class="nb">export </span><span class="nv">LD_LIBRARY_PATH</span><span class="o">=</span>/usr/local/cuda/lib64:<span class="nv">$LD_LIBRARY_PATH</span>
+</code></pre></div> </div> </blockquote> </li> <li>使修改立即生效： <blockquote> <div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nb">source</span> ~/.bashrc
+</code></pre></div> </div> </blockquote> </li> </ul> <h3 id="7-验证-cuda-和-nvcc">7. 验证 CUDA 和 NVCC</h3> <p>验证安装是否成功。</p> <ul> <li>检查 NVIDIA 驱动是否工作： <blockquote> <div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code>nvidia-smi
+</code></pre></div> </div> <p>你应该能够看到显卡的状态和驱动程序信息。</p> </blockquote> </li> <li>检查 CUDA 编译器 <code class="language-plaintext highlighter-rouge">nvcc</code>： <blockquote> <div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code>nvcc <span class="nt">-V</span>
+</code></pre></div> </div> <p>你应该看到 <code class="language-plaintext highlighter-rouge">nvcc</code> 版本信息，说明安装成功。</p> </blockquote> </li> </ul> <h3 id="8-运行-cuda-示例代码可选">8. 运行 CUDA 示例代码（可选）</h3> <p>安装 CUDA 工具包后，NVIDIA 通常会提供一些示例代码，可以用来测试 GPU 是否正常工作。</p> <ul> <li>进入 CUDA 示例代码目录： <blockquote> <div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nb">cd</span> /usr/local/cuda/samples
+</code></pre></div> </div> </blockquote> </li> <li>编译并运行一个测试程序（例如 <code class="language-plaintext highlighter-rouge">deviceQuery</code>）： <blockquote> <div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nb">sudo </span>make
+<span class="nb">cd </span>1_Utilities/deviceQuery
+./deviceQuery
+</code></pre></div> </div> <p>这将会展示 GPU 的一些详细信息，如果能够正确显示，那么说明 CUDA 工作正常。</p> </blockquote> </li> </ul> <h3 id="总结">总结</h3> <ol> <li><strong>更新系统</strong>：<code class="language-plaintext highlighter-rouge">sudo apt update &amp;&amp; sudo apt upgrade</code></li> <li><strong>安装 NVIDIA 驱动</strong>：<code class="language-plaintext highlighter-rouge">sudo apt install nvidia-driver-###</code></li> <li><strong>添加 CUDA 存储库</strong>：根据 CUDA 下载页面获取存储库地址并添加。</li> <li><strong>安装 CUDA 工具包</strong>：<code class="language-plaintext highlighter-rouge">sudo apt install cuda</code></li> <li><strong>设置环境变量</strong>：编辑 <code class="language-plaintext highlighter-rouge">.bashrc</code>，添加 CUDA 相关路径。</li> <li><strong>验证安装</strong>：运行 <code class="language-plaintext highlighter-rouge">nvidia-smi</code> 和 <code class="language-plaintext highlighter-rouge">nvcc -V</code> 验证安装是否成功。</li> </ol> <p>通过这些步骤，你应该能够在 Ubuntu 上顺利安装 CUDA 工具包，并开始使用 GPU 加速你的计算任务。</p> </blockquote> <h2 id="7-安装步骤合集">7. 安装步骤合集</h2> <h3 id="71-anaconda">7.1 Anaconda</h3> <div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code>ubuntu操作步骤
+
+<span class="c"># 1. 下载 Anaconda</span>
+   在Anaconda官网（https://www.anaconda.com/）下载最新版。
+
+<span class="c"># 2. 安装 Anaconda</span>
+   1）打开terminal；
+   2）打开下载文件的位置
+   3）运行 .sh 文件：bash （AnacondaXXXXX-Linux-x86_64.sh 用table键代码补全即可）
+   
+   bash Anaconda3-2021.11-Linux-x86_64.sh 
+
+    
+
+<span class="c"># 3. 进入注册信息页面，持续点击空格即可跳过注册信息， 输入yes；</span>
+
+<span class="c"># 4. 阅读注册信息，然后输入yes；查看文件即将安装的位置，按enter，即可安装，</span>
+
+<span class="c"># 5. 安装完成后，收到加入环境变量的提示信息，输入yes</span>
+
+<span class="c"># 6. 我们执行(选择性, 可以不用动，新手慎重修改)：</span>
+ 
+   <span class="nb">sudo </span>gedit ~/.bashrc  <span class="c"># 用vim也行</span>
+
+   然后在打开的文件最后加两行命令，用于配置环境
+
+   <span class="nb">export </span><span class="nv">PATH</span><span class="o">=</span><span class="s2">"~/anaconda3/bin"</span>:<span class="nv">$PATH</span>
+   <span class="nb">source</span> ~/anaconda3/bin/activate <span class="c">#修改终端的默认 python 为 anaconda</span>
+
+   保存文件后关闭，然后在终端执行，用于保存环境配置
+   
+   <span class="nb">source</span> ~/.bashrc
+   
+<span class="c"># 7. 重启终端，会看到命令行前面出现（base）环境，即可默认使用Anaconda3；</span>
+
+<span class="c"># 8. 可以使用`conda -V`验证是否安装完毕，若安装完成，则会出现版本号。</span>
+   
+   conda <span class="nt">-V</span>
+</code></pre></div></div> <h3 id="72-java">7.2 Java</h3> <div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="c"># 1. 上传或下载安装包</span>
+    <span class="nb">cd</span>/usr/local
+    jdk-8u121-linux-x64.tar.gz
+
+<span class="c"># 2. 解压安装包</span>
+	<span class="nb">tar</span> <span class="nt">-zxvf</span> jdk-8u121-linux-x64.tar.gz
+
+
+<span class="c"># 3. 建立软连接</span>
+	<span class="nb">ln</span> <span class="nt">-s</span> /usr/local/jdk1.8.0_121/ /usr/local/jdk
+
+<span class="c"># 4. 修改环境变量</span>
+    vim /etc/profile
+    <span class="nb">export </span><span class="nv">JAVA_HOME</span><span class="o">=</span>/usr/local/jdk
+    <span class="nb">export </span><span class="nv">JRE_HOME</span><span class="o">=</span><span class="nv">$JAVA_HOME</span>/jre
+    <span class="nb">export </span><span class="nv">CLASSPATH</span><span class="o">=</span>.:<span class="nv">$CLASSPATH</span>:<span class="nv">$JAVA_HOME</span>/lib:<span class="nv">$JRE_HOME</span>/lib
+    <span class="nb">export </span><span class="nv">PATH</span><span class="o">=</span><span class="nv">$PATH</span>:<span class="nv">$JAVA_HOME</span>/bin:<span class="nv">$JRE_HOME</span>/bin
+
+<span class="c"># 	通过命令source /etc/profile让profile文件立即生效</span>
+	<span class="nb">source</span> /etc/profile
+
+<span class="c">#5. 测试是否安装成功</span>
+	使用java <span class="nt">-version</span>，出现版本
+</code></pre></div></div> <h3 id="73-maven">7.3 maven</h3> <div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="c"># 1. 上传或下载安装包</span>
+    <span class="nb">cd</span>/usr/local
+    apache-maven-3.6.1-bin.tar.gz
+
+<span class="c"># 2. 解压安装包</span>
+	<span class="nb">tar</span> <span class="nt">-zxvf</span> apache-maven-3.6.1-bin.tar.gz
+
+<span class="c"># 3. 建立软连接</span>
+	<span class="nb">ln</span> <span class="nt">-s</span> /usr/local/apache-maven-3.6.1/ /usr/local/maven
+
+<span class="c"># 4. 修改环境变量</span>
+    vim /etc/profile
+    <span class="nb">export </span><span class="nv">MAVEN_HOME</span><span class="o">=</span>/usr/local/maven
+    <span class="nb">export </span><span class="nv">PATH</span><span class="o">=</span><span class="nv">$PATH</span>:<span class="nv">$MAVEN_HOME</span>/bin
+
+	通过命令source /etc/profile让profile文件立即生效
+	<span class="nb">source</span> /etc/profile
+
+<span class="c"># 5. 测试是否安装成功</span>
+    mvn –v
+</code></pre></div></div> <h3 id="74-git">7.4 Git</h3> <div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="c"># 直接使用指令</span>
+1. Centos
+	yum <span class="nt">-y</span> <span class="nb">install </span>git
+2. Ubuntu
+	<span class="nb">sudo </span>apt update
+	<span class="nb">sudo </span>apt <span class="nb">install </span>git
+	git <span class="nt">--version</span>
+</code></pre></div></div> <h3 id="75-docker">7.5 Docker</h3> <div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="c"># centos安装</span>
+<span class="c"># 1. 安装必要的一些系统工具</span>
+	yum <span class="nb">install</span> <span class="nt">-y</span> yum-utils device-mapper-persistent-data lvm2
+
+<span class="c"># 2. 添加软件源信息</span>
+	yum-config-manager <span class="nt">--add-repo</span> http://mirrors.aliyun.com/docker-ce/linux/centos/docker-ce.repo
+
+<span class="c"># 3. 更新并安装Docker-CE</span>
+    yum makecache fast
+    yum <span class="nt">-y</span> <span class="nb">install </span>docker-ce
+
+<span class="c"># 4. 开启Docker服务</span>
+    service docker start
+
+ 5. 测试是否安装成功
+    docker <span class="nt">-v</span>
+    
+<span class="c"># ubuntu</span>
+<span class="c"># 1. 安装必要的依赖项：接下来，我们需要安装一些额外的工具和依赖项，这些工具用于安全地处理软件包签名和信息传输。</span>
+	<span class="nb">sudo </span>apt <span class="nb">install </span>apt-transport-https ca-certificates curl software-properties-common
+<span class="c"># 2. 添加Docker GPG密钥：要添加Docker官方的GPG密钥</span>
+	curl <span class="nt">-fsSL</span> https://download.docker.com/linux/ubuntu/gpg | <span class="nb">sudo </span>apt-key add -
+<span class="c"># 3. 添加Docker仓库</span>
+	<span class="nb">sudo </span>add-apt-repository <span class="s2">"deb [arch=amd64] https://download.docker.com/linux/ubuntu </span><span class="si">$(</span>lsb_release <span class="nt">-cs</span><span class="si">)</span><span class="s2"> stable"</span>
+<span class="c"># 4. 更新Docker包列表</span>
+	<span class="nb">sudo </span>apt update
+<span class="c"># 5. 安装</span>
+	<span class="nb">sudo </span>apt <span class="nb">install </span>docker-ce
+	
+<span class="c"># 6. 开启Docker服务</span>
+    service docker start
+
+<span class="c"># 7. 测试是否安装成功</span>
+    docker <span class="nt">-v</span>
+</code></pre></div></div> <h2 id="8-常用的pip安装的包名">8. 常用的Pip安装的包名</h2> <h3 id="81-opencv">8.1 opencv</h3> <div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code>conda <span class="nb">install </span>opencv-python
+pip <span class="nb">install </span>opencv-python
+</code></pre></div></div> <h3 id="82-sklearn">8.2 sklearn</h3> <div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code>pip <span class="nb">install </span>scikit-learn
+</code></pre></div></div> <h2 id="8-md5-计算文件的哈希值">8. MD5 计算文件的哈希值</h2> <div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="c"># 打开git bash</span>
+md5sum.exe 文件名称 
+</code></pre></div></div> <h2 id="9-nodejs相关指令">9. Nodejs相关指令</h2> <div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="c"># 安装</span>
+npm <span class="nb">install</span> &lt;模块名&gt;
+npm <span class="nb">install </span>crypto-js <span class="nt">--save</span> // <span class="nt">--save</span> 参数表示将模块写入 package.json 文件中
+
+<span class="c"># 卸载</span>
+npm uninstall crypto-js
+
+<span class="c"># 查看 查看列表</span>
+npm list // <span class="nt">-g</span> 全局
+<span class="c"># 查看某个模块版本</span>
+npm list &lt;模块名&gt;
+
+<span class="c"># 更新</span>
+npm update  //更新 node_moudules 中所有模块
+npm update &lt;模块名&gt; // 更新某个
+
+<span class="c"># 设置国内镜像源</span>
+npm config <span class="nb">set </span>registry https://registry.npmmirror.com/
+
+<span class="c"># 查看源</span>
+npm config get registry
+    
+<span class="c"># 设置官方源</span>
+npm config <span class="nb">set </span>registry https://registry.npmjs.org/
+
+<span class="c"># cnpm</span>
+npm <span class="nb">install</span> <span class="nt">-g</span> cnpm <span class="nt">--registry</span><span class="o">=</span>https://registry.npmmirror.com
+cnpm <span class="nb">install </span>crypto-js <span class="nt">--save</span>
+
+<span class="c"># require</span>
+const crypto <span class="o">=</span> require<span class="o">(</span><span class="s1">'crypto-js'</span><span class="o">)</span><span class="p">;</span>
+const module <span class="o">=</span> require<span class="o">(</span><span class="s1">'模块名'</span><span class="o">)</span><span class="p">;</span> // 一般前端做项目的话 这里命名是常量 不允许修改
+</code></pre></div></div> <h2 id="10-虚拟机的使用">10. 虚拟机的使用</h2> <h3 id="101-虚拟机安装与基本使用">10.1 虚拟机安装与基本使用</h3> <p>由于VMware虚拟机收费，所以使用了<a href="https://www.virtualbox.org/">virtualbox</a></p> <p>镜像文件通过<a href="https://portal.cloud.hashicorp.com/vagrant/discover">vagrant镜像地址</a>网站进行下载</p> <p><a href="https://www.vagrantup.com/">vagrant下载地址</a> 安装后USB可能不可用，记得下载拓展兼容包</p> <p>执行 <code class="language-plaintext highlighter-rouge">vagrant init centos/7</code> 命令后，Vagrant 在当前目录下创建一个 <code class="language-plaintext highlighter-rouge">Vagrantfile</code> 文件。该文件是Vagrant的配置文件，定义了虚拟机的配置信息。</p> <p>具体内容：</p> <ul> <li>Vagrant提示你当前目录已经生成了一个 <code class="language-plaintext highlighter-rouge">Vagrantfile</code>，它会用来定义你虚拟机的配置。</li> <li>现在你可以通过 <code class="language-plaintext highlighter-rouge">vagrant up</code> 命令启动虚拟机，启动后Vagrant会自动下载指定的 box（比如这里的 <code class="language-plaintext highlighter-rouge">centos/7</code>），并且根据 <code class="language-plaintext highlighter-rouge">Vagrantfile</code> 的配置来创建并启动虚拟机。</li> </ul> <p>下面是一些具体的操作:</p> <ol> <li> <p><strong>检查和编辑 Vagrantfile</strong>： 如果你需要修改虚拟机的配置，可以编辑生成的 <code class="language-plaintext highlighter-rouge">Vagrantfile</code>。比如，你可以更改虚拟机的网络配置、共享文件夹等。</p> </li> <li><strong>启动虚拟机</strong>： 在当前目录下，执行以下命令来启动虚拟机： <div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code>vagrant up
+</code></pre></div> </div> <p>Vagrant会自动下载 <code class="language-plaintext highlighter-rouge">centos/7</code> 这个 box（如果没有缓存的话），然后启动一个虚拟机实例。</p> </li> <li><strong>登录虚拟机</strong>： 一旦虚拟机启动，你可以通过以下命令 SSH 进入虚拟机： <div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code>vagrant ssh
+</code></pre></div> </div> </li> <li><strong>停止虚拟机</strong>： 你可以通过 <code class="language-plaintext highlighter-rouge">vagrant halt</code> 命令来停止虚拟机： <div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code>vagrant halt
+</code></pre></div> </div> </li> <li><strong>销毁虚拟机</strong>： 如果你不再需要虚拟机，可以使用 <code class="language-plaintext highlighter-rouge">vagrant destroy</code> 来删除虚拟机： <div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code>vagrant destroy
+</code></pre></div> </div> </li> </ol> <h3 id="102-虚拟机网络设置">10.2 虚拟机网络设置</h3> <p>如果需要修改网卡IP:</p> <ol> <li>首先需要去<code class="language-plaintext highlighter-rouge">cmd</code>通过指令<code class="language-plaintext highlighter-rouge">ipconfig</code>，查看一下虚拟机的网络IP地址，</li> <li>去<code class="language-plaintext highlighter-rouge">Vagrantfile</code>文件中修改<code class="language-plaintext highlighter-rouge">config.vm.network "private_network", ip: "192.168.56.10"</code>中的IP地址，然后重新启动虚拟机 <code class="language-plaintext highlighter-rouge">vagrant reload</code>即可。</li> <li>连接虚拟机检查是否修改成功：<code class="language-plaintext highlighter-rouge">vagrant ssh</code>, 后<code class="language-plaintext highlighter-rouge">ip addr</code>查看, 可以尝试ping通。</li> </ol> <h2 id="11-docker的使用">11. docker的使用</h2> <p><a href="https://hub.docker.com/">docker镜像地址</a></p> <p><a href="https://docs.docker.com/desktop/setup/install/">docker官网</a></p> <p>使用阿里云进行镜像加速</p> <h3 id="111-docker安装">11.1 docker安装</h3> <div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="c"># 卸载旧版本</span>
+<span class="nb">sudo </span>yum remove docker <span class="se">\</span>
+                docker-client <span class="se">\</span>
+                docker-client-latest <span class="se">\</span>
+                docker-common <span class="se">\</span>
+                docker-latest <span class="se">\</span>
+                docker-latest-logrotate <span class="se">\</span>
+                docker-logrotate <span class="se">\</span>
+                docker-engine
+                
+<span class="c"># 安装依赖</span>
+<span class="nb">sudo </span>yum <span class="nb">install</span> <span class="nt">-y</span> yum-utils <span class="se">\</span>
+  device-mapper-persistent-data <span class="se">\</span>
+  lvm2
+  
+<span class="c"># 设置镜像源</span>
+<span class="nb">sudo </span>yum-config-manager <span class="nt">--add-repo</span> https://download.docker.com/linux/centos/docker-ce.repo
+        
+<span class="c"># 安装docker</span>
+<span class="nb">sudo </span>yum <span class="nb">install </span>docker-ce docker-ce-cli containerd.io
+
+<span class="nb">sudo </span>systemctl start docker <span class="c"># 启动docker</span>
+<span class="nb">sudo </span>systemctl <span class="nb">enable </span>docker <span class="c"># 设置开机自启</span>
+
+<span class="c"># 测试</span>
+<span class="nb">sudo </span>docker run hello-world
+<span class="c"># 安装mysql</span>
+<span class="nb">sudo </span>docker pull mysql:5.7
+</code></pre></div></div> <h3 id="112-docker常用指令">11.2 docker常用指令</h3> <div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code>docker version <span class="c"># 查看docker版本</span>
+docker <span class="nt">-v</span>
+<span class="nb">sudo </span>docker info <span class="c">#  查看docker信息</span>
+<span class="nb">sudo </span>docker ps <span class="nt">-a</span> <span class="c"># 查看docker容器</span>
+<span class="nb">sudo </span>docker images <span class="c"># 查看docker镜像</span>
+<span class="nb">sudo </span>docker logs container_id <span class="c"># 查看docker容器日志</span>
+<span class="nb">sudo </span>docker logs <span class="nb">tail </span>100 container_id
+<span class="nb">sudo </span>docker port container_id <span class="c"># 查看docker容器端口映射</span>
+<span class="nb">sudo </span>docker top container_id <span class="c"># 查看docker容器进程</span>
+<span class="nb">sudo </span>docker inspect container_id <span class="c"># 查看docker容器详细信息</span>
+<span class="nb">sudo </span>docker start container_id <span class="c"># 启动docker容器</span>
+<span class="nb">sudo </span>docker stop container_id <span class="c"># 停止docker容器</span>
+<span class="nb">sudo </span>docker restart container_id <span class="c"># 重启docker容器</span>
+<span class="nb">sudo </span>docker <span class="nb">rm </span>container_id <span class="c"># 删除docker容器</span>
+<span class="nb">sudo </span>docker rmi image_id <span class="c"># 删除docker镜像</span>
+</code></pre></div></div> <h2 id="113-镜像加速">11.3 镜像加速</h2> <div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nb">sudo mkdir</span> <span class="nt">-p</span> /etc/docker
+<span class="nb">sudo tee</span> /etc/docker/daemon.json <span class="o">&lt;&lt;-</span><span class="sh">'</span><span class="no">EOF</span><span class="sh">'
+{
+    "registry-mirrors": [
+        "https://do.nark.eu.org",
+        "https://dc.j8.work",
+        "https://docker.m.daocloud.io",
+        "https://dockerproxy.com",
+        "https://docker.mirrors.ustc.edu.cn",
+        "https://docker.nju.edu.cn"
+        "https://mirrors.tuna.tsinghua.edu.cn",
+        "https://ustc-edu-cn.mirror.aliyuncs.com",
+        "https://ccr.ccs.tencentyun.com",
+        "https://docker.m.daocloud.io",
+        "https://docker.awsl9527.cn"
+    ]
+}
+</span><span class="no">EOF
+</span><span class="nb">sudo </span>systemctl daemon-reload
+<span class="nb">sudo </span>systemctl restart docker
+</code></pre></div></div> <h2 id="114-docker安装mysql">11.4 docker安装mysql</h2> <div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="c"># 1. 拉取镜像</span>
+docker pull mysql:5.7
+
+<span class="c"># 2. 创建容器</span>
+<span class="c"># 创建并准备必要的宿主机目录： 确保宿主机上的目录</span>
+<span class="nb">sudo mkdir</span> <span class="nt">-p</span> /mydata/mysql/log /mydata/mysql/data /mydata/mysql/conf
+
+<span class="c"># 注意这个路径一定要对应上</span>
+<span class="nb">sudo </span>docker run <span class="nt">-p</span> 3306:3306 <span class="nt">--name</span> mysql <span class="se">\</span>
+<span class="nt">-v</span> /mydata/mysql/log:/var/log/mysql <span class="se">\</span>
+<span class="nt">-v</span> /mydata/mysql/data:/var/lib/mysql <span class="se">\</span>
+<span class="nt">-v</span> /mydata/mysql/conf:/etc/mysql/conf.d <span class="se">\</span>
+<span class="nt">-e</span> <span class="nv">MYSQL_ROOT_PASSWORD</span><span class="o">=</span>123456 <span class="se">\</span>
+<span class="nt">-d</span> mysql:5.7
+
+<span class="c"># -p 3306:3306 将主机的 3306 端口映射到容器的 3306 端口</span>
+<span class="c"># --name mysql 设置容器名称为 mysql</span>
+<span class="c"># -v /mydata/mysql/log:/var/log/mysql 将日志目录挂载到主机</span>
+<span class="c"># -v /mydata/mysql/data:/var/lib/mysql 将数据目录挂载到主机</span>
+<span class="c"># -v /mydata/mysql/conf:/etc/mysql 将配置目录挂载到主机</span>
+<span class="c"># -e MYSQL_ROOT_PASSWORD=123456 设置 root 用户的密码为 root</span>
+<span class="c"># -d mysql:5.7 后台运行容器，并返回容器 ID</span>
+
+<span class="c"># 3. 进入容器</span>
+docker <span class="nb">exec</span> <span class="nt">-it</span> mysql /bin/bash
+<span class="c"># 4. 登录mysql</span>
+mysql <span class="nt">-uroot</span> <span class="nt">-p123456</span>
+<span class="c"># 5. 创建数据库</span>
+create database <span class="nb">test</span>
+<span class="c"># 6. 创建用户</span>
+create user <span class="s1">'test'</span>@<span class="s1">'%'</span> identified by <span class="s1">'123456'</span>
+<span class="c"># 7. 授权用户</span>
+grant all privileges on test.<span class="k">*</span> to <span class="s1">'test'</span>@<span class="s1">'%'</span>
+<span class="c"># 8. 刷新权限</span>
+flush privileges
+
+<span class="c"># 修改配置文件</span>
+vi /mydata/mysql/conf/my.cnf
+<span class="c"># ============================开始=============================</span>
+<span class="o">[</span>client]
+default-character-set<span class="o">=</span>utf8
+
+<span class="o">[</span>mysql]
+default-character-set<span class="o">=</span>utf8
+
+<span class="o">[</span>mysqld]
+<span class="nv">init_connect</span><span class="o">=</span><span class="s1">'SET collation_connection = utf8_unicode_ci'</span>
+<span class="nv">init_connect</span><span class="o">=</span><span class="s1">'SET NAMES utf8'</span>
+character-set-server<span class="o">=</span>utf8
+collation-server<span class="o">=</span>utf8_unicode_ci
+skip-character-set-client-handshake
+skip-name-resolve
+<span class="c"># ============================结束============================</span>
+</code></pre></div></div> <h2 id="115-docker安装redis">11.5 docker安装redis</h2> <div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="c"># 1. 拉取镜像</span>
+docker pull redis
+
+<span class="nb">mkdir</span> <span class="nt">-p</span> /mydata/redis/conf
+<span class="nb">touch</span> /mydata/redis/conf/redis.conf
+
+<span class="c"># 2. 创建容器</span>
+docker run <span class="nt">-p</span> 6379:6379 <span class="nt">--name</span> redis <span class="nt">-v</span> /mydata/redis/data:/data <span class="se">\</span>
+    <span class="nt">-v</span> /mydata/redis/conf/redis.conf:/etc/redis/redis.conf <span class="se">\</span>
+    <span class="nt">-d</span> redis redis-server /etc/redis/redis.conf
+    
+<span class="c"># 3. 进入容器</span>
+docker <span class="nb">exec</span> <span class="nt">-it</span> redis redis-cli
+</code></pre></div></div> <h3 id="116-问题解决cannot-find-a-valid-baseurl-for-repo-base7x86_64">11.6 【问题解决】Cannot find a valid baseurl for repo: base/7/x86_64</h3> <ol> <li>先测试网络连通性<code class="language-plaintext highlighter-rouge">ping www.baidu.com</code></li> <li>通过 vi 命令编辑 <code class="language-plaintext highlighter-rouge">/etc/yum.repos.d/CentOS-Base.repo</code> 文件，将其中的 <code class="language-plaintext highlighter-rouge">mirrorlist</code> 行用 # 号注释掉，并将 baseurl 行取消注释，并修改为其他可靠的镜像地址。</li> <li>指令<code class="language-plaintext highlighter-rouge">sudo vi /etc/yum.repos.d/CentOS-Base.repo</code></li> <li>如将下图四个 baseurl 地址按顺序修改为阿里云的镜像地址：</li> </ol> <blockquote> <p>baseurl=http://mirrors.aliyun.com/centos/$releasever/os/$basearch/ baseurl=http://mirrors.aliyun.com/centos/$releasever/updates/$basearch/ baseurl=http://mirrors.aliyun.com/centos/$releasever/extras/$basearch/ baseurl=http://mirrors.aliyun.com/centos/$releasever/centosplus/$basearch/</p> </blockquote> <h2 id="20-问题合集">20. 问题合集</h2> <h3 id="201-findfont-generic-family-sans-serif-not-found-because-none-of-the-following-families-were-found-simhei">20.1 findfont: Generic family ‘sans-serif’ not found because none of the following families were found: simhei</h3> <div class="language-text highlighter-rouge"><div class="highlight"><pre class="highlight"><code>这个警告通常表示Matplotlib在绘制图时无法找到指定的字体。在你的情况中，警告指出找不到'sans-serif'（无衬线字体），可能是由于缺少相应的字体文件。
+要解决这个问题，你可以尝试安装中文字体并告诉Matplotlib使用这些字体。以下是一种解决方法：
+
+1. 安装中文字体： 在Linux系统上，你可以使用以下命令安装中文TrueType字体（例如，SimHei）：
+  
+sudo apt-get install fonts-wqy-zenhei
+
+在Windows系统上，你可以下载并安装中文TrueType字体，然后将字体文件路径添加到Matplotlib的配置中。
+
+2. 告诉Matplotlib使用中文字体： 在你的代码中添加以下内容：
+
+import matplotlib.pyplot as plt
+plt.rcParams['font.sans-serif'] = ['SimHei']  # 使用中文宋体
+
+将上述两行代码放在绘图代码之前，这样Matplotlib就会使用指定的中文字体。
+如果你在使用Jupyter Notebook等环境，可以将这两行代码放在Notebook的开头，以确保在绘图之前设置好字体。
+请注意，确保字体文件路径正确，以及选择的字体是否与你的系统兼容。如果你使用其他字体，请相应地更改字体名称。
+</code></pre></div></div> <div style="margin-top:2em;padding:0 1.5em;border:1px solid #d3d3d3;background-color:#deebf7"> <h3>文档信息</h3> <ul> <li>本文作者：<a href="https://slienceme.cn" target="_blank">slience_me</a></li> <li>本文链接：<a href="https://slienceme.cn/2019/01/01/readme/" target="_blank">https://slienceme.cn/2019/01/01/readme/</a></li> <li>版权声明：自由转载-非商用-非衍生-保持署名（<a href="http://creativecommons.org/licenses/by-nc-nd/3.0/deed.zh" target="_blank">创意共享3.0许可证</a>）</li> </ul> </div> </article> <div class="share"> <div class="share-component" data-disabled='qq,facebook'></div> </div> <div class="comment"> <script src="https://giscus.app/client.js" data-repo="slience-me/blog-comments" data-repo-id="MDEwOlJlcG9zaXRvcnk5MzEyNzkxNw==" data-category="Announcements" data-category-id="DIC_kwDOBY0E7c4CRtg9" data-mapping="title" data-strict="1" data-reactions-enabled="1" data-emit-metadata="0" data-input-position="top" data-theme="light" data-lang="zh-CN" data-loading="lazy" crossorigin="anonymous" async> </script> </div> </div> <div class="column one-fourth"> <h3>Search</h3> <div id="site_search"> <input style="width:96%" type="text" id="search_box" placeholder="Search"> </div> <ul id="search_results" style="font-size:14px;list-style-type:none;padding-top:10px;padding-left:10px;"></ul> <script src="https://slienceme.cn/assets/js/simple-jekyll-search.min.js"></script> <script type="text/javascript"> SimpleJekyllSearch({ searchInput: document.getElementById('search_box'), resultsContainer: document.getElementById('search_results'), json: 'https://slienceme.cn/assets/search_data.json?v=1736473997', searchResultTemplate: '<li><a href="{url}" title="{title}">{title}</a></li>', noResultsText: 'No results found', limit: 10, fuzzy: false, exclude: ['Welcome'] }) </script> <h3 class="post-directory-title mobile-hidden">Table of Contents</h3> <div id="post-directory-module" class="mobile-hidden"> <section class="post-directory"> <dl></dl> </section> </div> <script src="https://slienceme.cn/assets/js/jquery.toc.js"></script> </div> </div> </section> <footer class="container"> <div class="site-footer" role="contentinfo"> <div class="copyright left mobile-block"> Copyright@ 2019-2025 slience_me 版权所有&emsp; <img src="/images/logo/logo.png" class="w-full" style="width: 12px;"> <a href="https://beian.mps.gov.cn/#/query/webSearch?code=13102202000626" rel="noreferrer" target="_blank">冀公网安备13102202000626</a>&emsp; <a href="https://beian.miit.gov.cn/#/Integrated/index" target="_blank" rel="noreferrer">津ICP备2024026565号-1</a> <a href="javascript:window.scrollTo(0,0)" class="right mobile-visible">TOP</a> </div> <ul class="site-footer-links right mobile-hidden"> <li> <a href="javascript:window.scrollTo(0,0)" >TOP</a> </li> </ul> <br/> <script async src="https://slienceme.cn/assets/vendor/busuanzi/2.3/busuanzi.pure.mini.js"></script> <div class="mobile-hidden" style="margin-top:8px"> <span id="busuanzi_container_site_pv" style="display:none"> 本站访问量<span id="busuanzi_value_site_pv"></span>次 </span> <span id="busuanzi_container_site_uv" style="display:none"> / 本站访客数<span id="busuanzi_value_site_uv"></span>人 </span> <span id="busuanzi_container_page_pv" style="display:none"> / 本页访问量<span id="busuanzi_value_page_pv"></span>次 / 统计始于2024-12-01 </span> </div> </div> </footer> <div class="tools-wrapper"> <a class="gotop" href="#" title="回到顶部"><span class="octicon octicon-arrow-up"></span></a> </div> <script src="https://slienceme.cn/assets/vendor/share.js/dist/js/share.min.js"></script> <script src="https://slienceme.cn/assets/js/geopattern.js"></script> <script> jQuery(document).ready(function($) { $('.geopattern').each(function(){ $(this).geopattern($(this).data('pattern-id')); }); /* hljs.initHighlightingOnLoad(); */ }); </script> </body> </html>

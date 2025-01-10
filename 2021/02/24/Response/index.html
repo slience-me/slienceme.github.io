@@ -1,0 +1,290 @@
+<!DOCTYPE html> <html lang="zh-cmn-Hans" prefix="og: http://ogp.me/ns#" class="han-init"> <head> <meta charset="utf-8"> <meta http-equiv="X-UA-Compatible" content="IE=edge"> <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1" /> <title>Java｜Response &mdash; Slience_me的博客</title> <link rel="stylesheet" href="https://slienceme.cn/assets/vendor/primer-css/css/primer.css"> <link rel="stylesheet" href="https://slienceme.cn/assets/css/components/collection.css"> <link rel="stylesheet" href="https://slienceme.cn/assets/css/components/repo-card.css"> <link rel="stylesheet" href="https://slienceme.cn/assets/css/sections/repo-list.css"> <link rel="stylesheet" href="https://slienceme.cn/assets/css/components/boxed-group.css"> <link rel="stylesheet" href="https://slienceme.cn/assets/css/globals/common.css"> <link rel="stylesheet" href="https://slienceme.cn/assets/css/globals/responsive.css"> <link rel="stylesheet" href="https://slienceme.cn/assets/css/posts/index.css"> <link rel="stylesheet" href="https://slienceme.cn/assets/vendor/octicons/octicons/octicons.css"> <link rel="stylesheet" href="https://mazhuang.org/rouge-themes/dist/github.css"> <link rel="stylesheet" href="https://slienceme.cn/assets/vendor/share.js/dist/css/share.min.css"> <link rel="canonical" href="https://slienceme.cn/2021/02/24/Response/"> <link rel="alternate" type="application/atom+xml" title="Slience_me的博客" href="https://slienceme.cn/feed.xml"> <link rel="shortcut icon" href="https://slienceme.cn/favicon.ico"> <meta property="og:title" content="Java｜Response"> <meta name="keywords" content="编程语言, Java"> <meta name="og:keywords" content="编程语言, Java"> <meta name="description" content="1. HTTP协议：1.1 请求消息：客户端发送给服务器端的数据 数据格式： 请求行 请求头 请求空行 请求体 "> <meta name="og:description" content="1. HTTP协议：1.1 请求消息：客户端发送给服务器端的数据 数据格式： 请求行 请求头 请求空行 请求体 "> <meta property="og:url" content="https://slienceme.cn/2021/02/24/Response/"> <meta property="og:site_name" content="Slience_me的博客"> <meta property="og:type" content="article"> <meta property="og:locale" content="zh_CN" /> <meta property="article:published_time" content="2021-02-24"> <meta name="google-site-verification" content="2feHjT1GNs1Yi2JQfOtdYx7d048naG_-cMwZaDAopIA" /> <script src="https://slienceme.cn/assets/vendor/jquery/dist/jquery.min.js"></script> <script src="https://slienceme.cn/assets/js/main.js"></script> </head> <body class="" data-mz=""> <header class="site-header"> <div class="container"> <h1><a href="https://slienceme.cn/" title="Slience_me的博客"><span class="octicon octicon-mark-github"></span> Slience_me的博客</a></h1> <button class="collapsed mobile-visible" type="button" onclick="toggleMenu();"> <span class="icon-bar"></span> <span class="icon-bar"></span> <span class="icon-bar"></span> </button> <nav class="site-header-nav" role="navigation"> <a href="https://slienceme.cn/" class="site-header-nav-item" target="" title="首页">首页</a> <a href="https://slienceme.cn/categories/" class="site-header-nav-item" target="" title="分类">分类</a> <a href="https://slienceme.cn/archives/" class="mobile-hidden site-header-nav-item" target="" title="归档">归档</a> <a href="https://slienceme.cn/open-source/" class="mobile-hidden site-header-nav-item" target="" title="开源">开源</a> <a href="https://slienceme.cn/fragments/" class="site-header-nav-item" target="" title="片段">片段</a> <a href="https://slienceme.cn/wiki/" class="site-header-nav-item" target="" title="维基">维基</a> <a href="https://slienceme.cn/links/" class="mobile-hidden site-header-nav-item" target="" title="链接">链接</a> <a href="https://slienceme.cn/about/" class="site-header-nav-item" target="" title="关于">关于</a> <a class="mobile-hidden" href="https://slienceme.cn/feed.xml"><span class="octicon octicon-rss" style="color:orange;"></span></a> </nav> </div> </header> <section class="collection-head small geopattern" data-pattern-id="Java｜Response"> <div class="container"> <div class="columns"> <div class="column three-fourths"> <div class="collection-title"> <h1 class="collection-header">Java｜Response</h1> <div class="collection-info"> <span class="meta-info"> <span class="octicon octicon-calendar"></span> 2021/02/24 </span> <span class="meta-info"> <span class="octicon octicon-file-directory"></span> <a href="https://slienceme.cn/categories/#Java" title="Java">Java</a> </span> <span class="meta-info"> <span class="octicon octicon-clock"></span> 共 9047 字，约 26 分钟 </span> </div> </div> </div> <div class="column one-fourth mobile-hidden"> <div class="collection-title"> </div> </div> </div> </div> </section> <section class="container content"> <div class="columns"> <div class="column three-fourths" > <article class="article-content markdown-body"> <h1 id="1-http协议">1. HTTP协议：</h1> <h2 id="11-请求消息客户端发送给服务器端的数据">1.1 请求消息：客户端发送给服务器端的数据</h2> <ul> <li>数据格式： <ol> <li>请求行</li> <li>请求头</li> <li>请求空行</li> <li>请求体</li> </ol> </li> </ul> <h2 id="12-响应消息服务器端发送给客户端的数据">1.2 响应消息：服务器端发送给客户端的数据</h2> <h3 id="121-数据格式">1.2.1 数据格式：</h3> <h4 id="1211-响应行">1.2.1.1 响应行</h4> <ol> <li>组成：协议/版本 响应状态码 状态码描述</li> <li>响应状态码：服务器告诉客户端浏览器本次请求和响应的一个状态。 <ol> <li>状态码都是<code class="language-plaintext highlighter-rouge">3位数字</code></li> <li>分类： <ol> <li><code class="language-plaintext highlighter-rouge">1xx</code>：服务器就收客户端消息，但没有接受完成，等待一段时间后，发送1xx多状态码</li> <li><code class="language-plaintext highlighter-rouge">2xx</code>：成功。代表：200</li> <li><code class="language-plaintext highlighter-rouge">3xx</code>：重定向。代表：302(重定向)，304(访问缓存)</li> <li> <p><code class="language-plaintext highlighter-rouge">4xx</code>：客户端错误。</p> <p><code class="language-plaintext highlighter-rouge">404</code>（请求路径没有对应的资源） <code class="language-plaintext highlighter-rouge">405</code>：请求方式没有对应的doXxx方法</p> </li> <li><code class="language-plaintext highlighter-rouge">5xx</code>：服务器端错误。代表：500(服务器内部出现异常)</li> </ol> </li> </ol> </li> </ol> <h4 id="1212-响应头">1.2.1.2 响应头：</h4> <ol> <li>格式：头名称： 值</li> <li>常见的响应头： <ol> <li><code class="language-plaintext highlighter-rouge">Content-Type</code>：服务器告诉客户端本次响应体<code class="language-plaintext highlighter-rouge">数据格式</code>以及<code class="language-plaintext highlighter-rouge">编码格式</code></li> <li><code class="language-plaintext highlighter-rouge">Content-disposition</code>：服务器告诉客户端以什么格式打开响应体数据 值： <code class="language-plaintext highlighter-rouge">in-line</code>:默认值,在当前页面内打开 <code class="language-plaintext highlighter-rouge">attachment;filename=xxx</code>：以附件形式打开响应体。文件下载 <h4 id="1213-响应空行">1.2.1.3 响应空行</h4> <h4 id="1214-响应体传输的数据">1.2.1.4 响应体:传输的数据</h4> <ul> <li>响应字符串格式</li> </ul> </li> </ol> </li> </ol> <div class="language-html highlighter-rouge"><div class="highlight"><pre class="highlight"><code>HTTP/1.1 200 OK
+Content-Type: text/html;charset=UTF-8
+Content-Length: 101
+Date: Wed, 06 Jun 2018 07:08:42 GMT
+	
+<span class="nt">&lt;html&gt;</span>
+  <span class="nt">&lt;head&gt;</span>
+    <span class="nt">&lt;title&gt;</span>$Title$<span class="nt">&lt;/title&gt;</span>
+  <span class="nt">&lt;/head&gt;</span>
+  <span class="nt">&lt;body&gt;</span>
+  hello , response
+  <span class="nt">&lt;/body&gt;</span>
+<span class="nt">&lt;/html&gt;</span>
+</code></pre></div></div> <h1 id="2-response对象">2. Response对象</h1> <h3 id="21功能设置响应消息">2.1功能：设置响应消息</h3> <ol> <li>设置响应行 <ul> <li>格式：<code class="language-plaintext highlighter-rouge">HTTP/1.1 200 ok</code></li> <li>设置状态码：<code class="language-plaintext highlighter-rouge">setStatus(int sc)</code></li> </ul> </li> <li>设置响应头：<code class="language-plaintext highlighter-rouge">setHeader(String name, String value)</code></li> <li>设置响应体： 使用步骤： <ol> <li>获取输出流 字符输出流：<code class="language-plaintext highlighter-rouge">PrintWriter getWriter()</code> 字节输出流：<code class="language-plaintext highlighter-rouge">ServletOutputStream getOutputStream()</code></li> <li>使用输出流，将数据输出到客户端浏览器</li> </ol> </li> </ol> <h3 id="22-案例">2.2 案例：</h3> <h4 id="221-完成重定向">2.2.1. 完成重定向</h4> <ul> <li>重定向：资源跳转的方式</li> </ul> <p>代码实现：</p> <div class="language-java highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="c1">//1. 设置状态码为302</span>
+<span class="n">response</span><span class="o">.</span><span class="na">setStatus</span><span class="o">(</span><span class="mi">302</span><span class="o">);</span>
+<span class="c1">//2.设置响应头location</span>
+<span class="n">response</span><span class="o">.</span><span class="na">setHeader</span><span class="o">(</span><span class="s">"location"</span><span class="o">,</span><span class="s">"/day15/responseDemo2"</span><span class="o">);</span>
+<span class="c1">//简单的重定向方法</span>
+<span class="n">response</span><span class="o">.</span><span class="na">sendRedirect</span><span class="o">(</span><span class="s">"/day15/responseDemo2"</span><span class="o">);</span>
+</code></pre></div></div> <ul> <li>重定向的特点:<code class="language-plaintext highlighter-rouge">redirect</code> <ol> <li>地址栏发生变化</li> <li>重定向可以访问其他站点(服务器)的资源</li> <li>重定向是两次请求。不能使用<code class="language-plaintext highlighter-rouge">request</code>对象来共享数据</li> </ol> </li> <li>转发的特点：<code class="language-plaintext highlighter-rouge">forward</code> <ol> <li>转发地址栏路径不变</li> <li>转发只能访问当前服务器下的资源</li> <li>转发是一次请求，可以使用<code class="language-plaintext highlighter-rouge">request</code>对象来共享数据</li> </ol> </li> <li> <p><code class="language-plaintext highlighter-rouge">forward</code> 和 <code class="language-plaintext highlighter-rouge">redirect</code> 区别</p> </li> <li> <p>路径写法：</p> <p>路径分类</p> <ol> <li><code class="language-plaintext highlighter-rouge">相对路径</code>：通过相对路径不可以确定唯一资源 <ul> <li>如：<code class="language-plaintext highlighter-rouge">./index.html</code></li> <li>不以<code class="language-plaintext highlighter-rouge">/</code>开头，以.开头路径</li> <li>规则：找到当前资源和目标资源之间的相对位置关系 <code class="language-plaintext highlighter-rouge">./</code>：当前目录 <code class="language-plaintext highlighter-rouge">../</code>:后退一级目录</li> </ul> </li> <li><code class="language-plaintext highlighter-rouge">绝对路径</code>：通过绝对路径可以确定唯一资源 <ul> <li>如：<code class="language-plaintext highlighter-rouge">http://localhost/day15/responseDemo2 /day15/responseDemo2</code></li> <li> <p>以<code class="language-plaintext highlighter-rouge">/</code>开头的路径</p> </li> <li>规则：判断定义的路径是给谁用的？判断请求将来从哪儿发出 <ul> <li>给客户端浏览器使用：<code class="language-plaintext highlighter-rouge">需要加虚拟目录(项目的访问路径)</code> 建议虚拟目录动态获取：<code class="language-plaintext highlighter-rouge">request.getContextPath()</code> <code class="language-plaintext highlighter-rouge">&lt;a&gt; , &lt;form&gt; 重定向...</code></li> <li> <p>给服务器使用：<code class="language-plaintext highlighter-rouge">不需要加虚拟目录</code> <code class="language-plaintext highlighter-rouge">转发路径</code></p> <p>​</p> </li> </ul> </li> </ul> </li> </ol> </li> </ul> <h4 id="222-服务器输出字符数据到浏览器">2.2.2 服务器输出字符数据到浏览器</h4> <h5 id="步骤">步骤：</h5> <ol> <li>获取字符输出流</li> <li>输出数据</li> </ol> <h5 id="注意">注意：</h5> <ul> <li>乱码问题： <ol> <li><code class="language-plaintext highlighter-rouge">PrintWriter pw = response.getWriter()</code>;获取的流的默认编码是<code class="language-plaintext highlighter-rouge">ISO-8859-1</code></li> <li>设置该流的<code class="language-plaintext highlighter-rouge">默认编码</code></li> <li>告诉浏览器响应体使用的编码</li> </ol> </li> <li>简单的形式，设置编码，是在获取流之前设置 <div class="language-java highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">response</span><span class="o">.</span><span class="na">setContentType</span><span class="o">(</span><span class="s">"text/html;charset=utf-8"</span><span class="o">);</span>
+</code></pre></div> </div> </li> </ul> <div class="language-java highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nd">@WebServlet</span><span class="o">(</span><span class="s">"/responseDemo4"</span><span class="o">)</span>
+<span class="kd">public</span> <span class="kd">class</span> <span class="nc">ResponseDemo4</span> <span class="kd">extends</span> <span class="nc">HttpServlet</span> <span class="o">{</span>
+    <span class="nd">@Override</span>
+    <span class="kd">protected</span> <span class="kt">void</span> <span class="nf">doGet</span><span class="o">(</span><span class="nc">HttpServletRequest</span> <span class="n">req</span><span class="o">,</span> <span class="nc">HttpServletResponse</span> <span class="n">resp</span><span class="o">)</span> <span class="kd">throws</span> <span class="nc">ServletException</span><span class="o">,</span> <span class="nc">IOException</span> <span class="o">{</span>
+        <span class="k">this</span><span class="o">.</span><span class="na">doPost</span><span class="o">(</span><span class="n">req</span><span class="o">,</span><span class="n">resp</span><span class="o">);</span>
+    <span class="o">}</span>
+
+    <span class="nd">@Override</span>
+    <span class="kd">protected</span> <span class="kt">void</span> <span class="nf">doPost</span><span class="o">(</span><span class="nc">HttpServletRequest</span> <span class="n">req</span><span class="o">,</span> <span class="nc">HttpServletResponse</span> <span class="n">resp</span><span class="o">)</span> <span class="kd">throws</span> <span class="nc">ServletException</span><span class="o">,</span> <span class="nc">IOException</span> <span class="o">{</span>
+        <span class="c1">// 获取流对象之前，设置六的默认编码，ISO-8859-1 设置为：GBK</span>
+<span class="c1">//        resp.setCharacterEncoding("utf-8");</span>
+
+        <span class="c1">// 设置编码 告诉浏览器，服务器发送的消息体数据的彪马。建议浏览器使用该编码</span>
+<span class="c1">//        resp.setHeader("content-type","text/html;charset=utf-8");</span>
+
+        <span class="c1">//简单的形式设置编码</span>
+        <span class="n">resp</span><span class="o">.</span><span class="na">setContentType</span><span class="o">(</span><span class="s">"text/html;charset=utf-8"</span><span class="o">);</span>
+
+        <span class="c1">// 1.获取字符输出流</span>
+        <span class="nc">PrintWriter</span> <span class="n">pw</span> <span class="o">=</span> <span class="n">resp</span><span class="o">.</span><span class="na">getWriter</span><span class="o">();</span>
+        <span class="c1">// 2.输出数据</span>
+<span class="c1">//        pw.write("&lt;h1&gt;hello,response&lt;h1&gt;");</span>
+        <span class="n">pw</span><span class="o">.</span><span class="na">write</span><span class="o">(</span><span class="s">"你好！"</span><span class="o">);</span>
+    <span class="o">}</span>
+<span class="o">}</span>
+</code></pre></div></div> <h4 id="223-服务器输出字节数据到浏览器">2.2.3 服务器输出字节数据到浏览器</h4> <p>步骤：</p> <ol> <li>获取字节输出流</li> <li>输出数据</li> </ol> <div class="language-java highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nd">@WebServlet</span><span class="o">(</span><span class="s">"/responseDemo5"</span><span class="o">)</span>
+<span class="kd">public</span> <span class="kd">class</span> <span class="nc">ResponseDemo5</span> <span class="kd">extends</span> <span class="nc">HttpServlet</span> <span class="o">{</span>
+    <span class="nd">@Override</span>
+    <span class="kd">protected</span> <span class="kt">void</span> <span class="nf">doGet</span><span class="o">(</span><span class="nc">HttpServletRequest</span> <span class="n">req</span><span class="o">,</span> <span class="nc">HttpServletResponse</span> <span class="n">resp</span><span class="o">)</span> <span class="kd">throws</span> <span class="nc">ServletException</span><span class="o">,</span> <span class="nc">IOException</span> <span class="o">{</span>
+        <span class="k">this</span><span class="o">.</span><span class="na">doPost</span><span class="o">(</span><span class="n">req</span><span class="o">,</span><span class="n">resp</span><span class="o">);</span>
+    <span class="o">}</span>
+
+    <span class="nd">@Override</span>
+    <span class="kd">protected</span> <span class="kt">void</span> <span class="nf">doPost</span><span class="o">(</span><span class="nc">HttpServletRequest</span> <span class="n">req</span><span class="o">,</span> <span class="nc">HttpServletResponse</span> <span class="n">resp</span><span class="o">)</span> <span class="kd">throws</span> <span class="nc">ServletException</span><span class="o">,</span> <span class="nc">IOException</span> <span class="o">{</span>
+
+        <span class="n">resp</span><span class="o">.</span><span class="na">setContentType</span><span class="o">(</span><span class="s">"text/html;charset=utf-8"</span><span class="o">);</span>
+        <span class="c1">// 1.获取字符输出流</span>
+        <span class="nc">ServletOutputStream</span> <span class="n">sos</span> <span class="o">=</span> <span class="n">resp</span><span class="o">.</span><span class="na">getOutputStream</span><span class="o">();</span>
+        <span class="c1">// 2.输出数据</span>
+        <span class="n">sos</span><span class="o">.</span><span class="na">write</span><span class="o">(</span><span class="s">"你好"</span><span class="o">.</span><span class="na">getBytes</span><span class="o">(</span><span class="s">"utf-8"</span><span class="o">));</span>
+    <span class="o">}</span>
+<span class="o">}</span>
+</code></pre></div></div> <h4 id="224-验证码">2.2.4 验证码</h4> <ol> <li>本质：图片</li> <li>目的：防止恶意表单注册</li> </ol> <div class="language-java highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nd">@WebServlet</span><span class="o">(</span><span class="s">"/checkCodeServlet"</span><span class="o">)</span>
+<span class="kd">public</span> <span class="kd">class</span> <span class="nc">CheckCodeServlet</span> <span class="kd">extends</span> <span class="nc">HttpServlet</span> <span class="o">{</span>
+
+    <span class="nd">@Override</span>
+    <span class="kd">protected</span> <span class="kt">void</span> <span class="nf">doGet</span><span class="o">(</span><span class="nc">HttpServletRequest</span> <span class="n">req</span><span class="o">,</span> <span class="nc">HttpServletResponse</span> <span class="n">resp</span><span class="o">)</span> <span class="kd">throws</span> <span class="nc">ServletException</span><span class="o">,</span> <span class="nc">IOException</span> <span class="o">{</span>
+        <span class="k">this</span><span class="o">.</span><span class="na">doPost</span><span class="o">(</span><span class="n">req</span><span class="o">,</span><span class="n">resp</span><span class="o">);</span>
+    <span class="o">}</span>
+
+    <span class="nd">@Override</span>
+    <span class="kd">protected</span> <span class="kt">void</span> <span class="nf">doPost</span><span class="o">(</span><span class="nc">HttpServletRequest</span> <span class="n">req</span><span class="o">,</span> <span class="nc">HttpServletResponse</span> <span class="n">resp</span><span class="o">)</span> <span class="kd">throws</span> <span class="nc">ServletException</span><span class="o">,</span> <span class="nc">IOException</span> <span class="o">{</span>
+
+        <span class="kt">int</span> <span class="n">wigth</span> <span class="o">=</span> <span class="mi">100</span><span class="o">;</span>
+        <span class="kt">int</span> <span class="n">height</span> <span class="o">=</span> <span class="mi">50</span><span class="o">;</span>
+        <span class="c1">//1.创建一对象，在内存中图片（验证码图片对象）</span>
+        <span class="nc">BufferedImage</span> <span class="n">image</span> <span class="o">=</span> <span class="k">new</span> <span class="nc">BufferedImage</span><span class="o">(</span><span class="n">wigth</span><span class="o">,</span><span class="n">height</span><span class="o">,</span><span class="nc">BufferedImage</span><span class="o">.</span><span class="na">TYPE_INT_RGB</span><span class="o">);</span>
+        <span class="c1">//2.美化图片</span>
+
+        <span class="c1">//2.1 填充背景色</span>
+        <span class="nc">Graphics</span> <span class="n">g</span> <span class="o">=</span> <span class="n">image</span><span class="o">.</span><span class="na">getGraphics</span><span class="o">();</span> <span class="c1">//画笔对象</span>
+        <span class="n">g</span><span class="o">.</span><span class="na">setColor</span><span class="o">(</span><span class="nc">Color</span><span class="o">.</span><span class="na">PINK</span><span class="o">);</span><span class="c1">//设置画笔颜色</span>
+        <span class="n">g</span><span class="o">.</span><span class="na">fillRect</span><span class="o">(</span><span class="mi">0</span><span class="o">,</span><span class="mi">0</span><span class="o">,</span><span class="n">wigth</span><span class="o">,</span><span class="n">height</span><span class="o">);</span>
+
+        <span class="c1">//2.2 画边框</span>
+        <span class="n">g</span><span class="o">.</span><span class="na">setColor</span><span class="o">(</span><span class="nc">Color</span><span class="o">.</span><span class="na">BLUE</span><span class="o">);</span>
+        <span class="n">g</span><span class="o">.</span><span class="na">drawRect</span><span class="o">(</span><span class="mi">0</span><span class="o">,</span><span class="mi">0</span><span class="o">,</span><span class="n">wigth</span><span class="o">-</span><span class="mi">1</span><span class="o">,</span><span class="n">height</span><span class="o">-</span><span class="mi">1</span><span class="o">);</span>
+
+        <span class="nc">String</span> <span class="n">str</span> <span class="o">=</span> <span class="s">"ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789"</span><span class="o">;</span>
+
+        <span class="c1">//生成随机角标</span>
+        <span class="nc">Random</span> <span class="n">ran</span> <span class="o">=</span> <span class="k">new</span> <span class="nc">Random</span><span class="o">();</span>
+
+
+        <span class="c1">//2.3 写验证码</span>
+        <span class="k">for</span> <span class="o">(</span><span class="kt">int</span> <span class="n">i</span> <span class="o">=</span> <span class="mi">1</span><span class="o">;</span> <span class="n">i</span> <span class="o">&lt;=</span> <span class="mi">4</span><span class="o">;</span> <span class="n">i</span><span class="o">++)</span> <span class="o">{</span>
+            <span class="kt">int</span> <span class="n">index</span> <span class="o">=</span> <span class="n">ran</span><span class="o">.</span><span class="na">nextInt</span><span class="o">(</span><span class="n">str</span><span class="o">.</span><span class="na">length</span><span class="o">());</span>
+            <span class="c1">//获取字符</span>
+            <span class="kt">char</span> <span class="n">ch</span> <span class="o">=</span> <span class="n">str</span><span class="o">.</span><span class="na">charAt</span><span class="o">(</span><span class="n">index</span><span class="o">);</span>
+            <span class="n">g</span><span class="o">.</span><span class="na">drawString</span><span class="o">(</span><span class="n">ch</span><span class="o">+</span><span class="s">""</span><span class="o">,</span> <span class="n">wigth</span><span class="o">/</span><span class="mi">5</span><span class="o">*</span><span class="n">i</span><span class="o">,</span><span class="n">height</span><span class="o">/</span><span class="mi">2</span><span class="o">);</span>
+        <span class="o">}</span>
+        <span class="c1">//2.4 画干扰线</span>
+        <span class="n">g</span><span class="o">.</span><span class="na">setColor</span><span class="o">(</span><span class="nc">Color</span><span class="o">.</span><span class="na">GREEN</span><span class="o">);</span>
+
+        <span class="c1">//随机生成坐标点</span>
+
+
+        <span class="k">for</span> <span class="o">(</span><span class="kt">int</span> <span class="n">i</span> <span class="o">=</span> <span class="mi">0</span><span class="o">;</span> <span class="n">i</span> <span class="o">&lt;</span> <span class="mi">10</span><span class="o">;</span> <span class="n">i</span><span class="o">++)</span> <span class="o">{</span>
+            <span class="kt">int</span> <span class="n">x1</span> <span class="o">=</span> <span class="n">ran</span><span class="o">.</span><span class="na">nextInt</span><span class="o">(</span><span class="n">wigth</span><span class="o">);</span>
+            <span class="kt">int</span> <span class="n">x2</span> <span class="o">=</span> <span class="n">ran</span><span class="o">.</span><span class="na">nextInt</span><span class="o">(</span><span class="n">wigth</span><span class="o">);</span>
+            <span class="kt">int</span> <span class="n">y1</span> <span class="o">=</span> <span class="n">ran</span><span class="o">.</span><span class="na">nextInt</span><span class="o">(</span><span class="n">height</span><span class="o">);</span>
+            <span class="kt">int</span> <span class="n">y2</span> <span class="o">=</span> <span class="n">ran</span><span class="o">.</span><span class="na">nextInt</span><span class="o">(</span><span class="n">height</span><span class="o">);</span>
+            <span class="n">g</span><span class="o">.</span><span class="na">drawLine</span><span class="o">(</span><span class="n">x1</span><span class="o">,</span><span class="n">y1</span><span class="o">,</span><span class="n">x2</span><span class="o">,</span><span class="n">y2</span><span class="o">);</span>
+        <span class="o">}</span>
+
+
+        <span class="c1">//3.将图片输入到图片展示</span>
+        <span class="nc">ImageIO</span><span class="o">.</span><span class="na">write</span><span class="o">(</span><span class="n">image</span><span class="o">,</span><span class="s">"jpg"</span><span class="o">,</span><span class="n">resp</span><span class="o">.</span><span class="na">getOutputStream</span><span class="o">());</span>
+    <span class="o">}</span>
+<span class="o">}</span>
+</code></pre></div></div> <div class="language-html highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="cp">&lt;!DOCTYPE html&gt;</span>
+<span class="nt">&lt;html</span> <span class="na">lang=</span><span class="s">"en"</span><span class="nt">&gt;</span>
+<span class="nt">&lt;head&gt;</span>
+    <span class="nt">&lt;meta</span> <span class="na">charset=</span><span class="s">"UTF-8"</span><span class="nt">&gt;</span>
+    <span class="nt">&lt;title&gt;</span>Title<span class="nt">&lt;/title&gt;</span>
+    <span class="nt">&lt;script&gt;</span>
+    <span class="nb">window</span><span class="p">.</span><span class="nx">onload</span> <span class="o">=</span> <span class="kd">function</span> <span class="p">(){</span>
+        <span class="c1">// 1. 获取图片对象</span>
+        <span class="kd">var</span> <span class="nx">img</span> <span class="o">=</span> <span class="nb">document</span><span class="p">.</span><span class="nx">getElementById</span><span class="p">(</span><span class="dl">"</span><span class="s2">checkCode</span><span class="dl">"</span><span class="p">);</span>
+        <span class="c1">//2.绑定单击事件</span>
+        <span class="nx">img</span><span class="p">.</span><span class="nx">onclick</span> <span class="o">=</span> <span class="kd">function</span> <span class="p">(){</span>
+            <span class="c1">//加时间戳</span>
+            <span class="kd">var</span> <span class="nx">date</span> <span class="o">=</span> <span class="k">new</span> <span class="nb">Date</span><span class="p">().</span><span class="nx">getTime</span><span class="p">();</span>
+            <span class="nx">img</span><span class="p">.</span><span class="nx">src</span> <span class="o">=</span> <span class="dl">"</span><span class="s2">/day15/checkCodeServlet?</span><span class="dl">"</span><span class="o">+</span><span class="nx">date</span><span class="p">;</span>
+        <span class="p">}</span>
+
+        <span class="c1">// 1. 获取图片对象</span>
+        <span class="kd">var</span> <span class="nx">cha</span> <span class="o">=</span> <span class="nb">document</span><span class="p">.</span><span class="nx">getElementById</span><span class="p">(</span><span class="dl">"</span><span class="s2">change</span><span class="dl">"</span><span class="p">);</span>
+        <span class="kd">var</span> <span class="nx">imga</span> <span class="o">=</span> <span class="nb">document</span><span class="p">.</span><span class="nx">getElementById</span><span class="p">(</span><span class="dl">"</span><span class="s2">checkCode</span><span class="dl">"</span><span class="p">);</span>
+        <span class="c1">//2.绑定单击事件</span>
+        <span class="nx">cha</span><span class="p">.</span><span class="nx">onclick</span> <span class="o">=</span> <span class="kd">function</span> <span class="p">(){</span>
+            <span class="c1">//加时间戳</span>
+            <span class="kd">var</span> <span class="nx">date</span> <span class="o">=</span> <span class="k">new</span> <span class="nb">Date</span><span class="p">().</span><span class="nx">getTime</span><span class="p">();</span>
+            <span class="nx">imga</span><span class="p">.</span><span class="nx">src</span> <span class="o">=</span> <span class="dl">"</span><span class="s2">/day15/checkCodeServlet?</span><span class="dl">"</span><span class="o">+</span><span class="nx">date</span><span class="p">;</span>
+        <span class="p">}</span>
+    <span class="p">}</span>
+
+    <span class="nt">&lt;/script&gt;</span>
+<span class="nt">&lt;/head&gt;</span>
+<span class="nt">&lt;body&gt;</span>
+    <span class="nt">&lt;img</span> <span class="na">id=</span><span class="s">"checkCode"</span> <span class="na">src=</span><span class="s">"/day15/checkCodeServlet"</span><span class="nt">/&gt;</span>
+    <span class="nt">&lt;a</span> <span class="na">id=</span><span class="s">"change"</span> <span class="na">href=</span><span class="s">"javascript:void(0);"</span> <span class="nt">&gt;</span>看不清换一张<span class="nt">&lt;/a&gt;</span>
+<span class="nt">&lt;/body&gt;</span>
+<span class="nt">&lt;/html&gt;</span>
+</code></pre></div></div> <h1 id="3-servletcontext对象">3. ServletContext对象：</h1> <h2 id="1-概念">1. 概念：</h2> <ul> <li>代表整个<code class="language-plaintext highlighter-rouge">web</code>应用，可以和程序的容器(服务器)来通信 <h2 id="2-获取">2. 获取：</h2> <ol> <li>通过<code class="language-plaintext highlighter-rouge">request</code>对象获取 <code class="language-plaintext highlighter-rouge">request.getServletContext();</code></li> <li>通过<code class="language-plaintext highlighter-rouge">HttpServlet</code>获取 <code class="language-plaintext highlighter-rouge">this.getServletContext();</code> <h2 id="3-功能">3. 功能：</h2> </li> <li>获取<code class="language-plaintext highlighter-rouge">MIME</code>类型：</li> </ol> <ul> <li><code class="language-plaintext highlighter-rouge">MIME</code>类型:在互联网通信过程中定义的一种文件数据类型 格式： <code class="language-plaintext highlighter-rouge">大类型/小类型 text/html image/jpeg</code></li> <li>获取：<code class="language-plaintext highlighter-rouge">String getMimeType(String file)</code> <ol> <li>域对象：共享数据 1. <code class="language-plaintext highlighter-rouge">setAttribute(String name,Object value)</code> 2. <code class="language-plaintext highlighter-rouge">getAttribute(String name)</code> 3. <code class="language-plaintext highlighter-rouge">removeAttribute(String name)</code> <code class="language-plaintext highlighter-rouge">ServletContext</code>对象范围：所有用户所有请求的数据</li> <li>获取文件的真实(服务器)路径 1. 方法：<code class="language-plaintext highlighter-rouge">String getRealPath(String path)</code></li> </ol> </li> </ul> </li> </ul> <div class="language-java highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nc">String</span> <span class="n">b</span> <span class="o">=</span> <span class="n">context</span><span class="o">.</span><span class="na">getRealPath</span><span class="o">(</span><span class="s">"/b.txt"</span><span class="o">);</span><span class="c1">//web目录下资源访问</span>
+<span class="nc">System</span><span class="o">.</span><span class="na">out</span><span class="o">.</span><span class="na">println</span><span class="o">(</span><span class="n">b</span><span class="o">);</span>
+<span class="nc">String</span> <span class="n">c</span> <span class="o">=</span> <span class="n">context</span><span class="o">.</span><span class="na">getRealPath</span><span class="o">(</span><span class="s">"/WEB-INF/c.txt"</span><span class="o">);</span><span class="c1">//WEB-INF目录下的资源访问</span>
+<span class="nc">System</span><span class="o">.</span><span class="na">out</span><span class="o">.</span><span class="na">println</span><span class="o">(</span><span class="n">c</span><span class="o">);</span>
+<span class="nc">String</span> <span class="n">a</span> <span class="o">=</span> <span class="n">context</span><span class="o">.</span><span class="na">getRealPath</span><span class="o">(</span><span class="s">"/WEB-INF/classes/a.txt"</span><span class="o">);</span><span class="c1">//src目录下的资源访问</span>
+<span class="nc">System</span><span class="o">.</span><span class="na">out</span><span class="o">.</span><span class="na">println</span><span class="o">(</span><span class="n">a</span><span class="o">);</span>
+</code></pre></div></div> <div class="language-java highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nd">@WebServlet</span><span class="o">(</span><span class="s">"/servletcontentdemo1"</span><span class="o">)</span>
+<span class="kd">public</span> <span class="kd">class</span> <span class="nc">ServletContentDemo1</span> <span class="kd">extends</span> <span class="nc">HttpServlet</span> <span class="o">{</span>
+
+    <span class="nd">@Override</span>
+    <span class="kd">protected</span> <span class="kt">void</span> <span class="nf">doGet</span><span class="o">(</span><span class="nc">HttpServletRequest</span> <span class="n">req</span><span class="o">,</span> <span class="nc">HttpServletResponse</span> <span class="n">resp</span><span class="o">)</span> <span class="kd">throws</span> <span class="nc">ServletException</span><span class="o">,</span> <span class="nc">IOException</span> <span class="o">{</span>
+        <span class="k">this</span><span class="o">.</span><span class="na">doPost</span><span class="o">(</span><span class="n">req</span><span class="o">,</span><span class="n">resp</span><span class="o">);</span>
+    <span class="o">}</span>
+
+    <span class="nd">@Override</span>
+    <span class="kd">protected</span> <span class="kt">void</span> <span class="nf">doPost</span><span class="o">(</span><span class="nc">HttpServletRequest</span> <span class="n">req</span><span class="o">,</span> <span class="nc">HttpServletResponse</span> <span class="n">resp</span><span class="o">)</span> <span class="kd">throws</span> <span class="nc">ServletException</span><span class="o">,</span> <span class="nc">IOException</span> <span class="o">{</span>
+        <span class="c1">//1.通过request对象获取</span>
+        <span class="nc">ServletContext</span> <span class="n">context1</span> <span class="o">=</span> <span class="n">req</span><span class="o">.</span><span class="na">getServletContext</span><span class="o">();</span>
+        <span class="c1">//2.通过HttpServlet获取</span>
+        <span class="nc">ServletContext</span> <span class="n">context2</span> <span class="o">=</span> <span class="k">this</span><span class="o">.</span><span class="na">getServletContext</span><span class="o">();</span>
+
+        <span class="nc">System</span><span class="o">.</span><span class="na">out</span><span class="o">.</span><span class="na">println</span><span class="o">(</span><span class="n">context1</span><span class="o">);</span>
+        <span class="nc">System</span><span class="o">.</span><span class="na">out</span><span class="o">.</span><span class="na">println</span><span class="o">(</span><span class="n">context2</span><span class="o">);</span>
+
+        <span class="nc">System</span><span class="o">.</span><span class="na">out</span><span class="o">.</span><span class="na">println</span><span class="o">(</span><span class="n">context1</span> <span class="o">==</span> <span class="n">context2</span><span class="o">);</span>
+    <span class="o">}</span>
+<span class="o">}</span>
+</code></pre></div></div> <div class="language-java highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nd">@WebServlet</span><span class="o">(</span><span class="s">"/servletcontentdemo2"</span><span class="o">)</span>
+<span class="kd">public</span> <span class="kd">class</span> <span class="nc">ServletContentDemo2</span> <span class="kd">extends</span> <span class="nc">HttpServlet</span> <span class="o">{</span>
+
+    <span class="nd">@Override</span>
+    <span class="kd">protected</span> <span class="kt">void</span> <span class="nf">doGet</span><span class="o">(</span><span class="nc">HttpServletRequest</span> <span class="n">req</span><span class="o">,</span> <span class="nc">HttpServletResponse</span> <span class="n">resp</span><span class="o">)</span> <span class="kd">throws</span> <span class="nc">ServletException</span><span class="o">,</span> <span class="nc">IOException</span> <span class="o">{</span>
+        <span class="k">this</span><span class="o">.</span><span class="na">doPost</span><span class="o">(</span><span class="n">req</span><span class="o">,</span><span class="n">resp</span><span class="o">);</span>
+    <span class="o">}</span>
+
+    <span class="nd">@Override</span>
+    <span class="kd">protected</span> <span class="kt">void</span> <span class="nf">doPost</span><span class="o">(</span><span class="nc">HttpServletRequest</span> <span class="n">req</span><span class="o">,</span> <span class="nc">HttpServletResponse</span> <span class="n">resp</span><span class="o">)</span> <span class="kd">throws</span> <span class="nc">ServletException</span><span class="o">,</span> <span class="nc">IOException</span> <span class="o">{</span>
+
+        <span class="c1">//2.通过HttpServlet获取</span>
+        <span class="nc">ServletContext</span> <span class="n">context</span> <span class="o">=</span> <span class="k">this</span><span class="o">.</span><span class="na">getServletContext</span><span class="o">();</span>
+
+        <span class="c1">//3. 定义文件名称</span>
+        <span class="nc">String</span> <span class="n">filename</span> <span class="o">=</span> <span class="s">"a.jpg"</span><span class="o">;</span>
+
+        <span class="c1">//4.获取MIME类型</span>
+        <span class="nc">String</span> <span class="n">mimeType</span> <span class="o">=</span> <span class="n">context</span><span class="o">.</span><span class="na">getMimeType</span><span class="o">(</span><span class="n">filename</span><span class="o">);</span>
+        <span class="nc">System</span><span class="o">.</span><span class="na">out</span><span class="o">.</span><span class="na">println</span><span class="o">(</span><span class="n">mimeType</span><span class="o">);</span>
+
+    <span class="o">}</span>
+<span class="o">}</span>
+</code></pre></div></div> <h1 id="4-案例">4. 案例：</h1> <ul> <li>文件下载需求： <ol> <li>页面显示超链接</li> <li>点击超链接后弹出下载提示框</li> <li>完成图片文件下载</li> </ol> </li> <li>分析： <ol> <li>超链接指向的资源如果能够被浏览器解析，则在浏览器中展示，如果不能解析，则弹出下载提示框。不满足需求</li> <li>任何资源都必须弹出下载提示框</li> <li>使用响应头设置资源的打开方式： <ul> <li><code class="language-plaintext highlighter-rouge">content-disposition:attachment;filename=xxx</code></li> </ul> </li> </ol> </li> <li>步骤： <ol> <li>定义页面，编辑超链接<code class="language-plaintext highlighter-rouge">href</code>属性，指向Servlet，传递资源名称<code class="language-plaintext highlighter-rouge">filename</code></li> <li>定义<code class="language-plaintext highlighter-rouge">Servlet</code> <ol> <li>获取文件名称</li> <li>使用字节输入流加载文件进内存</li> <li>指定<code class="language-plaintext highlighter-rouge">response</code>的响应头： <code class="language-plaintext highlighter-rouge">content-disposition:attachment;filename=xxx</code></li> <li>将数据写出到<code class="language-plaintext highlighter-rouge">response</code>输出流</li> </ol> </li> </ol> </li> <li>问题： <ul> <li>中文文件问题 <ul> <li>解决思路： <ol> <li>获取客户端使用的浏览器版本信息</li> <li>根据不同的版本信息，设置<code class="language-plaintext highlighter-rouge">filename</code>的编码方式不同</li> </ol> </li> </ul> </li> </ul> </li> </ul> <div class="language-html highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="cp">&lt;!DOCTYPE html&gt;</span>
+<span class="nt">&lt;html</span> <span class="na">lang=</span><span class="s">"en"</span><span class="nt">&gt;</span>
+<span class="nt">&lt;head&gt;</span>
+    <span class="nt">&lt;meta</span> <span class="na">charset=</span><span class="s">"UTF-8"</span><span class="nt">&gt;</span>
+    <span class="nt">&lt;title&gt;</span>Title<span class="nt">&lt;/title&gt;</span>
+<span class="nt">&lt;/head&gt;</span>
+<span class="nt">&lt;body&gt;</span>
+
+    <span class="nt">&lt;a</span> <span class="na">href=</span><span class="s">"/day15/img/1.jpg"</span><span class="nt">&gt;</span>图片1<span class="nt">&lt;/a&gt;</span>
+
+    <span class="nt">&lt;a</span> <span class="na">href=</span><span class="s">"/day15/img/1.avi"</span><span class="nt">&gt;</span>视频<span class="nt">&lt;/a&gt;</span>
+    <span class="nt">&lt;hr&gt;</span>
+
+
+    <span class="nt">&lt;a</span> <span class="na">href=</span><span class="s">"/day15/downloadServlet?filename=九尾.jpg"</span><span class="nt">&gt;</span>图片1<span class="nt">&lt;/a&gt;</span>
+
+    <span class="nt">&lt;a</span> <span class="na">href=</span><span class="s">"/day15/downloadServlet?filename=1.avi"</span><span class="nt">&gt;</span>视频<span class="nt">&lt;/a&gt;</span>
+
+<span class="nt">&lt;/body&gt;</span>
+<span class="nt">&lt;/html&gt;</span>
+</code></pre></div></div> <div class="language-java highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nd">@WebServlet</span><span class="o">(</span><span class="s">"/downloadServlet"</span><span class="o">)</span>
+<span class="kd">public</span> <span class="kd">class</span> <span class="nc">DownloadServlet</span> <span class="kd">extends</span> <span class="nc">HttpServlet</span> <span class="o">{</span>
+    <span class="kd">protected</span> <span class="kt">void</span> <span class="nf">doPost</span><span class="o">(</span><span class="nc">HttpServletRequest</span> <span class="n">request</span><span class="o">,</span> <span class="nc">HttpServletResponse</span> <span class="n">response</span><span class="o">)</span> <span class="kd">throws</span> <span class="nc">ServletException</span><span class="o">,</span> <span class="nc">IOException</span> <span class="o">{</span>
+        <span class="c1">//1.获取请求参数，文件名称</span>
+        <span class="nc">String</span> <span class="n">filename</span> <span class="o">=</span> <span class="n">request</span><span class="o">.</span><span class="na">getParameter</span><span class="o">(</span><span class="s">"filename"</span><span class="o">);</span>
+        <span class="c1">//2.使用字节输入流加载文件进内存</span>
+        <span class="c1">//2.1找到文件服务器路径</span>
+        <span class="nc">ServletContext</span> <span class="n">servletContext</span> <span class="o">=</span> <span class="k">this</span><span class="o">.</span><span class="na">getServletContext</span><span class="o">();</span>
+        <span class="nc">String</span> <span class="n">realPath</span> <span class="o">=</span> <span class="n">servletContext</span><span class="o">.</span><span class="na">getRealPath</span><span class="o">(</span><span class="s">"/img/"</span> <span class="o">+</span> <span class="n">filename</span><span class="o">);</span>
+        <span class="c1">//2.2用字节流关联</span>
+        <span class="nc">FileInputStream</span> <span class="n">fis</span> <span class="o">=</span> <span class="k">new</span> <span class="nc">FileInputStream</span><span class="o">(</span><span class="n">realPath</span><span class="o">);</span>
+
+        <span class="c1">//3.设置response的响应头</span>
+        <span class="c1">//3.1设置响应头类型：content-type</span>
+        <span class="nc">String</span> <span class="n">mimeType</span> <span class="o">=</span> <span class="n">servletContext</span><span class="o">.</span><span class="na">getMimeType</span><span class="o">(</span><span class="n">filename</span><span class="o">);</span><span class="c1">//获取文件的mime类型</span>
+        <span class="n">response</span><span class="o">.</span><span class="na">setHeader</span><span class="o">(</span><span class="s">"content-type"</span><span class="o">,</span><span class="n">mimeType</span><span class="o">);</span>
+        <span class="c1">//3.2设置响应头打开方式:content-disposition</span>
+
+        <span class="c1">//解决中文文件名问题</span>
+        <span class="c1">//1.获取user-agent请求头、</span>
+        <span class="nc">String</span> <span class="n">agent</span> <span class="o">=</span> <span class="n">request</span><span class="o">.</span><span class="na">getHeader</span><span class="o">(</span><span class="s">"user-agent"</span><span class="o">);</span>
+        <span class="c1">//2.使用工具类方法编码文件名即可</span>
+        <span class="n">filename</span> <span class="o">=</span> <span class="nc">DownLoadUtils</span><span class="o">.</span><span class="na">getFileName</span><span class="o">(</span><span class="n">agent</span><span class="o">,</span> <span class="n">filename</span><span class="o">);</span>
+
+        <span class="n">response</span><span class="o">.</span><span class="na">setHeader</span><span class="o">(</span><span class="s">"content-disposition"</span><span class="o">,</span><span class="s">"attachment;filename="</span><span class="o">+</span><span class="n">filename</span><span class="o">);</span>
+        <span class="c1">//4.将输入流的数据写出到输出流中</span>
+        <span class="nc">ServletOutputStream</span> <span class="n">sos</span> <span class="o">=</span> <span class="n">response</span><span class="o">.</span><span class="na">getOutputStream</span><span class="o">();</span>
+        <span class="kt">byte</span><span class="o">[]</span> <span class="n">buff</span> <span class="o">=</span> <span class="k">new</span> <span class="kt">byte</span><span class="o">[</span><span class="mi">1024</span> <span class="o">*</span> <span class="mi">8</span><span class="o">];</span>
+        <span class="kt">int</span> <span class="n">len</span> <span class="o">=</span> <span class="mi">0</span><span class="o">;</span>
+        <span class="k">while</span><span class="o">((</span><span class="n">len</span> <span class="o">=</span> <span class="n">fis</span><span class="o">.</span><span class="na">read</span><span class="o">(</span><span class="n">buff</span><span class="o">))</span> <span class="o">!=</span> <span class="o">-</span><span class="mi">1</span><span class="o">){</span>
+            <span class="n">sos</span><span class="o">.</span><span class="na">write</span><span class="o">(</span><span class="n">buff</span><span class="o">,</span><span class="mi">0</span><span class="o">,</span><span class="n">len</span><span class="o">);</span>
+        <span class="o">}</span>
+
+        <span class="n">fis</span><span class="o">.</span><span class="na">close</span><span class="o">();</span>
+
+
+    <span class="o">}</span>
+
+    <span class="kd">protected</span> <span class="kt">void</span> <span class="nf">doGet</span><span class="o">(</span><span class="nc">HttpServletRequest</span> <span class="n">request</span><span class="o">,</span> <span class="nc">HttpServletResponse</span> <span class="n">response</span><span class="o">)</span> <span class="kd">throws</span> <span class="nc">ServletException</span><span class="o">,</span> <span class="nc">IOException</span> <span class="o">{</span>
+        <span class="k">this</span><span class="o">.</span><span class="na">doPost</span><span class="o">(</span><span class="n">request</span><span class="o">,</span><span class="n">response</span><span class="o">);</span>
+    <span class="o">}</span>
+<span class="o">}</span>
+</code></pre></div></div> <p><strong>注意：</strong> 这个可能不能用，因为，<a href="https://www.cnblogs.com/moonsoft/p/12300001.html">click</a></p> <div class="language-java highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kn">import</span> <span class="nn">sun.misc.BASE64Encoder</span><span class="o">;</span>
+<span class="kn">import</span> <span class="nn">java.io.UnsupportedEncodingException</span><span class="o">;</span>
+<span class="kn">import</span> <span class="nn">java.net.URLEncoder</span><span class="o">;</span>
+
+
+<span class="kd">public</span> <span class="kd">class</span> <span class="nc">DownLoadUtils</span> <span class="o">{</span>
+
+    <span class="kd">public</span> <span class="kd">static</span> <span class="nc">String</span> <span class="nf">getFileName</span><span class="o">(</span><span class="nc">String</span> <span class="n">agent</span><span class="o">,</span> <span class="nc">String</span> <span class="n">filename</span><span class="o">)</span> <span class="kd">throws</span> <span class="nc">UnsupportedEncodingException</span> <span class="o">{</span>
+        <span class="k">if</span> <span class="o">(</span><span class="n">agent</span><span class="o">.</span><span class="na">contains</span><span class="o">(</span><span class="s">"MSIE"</span><span class="o">))</span> <span class="o">{</span>
+            <span class="c1">// IE浏览器</span>
+            <span class="n">filename</span> <span class="o">=</span> <span class="nc">URLEncoder</span><span class="o">.</span><span class="na">encode</span><span class="o">(</span><span class="n">filename</span><span class="o">,</span> <span class="s">"utf-8"</span><span class="o">);</span>
+            <span class="n">filename</span> <span class="o">=</span> <span class="n">filename</span><span class="o">.</span><span class="na">replace</span><span class="o">(</span><span class="s">"+"</span><span class="o">,</span> <span class="s">" "</span><span class="o">);</span>
+        <span class="o">}</span> <span class="k">else</span> <span class="k">if</span> <span class="o">(</span><span class="n">agent</span><span class="o">.</span><span class="na">contains</span><span class="o">(</span><span class="s">"Firefox"</span><span class="o">))</span> <span class="o">{</span>
+            <span class="c1">// 火狐浏览器</span>
+            <span class="nc">BASE64Encoder</span> <span class="n">base64Encoder</span> <span class="o">=</span> <span class="k">new</span> <span class="nc">BASE64Encoder</span><span class="o">();</span>
+            <span class="n">filename</span> <span class="o">=</span> <span class="s">"=?utf-8?B?"</span> <span class="o">+</span> <span class="n">base64Encoder</span><span class="o">.</span><span class="na">encode</span><span class="o">(</span><span class="n">filename</span><span class="o">.</span><span class="na">getBytes</span><span class="o">(</span><span class="s">"utf-8"</span><span class="o">))</span> <span class="o">+</span> <span class="s">"?="</span><span class="o">;</span>
+        <span class="o">}</span> <span class="k">else</span> <span class="o">{</span>
+            <span class="c1">// 其它浏览器</span>
+            <span class="n">filename</span> <span class="o">=</span> <span class="nc">URLEncoder</span><span class="o">.</span><span class="na">encode</span><span class="o">(</span><span class="n">filename</span><span class="o">,</span> <span class="s">"utf-8"</span><span class="o">);</span>
+        <span class="o">}</span>
+        <span class="k">return</span> <span class="n">filename</span><span class="o">;</span>
+    <span class="o">}</span>
+<span class="o">}</span>
+</code></pre></div></div> <p>​</p> <div style="margin-top:2em;padding:0 1.5em;border:1px solid #d3d3d3;background-color:#deebf7"> <h3>文档信息</h3> <ul> <li>本文作者：<a href="https://slienceme.cn" target="_blank">slience_me</a></li> <li>本文链接：<a href="https://slienceme.cn/2021/02/24/Response/" target="_blank">https://slienceme.cn/2021/02/24/Response/</a></li> <li>版权声明：自由转载-非商用-非衍生-保持署名（<a href="http://creativecommons.org/licenses/by-nc-nd/3.0/deed.zh" target="_blank">创意共享3.0许可证</a>）</li> </ul> </div> </article> <div class="share"> <div class="share-component" data-disabled='qq,facebook'></div> </div> <div class="comment"> <script src="https://giscus.app/client.js" data-repo="slience-me/blog-comments" data-repo-id="MDEwOlJlcG9zaXRvcnk5MzEyNzkxNw==" data-category="Announcements" data-category-id="DIC_kwDOBY0E7c4CRtg9" data-mapping="title" data-strict="1" data-reactions-enabled="1" data-emit-metadata="0" data-input-position="top" data-theme="light" data-lang="zh-CN" data-loading="lazy" crossorigin="anonymous" async> </script> </div> </div> <div class="column one-fourth"> <h3>Search</h3> <div id="site_search"> <input style="width:96%" type="text" id="search_box" placeholder="Search"> </div> <ul id="search_results" style="font-size:14px;list-style-type:none;padding-top:10px;padding-left:10px;"></ul> <script src="https://slienceme.cn/assets/js/simple-jekyll-search.min.js"></script> <script type="text/javascript"> SimpleJekyllSearch({ searchInput: document.getElementById('search_box'), resultsContainer: document.getElementById('search_results'), json: 'https://slienceme.cn/assets/search_data.json?v=1736474000', searchResultTemplate: '<li><a href="{url}" title="{title}">{title}</a></li>', noResultsText: 'No results found', limit: 10, fuzzy: false, exclude: ['Welcome'] }) </script> <h3 class="post-directory-title mobile-hidden">Table of Contents</h3> <div id="post-directory-module" class="mobile-hidden"> <section class="post-directory"> <dl></dl> </section> </div> <script src="https://slienceme.cn/assets/js/jquery.toc.js"></script> </div> </div> </section> <footer class="container"> <div class="site-footer" role="contentinfo"> <div class="copyright left mobile-block"> Copyright@ 2019-2025 slience_me 版权所有&emsp; <img src="/images/logo/logo.png" class="w-full" style="width: 12px;"> <a href="https://beian.mps.gov.cn/#/query/webSearch?code=13102202000626" rel="noreferrer" target="_blank">冀公网安备13102202000626</a>&emsp; <a href="https://beian.miit.gov.cn/#/Integrated/index" target="_blank" rel="noreferrer">津ICP备2024026565号-1</a> <a href="javascript:window.scrollTo(0,0)" class="right mobile-visible">TOP</a> </div> <ul class="site-footer-links right mobile-hidden"> <li> <a href="javascript:window.scrollTo(0,0)" >TOP</a> </li> </ul> <br/> <script async src="https://slienceme.cn/assets/vendor/busuanzi/2.3/busuanzi.pure.mini.js"></script> <div class="mobile-hidden" style="margin-top:8px"> <span id="busuanzi_container_site_pv" style="display:none"> 本站访问量<span id="busuanzi_value_site_pv"></span>次 </span> <span id="busuanzi_container_site_uv" style="display:none"> / 本站访客数<span id="busuanzi_value_site_uv"></span>人 </span> <span id="busuanzi_container_page_pv" style="display:none"> / 本页访问量<span id="busuanzi_value_page_pv"></span>次 / 统计始于2024-12-01 </span> </div> </div> </footer> <div class="tools-wrapper"> <a class="gotop" href="#" title="回到顶部"><span class="octicon octicon-arrow-up"></span></a> </div> <script src="https://slienceme.cn/assets/vendor/share.js/dist/js/share.min.js"></script> <script src="https://slienceme.cn/assets/js/geopattern.js"></script> <script> jQuery(document).ready(function($) { $('.geopattern').each(function(){ $(this).geopattern($(this).data('pattern-id')); }); /* hljs.initHighlightingOnLoad(); */ }); </script> </body> </html>

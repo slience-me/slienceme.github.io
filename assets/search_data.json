@@ -1,0 +1,1460 @@
+
+
+[
+  
+  
+    {
+      "title"    : "页面没有找到",
+      "url"      : "https://slienceme.cn/404.html",
+      "keywords" : "404"
+    } ,
+  
+  
+  
+    {
+      "title"    : "About",
+      "url"      : "https://slienceme.cn/about/",
+      "keywords" : "Slience_me"
+    } ,
+  
+  
+  
+    {
+      "title"    : "归档",
+      "url"      : "https://slienceme.cn/archives/",
+      "keywords" : "归档"
+    } ,
+  
+  
+  
+    {
+      "title"    : "Categories",
+      "url"      : "https://slienceme.cn/categories/",
+      "keywords" : "分类"
+    } ,
+  
+  
+  
+    {
+      "title"    : "捐助 / Donate",
+      "url"      : "https://slienceme.cn/donate/",
+      "keywords" : "Donate"
+    } ,
+  
+  
+  
+    {
+      "title"    : "Fragments",
+      "url"      : "https://slienceme.cn/fragments/",
+      "keywords" : "fragments"
+    } ,
+  
+  
+  
+  
+  
+    {
+      "title"    : "Links",
+      "url"      : "https://slienceme.cn/links/",
+      "keywords" : "友情链接"
+    } ,
+  
+  
+  
+    {
+      "title"    : "mindmap",
+      "url"      : "https://slienceme.cn/mindmap-viewer/",
+      "keywords" : "mindmap"
+    } ,
+  
+  
+  
+    {
+      "title"    : "Open Source Projects",
+      "url"      : "https://slienceme.cn/open-source/",
+      "keywords" : "开源,open-source,GitHub,开源项目"
+    } ,
+  
+  
+  
+  
+  
+    {
+      "title"    : "Wiki",
+      "url"      : "https://slienceme.cn/wiki/",
+      "keywords" : "维基, Wiki"
+    } ,
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+
+  
+    {
+      "title"    : "指令汇总｜常用执行指令汇总大全",
+      "category" : "指令汇总",
+      
+      "url"      : "https://slienceme.cn/2019/01/01/readme/",
+      "keywords" : "指令汇总"
+    } ,
+  
+    {
+      "title"    : "前端｜Web基础_CSS基础",
+      "category" : "前端",
+      
+      "url"      : "https://slienceme.cn/2020/11/26/Web%E5%9F%BA%E7%A1%80_CSS%E5%9F%BA%E7%A1%80/",
+      "keywords" : "前端, Web"
+    } ,
+  
+    {
+      "title"    : "C语言｜C++基础学习",
+      "category" : "C语言",
+      
+      "url"      : "https://slienceme.cn/2020/11/30/C++%E5%9F%BA%E7%A1%80%E5%AD%A6%E4%B9%A0/",
+      "keywords" : "编程语言, C语言, C++, C"
+    } ,
+  
+    {
+      "title"    : "Linux｜关于Linux中为Python应用安装uwsgi踩的坑",
+      "category" : "Linux",
+      
+      "url"      : "https://slienceme.cn/2020/12/06/%E5%85%B3%E4%BA%8ELinux%E4%B8%AD%E4%B8%BAPython%E5%BA%94%E7%94%A8%E5%AE%89%E8%A3%85uwsgi%E8%B8%A9%E7%9A%84%E5%9D%91/",
+      "keywords" : "Linux, 服务器, uwsgi"
+    } ,
+  
+    {
+      "title"    : "Python｜Python_基础知识",
+      "category" : "Python",
+      
+      "url"      : "https://slienceme.cn/2020/12/14/Python_%E5%9F%BA%E7%A1%80%E7%9F%A5%E8%AF%86/",
+      "keywords" : "编程语言, Python"
+    } ,
+  
+    {
+      "title"    : "前端｜Web基础_HTML基础",
+      "category" : "前端",
+      
+      "url"      : "https://slienceme.cn/2020/12/29/Web%E5%9F%BA%E7%A1%80-_HTML%E5%9F%BA%E7%A1%80/",
+      "keywords" : "前端, Web"
+    } ,
+  
+    {
+      "title"    : "前端｜Web基础_JavaScript基础",
+      "category" : "前端",
+      
+      "url"      : "https://slienceme.cn/2020/12/30/Web%E5%9F%BA%E7%A1%80_JavaScript%E5%9F%BA%E7%A1%80/",
+      "keywords" : "前端, Web"
+    } ,
+  
+    {
+      "title"    : "前端｜Web基础_jquery基础",
+      "category" : "前端",
+      
+      "url"      : "https://slienceme.cn/2021/01/01/Web%E5%9F%BA%E7%A1%80_Jquery%E5%9F%BA%E7%A1%80/",
+      "keywords" : "前端, Web"
+    } ,
+  
+    {
+      "title"    : "Java｜Java基础学习",
+      "category" : "Java",
+      
+      "url"      : "https://slienceme.cn/2021/01/09/Java%E5%9F%BA%E7%A1%80%E5%AD%A6%E4%B9%A0/",
+      "keywords" : "编程语言, Java"
+    } ,
+  
+    {
+      "title"    : "Java｜Java面向对象与封装",
+      "category" : "Java",
+      
+      "url"      : "https://slienceme.cn/2021/01/09/Java%E9%9D%A2%E5%90%91%E5%AF%B9%E8%B1%A1%E4%B8%8E%E5%B0%81%E8%A3%85/",
+      "keywords" : "编程语言, Java"
+    } ,
+  
+    {
+      "title"    : "Java｜Java语言高级（第一部分）常用API_继承与多态",
+      "category" : "Java",
+      
+      "url"      : "https://slienceme.cn/2021/01/10/Java%E8%AF%AD%E8%A8%80%E9%AB%98%E7%BA%A7-%E7%AC%AC%E4%B8%80%E9%83%A8%E5%88%86-%E5%B8%B8%E7%94%A8API_%E7%BB%A7%E6%89%BF%E4%B8%8E%E5%A4%9A%E6%80%81/",
+      "keywords" : "编程语言, Java"
+    } ,
+  
+    {
+      "title"    : "Web｜django_rest_framework学习",
+      "category" : "Python",
+      
+      "url"      : "https://slienceme.cn/2021/01/10/django_rest_framework%E5%AD%A6%E4%B9%A0/",
+      "keywords" : "Python, 服务器, Web"
+    } ,
+  
+    {
+      "title"    : "Web｜JWT学习",
+      "category" : "Web",
+      
+      "url"      : "https://slienceme.cn/2021/01/13/JWT/",
+      "keywords" : "Web, Python, Java"
+    } ,
+  
+    {
+      "title"    : "Web｜Token认证",
+      "category" : "Web",
+      
+      "url"      : "https://slienceme.cn/2021/01/13/Token%E8%AE%A4%E8%AF%81/",
+      "keywords" : "Web, Python, Java, Token"
+    } ,
+  
+    {
+      "title"    : "Linux｜Linux基础命令",
+      "category" : "Linux",
+      
+      "url"      : "https://slienceme.cn/2021/01/19/Linux%E5%9F%BA%E7%A1%80%E5%91%BD%E4%BB%A4/",
+      "keywords" : "Linux, 服务器"
+    } ,
+  
+    {
+      "title"    : "Linux｜Linux高级命令",
+      "category" : "Linux",
+      
+      "url"      : "https://slienceme.cn/2021/01/20/Linux%E9%AB%98%E7%BA%A7%E5%91%BD%E4%BB%A4/",
+      "keywords" : "Linux, 服务器"
+    } ,
+  
+    {
+      "title"    : "Java｜Java语言高级（第二部分）常用API第二部分_集合",
+      "category" : "Java",
+      
+      "url"      : "https://slienceme.cn/2021/01/25/Java%E8%AF%AD%E8%A8%80%E9%AB%98%E7%BA%A7-%E7%AC%AC%E4%BA%8C%E9%83%A8%E5%88%86-%E5%B8%B8%E7%94%A8API%E7%AC%AC%E4%BA%8C%E9%83%A8%E5%88%86_%E9%9B%86%E5%90%88/",
+      "keywords" : "编程语言, Java"
+    } ,
+  
+    {
+      "title"    : "Java｜Java语言高级（第三部分）异常多线程",
+      "category" : "Java",
+      
+      "url"      : "https://slienceme.cn/2021/01/26/Java%E8%AF%AD%E8%A8%80%E9%AB%98%E7%BA%A7-%E7%AC%AC%E4%B8%89%E9%83%A8%E5%88%86-%E5%BC%82%E5%B8%B8%E5%A4%9A%E7%BA%BF%E7%A8%8B/",
+      "keywords" : "编程语言, Java"
+    } ,
+  
+    {
+      "title"    : "Java｜Java语言高级（第五部分）网络编程",
+      "category" : "Java",
+      
+      "url"      : "https://slienceme.cn/2021/01/27/Java%E8%AF%AD%E8%A8%80%E9%AB%98%E7%BA%A7-%E7%AC%AC%E4%BA%94%E9%83%A8%E5%88%86-%E7%BD%91%E7%BB%9C%E7%BC%96%E7%A8%8B/",
+      "keywords" : "编程语言, Java"
+    } ,
+  
+    {
+      "title"    : "Java｜Java语言高级（第四部分）File类与IO流",
+      "category" : "Java",
+      
+      "url"      : "https://slienceme.cn/2021/01/27/Java%E8%AF%AD%E8%A8%80%E9%AB%98%E7%BA%A7-%E7%AC%AC%E5%9B%9B%E9%83%A8%E5%88%86-File%E7%B1%BB%E4%B8%8EIO%E6%B5%81/",
+      "keywords" : "编程语言, Java"
+    } ,
+  
+    {
+      "title"    : "数据库｜MySQL基础",
+      "category" : "数据库",
+      
+      "url"      : "https://slienceme.cn/2021/01/29/MySQL%E5%9F%BA%E7%A1%80/",
+      "keywords" : "数据库"
+    } ,
+  
+    {
+      "title"    : "数据库｜MySQL数据库的基本使用",
+      "category" : "数据库",
+      
+      "url"      : "https://slienceme.cn/2021/01/29/MySQL%E6%95%B0%E6%8D%AE%E5%BA%93%E7%9A%84%E5%9F%BA%E6%9C%AC%E4%BD%BF%E7%94%A8/",
+      "keywords" : "数据库"
+    } ,
+  
+    {
+      "title"    : "数据库｜sqlyog连接mysql错误码2058",
+      "category" : "数据库",
+      
+      "url"      : "https://slienceme.cn/2021/01/29/sqlyog%E8%BF%9E%E6%8E%A5mysql%E9%94%99%E8%AF%AF%E7%A0%812058/",
+      "keywords" : "数据库"
+    } ,
+  
+    {
+      "title"    : "数据库｜数据库的卸载教程",
+      "category" : "数据库",
+      
+      "url"      : "https://slienceme.cn/2021/01/29/%E6%95%B0%E6%8D%AE%E5%BA%93%E7%9A%84%E5%8D%B8%E8%BD%BD%E6%95%99%E7%A8%8B/",
+      "keywords" : "数据库"
+    } ,
+  
+    {
+      "title"    : "数据库｜MySQL约束",
+      "category" : "数据库",
+      
+      "url"      : "https://slienceme.cn/2021/01/30/MySQL%E7%BA%A6%E6%9D%9F/",
+      "keywords" : "数据库"
+    } ,
+  
+    {
+      "title"    : "数据库｜MySQL多表&amp;事务",
+      "category" : "数据库",
+      
+      "url"      : "https://slienceme.cn/2021/01/31/MySQL%E5%A4%9A%E8%A1%A8&%E4%BA%8B%E5%8A%A1/",
+      "keywords" : "数据库"
+    } ,
+  
+    {
+      "title"    : "数据库｜mysql中忘记了root用户的密码",
+      "category" : "数据库",
+      
+      "url"      : "https://slienceme.cn/2021/01/31/mysql%E4%B8%AD%E5%BF%98%E8%AE%B0%E4%BA%86root%E7%94%A8%E6%88%B7%E7%9A%84%E5%AF%86%E7%A0%81/",
+      "keywords" : "数据库"
+    } ,
+  
+    {
+      "title"    : "前端｜Web基础_HTML复学",
+      "category" : "前端",
+      
+      "url"      : "https://slienceme.cn/2021/02/02/HTML%E5%A4%8D%E5%AD%A6/",
+      "keywords" : "前端, Web"
+    } ,
+  
+    {
+      "title"    : "Python｜python文件流使txt文件内容替换",
+      "category" : "Python",
+      
+      "url"      : "https://slienceme.cn/2021/02/04/python%E6%96%87%E4%BB%B6%E6%B5%81%E4%BD%BFtxt%E6%96%87%E4%BB%B6%E5%86%85%E5%AE%B9%E6%9B%BF%E6%8D%A2/",
+      "keywords" : "编程语言, Python"
+    } ,
+  
+    {
+      "title"    : "前端｜Web基础_CSS复学",
+      "category" : "前端",
+      
+      "url"      : "https://slienceme.cn/2021/02/08/CSS%E5%A4%8D%E5%AD%A6/",
+      "keywords" : "前端, Web"
+    } ,
+  
+    {
+      "title"    : "前端｜Web基础_JavaScript基础复学",
+      "category" : "前端",
+      
+      "url"      : "https://slienceme.cn/2021/02/10/JavaScript%E5%9F%BA%E7%A1%80-%E5%A4%8D%E5%AD%A6/",
+      "keywords" : "前端, Web"
+    } ,
+  
+    {
+      "title"    : "前端｜Web基础_JavaScript高级复学",
+      "category" : "前端",
+      
+      "url"      : "https://slienceme.cn/2021/02/13/JavaScript%E9%AB%98%E7%BA%A7-%E5%A4%8D%E5%AD%A6/",
+      "keywords" : "前端, Web"
+    } ,
+  
+    {
+      "title"    : "前端｜Web基础_BootStrap",
+      "category" : "前端",
+      
+      "url"      : "https://slienceme.cn/2021/02/15/BootStrap%E7%AE%80%E5%8D%95%E4%BA%86%E8%A7%A3/",
+      "keywords" : "前端, Web"
+    } ,
+  
+    {
+      "title"    : "前端｜Web基础_XML",
+      "category" : "前端",
+      
+      "url"      : "https://slienceme.cn/2021/02/17/XML/",
+      "keywords" : "前端, Web"
+    } ,
+  
+    {
+      "title"    : "Java｜Servlet",
+      "category" : "Java",
+      
+      "url"      : "https://slienceme.cn/2021/02/21/Servlet/",
+      "keywords" : "编程语言, Java"
+    } ,
+  
+    {
+      "title"    : "Java｜HTTP&amp;Request",
+      "category" : "Java",
+      
+      "url"      : "https://slienceme.cn/2021/02/23/HTTP&Request/",
+      "keywords" : "编程语言, Java"
+    } ,
+  
+    {
+      "title"    : "Java｜Response",
+      "category" : "Java",
+      
+      "url"      : "https://slienceme.cn/2021/02/24/Response/",
+      "keywords" : "编程语言, Java"
+    } ,
+  
+    {
+      "title"    : "Java｜Response_Cookie&amp;Session_JSP&amp;EL&amp;JSTL",
+      "category" : "Java",
+      
+      "url"      : "https://slienceme.cn/2021/02/24/Response_Cookie&Session_JSP&EL&JSTL/",
+      "keywords" : "编程语言, Java"
+    } ,
+  
+    {
+      "title"    : "Java｜基本算法Java实现:查找排序",
+      "category" : "Java",
+      
+      "url"      : "https://slienceme.cn/2021/03/31/%E5%9F%BA%E6%9C%AC%E7%AE%97%E6%B3%95Java%E5%AE%9E%E7%8E%B0/",
+      "keywords" : "编程语言, Java"
+    } ,
+  
+    {
+      "title"    : "Java｜Filter&amp;Listener",
+      "category" : "Java",
+      
+      "url"      : "https://slienceme.cn/2021/04/06/Filter&Listener/",
+      "keywords" : "编程语言, Java"
+    } ,
+  
+    {
+      "title"    : "奇闻轶事｜关于我的腾讯云服务器被木马攻击这件事",
+      "category" : "奇闻轶事",
+      
+      "url"      : "https://slienceme.cn/2021/04/08/%E5%85%B3%E4%BA%8E%E6%88%91%E7%9A%84%E8%85%BE%E8%AE%AF%E4%BA%91%E6%9C%8D%E5%8A%A1%E5%99%A8%E8%A2%AB%E6%9C%A8%E9%A9%AC%E6%94%BB%E5%87%BB%E8%BF%99%E4%BB%B6%E4%BA%8B-kswapd0_CPU%E5%8D%A0%E7%94%A8%E7%8E%87%E9%AB%98%E8%BE%BE100-_rsync/",
+      "keywords" : "奇闻轶事, 服务器, 木马"
+    } ,
+  
+    {
+      "title"    : "前端｜Web基础_jquery基础复学",
+      "category" : "前端",
+      
+      "url"      : "https://slienceme.cn/2021/04/10/JQuery%E5%9F%BA%E7%A1%80_%E5%A4%8D%E5%AD%A6/",
+      "keywords" : "前端, Web"
+    } ,
+  
+    {
+      "title"    : "前端｜Web基础_jquery高级复学",
+      "category" : "前端",
+      
+      "url"      : "https://slienceme.cn/2021/04/11/JQuery%E9%AB%98%E7%BA%A7_%E5%A4%8D%E5%AD%A6/",
+      "keywords" : "前端, Web"
+    } ,
+  
+    {
+      "title"    : "Java｜Ajax&amp;Json",
+      "category" : "Java",
+      
+      "url"      : "https://slienceme.cn/2021/04/14/Ajax&Json/",
+      "keywords" : "编程语言, Java"
+    } ,
+  
+    {
+      "title"    : "Java｜Java环境的配置步骤+简单的applet程序测试",
+      "category" : "Java",
+      
+      "url"      : "https://slienceme.cn/2021/04/14/Java%E7%8E%AF%E5%A2%83%E7%9A%84%E9%85%8D%E7%BD%AE%E6%AD%A5%E9%AA%A4+%E7%AE%80%E5%8D%95%E7%9A%84applet%E7%A8%8B%E5%BA%8F%E6%B5%8B%E8%AF%95/",
+      "keywords" : "编程语言, Java"
+    } ,
+  
+    {
+      "title"    : "Web｜Redis",
+      "category" : "Web",
+      
+      "url"      : "https://slienceme.cn/2021/04/17/redis/",
+      "keywords" : "Web, Python, Java, Redis"
+    } ,
+  
+    {
+      "title"    : "Java｜Maven基础",
+      "category" : "Java",
+      
+      "url"      : "https://slienceme.cn/2021/04/18/Maven%E5%9F%BA%E7%A1%80/",
+      "keywords" : "编程语言, Java"
+    } ,
+  
+    {
+      "title"    : "Java｜Maven的安装与环境配置报错Compilation_error",
+      "category" : "Java",
+      
+      "url"      : "https://slienceme.cn/2021/04/18/Maven%E7%9A%84%E5%AE%89%E8%A3%85%E4%B8%8E%E7%8E%AF%E5%A2%83%E9%85%8D%E7%BD%AE+%E9%A1%B9%E7%9B%AE%E6%8A%A5%E9%94%99500_%E4%B8%A5%E9%87%8D_-Compilation-error-org.eclipse.jdt.internal.compiler.classfmt.ClassFormatE/",
+      "keywords" : "编程语言, Java"
+    } ,
+  
+    {
+      "title"    : "Java｜Unknown_initial_character解决方法",
+      "category" : "Java",
+      
+      "url"      : "https://slienceme.cn/2021/04/18/Unknown_initial_character_set_index_-255-_received_from_server._Initial_client_character_%E8%A7%A3%E5%86%B3%E6%96%B9%E6%B3%95/",
+      "keywords" : "编程语言, Java"
+    } ,
+  
+    {
+      "title"    : "Linux｜如何使用Xftp或xshell连接linux服务器_图片教程",
+      "category" : "Linux",
+      
+      "url"      : "https://slienceme.cn/2021/04/19/%E5%A6%82%E4%BD%95%E4%BD%BF%E7%94%A8Xftp%E6%88%96xshell%E8%BF%9E%E6%8E%A5linux%E6%9C%8D%E5%8A%A1%E5%99%A8-%E5%9B%BE%E7%89%87%E6%95%99%E7%A8%8B/",
+      "keywords" : "Linux, 服务器"
+    } ,
+  
+    {
+      "title"    : "教程｜【2021最全】腾讯云服务器安装宝塔面板建网站全过程",
+      "category" : "教程",
+      
+      "url"      : "https://slienceme.cn/2021/04/21/2021%E8%BE%83%E5%85%A8-%E8%85%BE%E8%AE%AF%E4%BA%91%E6%9C%8D%E5%8A%A1%E5%99%A8%E5%AE%89%E8%A3%85%E5%AE%9D%E5%A1%94%E9%9D%A2%E6%9D%BF%E5%BB%BA%E7%BD%91%E7%AB%99%E5%85%A8%E8%BF%87%E7%A8%8B-%E5%9B%BE%E6%96%87%E6%95%99%E7%A8%8B/",
+      "keywords" : "教程, 服务器"
+    } ,
+  
+    {
+      "title"    : "教程｜关于腾讯云服务器的域名备案流程（尽力图文并茂）",
+      "category" : "教程",
+      
+      "url"      : "https://slienceme.cn/2021/04/22/%E5%85%B3%E4%BA%8E%E8%85%BE%E8%AE%AF%E4%BA%91%E6%9C%8D%E5%8A%A1%E5%99%A8%E7%9A%84%E5%9F%9F%E5%90%8D%E5%A4%87%E6%A1%88%E6%B5%81%E7%A8%8B-%E5%B0%BD%E5%8A%9B%E5%9B%BE%E6%96%87%E5%B9%B6%E8%8C%82/",
+      "keywords" : "教程, 服务器"
+    } ,
+  
+    {
+      "title"    : "Java｜JavaWeb工具类合集",
+      "category" : "Java",
+      
+      "url"      : "https://slienceme.cn/2021/04/23/JavaWeb%E5%B7%A5%E5%85%B7%E7%B1%BB%E5%90%88%E9%9B%86/",
+      "keywords" : "编程语言, Java"
+    } ,
+  
+    {
+      "title"    : "Java｜JavaWeb报错Property_dataSource_is_required异常处理",
+      "category" : "Java",
+      
+      "url"      : "https://slienceme.cn/2021/04/23/JavaWeb%E6%8A%A5%E9%94%99Property_dataSource_is_required%E5%BC%82%E5%B8%B8%E5%A4%84%E7%90%86/",
+      "keywords" : "编程语言, Java"
+    } ,
+  
+    {
+      "title"    : "Java｜Mybatis框架",
+      "category" : "Java",
+      
+      "url"      : "https://slienceme.cn/2021/06/06/Mybatis/",
+      "keywords" : "编程语言, Java"
+    } ,
+  
+    {
+      "title"    : "Java｜Java语言高级（第六部分）Junit&amp;反射&amp;注解",
+      "category" : "Java",
+      
+      "url"      : "https://slienceme.cn/2021/06/25/Java%E8%AF%AD%E8%A8%80%E9%AB%98%E7%BA%A7-%E7%AC%AC%E5%85%AD%E9%83%A8%E5%88%86-Junit&%E5%8F%8D%E5%B0%84&%E6%B3%A8%E8%A7%A3/",
+      "keywords" : "编程语言, Java"
+    } ,
+  
+    {
+      "title"    : "Java｜Mybatis基于代理Dao的CRUD操作",
+      "category" : "Java",
+      
+      "url"      : "https://slienceme.cn/2021/06/25/Mybatis%E5%9F%BA%E4%BA%8E%E4%BB%A3%E7%90%86Dao%E7%9A%84CRUD%E6%93%8D%E4%BD%9C/",
+      "keywords" : "编程语言, Java"
+    } ,
+  
+    {
+      "title"    : "Java｜Mybatis中的注解开发",
+      "category" : "Java",
+      
+      "url"      : "https://slienceme.cn/2021/06/26/Mybatis%E4%B8%AD%E7%9A%84%E6%B3%A8%E8%A7%A3%E5%BC%80%E5%8F%91/",
+      "keywords" : "编程语言, Java"
+    } ,
+  
+    {
+      "title"    : "Java｜Mybatis的缓存",
+      "category" : "Java",
+      
+      "url"      : "https://slienceme.cn/2021/06/26/Mybatis%E7%9A%84%E7%BC%93%E5%AD%98/",
+      "keywords" : "编程语言, Java"
+    } ,
+  
+    {
+      "title"    : "Java｜Mybatis的连接池及事务",
+      "category" : "Java",
+      
+      "url"      : "https://slienceme.cn/2021/06/26/Mybatis%E7%9A%84%E8%BF%9E%E6%8E%A5%E6%B1%A0%E5%8F%8A%E4%BA%8B%E5%8A%A1/",
+      "keywords" : "编程语言, Java"
+    } ,
+  
+    {
+      "title"    : "Java｜Spring初学",
+      "category" : "Java",
+      
+      "url"      : "https://slienceme.cn/2021/06/29/Spring%E5%88%9D%E5%AD%A6/",
+      "keywords" : "编程语言, Java"
+    } ,
+  
+    {
+      "title"    : "Java｜Spring的新注解&amp;基于接口的动态代理",
+      "category" : "Java",
+      
+      "url"      : "https://slienceme.cn/2021/06/30/Spring%E7%9A%84%E6%96%B0%E6%B3%A8%E8%A7%A3&%E5%9F%BA%E4%BA%8E%E6%8E%A5%E5%8F%A3%E7%9A%84%E5%8A%A8%E6%80%81%E4%BB%A3%E7%90%86/",
+      "keywords" : "编程语言, Java"
+    } ,
+  
+    {
+      "title"    : "Java｜JdbcTemplate的基本使用",
+      "category" : "Java",
+      
+      "url"      : "https://slienceme.cn/2021/07/01/JdbcTemplate%E7%9A%84%E5%9F%BA%E6%9C%AC%E4%BD%BF%E7%94%A8/",
+      "keywords" : "编程语言, Java"
+    } ,
+  
+    {
+      "title"    : "Java｜Spring面向切面编程AOP",
+      "category" : "Java",
+      
+      "url"      : "https://slienceme.cn/2021/07/01/Spring%E9%9D%A2%E5%90%91%E5%88%87%E9%9D%A2%E7%BC%96%E7%A8%8BAOP/",
+      "keywords" : "编程语言, Java"
+    } ,
+  
+    {
+      "title"    : "Java｜Spring中声明式事务控制配置",
+      "category" : "Java",
+      
+      "url"      : "https://slienceme.cn/2021/07/02/Spring%E4%B8%AD%E5%A3%B0%E6%98%8E%E5%BC%8F%E4%BA%8B%E5%8A%A1%E6%8E%A7%E5%88%B6%E9%85%8D%E7%BD%AE/",
+      "keywords" : "编程语言, Java"
+    } ,
+  
+    {
+      "title"    : "Java｜Springmvc环境搭建&amp;请求参数绑定&amp;常用注解",
+      "category" : "Java",
+      
+      "url"      : "https://slienceme.cn/2021/07/03/Springmvc%E7%8E%AF%E5%A2%83%E6%90%AD%E5%BB%BA&%E8%AF%B7%E6%B1%82%E5%8F%82%E6%95%B0%E7%BB%91%E5%AE%9A&%E5%B8%B8%E7%94%A8%E6%B3%A8%E8%A7%A3/",
+      "keywords" : "编程语言, Java"
+    } ,
+  
+    {
+      "title"    : "Java｜multipart_form-data与x-www-form-urlencoded的区别",
+      "category" : "Java",
+      
+      "url"      : "https://slienceme.cn/2021/07/03/multipart_form-data%E4%B8%8Ex-www-form-urlencoded%E7%9A%84%E5%8C%BA%E5%88%AB/",
+      "keywords" : "编程语言, Java"
+    } ,
+  
+    {
+      "title"    : "Java｜Could_not_find_resource_jdbc.properties",
+      "category" : "Java",
+      
+      "url"      : "https://slienceme.cn/2021/07/04/Could_not_find_resource_jdbc.properties/",
+      "keywords" : "编程语言, Java"
+    } ,
+  
+    {
+      "title"    : "Java｜SSM整合",
+      "category" : "Java",
+      
+      "url"      : "https://slienceme.cn/2021/07/04/SSM%E6%95%B4%E5%90%88/",
+      "keywords" : "编程语言, Java"
+    } ,
+  
+    {
+      "title"    : "Java｜SpringMVC&amp;实现文件上传&amp;异常处理&amp;拦截器",
+      "category" : "Java",
+      
+      "url"      : "https://slienceme.cn/2021/07/04/SpringMVC%E5%93%8D%E5%BA%94%E6%95%B0%E6%8D%AE%E5%92%8C%E7%BB%93%E6%9E%9C%E8%A7%86%E5%9B%BE&%E5%AE%9E%E7%8E%B0%E6%96%87%E4%BB%B6%E4%B8%8A%E4%BC%A0&%E5%BC%82%E5%B8%B8%E5%A4%84%E7%90%86&%E6%8B%A6%E6%88%AA%E5%99%A8/",
+      "keywords" : "编程语言, Java"
+    } ,
+  
+    {
+      "title"    : "Java｜vue项目部署到服务器流程_用到Node&amp;yarn",
+      "category" : "Java",
+      
+      "url"      : "https://slienceme.cn/2021/07/08/vue%E9%A1%B9%E7%9B%AE%E9%83%A8%E7%BD%B2%E5%88%B0%E6%9C%8D%E5%8A%A1%E5%99%A8%E6%B5%81%E7%A8%8B_-%E7%94%A8%E5%88%B0Node&yarn/",
+      "keywords" : "编程语言, Java"
+    } ,
+  
+    {
+      "title"    : "硬件｜51单片机入门源码部分(流水灯，蜂鸣器，LED)",
+      "category" : "硬件",
+      
+      "url"      : "https://slienceme.cn/2021/07/18/51%E5%8D%95%E7%89%87%E6%9C%BA%E5%85%A5%E9%97%A8%E6%BA%90%E7%A0%81%E9%83%A8%E5%88%86/",
+      "keywords" : "51单片机, 硬件, 流水灯, 蜂鸣器, LED"
+    } ,
+  
+    {
+      "title"    : "Web｜Git基础学习",
+      "category" : "Web",
+      
+      "url"      : "https://slienceme.cn/2021/07/18/git%E5%9F%BA%E7%A1%80%E5%AD%A6%E4%B9%A0/",
+      "keywords" : "Web, Python, Java, Git"
+    } ,
+  
+    {
+      "title"    : "Web｜Nginx的安装",
+      "category" : "Web",
+      
+      "url"      : "https://slienceme.cn/2021/07/20/Nginx%E7%9A%84%E5%AE%89%E8%A3%85/",
+      "keywords" : "Web, Python, Java, Nginx"
+    } ,
+  
+    {
+      "title"    : "前端｜Web基础_Vue基础语法",
+      "category" : "前端",
+      
+      "url"      : "https://slienceme.cn/2021/07/24/Vue%E5%9F%BA%E7%A1%80%E8%AF%AD%E6%B3%95/",
+      "keywords" : "前端, Web"
+    } ,
+  
+    {
+      "title"    : "Web｜Nginx基础",
+      "category" : "Web",
+      
+      "url"      : "https://slienceme.cn/2021/07/24/nginx%E5%9F%BA%E7%A1%80/",
+      "keywords" : "Web, Python, Java, Nginx"
+    } ,
+  
+    {
+      "title"    : "前端｜Web基础_Vue组件化开发",
+      "category" : "前端",
+      
+      "url"      : "https://slienceme.cn/2021/07/28/Vue%E7%BB%84%E4%BB%B6%E5%8C%96%E5%BC%80%E5%8F%91/",
+      "keywords" : "前端, Web"
+    } ,
+  
+    {
+      "title"    : "前端｜Web基础_Webpack基础",
+      "category" : "前端",
+      
+      "url"      : "https://slienceme.cn/2021/07/29/Webpack%E5%9F%BA%E7%A1%80/",
+      "keywords" : "前端, Web"
+    } ,
+  
+    {
+      "title"    : "Python｜数据挖掘_Matplotlib",
+      "category" : "Python",
+      
+      "url"      : "https://slienceme.cn/2021/08/16/Python_Matplotlib%E7%AE%80%E5%8D%95%E4%BA%86%E8%A7%A3/",
+      "keywords" : "编程语言, Python"
+    } ,
+  
+    {
+      "title"    : "Python｜数据挖掘_Numpy",
+      "category" : "Python",
+      
+      "url"      : "https://slienceme.cn/2021/08/16/Python_Numpy%E7%AE%80%E5%8D%95%E4%BA%86%E8%A7%A3/",
+      "keywords" : "编程语言, Python"
+    } ,
+  
+    {
+      "title"    : "Linux｜deb文件如何安装",
+      "category" : "Linux",
+      
+      "url"      : "https://slienceme.cn/2021/08/18/deb%E6%96%87%E4%BB%B6%E5%A6%82%E4%BD%95%E5%AE%89%E8%A3%85/",
+      "keywords" : "Linux, 服务器"
+    } ,
+  
+    {
+      "title"    : "Linux｜pycharm快捷方式的创建",
+      "category" : "Linux",
+      
+      "url"      : "https://slienceme.cn/2021/08/18/pycharm%E5%BF%AB%E6%8D%B7%E6%96%B9%E5%BC%8F%E7%9A%84%E5%88%9B%E5%BB%BA/",
+      "keywords" : "Linux, 服务器"
+    } ,
+  
+    {
+      "title"    : "Linux｜如何安装linux版本pycharm",
+      "category" : "Linux",
+      
+      "url"      : "https://slienceme.cn/2021/08/18/%E5%A6%82%E4%BD%95%E5%AE%89%E8%A3%85linux%E7%89%88%E6%9C%ACpycharm/",
+      "keywords" : "Linux, 服务器"
+    } ,
+  
+    {
+      "title"    : "Python｜数据挖掘_Pandas基础",
+      "category" : "Python",
+      
+      "url"      : "https://slienceme.cn/2021/08/19/Python-Pandas%E7%AE%80%E5%8D%95%E4%BA%86%E8%A7%A3/",
+      "keywords" : "编程语言, Python"
+    } ,
+  
+    {
+      "title"    : "Python｜数据挖掘_Pandas高级",
+      "category" : "Python",
+      
+      "url"      : "https://slienceme.cn/2021/08/19/python-Pandas%E9%AB%98%E7%BA%A7%E5%A4%84%E7%90%86/",
+      "keywords" : "编程语言, Python"
+    } ,
+  
+    {
+      "title"    : "Matlab｜Matlab基础",
+      "category" : "Matlab",
+      
+      "url"      : "https://slienceme.cn/2021/08/22/Matlab%E5%9F%BA%E6%9C%AC%E7%9A%84%E5%B0%8F%E5%B8%B8%E8%AF%86/",
+      "keywords" : "编程语言, Matlab"
+    } ,
+  
+    {
+      "title"    : "数学建模｜数学建模常见的一些方法【01层次分析法】",
+      "category" : "数学建模",
+      
+      "url"      : "https://slienceme.cn/2021/08/22/%E6%95%B0%E5%AD%A6%E5%BB%BA%E6%A8%A1%E5%B8%B8%E8%A7%81%E7%9A%84%E4%B8%80%E4%BA%9B%E6%96%B9%E6%B3%95-01%E5%B1%82%E6%AC%A1%E5%88%86%E6%9E%90%E6%B3%95/",
+      "keywords" : "编程语言, 数学建模"
+    } ,
+  
+    {
+      "title"    : "数学建模｜数学建模常见的一些方法【02TOPSIS_优劣解距离法】",
+      "category" : "数学建模",
+      
+      "url"      : "https://slienceme.cn/2021/08/22/%E6%95%B0%E5%AD%A6%E5%BB%BA%E6%A8%A1%E5%B8%B8%E8%A7%81%E7%9A%84%E4%B8%80%E4%BA%9B%E6%96%B9%E6%B3%95-02TOPSIS_%E4%BC%98%E5%8A%A3%E8%A7%A3%E8%B7%9D%E7%A6%BB%E6%B3%95/",
+      "keywords" : "编程语言, 数学建模"
+    } ,
+  
+    {
+      "title"    : "数学建模｜数学建模常见的一些方法【03插值算法】",
+      "category" : "数学建模",
+      
+      "url"      : "https://slienceme.cn/2021/08/22/%E6%95%B0%E5%AD%A6%E5%BB%BA%E6%A8%A1%E5%B8%B8%E8%A7%81%E7%9A%84%E4%B8%80%E4%BA%9B%E6%96%B9%E6%B3%95-03%E6%8F%92%E5%80%BC%E7%AE%97%E6%B3%95/",
+      "keywords" : "编程语言, 数学建模"
+    } ,
+  
+    {
+      "title"    : "数学建模｜数学建模常见的一些方法【04拟合算法】",
+      "category" : "数学建模",
+      
+      "url"      : "https://slienceme.cn/2021/08/23/%E6%95%B0%E5%AD%A6%E5%BB%BA%E6%A8%A1%E5%B8%B8%E8%A7%81%E7%9A%84%E4%B8%80%E4%BA%9B%E6%96%B9%E6%B3%95-04%E6%8B%9F%E5%90%88%E7%AE%97%E6%B3%95/",
+      "keywords" : "编程语言, 数学建模"
+    } ,
+  
+    {
+      "title"    : "数学建模｜数学建模常见的一些方法【05相关系数】",
+      "category" : "数学建模",
+      
+      "url"      : "https://slienceme.cn/2021/08/23/%E6%95%B0%E5%AD%A6%E5%BB%BA%E6%A8%A1%E5%B8%B8%E8%A7%81%E7%9A%84%E4%B8%80%E4%BA%9B%E6%96%B9%E6%B3%95-05%E7%9B%B8%E5%85%B3%E7%B3%BB%E6%95%B0/",
+      "keywords" : "编程语言, 数学建模"
+    } ,
+  
+    {
+      "title"    : "Java｜JAVA中如何将以Date型的数据保存到数据库以Datetime型的字段中",
+      "category" : "Java",
+      
+      "url"      : "https://slienceme.cn/2021/09/09/JAVA%E5%B0%86%E4%BB%A5Date%E5%9E%8B%E7%9A%84%E6%95%B0%E6%8D%AE%E5%AD%98%E5%88%B0%E6%95%B0%E6%8D%AE%E5%BA%93Datetime%E5%9E%8B/",
+      "keywords" : "编程语言, Java"
+    } ,
+  
+    {
+      "title"    : "Web｜Docker基本使用",
+      "category" : "Web",
+      
+      "url"      : "https://slienceme.cn/2021/09/16/Docker/",
+      "keywords" : "Web, Python, Java, Docker"
+    } ,
+  
+    {
+      "title"    : "Java｜Java语言高级（第六部分）函数式接口&amp;Stream流&amp;方法引用",
+      "category" : "Java",
+      
+      "url"      : "https://slienceme.cn/2021/09/16/Java%E8%AF%AD%E8%A8%80%E9%AB%98%E7%BA%A7-%E7%AC%AC%E5%85%AD%E9%83%A8%E5%88%86-%E5%87%BD%E6%95%B0%E5%BC%8F%E6%8E%A5%E5%8F%A3&Stream%E6%B5%81&%E6%96%B9%E6%B3%95%E5%BC%95%E7%94%A8/",
+      "keywords" : "编程语言, Java"
+    } ,
+  
+    {
+      "title"    : "数学建模｜matplotlib画多个子图(散点图为例 左右对照画图)",
+      "category" : "数学建模",
+      
+      "url"      : "https://slienceme.cn/2021/09/21/matplotlib%E7%94%BB%E5%A4%9A%E4%B8%AA%E5%AD%90%E5%9B%BE(%E6%95%A3%E7%82%B9%E5%9B%BE%E4%B8%BA%E4%BE%8B-%E5%B7%A6%E5%8F%B3%E5%AF%B9%E7%85%A7%E7%94%BB%E5%9B%BE)/",
+      "keywords" : "编程语言, 数学建模"
+    } ,
+  
+    {
+      "title"    : "数学建模｜matplotlib画多个子图",
+      "category" : "数学建模",
+      
+      "url"      : "https://slienceme.cn/2021/09/21/matplotlib%E7%94%BB%E5%A4%9A%E4%B8%AA%E5%AD%90%E5%9B%BE/",
+      "keywords" : "编程语言, 数学建模"
+    } ,
+  
+    {
+      "title"    : "Python｜requests模块",
+      "category" : "Python",
+      
+      "url"      : "https://slienceme.cn/2021/10/24/requests%E6%A8%A1%E5%9D%97/",
+      "keywords" : "编程语言, Python"
+    } ,
+  
+    {
+      "title"    : "Java｜HandlerInterceptorAdapter和WebMvcConfigurer过时",
+      "category" : "Java",
+      
+      "url"      : "https://slienceme.cn/2022/01/19/HandlerInterceptorAdapter%E5%92%8CWebMvcConfigurer%E8%BF%87%E6%97%B6/",
+      "keywords" : "编程语言, Java"
+    } ,
+  
+    {
+      "title"    : "C语言｜进程调度算法实现【先来先服务FCFS】【短进程优先SJF】",
+      "category" : "C语言",
+      
+      "url"      : "https://slienceme.cn/2022/05/10/%E8%BF%9B%E7%A8%8B%E8%B0%83%E5%BA%A6%E7%AE%97%E6%B3%95%E5%AE%9E%E7%8E%B0-%E5%85%88%E6%9D%A5%E5%85%88%E6%9C%8D%E5%8A%A1FCFS-%E7%9F%AD%E8%BF%9B%E7%A8%8B%E4%BC%98%E5%85%88SJF/",
+      "keywords" : "编程语言, C语言, C++, C, 数据结构"
+    } ,
+  
+    {
+      "title"    : "教程｜vue引入cdn加载失败解决办法",
+      "category" : "教程",
+      
+      "url"      : "https://slienceme.cn/2022/05/20/vue%E5%BC%95%E5%85%A5cdn%E5%8A%A0%E8%BD%BD%E5%A4%B1%E8%B4%A5%E8%A7%A3%E5%86%B3%E5%8A%9E%E6%B3%95/",
+      "keywords" : "教程, 服务器"
+    } ,
+  
+    {
+      "title"    : "C语言｜数据结构代码实现",
+      "category" : "C语言",
+      
+      "url"      : "https://slienceme.cn/2022/06/27/%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84%E4%BB%A3%E7%A0%81%E5%AE%9E%E7%8E%B0/",
+      "keywords" : "编程语言, C语言, C++, C, 数据结构"
+    } ,
+  
+    {
+      "title"    : "教程｜【2021最全】51单片机入门",
+      "category" : "教程",
+      
+      "url"      : "https://slienceme.cn/2022/08/23/51%E5%8D%95%E7%89%87%E6%9C%BA%E5%85%A5%E9%97%A8%E6%95%99%E7%A8%8B/",
+      "keywords" : "教程, 服务器"
+    } ,
+  
+    {
+      "title"    : "教程｜apk自签证书",
+      "category" : "教程",
+      
+      "url"      : "https://slienceme.cn/2022/09/25/apk%E8%87%AA%E7%AD%BE%E8%AF%81%E4%B9%A6/",
+      "keywords" : "教程, 服务器"
+    } ,
+  
+    {
+      "title"    : "Java｜Springboot多模块项目构建【创建√+启动√】",
+      "category" : "Java",
+      
+      "url"      : "https://slienceme.cn/2023/01/04/SpringBoot%E5%A4%9A%E6%A8%A1%E5%9D%97%E9%A1%B9%E7%9B%AE%E6%9E%84%E5%BB%BA-%E5%88%9B%E5%BB%BA-+-%E5%90%AF%E5%8A%A8/",
+      "keywords" : "编程语言, Java"
+    } ,
+  
+    {
+      "title"    : "Java｜SpringBoot多模块项目构建【打包√】",
+      "category" : "Java",
+      
+      "url"      : "https://slienceme.cn/2023/01/04/SpringBoot%E5%A4%9A%E6%A8%A1%E5%9D%97%E9%A1%B9%E7%9B%AE%E6%9E%84%E5%BB%BA-%E6%89%93%E5%8C%85/",
+      "keywords" : "编程语言, Java"
+    } ,
+  
+    {
+      "title"    : "Java｜Linux系统部署后Font文字不存在【Java Font 自定义字体】",
+      "category" : "Java",
+      
+      "url"      : "https://slienceme.cn/2023/01/14/Linux%E7%B3%BB%E7%BB%9F%E9%83%A8%E7%BD%B2%E5%90%8EFont%E6%96%87%E5%AD%97%E4%B8%8D%E5%AD%98%E5%9C%A8-Java-Font-%E8%87%AA%E5%AE%9A%E4%B9%89%E5%AD%97%E4%BD%93/",
+      "keywords" : "编程语言, Java, Linux"
+    } ,
+  
+    {
+      "title"    : "Java｜SpringBoot生成QRcode二维码【上下带有文字备注】",
+      "category" : "Java",
+      
+      "url"      : "https://slienceme.cn/2023/01/14/SpringBoot%E7%94%9F%E6%88%90QRcode%E4%BA%8C%E7%BB%B4%E7%A0%81-%E4%B8%8A%E4%B8%8B%E5%B8%A6%E6%9C%89%E6%96%87%E5%AD%97%E5%A4%87%E6%B3%A8/",
+      "keywords" : "编程语言, Java"
+    } ,
+  
+    {
+      "title"    : "Java｜批量生成QRCode二维码PDF文件",
+      "category" : "Java",
+      
+      "url"      : "https://slienceme.cn/2023/01/14/%E6%89%B9%E9%87%8F%E7%94%9F%E6%88%90QRCode%E4%BA%8C%E7%BB%B4%E7%A0%81PDF%E6%96%87%E4%BB%B6/",
+      "keywords" : "编程语言, Java"
+    } ,
+  
+    {
+      "title"    : "教程｜【安装合集】Mysql8.0安装",
+      "category" : "教程",
+      
+      "url"      : "https://slienceme.cn/2023/01/31/Mysql8.0%E5%AE%89%E8%A3%85/",
+      "keywords" : "教程, 数据库"
+    } ,
+  
+    {
+      "title"    : "教程｜【安装合集】Mysql_Workbench8.0安装",
+      "category" : "教程",
+      
+      "url"      : "https://slienceme.cn/2023/02/01/Mysql_Workbench8.0%E5%AE%89%E8%A3%85/",
+      "keywords" : "教程, 数据库"
+    } ,
+  
+    {
+      "title"    : "教程｜【安装合集】Navicat_Premium安装",
+      "category" : "教程",
+      
+      "url"      : "https://slienceme.cn/2023/02/01/Navicat_Premium%E5%AE%89%E8%A3%85/",
+      "keywords" : "教程, 数据库"
+    } ,
+  
+    {
+      "title"    : "教程｜【安装合集】PyCharm_Community安装",
+      "category" : "教程",
+      
+      "url"      : "https://slienceme.cn/2023/02/01/PyCharm_Community%E5%AE%89%E8%A3%85/",
+      "keywords" : "教程"
+    } ,
+  
+    {
+      "title"    : "教程｜【安装合集】Python安装",
+      "category" : "教程",
+      
+      "url"      : "https://slienceme.cn/2023/02/01/Python%E5%AE%89%E8%A3%85/",
+      "keywords" : "教程"
+    } ,
+  
+    {
+      "title"    : "教程｜【安装合集】SQLyog安装",
+      "category" : "教程",
+      
+      "url"      : "https://slienceme.cn/2023/02/01/SQLyog%E5%AE%89%E8%A3%85/",
+      "keywords" : "教程, 数据库"
+    } ,
+  
+    {
+      "title"    : "教程｜配置python虚拟环境配置【Pycharm为例】",
+      "category" : "教程",
+      
+      "url"      : "https://slienceme.cn/2023/02/01/%E9%85%8D%E7%BD%AEpython%E8%99%9A%E6%8B%9F%E7%8E%AF%E5%A2%83%E9%85%8D%E7%BD%AE/",
+      "keywords" : "教程"
+    } ,
+  
+    {
+      "title"    : "教程｜【已解决】redis集群创建的时候一直卡在Waiting_for_....上",
+      "category" : "教程",
+      
+      "url"      : "https://slienceme.cn/2023/03/20/redis%E9%9B%86%E7%BE%A4%E5%88%9B%E5%BB%BA%E7%9A%84%E6%97%B6%E5%80%99%E4%B8%80%E7%9B%B4%E5%8D%A1%E5%9C%A8/",
+      "keywords" : "教程, 服务器, redis"
+    } ,
+  
+    {
+      "title"    : "机器学习｜波士顿房价数据集下载scikit-learn=1.2版本后删除",
+      "category" : "机器学习",
+      
+      "url"      : "https://slienceme.cn/2023/07/17/%E6%B3%A2%E5%A3%AB%E9%A1%BF%E6%88%BF%E4%BB%B7%E6%95%B0%E6%8D%AE%E9%9B%86%E4%B8%8B%E8%BD%BDscikit-learn=1.2%E7%89%88%E6%9C%AC%E5%90%8E%E5%88%A0%E9%99%A4/",
+      "keywords" : "机器学习"
+    } ,
+  
+    {
+      "title"    : "机器学习｜PyTorch之张量的相关操作大全",
+      "category" : "机器学习",
+      
+      "url"      : "https://slienceme.cn/2023/09/14/PyTorch%E4%B9%8B%E5%BC%A0%E9%87%8F%E7%9A%84%E7%9B%B8%E5%85%B3%E6%93%8D%E4%BD%9C%E5%A4%A7%E5%85%A8/",
+      "keywords" : "机器学习"
+    } ,
+  
+    {
+      "title"    : "机器学习｜transforms数据预处理【图像增强】",
+      "category" : "机器学习",
+      
+      "url"      : "https://slienceme.cn/2023/09/18/transforms%E6%95%B0%E6%8D%AE%E9%A2%84%E5%A4%84%E7%90%86/",
+      "keywords" : "机器学习"
+    } ,
+  
+    {
+      "title"    : "机器学习｜【机器学习合集】激活函数合集",
+      "category" : "机器学习",
+      
+      "url"      : "https://slienceme.cn/2023/10/20/%E6%BF%80%E6%B4%BB%E5%87%BD%E6%95%B0%E5%90%88%E9%9B%86/",
+      "keywords" : "机器学习"
+    } ,
+  
+    {
+      "title"    : "机器学习｜【机器学习合集】参数初始化合集",
+      "category" : "机器学习",
+      
+      "url"      : "https://slienceme.cn/2023/10/24/%E5%8F%82%E6%95%B0%E5%88%9D%E5%A7%8B%E5%8C%96%E5%90%88%E9%9B%86/",
+      "keywords" : "机器学习"
+    } ,
+  
+    {
+      "title"    : "机器学习｜【机器学习合集】标准化与池化合集",
+      "category" : "机器学习",
+      
+      "url"      : "https://slienceme.cn/2023/10/24/%E6%A0%87%E5%87%86%E5%8C%96%E4%B8%8E%E6%B1%A0%E5%8C%96%E5%90%88%E9%9B%86/",
+      "keywords" : "机器学习"
+    } ,
+  
+    {
+      "title"    : "机器学习｜【机器学习合集】泛化与正则化合集",
+      "category" : "机器学习",
+      
+      "url"      : "https://slienceme.cn/2023/10/24/%E6%B3%9B%E5%8C%96%E4%B8%8E%E6%AD%A3%E5%88%99%E5%8C%96%E5%90%88%E9%9B%86/",
+      "keywords" : "机器学习"
+    } ,
+  
+    {
+      "title"    : "机器学习｜【机器学习合集】模型优化方法&amp;最优化问题合集",
+      "category" : "机器学习",
+      
+      "url"      : "https://slienceme.cn/2023/10/24/%E6%B7%B1%E5%BA%A6%E5%AD%A6%E4%B9%A0%E6%A8%A1%E5%9E%8B%E4%BC%98%E5%8C%96%E6%96%B9%E6%B3%95&%E6%9C%80%E4%BC%98%E5%8C%96%E9%97%AE%E9%A2%98%E5%90%88%E9%9B%86/",
+      "keywords" : "机器学习"
+    } ,
+  
+    {
+      "title"    : "机器学习｜【机器学习合集】优化目标与评估指标合集",
+      "category" : "机器学习",
+      
+      "url"      : "https://slienceme.cn/2023/10/25/%E4%BC%98%E5%8C%96%E7%9B%AE%E6%A0%87%E4%B8%8E%E8%AF%84%E4%BC%B0%E6%8C%87%E6%A0%87%E5%90%88%E9%9B%86/",
+      "keywords" : "机器学习"
+    } ,
+  
+    {
+      "title"    : "教程｜Failed_to_build_dlib_ERROR_Could...",
+      "category" : "教程",
+      
+      "url"      : "https://slienceme.cn/2023/10/26/Failed_to_build_dlib_ERROR_Could_not_build_wheels_for_dlib_which_is_/",
+      "keywords" : "教程, 数据库"
+    } ,
+  
+    {
+      "title"    : "机器学习｜【机器学习合集】人脸表情分类任务Pytorch实现",
+      "category" : "机器学习",
+      
+      "url"      : "https://slienceme.cn/2023/10/26/%E4%BA%BA%E8%84%B8%E8%A1%A8%E6%83%85%E5%88%86%E7%B1%BB%E4%BB%BB%E5%8A%A1Pytorch%E5%AE%9E%E7%8E%B0&TensorBoardX%E7%9A%84%E4%BD%BF%E7%94%A8/",
+      "keywords" : "机器学习"
+    } ,
+  
+    {
+      "title"    : "教程｜关于如何使用Git&amp;GitHub的基本操作汇总&amp;GitHub的密钥配置",
+      "category" : "教程",
+      
+      "url"      : "https://slienceme.cn/2023/10/29/%E5%85%B3%E4%BA%8E%E5%A6%82%E4%BD%95%E4%BD%BF%E7%94%A8Git&GitHub%E7%9A%84%E5%9F%BA%E6%9C%AC%E6%93%8D%E4%BD%9C%E6%B1%87%E6%80%BB&GitHub%E7%9A%84%E5%AF%86%E9%92%A5%E9%85%8D/",
+      "keywords" : "教程, 服务器, Git, GitHub, 密钥配置"
+    } ,
+  
+    {
+      "title"    : "机器学习｜【机器学习合集】模型设计之分组网络",
+      "category" : "机器学习",
+      
+      "url"      : "https://slienceme.cn/2023/10/30/%E6%A8%A1%E5%9E%8B%E8%AE%BE%E8%AE%A1%E4%B9%8B%E5%88%86%E7%BB%84%E7%BD%91%E7%BB%9C/",
+      "keywords" : "机器学习"
+    } ,
+  
+    {
+      "title"    : "机器学习｜【机器学习合集】模型设计之卷积核设计",
+      "category" : "机器学习",
+      
+      "url"      : "https://slienceme.cn/2023/10/30/%E6%A8%A1%E5%9E%8B%E8%AE%BE%E8%AE%A1%E4%B9%8B%E5%8D%B7%E7%A7%AF%E6%A0%B8%E8%AE%BE%E8%AE%A1/",
+      "keywords" : "机器学习"
+    } ,
+  
+    {
+      "title"    : "机器学习｜【机器学习合集】模型设计之残差网络",
+      "category" : "机器学习",
+      
+      "url"      : "https://slienceme.cn/2023/10/30/%E6%A8%A1%E5%9E%8B%E8%AE%BE%E8%AE%A1%E4%B9%8B%E6%AE%8B%E5%B7%AE%E7%BD%91%E7%BB%9C/",
+      "keywords" : "机器学习"
+    } ,
+  
+    {
+      "title"    : "机器学习｜【机器学习合集】模型设计之网络宽度和深度设计",
+      "category" : "机器学习",
+      
+      "url"      : "https://slienceme.cn/2023/10/30/%E6%A8%A1%E5%9E%8B%E8%AE%BE%E8%AE%A1%E4%B9%8B%E7%BD%91%E7%BB%9C%E5%AE%BD%E5%BA%A6%E5%92%8C%E6%B7%B1%E5%BA%A6%E8%AE%BE%E8%AE%A1/",
+      "keywords" : "机器学习"
+    } ,
+  
+    {
+      "title"    : "机器学习｜【机器学习合集】模型设计之注意力机制",
+      "category" : "机器学习",
+      
+      "url"      : "https://slienceme.cn/2023/10/31/%E6%A8%A1%E5%9E%8B%E8%AE%BE%E8%AE%A1%E4%B9%8B%E6%B3%A8%E6%84%8F%E5%8A%9B%E6%9C%BA%E5%88%B6&%E5%8A%A8%E6%80%81%E7%BD%91%E7%BB%9C/",
+      "keywords" : "机器学习"
+    } ,
+  
+    {
+      "title"    : "教程｜md文件快速将图片链接持久化到本地链接",
+      "category" : "教程",
+      
+      "url"      : "https://slienceme.cn/2023/11/12/md%E6%96%87%E4%BB%B6%E5%BF%AB%E9%80%9F%E5%B0%86%E5%9B%BE%E7%89%87%E9%93%BE%E6%8E%A5%E6%8C%81%E4%B9%85%E5%8C%96%E5%88%B0%E6%9C%AC%E5%9C%B0%E9%93%BE%E6%8E%A5/",
+      "keywords" : "教程, md, 图片链接, 本地链接"
+    } ,
+  
+    {
+      "title"    : "Leetcode｜【Leetcode合集】2342数位和相等数对的最大和",
+      "category" : "Leetcode",
+      
+      "url"      : "https://slienceme.cn/2023/11/18/Leetcode_2342/",
+      "keywords" : "Leetcode, 算法"
+    } ,
+  
+    {
+      "title"    : "Leetcode｜【Leetcode合集】1两数之和",
+      "category" : "Leetcode",
+      
+      "url"      : "https://slienceme.cn/2023/11/19/Leetcode_1/",
+      "keywords" : "Leetcode, 算法"
+    } ,
+  
+    {
+      "title"    : "Leetcode｜【Leetcode合集】9回文数",
+      "category" : "Leetcode",
+      
+      "url"      : "https://slienceme.cn/2023/11/20/Leetcode_9/",
+      "keywords" : "Leetcode, 算法"
+    } ,
+  
+    {
+      "title"    : "Leetcode｜【Leetcode合集】13罗马数字转整数",
+      "category" : "Leetcode",
+      
+      "url"      : "https://slienceme.cn/2023/11/21/Leetcode_13/",
+      "keywords" : "Leetcode, 算法"
+    } ,
+  
+    {
+      "title"    : "Leetcode｜【Leetcode合集】14最长公共前缀",
+      "category" : "Leetcode",
+      
+      "url"      : "https://slienceme.cn/2023/11/22/Leetcode_14/",
+      "keywords" : "Leetcode, 算法"
+    } ,
+  
+    {
+      "title"    : "Leetcode｜【Leetcode合集】1410HTML 实体解析器",
+      "category" : "Leetcode",
+      
+      "url"      : "https://slienceme.cn/2023/11/23/Leetcode_1410/",
+      "keywords" : "Leetcode, 算法"
+    } ,
+  
+    {
+      "title"    : "Leetcode｜【Leetcode合集】2824统计和小于目标的下标对数目",
+      "category" : "Leetcode",
+      
+      "url"      : "https://slienceme.cn/2023/11/24/Leetcode_2824/",
+      "keywords" : "Leetcode, 算法"
+    } ,
+  
+    {
+      "title"    : "Leetcode｜【Leetcode合集】20有效的括号",
+      "category" : "Leetcode",
+      
+      "url"      : "https://slienceme.cn/2023/11/25/Leetcode_20/",
+      "keywords" : "Leetcode, 算法"
+    } ,
+  
+    {
+      "title"    : "Leetcode｜【Leetcode合集】1457二叉树中的伪回文路径",
+      "category" : "Leetcode",
+      
+      "url"      : "https://slienceme.cn/2023/11/26/Leetcode_1457/",
+      "keywords" : "Leetcode, 算法"
+    } ,
+  
+    {
+      "title"    : "数据挖掘｜关于近期人民日报文章的词频分析",
+      "category" : "数据挖掘",
+      
+      "url"      : "https://slienceme.cn/2023/12/05/%E5%85%B3%E4%BA%8E%E8%BF%91%E6%9C%9F%E4%BA%BA%E6%B0%91%E6%97%A5%E6%8A%A5%E6%96%87%E7%AB%A0%E7%9A%84%E8%AF%8D%E9%A2%91%E5%88%86%E6%9E%90/",
+      "keywords" : "数据挖掘, 词频分析"
+    } ,
+  
+    {
+      "title"    : "机器学习｜【机器学习合集】深度生成模型",
+      "category" : "机器学习",
+      
+      "url"      : "https://slienceme.cn/2023/12/31/%E6%B7%B1%E5%BA%A6%E7%94%9F%E6%88%90%E6%A8%A1%E5%9E%8B/",
+      "keywords" : "机器学习"
+    } ,
+  
+    {
+      "title"    : "机器学习｜【机器学习合集】深度生成模型之GAN优化目标设计与改进",
+      "category" : "机器学习",
+      
+      "url"      : "https://slienceme.cn/2024/01/02/%E6%B7%B1%E5%BA%A6%E7%94%9F%E6%88%90%E6%A8%A1%E5%9E%8B%E4%B9%8BGAN%E4%BC%98%E5%8C%96%E7%9B%AE%E6%A0%87%E8%AE%BE%E8%AE%A1%E4%B8%8E%E6%94%B9%E8%BF%9B/",
+      "keywords" : "机器学习"
+    } ,
+  
+    {
+      "title"    : "机器学习｜【机器学习合集】深度生成模型之GAN基础",
+      "category" : "机器学习",
+      
+      "url"      : "https://slienceme.cn/2024/01/02/%E6%B7%B1%E5%BA%A6%E7%94%9F%E6%88%90%E6%A8%A1%E5%9E%8B%E4%B9%8BGAN%E5%9F%BA%E7%A1%80/",
+      "keywords" : "机器学习"
+    } ,
+  
+    {
+      "title"    : "机器学习｜【机器学习合集】深度生成模型之GAN的评估",
+      "category" : "机器学习",
+      
+      "url"      : "https://slienceme.cn/2024/01/02/%E6%B7%B1%E5%BA%A6%E7%94%9F%E6%88%90%E6%A8%A1%E5%9E%8B%E4%B9%8BGAN%E7%9A%84%E8%AF%84%E4%BC%B0/",
+      "keywords" : "机器学习"
+    } ,
+  
+    {
+      "title"    : "机器学习｜【机器学习合集】深度生成模型之图像翻译GAN",
+      "category" : "机器学习",
+      
+      "url"      : "https://slienceme.cn/2024/01/02/%E6%B7%B1%E5%BA%A6%E7%94%9F%E6%88%90%E6%A8%A1%E5%9E%8B%E4%B9%8B%E5%9B%BE%E5%83%8F%E7%BF%BB%E8%AF%91GAN/",
+      "keywords" : "机器学习"
+    } ,
+  
+    {
+      "title"    : "机器学习｜【机器学习合集】深度生成模型之数据生成GAN",
+      "category" : "机器学习",
+      
+      "url"      : "https://slienceme.cn/2024/01/02/%E6%B7%B1%E5%BA%A6%E7%94%9F%E6%88%90%E6%A8%A1%E5%9E%8B%E4%B9%8B%E6%95%B0%E6%8D%AE%E7%94%9F%E6%88%90GAN/",
+      "keywords" : "机器学习"
+    } ,
+  
+    {
+      "title"    : "机器学习｜【机器学习合集】深度生成模型之自编码器与变分自编码器",
+      "category" : "机器学习",
+      
+      "url"      : "https://slienceme.cn/2024/01/02/%E6%B7%B1%E5%BA%A6%E7%94%9F%E6%88%90%E6%A8%A1%E5%9E%8B%E4%B9%8B%E8%87%AA%E7%BC%96%E7%A0%81%E5%99%A8%E4%B8%8E%E5%8F%98%E5%88%86%E8%87%AA%E7%BC%96%E7%A0%81%E5%99%A8/",
+      "keywords" : "机器学习"
+    } ,
+  
+    {
+      "title"    : "Linux｜【2024】Linux漏洞修复合集",
+      "category" : "Linux",
+      
+      "url"      : "https://slienceme.cn/2024/01/03/Linux%E6%BC%8F%E6%B4%9E%E4%BF%AE%E5%A4%8D%E5%90%88%E9%9B%86/",
+      "keywords" : "Linux, 漏洞修复"
+    } ,
+  
+    {
+      "title"    : "Linux｜关于python环境变量相关的配置汇总",
+      "category" : "Linux",
+      
+      "url"      : "https://slienceme.cn/2024/01/18/Python%E7%8E%AF%E5%A2%83%E5%8F%98%E9%87%8F%E9%85%8D%E7%BD%AE/",
+      "keywords" : "Linux, python, 环境配置"
+    } ,
+  
+    {
+      "title"    : "论文笔记｜【论文笔记合集】TimesNet之FFT详解",
+      "category" : "论文笔记",
+      
+      "url"      : "https://slienceme.cn/2024/01/19/TimesNet%E4%B9%8BFFT%E8%AF%A6%E8%A7%A3/",
+      "keywords" : "机器学习, 论文笔记"
+    } ,
+  
+    {
+      "title"    : "论文笔记｜【论文笔记合集】TimesNet之TimesBlock详解",
+      "category" : "论文笔记",
+      
+      "url"      : "https://slienceme.cn/2024/01/19/TimesNet%E4%B9%8BTimesBlock%E8%AF%A6%E8%A7%A3/",
+      "keywords" : "机器学习, 论文笔记"
+    } ,
+  
+    {
+      "title"    : "教程｜GitHub图床&amp;Typora&amp;PicGo相关配置",
+      "category" : "教程",
+      
+      "url"      : "https://slienceme.cn/2024/01/20/GitHub%E5%9B%BE%E5%BA%8A&Typora&PicGo/",
+      "keywords" : "教程"
+    } ,
+  
+    {
+      "title"    : "论文笔记｜关于去除信号中的直流分量效果演示",
+      "category" : "论文笔记",
+      
+      "url"      : "https://slienceme.cn/2024/01/20/%E5%85%B3%E4%BA%8E%E5%8E%BB%E9%99%A4%E4%BF%A1%E5%8F%B7%E4%B8%AD%E7%9A%84%E7%9B%B4%E6%B5%81%E5%88%86%E9%87%8F/",
+      "keywords" : "机器学习, 论文笔记"
+    } ,
+  
+    {
+      "title"    : "教程｜安装不同版本的nodejs环境以及版本切换",
+      "category" : "教程",
+      
+      "url"      : "https://slienceme.cn/2024/02/02/%E5%AE%89%E8%A3%85%E4%B8%8D%E5%90%8C%E7%89%88%E6%9C%AC%E7%9A%84nodejs%E7%8E%AF%E5%A2%83%E4%BB%A5%E5%8F%8A%E7%89%88%E6%9C%AC%E5%88%87%E6%8D%A2/",
+      "keywords" : "nodejs, 前端"
+    } ,
+  
+    {
+      "title"    : "论文笔记｜encoding和embedding的区别",
+      "category" : "论文笔记",
+      
+      "url"      : "https://slienceme.cn/2024/03/12/encoding%E5%92%8Cembedding%E7%9A%84%E5%8C%BA%E5%88%AB/",
+      "keywords" : "机器学习, 论文笔记"
+    } ,
+  
+    {
+      "title"    : "论文笔记｜注意力、自注意力和多头注意力的区别",
+      "category" : "论文笔记",
+      
+      "url"      : "https://slienceme.cn/2024/03/12/%E6%B3%A8%E6%84%8F%E5%8A%9B-%E8%87%AA%E6%B3%A8%E6%84%8F%E5%8A%9B%E5%92%8C%E5%A4%9A%E5%A4%B4%E6%B3%A8%E6%84%8F%E5%8A%9B%E7%9A%84%E5%8C%BA%E5%88%AB/",
+      "keywords" : "机器学习, 论文笔记"
+    } ,
+  
+    {
+      "title"    : "论文笔记｜绝对位置编码与相对位置编码区别",
+      "category" : "论文笔记",
+      
+      "url"      : "https://slienceme.cn/2024/03/12/%E7%BB%9D%E5%AF%B9%E4%BD%8D%E7%BD%AE%E7%BC%96%E7%A0%81%E4%B8%8E%E7%9B%B8%E5%AF%B9%E4%BD%8D%E7%BD%AE%E7%BC%96%E7%A0%81%E5%8C%BA%E5%88%AB/",
+      "keywords" : "机器学习, 论文笔记"
+    } ,
+  
+    {
+      "title"    : "论文笔记｜Transformers in Time Series A Survey综述总结",
+      "category" : "论文笔记",
+      
+      "url"      : "https://slienceme.cn/2024/03/13/Transformers_in_Time_Series_A_Survey%E7%BB%BC%E8%BF%B0%E6%80%BB%E7%BB%93/",
+      "keywords" : "机器学习, 论文笔记"
+    } ,
+  
+    {
+      "title"    : "Linux｜ubuntu多版本cuda如何指定cuda版本",
+      "category" : "Linux",
+      
+      "url"      : "https://slienceme.cn/2024/06/21/ubuntu%E5%A4%9A%E7%89%88%E6%9C%ACcuda%E5%A6%82%E4%BD%95%E6%8C%87%E5%AE%9Acuda%E7%89%88%E6%9C%AC/",
+      "keywords" : "Linux, CUDA"
+    } ,
+  
+    {
+      "title"    : "Linux｜服务器系统重装&amp;SSH&amp;xrdp&amp;CUDA",
+      "category" : "Linux",
+      
+      "url"      : "https://slienceme.cn/2024/10/24/%E6%9C%8D%E5%8A%A1%E5%99%A8%E7%B3%BB%E7%BB%9F%E9%87%8D%E8%A3%85&SSH&xrdp&cuda/",
+      "keywords" : "Linux, CUDA, SSH, xrdp"
+    } ,
+  
+    {
+      "title"    : "Wiki Template",
+      "category" : "",
+      
+      "url"      : "https://slienceme.cn/wiki/template/",
+      "keywords" : "keyword1, keyword2"
+    } ,
+  
+    {
+      "title"    : "Fragment Template",
+      "category" : "",
+      
+      "url"      : "https://slienceme.cn/fragment/template/",
+      "keywords" : "keyword1, keyword2"
+    } 
+  
+]
+

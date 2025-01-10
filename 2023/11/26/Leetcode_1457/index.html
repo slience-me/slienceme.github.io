@@ -1,0 +1,152 @@
+<!DOCTYPE html> <html lang="zh-cmn-Hans" prefix="og: http://ogp.me/ns#" class="han-init"> <head> <meta charset="utf-8"> <meta http-equiv="X-UA-Compatible" content="IE=edge"> <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1" /> <title>Leetcode｜【Leetcode合集】1457二叉树中的伪回文路径 &mdash; Slience_me的博客</title> <link rel="stylesheet" href="https://slienceme.cn/assets/vendor/primer-css/css/primer.css"> <link rel="stylesheet" href="https://slienceme.cn/assets/css/components/collection.css"> <link rel="stylesheet" href="https://slienceme.cn/assets/css/components/repo-card.css"> <link rel="stylesheet" href="https://slienceme.cn/assets/css/sections/repo-list.css"> <link rel="stylesheet" href="https://slienceme.cn/assets/css/components/boxed-group.css"> <link rel="stylesheet" href="https://slienceme.cn/assets/css/globals/common.css"> <link rel="stylesheet" href="https://slienceme.cn/assets/css/globals/responsive.css"> <link rel="stylesheet" href="https://slienceme.cn/assets/css/posts/index.css"> <link rel="stylesheet" href="https://slienceme.cn/assets/vendor/octicons/octicons/octicons.css"> <link rel="stylesheet" href="https://mazhuang.org/rouge-themes/dist/github.css"> <link rel="stylesheet" href="https://slienceme.cn/assets/vendor/share.js/dist/css/share.min.css"> <link rel="canonical" href="https://slienceme.cn/2023/11/26/Leetcode_1457/"> <link rel="alternate" type="application/atom+xml" title="Slience_me的博客" href="https://slienceme.cn/feed.xml"> <link rel="shortcut icon" href="https://slienceme.cn/favicon.ico"> <meta property="og:title" content="Leetcode｜【Leetcode合集】1457二叉树中的伪回文路径"> <meta name="keywords" content="Leetcode, 算法"> <meta name="og:keywords" content="Leetcode, 算法"> <meta name="description" content="1457. 二叉树中的伪回文路径"> <meta name="og:description" content="1457. 二叉树中的伪回文路径"> <meta property="og:url" content="https://slienceme.cn/2023/11/26/Leetcode_1457/"> <meta property="og:site_name" content="Slience_me的博客"> <meta property="og:type" content="article"> <meta property="og:locale" content="zh_CN" /> <meta property="article:published_time" content="2023-11-26"> <meta name="google-site-verification" content="2feHjT1GNs1Yi2JQfOtdYx7d048naG_-cMwZaDAopIA" /> <script src="https://slienceme.cn/assets/vendor/jquery/dist/jquery.min.js"></script> <script src="https://slienceme.cn/assets/js/main.js"></script> </head> <body class="" data-mz=""> <header class="site-header"> <div class="container"> <h1><a href="https://slienceme.cn/" title="Slience_me的博客"><span class="octicon octicon-mark-github"></span> Slience_me的博客</a></h1> <button class="collapsed mobile-visible" type="button" onclick="toggleMenu();"> <span class="icon-bar"></span> <span class="icon-bar"></span> <span class="icon-bar"></span> </button> <nav class="site-header-nav" role="navigation"> <a href="https://slienceme.cn/" class="site-header-nav-item" target="" title="首页">首页</a> <a href="https://slienceme.cn/categories/" class="site-header-nav-item" target="" title="分类">分类</a> <a href="https://slienceme.cn/archives/" class="mobile-hidden site-header-nav-item" target="" title="归档">归档</a> <a href="https://slienceme.cn/open-source/" class="mobile-hidden site-header-nav-item" target="" title="开源">开源</a> <a href="https://slienceme.cn/fragments/" class="site-header-nav-item" target="" title="片段">片段</a> <a href="https://slienceme.cn/wiki/" class="site-header-nav-item" target="" title="维基">维基</a> <a href="https://slienceme.cn/links/" class="mobile-hidden site-header-nav-item" target="" title="链接">链接</a> <a href="https://slienceme.cn/about/" class="site-header-nav-item" target="" title="关于">关于</a> <a class="mobile-hidden" href="https://slienceme.cn/feed.xml"><span class="octicon octicon-rss" style="color:orange;"></span></a> </nav> </div> </header> <section class="collection-head small geopattern" data-pattern-id="Leetcode｜【Leetc"> <div class="container"> <div class="columns"> <div class="column three-fourths"> <div class="collection-title"> <h1 class="collection-header">Leetcode｜【Leetcode合集】1457二叉树中的伪回文路径</h1> <div class="collection-info"> <span class="meta-info"> <span class="octicon octicon-calendar"></span> 2023/11/26 </span> <span class="meta-info"> <span class="octicon octicon-file-directory"></span> <a href="https://slienceme.cn/categories/#Leetcode" title="Leetcode">Leetcode</a> </span> <span class="meta-info"> <span class="octicon octicon-clock"></span> 共 3803 字，约 11 分钟 </span> </div> </div> </div> <div class="column one-fourth mobile-hidden"> <div class="collection-title"> </div> </div> </div> </div> </section> <section class="container content"> <div class="columns"> <div class="column three-fourths" > <article class="article-content markdown-body"> <h1 id="1457-二叉树中的伪回文路径">1457. 二叉树中的伪回文路径</h1> <p><a href="https://leetcode.cn/problems/pseudo-palindromic-paths-in-a-binary-tree/">1457. 二叉树中的伪回文路径</a></p> <p><strong>代码仓库地址</strong>： <a href="https://github.com/slience-me/Leetcode">https://github.com/slience-me/Leetcode</a></p> <p><strong>个人博客</strong> ：<a href="https://slienceme.cn">https://slienceme.cn</a></p> <ul> <li> <p>给你一棵二叉树，每个节点的值为 1 到 9 。我们称二叉树中的一条路径是 「<strong>伪回文</strong>」的，当它满足：路径经过的所有节点值的排列中，存在一个回文序列。</p> <p>请你返回从根到叶子节点的所有路径中 <strong>伪回文</strong> 路径的数目。</p> </li> </ul> <p><strong>示例 1：</strong></p> <p><img src="https://slienceme.cn/images/posts/palindromic_paths_1.png" alt="img" /></p> <div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>输入：root = [2,3,1,3,1,null,1]
+输出：2 
+解释：上图为给定的二叉树。总共有 3 条从根到叶子的路径：红色路径 [2,3,3] ，绿色路径 [2,1,1] 和路径 [2,3,1] 。
+     在这些路径中，只有红色和绿色的路径是伪回文路径，因为红色路径 [2,3,3] 存在回文排列 [3,2,3] ，绿色路径 [2,1,1] 存在回文排列 [1,2,1] 。
+</code></pre></div></div> <p><strong>示例 2：</strong></p> <p><img src="https://slienceme.cn/images/posts/palindromic_paths_2.png" alt="img" /></p> <div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>输入：root = [2,1,1,1,3,null,null,null,null,null,1]
+输出：1 
+解释：上图为给定二叉树。总共有 3 条从根到叶子的路径：绿色路径 [2,1,1] ，路径 [2,1,3,1] 和路径 [2,1] 。
+     这些路径中只有绿色路径是伪回文路径，因为 [2,1,1] 存在回文排列 [1,2,1] 。
+</code></pre></div></div> <p><strong>示例 3：</strong></p> <div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>输入：root = [9]
+输出：1
+</code></pre></div></div> <p><strong>提示：</strong></p> <ul> <li>给定二叉树的节点数目在范围 [1, 10<sup>5</sup>]内</li> <li><code class="language-plaintext highlighter-rouge">1 &lt;= Node.val &lt;= 9</code></li> </ul> <h2 id="方案1递归方法">方案1：递归方法</h2> <blockquote> <p>伪回文数：N个对数+1个单数</p> <p>采用vector给1-9的数字计数，定义变量count</p> <p>为叶子结点时，判断计数count的各个数字的计数是否满足条件</p> <p>然后递归</p> </blockquote> <div class="language-cpp highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="cm">/**
+ * Definition for a binary tree node.
+ * struct TreeNode {
+ *     int val;
+ *     TreeNode *left;
+ *     TreeNode *right;
+ *     TreeNode() : val(0), left(nullptr), right(nullptr) {}
+ *     TreeNode(int x) : val(x), left(nullptr), right(nullptr) {}
+ *     TreeNode(int x, TreeNode *left, TreeNode *right) : val(x), left(left), right(right) {}
+ * };
+ */</span>
+<span class="k">class</span> <span class="nc">Solution</span> <span class="p">{</span>
+<span class="nl">public:</span>
+    <span class="kt">int</span> <span class="n">countPseudoPalindromic</span><span class="p">(</span><span class="n">TreeNode</span> <span class="o">*</span><span class="n">root</span><span class="p">,</span> <span class="n">vector</span><span class="o">&lt;</span><span class="kt">int</span><span class="o">&gt;</span> <span class="o">&amp;</span><span class="n">count</span><span class="p">)</span> <span class="p">{</span>
+        <span class="c1">// 该结点为空则返回0</span>
+        <span class="k">if</span> <span class="p">(</span><span class="n">root</span> <span class="o">==</span> <span class="nb">nullptr</span><span class="p">)</span> <span class="k">return</span> <span class="mi">0</span><span class="p">;</span>
+        
+        <span class="c1">// 值计数+1</span>
+        <span class="n">count</span><span class="p">[</span><span class="n">root</span><span class="o">-&gt;</span><span class="n">val</span><span class="p">]</span><span class="o">++</span><span class="p">;</span>
+        <span class="c1">// 判定叶子结点</span>
+        <span class="k">if</span> <span class="p">(</span><span class="n">root</span><span class="o">-&gt;</span><span class="n">left</span> <span class="o">==</span> <span class="nb">nullptr</span> <span class="o">&amp;&amp;</span> <span class="n">root</span><span class="o">-&gt;</span><span class="n">right</span> <span class="o">==</span> <span class="nb">nullptr</span><span class="p">)</span> <span class="p">{</span>
+            <span class="c1">// 到达叶子节点时检查路径的伪回文性质</span>
+            <span class="kt">int</span> <span class="n">oddCount</span> <span class="o">=</span> <span class="mi">0</span><span class="p">;</span> <span class="c1">//记录伪路径数</span>
+            <span class="k">for</span> <span class="p">(</span><span class="kt">int</span> <span class="n">i</span> <span class="o">=</span> <span class="mi">1</span><span class="p">;</span> <span class="n">i</span> <span class="o">&lt;=</span> <span class="mi">9</span><span class="p">;</span> <span class="o">++</span><span class="n">i</span><span class="p">)</span> <span class="p">{</span>
+                <span class="k">if</span> <span class="p">(</span><span class="n">count</span><span class="p">[</span><span class="n">i</span><span class="p">]</span> <span class="o">%</span> <span class="mi">2</span> <span class="o">!=</span> <span class="mi">0</span><span class="p">)</span> <span class="p">{</span> <span class="c1">//存在奇数  233-&gt;323(1+0) yes 1232(1+0+1) no</span>
+                    <span class="n">oddCount</span><span class="o">++</span><span class="p">;</span>
+                <span class="p">}</span>
+            <span class="p">}</span>
+            <span class="n">count</span><span class="p">[</span><span class="n">root</span><span class="o">-&gt;</span><span class="n">val</span><span class="p">]</span><span class="o">--</span><span class="p">;</span><span class="c1">//返还个数</span>
+            <span class="k">return</span> <span class="n">oddCount</span> <span class="o">&lt;=</span> <span class="mi">1</span> <span class="o">?</span> <span class="mi">1</span> <span class="o">:</span> <span class="mi">0</span><span class="p">;</span><span class="c1">//N个对数+1个单数</span>
+        <span class="p">}</span>
+
+        <span class="kt">int</span> <span class="n">leftCount</span> <span class="o">=</span> <span class="n">countPseudoPalindromic</span><span class="p">(</span><span class="n">root</span><span class="o">-&gt;</span><span class="n">left</span><span class="p">,</span> <span class="n">count</span><span class="p">);</span>
+        <span class="kt">int</span> <span class="n">rightCount</span> <span class="o">=</span> <span class="n">countPseudoPalindromic</span><span class="p">(</span><span class="n">root</span><span class="o">-&gt;</span><span class="n">right</span><span class="p">,</span> <span class="n">count</span><span class="p">);</span>
+
+        <span class="n">count</span><span class="p">[</span><span class="n">root</span><span class="o">-&gt;</span><span class="n">val</span><span class="p">]</span><span class="o">--</span><span class="p">;</span>
+        <span class="k">return</span> <span class="n">leftCount</span> <span class="o">+</span> <span class="n">rightCount</span><span class="p">;</span>
+    <span class="p">}</span>
+
+    <span class="kt">int</span> <span class="n">pseudoPalindromicPaths</span><span class="p">(</span><span class="n">TreeNode</span> <span class="o">*</span><span class="n">root</span><span class="p">)</span> <span class="p">{</span>
+        <span class="n">vector</span><span class="o">&lt;</span><span class="kt">int</span><span class="o">&gt;</span> <span class="n">count</span><span class="p">(</span><span class="mi">10</span><span class="p">,</span> <span class="mi">0</span><span class="p">);</span> <span class="c1">// 存储节点值的出现次数</span>
+        <span class="k">return</span> <span class="n">countPseudoPalindromic</span><span class="p">(</span><span class="n">root</span><span class="p">,</span> <span class="n">count</span><span class="p">);</span>
+    <span class="p">}</span>
+<span class="p">};</span>
+</code></pre></div></div> <blockquote> <p>执行用时分布 268ms 击败93.50%使用 C++ 的用户</p> <p>消耗内存分布177.11MB 击败32.00%使用 C++ 的用户</p> </blockquote> <h2 id="方案2初次优化">方案2：初次优化</h2> <blockquote> <p>代码优化有限，vector变为原生数组，基本没有太大效果</p> </blockquote> <div class="language-cpp highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="cm">/**
+ * Definition for a binary tree node.
+ * struct TreeNode {
+ *     int val;
+ *     TreeNode *left;
+ *     TreeNode *right;
+ *     TreeNode() : val(0), left(nullptr), right(nullptr) {}
+ *     TreeNode(int x) : val(x), left(nullptr), right(nullptr) {}
+ *     TreeNode(int x, TreeNode *left, TreeNode *right) : val(x), left(left), right(right) {}
+ * };
+ */</span>
+<span class="k">class</span> <span class="nc">Solution</span> <span class="p">{</span>
+<span class="nl">public:</span>
+    <span class="kt">int</span> <span class="n">countPseudoPalindromic</span><span class="p">(</span><span class="n">TreeNode</span> <span class="o">*</span><span class="n">root</span><span class="p">,</span> <span class="kt">int</span> <span class="n">count</span><span class="p">[])</span> <span class="p">{</span>
+        <span class="c1">// 该结点为空则返回0</span>
+        <span class="k">if</span> <span class="p">(</span><span class="n">root</span> <span class="o">==</span> <span class="nb">nullptr</span><span class="p">)</span> <span class="k">return</span> <span class="mi">0</span><span class="p">;</span>
+        
+        <span class="c1">// 值计数+1</span>
+        <span class="n">count</span><span class="p">[</span><span class="n">root</span><span class="o">-&gt;</span><span class="n">val</span><span class="p">]</span><span class="o">++</span><span class="p">;</span>
+        <span class="c1">// 判定叶子结点</span>
+        <span class="k">if</span> <span class="p">(</span><span class="n">root</span><span class="o">-&gt;</span><span class="n">left</span> <span class="o">==</span> <span class="nb">nullptr</span> <span class="o">&amp;&amp;</span> <span class="n">root</span><span class="o">-&gt;</span><span class="n">right</span> <span class="o">==</span> <span class="nb">nullptr</span><span class="p">)</span> <span class="p">{</span>
+            <span class="c1">// 到达叶子节点时检查路径的伪回文性质</span>
+            <span class="kt">int</span> <span class="n">oddCount</span> <span class="o">=</span> <span class="mi">0</span><span class="p">;</span> <span class="c1">//记录伪路径数</span>
+            <span class="k">for</span> <span class="p">(</span><span class="kt">int</span> <span class="n">i</span> <span class="o">=</span> <span class="mi">1</span><span class="p">;</span> <span class="n">i</span> <span class="o">&lt;=</span> <span class="mi">9</span><span class="p">;</span> <span class="o">++</span><span class="n">i</span><span class="p">)</span> <span class="p">{</span>
+                <span class="k">if</span> <span class="p">(</span><span class="n">count</span><span class="p">[</span><span class="n">i</span><span class="p">]</span> <span class="o">%</span> <span class="mi">2</span> <span class="o">!=</span> <span class="mi">0</span><span class="p">)</span> <span class="p">{</span> <span class="c1">//存在奇数  233-&gt;323(1+0) yes 1232(1+0+1) no</span>
+                    <span class="n">oddCount</span><span class="o">++</span><span class="p">;</span>
+                <span class="p">}</span>
+            <span class="p">}</span>
+            <span class="n">count</span><span class="p">[</span><span class="n">root</span><span class="o">-&gt;</span><span class="n">val</span><span class="p">]</span><span class="o">--</span><span class="p">;</span><span class="c1">//返还个数</span>
+            <span class="k">return</span> <span class="n">oddCount</span> <span class="o">&lt;=</span> <span class="mi">1</span> <span class="o">?</span> <span class="mi">1</span> <span class="o">:</span> <span class="mi">0</span><span class="p">;</span><span class="c1">//N个对数+1个单数</span>
+        <span class="p">}</span>
+
+        <span class="kt">int</span> <span class="n">leftCount</span> <span class="o">=</span> <span class="n">countPseudoPalindromic</span><span class="p">(</span><span class="n">root</span><span class="o">-&gt;</span><span class="n">left</span><span class="p">,</span> <span class="n">count</span><span class="p">);</span>
+        <span class="kt">int</span> <span class="n">rightCount</span> <span class="o">=</span> <span class="n">countPseudoPalindromic</span><span class="p">(</span><span class="n">root</span><span class="o">-&gt;</span><span class="n">right</span><span class="p">,</span> <span class="n">count</span><span class="p">);</span>
+
+        <span class="n">count</span><span class="p">[</span><span class="n">root</span><span class="o">-&gt;</span><span class="n">val</span><span class="p">]</span><span class="o">--</span><span class="p">;</span>
+        <span class="k">return</span> <span class="n">leftCount</span> <span class="o">+</span> <span class="n">rightCount</span><span class="p">;</span>
+    <span class="p">}</span>
+
+    <span class="kt">int</span> <span class="n">pseudoPalindromicPaths</span><span class="p">(</span><span class="n">TreeNode</span> <span class="o">*</span><span class="n">root</span><span class="p">)</span> <span class="p">{</span>
+        <span class="kt">int</span> <span class="n">count</span><span class="p">[</span><span class="mi">10</span><span class="p">]</span><span class="o">=</span> <span class="p">{</span><span class="mi">0</span><span class="p">};</span>
+        <span class="k">return</span> <span class="n">countPseudoPalindromic</span><span class="p">(</span><span class="n">root</span><span class="p">,</span> <span class="n">count</span><span class="p">);</span>
+    <span class="p">}</span>
+<span class="p">};</span>
+</code></pre></div></div> <blockquote> <p>执行用时分布 260ms 击败98%使用 C++ 的用户</p> <p>消耗内存分布176.33MB 击败39.50%使用 C++ 的用户</p> </blockquote> <h2 id="方案3代码简化">方案3：代码简化</h2> <blockquote> <p>效率没有提高</p> </blockquote> <div class="language-cpp highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="cm">/**
+ * Definition for a binary tree node.
+ * struct TreeNode {
+ *     int val;
+ *     TreeNode *left;
+ *     TreeNode *right;
+ *     TreeNode() : val(0), left(nullptr), right(nullptr) {}
+ *     TreeNode(int x) : val(x), left(nullptr), right(nullptr) {}
+ *     TreeNode(int x, TreeNode *left, TreeNode *right) : val(x), left(left), right(right) {}
+ * };
+ */</span>
+<span class="k">class</span> <span class="nc">Solution</span> <span class="p">{</span>
+<span class="nl">public:</span>
+    <span class="kt">void</span> <span class="n">judgement</span><span class="p">()</span> <span class="p">{</span>
+        <span class="kt">int</span> <span class="n">oddCount</span> <span class="o">=</span> <span class="mi">0</span><span class="p">;</span> <span class="c1">//记录伪路径数</span>
+        <span class="k">for</span> <span class="p">(</span><span class="kt">int</span> <span class="n">i</span> <span class="o">=</span> <span class="mi">1</span><span class="p">;</span> <span class="n">i</span> <span class="o">&lt;=</span> <span class="mi">9</span><span class="p">;</span> <span class="o">++</span><span class="n">i</span><span class="p">)</span> <span class="p">{</span> <span class="c1">// N个对数+1个单数</span>
+            <span class="k">if</span> <span class="p">(</span><span class="n">counts</span><span class="p">[</span><span class="n">i</span><span class="p">]</span> <span class="o">%</span> <span class="mi">2</span> <span class="o">!=</span> <span class="mi">0</span><span class="p">)</span> <span class="p">{</span> <span class="c1">//==1 存在奇数且是3  233-&gt;323(1+0) yes 1232(1+0+1) no</span>
+                <span class="n">oddCount</span><span class="o">++</span><span class="p">;</span> <span class="c1">//记录单个数的个数</span>
+            <span class="p">}</span>
+        <span class="p">}</span>
+        <span class="n">res</span><span class="o">+=</span> <span class="p">(</span><span class="n">oddCount</span> <span class="o">&lt;=</span> <span class="mi">1</span><span class="p">)</span> <span class="o">?</span> <span class="mi">1</span> <span class="o">:</span> <span class="mi">0</span><span class="p">;</span><span class="c1">//N个对数+1个单数</span>
+    <span class="p">}</span>
+
+    <span class="kt">void</span> <span class="n">countPseudoPalindromic</span><span class="p">(</span><span class="n">TreeNode</span> <span class="o">*</span><span class="n">root</span><span class="p">)</span> <span class="p">{</span>
+
+        <span class="c1">// 空结点情况</span>
+        <span class="k">if</span> <span class="p">(</span><span class="n">root</span> <span class="o">==</span> <span class="nb">nullptr</span><span class="p">)</span> <span class="k">return</span><span class="p">;</span>
+
+        <span class="c1">// 叶子结点情况</span>
+        <span class="k">if</span> <span class="p">(</span><span class="n">root</span><span class="o">-&gt;</span><span class="n">left</span> <span class="o">==</span> <span class="nb">nullptr</span> <span class="o">&amp;&amp;</span> <span class="n">root</span><span class="o">-&gt;</span><span class="n">right</span> <span class="o">==</span> <span class="nb">nullptr</span><span class="p">)</span> <span class="p">{</span>
+            <span class="n">counts</span><span class="p">[</span><span class="n">root</span><span class="o">-&gt;</span><span class="n">val</span><span class="p">]</span><span class="o">++</span><span class="p">;</span> <span class="c1">// 值计数+1</span>
+            <span class="n">judgement</span><span class="p">();</span>
+            <span class="n">counts</span><span class="p">[</span><span class="n">root</span><span class="o">-&gt;</span><span class="n">val</span><span class="p">]</span><span class="o">--</span><span class="p">;</span><span class="c1">//返还个数</span>
+            <span class="k">return</span><span class="p">;</span>
+        <span class="p">}</span>
+
+        <span class="c1">// 普通结点情况</span>
+        <span class="n">counts</span><span class="p">[</span><span class="n">root</span><span class="o">-&gt;</span><span class="n">val</span><span class="p">]</span><span class="o">++</span><span class="p">;</span>
+        <span class="n">countPseudoPalindromic</span><span class="p">(</span><span class="n">root</span><span class="o">-&gt;</span><span class="n">left</span><span class="p">);</span>
+        <span class="n">countPseudoPalindromic</span><span class="p">(</span><span class="n">root</span><span class="o">-&gt;</span><span class="n">right</span><span class="p">);</span>
+        <span class="n">counts</span><span class="p">[</span><span class="n">root</span><span class="o">-&gt;</span><span class="n">val</span><span class="p">]</span><span class="o">--</span><span class="p">;</span>
+    <span class="p">}</span>
+
+    <span class="kt">int</span> <span class="n">pseudoPalindromicPaths</span><span class="p">(</span><span class="n">TreeNode</span> <span class="o">*</span><span class="n">root</span><span class="p">)</span> <span class="p">{</span>
+        <span class="n">counts</span><span class="p">.</span><span class="n">resize</span><span class="p">(</span><span class="mi">10</span><span class="p">);</span><span class="c1">//修改大小</span>
+        <span class="n">countPseudoPalindromic</span><span class="p">(</span><span class="n">root</span><span class="p">);</span>
+        <span class="k">return</span> <span class="n">res</span><span class="p">;</span>
+    <span class="p">}</span>
+
+<span class="nl">private:</span>
+    <span class="n">vector</span><span class="o">&lt;</span><span class="kt">int</span><span class="o">&gt;</span> <span class="n">counts</span><span class="p">;</span>
+    <span class="kt">int</span> <span class="n">res</span><span class="o">=</span><span class="mi">0</span><span class="p">;</span>
+<span class="p">};</span>
+</code></pre></div></div> <blockquote> <p>执行用时分布 296ms 击败56.50%使用 C++ 的用户</p> <p>消耗内存分布175.59MB 击败56.00%使用 C++ 的用户</p> </blockquote> <div style="margin-top:2em;padding:0 1.5em;border:1px solid #d3d3d3;background-color:#deebf7"> <h3>文档信息</h3> <ul> <li>本文作者：<a href="https://slienceme.cn" target="_blank">slience_me</a></li> <li>本文链接：<a href="https://slienceme.cn/2023/11/26/Leetcode_1457/" target="_blank">https://slienceme.cn/2023/11/26/Leetcode_1457/</a></li> <li>版权声明：自由转载-非商用-非衍生-保持署名（<a href="http://creativecommons.org/licenses/by-nc-nd/3.0/deed.zh" target="_blank">创意共享3.0许可证</a>）</li> </ul> </div> </article> <div class="share"> <div class="share-component" data-disabled='qq,facebook'></div> </div> <div class="comment"> <script src="https://giscus.app/client.js" data-repo="slience-me/blog-comments" data-repo-id="MDEwOlJlcG9zaXRvcnk5MzEyNzkxNw==" data-category="Announcements" data-category-id="DIC_kwDOBY0E7c4CRtg9" data-mapping="title" data-strict="1" data-reactions-enabled="1" data-emit-metadata="0" data-input-position="top" data-theme="light" data-lang="zh-CN" data-loading="lazy" crossorigin="anonymous" async> </script> </div> </div> <div class="column one-fourth"> <h3>Search</h3> <div id="site_search"> <input style="width:96%" type="text" id="search_box" placeholder="Search"> </div> <ul id="search_results" style="font-size:14px;list-style-type:none;padding-top:10px;padding-left:10px;"></ul> <script src="https://slienceme.cn/assets/js/simple-jekyll-search.min.js"></script> <script type="text/javascript"> SimpleJekyllSearch({ searchInput: document.getElementById('search_box'), resultsContainer: document.getElementById('search_results'), json: 'https://slienceme.cn/assets/search_data.json?v=1736474003', searchResultTemplate: '<li><a href="{url}" title="{title}">{title}</a></li>', noResultsText: 'No results found', limit: 10, fuzzy: false, exclude: ['Welcome'] }) </script> <h3 class="post-directory-title mobile-hidden">Table of Contents</h3> <div id="post-directory-module" class="mobile-hidden"> <section class="post-directory"> <dl></dl> </section> </div> <script src="https://slienceme.cn/assets/js/jquery.toc.js"></script> </div> </div> </section> <footer class="container"> <div class="site-footer" role="contentinfo"> <div class="copyright left mobile-block"> Copyright@ 2019-2025 slience_me 版权所有&emsp; <img src="/images/logo/logo.png" class="w-full" style="width: 12px;"> <a href="https://beian.mps.gov.cn/#/query/webSearch?code=13102202000626" rel="noreferrer" target="_blank">冀公网安备13102202000626</a>&emsp; <a href="https://beian.miit.gov.cn/#/Integrated/index" target="_blank" rel="noreferrer">津ICP备2024026565号-1</a> <a href="javascript:window.scrollTo(0,0)" class="right mobile-visible">TOP</a> </div> <ul class="site-footer-links right mobile-hidden"> <li> <a href="javascript:window.scrollTo(0,0)" >TOP</a> </li> </ul> <br/> <script async src="https://slienceme.cn/assets/vendor/busuanzi/2.3/busuanzi.pure.mini.js"></script> <div class="mobile-hidden" style="margin-top:8px"> <span id="busuanzi_container_site_pv" style="display:none"> 本站访问量<span id="busuanzi_value_site_pv"></span>次 </span> <span id="busuanzi_container_site_uv" style="display:none"> / 本站访客数<span id="busuanzi_value_site_uv"></span>人 </span> <span id="busuanzi_container_page_pv" style="display:none"> / 本页访问量<span id="busuanzi_value_page_pv"></span>次 / 统计始于2024-12-01 </span> </div> </div> </footer> <div class="tools-wrapper"> <a class="gotop" href="#" title="回到顶部"><span class="octicon octicon-arrow-up"></span></a> </div> <script src="https://slienceme.cn/assets/vendor/share.js/dist/js/share.min.js"></script> <script src="https://slienceme.cn/assets/js/geopattern.js"></script> <script> jQuery(document).ready(function($) { $('.geopattern').each(function(){ $(this).geopattern($(this).data('pattern-id')); }); /* hljs.initHighlightingOnLoad(); */ }); </script> </body> </html>

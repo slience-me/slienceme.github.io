@@ -1,0 +1,393 @@
+<!DOCTYPE html> <html lang="zh-cmn-Hans" prefix="og: http://ogp.me/ns#" class="han-init"> <head> <meta charset="utf-8"> <meta http-equiv="X-UA-Compatible" content="IE=edge"> <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1" /> <title>Java｜SpringMVC&实现文件上传&异常处理&拦截器 &mdash; Slience_me的博客</title> <link rel="stylesheet" href="https://slienceme.cn/assets/vendor/primer-css/css/primer.css"> <link rel="stylesheet" href="https://slienceme.cn/assets/css/components/collection.css"> <link rel="stylesheet" href="https://slienceme.cn/assets/css/components/repo-card.css"> <link rel="stylesheet" href="https://slienceme.cn/assets/css/sections/repo-list.css"> <link rel="stylesheet" href="https://slienceme.cn/assets/css/components/boxed-group.css"> <link rel="stylesheet" href="https://slienceme.cn/assets/css/globals/common.css"> <link rel="stylesheet" href="https://slienceme.cn/assets/css/globals/responsive.css"> <link rel="stylesheet" href="https://slienceme.cn/assets/css/posts/index.css"> <link rel="stylesheet" href="https://slienceme.cn/assets/vendor/octicons/octicons/octicons.css"> <link rel="stylesheet" href="https://mazhuang.org/rouge-themes/dist/github.css"> <link rel="stylesheet" href="https://slienceme.cn/assets/vendor/share.js/dist/css/share.min.css"> <link rel="canonical" href="https://slienceme.cn/2021/07/04/SpringMVC%E5%93%8D%E5%BA%94%E6%95%B0%E6%8D%AE%E5%92%8C%E7%BB%93%E6%9E%9C%E8%A7%86%E5%9B%BE&%E5%AE%9E%E7%8E%B0%E6%96%87%E4%BB%B6%E4%B8%8A%E4%BC%A0&%E5%BC%82%E5%B8%B8%E5%A4%84%E7%90%86&%E6%8B%A6%E6%88%AA%E5%99%A8/"> <link rel="alternate" type="application/atom+xml" title="Slience_me的博客" href="https://slienceme.cn/feed.xml"> <link rel="shortcut icon" href="https://slienceme.cn/favicon.ico"> <meta property="og:title" content="Java｜SpringMVC&实现文件上传&异常处理&拦截器"> <meta name="keywords" content="编程语言, Java"> <meta name="og:keywords" content="编程语言, Java"> <meta name="description" content="springmvc1. 响应数据和结果视图1.1 返回值分类1.1.1 返回字符串 Controller方法返回字符串可以指定逻辑视图的名称，根据视图解析器为物理视图的地址。"> <meta name="og:description" content="springmvc1. 响应数据和结果视图1.1 返回值分类1.1.1 返回字符串 Controller方法返回字符串可以指定逻辑视图的名称，根据视图解析器为物理视图的地址。"> <meta property="og:url" content="https://slienceme.cn/2021/07/04/SpringMVC%E5%93%8D%E5%BA%94%E6%95%B0%E6%8D%AE%E5%92%8C%E7%BB%93%E6%9E%9C%E8%A7%86%E5%9B%BE&%E5%AE%9E%E7%8E%B0%E6%96%87%E4%BB%B6%E4%B8%8A%E4%BC%A0&%E5%BC%82%E5%B8%B8%E5%A4%84%E7%90%86&%E6%8B%A6%E6%88%AA%E5%99%A8/"> <meta property="og:site_name" content="Slience_me的博客"> <meta property="og:type" content="article"> <meta property="og:locale" content="zh_CN" /> <meta property="article:published_time" content="2021-07-04"> <meta name="google-site-verification" content="2feHjT1GNs1Yi2JQfOtdYx7d048naG_-cMwZaDAopIA" /> <script src="https://slienceme.cn/assets/vendor/jquery/dist/jquery.min.js"></script> <script src="https://slienceme.cn/assets/js/main.js"></script> </head> <body class="" data-mz=""> <header class="site-header"> <div class="container"> <h1><a href="https://slienceme.cn/" title="Slience_me的博客"><span class="octicon octicon-mark-github"></span> Slience_me的博客</a></h1> <button class="collapsed mobile-visible" type="button" onclick="toggleMenu();"> <span class="icon-bar"></span> <span class="icon-bar"></span> <span class="icon-bar"></span> </button> <nav class="site-header-nav" role="navigation"> <a href="https://slienceme.cn/" class="site-header-nav-item" target="" title="首页">首页</a> <a href="https://slienceme.cn/categories/" class="site-header-nav-item" target="" title="分类">分类</a> <a href="https://slienceme.cn/archives/" class="mobile-hidden site-header-nav-item" target="" title="归档">归档</a> <a href="https://slienceme.cn/open-source/" class="mobile-hidden site-header-nav-item" target="" title="开源">开源</a> <a href="https://slienceme.cn/fragments/" class="site-header-nav-item" target="" title="片段">片段</a> <a href="https://slienceme.cn/wiki/" class="site-header-nav-item" target="" title="维基">维基</a> <a href="https://slienceme.cn/links/" class="mobile-hidden site-header-nav-item" target="" title="链接">链接</a> <a href="https://slienceme.cn/about/" class="site-header-nav-item" target="" title="关于">关于</a> <a class="mobile-hidden" href="https://slienceme.cn/feed.xml"><span class="octicon octicon-rss" style="color:orange;"></span></a> </nav> </div> </header> <section class="collection-head small geopattern" data-pattern-id="Java｜SpringMVC&"> <div class="container"> <div class="columns"> <div class="column three-fourths"> <div class="collection-title"> <h1 class="collection-header">Java｜SpringMVC&实现文件上传&异常处理&拦截器</h1> <div class="collection-info"> <span class="meta-info"> <span class="octicon octicon-calendar"></span> 2021/07/04 </span> <span class="meta-info"> <span class="octicon octicon-file-directory"></span> <a href="https://slienceme.cn/categories/#Java" title="Java">Java</a> </span> <span class="meta-info"> <span class="octicon octicon-clock"></span> 共 11146 字，约 32 分钟 </span> </div> </div> </div> <div class="column one-fourth mobile-hidden"> <div class="collection-title"> </div> </div> </div> </div> </section> <section class="container content"> <div class="columns"> <div class="column three-fourths" > <article class="article-content markdown-body"> <h1 id="springmvc">springmvc</h1> <h2 id="1-响应数据和结果视图">1. 响应数据和结果视图</h2> <h3 id="11-返回值分类">1.1 返回值分类</h3> <h4 id="111-返回字符串">1.1.1 返回字符串</h4> <ol> <li><code class="language-plaintext highlighter-rouge">Controller</code>方法返回字符串可以指定逻辑视图的名称，根据视图解析器为物理视图的地址。</li> </ol> <div class="language-html highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nt">&lt;a</span> <span class="na">href=</span><span class="s">"user/testString"</span> <span class="nt">&gt;</span>testString<span class="nt">&lt;/a&gt;</span>
+</code></pre></div></div> <div class="language-java highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="cm">/**
+ * 返回String
+ * @param model
+ * @return
+ */</span>
+<span class="nd">@RequestMapping</span><span class="o">(</span><span class="s">"/testString"</span><span class="o">)</span>
+<span class="kd">public</span> <span class="nc">String</span> <span class="nf">testString</span><span class="o">(</span><span class="nc">Model</span> <span class="n">model</span><span class="o">){</span>
+    <span class="nc">System</span><span class="o">.</span><span class="na">out</span><span class="o">.</span><span class="na">println</span><span class="o">(</span><span class="s">"testString方法执行了..."</span><span class="o">);</span>
+    <span class="c1">// 模拟从数据库中查询出User对象</span>
+    <span class="nc">User</span> <span class="n">user</span> <span class="o">=</span> <span class="k">new</span> <span class="nc">User</span><span class="o">();</span>
+    <span class="n">user</span><span class="o">.</span><span class="na">setUsername</span><span class="o">(</span><span class="s">"美美"</span><span class="o">);</span>
+    <span class="n">user</span><span class="o">.</span><span class="na">setPassword</span><span class="o">(</span><span class="s">"123"</span><span class="o">);</span>
+    <span class="n">user</span><span class="o">.</span><span class="na">setAge</span><span class="o">(</span><span class="mi">30</span><span class="o">);</span>
+    <span class="c1">// model对象</span>
+    <span class="n">model</span><span class="o">.</span><span class="na">addAttribute</span><span class="o">(</span><span class="s">"user"</span><span class="o">,</span><span class="n">user</span><span class="o">);</span>
+    <span class="k">return</span> <span class="s">"success"</span><span class="o">;</span>
+<span class="o">}</span>
+</code></pre></div></div> <h4 id="112-返回值是void">1.1.2 返回值是void</h4> <ol> <li>如果控制器的方法返回值编写成<code class="language-plaintext highlighter-rouge">void</code>，执行程序报404的异常，默认查找JSP页面没有找到。 <ol> <li>默认会跳转到<code class="language-plaintext highlighter-rouge">@RequestMapping(value="/testVoid") testVoid.jsp</code>的页面。</li> </ol> </li> <li>可以使用请求转发或者重定向跳转到指定的页面 <div class="language-java highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="cm">/**
+* 是void
+ * 请求转发一次请求，不用编写项目的名称
+ */</span>
+<span class="nd">@RequestMapping</span><span class="o">(</span><span class="s">"/testVoid"</span><span class="o">)</span>
+<span class="kd">public</span> <span class="kt">void</span> <span class="nf">testVoid</span><span class="o">(</span><span class="nc">HttpServletRequest</span> <span class="n">request</span><span class="o">,</span> <span class="nc">HttpServletResponse</span> <span class="n">response</span><span class="o">)</span> <span class="kd">throws</span> <span class="nc">Exception</span> <span class="o">{</span>
+ <span class="nc">System</span><span class="o">.</span><span class="na">out</span><span class="o">.</span><span class="na">println</span><span class="o">(</span><span class="s">"testVoid方法执行了..."</span><span class="o">);</span>
+    
+ <span class="c1">// 编写请求转发的程序</span>
+ <span class="n">request</span><span class="o">.</span><span class="na">getRequestDispatcher</span><span class="o">(</span><span class="s">"/WEB-INF/pages/success.jsp"</span><span class="o">).</span><span class="na">forward</span><span class="o">(</span><span class="n">request</span><span class="o">,</span><span class="n">response</span><span class="o">);</span>
+
+ <span class="c1">// 重定向</span>
+ <span class="n">response</span><span class="o">.</span><span class="na">sendRedirect</span><span class="o">(</span><span class="n">request</span><span class="o">.</span><span class="na">getContextPath</span><span class="o">()+</span><span class="s">"/index.jsp"</span><span class="o">);</span>
+
+ <span class="c1">// 设置中文乱码</span>
+ <span class="n">response</span><span class="o">.</span><span class="na">setCharacterEncoding</span><span class="o">(</span><span class="s">"UTF-8"</span><span class="o">);</span>
+ <span class="n">response</span><span class="o">.</span><span class="na">setContentType</span><span class="o">(</span><span class="s">"text/html;charset=UTF-8"</span><span class="o">);</span>
+
+ <span class="c1">// 直接会进行响应</span>
+ <span class="n">response</span><span class="o">.</span><span class="na">getWriter</span><span class="o">().</span><span class="na">print</span><span class="o">(</span><span class="s">"你好"</span><span class="o">);</span>
+<span class="o">}</span>
+</code></pre></div> </div> <div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>   - WEB-INF可以转发进去，但是不能直接重定向进去 #### 1.1.3 返回值是ModelAndView对象
+</code></pre></div> </div> </li> <li><code class="language-plaintext highlighter-rouge">ModelAndView</code>对象是<code class="language-plaintext highlighter-rouge">Spring</code>提供的一个对象，可以用来调整具体的<code class="language-plaintext highlighter-rouge">JSP</code>视图</li> <li>具体的代码如下</li> </ol> <div class="language-java highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="cm">/**
+* 返回ModelAndView对象
+* 可以传入视图的名称（即跳转的页面），还可以传入对象。
+* @return
+* @throws Exception
+*/</span>
+<span class="nd">@RequestMapping</span><span class="o">(</span><span class="s">"/testModelAndView"</span><span class="o">)</span>
+<span class="kd">public</span> <span class="nc">ModelAndView</span> <span class="nf">testModelAndView</span><span class="o">(){</span>
+    <span class="c1">// 创建ModelAndView对象</span>
+    <span class="nc">ModelAndView</span> <span class="n">mv</span> <span class="o">=</span> <span class="k">new</span> <span class="nc">ModelAndView</span><span class="o">();</span>
+    <span class="nc">System</span><span class="o">.</span><span class="na">out</span><span class="o">.</span><span class="na">println</span><span class="o">(</span><span class="s">"testModelAndView方法执行了..."</span><span class="o">);</span>
+    <span class="c1">// 模拟从数据库中查询出User对象</span>
+    <span class="nc">User</span> <span class="n">user</span> <span class="o">=</span> <span class="k">new</span> <span class="nc">User</span><span class="o">();</span>
+    <span class="n">user</span><span class="o">.</span><span class="na">setUsername</span><span class="o">(</span><span class="s">"小凤"</span><span class="o">);</span>
+    <span class="n">user</span><span class="o">.</span><span class="na">setPassword</span><span class="o">(</span><span class="s">"456"</span><span class="o">);</span>
+    <span class="n">user</span><span class="o">.</span><span class="na">setAge</span><span class="o">(</span><span class="mi">30</span><span class="o">);</span>
+
+    <span class="c1">// 把user对象存储到mv对象中，也会把user对象存入到request对象</span>
+    <span class="n">mv</span><span class="o">.</span><span class="na">addObject</span><span class="o">(</span><span class="s">"user"</span><span class="o">,</span><span class="n">user</span><span class="o">);</span>
+
+    <span class="c1">// 跳转到哪个页面</span>
+    <span class="n">mv</span><span class="o">.</span><span class="na">setViewName</span><span class="o">(</span><span class="s">"success"</span><span class="o">);</span>
+
+    <span class="k">return</span> <span class="n">mv</span><span class="o">;</span>
+<span class="o">}</span>
+</code></pre></div></div> <p><img src="https://slienceme.cn/images/posts/20210703171623727.png" alt="Alt Text" /> <img src="https://slienceme.cn/images/posts/20210703171610909.png" alt="Alt Text" /></p> <h3 id="12-springmvc框架提供的转发和重定向">1.2 SpringMVC框架提供的转发和重定向</h3> <h4 id="121-forward请求转发">1.2.1 forward请求转发</h4> <ol> <li><code class="language-plaintext highlighter-rouge">controller</code>方法返回<code class="language-plaintext highlighter-rouge">String</code>类型，想进行请求转发也可以编写成</li> </ol> <div class="language-java highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="cm">/**
+* 使用forward关键字进行请求转发
+* "forward:转发的JSP路径"，不走视图解析器了，所以需要编写完整的路径
+* @return
+* @throws Exception
+*/</span>
+<span class="nd">@RequestMapping</span><span class="o">(</span><span class="s">"/testForward"</span><span class="o">)</span>
+<span class="kd">public</span> <span class="nc">String</span> <span class="nf">testForwardOrRedirect</span><span class="o">(){</span>
+    <span class="nc">System</span><span class="o">.</span><span class="na">out</span><span class="o">.</span><span class="na">println</span><span class="o">(</span><span class="s">"testForward方法执行了..."</span><span class="o">);</span>
+
+    <span class="c1">// 请求的转发</span>
+    <span class="k">return</span> <span class="s">"forward:/WEB-INF/pages/success.jsp"</span><span class="o">;</span>
+<span class="o">}</span>
+</code></pre></div></div> <h4 id="122-redirect重定向">1.2.2 redirect重定向</h4> <ol> <li>controller方法返回String类型，想进行重定向也可以编写成</li> </ol> <div class="language-java highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="cm">/**
+ * 使用关键字的方式进行重定向
+ * @return
+ */</span>
+<span class="nd">@RequestMapping</span><span class="o">(</span><span class="s">"/testRedirect"</span><span class="o">)</span>
+<span class="kd">public</span> <span class="nc">String</span> <span class="nf">testForwardOrRedirect</span><span class="o">(){</span>
+    <span class="nc">System</span><span class="o">.</span><span class="na">out</span><span class="o">.</span><span class="na">println</span><span class="o">(</span><span class="s">"testRedirect方法执行了..."</span><span class="o">);</span>
+    
+    <span class="c1">// 重定向</span>
+    <span class="k">return</span> <span class="s">"redirect:/index.jsp"</span><span class="o">;</span>
+<span class="o">}</span>
+</code></pre></div></div> <h3 id="13-responsebody响应json数据">1.3 ResponseBody响应json数据</h3> <ol> <li><code class="language-plaintext highlighter-rouge">DispatcherServlet</code>会拦截到所有的资源，导致一个问题就是静态资源<code class="language-plaintext highlighter-rouge">（img、css、js）</code>也会被拦截到，从而不能被使用。解决问题就是需要配置静态资源不进行拦截，在<code class="language-plaintext highlighter-rouge">springmvc.xml</code>配置文件添加如下配置 <ol> <li><code class="language-plaintext highlighter-rouge">mvc:resources</code>标签配置不过滤 <ol> <li><code class="language-plaintext highlighter-rouge">location</code>元素表示<code class="language-plaintext highlighter-rouge">webapp</code>目录下的包下的所有文件</li> <li><code class="language-plaintext highlighter-rouge">mapping</code>元素表示以<code class="language-plaintext highlighter-rouge">/static</code>开头的所有请求路径，如<code class="language-plaintext highlighter-rouge">/static/a</code> 或者<code class="language-plaintext highlighter-rouge">/static/a/b</code></li> </ol> </li> </ol> </li> </ol> <div class="language-xml highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="c">&lt;!-- 设置静态资源不过滤 --&gt;</span>
+<span class="nt">&lt;mvc:resources</span> <span class="na">location=</span><span class="s">"/css/"</span> <span class="na">mapping=</span><span class="s">"/css/**"</span><span class="nt">/&gt;</span> <span class="c">&lt;!-- 样式 --&gt;</span>
+<span class="nt">&lt;mvc:resources</span> <span class="na">location=</span><span class="s">"/images/"</span> <span class="na">mapping=</span><span class="s">"/images/**"</span><span class="nt">/&gt;</span> <span class="c">&lt;!-- 图片 --&gt;</span>
+<span class="nt">&lt;mvc:resources</span> <span class="na">location=</span><span class="s">"/js/"</span> <span class="na">mapping=</span><span class="s">"/js/**"</span><span class="nt">/&gt;</span> <span class="c">&lt;!-- javascript --&gt;</span>
+</code></pre></div></div> <ol> <li>使用<code class="language-plaintext highlighter-rouge">@RequestBody</code>获取请求体数据</li> <li>使用<code class="language-plaintext highlighter-rouge">@RequestBody</code>注解把<code class="language-plaintext highlighter-rouge">json</code>的字符串转换成<code class="language-plaintext highlighter-rouge">JavaBean</code>的对象 <div class="language-js highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="c1">// 页面加载，绑定单击事件</span>
+<span class="nx">$</span><span class="p">(</span><span class="kd">function</span><span class="p">(){</span>
+ <span class="nx">$</span><span class="p">(</span><span class="dl">"</span><span class="s2">#btn</span><span class="dl">"</span><span class="p">).</span><span class="nx">click</span><span class="p">(</span><span class="kd">function</span><span class="p">(){</span>
+     <span class="c1">// alert("hello btn");</span>
+     <span class="c1">// 发送ajax请求</span>
+     <span class="nx">$</span><span class="p">.</span><span class="nx">ajax</span><span class="p">({</span>
+         <span class="c1">// 编写json格式，设置属性和值</span>
+         <span class="na">url</span><span class="p">:</span><span class="dl">"</span><span class="s2">user/testAjax</span><span class="dl">"</span><span class="p">,</span>
+         <span class="na">contentType</span><span class="p">:</span><span class="dl">"</span><span class="s2">application/json;charset=UTF-8</span><span class="dl">"</span><span class="p">,</span>
+         <span class="na">data</span><span class="p">:</span><span class="dl">'</span><span class="s1">{"username":"hehe","password":"123","age":30}</span><span class="dl">'</span><span class="p">,</span>
+         <span class="na">dataType</span><span class="p">:</span><span class="dl">"</span><span class="s2">json</span><span class="dl">"</span><span class="p">,</span>
+         <span class="na">type</span><span class="p">:</span><span class="dl">"</span><span class="s2">post</span><span class="dl">"</span><span class="p">,</span>
+         <span class="na">success</span><span class="p">:</span><span class="kd">function</span><span class="p">(</span><span class="nx">data</span><span class="p">){</span>
+             <span class="c1">// data服务器端响应的json的数据，进行解析</span>
+             <span class="nx">alert</span><span class="p">(</span><span class="nx">data</span><span class="p">);</span>
+             <span class="nx">alert</span><span class="p">(</span><span class="nx">data</span><span class="p">.</span><span class="nx">username</span><span class="p">);</span>
+             <span class="nx">alert</span><span class="p">(</span><span class="nx">data</span><span class="p">.</span><span class="nx">password</span><span class="p">);</span>
+             <span class="nx">alert</span><span class="p">(</span><span class="nx">data</span><span class="p">.</span><span class="nx">age</span><span class="p">);</span>
+         <span class="p">}</span>
+     <span class="p">});</span>
+
+ <span class="p">});</span>
+<span class="p">});</span>
+</code></pre></div> </div> <div class="language-java highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="cm">/**
+        * 模拟异步请求响应
+ */</span>
+<span class="nd">@RequestMapping</span><span class="o">(</span><span class="s">"/testAjax"</span><span class="o">)</span>
+<span class="kd">public</span> <span class="nd">@ResponseBody</span> <span class="nc">User</span> <span class="nf">testAjax</span><span class="o">(</span><span class="nd">@RequestBody</span> <span class="nc">User</span> <span class="n">user</span><span class="o">){</span>
+ <span class="nc">System</span><span class="o">.</span><span class="na">out</span><span class="o">.</span><span class="na">println</span><span class="o">(</span><span class="s">"testAjax方法执行了..."</span><span class="o">);</span>
+ <span class="c1">// 客户端发送ajax的请求，传的是json字符串，后端把json字符串封装到user对象中</span>
+ <span class="nc">System</span><span class="o">.</span><span class="na">out</span><span class="o">.</span><span class="na">println</span><span class="o">(</span><span class="n">user</span><span class="o">);</span>
+ <span class="c1">// 做响应，模拟查询数据库</span>
+ <span class="n">user</span><span class="o">.</span><span class="na">setUsername</span><span class="o">(</span><span class="s">"haha"</span><span class="o">);</span>
+ <span class="n">user</span><span class="o">.</span><span class="na">setAge</span><span class="o">(</span><span class="mi">40</span><span class="o">);</span>
+ <span class="c1">// 做响应</span>
+ <span class="k">return</span> <span class="n">user</span><span class="o">;</span>
+<span class="o">}</span>
+</code></pre></div> </div> <p><img src="https://slienceme.cn/images/posts/20210703173904578.png" alt="Alt Text" /></p> </li> <li>使用<code class="language-plaintext highlighter-rouge">@ResponseBody</code>注解把<code class="language-plaintext highlighter-rouge">JavaBean</code>对象转换成<code class="language-plaintext highlighter-rouge">json</code>字符串，直接响应 <ol> <li>要求方法需要返回<code class="language-plaintext highlighter-rouge">JavaBean</code>的对象 <div class="language-java highlighter-rouge"><div class="highlight"><pre class="highlight"><code> <span class="cm">/**
+     * 模拟异步请求响应
+  */</span>
+ <span class="nd">@RequestMapping</span><span class="o">(</span><span class="s">"/testAjax"</span><span class="o">)</span>
+ <span class="kd">public</span> <span class="nd">@ResponseBody</span> <span class="nc">User</span> <span class="nf">testAjax</span><span class="o">(</span><span class="nd">@RequestBody</span> <span class="nc">User</span> <span class="n">user</span><span class="o">){</span>
+  <span class="nc">System</span><span class="o">.</span><span class="na">out</span><span class="o">.</span><span class="na">println</span><span class="o">(</span><span class="s">"testAjax方法执行了..."</span><span class="o">);</span>
+  <span class="c1">// 客户端发送ajax的请求，传的是json字符串，后端把json字符串封装到user对象中</span>
+  <span class="nc">System</span><span class="o">.</span><span class="na">out</span><span class="o">.</span><span class="na">println</span><span class="o">(</span><span class="n">user</span><span class="o">);</span>
+  <span class="c1">// 做响应，模拟查询数据库</span>
+  <span class="n">user</span><span class="o">.</span><span class="na">setUsername</span><span class="o">(</span><span class="s">"haha"</span><span class="o">);</span>
+  <span class="n">user</span><span class="o">.</span><span class="na">setAge</span><span class="o">(</span><span class="mi">40</span><span class="o">);</span>
+  <span class="c1">// 做响应</span>
+  <span class="k">return</span> <span class="n">user</span><span class="o">;</span>
+ <span class="o">}</span>
+</code></pre></div> </div> <p><img src="https://slienceme.cn/images/posts/20210703174207988.png" alt="Alt Text" /></p> </li> </ol> </li> <li><code class="language-plaintext highlighter-rouge">json</code>字符串和JavaBean对象互相转换的过程中，需要使用<code class="language-plaintext highlighter-rouge">jackson的jar</code>包</li> </ol> <div class="language-xml highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nt">&lt;dependency&gt;</span>
+    <span class="nt">&lt;groupId&gt;</span>com.fasterxml.jackson.core<span class="nt">&lt;/groupId&gt;</span>
+    <span class="nt">&lt;artifactId&gt;</span>jackson-databind<span class="nt">&lt;/artifactId&gt;</span>
+    <span class="nt">&lt;version&gt;</span>2.9.0<span class="nt">&lt;/version&gt;</span>
+<span class="nt">&lt;/dependency&gt;</span>
+<span class="nt">&lt;dependency&gt;</span>
+    <span class="nt">&lt;groupId&gt;</span>com.fasterxml.jackson.core<span class="nt">&lt;/groupId&gt;</span>
+    <span class="nt">&lt;artifactId&gt;</span>jackson-core<span class="nt">&lt;/artifactId&gt;</span>
+    <span class="nt">&lt;version&gt;</span>2.9.0<span class="nt">&lt;/version&gt;</span>
+<span class="nt">&lt;/dependency&gt;</span>
+<span class="nt">&lt;dependency&gt;</span>
+    <span class="nt">&lt;groupId&gt;</span>com.fasterxml.jackson.core<span class="nt">&lt;/groupId&gt;</span>
+    <span class="nt">&lt;artifactId&gt;</span>jackson-annotations<span class="nt">&lt;/artifactId&gt;</span>
+    <span class="nt">&lt;version&gt;</span>2.9.0<span class="nt">&lt;/version&gt;</span>
+<span class="nt">&lt;/dependency&gt;</span>
+</code></pre></div></div> <h2 id="2-文件上传">2. 文件上传</h2> <h3 id="21-文件上传的回顾">2.1 文件上传的回顾</h3> <ol> <li>导入文件上传的jar包</li> </ol> <div class="language-xml highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nt">&lt;dependency&gt;</span>
+	<span class="nt">&lt;groupId&gt;</span>commons-fileupload<span class="nt">&lt;/groupId&gt;</span>
+	<span class="nt">&lt;artifactId&gt;</span>commons-fileupload<span class="nt">&lt;/artifactId&gt;</span>
+	<span class="nt">&lt;version&gt;</span>1.3.1<span class="nt">&lt;/version&gt;</span>
+<span class="nt">&lt;/dependency&gt;</span>
+<span class="nt">&lt;dependency&gt;</span>
+	<span class="nt">&lt;groupId&gt;</span>commons-io<span class="nt">&lt;/groupId&gt;</span>
+	<span class="nt">&lt;artifactId&gt;</span>commons-io<span class="nt">&lt;/artifactId&gt;</span>
+	<span class="nt">&lt;version&gt;</span>2.4<span class="nt">&lt;/version&gt;</span>
+<span class="nt">&lt;/dependency&gt;</span>
+</code></pre></div></div> <ol> <li>编写文件上传的JSP页面</li> </ol> <div class="language-html highlighter-rouge"><div class="highlight"><pre class="highlight"><code>
+<span class="nt">&lt;h3&gt;</span>文件上传<span class="nt">&lt;/h3&gt;</span>
+
+<span class="nt">&lt;form</span> <span class="na">action=</span><span class="s">"user/fileupload"</span> <span class="na">method=</span><span class="s">"post"</span> <span class="na">enctype=</span><span class="s">"multipart/form-data"</span><span class="nt">&gt;</span>
+	选择文件：<span class="nt">&lt;input</span> <span class="na">type=</span><span class="s">"file"</span> <span class="na">name=</span><span class="s">"upload"</span><span class="nt">/&gt;&lt;br/&gt;</span>
+	<span class="nt">&lt;input</span> <span class="na">type=</span><span class="s">"submit"</span> <span class="na">value=</span><span class="s">"上传文件"</span><span class="nt">/&gt;</span>
+<span class="nt">&lt;/form&gt;</span>
+
+</code></pre></div></div> <ol> <li>编写文件上传的Controller控制器</li> </ol> <div class="language-java highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="cm">/**
+* 文件上传
+* @throws Exception
+*/</span>
+<span class="nd">@RequestMapping</span><span class="o">(</span><span class="n">value</span><span class="o">=</span><span class="s">"/fileupload"</span><span class="o">)</span>
+<span class="kd">public</span> <span class="nc">String</span> <span class="nf">fileupload</span><span class="o">(</span><span class="nc">HttpServletRequest</span> <span class="n">request</span><span class="o">)</span> <span class="kd">throws</span> <span class="nc">Exception</span> <span class="o">{</span>
+	<span class="c1">// 先获取到要上传的文件目录</span>
+	<span class="nc">String</span> <span class="n">path</span> <span class="o">=</span> <span class="n">request</span><span class="o">.</span><span class="na">getSession</span><span class="o">().</span><span class="na">getServletContext</span><span class="o">().</span><span class="na">getRealPath</span><span class="o">(</span><span class="s">"/uploads"</span><span class="o">);</span>
+	<span class="c1">// 创建File对象，一会向该路径下上传文件</span>
+	<span class="nc">File</span> <span class="n">file</span> <span class="o">=</span> <span class="k">new</span> <span class="nc">File</span><span class="o">(</span><span class="n">path</span><span class="o">);</span>
+	<span class="c1">// 判断路径是否存在，如果不存在，创建该路径</span>
+	<span class="k">if</span><span class="o">(!</span><span class="n">file</span><span class="o">.</span><span class="na">exists</span><span class="o">())</span> <span class="o">{</span>
+		<span class="n">file</span><span class="o">.</span><span class="na">mkdirs</span><span class="o">();</span>
+	<span class="o">}</span>
+	<span class="c1">// 创建磁盘文件项工厂</span>
+	<span class="nc">DiskFileItemFactory</span> <span class="n">factory</span> <span class="o">=</span> <span class="k">new</span> <span class="nc">DiskFileItemFactory</span><span class="o">();</span>
+	<span class="nc">ServletFileUpload</span> <span class="n">fileUpload</span> <span class="o">=</span> <span class="k">new</span> <span class="nc">ServletFileUpload</span><span class="o">(</span><span class="n">factory</span><span class="o">);</span>
+	<span class="c1">// 解析request对象</span>
+	<span class="nc">List</span><span class="o">&lt;</span><span class="nc">FileItem</span><span class="o">&gt;</span> <span class="n">list</span> <span class="o">=</span> <span class="n">fileUpload</span><span class="o">.</span><span class="na">parseRequest</span><span class="o">(</span><span class="n">request</span><span class="o">);</span>
+	<span class="c1">// 遍历</span>
+	<span class="k">for</span> <span class="o">(</span><span class="nc">FileItem</span> <span class="n">fileItem</span> <span class="o">:</span> <span class="n">list</span><span class="o">)</span> <span class="o">{</span>
+		<span class="c1">// 判断文件项是普通字段，还是上传的文件</span>
+		<span class="k">if</span><span class="o">(</span><span class="n">fileItem</span><span class="o">.</span><span class="na">isFormField</span><span class="o">())</span> <span class="o">{</span>
+		<span class="o">}</span> <span class="k">else</span> <span class="o">{</span>
+			<span class="c1">// 上传文件项</span>
+			<span class="c1">// 获取到上传文件的名称</span>
+			<span class="nc">String</span> <span class="n">filename</span> <span class="o">=</span> <span class="n">fileItem</span><span class="o">.</span><span class="na">getName</span><span class="o">();</span>
+			<span class="c1">// 上传文件</span>
+			<span class="n">fileItem</span><span class="o">.</span><span class="na">write</span><span class="o">(</span><span class="k">new</span> <span class="nc">File</span><span class="o">(</span><span class="n">file</span><span class="o">,</span> <span class="n">filename</span><span class="o">));</span>
+			<span class="c1">// 删除临时文件</span>
+			<span class="n">fileItem</span><span class="o">.</span><span class="na">delete</span><span class="o">();</span>
+			<span class="o">}</span>
+		<span class="o">}</span>
+	<span class="k">return</span> <span class="s">"success"</span><span class="o">;</span>
+<span class="o">}</span>
+</code></pre></div></div> <h3 id="22-springmvc传统方式文件上传">2.2 SpringMVC传统方式文件上传</h3> <ol> <li><code class="language-plaintext highlighter-rouge">SpringMVC</code>框架提供了<code class="language-plaintext highlighter-rouge">MultipartFile</code>对象，该对象表示上传的文件，要求变量名称必须和表单file标签的 <code class="language-plaintext highlighter-rouge">name</code>属性名称相同。</li> <li>代码如下</li> </ol> <div class="language-java highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="cm">/**
+* SpringMVC方式的文件上传
+*
+* @param request
+* @return
+* @throws Exception
+*/</span>
+<span class="nd">@RequestMapping</span><span class="o">(</span><span class="n">value</span><span class="o">=</span><span class="s">"/fileupload2"</span><span class="o">)</span>
+<span class="kd">public</span> <span class="nc">String</span> <span class="nf">fileupload2</span><span class="o">(</span><span class="nc">HttpServletRequest</span> <span class="n">request</span><span class="o">,</span><span class="nc">MultipartFile</span> <span class="n">upload</span><span class="o">)</span> <span class="kd">throws</span> <span class="nc">Exception</span> <span class="o">{</span>
+	<span class="nc">System</span><span class="o">.</span><span class="na">out</span><span class="o">.</span><span class="na">println</span><span class="o">(</span><span class="s">"SpringMVC方式的文件上传..."</span><span class="o">);</span>
+	<span class="c1">// 先获取到要上传的文件目录</span>
+	<span class="nc">String</span> <span class="n">path</span> <span class="o">=</span> <span class="n">request</span><span class="o">.</span><span class="na">getSession</span><span class="o">().</span><span class="na">getServletContext</span><span class="o">().</span><span class="na">getRealPath</span><span class="o">(</span><span class="s">"/uploads"</span><span class="o">);</span>
+	<span class="c1">// 创建File对象，一会向该路径下上传文件</span>
+	<span class="nc">File</span> <span class="n">file</span> <span class="o">=</span> <span class="k">new</span> <span class="nc">File</span><span class="o">(</span><span class="n">path</span><span class="o">);</span>
+	<span class="c1">// 判断路径是否存在，如果不存在，创建该路径</span>
+	<span class="k">if</span><span class="o">(!</span><span class="n">file</span><span class="o">.</span><span class="na">exists</span><span class="o">())</span> <span class="o">{</span>
+		<span class="n">file</span><span class="o">.</span><span class="na">mkdirs</span><span class="o">();</span>
+	<span class="o">}</span>
+	<span class="c1">// 获取到上传文件的名称</span>
+	<span class="nc">String</span> <span class="n">filename</span> <span class="o">=</span> <span class="n">upload</span><span class="o">.</span><span class="na">getOriginalFilename</span><span class="o">();</span>
+	<span class="nc">String</span> <span class="n">uuid</span> <span class="o">=</span> <span class="no">UUID</span><span class="o">.</span><span class="na">randomUUID</span><span class="o">().</span><span class="na">toString</span><span class="o">().</span><span class="na">replaceAll</span><span class="o">(</span><span class="s">"-"</span><span class="o">,</span> <span class="s">""</span><span class="o">).</span><span class="na">toUpperCase</span><span class="o">();</span>
+	<span class="c1">// 把文件的名称唯一化</span>
+	<span class="n">filename</span> <span class="o">=</span> <span class="n">uuid</span><span class="o">+</span><span class="s">"_"</span><span class="o">+</span><span class="n">filename</span><span class="o">;</span>
+	<span class="c1">// 上传文件</span>
+	<span class="n">upload</span><span class="o">.</span><span class="na">transferTo</span><span class="o">(</span><span class="k">new</span> <span class="nc">File</span><span class="o">(</span><span class="n">file</span><span class="o">,</span><span class="n">filename</span><span class="o">));</span>
+	<span class="k">return</span> <span class="s">"success"</span><span class="o">;</span>
+<span class="o">}</span>
+</code></pre></div></div> <ol> <li>配置文件解析器对象 <ul> <li><code class="language-plaintext highlighter-rouge">10*1024*1024</code> ```xml </li> </ul> </li> </ol> <bean id="multipartResolver" class="org.springframework.web.multipart.commons.CommonsMultipartResolver"> <property name="maxUploadSize" value="10485760" /> </bean> <div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>
+### 2.3 SpringMVC跨服务器方式文件上传
+1. 搭建图片服务器
+	1. 根据文档配置服务器，现在是2个服务器
+	2. 导入资料中项目，作为图片服务器使用
+2. 实现`SpringMVC`跨服务器方式文件上传
+	1. 导入开发需要的jar包
+	2. 编写文件上传的JSP页面
+	3. 编写控制器
+```xml
+&lt;dependency&gt;
+	&lt;groupId&gt;com.sun.jersey&lt;/groupId&gt;
+	&lt;artifactId&gt;jersey-core&lt;/artifactId&gt;
+	&lt;version&gt;1.18.1&lt;/version&gt;
+&lt;/dependency&gt;
+&lt;dependency&gt;
+	&lt;groupId&gt;com.sun.jersey&lt;/groupId&gt;
+	&lt;artifactId&gt;jersey-client&lt;/artifactId&gt;
+	&lt;version&gt;1.18.1&lt;/version&gt;
+&lt;/dependency&gt;
+</code></pre></div></div> <div class="language-html highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nt">&lt;h3&gt;</span>跨服务器的文件上传<span class="nt">&lt;/h3&gt;</span>
+<span class="nt">&lt;form</span> <span class="na">action=</span><span class="s">"user/fileupload3"</span> <span class="na">method=</span><span class="s">"post"</span> <span class="na">enctype=</span><span class="s">"multipart/form-data"</span><span class="nt">&gt;</span>
+选择文件：<span class="nt">&lt;input</span> <span class="na">type=</span><span class="s">"file"</span> <span class="na">name=</span><span class="s">"upload"</span><span class="nt">/&gt;&lt;br/&gt;</span>
+<span class="nt">&lt;input</span> <span class="na">type=</span><span class="s">"submit"</span> <span class="na">value=</span><span class="s">"上传文件"</span><span class="nt">/&gt;</span>
+<span class="nt">&lt;/form&gt;</span>
+</code></pre></div></div> <div class="language-java highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="cm">/**
+* SpringMVC跨服务器方式的文件上传
+*
+* @param request
+* @return
+* @throws Exception
+*/</span>
+<span class="nd">@RequestMapping</span><span class="o">(</span><span class="n">value</span><span class="o">=</span><span class="s">"/fileupload3"</span><span class="o">)</span>
+<span class="kd">public</span> <span class="nc">String</span> <span class="nf">fileupload3</span><span class="o">(</span><span class="nc">MultipartFile</span> <span class="n">upload</span><span class="o">)</span> <span class="kd">throws</span> <span class="nc">Exception</span> <span class="o">{</span>
+	<span class="nc">System</span><span class="o">.</span><span class="na">out</span><span class="o">.</span><span class="na">println</span><span class="o">(</span><span class="s">"SpringMVC跨服务器方式的文件上传..."</span><span class="o">);</span>
+	<span class="c1">// 定义图片服务器的请求路径</span>
+	<span class="nc">String</span> <span class="n">path</span> <span class="o">=</span> <span class="s">"http://localhost:9090/day02_springmvc5_02image/uploads/"</span><span class="o">;</span>
+	<span class="c1">// 获取到上传文件的名称</span>
+	<span class="nc">String</span> <span class="n">filename</span> <span class="o">=</span> <span class="n">upload</span><span class="o">.</span><span class="na">getOriginalFilename</span><span class="o">();</span>
+	<span class="nc">String</span> <span class="n">uuid</span> <span class="o">=</span> <span class="no">UUID</span><span class="o">.</span><span class="na">randomUUID</span><span class="o">().</span><span class="na">toString</span><span class="o">().</span><span class="na">replaceAll</span><span class="o">(</span><span class="s">"-"</span><span class="o">,</span> <span class="s">""</span><span class="o">).</span><span class="na">toUpperCase</span><span class="o">();</span>
+	<span class="c1">// 把文件的名称唯一化</span>
+	<span class="n">filename</span> <span class="o">=</span> <span class="n">uuid</span><span class="o">+</span><span class="s">"_"</span><span class="o">+</span><span class="n">filename</span><span class="o">;</span>
+	<span class="c1">// 向图片服务器上传文件</span>
+	<span class="c1">// 创建客户端对象</span>
+	<span class="nc">Client</span> <span class="n">client</span> <span class="o">=</span> <span class="nc">Client</span><span class="o">.</span><span class="na">create</span><span class="o">();</span>
+	<span class="c1">// 连接图片服务器</span>
+	<span class="nc">WebResource</span> <span class="n">webResource</span> <span class="o">=</span> <span class="n">client</span><span class="o">.</span><span class="na">resource</span><span class="o">(</span><span class="n">path</span><span class="o">+</span><span class="n">filename</span><span class="o">);</span>
+	<span class="c1">// 上传文件</span>
+	<span class="n">webResource</span><span class="o">.</span><span class="na">put</span><span class="o">(</span><span class="n">upload</span><span class="o">.</span><span class="na">getBytes</span><span class="o">());</span>
+	<span class="k">return</span> <span class="s">"success"</span><span class="o">;</span>
+<span class="o">}</span>
+</code></pre></div></div> <h2 id="3-异常处理器">3. 异常处理器</h2> <h3 id="31-异常处理思路">3.1 异常处理思路</h3> <ol> <li><code class="language-plaintext highlighter-rouge">Controller</code>调用<code class="language-plaintext highlighter-rouge">service</code>，<code class="language-plaintext highlighter-rouge">service</code>调用<code class="language-plaintext highlighter-rouge">dao</code>，异常都是向上抛出的，最终有<code class="language-plaintext highlighter-rouge">DispatcherServlet</code>找异常处理器进行异常的处理。 <h3 id="32-springmvc的异常处理">3.2 SpringMVC的异常处理</h3> </li> <li>自定义异常类</li> </ol> <div class="language-java highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kn">package</span> <span class="nn">xyz.slienceme.exception</span><span class="o">;</span>
+<span class="kd">public</span> <span class="kd">class</span> <span class="nc">SysException</span> <span class="kd">extends</span> <span class="nc">Exception</span><span class="o">{</span>
+<span class="kd">private</span> <span class="kd">static</span> <span class="kd">final</span> <span class="kt">long</span> <span class="n">serialVersionUID</span> <span class="o">=</span> <span class="mi">4055945147128016300L</span><span class="o">;</span>
+	
+	<span class="c1">// 异常提示信息</span>
+	<span class="kd">private</span> <span class="nc">String</span> <span class="n">message</span><span class="o">;</span>
+	
+	<span class="kd">public</span> <span class="nc">String</span> <span class="nf">getMessage</span><span class="o">()</span> <span class="o">{</span>
+		<span class="k">return</span> <span class="n">message</span><span class="o">;</span>
+	<span class="o">}</span>
+	<span class="kd">public</span> <span class="kt">void</span> <span class="nf">setMessage</span><span class="o">(</span><span class="nc">String</span> <span class="n">message</span><span class="o">)</span> <span class="o">{</span>
+		<span class="k">this</span><span class="o">.</span><span class="na">message</span> <span class="o">=</span> <span class="n">message</span><span class="o">;</span>
+	<span class="o">}</span>
+	
+	<span class="kd">public</span> <span class="nf">SysException</span><span class="o">(</span><span class="nc">String</span> <span class="n">message</span><span class="o">)</span> <span class="o">{</span>
+		<span class="k">this</span><span class="o">.</span><span class="na">message</span> <span class="o">=</span> <span class="n">message</span><span class="o">;</span>
+	<span class="o">}</span>
+<span class="o">}</span>
+</code></pre></div></div> <ol> <li>自定义异常处理器</li> </ol> <div class="language-java highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kn">package</span> <span class="nn">xyz.slienceme.exception</span><span class="o">;</span>
+<span class="kn">import</span> <span class="nn">javax.servlet.http.HttpServletRequest</span><span class="o">;</span>
+<span class="kn">import</span> <span class="nn">javax.servlet.http.HttpServletResponse</span><span class="o">;</span>
+<span class="kn">import</span> <span class="nn">org.springframework.web.servlet.HandlerExceptionResolver</span><span class="o">;</span>
+<span class="kn">import</span> <span class="nn">org.springframework.web.servlet.ModelAndView</span><span class="o">;</span>
+<span class="cm">/**
+* 异常处理器
+* @author rt
+*/</span>
+<span class="kd">public</span> <span class="kd">class</span> <span class="nc">SysExceptionResolver</span> <span class="kd">implements</span> <span class="nc">HandlerExceptionResolver</span><span class="o">{</span>
+	<span class="cm">/**
+	* 跳转到具体的错误页面的方法
+	*/</span>
+	<span class="kd">public</span> <span class="nc">ModelAndView</span> <span class="nf">resolveException</span><span class="o">(</span><span class="nc">HttpServletRequest</span> <span class="n">request</span><span class="o">,</span> <span class="nc">HttpServletResponse</span> <span class="n">response</span><span class="o">,</span> <span class="nc">Object</span> <span class="n">handler</span><span class="o">,</span>
+	<span class="nc">Exception</span> <span class="n">ex</span><span class="o">)</span> <span class="o">{</span>
+		<span class="n">ex</span><span class="o">.</span><span class="na">printStackTrace</span><span class="o">();</span>
+		<span class="nc">SysException</span> <span class="n">e</span> <span class="o">=</span> <span class="kc">null</span><span class="o">;</span>
+		<span class="c1">// 获取到异常对象</span>
+		<span class="k">if</span><span class="o">(</span><span class="n">ex</span> <span class="k">instanceof</span> <span class="nc">SysException</span><span class="o">)</span> <span class="o">{</span>
+			<span class="n">e</span> <span class="o">=</span> <span class="o">(</span><span class="nc">SysException</span><span class="o">)</span> <span class="n">ex</span><span class="o">;</span>
+		<span class="o">}</span><span class="k">else</span> <span class="o">{</span>
+			<span class="n">e</span> <span class="o">=</span> <span class="k">new</span> <span class="nc">SysException</span><span class="o">(</span><span class="s">"请联系管理员"</span><span class="o">);</span>
+		<span class="o">}</span>
+		<span class="nc">ModelAndView</span> <span class="n">mv</span> <span class="o">=</span> <span class="k">new</span> <span class="nc">ModelAndView</span><span class="o">();</span>
+		<span class="c1">// 存入错误的提示信息</span>
+		<span class="n">mv</span><span class="o">.</span><span class="na">addObject</span><span class="o">(</span><span class="s">"message"</span><span class="o">,</span> <span class="n">e</span><span class="o">.</span><span class="na">getMessage</span><span class="o">());</span>
+		<span class="c1">// 跳转的Jsp页面</span>
+		<span class="n">mv</span><span class="o">.</span><span class="na">setViewName</span><span class="o">(</span><span class="s">"error"</span><span class="o">);</span>
+		<span class="k">return</span> <span class="n">mv</span><span class="o">;</span>
+	<span class="o">}</span>
+<span class="o">}</span>
+</code></pre></div></div> <ol> <li>配置异常处理器</li> </ol> <div class="language-xml highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="c">&lt;!-- 配置异常处理器 --&gt;</span>
+<span class="nt">&lt;bean</span> <span class="na">id=</span><span class="s">"sysExceptionResolver"</span> <span class="na">class=</span><span class="s">"xyz.slienceme.exception.SysExceptionResolver"</span><span class="nt">/&gt;</span>
+</code></pre></div></div> <h2 id="4-拦截器">4. 拦截器</h2> <h3 id="41-拦截器的概述">4.1 拦截器的概述</h3> <ol> <li><code class="language-plaintext highlighter-rouge">SpringMVC</code>框架中的拦截器用于对处理器进行预处理和后处理的技术。</li> <li>可以定义拦截器链，连接器链就是将拦截器按着一定的顺序结成一条链，在访问被拦截的方法时，拦截器链中的拦截器会按着定义的顺序执行。</li> <li>拦截器和过滤器的功能比较类似，有区别 <ol> <li>过滤器是Servlet规范的一部分，任何框架都可以使用过滤器技术。</li> <li>拦截器是SpringMVC框架独有的。</li> <li>过滤器配置了/*，可以拦截任何资源。</li> <li>拦截器只会对控制器中的方法进行拦截。</li> </ol> </li> <li>拦截器也是AOP思想的一种实现方式</li> <li>想要自定义拦截器，需要实现<code class="language-plaintext highlighter-rouge">HandlerInterceptor</code>接口。 <h3 id="42-自定义拦截器步骤">4.2 自定义拦截器步骤</h3> </li> <li>创建类，实现<code class="language-plaintext highlighter-rouge">HandlerInterceptor</code>接口，重写需要的方法</li> </ol> <div class="language-java highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kn">package</span> <span class="nn">xyz.slienceme.demo1</span><span class="o">;</span>
+<span class="kn">import</span> <span class="nn">javax.servlet.http.HttpServletRequest</span><span class="o">;</span>
+<span class="kn">import</span> <span class="nn">javax.servlet.http.HttpServletResponse</span><span class="o">;</span>
+<span class="kn">import</span> <span class="nn">org.springframework.web.servlet.HandlerInterceptor</span><span class="o">;</span>
+<span class="cm">/**
+* 自定义拦截器1
+* @author rt
+*/</span>
+<span class="kd">public</span> <span class="kd">class</span> <span class="nc">MyInterceptor1</span> <span class="kd">implements</span> <span class="nc">HandlerInterceptor</span><span class="o">{</span>
+	<span class="cm">/**
+	* controller方法执行前，进行拦截的方法
+	* return true放行
+	* return false拦截
+	* 可以使用转发或者重定向直接跳转到指定的页面。
+	*/</span>
+	<span class="kd">public</span> <span class="kt">boolean</span> <span class="nf">preHandle</span><span class="o">(</span><span class="nc">HttpServletRequest</span> <span class="n">request</span><span class="o">,</span> <span class="nc">HttpServletResponse</span> <span class="n">response</span><span class="o">,</span> <span class="nc">Object</span> <span class="n">handler</span><span class="o">)</span>
+		<span class="kd">throws</span> <span class="nc">Exception</span> <span class="o">{</span>
+			<span class="nc">System</span><span class="o">.</span><span class="na">out</span><span class="o">.</span><span class="na">println</span><span class="o">(</span><span class="s">"拦截器执行了..."</span><span class="o">);</span>
+		<span class="k">return</span> <span class="kc">true</span><span class="o">;</span>
+	<span class="o">}</span>
+<span class="o">}</span>
+</code></pre></div></div> <ol> <li>在<code class="language-plaintext highlighter-rouge">springmvc.xml</code>中配置拦截器类</li> </ol> <div class="language-xml highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="c">&lt;!-- 配置拦截器 --&gt;</span>
+<span class="nt">&lt;mvc:interceptors&gt;</span>
+	<span class="nt">&lt;mvc:interceptor&gt;</span>
+		<span class="c">&lt;!-- 哪些方法进行拦截 --&gt;</span>
+		<span class="nt">&lt;mvc:mapping</span> <span class="na">path=</span><span class="s">"/user/*"</span><span class="nt">/&gt;</span>
+		<span class="c">&lt;!-- 哪些方法不进行拦截
+		&lt;mvc:exclude-mapping path=""/&gt;
+		--&gt;</span>
+		<span class="c">&lt;!-- 注册拦截器对象 --&gt;</span>
+		<span class="nt">&lt;bean</span> <span class="na">class=</span><span class="s">"xyz.slienceme.demo1.MyInterceptor1"</span><span class="nt">/&gt;</span>
+	<span class="nt">&lt;/mvc:interceptor&gt;</span>
+<span class="nt">&lt;/mvc:interceptors&gt;</span>
+</code></pre></div></div> <h3 id="43-handlerinterceptor接口中的方法">4.3 HandlerInterceptor接口中的方法</h3> <ol> <li><code class="language-plaintext highlighter-rouge">preHandle</code>方法是<code class="language-plaintext highlighter-rouge">controller</code>方法<code class="language-plaintext highlighter-rouge">执行前拦截</code>的方法 <ol> <li>可以使用request或者response跳转到指定的页面</li> <li><code class="language-plaintext highlighter-rouge">return true放行</code>，执行下一个拦截器，如果没有拦截器，执行controller中的方法。</li> <li><code class="language-plaintext highlighter-rouge">return false不放行</code>，不会执行controller中的方法。</li> </ol> </li> <li><code class="language-plaintext highlighter-rouge">postHandle</code>是<code class="language-plaintext highlighter-rouge">controller</code>方法<code class="language-plaintext highlighter-rouge">执行后执行</code>的方法，在JSP视图执行前。 <ol> <li>可以使用request或者response跳转到指定的页面</li> <li>如果指定了跳转的页面，那么controller方法跳转的页面将不会显示。</li> </ol> </li> <li><code class="language-plaintext highlighter-rouge">postHandle</code>方法是在<code class="language-plaintext highlighter-rouge">JSP执行后执行</code> <ol> <li>request或者response不能再跳转页面了 <h3 id="44-配置多个拦截器">4.4 配置多个拦截器</h3> </li> </ol> </li> <li>再编写一个拦截器的类</li> <li>配置2个拦截器</li> </ol> <div class="language-xml highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="c">&lt;!-- 配置拦截器 --&gt;</span>
+<span class="nt">&lt;mvc:interceptors&gt;</span>
+	<span class="nt">&lt;mvc:interceptor&gt;</span>
+		<span class="c">&lt;!-- 哪些方法进行拦截 --&gt;</span>
+		<span class="nt">&lt;mvc:mapping</span> <span class="na">path=</span><span class="s">"/user/*"</span><span class="nt">/&gt;</span>
+		<span class="c">&lt;!-- 哪些方法不进行拦截
+		&lt;mvc:exclude-mapping path=""/&gt;
+		--&gt;</span>
+		<span class="c">&lt;!-- 注册拦截器对象 --&gt;</span>
+		<span class="nt">&lt;bean</span> <span class="na">class=</span><span class="s">"xyz.slienceme.demo1.MyInterceptor1"</span><span class="nt">/&gt;</span>
+	<span class="nt">&lt;/mvc:interceptor&gt;</span>
+	<span class="nt">&lt;mvc:interceptor&gt;</span>
+		<span class="c">&lt;!-- 哪些方法进行拦截 --&gt;</span>
+		<span class="nt">&lt;mvc:mapping</span> <span class="na">path=</span><span class="s">"/**"</span><span class="nt">/&gt;</span>
+		<span class="c">&lt;!-- 注册拦截器对象 --&gt;</span>
+		<span class="nt">&lt;bean</span> <span class="na">class=</span><span class="s">"xyz.slienceme.demo1.MyInterceptor2"</span><span class="nt">/&gt;</span>
+	<span class="nt">&lt;/mvc:interceptor&gt;</span>
+<span class="nt">&lt;/mvc:interceptors&gt;</span>
+</code></pre></div></div> <div style="margin-top:2em;padding:0 1.5em;border:1px solid #d3d3d3;background-color:#deebf7"> <h3>文档信息</h3> <ul> <li>本文作者：<a href="https://slienceme.cn" target="_blank">slience_me</a></li> <li>本文链接：<a href="https://slienceme.cn/2021/07/04/SpringMVC%E5%93%8D%E5%BA%94%E6%95%B0%E6%8D%AE%E5%92%8C%E7%BB%93%E6%9E%9C%E8%A7%86%E5%9B%BE&%E5%AE%9E%E7%8E%B0%E6%96%87%E4%BB%B6%E4%B8%8A%E4%BC%A0&%E5%BC%82%E5%B8%B8%E5%A4%84%E7%90%86&%E6%8B%A6%E6%88%AA%E5%99%A8/" target="_blank">https://slienceme.cn/2021/07/04/SpringMVC%E5%93%8D%E5%BA%94%E6%95%B0%E6%8D%AE%E5%92%8C%E7%BB%93%E6%9E%9C%E8%A7%86%E5%9B%BE&%E5%AE%9E%E7%8E%B0%E6%96%87%E4%BB%B6%E4%B8%8A%E4%BC%A0&%E5%BC%82%E5%B8%B8%E5%A4%84%E7%90%86&%E6%8B%A6%E6%88%AA%E5%99%A8/</a></li> <li>版权声明：自由转载-非商用-非衍生-保持署名（<a href="http://creativecommons.org/licenses/by-nc-nd/3.0/deed.zh" target="_blank">创意共享3.0许可证</a>）</li> </ul> </div> </article> <div class="share"> <div class="share-component" data-disabled='qq,facebook'></div> </div> <div class="comment"> <script src="https://giscus.app/client.js" data-repo="slience-me/blog-comments" data-repo-id="MDEwOlJlcG9zaXRvcnk5MzEyNzkxNw==" data-category="Announcements" data-category-id="DIC_kwDOBY0E7c4CRtg9" data-mapping="title" data-strict="1" data-reactions-enabled="1" data-emit-metadata="0" data-input-position="top" data-theme="light" data-lang="zh-CN" data-loading="lazy" crossorigin="anonymous" async> </script> </div> </div> <div class="column one-fourth"> <h3>Search</h3> <div id="site_search"> <input style="width:96%" type="text" id="search_box" placeholder="Search"> </div> <ul id="search_results" style="font-size:14px;list-style-type:none;padding-top:10px;padding-left:10px;"></ul> <script src="https://slienceme.cn/assets/js/simple-jekyll-search.min.js"></script> <script type="text/javascript"> SimpleJekyllSearch({ searchInput: document.getElementById('search_box'), resultsContainer: document.getElementById('search_results'), json: 'https://slienceme.cn/assets/search_data.json?v=1736474001', searchResultTemplate: '<li><a href="{url}" title="{title}">{title}</a></li>', noResultsText: 'No results found', limit: 10, fuzzy: false, exclude: ['Welcome'] }) </script> <h3 class="post-directory-title mobile-hidden">Table of Contents</h3> <div id="post-directory-module" class="mobile-hidden"> <section class="post-directory"> <dl></dl> </section> </div> <script src="https://slienceme.cn/assets/js/jquery.toc.js"></script> </div> </div> </section> <footer class="container"> <div class="site-footer" role="contentinfo"> <div class="copyright left mobile-block"> Copyright@ 2019-2025 slience_me 版权所有&emsp; <img src="/images/logo/logo.png" class="w-full" style="width: 12px;"> <a href="https://beian.mps.gov.cn/#/query/webSearch?code=13102202000626" rel="noreferrer" target="_blank">冀公网安备13102202000626</a>&emsp; <a href="https://beian.miit.gov.cn/#/Integrated/index" target="_blank" rel="noreferrer">津ICP备2024026565号-1</a> <a href="javascript:window.scrollTo(0,0)" class="right mobile-visible">TOP</a> </div> <ul class="site-footer-links right mobile-hidden"> <li> <a href="javascript:window.scrollTo(0,0)" >TOP</a> </li> </ul> <br/> <script async src="https://slienceme.cn/assets/vendor/busuanzi/2.3/busuanzi.pure.mini.js"></script> <div class="mobile-hidden" style="margin-top:8px"> <span id="busuanzi_container_site_pv" style="display:none"> 本站访问量<span id="busuanzi_value_site_pv"></span>次 </span> <span id="busuanzi_container_site_uv" style="display:none"> / 本站访客数<span id="busuanzi_value_site_uv"></span>人 </span> <span id="busuanzi_container_page_pv" style="display:none"> / 本页访问量<span id="busuanzi_value_page_pv"></span>次 / 统计始于2024-12-01 </span> </div> </div> </footer> <div class="tools-wrapper"> <a class="gotop" href="#" title="回到顶部"><span class="octicon octicon-arrow-up"></span></a> </div> <script src="https://slienceme.cn/assets/vendor/share.js/dist/js/share.min.js"></script> <script src="https://slienceme.cn/assets/js/geopattern.js"></script> <script> jQuery(document).ready(function($) { $('.geopattern').each(function(){ $(this).geopattern($(this).data('pattern-id')); }); /* hljs.initHighlightingOnLoad(); */ }); </script> </body> </html>

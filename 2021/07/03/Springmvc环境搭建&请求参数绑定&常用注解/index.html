@@ -1,0 +1,336 @@
+<!DOCTYPE html> <html lang="zh-cmn-Hans" prefix="og: http://ogp.me/ns#" class="han-init"> <head> <meta charset="utf-8"> <meta http-equiv="X-UA-Compatible" content="IE=edge"> <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1" /> <title>Java｜Springmvc环境搭建&请求参数绑定&常用注解 &mdash; Slience_me的博客</title> <link rel="stylesheet" href="https://slienceme.cn/assets/vendor/primer-css/css/primer.css"> <link rel="stylesheet" href="https://slienceme.cn/assets/css/components/collection.css"> <link rel="stylesheet" href="https://slienceme.cn/assets/css/components/repo-card.css"> <link rel="stylesheet" href="https://slienceme.cn/assets/css/sections/repo-list.css"> <link rel="stylesheet" href="https://slienceme.cn/assets/css/components/boxed-group.css"> <link rel="stylesheet" href="https://slienceme.cn/assets/css/globals/common.css"> <link rel="stylesheet" href="https://slienceme.cn/assets/css/globals/responsive.css"> <link rel="stylesheet" href="https://slienceme.cn/assets/css/posts/index.css"> <link rel="stylesheet" href="https://slienceme.cn/assets/vendor/octicons/octicons/octicons.css"> <link rel="stylesheet" href="https://mazhuang.org/rouge-themes/dist/github.css"> <link rel="stylesheet" href="https://slienceme.cn/assets/vendor/share.js/dist/css/share.min.css"> <link rel="canonical" href="https://slienceme.cn/2021/07/03/Springmvc%E7%8E%AF%E5%A2%83%E6%90%AD%E5%BB%BA&%E8%AF%B7%E6%B1%82%E5%8F%82%E6%95%B0%E7%BB%91%E5%AE%9A&%E5%B8%B8%E7%94%A8%E6%B3%A8%E8%A7%A3/"> <link rel="alternate" type="application/atom+xml" title="Slience_me的博客" href="https://slienceme.cn/feed.xml"> <link rel="shortcut icon" href="https://slienceme.cn/favicon.ico"> <meta property="og:title" content="Java｜Springmvc环境搭建&请求参数绑定&常用注解"> <meta name="keywords" content="编程语言, Java"> <meta name="og:keywords" content="编程语言, Java"> <meta name="description" content="springmvc1. 搭建开发环境1.1 创建项目"> <meta name="og:description" content="springmvc1. 搭建开发环境1.1 创建项目"> <meta property="og:url" content="https://slienceme.cn/2021/07/03/Springmvc%E7%8E%AF%E5%A2%83%E6%90%AD%E5%BB%BA&%E8%AF%B7%E6%B1%82%E5%8F%82%E6%95%B0%E7%BB%91%E5%AE%9A&%E5%B8%B8%E7%94%A8%E6%B3%A8%E8%A7%A3/"> <meta property="og:site_name" content="Slience_me的博客"> <meta property="og:type" content="article"> <meta property="og:locale" content="zh_CN" /> <meta property="article:published_time" content="2021-07-03"> <meta name="google-site-verification" content="2feHjT1GNs1Yi2JQfOtdYx7d048naG_-cMwZaDAopIA" /> <script src="https://slienceme.cn/assets/vendor/jquery/dist/jquery.min.js"></script> <script src="https://slienceme.cn/assets/js/main.js"></script> </head> <body class="" data-mz=""> <header class="site-header"> <div class="container"> <h1><a href="https://slienceme.cn/" title="Slience_me的博客"><span class="octicon octicon-mark-github"></span> Slience_me的博客</a></h1> <button class="collapsed mobile-visible" type="button" onclick="toggleMenu();"> <span class="icon-bar"></span> <span class="icon-bar"></span> <span class="icon-bar"></span> </button> <nav class="site-header-nav" role="navigation"> <a href="https://slienceme.cn/" class="site-header-nav-item" target="" title="首页">首页</a> <a href="https://slienceme.cn/categories/" class="site-header-nav-item" target="" title="分类">分类</a> <a href="https://slienceme.cn/archives/" class="mobile-hidden site-header-nav-item" target="" title="归档">归档</a> <a href="https://slienceme.cn/open-source/" class="mobile-hidden site-header-nav-item" target="" title="开源">开源</a> <a href="https://slienceme.cn/fragments/" class="site-header-nav-item" target="" title="片段">片段</a> <a href="https://slienceme.cn/wiki/" class="site-header-nav-item" target="" title="维基">维基</a> <a href="https://slienceme.cn/links/" class="mobile-hidden site-header-nav-item" target="" title="链接">链接</a> <a href="https://slienceme.cn/about/" class="site-header-nav-item" target="" title="关于">关于</a> <a class="mobile-hidden" href="https://slienceme.cn/feed.xml"><span class="octicon octicon-rss" style="color:orange;"></span></a> </nav> </div> </header> <section class="collection-head small geopattern" data-pattern-id="Java｜Springmvc环"> <div class="container"> <div class="columns"> <div class="column three-fourths"> <div class="collection-title"> <h1 class="collection-header">Java｜Springmvc环境搭建&请求参数绑定&常用注解</h1> <div class="collection-info"> <span class="meta-info"> <span class="octicon octicon-calendar"></span> 2021/07/03 </span> <span class="meta-info"> <span class="octicon octicon-file-directory"></span> <a href="https://slienceme.cn/categories/#Java" title="Java">Java</a> </span> <span class="meta-info"> <span class="octicon octicon-clock"></span> 共 11592 字，约 34 分钟 </span> </div> </div> </div> <div class="column one-fourth mobile-hidden"> <div class="collection-title"> </div> </div> </div> </div> </section> <section class="container content"> <div class="columns"> <div class="column three-fourths" > <article class="article-content markdown-body"> <h1 id="springmvc">springmvc</h1> <h2 id="1-搭建开发环境">1. 搭建开发环境</h2> <h3 id="11-创建项目">1.1 创建项目</h3> <p><img src="https://slienceme.cn/images/posts/20210703084549682.png" alt="Alt Text" /></p> <ul> <li>添加键值对，加快构建时间</li> <li><code class="language-plaintext highlighter-rouge">key: archetypeCatalog</code></li> <li><code class="language-plaintext highlighter-rouge">value: internal</code></li> </ul> <p><img src="https://slienceme.cn/images/posts/20210703084634859.png" alt="Alt Text" /></p> <h3 id="12-配置maven">1.2 配置maven</h3> <div class="language-xml highlighter-rouge"><div class="highlight"><pre class="highlight"><code>  <span class="nt">&lt;properties&gt;</span>
+    <span class="nt">&lt;project.build.sourceEncoding&gt;</span>UTF-8<span class="nt">&lt;/project.build.sourceEncoding&gt;</span>
+    <span class="nt">&lt;maven.compiler.source&gt;</span>1.8<span class="nt">&lt;/maven.compiler.source&gt;</span>
+    <span class="nt">&lt;maven.compiler.target&gt;</span>1.8<span class="nt">&lt;/maven.compiler.target&gt;</span>
+    <span class="c">&lt;!--  版本锁定  --&gt;</span>
+    <span class="nt">&lt;spring.version&gt;</span>5.0.2.RELEASE<span class="nt">&lt;/spring.version&gt;</span>
+  <span class="nt">&lt;/properties&gt;</span>
+
+  <span class="nt">&lt;dependencies&gt;</span>
+    <span class="nt">&lt;dependency&gt;</span>
+      <span class="nt">&lt;groupId&gt;</span>org.springframework<span class="nt">&lt;/groupId&gt;</span>
+      <span class="nt">&lt;artifactId&gt;</span>spring-context<span class="nt">&lt;/artifactId&gt;</span>
+      <span class="nt">&lt;version&gt;</span>${spring.version}<span class="nt">&lt;/version&gt;</span>
+    <span class="nt">&lt;/dependency&gt;</span>
+    <span class="nt">&lt;dependency&gt;</span>
+      <span class="nt">&lt;groupId&gt;</span>org.springframework<span class="nt">&lt;/groupId&gt;</span>
+      <span class="nt">&lt;artifactId&gt;</span>spring-web<span class="nt">&lt;/artifactId&gt;</span>
+      <span class="nt">&lt;version&gt;</span>${spring.version}<span class="nt">&lt;/version&gt;</span>
+    <span class="nt">&lt;/dependency&gt;</span>
+    <span class="nt">&lt;dependency&gt;</span>
+      <span class="nt">&lt;groupId&gt;</span>org.springframework<span class="nt">&lt;/groupId&gt;</span>
+      <span class="nt">&lt;artifactId&gt;</span>spring-webmvc<span class="nt">&lt;/artifactId&gt;</span>
+      <span class="nt">&lt;version&gt;</span>${spring.version}<span class="nt">&lt;/version&gt;</span>
+    <span class="nt">&lt;/dependency&gt;</span>
+    <span class="nt">&lt;dependency&gt;</span>
+      <span class="nt">&lt;groupId&gt;</span>javax.servlet<span class="nt">&lt;/groupId&gt;</span>
+      <span class="nt">&lt;artifactId&gt;</span>servlet-api<span class="nt">&lt;/artifactId&gt;</span>
+      <span class="nt">&lt;version&gt;</span>2.5<span class="nt">&lt;/version&gt;</span>
+      <span class="nt">&lt;scope&gt;</span>provided<span class="nt">&lt;/scope&gt;</span>
+    <span class="nt">&lt;/dependency&gt;</span>
+    <span class="nt">&lt;dependency&gt;</span>
+      <span class="nt">&lt;groupId&gt;</span>javax.servlet.jsp<span class="nt">&lt;/groupId&gt;</span>
+      <span class="nt">&lt;artifactId&gt;</span>jsp-api<span class="nt">&lt;/artifactId&gt;</span>
+      <span class="nt">&lt;version&gt;</span>2.0<span class="nt">&lt;/version&gt;</span>
+      <span class="nt">&lt;scope&gt;</span>provided<span class="nt">&lt;/scope&gt;</span>
+    <span class="nt">&lt;/dependency&gt;</span>
+    <span class="nt">&lt;dependency&gt;</span>
+      <span class="nt">&lt;groupId&gt;</span>junit<span class="nt">&lt;/groupId&gt;</span>
+      <span class="nt">&lt;artifactId&gt;</span>junit<span class="nt">&lt;/artifactId&gt;</span>
+      <span class="nt">&lt;version&gt;</span>4.11<span class="nt">&lt;/version&gt;</span>
+      <span class="nt">&lt;scope&gt;</span>test<span class="nt">&lt;/scope&gt;</span>
+    <span class="nt">&lt;/dependency&gt;</span>
+  <span class="nt">&lt;/dependencies&gt;</span>
+</code></pre></div></div> <h3 id="13-前端控制器配置">1.3 前端控制器配置</h3> <ul> <li>web.xml</li> </ul> <div class="language-xml highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="cp">&lt;!DOCTYPE web-app PUBLIC
+        "-//Sun Microsystems, Inc.//DTD Web Application 2.3//EN"
+        "http://java.sun.com/dtd/web-app_2_3.dtd" &gt;</span>
+
+<span class="nt">&lt;web-app&gt;</span>
+  <span class="nt">&lt;display-name&gt;</span>Archetype Created Web Application<span class="nt">&lt;/display-name&gt;</span>
+
+  <span class="c">&lt;!--配置前端控制器--&gt;</span>
+  <span class="nt">&lt;servlet&gt;</span>
+    <span class="nt">&lt;servlet-name&gt;</span>dispatcherServlet<span class="nt">&lt;/servlet-name&gt;</span>
+    <span class="nt">&lt;servlet-class&gt;</span>org.springframework.web.servlet.DispatcherServlet<span class="nt">&lt;/servlet-class&gt;</span>
+    <span class="nt">&lt;init-param&gt;</span>
+      <span class="nt">&lt;param-name&gt;</span>contextConfigLocation<span class="nt">&lt;/param-name&gt;</span>
+      <span class="nt">&lt;param-value&gt;</span>classpath:springmvc.xml<span class="nt">&lt;/param-value&gt;</span>
+    <span class="nt">&lt;/init-param&gt;</span>
+    <span class="nt">&lt;load-on-startup&gt;</span>1<span class="nt">&lt;/load-on-startup&gt;</span>
+  <span class="nt">&lt;/servlet&gt;</span>
+  <span class="nt">&lt;servlet-mapping&gt;</span>
+    <span class="nt">&lt;servlet-name&gt;</span>dispatcherServlet<span class="nt">&lt;/servlet-name&gt;</span>
+    <span class="nt">&lt;url-pattern&gt;</span>/<span class="nt">&lt;/url-pattern&gt;</span>
+  <span class="nt">&lt;/servlet-mapping&gt;</span>
+
+  <span class="c">&lt;!--配置解决中文乱码的过滤器--&gt;</span>
+  <span class="nt">&lt;filter&gt;</span>
+    <span class="nt">&lt;filter-name&gt;</span>characterEncodingFilter<span class="nt">&lt;/filter-name&gt;</span>
+    <span class="nt">&lt;filter-class&gt;</span>org.springframework.web.filter.CharacterEncodingFilter<span class="nt">&lt;/filter-class&gt;</span>
+    <span class="nt">&lt;init-param&gt;</span>
+      <span class="nt">&lt;param-name&gt;</span>encoding<span class="nt">&lt;/param-name&gt;</span>
+      <span class="nt">&lt;param-value&gt;</span>UTF-8<span class="nt">&lt;/param-value&gt;</span>
+    <span class="nt">&lt;/init-param&gt;</span>
+  <span class="nt">&lt;/filter&gt;</span>
+  <span class="nt">&lt;filter-mapping&gt;</span>
+    <span class="nt">&lt;filter-name&gt;</span>characterEncodingFilter<span class="nt">&lt;/filter-name&gt;</span>
+    <span class="nt">&lt;url-pattern&gt;</span>/*<span class="nt">&lt;/url-pattern&gt;</span>
+  <span class="nt">&lt;/filter-mapping&gt;</span>
+
+<span class="nt">&lt;/web-app&gt;</span>
+
+</code></pre></div></div> <h3 id="14-创建springmvc配置文件">1.4 创建springmvc配置文件</h3> <p><img src="https://slienceme.cn/images/posts/20210703090121356.png" alt="Alt Text" /> <img src="https://slienceme.cn/images/posts/20210703090104355.png" alt="Alt Text" /></p> <div class="language-xml highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="cp">&lt;?xml version="1.0" encoding="UTF-8"?&gt;</span>
+<span class="nt">&lt;beans</span> <span class="na">xmlns=</span><span class="s">"http://www.springframework.org/schema/beans"</span>
+       <span class="na">xmlns:mvc=</span><span class="s">"http://www.springframework.org/schema/mvc"</span>
+       <span class="na">xmlns:context=</span><span class="s">"http://www.springframework.org/schema/context"</span>
+       <span class="na">xmlns:xsi=</span><span class="s">"http://www.w3.org/2001/XMLSchema-instance"</span>
+       <span class="na">xsi:schemaLocation=</span><span class="s">"
+        http://www.springframework.org/schema/beans
+        http://www.springframework.org/schema/beans/spring-beans.xsd
+        http://www.springframework.org/schema/mvc
+        http://www.springframework.org/schema/mvc/spring-mvc.xsd
+        http://www.springframework.org/schema/context
+        http://www.springframework.org/schema/context/spring-context.xsd"</span><span class="nt">&gt;</span>
+        
+    <span class="c">&lt;!--  开启注解扫描  --&gt;</span>
+    <span class="nt">&lt;context:component-scan</span> <span class="na">base-package=</span><span class="s">"xyz.slienceme"</span><span class="nt">/&gt;</span>
+    
+<span class="nt">&lt;/beans&gt;</span>
+</code></pre></div></div> <h2 id="2-执行过程">2. 执行过程</h2> <h3 id="21-入门案例的执行流程">2.1 入门案例的执行流程</h3> <ol> <li>当启动<code class="language-plaintext highlighter-rouge">Tomcat</code>服务器的时候，因为配置了<code class="language-plaintext highlighter-rouge">load-on-startup</code>标签，所以会创建<code class="language-plaintext highlighter-rouge">DispatcherServlet</code>对象，就会加载<code class="language-plaintext highlighter-rouge">springmvc.xml</code>配置文件</li> <li>开启了注解扫描，那么<code class="language-plaintext highlighter-rouge">HelloController</code>对象就会被创建</li> <li>从<code class="language-plaintext highlighter-rouge">index.jsp</code>发送请求，请求会先到达<code class="language-plaintext highlighter-rouge">DispatcherServlet</code>核心控制器，根据配置<code class="language-plaintext highlighter-rouge">@RequestMapping</code>注解找到执行的具体方法</li> <li>根据执行方法的返回值，再根据配置的视图解析器，去指定的目录下查找指定名称的<code class="language-plaintext highlighter-rouge">JSP</code>文件</li> <li><code class="language-plaintext highlighter-rouge">Tomcat</code>服务器渲染页面，做出响应</li> </ol> <h3 id="22-springmvc官方提供图形">2.2 SpringMVC官方提供图形</h3> <p><img src="https://slienceme.cn/images/posts/20210703100325144.jpg" alt="Alt Text" /></p> <h3 id="23-入门案例中的组件分析">2.3 入门案例中的组件分析</h3> <ol> <li>前端控制器（<code class="language-plaintext highlighter-rouge">DispatcherServlet</code>）</li> <li>处理器映射器（<code class="language-plaintext highlighter-rouge">HandlerMapping</code>）</li> <li>处理器（<code class="language-plaintext highlighter-rouge">Handler</code>）</li> <li>处理器适配器（<code class="language-plaintext highlighter-rouge">HandlAdapter</code>）</li> <li>视图解析器（<code class="language-plaintext highlighter-rouge">View Resolver</code>）</li> <li>视图（<code class="language-plaintext highlighter-rouge">View</code>）</li> </ol> <h3 id="24-requestmapping注解">2.4 <code class="language-plaintext highlighter-rouge">@RequestMapping</code>注解</h3> <ul> <li>作用：建立请求<code class="language-plaintext highlighter-rouge">URL</code>和处理方法之间的对应关系</li> <li>范围：可以作用在方法和类上 <ul> <li>作用在类上：第一级的访问目录</li> <li>作用在方法上：第二级的访问目录</li> <li>细节：路径可以不编写 <code class="language-plaintext highlighter-rouge">/</code> 表示应用的根目录开始</li> <li>细节：<code class="language-plaintext highlighter-rouge">${ pageContext.request.contextPath }</code>也可以省略不写，但是路径上不能写 <code class="language-plaintext highlighter-rouge">/</code></li> </ul> </li> <li>属性 <ol> <li><code class="language-plaintext highlighter-rouge">path</code> 指定请求路径的<code class="language-plaintext highlighter-rouge">url</code></li> <li><code class="language-plaintext highlighter-rouge">value</code> value属性和path属性是一样的</li> <li><code class="language-plaintext highlighter-rouge">method</code> 指定该方法的请求方式</li> <li><code class="language-plaintext highlighter-rouge">params</code> 指定限制请求参数的条件 要求key和value必须一致</li> <li><code class="language-plaintext highlighter-rouge">headers</code> 发送的请求中必须包含的请求头 <div class="language-java highlighter-rouge"><div class="highlight"><pre class="highlight"><code>  <span class="cm">/**
+   * RequestMapping注解
+   * @return
+   */</span>
+  <span class="nd">@RequestMapping</span><span class="o">(</span><span class="n">value</span><span class="o">=</span><span class="s">"/testRequestMapping"</span><span class="o">,</span><span class="n">method</span> <span class="o">=</span> <span class="o">{</span><span class="nc">RequestMethod</span><span class="o">.</span><span class="na">POST</span><span class="o">},</span><span class="n">params</span> <span class="o">=</span> <span class="o">{</span><span class="s">"username=heihei"</span><span class="o">},</span><span class="n">headers</span> <span class="o">=</span> <span class="o">{</span><span class="s">"Accept"</span><span class="o">})</span>
+  <span class="kd">public</span> <span class="nc">String</span> <span class="nf">testRequestMapping</span><span class="o">(){</span>
+ <span class="nc">System</span><span class="o">.</span><span class="na">out</span><span class="o">.</span><span class="na">println</span><span class="o">(</span><span class="s">"测试RequestMapping注解..."</span><span class="o">);</span>
+ <span class="k">return</span> <span class="s">"success"</span><span class="o">;</span>
+  <span class="o">}</span>
+</code></pre></div> </div> <h2 id="3-请求参数的绑定">3. 请求参数的绑定</h2> <h3 id="31-请求参数的绑定说明">3.1 请求参数的绑定说明</h3> <h4 id="311-绑定机制">3.1.1 绑定机制</h4> <ol> <li>表单提交的数据都是<code class="language-plaintext highlighter-rouge">k=v</code>格式的 <code class="language-plaintext highlighter-rouge">username=haha&amp;password=123</code></li> <li><code class="language-plaintext highlighter-rouge">SpringMVC</code>的参数绑定过程是把表单提交的请求参数，作为控制器中方法的参数进行绑定的</li> <li>要求：提交表单的name和参数的名称是相同的 <h4 id="312-支持的数据类型">3.1.2 支持的数据类型</h4> </li> <li>基本数据类型和字符串类型</li> <li>实体类型（<code class="language-plaintext highlighter-rouge">JavaBean</code>）</li> <li>集合数据类型（<code class="language-plaintext highlighter-rouge">List</code>、<code class="language-plaintext highlighter-rouge">map</code>集合等） <h3 id="32-基本数据类型和字符串类型">3.2 基本数据类型和字符串类型</h3> </li> <li>提交表单的name和参数的名称是相同的</li> <li>区分大小写 <h3 id="33-实体类型javabean">3.3 实体类型（JavaBean）</h3> </li> <li>提交表单的name和JavaBean中的属性名称需要一致</li> <li>如果一个<code class="language-plaintext highlighter-rouge">JavaBean</code>类中包含其他的引用类型，那么表单的<code class="language-plaintext highlighter-rouge">name</code>属性需要编写成：<code class="language-plaintext highlighter-rouge">对象.属性</code> 例如：<code class="language-plaintext highlighter-rouge">address.name</code></li> </ol> </li> </ol> </li> <li>把数据封装Account类中 ```html</li> </ul> <form action="param/saveAccount" method="post"> 姓名：<input type="text" name="username" /><br /> 密码：<input type="text" name="password" /><br /> 金额：<input type="text" name="money" /><br /> 用户姓名：<input type="text" name="user.uname" /><br /> 用户年龄：<input type="text" name="user.age" /><br /> <input type="submit" value="提交" /> </form> <div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>### 3.4 给集合属性数据封装
+1. `JSP`页面编写方式：list[0].属性
+
+- 把数据封装Account类中，类中存在list和map的集合
+```html
+&lt;form action="param/saveAccount" method="post"&gt;
+     姓名：&lt;input type="text" name="username" /&gt;&lt;br/&gt;
+     密码：&lt;input type="text" name="password" /&gt;&lt;br/&gt;
+     金额：&lt;input type="text" name="money" /&gt;&lt;br/&gt;
+
+     用户姓名：&lt;input type="text" name="list[0].uname" /&gt;&lt;br/&gt;
+     用户年龄：&lt;input type="text" name="list[0].age" /&gt;&lt;br/&gt;
+
+     用户姓名：&lt;input type="text" name="map['one'].uname" /&gt;&lt;br/&gt;
+     用户年龄：&lt;input type="text" name="map['one'].age" /&gt;&lt;br/&gt;
+     &lt;input type="submit" value="提交" /&gt;
+&lt;/form&gt;
+</code></pre></div></div> <ul> <li>实体类添加属性</li> </ul> <div class="language-java highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kd">private</span> <span class="nc">List</span><span class="o">&lt;</span><span class="nc">User</span><span class="o">&gt;</span> <span class="n">list</span><span class="o">;</span>
+<span class="kd">private</span> <span class="nc">Map</span><span class="o">&lt;</span><span class="nc">String</span><span class="o">,</span><span class="nc">User</span><span class="o">&gt;</span> <span class="n">map</span><span class="o">;</span>
+</code></pre></div></div> <h3 id="35-请求参数中文乱码的解决">3.5 请求参数中文乱码的解决</h3> <ol> <li>在<code class="language-plaintext highlighter-rouge">web.xml</code>中配置Spring提供的过滤器类</li> </ol> <div class="language-xml highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="c">&lt;!--配置解决中文乱码的过滤器--&gt;</span>
+  <span class="nt">&lt;filter&gt;</span>
+    <span class="nt">&lt;filter-name&gt;</span>characterEncodingFilter<span class="nt">&lt;/filter-name&gt;</span>
+    <span class="nt">&lt;filter-class&gt;</span>org.springframework.web.filter.CharacterEncodingFilter<span class="nt">&lt;/filter-class&gt;</span>
+    <span class="nt">&lt;init-param&gt;</span>
+      <span class="nt">&lt;param-name&gt;</span>encoding<span class="nt">&lt;/param-name&gt;</span>
+      <span class="nt">&lt;param-value&gt;</span>UTF-8<span class="nt">&lt;/param-value&gt;</span>
+    <span class="nt">&lt;/init-param&gt;</span>
+  <span class="nt">&lt;/filter&gt;</span>
+  <span class="nt">&lt;filter-mapping&gt;</span>
+    <span class="nt">&lt;filter-name&gt;</span>characterEncodingFilter<span class="nt">&lt;/filter-name&gt;</span>
+    <span class="nt">&lt;url-pattern&gt;</span>/*<span class="nt">&lt;/url-pattern&gt;</span>
+  <span class="nt">&lt;/filter-mapping&gt;</span>
+</code></pre></div></div> <h3 id="36-自定义类型转换器">3.6 自定义类型转换器</h3> <ol> <li>表单提交的任何数据类型全部都是字符串类型，但是后台定义<code class="language-plaintext highlighter-rouge">Integer</code>类型，数据也可以封装上，说明<code class="language-plaintext highlighter-rouge">Spring</code>框架内部会默认进行数据类型转换。</li> <li> <h2 id="如果想自定义数据类型转换可以实现converter的接口">如果想自定义数据类型转换，可以实现<code class="language-plaintext highlighter-rouge">Converter</code>的接口</h2> </li> <li>自定义类型转换器</li> </ol> <div class="language-java highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kn">package</span> <span class="nn">xyz.slienceme.utils</span><span class="o">;</span>
+<span class="kn">import</span> <span class="nn">org.springframework.core.convert.converter.Converter</span><span class="o">;</span>
+<span class="kn">import</span> <span class="nn">java.text.DateFormat</span><span class="o">;</span>
+<span class="kn">import</span> <span class="nn">java.text.SimpleDateFormat</span><span class="o">;</span>
+<span class="kn">import</span> <span class="nn">java.util.Date</span><span class="o">;</span>
+
+<span class="cm">/**
+ * 把字符串转换日期
+ */</span>
+<span class="kd">public</span> <span class="kd">class</span> <span class="nc">StringToDateConverter</span> <span class="kd">implements</span> <span class="nc">Converter</span><span class="o">&lt;</span><span class="nc">String</span><span class="o">,</span><span class="nc">Date</span><span class="o">&gt;{</span>
+
+    <span class="cm">/**
+     * String source    传入进来字符串
+     * @param source
+     * @return
+     */</span>
+    <span class="kd">public</span> <span class="nc">Date</span> <span class="nf">convert</span><span class="o">(</span><span class="nc">String</span> <span class="n">source</span><span class="o">)</span> <span class="o">{</span>
+        <span class="c1">// 判断</span>
+        <span class="k">if</span><span class="o">(</span><span class="n">source</span> <span class="o">==</span> <span class="kc">null</span><span class="o">){</span>
+            <span class="k">throw</span> <span class="k">new</span> <span class="nf">RuntimeException</span><span class="o">(</span><span class="s">"请您传入数据"</span><span class="o">);</span>
+        <span class="o">}</span>
+        
+        <span class="k">try</span> <span class="o">{</span>
+            <span class="c1">// 把字符串转换日期 解析字符串</span>
+            <span class="nc">DateFormat</span> <span class="n">df</span> <span class="o">=</span> <span class="k">new</span> <span class="nc">SimpleDateFormat</span><span class="o">(</span><span class="s">"yyyy-MM-dd"</span><span class="o">);</span>
+			<span class="nc">Date</span> <span class="n">date</span> <span class="o">=</span> <span class="n">df</span><span class="o">.</span><span class="na">parse</span><span class="o">(</span><span class="n">source</span><span class="o">);</span>
+			<span class="k">return</span> <span class="n">date</span><span class="o">;</span>
+        <span class="o">}</span> <span class="k">catch</span> <span class="o">(</span><span class="nc">Exception</span> <span class="n">e</span><span class="o">)</span> <span class="o">{</span>
+            <span class="k">throw</span> <span class="k">new</span> <span class="nf">RuntimeException</span><span class="o">(</span><span class="s">"数据类型转换出现错误"</span><span class="o">);</span>
+        <span class="o">}</span>
+    <span class="o">}</span>
+
+<span class="o">}</span>
+
+</code></pre></div></div> <ol> <li>注册自定义类型转换器，在<code class="language-plaintext highlighter-rouge">springmvc.xml</code>配置文件中编写配置</li> </ol> <div class="language-xml highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="c">&lt;!--配置自定义类型转换器--&gt;</span>
+<span class="nt">&lt;bean</span> <span class="na">id=</span><span class="s">"conversionService"</span> <span class="na">class=</span><span class="s">"org.springframework.context.support.ConversionServiceFactoryBean"</span><span class="nt">&gt;</span>
+     <span class="nt">&lt;property</span> <span class="na">name=</span><span class="s">"converters"</span><span class="nt">&gt;</span>
+         <span class="nt">&lt;set&gt;</span>
+             <span class="nt">&lt;bean</span> <span class="na">class=</span><span class="s">"xyz.slienceme.utils.StringToDateConverter"</span><span class="nt">/&gt;</span>
+         <span class="nt">&lt;/set&gt;</span>
+     <span class="nt">&lt;/property&gt;</span>
+ <span class="nt">&lt;/bean&gt;</span>
+
+
+ <span class="c">&lt;!-- 开启SpringMVC框架注解的支持 --&gt;</span>
+ <span class="nt">&lt;mvc:annotation-driven</span> <span class="na">conversion-service=</span><span class="s">"conversionService"</span><span class="nt">/&gt;</span>
+</code></pre></div></div> <h3 id="37-在控制器中使用原生的servletapi对象">3.7 在控制器中使用原生的ServletAPI对象</h3> <ol> <li>只需要在控制器的方法参数定义<code class="language-plaintext highlighter-rouge">HttpServletRequest</code>和<code class="language-plaintext highlighter-rouge">HttpServletResponse</code>对象</li> </ol> <h2 id="4-常用的注解">4. 常用的注解</h2> <h3 id="41-requestparam注解">4.1 <code class="language-plaintext highlighter-rouge">@RequestParam</code>注解</h3> <ol> <li>作用：把请求中的指定名称的参数传递给控制器中的形参赋值</li> <li>属性 <ol> <li><code class="language-plaintext highlighter-rouge">value</code>：请求参数中的名称</li> <li><code class="language-plaintext highlighter-rouge">required</code>：请求参数中是否必须提供此参数，默认值是<code class="language-plaintext highlighter-rouge">true</code>，必须提供的是name，必须与 <code class="language-plaintext highlighter-rouge">&lt;a href="anno/testRequestParam?name=哈哈"&gt;RequestParam&lt;/a&gt;</code>中的参数name相同，否则报错</li> </ol> </li> <li>代码如下 <div class="language-html highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nt">&lt;a</span> <span class="na">href=</span><span class="s">"anno/testRequestParam?name=哈哈"</span><span class="nt">&gt;</span>RequestParam<span class="nt">&lt;/a&gt;</span>
+</code></pre></div> </div> <div class="language-java highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="cm">/**
+* 接收请求
+* @return
+*/</span>
+<span class="nd">@RequestMapping</span><span class="o">(</span><span class="s">"/testRequestParam"</span><span class="o">)</span>
+<span class="kd">public</span> <span class="nc">String</span> <span class="nf">testRequestParam</span><span class="o">(</span><span class="nd">@RequestParam</span><span class="o">(</span><span class="n">name</span><span class="o">=</span><span class="s">"name"</span><span class="o">,</span><span class="n">required</span><span class="o">=</span><span class="kc">false</span><span class="o">)</span> <span class="nc">String</span> <span class="n">username</span><span class="o">){</span>
+  <span class="nc">System</span><span class="o">.</span><span class="na">out</span><span class="o">.</span><span class="na">println</span><span class="o">(</span><span class="s">"执行了..."</span><span class="o">);</span>
+  <span class="nc">System</span><span class="o">.</span><span class="na">out</span><span class="o">.</span><span class="na">println</span><span class="o">(</span><span class="n">username</span><span class="o">);</span>
+  <span class="k">return</span> <span class="s">"success"</span><span class="o">;</span>
+ <span class="o">}</span>
+</code></pre></div> </div> <ul> <li>单纯拿到<code class="language-plaintext highlighter-rouge">name</code>参数 <h3 id="42-requestbody注解">4.2 <code class="language-plaintext highlighter-rouge">@RequestBody</code>注解</h3> </li> </ul> </li> <li>作用：用于获取请求体的内容（<code class="language-plaintext highlighter-rouge">注意：get方法不可以</code>）</li> <li>属性 <ol> <li><code class="language-plaintext highlighter-rouge">required</code>：是否必须有请求体，默认值是<code class="language-plaintext highlighter-rouge">true</code></li> </ol> </li> <li>代码如下</li> </ol> <div class="language-html highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nt">&lt;form</span> <span class="na">action=</span><span class="s">"anno/testRequestBody"</span> <span class="na">method=</span><span class="s">"post"</span><span class="nt">&gt;</span>
+   用户姓名：<span class="nt">&lt;input</span> <span class="na">type=</span><span class="s">"text"</span> <span class="na">name=</span><span class="s">"username"</span> <span class="nt">/&gt;&lt;br/&gt;</span>
+   用户年龄：<span class="nt">&lt;input</span> <span class="na">type=</span><span class="s">"text"</span> <span class="na">name=</span><span class="s">"age"</span> <span class="nt">/&gt;&lt;br/&gt;</span>
+   <span class="nt">&lt;input</span> <span class="na">type=</span><span class="s">"submit"</span> <span class="na">value=</span><span class="s">"提交"</span> <span class="nt">/&gt;</span>
+<span class="nt">&lt;/form&gt;</span>
+</code></pre></div></div> <div class="language-java highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="cm">/**
+* 获取到请求体的内容
+* @return
+*/</span>
+<span class="nd">@RequestMapping</span><span class="o">(</span><span class="s">"/testRequestBody"</span><span class="o">)</span>
+<span class="kd">public</span> <span class="nc">String</span> <span class="nf">testRequestBody</span><span class="o">(</span><span class="nd">@RequestBody</span> <span class="nc">String</span> <span class="n">body</span><span class="o">){</span>
+    <span class="nc">System</span><span class="o">.</span><span class="na">out</span><span class="o">.</span><span class="na">println</span><span class="o">(</span><span class="s">"执行了..."</span><span class="o">);</span>
+    <span class="nc">System</span><span class="o">.</span><span class="na">out</span><span class="o">.</span><span class="na">println</span><span class="o">(</span><span class="n">body</span><span class="o">);</span>
+    <span class="k">return</span> <span class="s">"success"</span><span class="o">;</span>
+<span class="o">}</span>
+</code></pre></div></div> <ul> <li>得到 <code class="language-plaintext highlighter-rouge">username=zhangsan&amp;age=123</code> <h3 id="43-pathvariable注解">4.3 <code class="language-plaintext highlighter-rouge">@PathVariable</code>注解</h3> <ol> <li>作用：拥有绑定<code class="language-plaintext highlighter-rouge">url</code>中的占位符的。例如：<code class="language-plaintext highlighter-rouge">url</code>中有<code class="language-plaintext highlighter-rouge">/delete/{id}</code>，<code class="language-plaintext highlighter-rouge">{id}</code>就是占位符</li> <li>属性</li> </ol> <ol> <li><code class="language-plaintext highlighter-rouge">value</code>：指定<code class="language-plaintext highlighter-rouge">url</code>中的占位符名称 <ol> <li>Restful风格的URL</li> </ol> </li> <li>请求路径一样，可以根据不同的请求方式去执行后台的不同方法</li> <li>restful风格的URL优点 <ol> <li>结构清晰</li> <li>符合标准</li> <li>易于理解</li> <li>扩展方便</li> <li>代码如下 <div class="language-html highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nt">&lt;a</span> <span class="na">href=</span><span class="s">"anno/testPathVariable/10"</span><span class="nt">&gt;</span>testPathVariable<span class="nt">&lt;/a&gt;</span>
+</code></pre></div> </div> <p>```java <a href="user/hello/1">入门案例</a> /**</p> </li> </ol> </li> </ol> </li> <li>PathVariable注解</li> <li>@return */ @RequestMapping(value=”/testPathVariable/{sid}”) public String testPathVariable(@PathVariable(name=”sid”) String id){ System.out.println(“执行了…”); System.out.println(id); return “success”; } ``` <img src="https://slienceme.cn/images/posts/20210703155428477.png" alt="Alt Text" /></li> </ul> <h3 id="44-requestheader注解">4.4 <code class="language-plaintext highlighter-rouge">@RequestHeader</code>注解</h3> <ol> <li>作用：获取指定请求头的值</li> <li>属性 <ol> <li><code class="language-plaintext highlighter-rouge">value</code>：请求头的名称</li> </ol> </li> <li>代码如下 <div class="language-html highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nt">&lt;a</span> <span class="na">href=</span><span class="s">"anno/testRequestHeader"</span><span class="nt">&gt;</span>RequestHeader<span class="nt">&lt;/a&gt;</span>
+</code></pre></div> </div> <div class="language-java highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="cm">/**
+* 获取请求头的值
+* @param header
+* @return
+*/</span>
+<span class="nd">@RequestMapping</span><span class="o">(</span><span class="n">value</span><span class="o">=</span><span class="s">"/testRequestHeader"</span><span class="o">)</span>
+<span class="kd">public</span> <span class="nc">String</span> <span class="nf">testRequestHeader</span><span class="o">(</span><span class="nd">@RequestHeader</span><span class="o">(</span><span class="n">value</span><span class="o">=</span><span class="s">"Accept"</span><span class="o">)</span> <span class="nc">String</span> <span class="n">header</span><span class="o">,</span> <span class="nc">HttpServletRequest</span> <span class="n">request</span><span class="o">,</span><span class="nc">HttpServletResponse</span> <span class="n">response</span><span class="o">)</span> <span class="kd">throws</span> <span class="nc">IOException</span> <span class="o">{</span>
+<span class="nc">System</span><span class="o">.</span><span class="na">out</span><span class="o">.</span><span class="na">println</span><span class="o">(</span><span class="s">"执行了..."</span><span class="o">);</span>
+<span class="nc">System</span><span class="o">.</span><span class="na">out</span><span class="o">.</span><span class="na">println</span><span class="o">(</span><span class="n">header</span><span class="o">);</span>
+<span class="c1">// return "success";</span>
+<span class="c1">// response.sendRedirect(request.getContextPath()+"/anno/testCookieValue");</span>
+<span class="k">return</span> <span class="s">"redirect:/param.jsp"</span><span class="o">;</span>
+<span class="o">}</span>
+</code></pre></div> </div> <p><img src="https://slienceme.cn/images/posts/20210703155820333.png" alt="Alt Text" /></p> </li> </ol> <h3 id="45-cookievalue注解">4.5 <code class="language-plaintext highlighter-rouge">@CookieValue</code>注解</h3> <ol> <li>作用：用于获取指定<code class="language-plaintext highlighter-rouge">cookie</code>的名称的值</li> <li>属性 <ol> <li><code class="language-plaintext highlighter-rouge">value</code>：<code class="language-plaintext highlighter-rouge">cookie</code>的名称</li> </ol> </li> <li>代码 <div class="language-html highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nt">&lt;a</span> <span class="na">href=</span><span class="s">"anno/testCookieValue"</span><span class="nt">&gt;</span>CookieValue<span class="nt">&lt;/a&gt;</span>
+</code></pre></div> </div> <div class="language-java highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="cm">/**
+ * 获取Cookie的值
+ * @return
+ */</span>
+<span class="nd">@RequestMapping</span><span class="o">(</span><span class="n">value</span><span class="o">=</span><span class="s">"/testCookieValue"</span><span class="o">)</span>
+<span class="kd">public</span> <span class="nc">String</span> <span class="nf">testCookieValue</span><span class="o">(</span><span class="nd">@CookieValue</span><span class="o">(</span><span class="n">value</span><span class="o">=</span><span class="s">"JSESSIONID"</span><span class="o">)</span> <span class="nc">String</span> <span class="n">cookieValue</span><span class="o">){</span>
+ <span class="nc">System</span><span class="o">.</span><span class="na">out</span><span class="o">.</span><span class="na">println</span><span class="o">(</span><span class="s">"执行了..."</span><span class="o">);</span>
+ <span class="nc">System</span><span class="o">.</span><span class="na">out</span><span class="o">.</span><span class="na">println</span><span class="o">(</span><span class="n">cookieValue</span><span class="o">);</span>
+ <span class="k">return</span> <span class="s">"success"</span><span class="o">;</span>
+<span class="o">}</span>
+</code></pre></div> </div> <p><img src="https://slienceme.cn/images/posts/20210703155933231.png" alt="Alt Text" /></p> </li> </ol> <h3 id="45-modelattribute注解">4.5 <code class="language-plaintext highlighter-rouge">@ModelAttribute</code>注解</h3> <ol> <li>作用 <ol> <li>出现在方法上：表示当前方法会在控制器方法执行前先执行。</li> <li>出现在参数上：获取指定的数据给参数赋值。</li> </ol> </li> <li>应用场景 <ol> <li>当提交表单数据不是完整的实体数据时，保证没有提交的字段使用数据库原来的数据。</li> </ol> </li> <li> <h2 id="具体的代码">具体的代码</h2> <p>```html</p> </li> </ol> <form action="anno/testModelAttribute" method="post"> 用户姓名：<input type="text" name="uname" /><br /> 用户年龄：<input type="text" name="age" /><br /> <input type="submit" value="提交" /> </form> <div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>1. 修饰的方法有返回值
+
+```java
+/**
+* 作用在方法，先执行
+* @param name
+* @return
+*/
+@ModelAttribute
+public User showUser(String uname) {
+	System.out.println("showUser执行了...");
+	// 模拟从数据库中查询对象
+	User user = new User();
+	user.setUname(uname);
+    user.setAge(20);
+    user.setDate(new Date());
+	return user;
+}
+/**
+* 修改用户的方法
+* @param cookieValue
+* @return
+*/
+@RequestMapping(path="/testModelAttribute")
+public String updateUser(User user) {
+	System.out.println(user);
+	return "success";
+}
+</code></pre></div></div> <ol> <li>修饰的方法没有返回值</li> </ol> <div class="language-java highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="cm">/**
+* 作用在方法，先执行
+* @param name
+* @return
+*/</span>
+<span class="nd">@ModelAttribute</span>
+<span class="kd">public</span> <span class="kt">void</span> <span class="nf">showUser</span><span class="o">(</span><span class="nc">String</span> <span class="n">uname</span><span class="o">,</span><span class="nc">Map</span><span class="o">&lt;</span><span class="nc">String</span><span class="o">,</span> <span class="nc">User</span><span class="o">&gt;</span> <span class="n">map</span><span class="o">)</span> <span class="o">{</span>
+	<span class="nc">System</span><span class="o">.</span><span class="na">out</span><span class="o">.</span><span class="na">println</span><span class="o">(</span><span class="s">"showUser执行了..."</span><span class="o">);</span>
+	<span class="c1">// 模拟从数据库中查询对象</span>
+	<span class="nc">User</span> <span class="n">user</span> <span class="o">=</span> <span class="k">new</span> <span class="nc">User</span><span class="o">();</span>
+	<span class="n">user</span><span class="o">.</span><span class="na">setUname</span><span class="o">(</span><span class="n">uname</span><span class="o">);</span>
+    <span class="n">user</span><span class="o">.</span><span class="na">setAge</span><span class="o">(</span><span class="mi">20</span><span class="o">);</span>
+    <span class="n">user</span><span class="o">.</span><span class="na">setDate</span><span class="o">(</span><span class="k">new</span> <span class="nc">Date</span><span class="o">());</span>
+	<span class="n">map</span><span class="o">.</span><span class="na">put</span><span class="o">(</span><span class="s">"abc"</span><span class="o">,</span> <span class="n">user</span><span class="o">);</span>
+<span class="o">}</span>
+<span class="cm">/**
+* 修改用户的方法
+* @param cookieValue
+* @return
+*/</span>
+<span class="nd">@RequestMapping</span><span class="o">(</span><span class="n">path</span><span class="o">=</span><span class="s">"/testModelAttribute"</span><span class="o">)</span>
+<span class="kd">public</span> <span class="nc">String</span> <span class="nf">updateUser</span><span class="o">(</span><span class="nd">@ModelAttribute</span><span class="o">(</span><span class="n">value</span><span class="o">=</span><span class="s">"abc"</span><span class="o">)</span> <span class="nc">User</span> <span class="n">user</span><span class="o">)</span> <span class="o">{</span>
+	<span class="nc">System</span><span class="o">.</span><span class="na">out</span><span class="o">.</span><span class="na">println</span><span class="o">(</span><span class="n">user</span><span class="o">);</span>
+	<span class="k">return</span> <span class="s">"success"</span><span class="o">;</span>
+<span class="o">}</span>
+</code></pre></div></div> <p><img src="https://slienceme.cn/images/posts/20210703160356508.png" alt="Alt Text" /></p> <h3 id="45-sessionattributes注解">4.5 <code class="language-plaintext highlighter-rouge">@SessionAttributes</code>注解</h3> <ol> <li>作用：用于多次执行控制器方法间的参数共享</li> <li>属性 <ol> <li><code class="language-plaintext highlighter-rouge">value</code>：指定存入属性的名称</li> </ol> </li> <li>代码如下 <div class="language-html highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nt">&lt;a</span> <span class="na">href=</span><span class="s">"anno/testSessionAttributes"</span><span class="nt">&gt;</span>testSessionAttributes<span class="nt">&lt;/a&gt;</span>
+<span class="nt">&lt;a</span> <span class="na">href=</span><span class="s">"anno/getSessionAttributes"</span><span class="nt">&gt;</span>getSessionAttributes<span class="nt">&lt;/a&gt;</span>
+<span class="nt">&lt;a</span> <span class="na">href=</span><span class="s">"anno/delSessionAttributes"</span><span class="nt">&gt;</span>delSessionAttributes<span class="nt">&lt;/a&gt;</span>
+</code></pre></div> </div> <div class="language-java highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nd">@Controller</span>
+<span class="nd">@RequestMapping</span><span class="o">(</span><span class="n">path</span><span class="o">=</span><span class="s">"/user"</span><span class="o">)</span>
+<span class="nd">@SessionAttributes</span><span class="o">(</span><span class="n">value</span><span class="o">={</span><span class="s">"msg"</span><span class="o">})</span>   <span class="c1">// 把msg=美美数据存入到session域对中</span>
+<span class="kd">public</span> <span class="kd">class</span> <span class="nc">HelloController</span> <span class="o">{</span>
+	
+ <span class="cm">/**
+  * 向session中存入值
+  * @return
+  */</span>
+ <span class="nd">@RequestMapping</span><span class="o">(</span><span class="n">value</span><span class="o">=</span><span class="s">"/testSessionAttributes"</span><span class="o">)</span>
+ <span class="kd">public</span> <span class="nc">String</span> <span class="nf">saveSessionAttributes</span><span class="o">(</span><span class="nc">Model</span> <span class="n">model</span><span class="o">){</span>
+     <span class="nc">System</span><span class="o">.</span><span class="na">out</span><span class="o">.</span><span class="na">println</span><span class="o">(</span><span class="s">"saveSessionAttributes..."</span><span class="o">);</span>
+     <span class="c1">// 底层会存储到request域对象中</span>
+     <span class="n">model</span><span class="o">.</span><span class="na">addAttribute</span><span class="o">(</span><span class="s">"msg"</span><span class="o">,</span><span class="s">"美美"</span><span class="o">);</span>
+     <span class="k">return</span> <span class="s">"success"</span><span class="o">;</span>
+ <span class="o">}</span>
+
+ <span class="cm">/**
+  * 从session中获取值
+  * @param modelMap
+  * @return
+  */</span>
+ <span class="nd">@RequestMapping</span><span class="o">(</span><span class="n">value</span><span class="o">=</span><span class="s">"/getSessionAttributes"</span><span class="o">)</span>
+ <span class="kd">public</span> <span class="nc">String</span> <span class="nf">getSessionAttributes</span><span class="o">(</span><span class="nc">ModelMap</span> <span class="n">modelMap</span><span class="o">){</span>
+     <span class="nc">System</span><span class="o">.</span><span class="na">out</span><span class="o">.</span><span class="na">println</span><span class="o">(</span><span class="s">"getSessionAttributes..."</span><span class="o">);</span>
+     <span class="nc">String</span> <span class="n">msg</span> <span class="o">=</span> <span class="o">(</span><span class="nc">String</span><span class="o">)</span> <span class="n">modelMap</span><span class="o">.</span><span class="na">get</span><span class="o">(</span><span class="s">"msg"</span><span class="o">);</span>
+     <span class="nc">System</span><span class="o">.</span><span class="na">out</span><span class="o">.</span><span class="na">println</span><span class="o">(</span><span class="n">msg</span><span class="o">);</span>
+     <span class="k">return</span> <span class="s">"success"</span><span class="o">;</span>
+ <span class="o">}</span>
+
+ <span class="cm">/**
+  * 从session中清除值
+  * @param status
+  * @return
+  */</span>
+ <span class="nd">@RequestMapping</span><span class="o">(</span><span class="n">value</span><span class="o">=</span><span class="s">"/delSessionAttributes"</span><span class="o">)</span>
+ <span class="kd">public</span> <span class="nc">String</span> <span class="nf">delSessionAttributes</span><span class="o">(</span><span class="nc">SessionStatus</span> <span class="n">status</span><span class="o">){</span>
+     <span class="nc">System</span><span class="o">.</span><span class="na">out</span><span class="o">.</span><span class="na">println</span><span class="o">(</span><span class="s">"getSessionAttributes..."</span><span class="o">);</span>
+     <span class="n">status</span><span class="o">.</span><span class="na">setComplete</span><span class="o">();</span>
+     <span class="k">return</span> <span class="s">"success"</span><span class="o">;</span>
+ <span class="o">}</span>
+<span class="o">}</span>
+</code></pre></div> </div> </li> </ol> <div style="margin-top:2em;padding:0 1.5em;border:1px solid #d3d3d3;background-color:#deebf7"> <h3>文档信息</h3> <ul> <li>本文作者：<a href="https://slienceme.cn" target="_blank">slience_me</a></li> <li>本文链接：<a href="https://slienceme.cn/2021/07/03/Springmvc%E7%8E%AF%E5%A2%83%E6%90%AD%E5%BB%BA&%E8%AF%B7%E6%B1%82%E5%8F%82%E6%95%B0%E7%BB%91%E5%AE%9A&%E5%B8%B8%E7%94%A8%E6%B3%A8%E8%A7%A3/" target="_blank">https://slienceme.cn/2021/07/03/Springmvc%E7%8E%AF%E5%A2%83%E6%90%AD%E5%BB%BA&%E8%AF%B7%E6%B1%82%E5%8F%82%E6%95%B0%E7%BB%91%E5%AE%9A&%E5%B8%B8%E7%94%A8%E6%B3%A8%E8%A7%A3/</a></li> <li>版权声明：自由转载-非商用-非衍生-保持署名（<a href="http://creativecommons.org/licenses/by-nc-nd/3.0/deed.zh" target="_blank">创意共享3.0许可证</a>）</li> </ul> </div> </article> <div class="share"> <div class="share-component" data-disabled='qq,facebook'></div> </div> <div class="comment"> <script src="https://giscus.app/client.js" data-repo="slience-me/blog-comments" data-repo-id="MDEwOlJlcG9zaXRvcnk5MzEyNzkxNw==" data-category="Announcements" data-category-id="DIC_kwDOBY0E7c4CRtg9" data-mapping="title" data-strict="1" data-reactions-enabled="1" data-emit-metadata="0" data-input-position="top" data-theme="light" data-lang="zh-CN" data-loading="lazy" crossorigin="anonymous" async> </script> </div> </div> <div class="column one-fourth"> <h3>Search</h3> <div id="site_search"> <input style="width:96%" type="text" id="search_box" placeholder="Search"> </div> <ul id="search_results" style="font-size:14px;list-style-type:none;padding-top:10px;padding-left:10px;"></ul> <script src="https://slienceme.cn/assets/js/simple-jekyll-search.min.js"></script> <script type="text/javascript"> SimpleJekyllSearch({ searchInput: document.getElementById('search_box'), resultsContainer: document.getElementById('search_results'), json: 'https://slienceme.cn/assets/search_data.json?v=1736474001', searchResultTemplate: '<li><a href="{url}" title="{title}">{title}</a></li>', noResultsText: 'No results found', limit: 10, fuzzy: false, exclude: ['Welcome'] }) </script> <h3 class="post-directory-title mobile-hidden">Table of Contents</h3> <div id="post-directory-module" class="mobile-hidden"> <section class="post-directory"> <dl></dl> </section> </div> <script src="https://slienceme.cn/assets/js/jquery.toc.js"></script> </div> </div> </section> <footer class="container"> <div class="site-footer" role="contentinfo"> <div class="copyright left mobile-block"> Copyright@ 2019-2025 slience_me 版权所有&emsp; <img src="/images/logo/logo.png" class="w-full" style="width: 12px;"> <a href="https://beian.mps.gov.cn/#/query/webSearch?code=13102202000626" rel="noreferrer" target="_blank">冀公网安备13102202000626</a>&emsp; <a href="https://beian.miit.gov.cn/#/Integrated/index" target="_blank" rel="noreferrer">津ICP备2024026565号-1</a> <a href="javascript:window.scrollTo(0,0)" class="right mobile-visible">TOP</a> </div> <ul class="site-footer-links right mobile-hidden"> <li> <a href="javascript:window.scrollTo(0,0)" >TOP</a> </li> </ul> <br/> <script async src="https://slienceme.cn/assets/vendor/busuanzi/2.3/busuanzi.pure.mini.js"></script> <div class="mobile-hidden" style="margin-top:8px"> <span id="busuanzi_container_site_pv" style="display:none"> 本站访问量<span id="busuanzi_value_site_pv"></span>次 </span> <span id="busuanzi_container_site_uv" style="display:none"> / 本站访客数<span id="busuanzi_value_site_uv"></span>人 </span> <span id="busuanzi_container_page_pv" style="display:none"> / 本页访问量<span id="busuanzi_value_page_pv"></span>次 / 统计始于2024-12-01 </span> </div> </div> </footer> <div class="tools-wrapper"> <a class="gotop" href="#" title="回到顶部"><span class="octicon octicon-arrow-up"></span></a> </div> <script src="https://slienceme.cn/assets/vendor/share.js/dist/js/share.min.js"></script> <script src="https://slienceme.cn/assets/js/geopattern.js"></script> <script> jQuery(document).ready(function($) { $('.geopattern').each(function(){ $(this).geopattern($(this).data('pattern-id')); }); /* hljs.initHighlightingOnLoad(); */ }); </script> </body> </html>

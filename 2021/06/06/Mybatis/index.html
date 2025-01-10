@@ -1,0 +1,172 @@
+<!DOCTYPE html> <html lang="zh-cmn-Hans" prefix="og: http://ogp.me/ns#" class="han-init"> <head> <meta charset="utf-8"> <meta http-equiv="X-UA-Compatible" content="IE=edge"> <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1" /> <title>Java｜Mybatis框架 &mdash; Slience_me的博客</title> <link rel="stylesheet" href="https://slienceme.cn/assets/vendor/primer-css/css/primer.css"> <link rel="stylesheet" href="https://slienceme.cn/assets/css/components/collection.css"> <link rel="stylesheet" href="https://slienceme.cn/assets/css/components/repo-card.css"> <link rel="stylesheet" href="https://slienceme.cn/assets/css/sections/repo-list.css"> <link rel="stylesheet" href="https://slienceme.cn/assets/css/components/boxed-group.css"> <link rel="stylesheet" href="https://slienceme.cn/assets/css/globals/common.css"> <link rel="stylesheet" href="https://slienceme.cn/assets/css/globals/responsive.css"> <link rel="stylesheet" href="https://slienceme.cn/assets/css/posts/index.css"> <link rel="stylesheet" href="https://slienceme.cn/assets/vendor/octicons/octicons/octicons.css"> <link rel="stylesheet" href="https://mazhuang.org/rouge-themes/dist/github.css"> <link rel="stylesheet" href="https://slienceme.cn/assets/vendor/share.js/dist/css/share.min.css"> <link rel="canonical" href="https://slienceme.cn/2021/06/06/Mybatis/"> <link rel="alternate" type="application/atom+xml" title="Slience_me的博客" href="https://slienceme.cn/feed.xml"> <link rel="shortcut icon" href="https://slienceme.cn/favicon.ico"> <meta property="og:title" content="Java｜Mybatis框架"> <meta name="keywords" content="编程语言, Java"> <meta name="og:keywords" content="编程语言, Java"> <meta name="description" content="mybatis框架1 简介1.1 什么是框架？ 它是我们软件开发中的一套解决方案，不同的框架解决的是不同的问题。"> <meta name="og:description" content="mybatis框架1 简介1.1 什么是框架？ 它是我们软件开发中的一套解决方案，不同的框架解决的是不同的问题。"> <meta property="og:url" content="https://slienceme.cn/2021/06/06/Mybatis/"> <meta property="og:site_name" content="Slience_me的博客"> <meta property="og:type" content="article"> <meta property="og:locale" content="zh_CN" /> <meta property="article:published_time" content="2021-06-06"> <meta name="google-site-verification" content="2feHjT1GNs1Yi2JQfOtdYx7d048naG_-cMwZaDAopIA" /> <script src="https://slienceme.cn/assets/vendor/jquery/dist/jquery.min.js"></script> <script src="https://slienceme.cn/assets/js/main.js"></script> </head> <body class="" data-mz=""> <header class="site-header"> <div class="container"> <h1><a href="https://slienceme.cn/" title="Slience_me的博客"><span class="octicon octicon-mark-github"></span> Slience_me的博客</a></h1> <button class="collapsed mobile-visible" type="button" onclick="toggleMenu();"> <span class="icon-bar"></span> <span class="icon-bar"></span> <span class="icon-bar"></span> </button> <nav class="site-header-nav" role="navigation"> <a href="https://slienceme.cn/" class="site-header-nav-item" target="" title="首页">首页</a> <a href="https://slienceme.cn/categories/" class="site-header-nav-item" target="" title="分类">分类</a> <a href="https://slienceme.cn/archives/" class="mobile-hidden site-header-nav-item" target="" title="归档">归档</a> <a href="https://slienceme.cn/open-source/" class="mobile-hidden site-header-nav-item" target="" title="开源">开源</a> <a href="https://slienceme.cn/fragments/" class="site-header-nav-item" target="" title="片段">片段</a> <a href="https://slienceme.cn/wiki/" class="site-header-nav-item" target="" title="维基">维基</a> <a href="https://slienceme.cn/links/" class="mobile-hidden site-header-nav-item" target="" title="链接">链接</a> <a href="https://slienceme.cn/about/" class="site-header-nav-item" target="" title="关于">关于</a> <a class="mobile-hidden" href="https://slienceme.cn/feed.xml"><span class="octicon octicon-rss" style="color:orange;"></span></a> </nav> </div> </header> <section class="collection-head small geopattern" data-pattern-id="Java｜Mybatis框架"> <div class="container"> <div class="columns"> <div class="column three-fourths"> <div class="collection-title"> <h1 class="collection-header">Java｜Mybatis框架</h1> <div class="collection-info"> <span class="meta-info"> <span class="octicon octicon-calendar"></span> 2021/06/06 </span> <span class="meta-info"> <span class="octicon octicon-file-directory"></span> <a href="https://slienceme.cn/categories/#Java" title="Java">Java</a> </span> <span class="meta-info"> <span class="octicon octicon-clock"></span> 共 4219 字，约 13 分钟 </span> </div> </div> </div> <div class="column one-fourth mobile-hidden"> <div class="collection-title"> </div> </div> </div> </div> </section> <section class="container content"> <div class="columns"> <div class="column three-fourths" > <article class="article-content markdown-body"> <h1 id="mybatis框架">mybatis框架</h1> <h2 id="1-简介">1 简介</h2> <h3 id="11-什么是框架">1.1 什么是框架？</h3> <blockquote> <p>它是我们软件开发中的一套解决方案，不同的框架解决的是不同的问题。</p> </blockquote> <blockquote> <p>使用框架的好处：</p> </blockquote> <blockquote> <div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>框架封装了很多的细节，使开发者可以使用极简的方式实现功能。大大提高开发效率。
+</code></pre></div> </div> </blockquote> <h3 id="12三层架构">1.2三层架构</h3> <div class="language-java highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">表现层</span><span class="err">：</span>
+	<span class="n">是用于展示数据的</span>
+<span class="n">业务层</span><span class="err">：</span>
+	<span class="n">是处理业务需求</span>
+<span class="n">持久层</span><span class="err">：</span>
+	<span class="n">是和数据库交互的</span>
+</code></pre></div></div> <h3 id="13-持久层技术解决方案">1.3 持久层技术解决方案</h3> <div class="language-java highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nc">JDBC技术</span><span class="err">：</span>
+	<span class="nc">Connection</span>
+	<span class="nc">PreparedStatement</span>
+	<span class="nc">ResultSet</span>
+<span class="nc">Spring的JdbcTemplate</span><span class="err">：</span>
+	<span class="nc">Spring中对jdbc的简单封装</span>
+<span class="nc">Apache的DBUtils</span><span class="err">：</span>
+	<span class="n">它和Spring的JdbcTemplate很像</span><span class="err">，</span><span class="n">也是对Jdbc的简单封装</span>
+</code></pre></div></div> <div class="language-java highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">以上这些都不是框架</span>
+
+	<span class="nc">JDBC是规范</span>
+	<span class="nc">Spring的JdbcTemplate和Apache的DBUtils都只是工具类</span>
+</code></pre></div></div> <h3 id="14-mybatis的概述">1.4 mybatis的概述</h3> <div class="language-java highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">mybatis是一个持久层框架</span><span class="err">，</span><span class="n">用java编写的</span><span class="err">。</span>
+<span class="n">它封装了jdbc操作的很多细节</span><span class="err">，</span><span class="n">使开发者只需要关注sql语句本身</span><span class="err">，</span><span class="n">而无需关注注册驱动</span><span class="err">，</span><span class="n">创建连接等繁杂过程</span>
+<span class="n">它使用了ORM思想实现了结果集的封装</span><span class="err">。</span>
+
+<span class="no">ORM</span><span class="err">：</span>
+	<span class="nc">Object</span> <span class="nc">Relational</span> <span class="nc">Mappging</span> <span class="n">对象关系映射</span>
+	
+	<span class="n">简单的说</span><span class="err">：</span>
+		<span class="n">就是把数据库表和实体类及实体类的属性对应起来</span>
+		<span class="n">让我们可以操作实体类就实现操作数据库表</span><span class="err">。</span>
+
+		<span class="n">user</span>			<span class="nc">User</span>
+		<span class="n">id</span>			    <span class="n">userId</span>
+		<span class="n">user_name</span>		<span class="n">userName</span>
+
+	<span class="n">实体类中的属性和数据库表的字段名称保持一致</span><span class="err">。</span>
+		<span class="n">user</span>			<span class="nc">User</span>
+		<span class="n">id</span>			    <span class="n">id</span>
+		<span class="n">user_name</span>		<span class="n">user_name</span>
+</code></pre></div></div> <h3 id="15-mybatis的入门">1.5 mybatis的入门</h3><pre><code class="language-Java">mybatis的环境搭建
+	第一步：创建maven工程并导入坐标
+	第二步：创建实体类和dao的接口
+	第三步：创建Mybatis的主配置文件 SqlMapConifg.xml
+	第四步：创建映射配置文件   IUserDao.xml
+</code></pre><div class="language-java highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">环境搭建的注意事项</span><span class="err">：</span>
+<span class="n">第一个</span><span class="err">：</span><span class="n">创建IUserDao</span><span class="o">.</span><span class="na">xml</span> <span class="n">和</span> <span class="nc">IUserDao</span><span class="o">.</span><span class="na">java时名称是为了和我们之前的知识保持一致</span><span class="err">。</span>
+	<span class="n">在Mybatis中它把持久层的操作接口名称和映射文件也叫做</span><span class="err">：</span><span class="nc">Mapper</span>
+	<span class="n">所以</span><span class="err">：</span><span class="nc">IUserDao</span> <span class="n">和</span> <span class="nc">IUserMapper是一样的</span>
+<span class="n">第二个</span><span class="err">：</span><span class="n">在idea中创建目录的时候</span><span class="err">，</span><span class="n">它和包是不一样的</span>
+	<span class="n">包在创建时</span><span class="err">：</span><span class="n">com</span><span class="o">.</span><span class="na">itheima</span><span class="o">.</span><span class="na">dao它是三级结构</span>
+	<span class="n">目录在创建时</span><span class="err">：</span><span class="n">com</span><span class="o">.</span><span class="na">itheima</span><span class="o">.</span><span class="na">dao是一级目录</span>
+<span class="n">第三个</span><span class="err">：</span><span class="n">mybatis的映射配置文件位置必须和dao接口的包结构相同</span>
+<span class="n">第四个</span><span class="err">：</span><span class="n">映射配置文件的mapper标签namespace属性的取值必须是dao接口的全限定类名</span>
+<span class="n">第五个</span><span class="err">：</span><span class="n">映射配置文件的操作配置</span><span class="err">（</span><span class="n">select</span><span class="err">），</span><span class="n">id属性的取值必须是dao接口的方法名</span>
+
+<span class="n">当我们遵从了第三</span><span class="err">，</span><span class="n">四</span><span class="err">，</span><span class="n">五点之后</span><span class="err">，</span><span class="n">我们在开发中就无须再写dao的实现类</span><span class="err">。</span>
+</code></pre></div></div> <div class="language-java highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">mybatis的入门案例</span>
+	<span class="n">第一步</span><span class="err">：</span><span class="n">读取配置文件</span>
+	<span class="n">第二步</span><span class="err">：</span><span class="n">创建SqlSessionFactory工厂</span>
+	<span class="n">第三步</span><span class="err">：</span><span class="n">创建SqlSession</span>
+	<span class="n">第四步</span><span class="err">：</span><span class="n">创建Dao接口的代理对象</span>
+	<span class="n">第五步</span><span class="err">：</span><span class="n">执行dao中的方法</span>
+	<span class="n">第六步</span><span class="err">：</span><span class="n">释放资源</span>
+
+	<span class="n">注意事项</span><span class="err">：</span>
+		<span class="n">不要忘记在映射配置中告知mybatis要封装到哪个实体类中</span>
+		<span class="n">配置的方式</span><span class="err">：</span><span class="n">指定实体类的全限定类名</span>
+
+<span class="n">mybatis基于注解的入门案例</span><span class="err">：</span>
+	<span class="n">把IUserDao</span><span class="o">.</span><span class="na">xml移除</span><span class="err">，</span><span class="n">在dao接口的方法上使用</span><span class="nd">@Select注解</span><span class="err">，</span><span class="n">并且指定SQL语句</span>
+	<span class="n">同时需要在SqlMapConfig</span><span class="o">.</span><span class="na">xml中的mapper配置时</span><span class="err">，</span><span class="n">使用class属性指定dao接口的全限定类名</span><span class="err">。</span>
+	<span class="n">明确</span><span class="err">：</span>
+		<span class="n">我们在实际开发中</span><span class="err">，</span><span class="n">都是越简便越好</span><span class="err">，</span><span class="n">所以都是采用不写dao实现类的方式</span><span class="err">。</span>
+		<span class="n">不管使用XML还是注解配置</span><span class="err">。</span>
+		<span class="n">但是Mybatis它是支持写dao实现类的</span><span class="err">。</span>
+</code></pre></div></div> <h3 id="16-自定义mybatis的分析">1.6 自定义Mybatis的分析：</h3> <div class="language-java highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">mybatis在使用代理dao的方式实现增删改查时做什么事呢</span><span class="err">？</span>
+	<span class="n">只有两件事</span><span class="err">：</span>
+		<span class="n">第一</span><span class="err">：</span><span class="n">创建代理对象</span>
+		<span class="n">第二</span><span class="err">：</span><span class="n">在代理对象中调用selectList</span>
+		
+<span class="n">自定义mybatis能通过入门案例看到类</span>
+	<span class="kd">class</span> <span class="nc">Resources</span>
+	<span class="kd">class</span> <span class="nc">SqlSessionFactoryBuilder</span>
+	<span class="kd">interface</span> <span class="nc">SqlSessionFactory</span>
+	<span class="kd">interface</span> <span class="nc">SqlSession</span>
+</code></pre></div></div> <h2 id="2-mybatis使用">2 Mybatis使用</h2> <p><img src="https://slienceme.cn/images/posts/20210606150546338.png" alt="Alt Text" /></p> <h3 id="21-基本">2.1 基本</h3> <div class="language-xml highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="cp">&lt;?xml version="1.0" encoding="UTF-8"?&gt;</span>
+<span class="cp">&lt;!DOCTYPE configuration
+        PUBLIC "-//mybatis.org//DTD Config 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-config.dtd"&gt;</span>
+<span class="nt">&lt;configuration&gt;</span>
+    <span class="c">&lt;!--配置环境--&gt;</span>
+    <span class="nt">&lt;environments</span> <span class="na">default=</span><span class="s">"mysql"</span><span class="nt">&gt;</span>
+        <span class="c">&lt;!--配置mysql的环境--&gt;</span>
+        <span class="nt">&lt;environment</span> <span class="na">id=</span><span class="s">"mysql"</span><span class="nt">&gt;</span>
+        <span class="c">&lt;!--配置事物的类型--&gt;</span>
+            <span class="nt">&lt;transactionManager</span> <span class="na">type=</span><span class="s">"JDBC"</span><span class="nt">&gt;&lt;/transactionManager&gt;</span>
+            <span class="c">&lt;!-- 配置数据源(连接池) --&gt;</span>
+            <span class="nt">&lt;dataSource</span> <span class="na">type=</span><span class="s">"POOLED"</span><span class="nt">&gt;</span>
+                <span class="c">&lt;!--配置连接数据库的4个基本信息--&gt;</span>
+                <span class="nt">&lt;property</span> <span class="na">name=</span><span class="s">"driver"</span> <span class="na">value=</span><span class="s">"com.mysql.cj.jdbc.Driver"</span><span class="nt">/&gt;</span>
+                <span class="nt">&lt;property</span> <span class="na">name=</span><span class="s">"url"</span> <span class="na">value=</span><span class="s">"jdbc:mysql://localhost:3306/eesy_mybatis"</span><span class="nt">/&gt;</span>
+                <span class="nt">&lt;property</span> <span class="na">name=</span><span class="s">"username"</span> <span class="na">value=</span><span class="s">"root"</span><span class="nt">/&gt;</span>
+                <span class="nt">&lt;property</span> <span class="na">name=</span><span class="s">"password"</span> <span class="na">value=</span><span class="s">"********8XX"</span><span class="nt">/&gt;</span>
+            <span class="nt">&lt;/dataSource&gt;</span>
+        <span class="nt">&lt;/environment&gt;</span>
+    <span class="nt">&lt;/environments&gt;</span>
+<span class="c">&lt;!--    指定映射配置文件的位置，映射配置文件指的是每个dao独立的配置文件--&gt;</span>
+    <span class="nt">&lt;mappers&gt;</span>
+        <span class="nt">&lt;mapper</span> <span class="na">resource=</span><span class="s">"xyz/slienceme/dao/IUserDao.xml"</span><span class="nt">/&gt;</span>
+    <span class="nt">&lt;/mappers&gt;</span>
+<span class="nt">&lt;/configuration&gt;</span>
+</code></pre></div></div> <div class="language-xml highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="cp">&lt;?xml version="1.0" encoding="UTF-8"?&gt;</span>
+<span class="cp">&lt;!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd"&gt;</span>
+
+<span class="nt">&lt;mapper</span> <span class="na">namespace=</span><span class="s">"xyz.slienceme.dao.IUserDao"</span><span class="nt">&gt;</span>
+    <span class="c">&lt;!--配置查询所有--&gt;</span>
+    <span class="nt">&lt;select</span> <span class="na">id=</span><span class="s">"findAll"</span> <span class="na">resultType=</span><span class="s">"xyz.slienceme.domain.User"</span><span class="nt">&gt;</span>
+        select * from user
+    <span class="nt">&lt;/select&gt;</span>
+<span class="nt">&lt;/mapper&gt;</span>
+</code></pre></div></div> <h3 id="22-简化">2.2 简化</h3> <div class="language-java highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kn">package</span> <span class="nn">xyz.slienceme.dao</span><span class="o">;</span>
+<span class="kn">import</span> <span class="nn">org.apache.ibatis.annotations.Select</span><span class="o">;</span>
+<span class="kn">import</span> <span class="nn">xyz.slienceme.domain.User</span><span class="o">;</span>
+
+<span class="kn">import</span> <span class="nn">java.util.List</span><span class="o">;</span>
+<span class="cm">/**
+ * @Author Song
+ * @Time : 2021/6/4  15:55
+ * @File : IUserDao.java
+ * @Software : IntelliJ IDEA
+ *
+ * 用户的持久层接口
+ */</span>
+<span class="kd">public</span> <span class="kd">interface</span> <span class="nc">IUserDao</span> <span class="o">{</span>
+    <span class="cm">/**
+     * 查询所有操作
+     * @return
+     */</span>
+    <span class="nd">@Select</span><span class="o">(</span><span class="s">"select * from user"</span><span class="o">)</span>
+    <span class="nc">List</span><span class="o">&lt;</span><span class="nc">User</span><span class="o">&gt;</span> <span class="nf">findAll</span><span class="o">();</span>
+<span class="o">}</span>
+</code></pre></div></div> <div class="language-xml highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="cp">&lt;?xml version="1.0" encoding="UTF-8"?&gt;</span>
+<span class="cp">&lt;!DOCTYPE configuration
+        PUBLIC "-//mybatis.org//DTD Config 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-config.dtd"&gt;</span>
+<span class="c">&lt;!-- mybatis的主配置文件 --&gt;</span>
+<span class="nt">&lt;configuration&gt;</span>
+    <span class="c">&lt;!--配置环境--&gt;</span>
+    <span class="nt">&lt;environments</span> <span class="na">default=</span><span class="s">"mysql"</span><span class="nt">&gt;</span>
+        <span class="c">&lt;!--配置mysql的环境--&gt;</span>
+        <span class="nt">&lt;environment</span> <span class="na">id=</span><span class="s">"mysql"</span><span class="nt">&gt;</span>
+        <span class="c">&lt;!--配置事物的类型--&gt;</span>
+            <span class="nt">&lt;transactionManager</span> <span class="na">type=</span><span class="s">"JDBC"</span><span class="nt">&gt;&lt;/transactionManager&gt;</span>
+            <span class="c">&lt;!-- 配置数据源(连接池) --&gt;</span>
+            <span class="nt">&lt;dataSource</span> <span class="na">type=</span><span class="s">"POOLED"</span><span class="nt">&gt;</span>
+                <span class="c">&lt;!--配置连接数据库的4个基本信息--&gt;</span>
+                <span class="nt">&lt;property</span> <span class="na">name=</span><span class="s">"driver"</span> <span class="na">value=</span><span class="s">"com.mysql.cj.jdbc.Driver"</span><span class="nt">/&gt;</span>
+                <span class="nt">&lt;property</span> <span class="na">name=</span><span class="s">"url"</span> <span class="na">value=</span><span class="s">"jdbc:mysql://localhost:3306/eesy_mybatis"</span><span class="nt">/&gt;</span>
+                <span class="nt">&lt;property</span> <span class="na">name=</span><span class="s">"username"</span> <span class="na">value=</span><span class="s">"root"</span><span class="nt">/&gt;</span>
+                <span class="nt">&lt;property</span> <span class="na">name=</span><span class="s">"password"</span> <span class="na">value=</span><span class="s">"********8XX"</span><span class="nt">/&gt;</span>
+            <span class="nt">&lt;/dataSource&gt;</span>
+        <span class="nt">&lt;/environment&gt;</span>
+    <span class="nt">&lt;/environments&gt;</span>
+<span class="c">&lt;!--    指定映射配置文件的位置，映射配置文件指的是每个dao独立的配置文件
+        如果是用注解来配置的话，此处应该使用class属性指定被注解的dao全限定类名
+--&gt;</span>
+    <span class="nt">&lt;mappers&gt;</span>
+        <span class="nt">&lt;mapper</span> <span class="na">class=</span><span class="s">"xyz.slienceme.dao.IUserDao"</span><span class="nt">/&gt;</span>
+    <span class="nt">&lt;/mappers&gt;</span>
+<span class="nt">&lt;/configuration&gt;</span>
+</code></pre></div></div> <p><img src="https://slienceme.cn/images/posts/20210606151721892.png" alt="Alt Text" /></p> <div style="margin-top:2em;padding:0 1.5em;border:1px solid #d3d3d3;background-color:#deebf7"> <h3>文档信息</h3> <ul> <li>本文作者：<a href="https://slienceme.cn" target="_blank">slience_me</a></li> <li>本文链接：<a href="https://slienceme.cn/2021/06/06/Mybatis/" target="_blank">https://slienceme.cn/2021/06/06/Mybatis/</a></li> <li>版权声明：自由转载-非商用-非衍生-保持署名（<a href="http://creativecommons.org/licenses/by-nc-nd/3.0/deed.zh" target="_blank">创意共享3.0许可证</a>）</li> </ul> </div> </article> <div class="share"> <div class="share-component" data-disabled='qq,facebook'></div> </div> <div class="comment"> <script src="https://giscus.app/client.js" data-repo="slience-me/blog-comments" data-repo-id="MDEwOlJlcG9zaXRvcnk5MzEyNzkxNw==" data-category="Announcements" data-category-id="DIC_kwDOBY0E7c4CRtg9" data-mapping="title" data-strict="1" data-reactions-enabled="1" data-emit-metadata="0" data-input-position="top" data-theme="light" data-lang="zh-CN" data-loading="lazy" crossorigin="anonymous" async> </script> </div> </div> <div class="column one-fourth"> <h3>Search</h3> <div id="site_search"> <input style="width:96%" type="text" id="search_box" placeholder="Search"> </div> <ul id="search_results" style="font-size:14px;list-style-type:none;padding-top:10px;padding-left:10px;"></ul> <script src="https://slienceme.cn/assets/js/simple-jekyll-search.min.js"></script> <script type="text/javascript"> SimpleJekyllSearch({ searchInput: document.getElementById('search_box'), resultsContainer: document.getElementById('search_results'), json: 'https://slienceme.cn/assets/search_data.json?v=1736474000', searchResultTemplate: '<li><a href="{url}" title="{title}">{title}</a></li>', noResultsText: 'No results found', limit: 10, fuzzy: false, exclude: ['Welcome'] }) </script> <h3 class="post-directory-title mobile-hidden">Table of Contents</h3> <div id="post-directory-module" class="mobile-hidden"> <section class="post-directory"> <dl></dl> </section> </div> <script src="https://slienceme.cn/assets/js/jquery.toc.js"></script> </div> </div> </section> <footer class="container"> <div class="site-footer" role="contentinfo"> <div class="copyright left mobile-block"> Copyright@ 2019-2025 slience_me 版权所有&emsp; <img src="/images/logo/logo.png" class="w-full" style="width: 12px;"> <a href="https://beian.mps.gov.cn/#/query/webSearch?code=13102202000626" rel="noreferrer" target="_blank">冀公网安备13102202000626</a>&emsp; <a href="https://beian.miit.gov.cn/#/Integrated/index" target="_blank" rel="noreferrer">津ICP备2024026565号-1</a> <a href="javascript:window.scrollTo(0,0)" class="right mobile-visible">TOP</a> </div> <ul class="site-footer-links right mobile-hidden"> <li> <a href="javascript:window.scrollTo(0,0)" >TOP</a> </li> </ul> <br/> <script async src="https://slienceme.cn/assets/vendor/busuanzi/2.3/busuanzi.pure.mini.js"></script> <div class="mobile-hidden" style="margin-top:8px"> <span id="busuanzi_container_site_pv" style="display:none"> 本站访问量<span id="busuanzi_value_site_pv"></span>次 </span> <span id="busuanzi_container_site_uv" style="display:none"> / 本站访客数<span id="busuanzi_value_site_uv"></span>人 </span> <span id="busuanzi_container_page_pv" style="display:none"> / 本页访问量<span id="busuanzi_value_page_pv"></span>次 / 统计始于2024-12-01 </span> </div> </div> </footer> <div class="tools-wrapper"> <a class="gotop" href="#" title="回到顶部"><span class="octicon octicon-arrow-up"></span></a> </div> <script src="https://slienceme.cn/assets/vendor/share.js/dist/js/share.min.js"></script> <script src="https://slienceme.cn/assets/js/geopattern.js"></script> <script> jQuery(document).ready(function($) { $('.geopattern').each(function(){ $(this).geopattern($(this).data('pattern-id')); }); /* hljs.initHighlightingOnLoad(); */ }); </script> </body> </html>

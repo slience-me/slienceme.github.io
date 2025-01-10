@@ -1,0 +1,1737 @@
+<?xml version="1.0" encoding="utf-8"?><feed xmlns="http://www.w3.org/2005/Atom" ><generator uri="https://jekyllrb.com/" version="3.10.0">Jekyll</generator><link href="https://slienceme.cn/feed.xml" rel="self" type="application/atom+xml" /><link href="https://slienceme.cn/" rel="alternate" type="text/html" /><updated>2025-01-10T09:53:17+08:00</updated><id>https://slienceme.cn/feed.xml</id><title type="html">Slience_me的博客</title><subtitle>slience_me的个人博客</subtitle><author><name>slience_me</name></author><entry><title type="html">Linux｜服务器系统重装&amp;amp;SSH&amp;amp;xrdp&amp;amp;CUDA</title><link href="https://slienceme.cn/2024/10/24/%E6%9C%8D%E5%8A%A1%E5%99%A8%E7%B3%BB%E7%BB%9F%E9%87%8D%E8%A3%85&SSH&xrdp&cuda/" rel="alternate" type="text/html" title="Linux｜服务器系统重装&amp;amp;SSH&amp;amp;xrdp&amp;amp;CUDA" /><published>2024-10-24T00:00:00+08:00</published><updated>2024-10-24T00:00:00+08:00</updated><id>https://slienceme.cn/2024/10/24/%E6%9C%8D%E5%8A%A1%E5%99%A8%E7%B3%BB%E7%BB%9F%E9%87%8D%E8%A3%85&amp;SSH&amp;xrdp&amp;cuda</id><content type="html" xml:base="https://slienceme.cn/2024/10/24/%E6%9C%8D%E5%8A%A1%E5%99%A8%E7%B3%BB%E7%BB%9F%E9%87%8D%E8%A3%85&amp;SSH&amp;xrdp&amp;cuda/"><![CDATA[<p><img src="https://i-blog.csdnimg.cn/blog_migrate/e9a9ce64f17b96904b03f129f0317e3d.png" alt="在这里插入图片描述" /></p>
+
+<p>本文作者： <a href="https://slienceme.cn/">slience_me</a></p>
+
+<hr />
+<h1 id="ubuntu系统重装操作合集">Ubuntu系统重装操作合集</h1>
+
+<hr />
+
+<h2 id="11-系统安装">1.1 系统安装：</h2>
+
+<p>https://blog.csdn.net/Flag_ing/article/details/121908340</p>
+
+<p>/boot : 1G 1024MB  主分区。系统的boot启动引导项安装位置</p>
+
+<p>efi: 1G  主分区</p>
+
+<p>/  : 剩余    主分区。根目录，所有目录的根节点，其下包含很多子目录，如/usr  /tmp等</p>
+
+<p>/home :  2T   逻辑分区。一般放置自己的数据</p>
+
+<p>swap : 64G 65536MB   逻辑分区。交换空间，一般是物理内存的1~2倍就行了</p>
+
+<hr />
+
+<h2 id="12-安装openssh-server">1.2 安装openssh-server</h2>
+
+<blockquote>
+  <p>在Ubuntu上安装和配置SSH服务器非常简单。以下是详细的步骤：</p>
+
+  <h3 id="更新系统包">更新系统包</h3>
+
+  <p>在安装任何新软件之前，最好更新现有的软件包，以确保你获得最新的版本。打开终端并运行以下命令：</p>
+
+  <div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nb">sudo </span>apt update
+</code></pre></div>  </div>
+
+  <h3 id="安装openssh服务器">安装OpenSSH服务器</h3>
+
+  <p>Ubuntu使用<code class="language-plaintext highlighter-rouge">openssh-server</code>作为SSH服务器。可以使用以下命令进行安装：</p>
+
+  <div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nb">sudo </span>apt <span class="nb">install </span>openssh-server
+</code></pre></div>  </div>
+
+  <h3 id="检查ssh服务的状态">检查SSH服务的状态</h3>
+
+  <p>安装完成后，可以检查SSH服务是否正在运行：</p>
+
+  <div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nb">sudo </span>systemctl status ssh
+</code></pre></div>  </div>
+
+  <p>如果显示类似以下内容，说明SSH服务器已成功启动并正在运行：</p>
+
+  <div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>● ssh.service - OpenBSD Secure Shell server
+  Loaded: loaded (/lib/systemd/system/ssh.service; enabled; vendor preset: enabled)
+  Active: active (running) since ...
+</code></pre></div>  </div>
+
+  <p>如果SSH服务未运行，可以使用以下命令启动它：</p>
+
+  <div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nb">sudo </span>systemctl start ssh
+</code></pre></div>  </div>
+
+  <p>要确保每次启动系统时SSH自动启动，可以使用：</p>
+
+  <div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nb">sudo </span>systemctl <span class="nb">enable </span>ssh
+</code></pre></div>  </div>
+
+  <h3 id="配置防火墙以允许ssh">配置防火墙以允许SSH</h3>
+
+  <p>如果你使用<code class="language-plaintext highlighter-rouge">ufw</code>防火墙，可能需要显式允许SSH流量。运行以下命令：</p>
+
+  <div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nb">sudo </span>ufw allow ssh
+</code></pre></div>  </div>
+
+  <h3 id="测试ssh连接">测试SSH连接</h3>
+
+  <p>在本地计算机或其他设备上，可以通过以下命令测试连接到你的Ubuntu系统：</p>
+
+  <div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code>ssh username@server_ip_address
+</code></pre></div>  </div>
+
+  <p>将<code class="language-plaintext highlighter-rouge">username</code>替换为Ubuntu系统的用户名，将<code class="language-plaintext highlighter-rouge">server_ip_address</code>替换为该系统的IP地址。</p>
+
+  <p>你可以通过以下命令查找服务器的IP地址：</p>
+
+  <div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code>ip a
+</code></pre></div>  </div>
+
+  <h3 id="配置ssh可选">配置SSH（可选）</h3>
+
+  <p>默认情况下，SSH配置文件位于<code class="language-plaintext highlighter-rouge">/etc/ssh/sshd_config</code>。可以通过编辑该文件来更改默认设置，例如修改默认的SSH端口、禁用密码认证、启用密钥认证等。</p>
+
+  <p>编辑文件：</p>
+
+  <div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nb">sudo </span>nano /etc/ssh/sshd_config
+</code></pre></div>  </div>
+
+  <p>修改后，重新加载SSH服务以应用更改：</p>
+
+  <div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nb">sudo </span>systemctl restart ssh
+</code></pre></div>  </div>
+
+  <p>至此，Ubuntu上的SSH服务器已经成功安装并运行。</p>
+</blockquote>
+
+<h2 id="13-安装远程连接桌面">1.3 安装远程连接桌面</h2>
+
+<blockquote>
+  <p>在Ubuntu上安装并配置远程桌面可以通过多种方式实现，最常见的选项是使用<code class="language-plaintext highlighter-rouge">xrdp</code>与桌面环境结合，让Windows用户通过远程桌面连接（RDP协议）访问Ubuntu桌面。以下是安装和配置远程桌面的详细步骤：</p>
+
+  <h3 id="安装桌面环境如果需要">安装桌面环境（如果需要）</h3>
+
+  <p>如果你使用的是Ubuntu Server或最小化安装版本，你需要首先安装一个桌面环境。最常用的桌面环境是<code class="language-plaintext highlighter-rouge">GNOME</code>，它是Ubuntu默认的桌面环境。你可以通过以下命令来安装完整的Ubuntu桌面：</p>
+
+  <div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nb">sudo </span>apt <span class="nb">install </span>ubuntu-desktop
+</code></pre></div>  </div>
+
+  <p>如果你希望安装较轻量的桌面环境，比如<code class="language-plaintext highlighter-rouge">Xfce</code>，可以执行以下命令：</p>
+
+  <div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nb">sudo </span>apt <span class="nb">install </span>xfce4
+</code></pre></div>  </div>
+
+  <h3 id="安装xrdp">安装<code class="language-plaintext highlighter-rouge">xrdp</code></h3>
+
+  <p>安装<code class="language-plaintext highlighter-rouge">xrdp</code>（远程桌面协议服务器），它允许你通过RDP协议远程连接到Ubuntu桌面。</p>
+
+  <div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nb">sudo </span>apt <span class="nb">install </span>xrdp
+</code></pre></div>  </div>
+
+  <h3 id="启动和配置xrdp">启动和配置<code class="language-plaintext highlighter-rouge">xrdp</code></h3>
+
+  <p>安装完成后，启动并启用<code class="language-plaintext highlighter-rouge">xrdp</code>服务，使其每次启动系统时自动运行：</p>
+
+  <div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nb">sudo </span>systemctl <span class="nb">enable </span>xrdp
+<span class="nb">sudo </span>systemctl start xrdp
+</code></pre></div>  </div>
+
+  <p>你还可以检查<code class="language-plaintext highlighter-rouge">xrdp</code>服务的状态，以确保它正在运行：</p>
+
+  <div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nb">sudo </span>systemctl status xrdp
+</code></pre></div>  </div>
+
+  <h3 id="将xrdp与桌面环境关联">将<code class="language-plaintext highlighter-rouge">xrdp</code>与桌面环境关联</h3>
+
+  <p>在<code class="language-plaintext highlighter-rouge">xrdp</code>默认配置中，使用的是<code class="language-plaintext highlighter-rouge">Xfce</code>或<code class="language-plaintext highlighter-rouge">GNOME</code>桌面环境。你可以根据安装的桌面环境来配置<code class="language-plaintext highlighter-rouge">xrdp</code>。</p>
+
+  <p>如果你安装的是<code class="language-plaintext highlighter-rouge">Xfce</code>，需要为<code class="language-plaintext highlighter-rouge">xrdp</code>配置启动Xfce桌面。执行以下命令来创建一个<code class="language-plaintext highlighter-rouge">.xsession</code>文件并将其内容设置为<code class="language-plaintext highlighter-rouge">xfce4-session</code>：</p>
+
+  <div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nb">echo </span>xfce4-session <span class="o">&gt;</span>~/.xsession
+</code></pre></div>  </div>
+
+  <p>对于GNOME桌面，默认情况下应该无需额外配置。</p>
+
+  <h3 id="配置防火墙以允许rdp">配置防火墙以允许RDP</h3>
+
+  <p>如果你使用<code class="language-plaintext highlighter-rouge">ufw</code>防火墙，需要允许RDP连接（默认端口是3389）：</p>
+
+  <div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nb">sudo </span>ufw allow 3389
+</code></pre></div>  </div>
+
+  <h3 id="使用远程桌面客户端连接">使用远程桌面客户端连接</h3>
+
+  <p>在Windows、macOS或Linux的远程桌面客户端中输入你的Ubuntu服务器的IP地址，使用RDP协议进行连接。</p>
+
+  <p>在Windows中，打开“远程桌面连接”，输入Ubuntu的IP地址：</p>
+
+  <div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>IP_ADDRESS:3389
+</code></pre></div>  </div>
+
+  <p>你将看到登录界面，输入Ubuntu的用户名和密码即可访问远程桌面。</p>
+
+  <h3 id="可选配置修改xrdp会话配置文件">可选配置：修改<code class="language-plaintext highlighter-rouge">xrdp</code>会话配置文件</h3>
+
+  <p>如果遇到黑屏或登录失败等问题，可以尝试修改<code class="language-plaintext highlighter-rouge">xrdp</code>配置文件。例如，编辑<code class="language-plaintext highlighter-rouge">/etc/xrdp/startwm.sh</code>文件，在其中找到以下几行并注释掉：</p>
+
+  <div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nb">test</span> <span class="nt">-x</span> /etc/X11/Xsession <span class="o">&amp;&amp;</span> <span class="nb">exec</span> /etc/X11/Xsession
+<span class="nb">exec</span> /bin/sh /etc/X11/Xsession
+</code></pre></div>  </div>
+
+  <p>然后在这些行的下方添加你想使用的桌面环境。例如，如果你使用<code class="language-plaintext highlighter-rouge">Xfce</code>，可以添加以下内容：</p>
+
+  <div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code>startxfce4
+</code></pre></div>  </div>
+
+  <p>保存并重新启动<code class="language-plaintext highlighter-rouge">xrdp</code>服务：</p>
+
+  <div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nb">sudo </span>systemctl restart xrdp
+</code></pre></div>  </div>
+
+  <h3 id="重新连接远程桌面">重新连接远程桌面</h3>
+
+  <p>完成上述步骤后，你应该可以顺利通过远程桌面客户端连接到Ubuntu的桌面环境。</p>
+
+  <p>这样你就完成了Ubuntu的远程桌面配置，之后可以使用任何支持RDP的客户端工具进行远程桌面连接。</p>
+</blockquote>
+
+<h2 id="14-用户操作">1.4 用户操作</h2>
+
+<p>查看全部用户<code class="language-plaintext highlighter-rouge">cat /etc/passwd</code>  修改密码<code class="language-plaintext highlighter-rouge"> sudo passwd user</code></p>
+
+<p>新增用户<code class="language-plaintext highlighter-rouge">sudo adduser user</code></p>
+
+<blockquote>
+  <p>由于重装系统，原始的用户信息丢失，需要重新创建用户，与home的用户对应上，但是会出现问题，user1:1001旧的，user1:1007 新的，用户目录权限对不上，所以需要该指令<code class="language-plaintext highlighter-rouge">sudo chown -R new_owner:new_group /home/username</code></p>
+</blockquote>
+
+<h2 id="15-cuda">1.5 Cuda</h2>
+
+<blockquote>
+  <p>CUDA 是 NVIDIA 的并行计算平台和编程模型，用于 GPU 加速计算。安装 CUDA 工具包可以让你使用 GPU 进行高性能计算，<code class="language-plaintext highlighter-rouge">nvcc</code> 则是 CUDA 的编译器。以下是 Ubuntu 上安装 CUDA、<code class="language-plaintext highlighter-rouge">nvcc</code> 等相关工具的详细步骤。</p>
+
+  <h3 id="检查硬件和操作系统兼容性">检查硬件和操作系统兼容性</h3>
+
+  <p>在安装 CUDA 之前，确保你的系统满足以下条件：</p>
+
+  <ul>
+    <li>你有一个支持 CUDA 的 NVIDIA 显卡。</li>
+    <li>你使用的是 Ubuntu（例如 18.04、20.04 或 22.04 等版本）。</li>
+    <li>你已经安装了合适的显卡驱动。</li>
+  </ul>
+
+  <h3 id="更新系统">更新系统</h3>
+
+  <p>首先，更新系统的包列表和软件包，确保一切都是最新的：</p>
+
+  <div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nb">sudo </span>apt update
+<span class="nb">sudo </span>apt upgrade
+</code></pre></div>  </div>
+
+  <h3 id="安装-nvidia-驱动">安装 NVIDIA 驱动</h3>
+
+  <p>通常 CUDA 工具包包含 NVIDIA 驱动，但是你也可以手动安装，建议确保安装的驱动是最新的兼容版本。</p>
+
+  <ul>
+    <li>
+      <p>检查 NVIDIA 显卡是否被识别：</p>
+
+      <div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code>lspci | <span class="nb">grep</span> <span class="nt">-i</span> nvidia
+</code></pre></div>      </div>
+    </li>
+    <li>
+      <p>安装最新版本的驱动：</p>
+
+      <div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nb">sudo </span>apt <span class="nb">install </span>nvidia-driver-###    <span class="c"># 将 ### 替换为推荐的驱动版本</span>
+</code></pre></div>      </div>
+    </li>
+  </ul>
+
+  <p>你可以使用 <code class="language-plaintext highlighter-rouge">ubuntu-drivers devices</code> 查看推荐的 NVIDIA 驱动版本。</p>
+
+  <h3 id="添加-cuda-相关的存储库">添加 CUDA 相关的存储库</h3>
+
+  <p>访问 <a href="https://developer.nvidia.com/cuda-downloads">NVIDIA CUDA Toolkit 下载页面</a>，选择你对应的操作系统版本并跟随提示。通常可以使用以下步骤添加 CUDA 的存储库：</p>
+
+  <ul>
+    <li>
+      <p>访问 CUDA 的下载页面，选择你的操作系统，通常会得到类似以下的安装命令：</p>
+
+      <div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code>wget https://developer.download.nvidia.com/compute/cuda/repos/ubuntu<span class="si">$(</span>lsb_release <span class="nt">-sr</span> | <span class="nb">cut</span> <span class="nt">-d</span><span class="nb">.</span> <span class="nt">-f1</span><span class="si">)</span>/x86_64/cuda-repo-ubuntu<span class="si">$(</span>lsb_release <span class="nt">-sr</span> | <span class="nb">cut</span> <span class="nt">-d</span><span class="nb">.</span> <span class="nt">-f1</span><span class="si">)</span>_&lt;version&gt;_amd64.deb
+<span class="nb">sudo </span>dpkg <span class="nt">-i</span> cuda-repo-ubuntu<span class="si">$(</span>lsb_release <span class="nt">-sr</span> | <span class="nb">cut</span> <span class="nt">-d</span><span class="nb">.</span> <span class="nt">-f1</span><span class="si">)</span>_&lt;version&gt;_amd64.deb
+<span class="nb">sudo </span>apt-key adv <span class="nt">--fetch-keys</span> https://developer.download.nvidia.com/compute/cuda/repos/ubuntu<span class="si">$(</span>lsb_release <span class="nt">-sr</span> | <span class="nb">cut</span> <span class="nt">-d</span><span class="nb">.</span> <span class="nt">-f1</span><span class="si">)</span>/x86_64/7fa2af80.pub
+<span class="nb">sudo </span>apt update
+</code></pre></div>      </div>
+    </li>
+    <li>
+      <p>我的版本</p>
+
+      <div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code>wget https://developer.download.nvidia.com/compute/cuda/repos/ubuntu2004/x86_64/cuda-ubuntu2004.pin
+<span class="nb">sudo mv </span>cuda-ubuntu2004.pin /etc/apt/preferences.d/cuda-repository-pin-600
+wget https://developer.download.nvidia.com/compute/cuda/12.6.2/local_installers/cuda-repo-ubuntu2004-12-6-local_12.6.2-560.35.03-1_amd64.deb
+<span class="nb">sudo </span>dpkg <span class="nt">-i</span> cuda-repo-ubuntu2004-12-6-local_12.6.2-560.35.03-1_amd64.deb
+<span class="nb">sudo cp</span> /var/cuda-repo-ubuntu2004-12-6-local/cuda-<span class="k">*</span><span class="nt">-keyring</span>.gpg /usr/share/keyrings/
+<span class="nb">sudo </span>apt-get update
+<span class="nb">sudo </span>apt-get <span class="nt">-y</span> <span class="nb">install </span>cuda-toolkit-12-6
+</code></pre></div>      </div>
+    </li>
+  </ul>
+
+  <h3 id="安装-cuda-工具包">安装 CUDA 工具包</h3>
+
+  <p>使用以下命令安装 CUDA 工具包：</p>
+
+  <div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nb">sudo </span>apt <span class="nb">install </span>cuda
+</code></pre></div>  </div>
+
+  <p>这会安装 CUDA 相关的工具，包括编译器 <code class="language-plaintext highlighter-rouge">nvcc</code>。</p>
+
+  <h3 id="设置环境变量">设置环境变量</h3>
+
+  <p>安装完成后，还需要配置环境变量，才能正确地调用 CUDA 和 <code class="language-plaintext highlighter-rouge">nvcc</code>。可以在 <code class="language-plaintext highlighter-rouge">.bashrc</code> 中添加以下路径：</p>
+
+  <ul>
+    <li>
+      <p>编辑 <code class="language-plaintext highlighter-rouge">.bashrc</code> 文件：</p>
+
+      <div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code>nano ~/.bashrc
+</code></pre></div>      </div>
+    </li>
+    <li>
+      <p>添加以下行以设置 CUDA 环境变量（假设安装在默认位置 <code class="language-plaintext highlighter-rouge">/usr/local/cuda</code>）：</p>
+
+      <div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nb">export </span><span class="nv">PATH</span><span class="o">=</span>/usr/local/cuda/bin:<span class="nv">$PATH</span>
+<span class="nb">export </span><span class="nv">LD_LIBRARY_PATH</span><span class="o">=</span>/usr/local/cuda/lib64:<span class="nv">$LD_LIBRARY_PATH</span>
+</code></pre></div>      </div>
+    </li>
+    <li>
+      <p>使修改立即生效：</p>
+
+      <div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nb">source</span> ~/.bashrc
+</code></pre></div>      </div>
+    </li>
+  </ul>
+
+  <h3 id="验证-cuda-和-nvcc">验证 CUDA 和 NVCC</h3>
+
+  <p>验证安装是否成功。</p>
+
+  <ul>
+    <li>
+      <p>检查 NVIDIA 驱动是否工作：</p>
+
+      <div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code>nvidia-smi
+</code></pre></div>      </div>
+
+      <p>你应该能够看到显卡的状态和驱动程序信息。</p>
+    </li>
+    <li>
+      <p>检查 CUDA 编译器 <code class="language-plaintext highlighter-rouge">nvcc</code>：</p>
+
+      <div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code>nvcc <span class="nt">-V</span>
+</code></pre></div>      </div>
+
+      <p>你应该看到 <code class="language-plaintext highlighter-rouge">nvcc</code> 版本信息，说明安装成功。</p>
+    </li>
+  </ul>
+
+  <h3 id="运行-cuda-示例代码可选">运行 CUDA 示例代码（可选）</h3>
+
+  <p>安装 CUDA 工具包后，NVIDIA 通常会提供一些示例代码，可以用来测试 GPU 是否正常工作。</p>
+
+  <ul>
+    <li>
+      <p>进入 CUDA 示例代码目录：</p>
+
+      <div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nb">cd</span> /usr/local/cuda/samples
+</code></pre></div>      </div>
+    </li>
+    <li>
+      <p>编译并运行一个测试程序（例如 <code class="language-plaintext highlighter-rouge">deviceQuery</code>）：</p>
+
+      <div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nb">sudo </span>make
+<span class="nb">cd </span>1_Utilities/deviceQuery
+./deviceQuery
+</code></pre></div>      </div>
+
+      <p>这将会展示 GPU 的一些详细信息，如果能够正确显示，那么说明 CUDA 工作正常。</p>
+    </li>
+  </ul>
+
+  <h3 id="总结">总结</h3>
+
+  <ol>
+    <li><strong>更新系统</strong>：<code class="language-plaintext highlighter-rouge">sudo apt update &amp;&amp; sudo apt upgrade</code></li>
+    <li><strong>安装 NVIDIA 驱动</strong>：<code class="language-plaintext highlighter-rouge">sudo apt install nvidia-driver-###</code></li>
+    <li><strong>添加 CUDA 存储库</strong>：根据 CUDA 下载页面获取存储库地址并添加。</li>
+    <li><strong>安装 CUDA 工具包</strong>：<code class="language-plaintext highlighter-rouge">sudo apt install cuda</code></li>
+    <li><strong>设置环境变量</strong>：编辑 <code class="language-plaintext highlighter-rouge">.bashrc</code>，添加 CUDA 相关路径。</li>
+    <li><strong>验证安装</strong>：运行 <code class="language-plaintext highlighter-rouge">nvidia-smi</code> 和 <code class="language-plaintext highlighter-rouge">nvcc -V</code> 验证安装是否成功。</li>
+  </ol>
+
+  <p>通过这些步骤，你应该能够在 Ubuntu 上顺利安装 CUDA 工具包，并开始使用 GPU 加速你的计算任务。</p>
+</blockquote>]]></content><author><name>slience_me</name></author><category term="Linux" /><summary type="html"><![CDATA[服务器系统重装&SSH,xrdp,CUDA]]></summary></entry><entry><title type="html">Linux｜ubuntu多版本cuda如何指定cuda版本</title><link href="https://slienceme.cn/2024/06/21/ubuntu%E5%A4%9A%E7%89%88%E6%9C%ACcuda%E5%A6%82%E4%BD%95%E6%8C%87%E5%AE%9Acuda%E7%89%88%E6%9C%AC/" rel="alternate" type="text/html" title="Linux｜ubuntu多版本cuda如何指定cuda版本" /><published>2024-06-21T00:00:00+08:00</published><updated>2024-06-21T00:00:00+08:00</updated><id>https://slienceme.cn/2024/06/21/ubuntu%E5%A4%9A%E7%89%88%E6%9C%ACcuda%E5%A6%82%E4%BD%95%E6%8C%87%E5%AE%9Acuda%E7%89%88%E6%9C%AC</id><content type="html" xml:base="https://slienceme.cn/2024/06/21/ubuntu%E5%A4%9A%E7%89%88%E6%9C%ACcuda%E5%A6%82%E4%BD%95%E6%8C%87%E5%AE%9Acuda%E7%89%88%E6%9C%AC/"><![CDATA[<p><img src="https://i-blog.csdnimg.cn/blog_migrate/e9a9ce64f17b96904b03f129f0317e3d.png" alt="在这里插入图片描述" /></p>
+
+<p>本文作者： <a href="https://slienceme.cn/">slience_me</a></p>
+
+<hr />
+
+<h1 id="ubuntu多版本cuda如何指定cuda版本">ubuntu多版本cuda如何指定cuda版本</h1>
+
+<h2 id="1-关于cuda设置">1. 关于cuda设置</h2>
+
+<p>在 Ubuntu 系统上选择和管理 CUDA 的多个版本可以通过以下步骤进行：</p>
+
+<h3 id="11-查看当前安装的-cuda-版本">1.1 查看当前安装的 CUDA 版本</h3>
+<p>你可以通过以下命令查看当前安装的 CUDA 版本：</p>
+
+<div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code>nvcc <span class="nt">--version</span>
+</code></pre></div></div>
+
+<h3 id="12-下载并安装所需的-cuda-版本">1.2 下载并安装所需的 CUDA 版本</h3>
+<p>你可以从 <a href="https://developer.nvidia.com/cuda-downloads">NVIDIA CUDA Toolkit 下载页面</a> 下载你需要的 CUDA 版本。选择你的操作系统（Linux）、架构（x86_64）、发行版（Ubuntu）和版本，然后按照提示下载并安装。</p>
+
+<h3 id="13-设置环境变量">1.3 设置环境变量</h3>
+<p>每个 CUDA 版本都会安装在不同的目录中，例如 <code class="language-plaintext highlighter-rouge">/usr/local/cuda-10.1</code>, <code class="language-plaintext highlighter-rouge">/usr/local/cuda-10.2</code> 等。你可以通过设置环境变量 <code class="language-plaintext highlighter-rouge">CUDA_HOME</code> 和修改 <code class="language-plaintext highlighter-rouge">PATH</code> 来切换不同的 CUDA 版本。</p>
+
+<p>以下是一个示例脚本，可以根据你需要的 CUDA 版本进行修改：</p>
+
+<div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="c"># 切换到 CUDA 10.1</span>
+<span class="nb">export </span><span class="nv">CUDA_HOME</span><span class="o">=</span>/usr/local/cuda-10.1
+<span class="nb">export </span><span class="nv">PATH</span><span class="o">=</span><span class="nv">$CUDA_HOME</span>/bin:<span class="nv">$PATH</span>
+<span class="nb">export </span><span class="nv">LD_LIBRARY_PATH</span><span class="o">=</span><span class="nv">$CUDA_HOME</span>/lib64:<span class="nv">$LD_LIBRARY_PATH</span>
+
+<span class="c"># 切换到 CUDA 10.2</span>
+<span class="c"># export CUDA_HOME=/usr/local/cuda-10.2</span>
+<span class="c"># export PATH=$CUDA_HOME/bin:$PATH</span>
+<span class="c"># export LD_LIBRARY_PATH=$CUDA_HOME/lib64:$LD_LIBRARY_PATH</span>
+</code></pre></div></div>
+
+<p>你可以将这个脚本添加到你的 <code class="language-plaintext highlighter-rouge">~/.bashrc</code> 或 <code class="language-plaintext highlighter-rouge">~/.zshrc</code> 文件中，或者每次需要切换 CUDA 版本时手动运行这个脚本。</p>
+
+<h3 id="14-验证切换">1.4 验证切换</h3>
+<p>切换 CUDA 版本后，可以运行以下命令来验证切换是否成功：</p>
+
+<div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code>nvcc <span class="nt">--version</span>
+</code></pre></div></div>
+
+<p>这个命令将显示当前使用的 CUDA 版本。</p>
+
+<h3 id="15-安装对应的-nvidia-驱动程序">1.5 安装对应的 NVIDIA 驱动程序</h3>
+<p>确保你安装了与所需 CUDA 版本兼容的 NVIDIA 驱动程序。如果需要更新或切换驱动程序，可以使用以下命令：</p>
+
+<div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nb">sudo </span>ubuntu-drivers devices
+<span class="nb">sudo </span>ubuntu-drivers autoinstall
+</code></pre></div></div>
+
+<p>或者你也可以从 <a href="https://www.nvidia.com/Download/index.aspx">NVIDIA 驱动程序下载页面</a> 手动下载并安装所需的驱动程序。</p>
+
+<p>通过以上步骤，你可以在 Ubuntu 系统上管理和切换多个 CUDA 版本。</p>
+
+<h2 id="2-设置环境变量">2. 设置环境变量</h2>
+<p>在 Ubuntu 上修改环境变量可以通过编辑 <code class="language-plaintext highlighter-rouge">~/.bashrc</code> 或 <code class="language-plaintext highlighter-rouge">~/.zshrc</code> 文件来实现，具体取决于你使用的是 Bash 还是 Zsh。以下是详细步骤：</p>
+
+<h3 id="21-打开终端">2.1 打开终端</h3>
+
+<h3 id="22-编辑-bashrc-或-zshrc">2.2 编辑 <code class="language-plaintext highlighter-rouge">~/.bashrc</code> 或 <code class="language-plaintext highlighter-rouge">~/.zshrc</code></h3>
+
+<p>如果你使用的是 Bash，编辑 <code class="language-plaintext highlighter-rouge">~/.bashrc</code> 文件：</p>
+
+<div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code>nano ~/.bashrc
+</code></pre></div></div>
+
+<p>如果你使用的是 Zsh，编辑 <code class="language-plaintext highlighter-rouge">~/.zshrc</code> 文件：</p>
+
+<div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code>nano ~/.zshrc
+</code></pre></div></div>
+
+<h3 id="23-添加环境变量">2.3 添加环境变量</h3>
+
+<p>在文件末尾添加以下行来设置 CUDA 环境变量。例如，假设你有两个 CUDA 版本：10.1 和 10.2，你可以按以下方式添加：</p>
+
+<div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="c"># 设置 CUDA 10.1 环境变量</span>
+<span class="nb">export </span><span class="nv">CUDA_HOME</span><span class="o">=</span>/usr/local/cuda-10.1
+<span class="nb">export </span><span class="nv">PATH</span><span class="o">=</span><span class="nv">$CUDA_HOME</span>/bin:<span class="nv">$PATH</span>
+<span class="nb">export </span><span class="nv">LD_LIBRARY_PATH</span><span class="o">=</span><span class="nv">$CUDA_HOME</span>/lib64:<span class="nv">$LD_LIBRARY_PATH</span>
+</code></pre></div></div>
+
+<p>如果你需要切换到 CUDA 10.2，则可以将上述代码注释掉，并添加如下代码：</p>
+
+<div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="c"># 设置 CUDA 10.2 环境变量</span>
+<span class="c"># export CUDA_HOME=/usr/local/cuda-10.1</span>
+<span class="c"># export PATH=$CUDA_HOME/bin:$PATH</span>
+<span class="c"># export LD_LIBRARY_PATH=$CUDA_HOME/lib64:$LD_LIBRARY_PATH</span>
+
+<span class="nb">export </span><span class="nv">CUDA_HOME</span><span class="o">=</span>/usr/local/cuda-10.2
+<span class="nb">export </span><span class="nv">PATH</span><span class="o">=</span><span class="nv">$CUDA_HOME</span>/bin:<span class="nv">$PATH</span>
+<span class="nb">export </span><span class="nv">LD_LIBRARY_PATH</span><span class="o">=</span><span class="nv">$CUDA_HOME</span>/lib64:<span class="nv">$LD_LIBRARY_PATH</span>
+</code></pre></div></div>
+
+<p>你也可以使用条件语句来更灵活地切换 CUDA 版本：</p>
+
+<div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="c"># 根据需要选择 CUDA 版本</span>
+<span class="k">if</span> <span class="o">[</span> <span class="s2">"</span><span class="nv">$CUDA_VERSION</span><span class="s2">"</span> <span class="o">==</span> <span class="s2">"10.1"</span> <span class="o">]</span><span class="p">;</span> <span class="k">then
+    </span><span class="nb">export </span><span class="nv">CUDA_HOME</span><span class="o">=</span>/usr/local/cuda-10.1
+<span class="k">elif</span> <span class="o">[</span> <span class="s2">"</span><span class="nv">$CUDA_VERSION</span><span class="s2">"</span> <span class="o">==</span> <span class="s2">"10.2"</span> <span class="o">]</span><span class="p">;</span> <span class="k">then
+    </span><span class="nb">export </span><span class="nv">CUDA_HOME</span><span class="o">=</span>/usr/local/cuda-10.2
+<span class="k">fi
+</span><span class="nb">export </span><span class="nv">PATH</span><span class="o">=</span><span class="nv">$CUDA_HOME</span>/bin:<span class="nv">$PATH</span>
+<span class="nb">export </span><span class="nv">LD_LIBRARY_PATH</span><span class="o">=</span><span class="nv">$CUDA_HOME</span>/lib64:<span class="nv">$LD_LIBRARY_PATH</span>
+</code></pre></div></div>
+
+<p>然后在需要切换版本时设置 <code class="language-plaintext highlighter-rouge">CUDA_VERSION</code> 环境变量，例如：</p>
+
+<div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nb">export </span><span class="nv">CUDA_VERSION</span><span class="o">=</span>10.1
+<span class="nb">source</span> ~/.bashrc  <span class="c"># 或者 source ~/.zshrc</span>
+</code></pre></div></div>
+
+<h3 id="24-保存并退出">2.4 保存并退出</h3>
+
+<p>编辑完成后，按 <code class="language-plaintext highlighter-rouge">Ctrl+O</code> 保存文件，然后按 <code class="language-plaintext highlighter-rouge">Ctrl+X</code> 退出编辑器。</p>
+
+<h3 id="25-使更改生效">2.5 使更改生效</h3>
+
+<p>运行以下命令使更改生效：</p>
+
+<div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nb">source</span> ~/.bashrc  <span class="c"># 如果使用的是 Bash</span>
+<span class="nb">source</span> ~/.zshrc   <span class="c"># 如果使用的是 Zsh</span>
+</code></pre></div></div>
+
+<h3 id="26-验证更改">2.6 验证更改</h3>
+
+<p>可以通过以下命令验证环境变量是否设置正确：</p>
+
+<div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nb">echo</span> <span class="nv">$CUDA_HOME</span>
+nvcc <span class="nt">--version</span>
+</code></pre></div></div>
+
+<p>通过这些步骤，你可以方便地修改和管理环境变量，以切换不同的 CUDA 版本。</p>]]></content><author><name>slience_me</name></author><category term="Linux" /><summary type="html"><![CDATA[ubuntu多版本cuda如何指定cuda版本]]></summary></entry><entry><title type="html">论文笔记｜Transformers in Time Series A Survey综述总结</title><link href="https://slienceme.cn/2024/03/13/Transformers_in_Time_Series_A_Survey%E7%BB%BC%E8%BF%B0%E6%80%BB%E7%BB%93/" rel="alternate" type="text/html" title="论文笔记｜Transformers in Time Series A Survey综述总结" /><published>2024-03-13T00:00:00+08:00</published><updated>2024-03-13T00:00:00+08:00</updated><id>https://slienceme.cn/2024/03/13/Transformers_in_Time_Series_A_Survey%E7%BB%BC%E8%BF%B0%E6%80%BB%E7%BB%93</id><content type="html" xml:base="https://slienceme.cn/2024/03/13/Transformers_in_Time_Series_A_Survey%E7%BB%BC%E8%BF%B0%E6%80%BB%E7%BB%93/"><![CDATA[<p><img src="https://raw.githubusercontent.com/slience-me/picGo/master/images/logo_slienceme3.jpeg" alt="img" /></p>
+
+<p>本文作者： <a href="https://slienceme.cn/">slience_me</a></p>
+
+<hr />
+
+<h1 id="transformers-in-time-series-a-survey综述总结">Transformers in Time Series A Survey综述总结</h1>
+
+<p>Transformers在自然语言处理和计算机视觉的诸多任务中取得了更优的性能，这也引起了时间序列社区的广大的兴趣。在Transformers的众多优点中，捕获远程依赖关系和交互的能力对于时间序列建模特别具有吸引力，从而在各种时间序列应用中取得了令人兴奋的进展。在本文中，作者团队系统地审查Transformer计划的时间序列建模，突出他们的优点以及局限性。</p>
+
+<p>该文章从两个角度去审视时间序列Transformers的发展</p>
+
+<ul>
+  <li>网络结构 ： 总结了Transformers，以适应时间序列分析的挑战，已作出的调整和修改。</li>
+  <li>应用：根据预测、异常检测和分类等常见任务对时间序列Transformers进行分类</li>
+</ul>
+
+<p>在实证上，进行了稳健性分析，模型大小分析和季节趋势分解分析，以研究Transformers在时间序列中的表现。</p>
+
+<p>最后，讨论和建议未来的研究方向，提供有用的研究指导。</p>
+
+<p><a href="https://arxiv.org/pdf/2202.07125.pdf">文章链接</a></p>
+
+<p><a href="https://github.com/qingsongedu/time-series-transformers-review">文章代码</a></p>
+
+<hr />
+
+<h2 id="1-introduction">1 Introduction</h2>
+
+<p>在过去的几年里，许多Transformer已经被提出来大大提高各种任务的最先进性能。有相当多的文献综述来自不同的方面，例如在NLP应用中[Han et al.，2021]，CV应用[Han等人，2022]和efficient Transformers[Tay等人，2022年]，但尚未有针对时间序列中Transformer应用的全面综述。</p>
+
+<p>在本文中，作者团队的目的是填补时间序列中Transformer应用的全面综述的差距与空白，总结了时间序列Transformers的主要发展。本文首先给予简要的介绍，然后从网络修改和应用领域的角度提出了一个新的分类法的时间序列的Transformers的Vanilla Transformer。</p>
+
+<ul>
+  <li>网络修改：讨论了低级别（即模块）和高级别（即架构）的Transformers，以优化时间序列建模的性能的改进。</li>
+  <li>应用程序：分析和总结Transformers的流行的时间序列任务，包括预测，异常检测和分类。对于每个时间序列Transformer，分析其见解，优势和局限性。</li>
+</ul>
+
+<p>对于每个时间序列Transformer，分析其见解，优势和局限性。并进行了广泛的实证研究，包括鲁棒性分析，模型大小分析和季节趋势分解分析。</p>
+
+<p>讨论了时间序列Transformers未来可能的方向，包括时间序列Transformers的归纳偏差，时间序列的Transformers和GNN，时间序列的预训练Transformers， 具有架构级别变体的Transformers，以及时间序列的NAS Transformers。</p>
+
+<hr />
+
+<h2 id="2-transformer的组成">2 Transformer的组成</h2>
+
+<h2 id="preliminaries-of-the-transformer">Preliminaries of the Transformer</h2>
+
+<h3 id="21-vanilla-transformer">2.1 Vanilla Transformer</h3>
+
+<p>Vanilla Transformer [Vaswani等人，2017]遵循具有编码器-解码器结构的最具竞争力的神经序列模型。编码器和解码器都由多个相同的块组成。每个编码器块由多头自注意模块和位置前馈网络组成，而每个解码器块在多头自注意模块和位置前馈网络之间插入交叉注意模型。</p>
+
+<h3 id="22-输入编码和位置编码-input-encoding-and-positional-encoding">2.2 输入编码和位置编码 Input Encoding and Positional Encoding</h3>
+
+<p>与LSTM或RNN不同，Vanilla Transformer没有递归。相反，它利用在输入嵌入中添加的位置编码来对序列信息进行建模。在下面总结一些位置编码。</p>
+
+<h4 id="绝对位置编码-absolute-positional-encoding">绝对位置编码 Absolute Positional Encoding</h4>
+
+<p>在vanilla Transformer中，对于每个位置索引t，编码向量由下式给出：</p>
+
+<p><img src="https://raw.githubusercontent.com/slience-me/picGo/master/images/image-20240312095102733.png" alt="image-20240312095102733" /></p>
+
+<p>其中ω<sub>i</sub>是每个维度的手工频率。另一种方法是为每个位置学习一组位置嵌入，这更灵活[Meson等人，2019; Gehring等人，2017年]。</p>
+
+<h4 id="相对位置编码-relative-positional-encoding">相对位置编码 Relative Positional Encoding</h4>
+
+<p>根据对输入元素之间的成对位置关系更有益的直觉，提出了相对位置编码方法。例如，其中一种方法是向注意机制的关键添加可学习的相对位置嵌入。</p>
+
+<p>除了绝对和相对位置编码之外，还有一些使用混合位置编码的方法将它们结合在一起 。通常，位置编码被添加到标记嵌入中并馈送到Transformer。</p>
+
+<table>
+  <tbody>
+    <tr>
+      <td>参考解读: <a href="https://blog.csdn.net/Slience_me/article/details/136644309">CSDN</a></td>
+      <td><a href="https://slienceme.cn/2024/03/12/%E7%BB%9D%E5%AF%B9%E4%BD%8D%E7%BD%AE%E7%BC%96%E7%A0%81%E4%B8%8E%E7%9B%B8%E5%AF%B9%E4%BD%8D%E7%BD%AE%E7%BC%96%E7%A0%81%E5%8C%BA%E5%88%AB/">个人博客</a></td>
+    </tr>
+  </tbody>
+</table>
+
+<h3 id="23-多头注意力-multi-head-attention">2.3 多头注意力 Multi-head Attention</h3>
+
+<p>通过查询-关键字-值（QKV）模型，Transformer使用的缩放点积注意力由下式给出：</p>
+
+<p><img src="https://raw.githubusercontent.com/slience-me/picGo/master/images/image-20240312154830337.png" alt="image-20240312154830337" /></p>
+
+<p><img src="https://raw.githubusercontent.com/slience-me/picGo/master/images/image-20240312151303004.png" alt="image-20240312151303004" /></p>
+
+<p><img src="https://raw.githubusercontent.com/slience-me/picGo/master/images/image-20240312154854919.png" alt="image-20240312154854919" /></p>
+
+<table>
+  <tbody>
+    <tr>
+      <td>参考解读: <a href="https://blog.csdn.net/Slience_me/article/details/136644704">CSDN</a></td>
+      <td><a href="https://slienceme.cn/2024/03/12/%E6%B3%A8%E6%84%8F%E5%8A%9B-%E8%87%AA%E6%B3%A8%E6%84%8F%E5%8A%9B%E5%92%8C%E5%A4%9A%E5%A4%B4%E6%B3%A8%E6%84%8F%E5%8A%9B%E7%9A%84%E5%8C%BA%E5%88%AB/">个人博客</a></td>
+    </tr>
+  </tbody>
+</table>
+
+<h3 id="24-前馈和残差网络简单放在这">2.4 前馈和残差网络(简单放在这)</h3>
+
+<p>前馈网络是一个完全连接的模块，</p>
+
+<p><img src="https://raw.githubusercontent.com/slience-me/picGo/master/images/image-20240312154756144.png" alt="image-20240312154756144" /></p>
+
+<p>在更深的模块中，在每个模块周围插入一个残余连接模块，然后是一个层规范化模块。</p>
+
+<p><img src="https://raw.githubusercontent.com/slience-me/picGo/master/images/image-20240312155740176.png" alt="image-20240312155740176" /></p>
+
+<hr />
+
+<h2 id="3-时间序列中的transformers的分类-taxonomy-of-transformers-in-time-series">3 时间序列中的Transformers的分类 Taxonomy of Transformers in Time Series</h2>
+
+<p>为了总结现有的时间序列Transformers，作者团队从网络修改和应用领域的角度提出了一个分类，如下图所示。</p>
+
+<p>在此基础上，对已有的时间序列Transformers进行了系统的回顾。</p>
+
+<ul>
+  <li>从网络修改的角度，总结了Transformer的模块级和架构级的变化，以适应时间序列建模的特殊挑战。</li>
+  <li>从应用的角度出发，根据时间序列Transformers的应用任务进行分类，包括预测、异常检测和分类。</li>
+</ul>
+
+<p><img src="https://raw.githubusercontent.com/slience-me/picGo/master/images/TS_Xformer_V2.jpg" alt="TS_Xformer_V2" /></p>
+
+<hr />
+
+<h2 id="4-时间序列的网络修改-network-modifications-for-time-series">4 时间序列的网络修改 Network Modifications for Time Series</h2>
+
+<h3 id="41-位置编码-positional-encoding">4.1 位置编码 Positional Encoding</h3>
+
+<p>由于时间序列的顺序很重要，因此将输入时间序列的位置编码到Transformer中非常重要。一个常见的设计是首先将位置信息编码为向量，然后将它们与输入时间序列一起作为额外的输入注入到模型中。在使用Transformer建模时间序列时，如何获取这些向量可以分为三个主要类别。</p>
+
+<p>总结：</p>
+
+<ol>
+  <li><strong>原始位置编码(Vanilla Positional Encoding)</strong>：<u>简单地添加到输入时间序列嵌入中，但无法充分利用时间序列数据的特征。</u>一些研究[Li等人，2019]简单介绍了在[Vaswani等，2017]中使用的原始位置编码（第2.2节），该编码随后被添加到输入时间序列的嵌入中，并馈送到Transformer。</li>
+  <li><strong>可学习位置编码(Learnable Positional Encoding)</strong>：<u>通过学习适当的位置嵌入，比固定的原始位置编码更灵活，可以更好地适应特定任务。</u>[Zerveas等人，2021]在Transformer中引入了一个嵌入层，该层与其他模型参数一起学习每个位置索引的嵌入向量。[Lim等人，2021] 使用LSTM网络来编码位置嵌入，可以更好地利用时间序列中的顺序信息。</li>
+  <li><strong>时间戳编码(Timestamp Encoding)</strong>：<u>利用时间戳信息，将其编码为附加的位置编码，提高了对时间序列数据的利用效率。</u>时间戳信息包括日历时间戳（例如，秒、分钟、小时、周、月和年）和特殊时间戳（例如假期和事件）。这些时间戳具有信息量但在原始的Transformer中很少被利用。为了缓解这个问题，<a href="https://arxiv.org/abs/2012.07436">Informer</a> [Zhou等，2021] 提议使用可学习的嵌入层将时间戳编码为附加的位置编码。类似的时间戳编码方案还在<a href="https://arxiv.org/abs/2106.13008">Autoformer</a> [Wu等，2021] 和<a href="https://arxiv.org/abs/2201.12740">FEDformer</a> [Zhou等，2022] 中使用过。</li>
+</ol>
+
+<h3 id="42-注意力模块-attention-module">4.2 注意力模块 Attention Module</h3>
+
+<p>Transformer的核心是自注意力模块。它可以被视为一个完全连接的层，其权重根据输入模式之间的成对相似性动态生成。因此，它与完全连接层具有相同的最大路径长度，但参数数量较少，适合建模长期依赖关系。(Transformer的计算优化主要就集中在self attention的计算熵)</p>
+
+<p>原始Transformer中的自注意力模块的时间和内存复杂度为O(N<sup>2</sup>)（N为输入时间序列的长度），当处理长序列时，这成为计算瓶颈。</p>
+
+<p>许多高效的Transformer被提出来减少二次复杂度，可分为两个主要类别：</p>
+
+<ol>
+  <li><u>显式地引入稀疏偏置到注意力机制中</u>，如<a href="https://arxiv.org/abs/1907.00235">LogTrans</a> [Li等，2019] 和<a href="https://openreview.net/pdf?id=0EXmFzUn5I">Pyraformer</a> [Liu等，2022a]；</li>
+  <li><u>探索自注意力矩阵的低秩性质以加速计算</u>，例如<a href="https://openreview.net/pdf?id=0EXmFzUn5I">Informer</a> [Zhou等，2021] 和<a href="https://arxiv.org/abs/2201.12740">FEDformer</a> [Zhou等，2022]。</li>
+</ol>
+
+<p>表1显示了应用于时间序列建模的流行Transformer的时间和内存复杂度</p>
+
+<p><img src="https://raw.githubusercontent.com/slience-me/picGo/master/images/image-20240312163906392.png" alt="image-20240312163906392" /></p>
+
+<h3 id="43-基于架构的注意力创新-architecture-based-attention-innovation">4.3 基于架构的注意力创新 Architecture-based Attention Innovation</h3>
+
+<p>为了适应Transformer中用于建模时间序列的各个模块，一些研究[Zhou等，2021；Liu等，2022a]试图在架构层面上对Transformer进行改进。</p>
+
+<ul>
+  <li>
+    <p>最近的研究引入了<strong>分层架构</strong>到Transformer中，使其具有整合不同多分辨率特征，高效计算的好处，有利于高效处理长时间序列。</p>
+  </li>
+  <li><a href="https://arxiv.org/abs/2012.07436">Informer</a>[Zhou等，2021]在注意力块之间插入了步幅为2的最大池化层，将时间序列降采样为其一半。</li>
+  <li><a href="https://openreview.net/pdf?id=0EXmFzUn5I">Pyraformer</a>[Liu等，2022a]设计了基于C-ary树的注意力机制，其中最细粒度的节点对应于原始时间序列，而较粗粒度的节点表示较低分辨率的时间序列。开发了内尺度和间尺度的注意力，以更好地捕捉不同分辨率之间的时间依赖关系。</li>
+</ul>
+
+<h2 id="5-时间序列transformer的应用-applications-of-time-series-transformers">5 时间序列Transformer的应用 Applications of Time Series Transformers</h2>
+
+<h3 id="51-transformers-in-forecasting">5.1 Transformers in Forecasting</h3>
+
+<p>在最近几年中，已经开展了大量工作来设计新的Transformer变体，用于时间序列预测任务。模块级别和架构级别变体是两个主要类别，前者占到了迄今为止的大多数研究。</p>
+
+<h4 id="时间序列的预测-time-series-forecasting">时间序列的预测 Time Series Forecasting</h4>
+
+<h5 id="模块级变体">模块级变体</h5>
+
+<p>在时间序列预测的模块级别变体中，它们的主要架构类似于原始的Transformer，但存在细微变化。研究人员引入各种时间序列归纳偏差来设计新的模块。以下总结的工作包括三种不同类型：设计新的注意力模块、探索归一化时间序列数据的创新方式，以及利用令牌输入的偏差，如下图所示。</p>
+
+<p><img src="https://raw.githubusercontent.com/slience-me/picGo/master/images/image-20240313083924700.png" alt="image-20240313083924700" /></p>
+
+<p>模块级别Transformer的第一种变体类型是<strong>设计新的注意力模块</strong>，这是比例最大的类别。以下首先描述了六个典型的工作：</p>
+
+<ol>
+  <li><strong>LogTrans</strong> [Li等，2019]:  <a href="https://arxiv.org/abs/1907.00235">论文</a>
+    <ul>
+      <li>提出了卷积自注意力，利用因果卷积生成自注意力层中的查询和键。</li>
+      <li>引入了稀疏偏置（Logsparse掩码），将计算复杂度从O(N<sup>2</sup>)降低到O(N log<sub>N</sub>)。</li>
+    </ul>
+  </li>
+  <li><strong>Informer</strong> [Zhou等，2021]: <a href="https://arxiv.org/abs/2012.07436">论文</a>
+    <ul>
+      <li>未使用显式的稀疏偏置，而是基于查询和键的相似性选择主要查询。</li>
+      <li>设计了一种生成式解码器，直接产生长期预测，避免了长期预测中的累积误差。</li>
+    </ul>
+  </li>
+  <li><strong>AST</strong> [Wu等，2020a]: <a href="https://proceedings.neurips.cc/paper/2020/file/c6b8c8d762da15fa8dbbdfb6baf9e260-Paper.pdf">论文</a>
+    <ul>
+      <li>使用生成对抗编码器-解码器框架，训练稀疏Transformer模型进行时间序列预测。</li>
+      <li>表明通过直接塑造网络的输出分布来避免通过一步推断导致误差积累，对于改善时间序列预测具有积极作用。</li>
+    </ul>
+  </li>
+  <li><strong>Pyraformer</strong> [Liu等，2022a]: <a href="https://openreview.net/pdf?id=0EXmFzUn5I">论文</a>
+    <ul>
+      <li>设计了分层的金字塔式注意力模块，通过沿路径遵循二叉树来捕获不同范围的时间依赖关系。</li>
+      <li>具有线性时间和内存复杂性。</li>
+    </ul>
+  </li>
+  <li><strong>FEDformer</strong> [Zhou等，2022]: <a href="https://arxiv.org/abs/2201.12740">论文</a>
+    <ul>
+      <li>在频域中应用注意力操作，使用傅立叶变换和小波变换。</li>
+      <li>通过随机选择固定大小的频率子集实现了线性复杂度。</li>
+    </ul>
+  </li>
+  <li><strong>Quatformer</strong> [Chen等，2022]: <a href="https://dl.acm.org/doi/abs/10.1145/3534678.3539234">论文</a>
+    <ul>
+      <li>提出了基于四元数的学习旋转注意力（LRA），引入可学习的周期和相位信息来描述复杂的周期模式。</li>
+      <li>使用全局内存解耦了LRA以实现线性复杂度。</li>
+    </ul>
+  </li>
+</ol>
+
+<p>第一类模块级别的变体<strong>旨在建立模型的显式解释能力</strong>，符合可解释人工智能（XAI）的趋势。其中有以下三项工作：</p>
+
+<ol>
+  <li><strong>TFT</strong> [Lim等，2021]： <a href="https://arxiv.org/abs/1912.09363">论文</a>
+    <ul>
+      <li>设计了一个多时间跨度的预测模型，具有静态协变量编码器、门控特征选择和时间自注意解码器。</li>
+      <li>从各种协变量中编码和选择有用信息来执行预测。</li>
+      <li>通过整合全局、时间依赖和事件等信息，保持了可解释性。</li>
+    </ul>
+  </li>
+  <li><strong>ProTran</strong> [Tang和Matteson，2021] 和 SSDNet [Lin等，2021]：<a href="https://proceedings.neurips.cc/paper_files/paper/2021/file/c68bd9055776bf38d8fc43c0ed283678-Paper.pdf">论文</a>
+    <ul>
+      <li>将Transformer与状态空间模型(state space model)结合，提供概率预测。</li>
+      <li>ProTran设计了一个基于变分推理的生成建模和推理过程。</li>
+      <li>SSDNet首先使用Transformer学习时间模式，估计SSM的参数，然后应用SSM进行季节趋势分解，保持了可解释性。</li>
+    </ul>
+  </li>
+  <li><strong>SSDNet</strong> [Lin等，2021]：<a href="https://arxiv.org/pdf/2112.10251.pdf">论文</a>
+    <ul>
+      <li>将Transformer与状态空间模型结合，提供概率预测。</li>
+      <li>首先使用Transformer学习时间模式，估计SSM的参数，然后应用SSM进行季节趋势分解，保持了可解释性。</li>
+    </ul>
+  </li>
+</ol>
+
+<p>第二类模块级别的变体是<strong>标准化时间序列数据的方式</strong>。</p>
+
+<p>目前据作者团队所知，唯一专注于修改标准化机制的工作是 <a href="https://arxiv.org/abs/2205.14415">Non-stationary Transformer</a> [Liu等，2022b]。该工作探讨了时间序列预测任务中的过度平稳化问题，提出了相对简单的插件系列平稳化和非平稳化模块，以修改和提升各种注意力块的性能。</p>
+
+<p>第三类模块级别的变体是<strong>利用令牌输入的偏差</strong>。其中：</p>
+
+<ul>
+  <li>
+    <p><strong>Autoformer</strong> [Wu等，2021] 采用基于分段的表示机制，设计了一个简单的季节趋势分解架构，其中自相关机制充当注意力模块，通过度量输入信号的时延相似性，并聚合前k个相似的子序列，以降低复杂度。<a href="https://arxiv.org/abs/2106.13008">论文</a></p>
+  </li>
+  <li>
+    <p><strong>PatchTST</strong> [Nie等，2023] 利用通道独立性，每个通道包含一个单变量时间序列，所有序列共享相同的嵌入，以及子序列级别的补丁设计，将时间序列分段成子序列级别的补丁，作为输入令牌输入到Transformer。这种ViT样式的设计在长时间序列预测任务中提高了数值性能。<a href="https://arxiv.org/abs/2211.14730">论文</a></p>
+  </li>
+  <li>
+    <p><strong>Cross-former</strong> [Zhang和Yan，2023] 提出了一种基于Transformer的模型，利用跨维度依赖进行多变量时间序列预测。输入通过新颖的维度分段嵌入转换为二维向量数组，以保留时间和维度信息。然后，使用两阶段注意力层来有效地捕获跨时间和跨维度的依赖关系。<a href="https://openreview.net/pdf?id=vSVLM2j9eie">论文</a></p>
+  </li>
+</ul>
+
+<h5 id="架构级变体">架构级变体</h5>
+
+<p>一些工作开始设计超出基本Transformer范围的新Transformer架构。其中：</p>
+
+<ol>
+  <li><strong>Triformer</strong> [Cirstea等，2022]：<a href="https://arxiv.org/abs/2204.13767">论文</a>
+    <ul>
+      <li>设计了一个三角形的、变量特定的补丁注意力。</li>
+      <li>使用三角形树状结构，随着后续输入尺寸呈指数级缩小。</li>
+      <li>通过一组变量特定的参数，使得多层Triformer保持轻量级和线性复杂度。</li>
+    </ul>
+  </li>
+  <li><strong>Scaleformer</strong> [Shabani等，2023]：<a href="https://arxiv.org/abs/2206.04038">论文</a>
+    <ul>
+      <li>提出了一个多尺度框架，适用于基于Transformer的时间序列预测模型（如FEDformer [Zhou等，2022]，Autoformer [Wu等，2021]等）。</li>
+      <li>通过共享权重，在多个尺度上迭代地细化预测的时间序列，以提高基线模型的性能。</li>
+    </ul>
+  </li>
+</ol>
+
+<h4 id="时空预测-spatio-temporal-forecasting">时空预测 Spatio-Temporal Forecasting</h4>
+
+<p>在时空预测中，时间序列Transformer考虑了时间和时空依赖关系，以实现准确的预测。具体而言：</p>
+
+<ol>
+  <li><strong>Traffic Transformer</strong> [Cai等，2020]：<a href="https://weirdgiser.site/publication/traffic-transformer-capturing-the-continuity-and-periodicity-of-time-series-for-traffic-forecasting/traffic-transformer-capturing-the-continuity-and-periodicity-of-time-series-for-traffic-forecasting.pdf">论文</a>
+    <ul>
+      <li>设计了一个编码器-解码器结构，使用自注意力模块捕获时间-时间依赖关系，以及使用图神经网络模块捕获空间依赖关系。</li>
+    </ul>
+  </li>
+  <li><strong>Spatial-temporal Transformer</strong> [Xu等，2020]：<a href="https://arxiv.org/pdf/2001.02908.pdf">论文</a>
+    <ul>
+      <li>在交通流量预测中，引入了时间Transformer块以捕获时间依赖关系，并设计了一个空间Transformer块，结合图卷积网络，更好地捕获空间-空间依赖关系。</li>
+    </ul>
+  </li>
+  <li><strong>Spatio-temporal graph Transformer</strong> [Yu等，2020]：<a href="https://link.springer.com/chapter/10.1007/978-3-030-58610-2_30">论文</a>
+    <ul>
+      <li>设计了一个基于注意力的图卷积机制，能够学习复杂的时空注意力模式，以改善行人轨迹预测。</li>
+    </ul>
+  </li>
+  <li><strong>Earthformer</strong> [Gao等，2022]：<a href="https://proceedings.neurips.cc/paper_files/paper/2022/file/a2affd71d15e8fedffe18d0219f4837a-Paper-Conference.pdf">论文</a>
+    <ul>
+      <li>提出了一个立方体注意力机制，用于高效的时空建模，将数据分解成立方体，并并行应用立方体级别的自注意力。</li>
+      <li>在天气和气候预测中表现出优异的性能。</li>
+    </ul>
+  </li>
+  <li><strong>AirFormer</strong> [Liang等，2023]：<a href="https://ojs.aaai.org/index.php/AAAI/article/view/26676/26448">论文</a>
+    <ul>
+      <li>设计了一个飞镖形式的空间自注意力模块和一个因果形式的时间自注意力模块，以有效捕获空间相关性和时间依赖关系。</li>
+      <li>此外，它通过潜在变量增强了Transformer，以捕获数据的不确定性并改善空气质量预测。</li>
+    </ul>
+  </li>
+</ol>
+
+<h4 id="事件预测-event-forecasting">事件预测 Event Forecasting</h4>
+
+<p>在许多实际应用中，事件序列数据具有不规则和异步的时间戳，这与具有相等采样间隔的规则时间序列数据形成对比。事件预测旨在根据过去事件的历史来预测未来事件的时间和标记，通常通过时间点过程（TPP）[Yan等，2019；Shchur等，2021]来建模。最近，一些神经TPP模型将Transformer纳入其中，以提高事件预测的性能。具体而言：</p>
+
+<ol>
+  <li><strong>Self-attentive Hawkes process (SAHP)</strong> [Zhang等，2020] 和 <strong>Transformer Hawkes process (THP)</strong> [Zuo等，2020]：
+    <ul>
+      <li>采用Transformer编码器架构来总结历史事件的影响并计算事件预测的强度函数。</li>
+      <li>通过将时间间隔转换为正弦函数来修改位置编码，以利用事件之间的间隔。</li>
+    </ul>
+  </li>
+  <li><strong>Attentive neural datalog through time (ANDTT)</strong> [Mei等，2022]：
+    <ul>
+      <li>提出了一种更加灵活的方案，通过注意力将所有可能的事件和时间进行嵌入。</li>
+      <li>实验表明，它能够比现有方法更好地捕捉复杂的事件依赖关系。</li>
+    </ul>
+  </li>
+</ol>
+
+<h3 id="52-异常检测中的transformer">5.2 异常检测中的Transformer</h3>
+
+<p>基于Transformer的架构也有助于时间序列异常检测任务，因为它能够建模时间依赖关系，从而提高检测质量。具体而言：</p>
+
+<ol>
+  <li><strong>TranAD</strong> [Tuli等，2022]：<a href="https://arxiv.org/pdf/2201.07284.pdf">论文</a>
+    <ul>
+      <li>提出了一种对抗训练过程，通过增加重建误差来放大异常的小偏差。</li>
+      <li>使用两个Transformer编码器和两个Transformer解码器设计了GAN风格的对抗训练过程，以获得稳定性。</li>
+    </ul>
+  </li>
+  <li>MT-RVAE [Wang等，2022] 和 TransAnomaly [Zhang等，2021]：
+    <ul>
+      <li>将变分自编码器（VAE）与Transformer相结合，以允许更多的并行化，并将训练成本降低近80%。</li>
+      <li>MT-RVAE设计了一个多尺度Transformer来提取和整合不同尺度的时间序列信息，克服了传统Transformer只提取局部信息用于顺序分析的缺点。</li>
+    </ul>
+  </li>
+  <li><strong>GTA</strong> [Chen等，2021c]：
+    <ul>
+      <li>将Transformer与基于图的学习架构结合起来，用于多变量时间序列异常检测。</li>
+      <li>GTA包含图卷积结构来建模影响传播过程，通过替换基础多头注意力机制，考虑了“全局”信息。</li>
+    </ul>
+  </li>
+  <li><strong>AnomalyTrans</strong> [Xu等，2022]：
+    <ul>
+      <li>结合Transformer和高斯先验关联，使异常更加可区分。</li>
+      <li>采用最小最大策略来优化异常模型，约束先验关联和序列关联，以获得更可区分的关联差异。</li>
+    </ul>
+  </li>
+</ol>
+
+<h3 id="53-分类中的transformer">5.3 分类中的Transformer</h3>
+
+<p>Transformer已被证明在各种时间序列分类任务中具有有效性，因为它在捕捉长期依赖方面的显著能力。具体而言：</p>
+
+<ol>
+  <li>GTN [Liu等，2021]：
+    <ul>
+      <li>使用两塔Transformer，其中每个塔分别处理时间步级别的注意力和通道级别的注意力。</li>
+      <li>通过可学习的加权连接（也称为“门控”）来合并两塔的特征。</li>
+      <li>在13个多变量时间序列分类任务中实现了最先进的结果。</li>
+    </ul>
+  </li>
+  <li>Rußwurm和Körner [2020]：
+    <ul>
+      <li>研究了基于自注意力的Transformer用于原始光学卫星时间序列分类，并与循环神经网络和卷积神经网络进行了比较，取得了最佳结果。</li>
+    </ul>
+  </li>
+  <li>TARNet [Chowdhury等，2022]：
+    <ul>
+      <li>设计了Transformer来学习任务感知的数据重构，增强了分类性能。</li>
+      <li>利用注意力分数进行重要时间戳的掩蔽和重构，带来了更优越的性能。</li>
+    </ul>
+  </li>
+</ol>
+
+<p>另外，还研究了预训练的Transformer在分类任务中的应用：</p>
+
+<ol>
+  <li>Yuan和Lin [2020]：
+    <ul>
+      <li>研究了用于原始光学卫星图像时间序列分类的Transformer，并使用自监督预训练模式，因为标记数据有限。</li>
+    </ul>
+  </li>
+  <li>Zerveas等 [2021]：
+    <ul>
+      <li>引入了无监督预训练框架，该模型使用按比例屏蔽的数据进行预训练。</li>
+      <li>预训练模型随后在分类等下游任务中进行微调。</li>
+    </ul>
+  </li>
+  <li>Yang等 [2021]：
+    <ul>
+      <li>提出使用大规模预训练的语音处理模型解决下游时间序列分类问题，在30个流行的时间序列分类数据集上生成了19个具有竞争力的结果。</li>
+    </ul>
+  </li>
+</ol>
+
+<h2 id="6-实验评估与讨论-experimental-evaluation-and-discussion">6 实验评估与讨论 Experimental Evaluation and Discussion</h2>
+
+<p>对典型的具有挑战性的基准数据集ETTm2 [Zhou等，2021] 进行了初步的实证研究，以分析Transformer如何处理时间序列数据。由于经典的统计ARIMA/ETS [Hyndman和Khandakar，2008]模型和基本的RNN/CNN模型在这个数据集上的表现不如Transformer，因此重点关注了实验中具有不同配置的流行时间序列Transformer。</p>
+
+<h3 id="鲁棒性分析">鲁棒性分析</h3>
+
+<p>上面描述的许多工作都精心设计了注意力模块，以降低二次计算和内存复杂度，尽管它们实际上使用了一个短的固定大小的输入来在报告的实验中取得最佳结果。这让作者团队对这种高效设计的实际用途产生了疑问。进行了一项鲁棒性实验，延长了输入序列长度，以验证它们处理长期输入序列时的预测能力和鲁棒性。</p>
+
+<h3 id="模型大小分析">模型大小分析</h3>
+
+<p>在被引入到时间序列预测领域之前，Transformer已经在NLP和CV社区表现出卓越的性能。Transformer在这些领域的一个关键优势是能够通过增加模型大小来提高预测能力。通常，模型容量由Transformer的层数控制，通常设置在12到128之间。然而，当在表3的实验中比较具有不同层数的不同Transformer模型的预测结果时，通常3到6层的Transformer会取得更好的结果。</p>
+
+<h3 id="季节性趋势分解分析">季节性趋势分解分析</h3>
+
+<p>在最近的研究中，研究人员开始意识到季节性趋势分解是Transformer在时间序列预测中性能的关键部分。作为表4中的一个实验所示，采用了在[Wu等，2021]中提出的简单移动平均季节性趋势分解架构来测试各种注意力模块。可以看出，简单的季节性趋势分解模型可以显著提升模型的性能，提高50%到80%。这是一个独特的模块，通过分解来提升性能似乎是时间序列预测中Transformer应用的一个一致现象，值得进一步探索更先进和精心设计的时间序列分解方案。</p>
+
+<p><img src="https://raw.githubusercontent.com/slience-me/picGo/master/images/image-20240313100826602.png" alt="image-20240313100826602" /></p>
+
+<h2 id="7-未来研究机会-future-research-opportunities">7 未来研究机会 Future Research Opportunities</h2>
+
+<p>在时间序列中，Transformer 的未来研究方向可以从以下几个方面着手：</p>
+
+<h3 id="71-时间序列transformer的归纳偏差">7.1 时间序列Transformer的归纳偏差</h3>
+
+<p>当前的基本Transformer对数据模式和特征没有任何假设。然而，时间序列数据的一个关键特征是其季节性/周期性和趋势模式。一些最近的研究表明，将系列周期性或频率处理纳入时间序列Transformer中可以显著提高性能。此外，一些研究采用了一种看似相反的归纳偏差，但都取得了良好的数值改进。因此，未来的一个方向是根据对时间序列数据的理解和特定任务特性，考虑更有效的方式将归纳偏差引入Transformer中。</p>
+
+<h3 id="72-用于时间序列的transformer和gnn">7.2 用于时间序列的Transformer和GNN</h3>
+
+<p>在应用中，多变量和时空序列变得越来越常见，需要额外的技术来处理高维度数据，特别是捕获维度之间的潜在关系。引入图神经网络(GNN)是一种自然的方式来建模空间依赖性或维度之间的关系。最近的几项研究表明，GNN和Transformer/注意力的组合不仅可以带来显著的性能提升，如交通预测和多模态预测，还能更好地理解时空动态和潜在因果关系。将Transformer和GNN结合起来有效地进行时间序列的时空建模是一个重要的未来方向。</p>
+
+<h3 id="73-用于时间序列的预训练transformer">7.3 用于时间序列的预训练Transformer</h3>
+
+<p>大规模的预训练Transformer模型已经显著提升了NLP和CV等领域各种任务的性能。然而，针对时间序列的预训练Transformer研究有限，现有研究主要集中在时间序列分类上。因此，如何为时间序列中的不同任务开发适当的预训练Transformer模型，仍然需要在未来进行研究。</p>
+
+<h3 id="74-transformer与体系结构级别的变体">7.4 Transformer与体系结构级别的变体</h3>
+
+<p>大多数发展中的时间序列Transformer模型都保持了基本Transformer的架构，并主要在注意力模块上进行修改。因此，未来的一个方向是考虑更多的体系结构级别设计，专门针对时间序列数据和任务进行优化。</p>
+
+<h3 id="75-用于时间序列的nas-transformers">7.5 用于时间序列的NAS Transformers</h3>
+
+<p>超参数，如嵌入维度和头/层的数量，很大程度上会影响Transformer的性能。手动配置这些超参数是耗时的，而且往往导致次优性能。自动ML技术如神经架构搜索(NAS)已成为发现有效深度神经网络架构的流行技术。在近期的研究中，可以发现NLP和CV领域利用NAS自动化Transformer设计的研究。对于行业规模的时间序列数据，这是一个具有实际重要性的方向，自动发现既具有记忆又具有计算效率的Transformer架构，是时间序列Transformer的一个重要未来方向。</p>
+
+<h2 id="8-结论-conclusion">8 结论 Conclusion</h2>
+
+<p>作者团队提供了一份关于时间序列Transformer的调查报告。将审查的方法组织成一个新的分类体系，包括网络设计和应用。并总结了每个类别中的代表性方法，通过实验评估讨论它们的优点和局限性，并突出未来的研究方向。</p>]]></content><author><name>slience_me</name></author><category term="论文笔记" /><summary type="html"><![CDATA[Transformers in Time Series A Survey综述总结]]></summary></entry><entry><title type="html">论文笔记｜encoding和embedding的区别</title><link href="https://slienceme.cn/2024/03/12/encoding%E5%92%8Cembedding%E7%9A%84%E5%8C%BA%E5%88%AB/" rel="alternate" type="text/html" title="论文笔记｜encoding和embedding的区别" /><published>2024-03-12T00:00:00+08:00</published><updated>2024-03-12T00:00:00+08:00</updated><id>https://slienceme.cn/2024/03/12/encoding%E5%92%8Cembedding%E7%9A%84%E5%8C%BA%E5%88%AB</id><content type="html" xml:base="https://slienceme.cn/2024/03/12/encoding%E5%92%8Cembedding%E7%9A%84%E5%8C%BA%E5%88%AB/"><![CDATA[<p><img src="https://raw.githubusercontent.com/slience-me/picGo/master/images/logo_slienceme3.jpeg" alt="在这里插入图片描述" /></p>
+
+<p>本文作者： <a href="https://slienceme.cn/">slience_me</a></p>
+
+<hr />
+<h1 id="encoding和embedding的区别">encoding和embedding的区别</h1>
+
+<p>“Embedding” 和 “Encoding” 是两个在计算机科学和机器学习领域中常用的术语，它们虽然有些相似，但指代的概念和用途有所不同。</p>
+
+<p>## Embedding</p>
+<ul>
+  <li>在自然语言处理（NLP）和图像处理等领域中， <strong>Embedding 通常指将高维度的数据映射到低维度的空间中</strong> 。例如，在NLP中，词嵌入（Word Embedding）是将单词映射到低维度的实数向量空间中的技术，其中每个单词都被表示为一个稠密的实数向量。这样的向量表示捕捉了单词之间的语义关系，常用的词嵌入模型包括Word2Vec、GloVe和BERT。</li>
+  <li>在图像处理中，图像嵌入（Image Embedding）类似于将图像编码为向量形式的表示，使得计算机能够更好地理解图像的内容。通常使用深度学习模型（如卷积神经网络）来学习图像的嵌入。</li>
+</ul>
+
+<blockquote>
+  <p>采用Word Embedding，假设我们有一个句子：“猫坐在地毯上”。在词嵌入中，每个单词（如“猫”、“坐”、“地毯”等）都被映射为一个实数向量，以便计算机能够更好地理解这些单词之间的语义关系。 我们可以使用预训练的词嵌入模型（如Word2Vec或GloVe），将每个单词映射为一个低维度的实数向量。例如，“猫”可能被映射为[-0.5, 0.8, -0.3]，“坐”可能被映射为[0.2, -0.6, 0.9]，以此类推。
+词嵌入（Word Embedding）主要关注于将单词映射到连续的实数向量空间中，以捕捉单词之间的语义关系。</p>
+</blockquote>
+
+<h2 id="encoding">Encoding</h2>
+<ul>
+  <li>
+    <p>编码是将数据转换为特定格式或形式的过程。 <strong>编码可以是将原始数据转换为适合存储或传输的形式，也可以是将数据转换为表示的形式，以便进一步处理。</strong> 在计算机编程中，编码通常指将数据转换为比特流的过程，比如将字符转换为ASCII码或UTF-8编码。</p>
+  </li>
+  <li>
+    <p>在机器学习领域中，编码也可以指将输入数据转换为机器学习模型可以处理的格式的过程。例如，将分类变量转换为数字形式的过程称为编码（如独热编码）。</p>
+  </li>
+</ul>
+
+<blockquote>
+  <p>采用One-Hot Encoding，例如，对于句子“猫坐在地毯上”，如果我们有一个词汇表包含[“猫”, “坐”, “地毯”, “上”]，那么“猫”可能被编码为[1, 0, 0, 0]，“坐”可能被编码为[0, 1, 0, 0]，以此类推。
+One-Hot Encoding 则是将单词编码为稀疏的二进制向量，以便计算机能够处理。</p>
+</blockquote>
+
+<h2 id="总结">总结</h2>
+
+<p>总的来说，Embedding 更多地关注于将数据映射到低维度空间以捕捉其语义信息，而 Encoding 则更多地关注于将数据转换为特定格式或表示的过程。在某些情况下，两者的概念可能会有所重叠，但它们通常在不同的上下文中使用。</p>]]></content><author><name>slience_me</name></author><category term="论文笔记" /><summary type="html"><![CDATA[encoding和embedding的区别]]></summary></entry><entry><title type="html">论文笔记｜注意力、自注意力和多头注意力的区别</title><link href="https://slienceme.cn/2024/03/12/%E6%B3%A8%E6%84%8F%E5%8A%9B-%E8%87%AA%E6%B3%A8%E6%84%8F%E5%8A%9B%E5%92%8C%E5%A4%9A%E5%A4%B4%E6%B3%A8%E6%84%8F%E5%8A%9B%E7%9A%84%E5%8C%BA%E5%88%AB/" rel="alternate" type="text/html" title="论文笔记｜注意力、自注意力和多头注意力的区别" /><published>2024-03-12T00:00:00+08:00</published><updated>2024-03-12T00:00:00+08:00</updated><id>https://slienceme.cn/2024/03/12/%E6%B3%A8%E6%84%8F%E5%8A%9B%E3%80%81%E8%87%AA%E6%B3%A8%E6%84%8F%E5%8A%9B%E5%92%8C%E5%A4%9A%E5%A4%B4%E6%B3%A8%E6%84%8F%E5%8A%9B%E7%9A%84%E5%8C%BA%E5%88%AB</id><content type="html" xml:base="https://slienceme.cn/2024/03/12/%E6%B3%A8%E6%84%8F%E5%8A%9B-%E8%87%AA%E6%B3%A8%E6%84%8F%E5%8A%9B%E5%92%8C%E5%A4%9A%E5%A4%B4%E6%B3%A8%E6%84%8F%E5%8A%9B%E7%9A%84%E5%8C%BA%E5%88%AB/"><![CDATA[<p><img src="https://raw.githubusercontent.com/slience-me/picGo/master/images/logo_slienceme3.jpeg" alt="在这里插入图片描述" /></p>
+
+<p>本文作者： <a href="https://slienceme.cn/">slience_me</a></p>
+
+<hr />
+
+<h1 id="注意力自注意力和多头注意力的区别">注意力、自注意力和多头注意力的区别</h1>
+
+<p>理解注意力（Attention）、自注意力（Self-Attention）和多头注意力（Multi-Head Attention）之间的区别非常重要，因为它们是自然语言处理（NLP）和深度学习模型中关键的组件。</p>
+
+<h2 id="注意力attention">注意力（Attention）</h2>
+
+<ul>
+  <li>注意力机制是一种机制，允许模型集中注意力在输入的不同部分，以便更好地理解或处理数据。在自然语言处理中，注意力机制常用于对<strong>输入序列中不同位置的信息进行加权汇总</strong>，以便在生成输出时对输入中不同位置的信息进行加权。</li>
+  <li>例如，在机器翻译任务中，如果要将一个句子从一种语言翻译成另一种语言，注意力机制可以帮助模型确定在翻译每个词时应该关注源语言句子的哪些部分。
+<img src="https://raw.githubusercontent.com/slience-me/picGo/master/images/8ee3f718cae84eab940be2b5b4c43a23.png" alt="在这里插入图片描述" />
+<img src="https://raw.githubusercontent.com/slience-me/picGo/master/images/bae34f0817fe4f3ebab7c7d019527a1c.png" alt="在这里插入图片描述" /></li>
+</ul>
+
+<blockquote>
+  <p><img src="https://raw.githubusercontent.com/slience-me/picGo/master/images/b860a077d5844a19ace311a5b95aec9a.png" alt="这里是引用" />
+<img src="https://raw.githubusercontent.com/slience-me/picGo/master/images/e80f393cb04e4037a5a4c75439710214.png" alt="在这里插入图片描述" />
+<img src="https://raw.githubusercontent.com/slience-me/picGo/master/images/cb3dea4a4dbc4422a4a7f43daf107655.png" alt="在这里插入图片描述" /></p>
+</blockquote>
+
+<h2 id="自注意力self-attention">自注意力（Self-Attention）</h2>
+<ul>
+  <li>自注意力是一种特殊类型的注意力机制，其中输入序列中的每个元素都用于计算其自己与其他元素之间的关系。<strong>简而言之，它允许模型在输入序列中的不同位置之间进行交互，以捕获序列内部的依赖关系。</strong></li>
+  <li>举例来说，在自然语言处理中，对于一个句子，自注意力机制可以帮助模型理解每个词与句子中其他词之间的关系，从而更好地表示句子的语义信息。
+<img src="https://raw.githubusercontent.com/slience-me/picGo/master/images/3ca34e9c1fab40ba896f5b89b92e7d3d.png" alt="在这里插入图片描述" /></li>
+</ul>
+
+<blockquote>
+  <p>Self Attention 机制，顾名思义，指的是 Source 内部元素之间或者 Target 内部元素之间发生的 Attention 机制，也可以理解为 Source = Target 这种特殊情况下的 Attention 机制，具体计算过程和 Soft Attention 是一样的。</p>
+</blockquote>
+
+<h2 id="多头注意力multi-head-attention">多头注意力（Multi-Head Attention）</h2>
+<ul>
+  <li>多头注意力是一种注意力机制的扩展形式，在其中，<strong>模型使用多个注意力头（即并行的注意力子机制）来捕获不同的关注点。每个注意力头都会学习不同的注意力权重，然后将它们组合起来以获得更全面的表示</strong>。</li>
+  <li>例如，在Transformer模型中，每个注意力头可以关注输入序列中的不同方面，比如语义信息、句法信息等。通过使用多个注意力头，模型能够从多个角度更全面地理解输入序列。</li>
+</ul>
+
+<p>总之，自注意力是一种特殊类型的注意力机制，用于在输入序列内部建立元素之间的关系；而多头注意力是一种扩展形式，使用多个并行的自注意力头来捕获不同的关注点，以更全面地理解输入序列。</p>
+
+<p><img src="https://raw.githubusercontent.com/slience-me/picGo/master/images/891db5e4723f48b09451cfcabce3ba44.png" alt="在这里插入图片描述" />
+<img src="https://raw.githubusercontent.com/slience-me/picGo/master/images/022e53941b794387b10b2cfe2bf5b9ec.png" alt="在这里插入图片描述" /></p>
+
+<blockquote>
+  <p><img src="https://raw.githubusercontent.com/slience-me/picGo/master/images/a493852b28f04edd9b74f5e835b55cfc.png" alt="在这里插入图片描述" />
+<img src="https://raw.githubusercontent.com/slience-me/picGo/master/images/44c79a3233844e41940645b6022e0d27.png" alt="在这里插入图片描述" /></p>
+</blockquote>
+
+<hr />
+
+<p>参考内容：</p>
+
+<ol>
+  <li><a href="https://zhuanlan.zhihu.com/p/379722366">详解深度学习中的注意力机制（Attention）（图片来源）</a></li>
+  <li><a href="https://zhuanlan.zhihu.com/p/669027091">Q、K、V 与 Multi-Head Attention 多头注意力机制（讲解细致）</a></li>
+</ol>]]></content><author><name>slience_me</name></author><category term="论文笔记" /><summary type="html"><![CDATA[注意力、自注意力和多头注意力的区别]]></summary></entry><entry><title type="html">论文笔记｜绝对位置编码与相对位置编码区别</title><link href="https://slienceme.cn/2024/03/12/%E7%BB%9D%E5%AF%B9%E4%BD%8D%E7%BD%AE%E7%BC%96%E7%A0%81%E4%B8%8E%E7%9B%B8%E5%AF%B9%E4%BD%8D%E7%BD%AE%E7%BC%96%E7%A0%81%E5%8C%BA%E5%88%AB/" rel="alternate" type="text/html" title="论文笔记｜绝对位置编码与相对位置编码区别" /><published>2024-03-12T00:00:00+08:00</published><updated>2024-03-12T00:00:00+08:00</updated><id>https://slienceme.cn/2024/03/12/%E7%BB%9D%E5%AF%B9%E4%BD%8D%E7%BD%AE%E7%BC%96%E7%A0%81%E4%B8%8E%E7%9B%B8%E5%AF%B9%E4%BD%8D%E7%BD%AE%E7%BC%96%E7%A0%81%E5%8C%BA%E5%88%AB</id><content type="html" xml:base="https://slienceme.cn/2024/03/12/%E7%BB%9D%E5%AF%B9%E4%BD%8D%E7%BD%AE%E7%BC%96%E7%A0%81%E4%B8%8E%E7%9B%B8%E5%AF%B9%E4%BD%8D%E7%BD%AE%E7%BC%96%E7%A0%81%E5%8C%BA%E5%88%AB/"><![CDATA[<p><img src="https://raw.githubusercontent.com/slience-me/picGo/master/images/logo_slienceme3.jpeg" alt="在这里插入图片描述" /></p>
+
+<p>本文作者： <a href="https://slienceme.cn/">slience_me</a></p>
+
+<hr />
+<h1 id="绝对位置编码与相对位置编码区别">绝对位置编码与相对位置编码区别</h1>
+
+<p>绝对位置编码（Absolute Positional Encoding）和相对位置编码（Relative Positional Encoding）是用于在Transformer等模型中处理序列数据时引入位置信息的两种不同方法。</p>
+<h2 id="绝对位置编码">绝对位置编码</h2>
+<ul>
+  <li>绝对位置编码是在序列中每个位置上都固定地分配一个唯一的编码。这种编码通常是基于正弦和余弦函数的周期性函数生成的。</li>
+  <li>例如，在一个长度为100的序列中，第一个位置的绝对位置编码可能是[0.841, 0.0, 0.909, …]，第二个位置的编码可能是[0.909, 0.841, 0.0, …]，以此类推。</li>
+</ul>
+
+<h2 id="相对位置编码">相对位置编码</h2>
+<ul>
+  <li>相对位置编码是根据元素之间的相对位置关系来动态地生成位置信息。这种编码允许模型在处理序列时考虑元素之间的相对距离。</li>
+  <li>例如，在一个文本序列中，如果两个词之间的相对位置是“前一个词在前”，那么相对位置编码可能会给这种关系分配一个特定的向量表示；如果是“后一个词在前”，那么分配另一个向量表示。</li>
+</ul>
+
+<h2 id="区别和举例">区别和举例：</h2>
+
+<ul>
+  <li>区别：绝对位置编码是固定的、不考虑元素之间的关系，而相对位置编码是动态的、根据元素之间的相对关系来分配编码。</li>
+  <li>举例：在处理一个长度为5的序列时，绝对位置编码会为每个位置分配一个固定的编码，而相对位置编码会根据不同的位置关系动态地生成不同的编码。比如，对于相对位置编码，如果元素之间的相对关系是“前一个位置在前”，那么它可能会被编码为[0.8, -0.2]；如果是“后一个位置在前”，那么可能会被编码为[-0.3, 0.6]。</li>
+</ul>]]></content><author><name>slience_me</name></author><category term="论文笔记" /><summary type="html"><![CDATA[绝对位置编码与相对位置编码区别]]></summary></entry><entry><title type="html">教程｜安装不同版本的nodejs环境以及版本切换</title><link href="https://slienceme.cn/2024/02/02/%E5%AE%89%E8%A3%85%E4%B8%8D%E5%90%8C%E7%89%88%E6%9C%AC%E7%9A%84nodejs%E7%8E%AF%E5%A2%83%E4%BB%A5%E5%8F%8A%E7%89%88%E6%9C%AC%E5%88%87%E6%8D%A2/" rel="alternate" type="text/html" title="教程｜安装不同版本的nodejs环境以及版本切换" /><published>2024-02-02T00:00:00+08:00</published><updated>2024-02-02T00:00:00+08:00</updated><id>https://slienceme.cn/2024/02/02/%E5%AE%89%E8%A3%85%E4%B8%8D%E5%90%8C%E7%89%88%E6%9C%AC%E7%9A%84nodejs%E7%8E%AF%E5%A2%83%E4%BB%A5%E5%8F%8A%E7%89%88%E6%9C%AC%E5%88%87%E6%8D%A2</id><content type="html" xml:base="https://slienceme.cn/2024/02/02/%E5%AE%89%E8%A3%85%E4%B8%8D%E5%90%8C%E7%89%88%E6%9C%AC%E7%9A%84nodejs%E7%8E%AF%E5%A2%83%E4%BB%A5%E5%8F%8A%E7%89%88%E6%9C%AC%E5%88%87%E6%8D%A2/"><![CDATA[<h1 id="已解决安装不同版本的nodejs环境以及版本切换">【已解决】安装不同版本的nodejs环境以及版本切换</h1>
+
+<p><img src="https://raw.githubusercontent.com/slience-me/picGo/master/images/logo_slienceme3.jpeg" alt="img" /></p>
+
+<p>本文作者： <a href="https://slienceme.cn/">slience_me</a></p>
+
+<hr />
+
+<h2 id="方案一简单版直接安装不同的版本nodejs">方案一：(简单版)直接安装不同的版本nodejs</h2>
+
+<p>假如你要安装以下两个版本node</p>
+
+<p><img src="https://raw.githubusercontent.com/slience-me/picGo/master/images/image-20240202105908677.png" alt="image-20240202105908677" /></p>
+
+<p>建议先安装低版本的node</p>
+
+<p>选择安装路径为<code class="language-plaintext highlighter-rouge">C:\Program Files\nodejs\v10.14.2\</code>,进行安装，一直下一步即可，安装包会自动添加环境变量</p>
+
+<p>安装完成后，更改文件名称<code class="language-plaintext highlighter-rouge">v10.14.2</code>为<code class="language-plaintext highlighter-rouge">nodejsv10.14.2</code>，否则安装高版本会覆盖低版本的内容，环境变量已经指明安装路径了</p>
+
+<p>更改完文件名后，安装高版本的node</p>
+
+<p>选择安装路径为<code class="language-plaintext highlighter-rouge">C:\Program Files\nodejs\v18.19.0\</code>,进行安装，一直下一步即可，安装包会自动添加环境变量</p>
+
+<p>环境变量中，添加这个<code class="language-plaintext highlighter-rouge">C:\Program Files\nodejs\v18.19.0\</code>和<code class="language-plaintext highlighter-rouge">C:\Program Files\nodejs\v10.14.2\</code></p>
+
+<p><img src="https://raw.githubusercontent.com/slience-me/picGo/master/images/image-20240202110534144.png" alt="image-20240202110534144" /></p>
+
+<p>在需要更改激活的node版本时候，修改<code class="language-plaintext highlighter-rouge">C:\Program Files\nodejs\</code>中文件的文件名即可，比如我现在想要激活版本<code class="language-plaintext highlighter-rouge">v18.19.0</code>，我将文件夹<code class="language-plaintext highlighter-rouge">v10.14.2</code>更改为<code class="language-plaintext highlighter-rouge">nodejsv10.14.2</code>即可，环境变量就找不到10版本的了，因此就18版本生效</p>
+
+<h2 id="方案二一劳永逸版安装node版本管理工具nvm">方案二：(一劳永逸版)安装node版本管理工具nvm</h2>
+
+<p><a href="https://github.com/coreybutler/nvm-windows/releases">点击下载链接</a></p>
+
+<p>根据自己电脑版本选择安装包</p>
+
+<p><img src="https://raw.githubusercontent.com/slience-me/picGo/master/images/image-20240202111041463.png" alt="image-20240202111041463" /></p>
+
+<p>安装过程中，选择nvm的安装路径，然后选择原始node的安装路径(可以直接下一步)，出现了某版本已安装，是否交给nvm管理，点击是即可</p>
+
+<p>NVM常用命令</p>
+
+<p><code class="language-plaintext highlighter-rouge">nvm list </code> ：查看已安装的Node版本</p>
+
+<p><code class="language-plaintext highlighter-rouge">nvm use 10.14.2</code>：切换Node版本(以10.14.2版本为例)</p>
+
+<p><code class="language-plaintext highlighter-rouge">nvm -v</code>：查看NVM的版本</p>
+
+<p><code class="language-plaintext highlighter-rouge">nvm node_mirror https://npm.taobao.org/mirrors/node/</code> ：配置下载源（最新的源可能改变为<code class="language-plaintext highlighter-rouge">https://registry.npmmirror.com</code>）</p>
+
+<p><code class="language-plaintext highlighter-rouge">nvm install 18.19.0</code>：下载Node(以18.19.0版本为例，通过多次下载可以下载多个版本的Node)
+<code class="language-plaintext highlighter-rouge">ctrl D</code>退出Node命令行</p>]]></content><author><name>slience_me</name></author><category term="教程" /><summary type="html"><![CDATA[【已解决】安装不同版本的nodejs环境以及版本切换]]></summary></entry><entry><title type="html">教程｜GitHub图床&amp;amp;Typora&amp;amp;PicGo相关配置</title><link href="https://slienceme.cn/2024/01/20/GitHub%E5%9B%BE%E5%BA%8A&Typora&PicGo/" rel="alternate" type="text/html" title="教程｜GitHub图床&amp;amp;Typora&amp;amp;PicGo相关配置" /><published>2024-01-20T00:00:00+08:00</published><updated>2024-01-20T00:00:00+08:00</updated><id>https://slienceme.cn/2024/01/20/GitHub%E5%9B%BE%E5%BA%8A&amp;Typora&amp;PicGo</id><content type="html" xml:base="https://slienceme.cn/2024/01/20/GitHub%E5%9B%BE%E5%BA%8A&amp;Typora&amp;PicGo/"><![CDATA[<p><img src="https://raw.githubusercontent.com/slience-me/picGo/master/images/logo_slienceme3.jpeg" alt="img" /></p>
+
+<p>本文作者： <a href="https://slienceme.cn/">slience_me</a></p>
+
+<hr />
+
+<h1 id="github图床typorapicgo相关配置">GitHub图床&amp;Typora&amp;PicGo相关配置</h1>
+
+<blockquote>
+  <p>关于Typora旧版的百度网盘下载路径</p>
+
+  <p>链接：https://pan.baidu.com/s/12mq-dMqWnRRoreGo4MTbKg?pwd=oq22 
+提取码：oq22</p>
+
+  <p>如果有不妥，请及时联系我，电子邮件：<a href="mailto:slienceme520@gmail.com">slienceme520@gmail.com</a></p>
+
+  <p>我将下载链接删除</p>
+</blockquote>
+
+<hr />
+
+<h2 id="1-github配置">1. Github配置</h2>
+
+<ol>
+  <li>创建一个图片仓库</li>
+</ol>
+
+<p><img src="https://raw.githubusercontent.com/slience-me/picGo/master/images/image-20240120181745928.png" alt="image-20240120181745928" /></p>
+
+<ol>
+  <li>进入设置</li>
+</ol>
+
+<p><img src="https://raw.githubusercontent.com/slience-me/picGo/master/images/image-20240120182004001.png" alt="image-20240120182004001" /></p>
+
+<ol>
+  <li>点击开发者设置</li>
+</ol>
+
+<p><img src="https://raw.githubusercontent.com/slience-me/picGo/master/images/image-20240120182039496.png" alt="image-20240120182039496" /></p>
+
+<ol>
+  <li>点击Token</li>
+</ol>
+
+<p><img src="https://raw.githubusercontent.com/slience-me/picGo/master/images/image-20240120182111233.png" alt="image-20240120182111233" /></p>
+
+<ol>
+  <li>用新出的这个</li>
+</ol>
+
+<p><img src="https://raw.githubusercontent.com/slience-me/picGo/master/images/image-20240120182252639.png" alt="image-20240120182252639" /></p>
+
+<ol>
+  <li>设置部分内容</li>
+</ol>
+
+<p><img src="https://raw.githubusercontent.com/slience-me/picGo/master/images/image-20240120182448852.png" alt="image-20240120182448852" /></p>
+
+<ol>
+  <li>给出以下权限</li>
+</ol>
+
+<p><img src="https://raw.githubusercontent.com/slience-me/picGo/master/images/image-20240120182711462.png" alt="image-20240120182711462" /></p>
+
+<ol>
+  <li>点击生成按钮即可</li>
+</ol>
+
+<p><img src="https://raw.githubusercontent.com/slience-me/picGo/master/images/image-20240120182757552.png" alt="image-20240120182757552" /></p>
+
+<ol>
+  <li>复制一份这个token，token仅出现一次</li>
+</ol>
+
+<p><img src="https://raw.githubusercontent.com/slience-me/picGo/master/images/image-20240120182859273.png" alt="image-20240120182859273" /></p>
+
+<ol>
+  <li>下一步，下载安装picGo</li>
+</ol>
+
+<h2 id="2-picgo配置">2. picGo配置</h2>
+
+<p>进入<a href="https://github.com/Molunerfinn/PicGo/releases">下载地址</a> 选择一个稳定版</p>
+
+<p><img src="https://raw.githubusercontent.com/slience-me/picGo/master/images/image-20240120183130700.png" alt="image-20240120183130700" /></p>
+
+<p>windows默认选择红框内的即可</p>
+
+<p><img src="https://raw.githubusercontent.com/slience-me/picGo/master/images/image-20240120183219810.png" alt="image-20240120183219810" /></p>
+
+<p>点击确定即可</p>
+
+<p><img src="https://raw.githubusercontent.com/slience-me/picGo/master/images/image-20240120183501625.png" alt="image-20240120183501625" /></p>
+
+<h2 id="3-typora配置">3. Typora配置</h2>
+
+<ol>
+  <li>点击文件</li>
+</ol>
+
+<p><img src="https://raw.githubusercontent.com/slience-me/picGo/master/images/image-20240120183544385.png" alt="image-20240120183544385" /></p>
+
+<ol>
+  <li>点击偏好设置</li>
+</ol>
+
+<p><img src="https://raw.githubusercontent.com/slience-me/picGo/master/images/image-20240120183610568.png" alt="image-20240120183610568" /></p>
+
+<ol>
+  <li>点击图像</li>
+</ol>
+
+<p><img src="https://raw.githubusercontent.com/slience-me/picGo/master/images/image-20240120183630072.png" alt="image-20240120183630072" /></p>
+
+<ol>
+  <li>选择完成后，可以验证是否上传成功</li>
+</ol>
+
+<p><img src="https://raw.githubusercontent.com/slience-me/picGo/master/images/image-20240120183739694.png" alt="image-20240120183739694" /></p>
+
+<ol>
+  <li>这个根据个人情况自行设置即可</li>
+</ol>
+
+<p><img src="https://raw.githubusercontent.com/slience-me/picGo/master/images/image-20240120183824466.png" alt="image-20240120183824466" /></p>
+
+<ol>
+  <li>图片右键点击上传即可</li>
+</ol>
+
+<p><img src="https://raw.githubusercontent.com/slience-me/picGo/master/images/image-20240120183909360.png" alt="image-20240120183909360" /></p>
+
+<ol>
+  <li>或者统一上传</li>
+</ol>
+
+<p><img src="https://raw.githubusercontent.com/slience-me/picGo/master/images/image-20240120184108178.png" alt="image-20240120184108178" /></p>
+
+<ol>
+  <li>或者设置直接上传</li>
+</ol>
+
+<p><img src="https://raw.githubusercontent.com/slience-me/picGo/master/images/image-20240120184135560.png" alt="image-20240120184135560" /></p>]]></content><author><name>slience_me</name></author><category term="教程" /><summary type="html"><![CDATA[GitHub图床&Typora&PicGo相关配置]]></summary></entry><entry><title type="html">论文笔记｜关于去除信号中的直流分量效果演示</title><link href="https://slienceme.cn/2024/01/20/%E5%85%B3%E4%BA%8E%E5%8E%BB%E9%99%A4%E4%BF%A1%E5%8F%B7%E4%B8%AD%E7%9A%84%E7%9B%B4%E6%B5%81%E5%88%86%E9%87%8F/" rel="alternate" type="text/html" title="论文笔记｜关于去除信号中的直流分量效果演示" /><published>2024-01-20T00:00:00+08:00</published><updated>2024-01-20T00:00:00+08:00</updated><id>https://slienceme.cn/2024/01/20/%E5%85%B3%E4%BA%8E%E5%8E%BB%E9%99%A4%E4%BF%A1%E5%8F%B7%E4%B8%AD%E7%9A%84%E7%9B%B4%E6%B5%81%E5%88%86%E9%87%8F</id><content type="html" xml:base="https://slienceme.cn/2024/01/20/%E5%85%B3%E4%BA%8E%E5%8E%BB%E9%99%A4%E4%BF%A1%E5%8F%B7%E4%B8%AD%E7%9A%84%E7%9B%B4%E6%B5%81%E5%88%86%E9%87%8F/"><![CDATA[<p><img src="https://img-blog.csdnimg.cn/img_convert/deb6477b5f7eff71beed3a030757805a.jpeg" alt="img" /></p>
+
+<p>本文作者： <a href="https://slienceme.cn/">slience_me</a></p>
+
+<hr />
+
+<h1 id="关于去除信号中的直流分量效果演示零频率分量">关于去除信号中的直流分量效果演示（零频率分量）</h1>
+
+<h2 id="1-效果图展示">1. 效果图展示：</h2>
+
+<p><img src="https://img-blog.csdnimg.cn/img_convert/c90953ce3dfce0c8217087f79a1e1fef.png" alt="image-20240120175207877" /></p>
+
+<h2 id="2-快速傅里叶变换fft">2. 快速傅里叶变换FFT</h2>
+
+<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="k">def</span> <span class="nf">FFT_for_Period</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="n">k</span><span class="o">=</span><span class="mi">2</span><span class="p">):</span>
+    <span class="n">xf</span> <span class="o">=</span> <span class="n">torch</span><span class="p">.</span><span class="n">fft</span><span class="p">.</span><span class="n">rfft</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="n">dim</span><span class="o">=</span><span class="mi">1</span><span class="p">)</span>
+    <span class="n">frequency_list</span> <span class="o">=</span> <span class="nb">abs</span><span class="p">(</span><span class="n">xf</span><span class="p">).</span><span class="n">mean</span><span class="p">(</span><span class="mi">0</span><span class="p">).</span><span class="n">mean</span><span class="p">(</span><span class="o">-</span><span class="mi">1</span><span class="p">)</span>
+    <span class="n">frequency_list</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span> <span class="o">=</span> <span class="mi">0</span>
+    <span class="n">_</span><span class="p">,</span> <span class="n">top_list</span> <span class="o">=</span> <span class="n">torch</span><span class="p">.</span><span class="n">topk</span><span class="p">(</span><span class="n">frequency_list</span><span class="p">,</span> <span class="n">k</span><span class="p">)</span>
+    <span class="n">top_list</span> <span class="o">=</span> <span class="n">top_list</span><span class="p">.</span><span class="n">detach</span><span class="p">().</span><span class="n">cpu</span><span class="p">().</span><span class="n">numpy</span><span class="p">()</span>
+    <span class="n">period</span> <span class="o">=</span> <span class="n">x</span><span class="p">.</span><span class="n">shape</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span> <span class="o">//</span> <span class="n">top_list</span>
+    <span class="k">return</span> <span class="n">period</span><span class="p">,</span> <span class="nb">abs</span><span class="p">(</span><span class="n">xf</span><span class="p">).</span><span class="n">mean</span><span class="p">(</span><span class="o">-</span><span class="mi">1</span><span class="p">)[:,</span> <span class="n">top_list</span><span class="p">]</span>
+</code></pre></div></div>
+
+<p>将 <code class="language-plaintext highlighter-rouge">frequency_list[0]</code> 置零可能是为了去除直流分量（零频率分量）的影响。在频率谱中，索引为0的位置通常对应于零频率，也就是直流成分。</p>
+
+<p>直流成分表示信号的平均值或偏移。在某些情况下，我们可能对信号的变化更感兴趣，而不是整个信号的平均值。通过将 <code class="language-plaintext highlighter-rouge">frequency_list[0]</code> 置零，我们可以去除直流成分的影响，更关注信号中的变化和其他频率成分。</p>
+
+<p>这种操作在信号处理和频谱分析中是常见的，特别是当我们关注信号的变化或周期性成分而不关心平均水平时。它有助于突出频谱中的其他特征，使得分析更加集中于信号的变动和周期性。</p>
+
+<p><strong>关于直流分量的解释</strong></p>
+
+<blockquote>
+  <p>直流分量是信号中的恒定成分，通常表示信号的平均值或直流偏移。直流分量不随时间变化，它是信号在水平方向上的偏移或平移。</p>
+
+  <p>让我们通过一个直观的例子来理解直流分量：</p>
+
+  <p>假设有一个以时间为横轴的信号图，其中纵轴表示信号的振幅。如果信号在整个时间范围内都有一个常数振幅，那么这个信号就包含直流分量。直流分量的存在会使整个信号在纵轴上发生平移，即整个信号的基准水平线上下移动。</p>
+
+  <p>举个例子，考虑一个表示温度的信号。如果这个信号中存在直流分量，那么它可能表示一个常数的环境温度，而信号的波动则表示温度随时间的变化。直流分量可以看作是整个信号的平均温度，而波动则反映了温度相对于平均值的变化。</p>
+
+  <p>在频谱分析中，直流分量通常对应于频谱中的零频率分量，即索引为0的位置。通过将直流分量从频谱中去除，我们可以更专注于信号中变化的频率成分，而不受整体平移的影响。这在很多信号处理任务中是有用的，特别是当我们关注信号的变动和周期性成分时。</p>
+</blockquote>
+
+<h2 id="3-相关验证代码">3. 相关验证代码</h2>
+
+<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="n">np</span>
+<span class="kn">import</span> <span class="nn">matplotlib.pyplot</span> <span class="k">as</span> <span class="n">plt</span>
+<span class="kn">import</span> <span class="nn">torch</span>
+
+<span class="k">def</span> <span class="nf">generate_irregular_waveform_with_large_dc</span><span class="p">(</span><span class="n">duration</span><span class="p">,</span> <span class="n">sampling_rate</span><span class="p">):</span>
+    <span class="n">t</span> <span class="o">=</span> <span class="n">np</span><span class="p">.</span><span class="n">arange</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="n">duration</span><span class="p">,</span> <span class="mi">1</span> <span class="o">/</span> <span class="n">sampling_rate</span><span class="p">)</span>
+    <span class="c1"># 生成不规则的波形，包含直流分量
+</span>    <span class="n">waveform</span> <span class="o">=</span> <span class="n">np</span><span class="p">.</span><span class="n">sin</span><span class="p">(</span><span class="mi">2</span> <span class="o">*</span> <span class="n">np</span><span class="p">.</span><span class="n">pi</span> <span class="o">*</span> <span class="mi">5</span> <span class="o">*</span> <span class="n">t</span><span class="p">)</span> <span class="o">+</span> <span class="mf">0.5</span> <span class="o">*</span> <span class="n">np</span><span class="p">.</span><span class="n">sin</span><span class="p">(</span><span class="mi">2</span> <span class="o">*</span> <span class="n">np</span><span class="p">.</span><span class="n">pi</span> <span class="o">*</span> <span class="mi">12</span> <span class="o">*</span> <span class="n">t</span><span class="p">)</span> <span class="o">+</span> <span class="mf">2.0</span>  <span class="c1"># 增大直流分量
+</span>    <span class="k">return</span> <span class="n">t</span><span class="p">,</span> <span class="n">waveform</span>
+
+<span class="c1"># 设置不规则波形的参数
+</span><span class="n">duration</span> <span class="o">=</span> <span class="mi">2</span>  <span class="c1"># 波形持续时间（秒）
+</span><span class="n">sampling_rate</span> <span class="o">=</span> <span class="mi">1000</span>  <span class="c1"># 采样率
+</span>
+<span class="c1"># 生成不规则波形数据（包含直流分量）
+</span><span class="n">t</span><span class="p">,</span> <span class="n">waveform_with_dc</span> <span class="o">=</span> <span class="n">generate_irregular_waveform_with_large_dc</span><span class="p">(</span><span class="n">duration</span><span class="p">,</span> <span class="n">sampling_rate</span><span class="p">)</span>
+
+<span class="c1"># 转换为PyTorch张量
+</span><span class="n">x_with_dc</span> <span class="o">=</span> <span class="n">torch</span><span class="p">.</span><span class="n">tensor</span><span class="p">(</span><span class="n">waveform_with_dc</span><span class="p">,</span> <span class="n">dtype</span><span class="o">=</span><span class="n">torch</span><span class="p">.</span><span class="n">float32</span><span class="p">)</span>
+
+<span class="c1"># 不去掉直流分量的傅里叶变换
+</span><span class="n">xf_with_dc</span> <span class="o">=</span> <span class="n">torch</span><span class="p">.</span><span class="n">fft</span><span class="p">.</span><span class="n">rfft</span><span class="p">(</span><span class="n">x_with_dc</span><span class="p">)</span>
+<span class="k">print</span><span class="p">(</span><span class="s">"不去掉直流分量"</span><span class="p">)</span>
+<span class="k">print</span><span class="p">(</span><span class="s">"xf.shape: {}"</span><span class="p">.</span><span class="nb">format</span><span class="p">(</span><span class="n">xf_with_dc</span><span class="p">.</span><span class="n">shape</span><span class="p">))</span>
+<span class="n">frequency_list</span> <span class="o">=</span> <span class="nb">abs</span><span class="p">(</span><span class="n">xf_with_dc</span><span class="p">)</span>
+<span class="k">print</span><span class="p">(</span><span class="s">"frequency_list: {}"</span><span class="p">.</span><span class="nb">format</span><span class="p">(</span><span class="n">frequency_list</span><span class="p">))</span>
+<span class="n">_</span><span class="p">,</span> <span class="n">top_list</span> <span class="o">=</span> <span class="n">torch</span><span class="p">.</span><span class="n">topk</span><span class="p">(</span><span class="n">frequency_list</span><span class="p">,</span> <span class="mi">2</span><span class="p">)</span>
+<span class="k">print</span><span class="p">(</span><span class="s">"top_list: {}"</span><span class="p">.</span><span class="nb">format</span><span class="p">(</span><span class="n">top_list</span><span class="p">))</span>
+
+<span class="c1"># 提取频率信息
+</span><span class="n">xf_freq</span> <span class="o">=</span> <span class="n">np</span><span class="p">.</span><span class="n">fft</span><span class="p">.</span><span class="n">fftfreq</span><span class="p">(</span><span class="nb">len</span><span class="p">(</span><span class="n">waveform_with_dc</span><span class="p">),</span> <span class="n">d</span><span class="o">=</span><span class="mi">1</span> <span class="o">/</span> <span class="n">sampling_rate</span><span class="p">)</span>
+
+<span class="n">plt</span><span class="p">.</span><span class="n">figure</span><span class="p">(</span><span class="n">figsize</span><span class="o">=</span><span class="p">(</span><span class="mi">24</span><span class="p">,</span> <span class="mi">16</span><span class="p">))</span>
+<span class="c1"># 绘制原始波形图
+</span><span class="n">plt</span><span class="p">.</span><span class="n">subplot</span><span class="p">(</span><span class="mi">4</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">1</span><span class="p">)</span>
+<span class="n">plt</span><span class="p">.</span><span class="n">plot</span><span class="p">(</span><span class="n">t</span><span class="p">,</span> <span class="n">waveform_with_dc</span><span class="p">)</span>
+<span class="n">plt</span><span class="p">.</span><span class="n">title</span><span class="p">(</span><span class="s">'Original Waveform (with DC Component)'</span><span class="p">)</span>
+<span class="n">plt</span><span class="p">.</span><span class="n">xlabel</span><span class="p">(</span><span class="s">'Time (s)'</span><span class="p">)</span>
+<span class="n">plt</span><span class="p">.</span><span class="n">ylabel</span><span class="p">(</span><span class="s">'Amplitude'</span><span class="p">)</span>
+<span class="n">plt</span><span class="p">.</span><span class="n">grid</span><span class="p">(</span><span class="bp">True</span><span class="p">)</span>
+
+<span class="c1"># 绘制不去掉直流分量的频谱图
+</span><span class="n">plt</span><span class="p">.</span><span class="n">subplot</span><span class="p">(</span><span class="mi">4</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">)</span>
+<span class="n">plt</span><span class="p">.</span><span class="n">plot</span><span class="p">(</span><span class="n">xf_freq</span><span class="p">[:</span><span class="nb">len</span><span class="p">(</span><span class="n">xf_with_dc</span><span class="p">)],</span> <span class="n">torch</span><span class="p">.</span><span class="nb">abs</span><span class="p">(</span><span class="n">xf_with_dc</span><span class="p">))</span>
+<span class="n">plt</span><span class="p">.</span><span class="n">title</span><span class="p">(</span><span class="s">'Frequency Spectrum (without Removing DC Component)'</span><span class="p">)</span>
+<span class="n">plt</span><span class="p">.</span><span class="n">xlabel</span><span class="p">(</span><span class="s">'Frequency (Hz)'</span><span class="p">)</span>
+<span class="n">plt</span><span class="p">.</span><span class="n">ylabel</span><span class="p">(</span><span class="s">'Amplitude'</span><span class="p">)</span>
+<span class="n">plt</span><span class="p">.</span><span class="n">grid</span><span class="p">(</span><span class="bp">True</span><span class="p">)</span>
+
+<span class="c1"># 去掉直流分量
+</span><span class="n">x_without_dc</span> <span class="o">=</span> <span class="n">x_with_dc</span> <span class="o">-</span> <span class="n">torch</span><span class="p">.</span><span class="n">mean</span><span class="p">(</span><span class="n">x_with_dc</span><span class="p">)</span>
+<span class="k">print</span><span class="p">(</span><span class="s">"去掉直流分量"</span><span class="p">)</span>
+<span class="k">print</span><span class="p">(</span><span class="s">"xf.shape: {}"</span><span class="p">.</span><span class="nb">format</span><span class="p">(</span><span class="n">xf_with_dc</span><span class="p">.</span><span class="n">shape</span><span class="p">))</span>
+<span class="n">frequency_list</span> <span class="o">=</span> <span class="nb">abs</span><span class="p">(</span><span class="n">xf_with_dc</span><span class="p">)</span>
+<span class="k">print</span><span class="p">(</span><span class="s">"frequency_list: {}"</span><span class="p">.</span><span class="nb">format</span><span class="p">(</span><span class="n">frequency_list</span><span class="p">))</span>
+<span class="n">_</span><span class="p">,</span> <span class="n">top_list</span> <span class="o">=</span> <span class="n">torch</span><span class="p">.</span><span class="n">topk</span><span class="p">(</span><span class="n">frequency_list</span><span class="p">,</span> <span class="mi">2</span><span class="p">)</span>
+<span class="k">print</span><span class="p">(</span><span class="s">"top_list: {}"</span><span class="p">.</span><span class="nb">format</span><span class="p">(</span><span class="n">top_list</span><span class="p">))</span>
+
+<span class="c1"># 进行傅里叶变换
+</span><span class="n">xf_without_dc</span> <span class="o">=</span> <span class="n">torch</span><span class="p">.</span><span class="n">fft</span><span class="p">.</span><span class="n">rfft</span><span class="p">(</span><span class="n">x_without_dc</span><span class="p">)</span>
+
+<span class="c1"># 提取频率信息
+</span><span class="n">xf_freq_without_dc</span> <span class="o">=</span> <span class="n">np</span><span class="p">.</span><span class="n">fft</span><span class="p">.</span><span class="n">fftfreq</span><span class="p">(</span><span class="nb">len</span><span class="p">(</span><span class="n">waveform_with_dc</span><span class="p">),</span> <span class="n">d</span><span class="o">=</span><span class="mi">1</span> <span class="o">/</span> <span class="n">sampling_rate</span><span class="p">)</span>
+
+<span class="c1"># 绘制去掉直流分量后的波形图
+</span><span class="n">plt</span><span class="p">.</span><span class="n">subplot</span><span class="p">(</span><span class="mi">4</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">3</span><span class="p">)</span>
+<span class="n">plt</span><span class="p">.</span><span class="n">plot</span><span class="p">(</span><span class="n">t</span><span class="p">,</span> <span class="n">x_without_dc</span><span class="p">.</span><span class="n">numpy</span><span class="p">())</span>
+<span class="n">plt</span><span class="p">.</span><span class="n">title</span><span class="p">(</span><span class="s">'Waveform without DC Component'</span><span class="p">)</span>
+<span class="n">plt</span><span class="p">.</span><span class="n">xlabel</span><span class="p">(</span><span class="s">'Time (s)'</span><span class="p">)</span>
+<span class="n">plt</span><span class="p">.</span><span class="n">ylabel</span><span class="p">(</span><span class="s">'Amplitude'</span><span class="p">)</span>
+<span class="n">plt</span><span class="p">.</span><span class="n">grid</span><span class="p">(</span><span class="bp">True</span><span class="p">)</span>
+
+<span class="c1"># 绘制去掉直流分量后的频谱图
+</span><span class="n">plt</span><span class="p">.</span><span class="n">subplot</span><span class="p">(</span><span class="mi">4</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">4</span><span class="p">)</span>
+<span class="n">plt</span><span class="p">.</span><span class="n">plot</span><span class="p">(</span><span class="n">xf_freq_without_dc</span><span class="p">[:</span><span class="nb">len</span><span class="p">(</span><span class="n">xf_without_dc</span><span class="p">)],</span> <span class="n">torch</span><span class="p">.</span><span class="nb">abs</span><span class="p">(</span><span class="n">xf_without_dc</span><span class="p">))</span>
+<span class="n">plt</span><span class="p">.</span><span class="n">title</span><span class="p">(</span><span class="s">'Frequency Spectrum'</span><span class="p">)</span>
+<span class="n">plt</span><span class="p">.</span><span class="n">xlabel</span><span class="p">(</span><span class="s">'Frequency (Hz)'</span><span class="p">)</span>
+<span class="n">plt</span><span class="p">.</span><span class="n">ylabel</span><span class="p">(</span><span class="s">'Amplitude'</span><span class="p">)</span>
+<span class="n">plt</span><span class="p">.</span><span class="n">grid</span><span class="p">(</span><span class="bp">True</span><span class="p">)</span>
+
+<span class="n">plt</span><span class="p">.</span><span class="n">tight_layout</span><span class="p">()</span>
+<span class="n">plt</span><span class="p">.</span><span class="n">show</span><span class="p">()</span>
+</code></pre></div></div>]]></content><author><name>slience_me</name></author><category term="论文笔记" /><summary type="html"><![CDATA[关于去除信号中的直流分量效果演示（零频率分量）]]></summary></entry><entry><title type="html">论文笔记｜【论文笔记合集】TimesNet之FFT详解</title><link href="https://slienceme.cn/2024/01/19/TimesNet%E4%B9%8BFFT%E8%AF%A6%E8%A7%A3/" rel="alternate" type="text/html" title="论文笔记｜【论文笔记合集】TimesNet之FFT详解" /><published>2024-01-19T00:00:00+08:00</published><updated>2024-01-19T00:00:00+08:00</updated><id>https://slienceme.cn/2024/01/19/TimesNet%E4%B9%8BFFT%E8%AF%A6%E8%A7%A3</id><content type="html" xml:base="https://slienceme.cn/2024/01/19/TimesNet%E4%B9%8BFFT%E8%AF%A6%E8%A7%A3/"><![CDATA[<p><img src="https://raw.githubusercontent.com/slience-me/picGo/master/images/logo_slienceme3.jpeg" alt="img" /></p>
+
+<p>本文作者： <a href="https://slienceme.cn/">slience_me</a></p>
+
+<hr />
+
+<h1 id="timesnet之fft详解">TimesNet之FFT详解</h1>
+
+<p><img src="https://raw.githubusercontent.com/slience-me/picGo/master/images/image-20240119162800528.png" alt="image-20240119162800528" /></p>
+
+<h2 id="1-源代码">1. 源代码</h2>
+
+<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="k">def</span> <span class="nf">FFT_for_Period</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="n">k</span><span class="o">=</span><span class="mi">2</span><span class="p">):</span>
+    <span class="n">xf</span> <span class="o">=</span> <span class="n">torch</span><span class="p">.</span><span class="n">fft</span><span class="p">.</span><span class="n">rfft</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="n">dim</span><span class="o">=</span><span class="mi">1</span><span class="p">)</span>
+    <span class="n">frequency_list</span> <span class="o">=</span> <span class="nb">abs</span><span class="p">(</span><span class="n">xf</span><span class="p">).</span><span class="n">mean</span><span class="p">(</span><span class="mi">0</span><span class="p">).</span><span class="n">mean</span><span class="p">(</span><span class="o">-</span><span class="mi">1</span><span class="p">)</span>
+    <span class="n">frequency_list</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span> <span class="o">=</span> <span class="mi">0</span>
+    <span class="n">_</span><span class="p">,</span> <span class="n">top_list</span> <span class="o">=</span> <span class="n">torch</span><span class="p">.</span><span class="n">topk</span><span class="p">(</span><span class="n">frequency_list</span><span class="p">,</span> <span class="n">k</span><span class="p">)</span>
+    <span class="n">top_list</span> <span class="o">=</span> <span class="n">top_list</span><span class="p">.</span><span class="n">detach</span><span class="p">().</span><span class="n">cpu</span><span class="p">().</span><span class="n">numpy</span><span class="p">()</span>
+    <span class="n">period</span> <span class="o">=</span> <span class="n">x</span><span class="p">.</span><span class="n">shape</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span> <span class="o">//</span> <span class="n">top_list</span>
+    <span class="k">return</span> <span class="n">period</span><span class="p">,</span> <span class="nb">abs</span><span class="p">(</span><span class="n">xf</span><span class="p">).</span><span class="n">mean</span><span class="p">(</span><span class="o">-</span><span class="mi">1</span><span class="p">)[:,</span> <span class="n">top_list</span><span class="p">]</span>
+</code></pre></div></div>
+
+<h3 id="11-torchfftrfftx-dim1">1.1 torch.fft.rfft(x, dim=1)</h3>
+
+<ul>
+  <li><strong>torch.fft.rfft()</strong></li>
+</ul>
+
+<p><code class="language-plaintext highlighter-rouge">torch.fft.rfft()</code> 是 PyTorch 中用于执行实数输入的快速傅里叶变换（FFT）的函数。该函数主要用于将实数输入转换为复数频谱。下面是一个详细解释和示例：</p>
+
+<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kn">import</span> <span class="nn">torch</span>
+
+<span class="c1"># 创建一个实数输入的张量
+</span><span class="n">input_tensor</span> <span class="o">=</span> <span class="n">torch</span><span class="p">.</span><span class="n">tensor</span><span class="p">([</span><span class="mf">1.0</span><span class="p">,</span> <span class="mf">2.0</span><span class="p">,</span> <span class="mf">3.0</span><span class="p">,</span> <span class="mf">4.0</span><span class="p">])</span>
+
+<span class="c1"># 使用 torch.fft.rfft() 进行实数输入的快速傅里叶变换
+</span><span class="n">complex_spectrum</span> <span class="o">=</span> <span class="n">torch</span><span class="p">.</span><span class="n">fft</span><span class="p">.</span><span class="n">rfft</span><span class="p">(</span><span class="n">input_tensor</span><span class="p">)</span>
+
+<span class="c1"># 打印变换后的复数频谱
+</span><span class="k">print</span><span class="p">(</span><span class="s">"Complex Spectrum:"</span><span class="p">,</span> <span class="n">complex_spectrum</span><span class="p">)</span>
+
+<span class="c1"># 获取频谱的实部和虚部
+</span><span class="n">real_part</span> <span class="o">=</span> <span class="n">complex_spectrum</span><span class="p">.</span><span class="n">real</span>
+<span class="n">imaginary_part</span> <span class="o">=</span> <span class="n">complex_spectrum</span><span class="p">.</span><span class="n">imag</span>
+
+<span class="c1"># 打印实部和虚部
+</span><span class="k">print</span><span class="p">(</span><span class="s">"Real Part:"</span><span class="p">,</span> <span class="n">real_part</span><span class="p">)</span>
+<span class="k">print</span><span class="p">(</span><span class="s">"Imaginary Part:"</span><span class="p">,</span> <span class="n">imaginary_part</span><span class="p">)</span>
+</code></pre></div></div>
+
+<p><strong>解释：</strong></p>
+
+<ol>
+  <li>首先，我们创建一个包含实数值的 PyTorch 张量 <code class="language-plaintext highlighter-rouge">input_tensor</code>。</li>
+  <li>然后，我们使用 <code class="language-plaintext highlighter-rouge">torch.fft.rfft()</code> 函数对该实数输入进行快速傅里叶变换，得到一个复数频谱 <code class="language-plaintext highlighter-rouge">complex_spectrum</code>。</li>
+  <li>最后，我们打印复数频谱，并将其实部和虚部分别打印出来。</li>
+</ol>
+
+<p>在这个例子中，<code class="language-plaintext highlighter-rouge">torch.fft.rfft()</code> 的输出是一个包含复数的张量，其中实部包含输入信号的正半轴频谱，而虚部则包含负半轴频谱。这种变换通常用于分析信号在频域中的特性。</p>
+
+<p><strong>输出为：</strong></p>
+
+<blockquote>
+  <p>Complex Spectrum: tensor([10.+0.j, -2.+2.j, -2.+0.j])
+Real Part: tensor([10., -2., -2.])
+Imaginary Part: tensor([0., 2., 0.])</p>
+</blockquote>
+
+<p><strong>为什么四个输入得到3个输出？</strong></p>
+
+<blockquote>
+  <p>在傅里叶变换中，由于对称性，实数序列的傅里叶变换结果是具有一定规律的。对于长度为 <code class="language-plaintext highlighter-rouge">n</code> 的实数序列，其傅里叶变换结果的长度是 <code class="language-plaintext highlighter-rouge">n/2 + 1</code>。这是因为复数的共轭对称性，导致一半的频谱是冗余的。</p>
+
+  <p>在你的例子中，输入张量的长度为4，因此傅里叶变换的输出长度是 <code class="language-plaintext highlighter-rouge">4/2 + 1 = 3</code>。</p>
+
+  <p>如果你对具体的计算感兴趣，可以考虑查看傅里叶变换的相关数学理论。总体来说，这种长度减半的规律是由于信号是实数序列，而复数频谱是共轭对称的性质造成的。</p>
+</blockquote>
+
+<p><strong>复数的共轭对称性</strong></p>
+
+<blockquote>
+  <p>复数的共轭对称性是指对于一个复数，它的共轭（conjugate）在复平面上关于实轴对称。对于复数 <code class="language-plaintext highlighter-rouge">a + bi</code>，其中 <code class="language-plaintext highlighter-rouge">a</code> 和 <code class="language-plaintext highlighter-rouge">b</code> 分别是实部和虚部，其共轭记为 <code class="language-plaintext highlighter-rouge">a - bi</code>。</p>
+
+  <p>更具体地说，如果有复数 <code class="language-plaintext highlighter-rouge">z = a + bi</code>，那么其共轭 <code class="language-plaintext highlighter-rouge">z*</code> 是 <code class="language-plaintext highlighter-rouge">a - bi</code>。这可以用下面的图示来表示：</p>
+
+  <div class="language-text highlighter-rouge"><div class="highlight"><pre class="highlight"><code> b |   .  * (a, b)
+     |   
+     |   
+ 0 |------------------ a (实轴)
+     |   
+     | 
+-b|   .  * (a, -b)  &lt;- 共轭对称
+</code></pre></div>  </div>
+
+  <p>在频谱分析的上下文中，共轭对称性体现在傅里叶变换的频谱中。如果一个信号是实数序列，在频谱中正频率和负频率部分是共轭对称的。具体来说，如果某个频率分量 <code class="language-plaintext highlighter-rouge">f</code> 存在于正频率部分，那么 <code class="language-plaintext highlighter-rouge">-f</code> 就存在于负频率部分，且它们的振幅和相位是共轭关系。</p>
+
+  <p>这种对称性使得在频谱中只需存储一半的信息，因为另一半可以通过共轭关系获得。这也是为什么在实数序列的傅里叶变换中，输出的长度是输入长度的一半加一。</p>
+</blockquote>
+
+<hr />
+
+<ul>
+  <li><strong>torch.fft.rfft(x, dim=1)</strong></li>
+</ul>
+
+<p><code class="language-plaintext highlighter-rouge">torch.fft.rfft(x, dim=1)</code> 是 PyTorch 中进行实数输入的一维快速傅里叶变换（FFT）的函数，其中 <code class="language-plaintext highlighter-rouge">dim=1</code> 指定了沿着哪个维度进行变换。</p>
+
+<p>首先，假设 <code class="language-plaintext highlighter-rouge">x</code> 是一个张量，其中包含实数序列。通常情况下，<code class="language-plaintext highlighter-rouge">x</code> 的最后一个维度（<code class="language-plaintext highlighter-rouge">dim=-1</code>）应该是实数序列的维度。例如， <code class="language-plaintext highlighter-rouge">x</code> 的形状是 <code class="language-plaintext highlighter-rouge">(batch_size, 序列长度, 通道数)</code>，那么 <code class="language-plaintext highlighter-rouge">dim=-1</code> 就是在序列长度的维度上进行傅里叶变换。</p>
+
+<p>现在，如果我们调用 <code class="language-plaintext highlighter-rouge">torch.fft.rfft(x, dim=1)</code>，它会在指定的维度上执行傅里叶变换。这就意味着对于输入张量 <code class="language-plaintext highlighter-rouge">x</code> 中的每个切片（沿着 <code class="language-plaintext highlighter-rouge">dim=1</code> 的方向），都会进行一维实数输入的快速傅里叶变换。</p>
+
+<p><strong>示例：</strong></p>
+
+<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kn">import</span> <span class="nn">torch</span>
+
+<span class="c1"># 假设 x 的形状为 (batch_size, sequence_length)
+</span><span class="n">x</span> <span class="o">=</span> <span class="n">torch</span><span class="p">.</span><span class="n">randn</span><span class="p">(</span><span class="mi">3</span><span class="p">,</span> <span class="mi">4</span><span class="p">,</span> <span class="mi">2</span><span class="p">)</span>
+
+<span class="c1"># 在序列长度的维度上进行实数输入的一维 FFT
+</span><span class="n">result</span> <span class="o">=</span> <span class="n">torch</span><span class="p">.</span><span class="n">fft</span><span class="p">.</span><span class="n">rfft</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="n">dim</span><span class="o">=</span><span class="mi">1</span><span class="p">)</span>
+
+<span class="c1"># 打印结果
+# (3, 4//2+1, 2)
+# (3, 3, 2)
+</span><span class="k">print</span><span class="p">(</span><span class="n">result</span><span class="p">)</span>
+<span class="k">print</span><span class="p">(</span><span class="n">result</span><span class="p">.</span><span class="n">shape</span><span class="p">)</span>
+</code></pre></div></div>
+
+<p>在这个示例中，<code class="language-plaintext highlighter-rouge">x</code> 是一个形状为 <code class="language-plaintext highlighter-rouge">(3, 4)</code> 的张量，其中 <code class="language-plaintext highlighter-rouge">dim=1</code> 表示在每个序列的长度维度上执行傅里叶变换。<code class="language-plaintext highlighter-rouge">result</code> 是变换后的结果。</p>
+
+<p>需要注意的是，<code class="language-plaintext highlighter-rouge">torch.fft.rfft</code> 返回的结果是复数频谱的张量。如果需要获取实部和虚部，可以使用 <code class="language-plaintext highlighter-rouge">.real</code> 和 <code class="language-plaintext highlighter-rouge">.imag</code> 属性。</p>
+
+<p><strong>输出结果为：</strong></p>
+
+<blockquote>
+  <p>tensor([[[-1.4285+0.0000j,  0.6463+0.0000j],
+               [-1.8562+1.6229j,  1.0616+0.0355j],
+               [-3.8019+0.0000j,  1.3853+0.0000j]],</p>
+
+  <p>​              [[-2.6533+0.0000j, -2.2790+0.0000j],
+​               [ 0.6657-0.6588j, -1.7569-1.6168j],
+​               [-0.3022+0.0000j, -1.0560+0.0000j]],</p>
+
+  <p>​              [[-3.9908+0.0000j,  1.0519+0.0000j],
+​               [-2.7840+0.2070j, -3.1494+0.0602j],
+​               [-0.4287+0.0000j, -0.7184+0.0000j]]])</p>
+
+  <p>torch.Size([3, 3, 2])</p>
+</blockquote>
+
+<h2 id="12-frequency_list--absxfmean0mean-1">1.2 frequency_list = abs(xf).mean(0).mean(-1)</h2>
+
+<p>这一行代码涉及到对傅里叶变换结果的处理，计算频谱的平均振幅。让我们逐步解释：</p>
+
+<ol>
+  <li><code class="language-plaintext highlighter-rouge">frequency_list = abs(xf).mean(0).mean(-1)</code>: 这一部分是对频谱进行处理：
+    <ul>
+      <li><code class="language-plaintext highlighter-rouge">abs(xf)</code>: 计算复数频谱的振幅，即取绝对值。</li>
+      <li><code class="language-plaintext highlighter-rouge">.mean(0)</code>: 沿着第一个维度（即 batch_size 维度）计算平均值，得到每个样本的平均振幅。</li>
+      <li><code class="language-plaintext highlighter-rouge">.mean(-1)</code>: 沿着最后一个维度（即频率/通道/特征维度）计算平均值，得到每个样本、每个频率的平均振幅。</li>
+    </ul>
+  </li>
+</ol>
+
+<p>最终，<code class="language-plaintext highlighter-rouge">frequency_list</code> 包含了每个频率的平均振幅。这样的处理可以用于分析信号在频域上的能量分布，因为平均振幅反映了信号中各个频率成分的相对贡献。</p>
+
+<p>举例来说，如果 <code class="language-plaintext highlighter-rouge">frequency_list</code> 的第 i 个元素表示第 i 个频率的平均振幅，那么可以通过分析这个列表来了解信号中哪些频率成分具有较大的能量。</p>
+
+<p><strong>这样的好处是什么，为什么需要求frequency_list ？</strong></p>
+
+<blockquote>
+  <ol>
+    <li>
+      <p><strong>频域分析：</strong> 平均振幅提供了信号在频域上的分布信息。通过分析频率谱，你可以了解信号中各个频率成分的相对贡献。这对于理解信号的频率特征、检测特定频率的成分以及识别周期性模式都很有用。</p>
+    </li>
+    <li>
+      <p><strong>能量分布：</strong> 平均振幅可以视为信号在不同频率上的能量分布。这对于识别信号中的主要频率、找到频域上的能量集中点以及确定信号的频率特征非常有帮助。</p>
+    </li>
+    <li>
+      <p><strong>特征提取：</strong> 在某些应用中，频率分析可以用于提取信号的关键特征。通过计算频率谱的平均振幅，可以捕获信号中与频率相关的信息，这在一些信号处理任务中是有用的。</p>
+    </li>
+    <li>
+      <p><strong>滤波和去噪：</strong> 通过频率分析，可以了解信号中的频率成分，从而进行滤波或去除噪音。对频率谱进行分析可以帮助确定哪些频率应该保留或去除，从而对信号进行处理。</p>
+    </li>
+  </ol>
+
+  <p>总体而言，对频率谱进行分析和计算平均振幅可以提供对信号在频域上的理解，这对于很多信号处理和分析任务都是至关重要的。</p>
+</blockquote>
+
+<h2 id="13-frequency_list0--0">1.3 frequency_list[0] = 0</h2>
+
+<p>将 <code class="language-plaintext highlighter-rouge">frequency_list[0]</code> 置零可能是为了去除直流分量（零频率分量）的影响。在频率谱中，索引为0的位置通常对应于零频率，也就是直流成分。</p>
+
+<p>直流成分表示信号的平均值或偏移。在某些情况下，我们可能对信号的变化更感兴趣，而不是整个信号的平均值。通过将 <code class="language-plaintext highlighter-rouge">frequency_list[0]</code> 置零，我们可以去除直流成分的影响，更关注信号中的变化和其他频率成分。</p>
+
+<p>这种操作在信号处理和频谱分析中是常见的，特别是当我们关注信号的变化或周期性成分而不关心平均水平时。它有助于突出频谱中的其他特征，使得分析更加集中于信号的变动和周期性。</p>
+
+<p><strong>关于直流分量的解释</strong></p>
+
+<blockquote>
+  <p>直流分量是信号中的恒定成分，通常表示信号的平均值或直流偏移。直流分量不随时间变化，它是信号在水平方向上的偏移或平移。</p>
+
+  <p>让我们通过一个直观的例子来理解直流分量：</p>
+
+  <p>假设有一个以时间为横轴的信号图，其中纵轴表示信号的振幅。如果信号在整个时间范围内都有一个常数振幅，那么这个信号就包含直流分量。直流分量的存在会使整个信号在纵轴上发生平移，即整个信号的基准水平线上下移动。</p>
+
+  <p>举个例子，考虑一个表示温度的信号。如果这个信号中存在直流分量，那么它可能表示一个常数的环境温度，而信号的波动则表示温度随时间的变化。直流分量可以看作是整个信号的平均温度，而波动则反映了温度相对于平均值的变化。</p>
+
+  <p>在频谱分析中，直流分量通常对应于频谱中的零频率分量，即索引为0的位置。通过将直流分量从频谱中去除，我们可以更专注于信号中变化的频率成分，而不受整体平移的影响。这在很多信号处理任务中是有用的，特别是当我们关注信号的变动和周期性成分时。</p>
+</blockquote>
+
+<h2 id="14-_-top_list--torchtopkfrequency_list-k">1.4 _, top_list = torch.topk(frequency_list, k)</h2>
+
+<p><code class="language-plaintext highlighter-rouge">torch.topk</code> 是 PyTorch 中用于获取张量中最大的 k 个元素的函数。frequency_list<code class="language-plaintext highlighter-rouge"> 是一个包含频率振幅的张量，而 </code>_<code class="language-plaintext highlighter-rouge"> 和 </code>top_list` 是函数的返回结果。</p>
+
+<p>让我们逐步解释这行代码：</p>
+
+<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">_</span><span class="p">,</span> <span class="n">top_list</span> <span class="o">=</span> <span class="n">torch</span><span class="p">.</span><span class="n">topk</span><span class="p">(</span><span class="n">frequency_list</span><span class="p">,</span> <span class="n">k</span><span class="p">)</span>
+</code></pre></div></div>
+
+<ul>
+  <li>
+    <p><code class="language-plaintext highlighter-rouge">torch.topk</code>: 这个函数用于获取张量中最大的 k 个元素。它返回两个张量，第一个是最大值的值（在这里我们用 <code class="language-plaintext highlighter-rouge">_</code> 表示忽略，因为我们不使用这个值），第二个是最大值对应的索引。</p>
+  </li>
+  <li>
+    <p><code class="language-plaintext highlighter-rouge">frequency_list</code>: 这是包含频率振幅的张量，其中每个元素表示某个频率的平均振幅。</p>
+  </li>
+  <li>
+    <p><code class="language-plaintext highlighter-rouge">k</code>: 这是要获取的最大元素的数量。</p>
+  </li>
+  <li>
+    <p><code class="language-plaintext highlighter-rouge">_, top_list</code>: 这是用来接收 <code class="language-plaintext highlighter-rouge">torch.topk</code> 函数的返回结果。<code class="language-plaintext highlighter-rouge">_</code> 用于忽略最大值的值，而 <code class="language-plaintext highlighter-rouge">top_list</code> 包含最大值对应的索引。</p>
+  </li>
+</ul>
+
+<p>总体而言，这行代码的目的是从 <code class="language-plaintext highlighter-rouge">frequency_list</code> 中找到最大的 k 个频率振幅，并获取这些最大值对应的索引。这可以用于找到信号中主要的频率成分。如果 <code class="language-plaintext highlighter-rouge">top_list</code> 包含的是频率的索引，你可以通过这些索引查找对应的频率值。</p>
+
+<p><strong>举例：</strong></p>
+
+<p>假设我们有一个包含频率振幅的张量 <code class="language-plaintext highlighter-rouge">frequency_list</code>，内容如下：</p>
+
+<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kn">import</span> <span class="nn">torch</span>
+
+<span class="n">frequency_list</span> <span class="o">=</span> <span class="n">torch</span><span class="p">.</span><span class="n">tensor</span><span class="p">([</span><span class="mf">5.0</span><span class="p">,</span> <span class="mf">2.0</span><span class="p">,</span> <span class="mf">8.0</span><span class="p">,</span> <span class="mf">3.0</span><span class="p">,</span> <span class="mf">1.0</span><span class="p">])</span>
+</code></pre></div></div>
+
+<p>现在，我们想找到最大的两个频率振幅对应的索引。我们可以使用 <code class="language-plaintext highlighter-rouge">torch.topk</code> 函数来实现：</p>
+
+<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">k</span> <span class="o">=</span> <span class="mi">2</span>
+<span class="n">_</span><span class="p">,</span> <span class="n">top_list</span> <span class="o">=</span> <span class="n">torch</span><span class="p">.</span><span class="n">topk</span><span class="p">(</span><span class="n">frequency_list</span><span class="p">,</span> <span class="n">k</span><span class="p">)</span>
+
+<span class="k">print</span><span class="p">(</span><span class="s">"Top k frequencies indices:"</span><span class="p">,</span> <span class="n">top_list</span><span class="p">)</span>
+</code></pre></div></div>
+
+<p>输出是：</p>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>Top k frequencies indices: tensor([2, 0])
+</code></pre></div></div>
+
+<p>这表示在 <code class="language-plaintext highlighter-rouge">frequency_list</code> 中，最大的两个频率振幅对应的索引分别是2和0。也就是说，频率振幅最大的是索引为2的元素（8.0），其次是索引为0的元素（5.0）。</p>
+
+<h2 id="15-top_list--top_listdetachcpunumpy">1.5 top_list = top_list.detach().cpu().numpy()</h2>
+
+<p>这行代码对 <code class="language-plaintext highlighter-rouge">top_list</code> 进行了一系列操作，将其从 PyTorch 的张量类型转换为 NumPy 数组。让我们逐步解释这些操作：</p>
+
+<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">top_list</span> <span class="o">=</span> <span class="n">top_list</span><span class="p">.</span><span class="n">detach</span><span class="p">().</span><span class="n">cpu</span><span class="p">().</span><span class="n">numpy</span><span class="p">()</span>
+</code></pre></div></div>
+
+<ul>
+  <li>
+    <p><code class="language-plaintext highlighter-rouge">top_list.detach()</code>: <code class="language-plaintext highlighter-rouge">detach()</code> 方法用于创建一个没有梯度信息的张量副本。在 PyTorch 中，张量的梯度信息通常用于自动微分。<code class="language-plaintext highlighter-rouge">detach()</code> 可以用于生成新的张量，该张量与原始张量共享数据，但没有梯度信息。</p>
+  </li>
+  <li>
+    <p><code class="language-plaintext highlighter-rouge">.cpu()</code>: 如果张量存储在 GPU 上，<code class="language-plaintext highlighter-rouge">cpu()</code> 方法用于将其移到 CPU 上。在这里，这一步可能是为了确保张量在 CPU 上，以便进行 NumPy 转换。</p>
+  </li>
+  <li>
+    <p><code class="language-plaintext highlighter-rouge">.numpy()</code>: <code class="language-plaintext highlighter-rouge">numpy()</code> 方法用于将 PyTorch 张量转换为 NumPy 数组。这是因为 PyTorch 和 NumPy 是两个不同的库，有时需要在它们之间进行数据转换。</p>
+  </li>
+</ul>
+
+<p>综合这些步骤，<code class="language-plaintext highlighter-rouge">top_list</code> 最终被转换为一个不带梯度信息的 CPU 上的 NumPy 数组。这样的转换通常是为了在 PyTorch 和 NumPy 之间进行数据交互，因为它们在许多方面具有互操作性。 NumPy 数组是 Python 中广泛使用的数据结构，可以用于进行各种科学计算和数据分析任务。</p>
+
+<h2 id="16-period--xshape1--top_list">1.6 period = x.shape[1] // top_list</h2>
+
+<p>这行代码计算了一个名为 <code class="language-plaintext highlighter-rouge">period</code> 的值，它是 <code class="language-plaintext highlighter-rouge">x</code> 张量的第二个维度（即序列长度）除以 <code class="language-plaintext highlighter-rouge">top_list</code> 中每个元素的值。这通常是用于计算信号中特定频率成分的周期。</p>
+
+<p>让我们分解这行代码：</p>
+
+<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">period</span> <span class="o">=</span> <span class="n">x</span><span class="p">.</span><span class="n">shape</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span> <span class="o">//</span> <span class="n">top_list</span>
+</code></pre></div></div>
+
+<ul>
+  <li>
+    <p><code class="language-plaintext highlighter-rouge">x.shape[1]</code>: 这是张量 <code class="language-plaintext highlighter-rouge">x</code> 的第二个维度的长度，即序列长度。在这个上下文中，我们假设 <code class="language-plaintext highlighter-rouge">x</code> 的形状是 <code class="language-plaintext highlighter-rouge">(batch_size, sequence_length)</code>。</p>
+  </li>
+  <li>
+    <p><code class="language-plaintext highlighter-rouge">top_list</code>: 这是包含最大频率振幅的索引的列表。每个索引对应于在 <code class="language-plaintext highlighter-rouge">x</code> 中找到的重要频率。</p>
+  </li>
+  <li>
+    <p><code class="language-plaintext highlighter-rouge">//</code>: 这是整数除法运算符，返回除法的整数部分。在这里，它用于计算 <code class="language-plaintext highlighter-rouge">x.shape[1]</code> 除以 <code class="language-plaintext highlighter-rouge">top_list</code> 中的每个元素。</p>
+  </li>
+</ul>
+
+<p>最终，<code class="language-plaintext highlighter-rouge">period</code> 将包含每个最大频率对应的周期。例如，如果 <code class="language-plaintext highlighter-rouge">top_list</code> 中的某个元素是2，那么 <code class="language-plaintext highlighter-rouge">period</code> 中对应的值将是 <code class="language-plaintext highlighter-rouge">x</code> 中的信号在该频率上的周期长度。这样的计算可以用于分析信号的周期性成分。</p>
+
+<h2 id="17-return-period-absxfmean-1-top_list">1.7 return period, abs(xf).mean(-1)[:, top_list]</h2>
+
+<p>这行代码包含了一个返回语句，返回两个值：<code class="language-plaintext highlighter-rouge">period</code> 和一个部分截取的频谱信息。让我们逐步解释这行代码：</p>
+
+<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="k">return</span> <span class="n">period</span><span class="p">,</span> <span class="nb">abs</span><span class="p">(</span><span class="n">xf</span><span class="p">).</span><span class="n">mean</span><span class="p">(</span><span class="o">-</span><span class="mi">1</span><span class="p">)[:,</span> <span class="n">top_list</span><span class="p">]</span>
+</code></pre></div></div>
+
+<ol>
+  <li>
+    <p><code class="language-plaintext highlighter-rouge">period</code>: 这是之前计算的周期，表示信号中每个最大频率成分的周期长度。</p>
+  </li>
+  <li>
+    <p><code class="language-plaintext highlighter-rouge">abs(xf).mean(-1)[:, top_list]</code>：</p>
+    <ul>
+      <li><code class="language-plaintext highlighter-rouge">abs(xf)</code>: 先取复数频谱的振幅，即绝对值。这表示我们对频谱的振幅部分感兴趣。</li>
+      <li><code class="language-plaintext highlighter-rouge">.mean(-1)</code>: 沿着最后一个维度（通常是频率维度）计算平均值，得到每个样本、每个频率的平均振幅。这部分可以看作是对整个频谱的平均振幅信息。</li>
+      <li><code class="language-plaintext highlighter-rouge">[:, top_list]</code>: 通过索引 <code class="language-plaintext highlighter-rouge">top_list</code>，选择仅包含最大频率成分的部分。</li>
+    </ul>
+  </li>
+</ol>
+
+<p>综合起来，这行代码返回了信号中每个最大频率成分的周期长度以及相应频率成分的平均振幅信息。这样的返回结果可能用于进一步分析信号中不同频率的周期性成分及其振幅特征。</p>]]></content><author><name>slience_me</name></author><category term="论文笔记" /><summary type="html"><![CDATA[【论文笔记合集】TimesNet之FFT详解]]></summary></entry></feed>

@@ -1,0 +1,315 @@
+<!DOCTYPE html> <html lang="zh-cmn-Hans" prefix="og: http://ogp.me/ns#" class="han-init"> <head> <meta charset="utf-8"> <meta http-equiv="X-UA-Compatible" content="IE=edge"> <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1" /> <title>前端｜Web基础_JavaScript基础 &mdash; Slience_me的博客</title> <link rel="stylesheet" href="https://slienceme.cn/assets/vendor/primer-css/css/primer.css"> <link rel="stylesheet" href="https://slienceme.cn/assets/css/components/collection.css"> <link rel="stylesheet" href="https://slienceme.cn/assets/css/components/repo-card.css"> <link rel="stylesheet" href="https://slienceme.cn/assets/css/sections/repo-list.css"> <link rel="stylesheet" href="https://slienceme.cn/assets/css/components/boxed-group.css"> <link rel="stylesheet" href="https://slienceme.cn/assets/css/globals/common.css"> <link rel="stylesheet" href="https://slienceme.cn/assets/css/globals/responsive.css"> <link rel="stylesheet" href="https://slienceme.cn/assets/css/posts/index.css"> <link rel="stylesheet" href="https://slienceme.cn/assets/vendor/octicons/octicons/octicons.css"> <link rel="stylesheet" href="https://mazhuang.org/rouge-themes/dist/github.css"> <link rel="stylesheet" href="https://slienceme.cn/assets/vendor/share.js/dist/css/share.min.css"> <link rel="canonical" href="https://slienceme.cn/2020/12/30/Web%E5%9F%BA%E7%A1%80_JavaScript%E5%9F%BA%E7%A1%80/"> <link rel="alternate" type="application/atom+xml" title="Slience_me的博客" href="https://slienceme.cn/feed.xml"> <link rel="shortcut icon" href="https://slienceme.cn/favicon.ico"> <meta property="og:title" content="前端｜Web基础_JavaScript基础"> <meta name="keywords" content="前端, Web"> <meta name="og:keywords" content="前端, Web"> <meta name="description" content="JavaScript1. JavaScript的介绍JavaScript是运行在浏览器端的脚步语言, 是由浏览器解释执行的, 简称js, 它能够让网页和用户有交互功能, 增加良好的用户体验效果。"> <meta name="og:description" content="JavaScript1. JavaScript的介绍JavaScript是运行在浏览器端的脚步语言, 是由浏览器解释执行的, 简称js, 它能够让网页和用户有交互功能, 增加良好的用户体验效果。"> <meta property="og:url" content="https://slienceme.cn/2020/12/30/Web%E5%9F%BA%E7%A1%80_JavaScript%E5%9F%BA%E7%A1%80/"> <meta property="og:site_name" content="Slience_me的博客"> <meta property="og:type" content="article"> <meta property="og:locale" content="zh_CN" /> <meta property="article:published_time" content="2020-12-30"> <meta name="google-site-verification" content="2feHjT1GNs1Yi2JQfOtdYx7d048naG_-cMwZaDAopIA" /> <script src="https://slienceme.cn/assets/vendor/jquery/dist/jquery.min.js"></script> <script src="https://slienceme.cn/assets/js/main.js"></script> </head> <body class="" data-mz=""> <header class="site-header"> <div class="container"> <h1><a href="https://slienceme.cn/" title="Slience_me的博客"><span class="octicon octicon-mark-github"></span> Slience_me的博客</a></h1> <button class="collapsed mobile-visible" type="button" onclick="toggleMenu();"> <span class="icon-bar"></span> <span class="icon-bar"></span> <span class="icon-bar"></span> </button> <nav class="site-header-nav" role="navigation"> <a href="https://slienceme.cn/" class="site-header-nav-item" target="" title="首页">首页</a> <a href="https://slienceme.cn/categories/" class="site-header-nav-item" target="" title="分类">分类</a> <a href="https://slienceme.cn/archives/" class="mobile-hidden site-header-nav-item" target="" title="归档">归档</a> <a href="https://slienceme.cn/open-source/" class="mobile-hidden site-header-nav-item" target="" title="开源">开源</a> <a href="https://slienceme.cn/fragments/" class="site-header-nav-item" target="" title="片段">片段</a> <a href="https://slienceme.cn/wiki/" class="site-header-nav-item" target="" title="维基">维基</a> <a href="https://slienceme.cn/links/" class="mobile-hidden site-header-nav-item" target="" title="链接">链接</a> <a href="https://slienceme.cn/about/" class="site-header-nav-item" target="" title="关于">关于</a> <a class="mobile-hidden" href="https://slienceme.cn/feed.xml"><span class="octicon octicon-rss" style="color:orange;"></span></a> </nav> </div> </header> <section class="collection-head small geopattern" data-pattern-id="前端｜Web基础_JavaSc"> <div class="container"> <div class="columns"> <div class="column three-fourths"> <div class="collection-title"> <h1 class="collection-header">前端｜Web基础_JavaScript基础</h1> <div class="collection-info"> <span class="meta-info"> <span class="octicon octicon-calendar"></span> 2020/12/30 </span> <span class="meta-info"> <span class="octicon octicon-file-directory"></span> <a href="https://slienceme.cn/categories/#前端" title="前端">前端</a> </span> <span class="meta-info"> <span class="octicon octicon-clock"></span> 共 8288 字，约 24 分钟 </span> </div> </div> </div> <div class="column one-fourth mobile-hidden"> <div class="collection-title"> </div> </div> </div> </div> </section> <section class="container content"> <div class="columns"> <div class="column three-fourths" > <article class="article-content markdown-body"> <h1 id="javascript">JavaScript</h1> <h2 id="1-javascript的介绍">1. JavaScript的介绍</h2> <p>JavaScript是运行在浏览器端的脚步语言, 是由浏览器解释执行的, 简称js, 它能够让网页和用户有交互功能, 增加良好的用户体验效果。</p> <p>前端开发三大块 1、HTML：负责网页结构 2、CSS：负责网页样式 3、JavaScript：负责网页行为， 比如:网页与用户的交互效果</p> <p><strong>JavaScript是运行在浏览器端的脚步语言，它的作用就是负责网页和用户的交互效果。</strong></p> <h2 id="2-javascript的使用方式">2. JavaScript的使用方式</h2> <h3 id="21-行内式主要用于事件">2.1 行内式（主要用于事件）</h3> <div class="language-html highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nt">&lt;input</span> <span class="na">type=</span><span class="s">"button"</span> <span class="na">name=</span><span class="s">""</span> <span class="na">onclick=</span><span class="s">"alert('ok！');"</span><span class="nt">&gt;</span>
+</code></pre></div></div> <h3 id="22-内嵌式">2.2 内嵌式</h3> <div class="language-html highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nt">&lt;script </span><span class="na">type=</span><span class="s">"text/javascript"</span><span class="nt">&gt;</span>        
+    <span class="nx">alert</span><span class="p">(</span><span class="dl">'</span><span class="s1">ok！</span><span class="dl">'</span><span class="p">);</span>
+<span class="nt">&lt;/script&gt;</span>
+</code></pre></div></div> <h3 id="23-外链式">2.3 外链式</h3> <div class="language-html highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nt">&lt;script </span><span class="na">type=</span><span class="s">"text/javascript"</span> <span class="na">src=</span><span class="s">"js/index.js"</span><span class="nt">&gt;&lt;/script&gt;</span>
+</code></pre></div></div> <h2 id="3-变量和数据类型">3. 变量和数据类型</h2> <h3 id="31-定义变量">3.1 定义变量</h3> <p>JavaScript 是一种弱类型语言，也就是说不需要指定变量的类型，JavaScript的变量类型由它的值来决定， 定义变量需要用关键字 ‘var’, 一条JavaScript语句应该以“;”结尾</p> <p>定义变量的语法格式:</p> <p>var 变量名 = 值;</p> <div class="language-javascript highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kd">var</span> <span class="nx">iNum</span> <span class="o">=</span> <span class="mi">123</span><span class="p">;</span>
+ <span class="kd">var</span> <span class="nx">sTr</span> <span class="o">=</span> <span class="dl">'</span><span class="s1">asd</span><span class="dl">'</span><span class="p">;</span>
+
+ <span class="c1">//同时定义多个变量可以用","隔开，公用一个‘var’关键字</span>
+
+ <span class="kd">var</span> <span class="nx">iNum</span> <span class="o">=</span> <span class="mi">45</span><span class="p">,</span><span class="nx">sTr</span><span class="o">=</span><span class="dl">'</span><span class="s1">qwe</span><span class="dl">'</span><span class="p">,</span><span class="nx">sCount</span><span class="o">=</span><span class="dl">'</span><span class="s1">68</span><span class="dl">'</span><span class="p">;</span>
+</code></pre></div></div> <h3 id="32-javascript注释">3.2 JavaScript注释</h3> <p>avaScript的注释分为单行注释(//注释内容)和多行注释(/多行注释/)</p> <div class="language-javascript highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="o">&lt;</span><span class="nx">script</span> <span class="nx">type</span><span class="o">=</span><span class="dl">"</span><span class="s2">text/javascript</span><span class="dl">"</span><span class="o">&gt;</span>    
+
+<span class="c1">// 单行注释</span>
+<span class="kd">var</span> <span class="nx">iNum</span> <span class="o">=</span> <span class="mi">123</span><span class="p">;</span>
+<span class="cm">/*  
+    多行注释
+    1、...
+    2、...
+*/</span>
+<span class="kd">var</span> <span class="nx">sTr</span> <span class="o">=</span> <span class="dl">'</span><span class="s1">abc123</span><span class="dl">'</span><span class="p">;</span>
+<span class="o">&lt;</span><span class="sr">/script</span><span class="err">&gt;
+</span></code></pre></div></div> <h3 id="33-数据类型">3.3 数据类型</h3> <p>js中有六种数据类型，包括五种基本数据类型和一种复杂数据类型(object)。</p> <p>5种基本数据类型： 1、number 数字类型 2、string 字符串类型 3、boolean 布尔类型 true 或 false 4、undefined undefined类型，变量声明未初始化，它的值就是undefined 5、null null类型，表示空对象，如果定义的变量将来准备保存对象，可以将变量初始化为null,在页面上获取不到对象，返回的值就是null</p> <p>1种复合类型： 1、object 后面学习的数组、函数和JavaScript对象都属于复合类型</p> <div class="language-javascript highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="c1">//1.1 数字 number</span>
+<span class="kd">var</span> <span class="nx">iOne</span> <span class="o">=</span> <span class="mf">10.1</span><span class="p">;</span>
+
+<span class="c1">//1.2 字符串 string</span>
+<span class="kd">var</span> <span class="nx">sStr</span> <span class="o">=</span> <span class="dl">'</span><span class="s1">1234</span><span class="dl">'</span><span class="p">;</span>
+
+<span class="c1">//1.3 布尔 boolean; </span>
+<span class="kd">var</span> <span class="nx">bIsTrue</span> <span class="o">=</span> <span class="kc">false</span><span class="p">;</span>
+
+<span class="c1">//1.4 未定义 undefined</span>
+<span class="kd">var</span> <span class="nx">unData</span><span class="p">;</span>
+
+<span class="c1">//1.5 null 表示空对象</span>
+<span class="kd">var</span> <span class="nx">nullData</span> <span class="o">=</span> <span class="kc">null</span><span class="p">;</span>
+
+<span class="c1">//1.6 object 表示对象类型</span>
+<span class="kd">var</span> <span class="nx">oObj</span> <span class="o">=</span> <span class="p">{</span>
+   <span class="na">name</span><span class="p">:</span><span class="dl">"</span><span class="s2">隔壁老王</span><span class="dl">"</span><span class="p">,</span>
+   <span class="na">age</span><span class="p">:</span><span class="mi">88</span>
+<span class="p">}</span>
+<span class="c1">// 获取变量的类型</span>
+<span class="kd">var</span> <span class="nx">type</span> <span class="o">=</span> <span class="k">typeof</span><span class="p">(</span><span class="nx">oObj</span><span class="p">);</span>
+<span class="nx">alert</span><span class="p">(</span><span class="nx">type</span><span class="p">);</span>
+<span class="c1">// 获取对象的name属性</span>
+<span class="nx">alert</span><span class="p">(</span><span class="nx">oObj</span><span class="p">.</span><span class="nx">name</span><span class="p">);</span>
+</code></pre></div></div> <h3 id="34-变量命名规范">3.4 变量命名规范</h3> <p>1、区分大小写 2、第一个字符必须是字母、下划线（_）或者美元符号（$） 3、其他字符可以是字母、下划线、美元符或数字</p> <h3 id="35-匈牙利命名风格">3.5 匈牙利命名风格</h3> <p>对象o Object 比如：oDiv 数组a Array 比如：aItems 字符串s String 比如：sUserName 整数i Integer 比如：iItemCount 布尔值b Boolean 比如：bIsComplete 浮点数f Float 比如：fPrice 函数fn Function 比如：fnHandler</p> <h2 id="4-函数定义和调用">4. 函数定义和调用</h2> <h3 id="41-函数定义">4.1 函数定义</h3> <p>函数就是可以重复使用的代码块, 使用关键字 function 定义函数。</p> <div class="language-javascript highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="o">&lt;</span><span class="nx">script</span> <span class="nx">type</span><span class="o">=</span><span class="dl">"</span><span class="s2">text/javascript</span><span class="dl">"</span><span class="o">&gt;</span>
+    <span class="c1">// 函数定义</span>
+    <span class="kd">function</span> <span class="nx">fnAlert</span><span class="p">(){</span>
+        <span class="nx">alert</span><span class="p">(</span><span class="dl">'</span><span class="s1">hello!</span><span class="dl">'</span><span class="p">);</span>
+    <span class="p">}</span>
+<span class="o">&lt;</span><span class="sr">/script</span><span class="err">&gt;
+</span></code></pre></div></div> <h3 id="42-函数调用">4.2 函数调用</h3> <p>函数调用就是函数名加小括号，比如:函数名(参数[参数可选])</p> <div class="language-javascript highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="o">&lt;</span><span class="nx">script</span> <span class="nx">type</span><span class="o">=</span><span class="dl">"</span><span class="s2">text/javascript</span><span class="dl">"</span><span class="o">&gt;</span>
+    <span class="c1">// 函数定义</span>
+    <span class="kd">function</span> <span class="nx">fnAlert</span><span class="p">(){</span>
+        <span class="nx">alert</span><span class="p">(</span><span class="dl">'</span><span class="s1">hello!</span><span class="dl">'</span><span class="p">);</span>
+    <span class="p">}</span>
+    <span class="c1">// 函数调用</span>
+    <span class="nx">fnAlert</span><span class="p">();</span>
+<span class="o">&lt;</span><span class="sr">/script</span><span class="err">&gt;
+</span></code></pre></div></div> <h3 id="43-定义有参数有返回值的函数">4.3 定义有参数有返回值的函数</h3> <p>定义函数时，函数如果有参数，参数放到小括号里面，函数如果有返回值，返回值通过 return 关键字来返回</p> <div class="language-javascript highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="o">&lt;</span><span class="nx">script</span> <span class="nx">type</span><span class="o">=</span><span class="dl">"</span><span class="s2">text/javascript</span><span class="dl">"</span><span class="o">&gt;</span>
+<span class="kd">function</span> <span class="nx">fnAdd</span><span class="p">(</span><span class="nx">iNum01</span><span class="p">,</span><span class="nx">iNum02</span><span class="p">){</span>
+    <span class="kd">var</span> <span class="nx">iRs</span> <span class="o">=</span> <span class="nx">iNum01</span> <span class="o">+</span> <span class="nx">iNum02</span><span class="p">;</span>
+    <span class="k">return</span> <span class="nx">iRs</span><span class="p">;</span>
+    <span class="nx">alert</span><span class="p">(</span><span class="dl">'</span><span class="s1">here!</span><span class="dl">'</span><span class="p">);</span>
+<span class="p">}</span>
+
+<span class="kd">var</span> <span class="nx">iCount</span> <span class="o">=</span> <span class="nx">fnAdd</span><span class="p">(</span><span class="mi">3</span><span class="p">,</span><span class="mi">4</span><span class="p">);</span>
+<span class="nx">alert</span><span class="p">(</span><span class="nx">iCount</span><span class="p">);</span>  <span class="c1">//弹出7</span>
+<span class="o">&lt;</span><span class="sr">/script</span><span class="err">&gt;
+</span></code></pre></div></div> <p><strong>函数中’return’关键字的作用:</strong> 1、返回函数中的值 2、执行完return函数执行结束</p> <h3 id="44-小结">4.4 小结</h3> <ul> <li>函数的定义</li> </ul> <div class="language-javascript highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kd">function</span> <span class="nx">函数名</span><span class="p">(</span><span class="nx">参数</span><span class="p">[</span><span class="nx">参数可选</span><span class="p">]){</span>  
+      <span class="c1">// 函数的代码实现  </span>
+      <span class="p">...</span>  
+  <span class="p">}</span>
+</code></pre></div></div> <ul> <li>函数的调用</li> </ul> <div class="language-javascript highlighter-rouge"><div class="highlight"><pre class="highlight"><code> <span class="nx">函数名</span><span class="p">(</span><span class="nx">参数</span><span class="p">[</span><span class="nx">参数可选</span><span class="p">])</span>
+</code></pre></div></div> <h2 id="5-变量作用域">5. 变量作用域</h2> <h3 id="51-变量作用域的介绍">5.1 变量作用域的介绍</h3> <p>变量作用域就是变量的使用范围，变量分为:</p> <ul> <li>局部变量</li> <li>全局变量 <h3 id="52-局部变量">5.2 局部变量</h3> <p>局部变量就是在函数内使用的变量，只能在函数内部使用。</p> </li> </ul> <div class="language-javascript highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="o">&lt;</span><span class="nx">script</span> <span class="nx">type</span><span class="o">=</span><span class="dl">"</span><span class="s2">text/javascript</span><span class="dl">"</span><span class="o">&gt;</span>
+    <span class="kd">function</span> <span class="nx">myalert</span><span class="p">()</span>
+    <span class="p">{</span>
+        <span class="c1">// 定义局部变量</span>
+        <span class="kd">var</span> <span class="nx">b</span> <span class="o">=</span> <span class="mi">23</span><span class="p">;</span>
+        <span class="nx">alert</span><span class="p">(</span><span class="nx">b</span><span class="p">);</span>
+    <span class="p">}</span>
+    <span class="nx">myalert</span><span class="p">();</span> <span class="c1">// 弹出23</span>
+    <span class="nx">alert</span><span class="p">(</span><span class="nx">b</span><span class="p">);</span>  <span class="c1">// 函数外使用出错</span>
+<span class="o">&lt;</span><span class="sr">/script</span><span class="err">&gt;
+</span></code></pre></div></div> <h3 id="53-全局变量">5.3 全局变量</h3> <p>全局变量就是在函数外定义的变量，可以在不同函数内使用。</p> <div class="language-javascript highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="o">&lt;</span><span class="nx">script</span> <span class="nx">type</span><span class="o">=</span><span class="dl">"</span><span class="s2">text/javascript</span><span class="dl">"</span><span class="o">&gt;</span>
+    <span class="c1">// 定义全局变量</span>
+    <span class="kd">var</span> <span class="nx">a</span> <span class="o">=</span> <span class="mi">12</span><span class="p">;</span>
+    <span class="kd">function</span> <span class="nx">myalert</span><span class="p">()</span>
+    <span class="p">{</span>
+        <span class="c1">// 修改全局变量</span>
+        <span class="nx">a</span><span class="o">++</span><span class="p">;</span>
+    <span class="p">}</span>
+    <span class="nx">myalert</span><span class="p">();</span>
+    <span class="nx">alert</span><span class="p">(</span><span class="nx">a</span><span class="p">);</span>  <span class="c1">// 弹出13    </span>
+<span class="o">&lt;</span><span class="sr">/script</span><span class="err">&gt;
+</span></code></pre></div></div> <h2 id="6-条件语句">6. 条件语句</h2> <h3 id="61-条件语句的介绍">6.1 条件语句的介绍</h3> <p>条件语句就是通过条件来控制程序的走向</p> <h3 id="62-条件语句语法">6.2 条件语句语法</h3> <ol> <li>if 语句 - 只有当指定条件为 true 时，使用该语句来执行代码</li> <li>if…else 语句 - 当条件为 true 时执行代码，当条件为 false 时执行其他代码</li> <li>if…else if….else 语句 - 使用该语句来判断多条件，执行条件成立的语句</li> </ol> <h3 id="63-比较运算符">6.3 比较运算符</h3> <p>假如 x = 5, 查看比较后的结果: <img src="https://slienceme.cn/images/posts/20201230211518160.png" alt="Alt Text" /> 比较运算符示例代码:</p> <div class="language-javascript highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kd">var</span> <span class="nx">iNum01</span> <span class="o">=</span> <span class="mi">12</span><span class="p">;</span>
+<span class="kd">var</span> <span class="nx">sNum01</span> <span class="o">=</span> <span class="dl">'</span><span class="s1">12</span><span class="dl">'</span><span class="p">;</span>
+
+<span class="k">if</span><span class="p">(</span><span class="nx">iNum01</span><span class="o">==</span><span class="mi">12</span><span class="p">){</span>
+    <span class="nx">alert</span><span class="p">(</span><span class="dl">'</span><span class="s1">相等！</span><span class="dl">'</span><span class="p">);</span>
+<span class="p">}</span>
+<span class="k">else</span><span class="p">{</span>
+    <span class="nx">alert</span><span class="p">(</span><span class="dl">'</span><span class="s1">不相等！</span><span class="dl">'</span><span class="p">)</span>
+<span class="p">}</span>
+
+<span class="c1">// "==" 符号默认会将符号两边的变量转换成数字再进行对比，这个叫做隐式转换</span>
+<span class="k">if</span><span class="p">(</span><span class="nx">sNum01</span><span class="o">==</span><span class="mi">12</span><span class="p">){</span>
+    <span class="nx">alert</span><span class="p">(</span><span class="dl">'</span><span class="s1">相等！</span><span class="dl">'</span><span class="p">);</span>
+<span class="p">}</span>
+<span class="k">else</span><span class="p">{</span>
+    <span class="nx">alert</span><span class="p">(</span><span class="dl">'</span><span class="s1">不相等！</span><span class="dl">'</span><span class="p">)</span>
+<span class="p">}</span>
+
+<span class="c1">// "===" 符号不会转换符号两边的数据类型</span>
+<span class="k">if</span><span class="p">(</span><span class="nx">sNum01</span><span class="o">===</span><span class="mi">12</span><span class="p">){</span>
+    <span class="nx">alert</span><span class="p">(</span><span class="dl">'</span><span class="s1">相等！</span><span class="dl">'</span><span class="p">);</span>
+<span class="p">}</span>
+<span class="k">else</span><span class="p">{</span>
+    <span class="nx">alert</span><span class="p">(</span><span class="dl">'</span><span class="s1">不相等！</span><span class="dl">'</span><span class="p">)</span>
+<span class="p">}</span>
+
+<span class="c1">// 多条件判断</span>
+<span class="kd">var</span> <span class="nx">sFruit</span> <span class="o">=</span> <span class="dl">"</span><span class="s2">苹果</span><span class="dl">"</span><span class="p">;</span>
+<span class="k">if</span> <span class="p">(</span><span class="nx">sFruit</span> <span class="o">==</span> <span class="dl">"</span><span class="s2">苹果</span><span class="dl">"</span><span class="p">)</span> <span class="p">{</span>
+    <span class="nx">alert</span><span class="p">(</span><span class="dl">"</span><span class="s2">您选择的水果是苹果</span><span class="dl">"</span><span class="p">);</span>
+<span class="p">}</span> <span class="k">else</span> <span class="k">if</span> <span class="p">(</span><span class="nx">sFruit</span> <span class="o">==</span> <span class="dl">"</span><span class="s2">鸭梨</span><span class="dl">"</span><span class="p">)</span> <span class="p">{</span>
+    <span class="nx">alert</span><span class="p">(</span><span class="dl">"</span><span class="s2">您选择的水果是鸭梨</span><span class="dl">"</span><span class="p">);</span>
+<span class="p">}</span> <span class="k">else</span> <span class="p">{</span>
+    <span class="nx">alert</span><span class="p">(</span><span class="dl">"</span><span class="s2">对不起，您选择的水果不存在!</span><span class="dl">"</span><span class="p">)</span>
+<span class="p">}</span>
+</code></pre></div></div> <h3 id="64-逻辑运算符">6.4 逻辑运算符</h3> <p>假如 x=6, y=3, 查看比较后的结果: <img src="https://slienceme.cn/images/posts/20201230211559554.png" alt="Alt Text" /> 逻辑运算符示例代码:</p> <div class="language-javascript highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kd">var</span> <span class="nx">x</span> <span class="o">=</span> <span class="mi">6</span><span class="p">;</span>
+<span class="kd">var</span> <span class="nx">y</span> <span class="o">=</span> <span class="mi">3</span><span class="p">;</span>
+
+<span class="k">if</span><span class="p">(</span><span class="nx">x</span> <span class="o">&lt;</span> <span class="mi">10</span> <span class="o">&amp;&amp;</span> <span class="nx">y</span> <span class="o">&gt;</span> <span class="mi">1</span><span class="p">){</span>
+    <span class="nx">alert</span><span class="p">(</span><span class="dl">'</span><span class="s1">都大于</span><span class="dl">'</span><span class="p">);</span>
+<span class="p">}</span>
+<span class="k">else</span><span class="p">{</span>
+    <span class="nx">alert</span><span class="p">(</span><span class="dl">'</span><span class="s1">至少有一个不大于</span><span class="dl">'</span><span class="p">);</span>
+<span class="p">}</span>
+
+<span class="k">if</span><span class="p">(</span><span class="nx">x</span> <span class="o">&gt;</span> <span class="mi">5</span> <span class="o">||</span> <span class="nx">y</span> <span class="o">&gt;</span> <span class="mi">7</span> <span class="p">){</span>
+    <span class="nx">alert</span><span class="p">(</span><span class="dl">'</span><span class="s1">至少有一个大于</span><span class="dl">'</span><span class="p">);</span>
+<span class="p">}</span>
+<span class="k">else</span><span class="p">{</span>
+    <span class="nx">alert</span><span class="p">(</span><span class="dl">'</span><span class="s1">都不大于</span><span class="dl">'</span><span class="p">);</span>
+<span class="p">}</span>
+
+<span class="k">if</span><span class="p">(</span><span class="o">!</span><span class="p">(</span><span class="nx">x</span> <span class="o">==</span> <span class="nx">y</span><span class="p">)){</span>
+    <span class="nx">alert</span><span class="p">(</span><span class="dl">'</span><span class="s1">等于</span><span class="dl">'</span><span class="p">)</span>
+<span class="p">}</span>
+<span class="k">else</span><span class="p">{</span>
+    <span class="nx">alert</span><span class="p">(</span><span class="dl">'</span><span class="s1">不等于</span><span class="dl">'</span><span class="p">)</span>
+<span class="p">}</span>
+</code></pre></div></div> <h2 id="7-获取标签元素">7. 获取标签元素</h2> <h3 id="71-获取标签元素">7.1 获取标签元素</h3> <p>可以使用内置对象 document 上的 getElementById 方法来获取页面上设置了id属性的标签元素，获取到的是一个html对象，然后将它赋值给一个变量，比如：</p> <div class="language-javascript highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="o">&lt;</span><span class="nx">script</span> <span class="nx">type</span><span class="o">=</span><span class="dl">"</span><span class="s2">text/javascript</span><span class="dl">"</span><span class="o">&gt;</span>
+    <span class="kd">var</span> <span class="nx">oDiv</span> <span class="o">=</span> <span class="nb">document</span><span class="p">.</span><span class="nx">getElementById</span><span class="p">(</span><span class="dl">'</span><span class="s1">div1</span><span class="dl">'</span><span class="p">);</span>
+    <span class="nx">alert</span><span class="p">(</span><span class="nx">oDiv</span><span class="p">);</span>
+<span class="o">&lt;</span><span class="sr">/script</span><span class="err">&gt;
+</span><span class="o">&lt;</span><span class="nx">div</span> <span class="nx">id</span><span class="o">=</span><span class="dl">"</span><span class="s2">div1</span><span class="dl">"</span><span class="o">&gt;</span><span class="nx">这是一个div元素</span><span class="o">&lt;</span><span class="sr">/div</span><span class="err">&gt;
+</span></code></pre></div></div> <p><strong>说明:</strong></p> <p>上面的代码，如果把javascript写在元素的上面，就会出错，因为页面上从上往下加载执行的，javascript去页面上获取元素div1的时候，元素div1还没有加载。</p> <p><strong>解决方法有两种:</strong></p> <p>第一种方法：将javascript放到页面最下边</p> <div class="language-javascript highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="o">&lt;</span><span class="nx">div</span> <span class="nx">id</span><span class="o">=</span><span class="dl">"</span><span class="s2">div1</span><span class="dl">"</span><span class="o">&gt;</span><span class="nx">这是一个div元素</span><span class="o">&lt;</span><span class="sr">/div</span><span class="err">&gt;
+</span>
+<span class="o">&lt;</span><span class="nx">script</span> <span class="nx">type</span><span class="o">=</span><span class="dl">"</span><span class="s2">text/javascript</span><span class="dl">"</span><span class="o">&gt;</span>
+    <span class="kd">var</span> <span class="nx">oDiv</span> <span class="o">=</span> <span class="nb">document</span><span class="p">.</span><span class="nx">getElementById</span><span class="p">(</span><span class="dl">'</span><span class="s1">div1</span><span class="dl">'</span><span class="p">);</span>
+    <span class="nx">alert</span><span class="p">(</span><span class="nx">oDiv</span><span class="p">);</span>
+<span class="o">&lt;</span><span class="sr">/script</span><span class="err">&gt;
+</span></code></pre></div></div> <p>第二种方法：设置页面加载完成执行的函数，在执行函数里面获取标签元素。</p> <div class="language-javascript highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="o">&lt;</span><span class="nx">script</span> <span class="nx">type</span><span class="o">=</span><span class="dl">"</span><span class="s2">text/javascript</span><span class="dl">"</span><span class="o">&gt;</span>
+    <span class="nb">window</span><span class="p">.</span><span class="nx">onload</span> <span class="o">=</span> <span class="kd">function</span><span class="p">(){</span>
+        <span class="kd">var</span> <span class="nx">oDiv</span> <span class="o">=</span> <span class="nb">document</span><span class="p">.</span><span class="nx">getElementById</span><span class="p">(</span><span class="dl">'</span><span class="s1">div1</span><span class="dl">'</span><span class="p">);</span>
+    <span class="p">}</span>
+<span class="o">&lt;</span><span class="sr">/script</span><span class="err">&gt;
+</span></code></pre></div></div> <p><strong>说明:</strong> onload是页面所有元素加载完成的事件，给onload设置函数时，当事件触发就会执行设置的函数。</p> <p><strong>获取标签元素需要等待页面加载完成，使用document.getElementById(‘标签id’);</strong></p> <h2 id="8-操作标签元素属性">8. 操作标签元素属性</h2> <h3 id="81-属性的操作">8.1 属性的操作</h3> <p>首先获取的页面标签元素，然后就可以对页面标签元素的属性进行操作，属性的操作包括:</p> <ul> <li>属性的读取</li> <li>属性的设置</li> </ul> <p>属性名在js中的写法</p> <ol> <li>html的属性和js里面属性大多数写法一样，但是“class” 属性写成 “className”</li> <li>“style” 属性里面的属性，有横杠的改成驼峰式，比如：“font-size”，改成”style.fontSize”</li> </ol> <div class="language-javascript highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="o">&lt;</span><span class="nx">style</span><span class="o">&gt;</span>
+    <span class="p">.</span><span class="nx">sty01</span><span class="p">{</span>
+        <span class="nx">font</span><span class="o">-</span><span class="nx">size</span><span class="p">:</span><span class="mi">20</span><span class="nx">px</span><span class="p">;</span>
+        <span class="nl">color</span><span class="p">:</span><span class="nx">red</span><span class="p">;</span>
+    <span class="p">}</span>
+    <span class="p">.</span><span class="nx">sty02</span><span class="p">{</span>
+        <span class="nx">font</span><span class="o">-</span><span class="nx">size</span><span class="p">:</span><span class="mi">30</span><span class="nx">px</span><span class="p">;</span>
+        <span class="nl">color</span><span class="p">:</span><span class="nx">pink</span><span class="p">;</span>
+        <span class="nx">text</span><span class="o">-</span><span class="nx">decoration</span><span class="p">:</span><span class="nx">none</span><span class="p">;</span>
+    <span class="p">}</span>
+
+<span class="o">&lt;</span><span class="sr">/style</span><span class="err">&gt;
+</span>
+<span class="o">&lt;</span><span class="nx">script</span> <span class="nx">type</span><span class="o">=</span><span class="dl">"</span><span class="s2">text/javascript</span><span class="dl">"</span><span class="o">&gt;</span>
+
+    <span class="nb">window</span><span class="p">.</span><span class="nx">onload</span> <span class="o">=</span> <span class="kd">function</span><span class="p">(){</span>
+        <span class="kd">var</span> <span class="nx">oInput</span> <span class="o">=</span> <span class="nb">document</span><span class="p">.</span><span class="nx">getElementById</span><span class="p">(</span><span class="dl">'</span><span class="s1">input1</span><span class="dl">'</span><span class="p">);</span>
+        <span class="kd">var</span> <span class="nx">oA</span> <span class="o">=</span> <span class="nb">document</span><span class="p">.</span><span class="nx">getElementById</span><span class="p">(</span><span class="dl">'</span><span class="s1">link1</span><span class="dl">'</span><span class="p">);</span>
+        <span class="c1">// 读取属性值</span>
+        <span class="kd">var</span> <span class="nx">sValue</span> <span class="o">=</span> <span class="nx">oInput</span><span class="p">.</span><span class="nx">value</span><span class="p">;</span>
+        <span class="kd">var</span> <span class="nx">sType</span> <span class="o">=</span> <span class="nx">oInput</span><span class="p">.</span><span class="nx">type</span><span class="p">;</span>
+        <span class="kd">var</span> <span class="nx">sName</span> <span class="o">=</span> <span class="nx">oInput</span><span class="p">.</span><span class="nx">name</span><span class="p">;</span>
+        <span class="kd">var</span> <span class="nx">sLinks</span> <span class="o">=</span> <span class="nx">oA</span><span class="p">.</span><span class="nx">href</span><span class="p">;</span>
+
+        <span class="c1">// 操作class属性,需要写成“className”</span>
+        <span class="nx">oA</span><span class="p">.</span><span class="nx">className</span> <span class="o">=</span> <span class="dl">'</span><span class="s1">sty02</span><span class="dl">'</span><span class="p">;</span>
+
+        <span class="c1">// 写(设置)属性</span>
+        <span class="nx">oA</span><span class="p">.</span><span class="nx">style</span><span class="p">.</span><span class="nx">color</span> <span class="o">=</span> <span class="dl">'</span><span class="s1">red</span><span class="dl">'</span><span class="p">;</span>
+        <span class="nx">oA</span><span class="p">.</span><span class="nx">style</span><span class="p">.</span><span class="nx">fontSize</span> <span class="o">=</span> <span class="nx">sValue</span><span class="p">;</span>
+    <span class="p">}</span>
+
+<span class="o">&lt;</span><span class="sr">/script</span><span class="err">&gt;
+</span>
+<span class="o">&lt;</span><span class="nx">input</span> <span class="nx">type</span><span class="o">=</span><span class="dl">"</span><span class="s2">text</span><span class="dl">"</span> <span class="nx">name</span><span class="o">=</span><span class="dl">"</span><span class="s2">setsize</span><span class="dl">"</span> <span class="nx">id</span><span class="o">=</span><span class="dl">"</span><span class="s2">input1</span><span class="dl">"</span> <span class="nx">value</span><span class="o">=</span><span class="dl">"</span><span class="s2">20px</span><span class="dl">"</span><span class="o">&gt;</span>
+<span class="o">&lt;</span><span class="nx">a</span> <span class="nx">href</span><span class="o">=</span><span class="dl">"</span><span class="s2">#</span><span class="dl">"</span> <span class="nx">id</span><span class="o">=</span><span class="dl">"</span><span class="s2">link01</span><span class="dl">"</span> <span class="kd">class</span><span class="o">=</span><span class="dl">"</span><span class="s2">sty01</span><span class="dl">"</span><span class="o">&gt;</span><span class="nx">这是一个链接</span><span class="o">&lt;</span><span class="sr">/a</span><span class="err">&gt;
+</span></code></pre></div></div> <h3 id="82-innerhtml">8.2 innerHTML</h3> <p>innerHTML可以读取或者设置标签包裹的内容</p> <div class="language-javascript highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="o">&lt;</span><span class="nx">script</span> <span class="nx">type</span><span class="o">=</span><span class="dl">"</span><span class="s2">text/javascript</span><span class="dl">"</span><span class="o">&gt;</span>
+    <span class="nb">window</span><span class="p">.</span><span class="nx">onload</span> <span class="o">=</span> <span class="kd">function</span><span class="p">(){</span>
+        <span class="kd">var</span> <span class="nx">oDiv</span> <span class="o">=</span> <span class="nb">document</span><span class="p">.</span><span class="nx">getElementById</span><span class="p">(</span><span class="dl">'</span><span class="s1">div1</span><span class="dl">'</span><span class="p">);</span>
+        <span class="c1">//读取</span>
+        <span class="kd">var</span> <span class="nx">sTxt</span> <span class="o">=</span> <span class="nx">oDiv</span><span class="p">.</span><span class="nx">innerHTML</span><span class="p">;</span>
+        <span class="nx">alert</span><span class="p">(</span><span class="nx">sTxt</span><span class="p">);</span>
+        <span class="c1">//写入</span>
+        <span class="nx">oDiv</span><span class="p">.</span><span class="nx">innerHTML</span> <span class="o">=</span> <span class="dl">'</span><span class="s1">&lt;a href="http://"&gt;&lt;a/&gt;</span><span class="dl">'</span><span class="p">;</span>
+    <span class="p">}</span>
+<span class="o">&lt;</span><span class="sr">/script</span><span class="err">&gt;
+</span>
+
+<span class="o">&lt;</span><span class="nx">div</span> <span class="nx">id</span><span class="o">=</span><span class="dl">"</span><span class="s2">div1</span><span class="dl">"</span><span class="o">&gt;</span><span class="nx">这是一个div元素</span><span class="o">&lt;</span><span class="sr">/div</span><span class="err">&gt;
+</span></code></pre></div></div> <h3 id="83-小结">8.3 小结</h3> <p>标签属性的获取和设置:</p> <ol> <li>var 标签对象 = document.getElementById(‘id名称’); -&gt; 获取标签对象</li> <li>var 变量名 = 标签对象.属性名 -&gt; 读取属性</li> <li>标签对象.属性名 = 新属性值 -&gt; 设置属性</li> </ol> <h2 id="9-数组及操作方法">9. 数组及操作方法</h2> <h3 id="91-数组的介绍">9.1 数组的介绍</h3> <p>数组就是一组数据的集合，javascript 中，数组里面的数据可以是不同类型的数据，好比 python 里面的列表。</p> <h3 id="92-数组的定义">9.2 数组的定义</h3> <div class="language-javascript highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="c1">// 实例化对象方式创建</span>
+<span class="kd">var</span> <span class="nx">aList</span> <span class="o">=</span> <span class="k">new</span> <span class="nb">Array</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span><span class="mi">2</span><span class="p">,</span><span class="mi">3</span><span class="p">);</span>
+
+<span class="c1">// 字面量方式创建，推荐使用</span>
+<span class="kd">var</span> <span class="nx">aList2</span> <span class="o">=</span> <span class="p">[</span><span class="mi">1</span><span class="p">,</span><span class="mi">2</span><span class="p">,</span><span class="mi">3</span><span class="p">,</span><span class="dl">'</span><span class="s1">asd</span><span class="dl">'</span><span class="p">];</span>
+</code></pre></div></div> <h3 id="93-多维数组">9.3 多维数组</h3> <p>多维数组指的是数组的成员也是数组，把这样的数组叫做多维数组。</p> <div class="language-javascript highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kd">var</span> <span class="nx">aList</span> <span class="o">=</span> <span class="p">[[</span><span class="mi">1</span><span class="p">,</span><span class="mi">2</span><span class="p">,</span><span class="mi">3</span><span class="p">],[</span><span class="dl">'</span><span class="s1">a</span><span class="dl">'</span><span class="p">,</span><span class="dl">'</span><span class="s1">b</span><span class="dl">'</span><span class="p">,</span><span class="dl">'</span><span class="s1">c</span><span class="dl">'</span><span class="p">]];</span>
+</code></pre></div></div> <h3 id="94-数组的操作">9.4 数组的操作</h3> <p><strong>1、 获取数组的长度</strong></p> <div class="language-javascript highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kd">var</span> <span class="nx">aList</span> <span class="o">=</span> <span class="p">[</span><span class="mi">1</span><span class="p">,</span><span class="mi">2</span><span class="p">,</span><span class="mi">3</span><span class="p">,</span><span class="mi">4</span><span class="p">];</span>
+<span class="nx">alert</span><span class="p">(</span><span class="nx">aList</span><span class="p">.</span><span class="nx">length</span><span class="p">);</span> <span class="c1">// 弹出4</span>
+</code></pre></div></div> <p><strong>2、 根据下标取值</strong></p> <div class="language-javascript highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kd">var</span> <span class="nx">aList</span> <span class="o">=</span> <span class="p">[</span><span class="mi">1</span><span class="p">,</span><span class="mi">2</span><span class="p">,</span><span class="mi">3</span><span class="p">,</span><span class="mi">4</span><span class="p">];</span>
+<span class="nx">alert</span><span class="p">(</span><span class="nx">aList</span><span class="p">[</span><span class="mi">0</span><span class="p">]);</span> <span class="c1">// 弹出1</span>
+</code></pre></div></div> <p><strong>3、 从数组最后添加和删除数据</strong></p> <div class="language-javascript highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kd">var</span> <span class="nx">aList</span> <span class="o">=</span> <span class="p">[</span><span class="mi">1</span><span class="p">,</span><span class="mi">2</span><span class="p">,</span><span class="mi">3</span><span class="p">,</span><span class="mi">4</span><span class="p">];</span>
+<span class="nx">aList</span><span class="p">.</span><span class="nx">push</span><span class="p">(</span><span class="mi">5</span><span class="p">);</span>
+<span class="nx">alert</span><span class="p">(</span><span class="nx">aList</span><span class="p">);</span> <span class="c1">//弹出1,2,3,4,5</span>
+<span class="nx">aList</span><span class="p">.</span><span class="nx">pop</span><span class="p">();</span>
+<span class="nx">alert</span><span class="p">(</span><span class="nx">aList</span><span class="p">);</span> <span class="c1">// 弹出1,2,3,4</span>
+</code></pre></div></div> <p><strong>4、根据下标添加和删除元素</strong></p> <p>arr.splice(start,num,element1,…..,elementN)</p> <p><strong>参数解析：</strong></p> <ol> <li>start：必需，开始删除的索引。</li> <li>num：可选，删除数组元素的个数。</li> <li>elementN：可选，在start索引位置要插入的新元素。</li> </ol> <p>此方法会删除从start索引开始的num个元素，并将elementN参数插入到start索引位置。</p> <div class="language-javascript highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kd">var</span> <span class="nx">colors</span> <span class="o">=</span> <span class="p">[</span><span class="dl">"</span><span class="s2">red</span><span class="dl">"</span><span class="p">,</span> <span class="dl">"</span><span class="s2">green</span><span class="dl">"</span><span class="p">,</span> <span class="dl">"</span><span class="s2">blue</span><span class="dl">"</span><span class="p">];</span>
+<span class="nx">colors</span><span class="p">.</span><span class="nx">splice</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span><span class="mi">1</span><span class="p">);</span>  <span class="c1">//删除第一项</span>
+<span class="nx">alert</span><span class="p">(</span><span class="nx">colors</span><span class="p">);</span>  <span class="c1">//green,blue</span>
+
+<span class="nx">colors</span><span class="p">.</span><span class="nx">splice</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="dl">"</span><span class="s2">yellow</span><span class="dl">"</span><span class="p">,</span> <span class="dl">"</span><span class="s2">orange</span><span class="dl">"</span><span class="p">);</span>  <span class="c1">//从第一个索引位置插入两项数据</span>
+<span class="nx">alert</span><span class="p">(</span><span class="nx">colors</span><span class="p">);</span>  <span class="c1">//green,yellow,organge,blue</span>
+
+<span class="nx">colors</span><span class="p">.</span><span class="nx">splice</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="dl">"</span><span class="s2">red</span><span class="dl">"</span><span class="p">,</span> <span class="dl">"</span><span class="s2">purple</span><span class="dl">"</span><span class="p">);</span>  <span class="c1">//删除一项，插入两项数据</span>
+<span class="nx">alert</span><span class="p">(</span><span class="nx">colors</span><span class="p">);</span>  <span class="c1">//green,red,purple,orange,blue</span>
+</code></pre></div></div> <h3 id="95-小结">9.5 小结</h3> <ul> <li>数组的定义使用一对中括号</li> <li>获取数组的长度使用length属性</li> <li>从数组最后添加元素使用push方法</li> <li>从数组最后删除元素使用pop方法</li> <li>根据下标添加和删除元素使用splice方法</li> </ul> <h2 id="10-循环语句">10. 循环语句</h2> <h3 id="101-循环语句的介绍">10.1 循环语句的介绍</h3> <p>循环语句就是让一部分代码重复执行，javascript中常用的循环语句有:</p> <ul> <li>for</li> <li>while</li> <li>do-while <h3 id="102-for循环">10.2 for循环</h3> </li> </ul> <div class="language-javascript highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kd">var</span> <span class="nx">array</span> <span class="o">=</span> <span class="p">[</span><span class="mi">1</span><span class="p">,</span> <span class="mi">4</span><span class="p">,</span> <span class="mi">5</span><span class="p">];</span>
+
+<span class="k">for</span><span class="p">(</span><span class="kd">var</span> <span class="nx">index</span> <span class="o">=</span> <span class="mi">0</span><span class="p">;</span> <span class="nx">index</span> <span class="o">&lt;</span> <span class="nx">array</span><span class="p">.</span><span class="nx">length</span><span class="p">;</span> <span class="nx">index</span><span class="o">++</span><span class="p">){</span>
+    <span class="nx">result</span> <span class="o">=</span> <span class="nx">array</span><span class="p">[</span><span class="nx">index</span><span class="p">];</span>
+    <span class="nx">alert</span><span class="p">(</span><span class="nx">result</span><span class="p">);</span>
+<span class="p">}</span>
+</code></pre></div></div> <h3 id="103-while循环">10.3 while循环</h3> <div class="language-javascript highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kd">var</span> <span class="nx">array</span> <span class="o">=</span> <span class="p">[</span><span class="mi">1</span><span class="p">,</span> <span class="mi">4</span><span class="p">,</span> <span class="mi">5</span><span class="p">];</span>        
+<span class="kd">var</span> <span class="nx">index</span> <span class="o">=</span> <span class="mi">0</span><span class="p">;</span>
+
+<span class="k">while</span> <span class="p">(</span><span class="nx">index</span> <span class="o">&lt;</span> <span class="nx">array</span><span class="p">.</span><span class="nx">length</span><span class="p">)</span> <span class="p">{</span>
+    <span class="nx">result</span> <span class="o">=</span> <span class="nx">array</span><span class="p">[</span><span class="nx">index</span><span class="p">];</span>
+    <span class="nx">alert</span><span class="p">(</span><span class="nx">result</span><span class="p">);</span>
+    <span class="nx">index</span><span class="o">++</span><span class="p">;</span>
+<span class="p">}</span>
+</code></pre></div></div> <p><strong>说明:</strong></p> <p>当条件成立的时候, while语句会循环执行</p> <h3 id="104-do-while循环">10.4 do-while循环</h3> <div class="language-javascript highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kd">var</span> <span class="nx">array</span> <span class="o">=</span> <span class="p">[</span><span class="mi">1</span><span class="p">,</span> <span class="mi">4</span><span class="p">,</span> <span class="mi">5</span><span class="p">];</span>
+<span class="kd">var</span> <span class="nx">index</span> <span class="o">=</span> <span class="mi">0</span><span class="p">;</span>
+
+<span class="k">do</span> <span class="p">{</span>
+    <span class="nx">result</span> <span class="o">=</span> <span class="nx">array</span><span class="p">[</span><span class="nx">index</span><span class="p">];</span>
+    <span class="nx">alert</span><span class="p">(</span><span class="nx">result</span><span class="p">);</span>
+    <span class="nx">index</span><span class="o">++</span><span class="p">;</span>
+<span class="p">}</span> <span class="k">while</span> <span class="p">(</span><span class="nx">index</span> <span class="o">&lt;</span> <span class="nx">array</span><span class="p">.</span><span class="nx">length</span><span class="p">);</span>
+</code></pre></div></div> <p><strong>说明:</strong></p> <p>当条件不成立的时候do语句也会执行一次</p> <h2 id="11-字符串拼接">11. 字符串拼接</h2> <h3 id="111-字符串拼接">11.1 字符串拼接</h3> <p>字符串拼接使用: “+” 运算符</p> <div class="language-javascript highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kd">var</span> <span class="nx">iNum1</span> <span class="o">=</span> <span class="mi">10</span><span class="p">;</span>
+<span class="kd">var</span> <span class="nx">fNum2</span> <span class="o">=</span> <span class="mf">11.1</span><span class="p">;</span>
+<span class="kd">var</span> <span class="nx">sStr</span> <span class="o">=</span> <span class="dl">'</span><span class="s1">abc</span><span class="dl">'</span><span class="p">;</span>
+
+<span class="nx">result</span> <span class="o">=</span> <span class="nx">iNum1</span> <span class="o">+</span> <span class="nx">fNum2</span><span class="p">;</span>
+<span class="nx">alert</span><span class="p">(</span><span class="nx">result</span><span class="p">);</span> <span class="c1">// 弹出21.1</span>
+
+<span class="nx">result</span> <span class="o">=</span> <span class="nx">fNum2</span> <span class="o">+</span> <span class="nx">sStr</span><span class="p">;</span>
+<span class="nx">alert</span><span class="p">(</span><span class="nx">result</span><span class="p">);</span> <span class="c1">// 弹出11.1abc</span>
+</code></pre></div></div> <p><strong>说明</strong></p> <p>数字和字符串拼接会自动进行类型转换(隐士类型转换)，把数字类型转成字符串类型进行拼接</p> <h2 id="12-定时器">12. 定时器</h2> <h3 id="121-定时器的介绍">12.1 定时器的介绍</h3> <p>定时器就是在一段特定的时间后执行某段程序代码。</p> <h3 id="122-定时器的使用">12.2 定时器的使用</h3> <p>js 定时器有两种创建方式：</p> <ol> <li>setTimeout(func[, delay, param1, param2, …]) ：以指定的时间间隔（以毫秒计）调用一次函数的定时</li> <li>setInterval(func[, delay, param1, param2, …]) ：以指定的时间间隔（以毫秒计）重复调用一个函数的定时器</li> </ol> <p>setTimeout函数的参数说明:</p> <ul> <li>第一个参数 func , 表示定时器要执行的函数名</li> <li>第二个参数 delay, 表示时间间隔，默认是0，单位是毫秒</li> <li>第三个参数 param1, 表示定时器执行函数的第一个参数，一次类推传入多个执行函数对应的参数。</li> </ul> <div class="language-javascript highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="o">&lt;</span><span class="nx">script</span><span class="o">&gt;</span> 
+    <span class="kd">function</span> <span class="nx">hello</span><span class="p">(){</span> 
+        <span class="nx">alert</span><span class="p">(</span><span class="dl">'</span><span class="s1">hello</span><span class="dl">'</span><span class="p">);</span> 
+    <span class="p">}</span> 
+
+    <span class="c1">// 执行一次函数的定时器</span>
+    <span class="nx">setTimeout</span><span class="p">(</span><span class="nx">hello</span><span class="p">,</span> <span class="mi">500</span><span class="p">);</span>
+<span class="o">&lt;</span><span class="sr">/script</span><span class="err">&gt;
+</span></code></pre></div></div> <p>setInterval函数的参数说明:</p> <ul> <li>第一个参数 func , 表示定时器要执行的函数名</li> <li>第二个参数 delay, 表示时间间隔，默认是0，单位是毫秒</li> <li>第三个参数 param1, 表示定时器执行函数的第一个参数，一次类推传入多个执行函数对应的参数。</li> </ul> <div class="language-javascript highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="o">&lt;</span><span class="nx">script</span><span class="o">&gt;</span> 
+    <span class="kd">function</span> <span class="nx">hello</span><span class="p">(){</span> 
+        <span class="nx">alert</span><span class="p">(</span><span class="dl">'</span><span class="s1">hello</span><span class="dl">'</span><span class="p">);</span> 
+    <span class="p">}</span> 
+    <span class="c1">// 重复执行函数的定时器</span>
+    <span class="nx">setInterval</span><span class="p">(</span><span class="nx">hello</span><span class="p">,</span> <span class="mi">1000</span><span class="p">);</span>
+<span class="o">&lt;</span><span class="sr">/script</span><span class="err">&gt;
+</span></code></pre></div></div> <h3 id="123-清除定时器">12.3 清除定时器</h3> <p>js 清除定时器分别是:</p> <ul> <li>clearTimeout(timeoutID) 清除只执行一次的定时器(setTimeout函数)</li> <li>clearInterval(timeoutID) 清除反复执行的定时器(setInterval函数)</li> </ul> <p>clearTimeout函数的参数说明:</p> <ul> <li>timeoutID 为调用 setTimeout 函数时所获得的返回值，使用该返回标识符作为参数，可以取消该 setTimeout 所设定的定时执行操作。</li> </ul> <div class="language-javascript highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="o">&lt;</span><span class="nx">script</span><span class="o">&gt;</span>
+    <span class="kd">function</span> <span class="nx">hello</span><span class="p">(){</span>
+        <span class="nx">alert</span><span class="p">(</span><span class="dl">'</span><span class="s1">hello</span><span class="dl">'</span><span class="p">);</span>
+        <span class="c1">// 清除只执行一次的定时器</span>
+        <span class="nx">clearTimeout</span><span class="p">(</span><span class="nx">t1</span><span class="p">)</span>
+    <span class="p">}</span>
+    <span class="c1">// 执行一次函数的定时器</span>
+    <span class="nx">t1</span> <span class="o">=</span> <span class="nx">setTimeout</span><span class="p">(</span><span class="nx">hello</span><span class="p">,</span> <span class="mi">500</span><span class="p">);</span>
+<span class="o">&lt;</span><span class="sr">/script</span><span class="err">&gt;
+</span></code></pre></div></div> <p>clearInterval函数的参数说明:</p> <ul> <li>timeoutID 为调用 setInterval 函数时所获得的返回值，使用该返回标识符作为参数，可以取消该 setInterval 所设定的定时执行操作。</li> </ul> <div class="language-javascript highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="o">&lt;</span><span class="nx">script</span><span class="o">&gt;</span> 
+    <span class="kd">function</span> <span class="nx">hello</span><span class="p">(){</span> 
+        <span class="nx">alert</span><span class="p">(</span><span class="dl">'</span><span class="s1">hello</span><span class="dl">'</span><span class="p">);</span> 
+    <span class="p">}</span> 
+    <span class="c1">// 重复执行函数的定时器</span>
+    <span class="kd">var</span> <span class="nx">t1</span> <span class="o">=</span> <span class="nx">setInterval</span><span class="p">(</span><span class="nx">hello</span><span class="p">,</span> <span class="mi">1000</span><span class="p">);</span>
+
+    <span class="kd">function</span> <span class="nx">stop</span><span class="p">(){</span>
+        <span class="c1">// 清除反复执行的定时器</span>
+        <span class="nx">clearInterval</span><span class="p">(</span><span class="nx">t1</span><span class="p">);</span> 
+    <span class="p">}</span>  
+
+<span class="o">&lt;</span><span class="sr">/script&gt;</span><span class="err"> 
+</span>
+<span class="o">&lt;</span><span class="nx">input</span> <span class="nx">type</span><span class="o">=</span><span class="dl">"</span><span class="s2">button</span><span class="dl">"</span> <span class="nx">value</span><span class="o">=</span><span class="dl">"</span><span class="s2">停止</span><span class="dl">"</span> <span class="nx">onclick</span><span class="o">=</span><span class="dl">"</span><span class="s2">stop();</span><span class="dl">"</span><span class="o">&gt;</span>
+</code></pre></div></div> <h3 id="125-小结">12.5 小结</h3> <ul> <li> <p>定时器的创建 - 只执行一次函数的定时器, 对应的代码是setTimeout函数 - 反复执行函数的定时器, 对应的代码是setInterval函数</p> </li> <li> <p>反复执行函数的定时器, 对应的代码是setInterval函数 - 清除只执行一次函数的定时器, 对应的代码是clearTimeout函数 - 清除清除反复执行的定时器, 对应的代码是clearInterval函数</p> </li> </ul> <div style="margin-top:2em;padding:0 1.5em;border:1px solid #d3d3d3;background-color:#deebf7"> <h3>文档信息</h3> <ul> <li>本文作者：<a href="https://slienceme.cn" target="_blank">slience_me</a></li> <li>本文链接：<a href="https://slienceme.cn/2020/12/30/Web%E5%9F%BA%E7%A1%80_JavaScript%E5%9F%BA%E7%A1%80/" target="_blank">https://slienceme.cn/2020/12/30/Web%E5%9F%BA%E7%A1%80_JavaScript%E5%9F%BA%E7%A1%80/</a></li> <li>版权声明：自由转载-非商用-非衍生-保持署名（<a href="http://creativecommons.org/licenses/by-nc-nd/3.0/deed.zh" target="_blank">创意共享3.0许可证</a>）</li> </ul> </div> </article> <div class="share"> <div class="share-component" data-disabled='qq,facebook'></div> </div> <div class="comment"> <script src="https://giscus.app/client.js" data-repo="slience-me/blog-comments" data-repo-id="MDEwOlJlcG9zaXRvcnk5MzEyNzkxNw==" data-category="Announcements" data-category-id="DIC_kwDOBY0E7c4CRtg9" data-mapping="title" data-strict="1" data-reactions-enabled="1" data-emit-metadata="0" data-input-position="top" data-theme="light" data-lang="zh-CN" data-loading="lazy" crossorigin="anonymous" async> </script> </div> </div> <div class="column one-fourth"> <h3>Search</h3> <div id="site_search"> <input style="width:96%" type="text" id="search_box" placeholder="Search"> </div> <ul id="search_results" style="font-size:14px;list-style-type:none;padding-top:10px;padding-left:10px;"></ul> <script src="https://slienceme.cn/assets/js/simple-jekyll-search.min.js"></script> <script type="text/javascript"> SimpleJekyllSearch({ searchInput: document.getElementById('search_box'), resultsContainer: document.getElementById('search_results'), json: 'https://slienceme.cn/assets/search_data.json?v=1736473998', searchResultTemplate: '<li><a href="{url}" title="{title}">{title}</a></li>', noResultsText: 'No results found', limit: 10, fuzzy: false, exclude: ['Welcome'] }) </script> <h3 class="post-directory-title mobile-hidden">Table of Contents</h3> <div id="post-directory-module" class="mobile-hidden"> <section class="post-directory"> <dl></dl> </section> </div> <script src="https://slienceme.cn/assets/js/jquery.toc.js"></script> </div> </div> </section> <footer class="container"> <div class="site-footer" role="contentinfo"> <div class="copyright left mobile-block"> Copyright@ 2019-2025 slience_me 版权所有&emsp; <img src="/images/logo/logo.png" class="w-full" style="width: 12px;"> <a href="https://beian.mps.gov.cn/#/query/webSearch?code=13102202000626" rel="noreferrer" target="_blank">冀公网安备13102202000626</a>&emsp; <a href="https://beian.miit.gov.cn/#/Integrated/index" target="_blank" rel="noreferrer">津ICP备2024026565号-1</a> <a href="javascript:window.scrollTo(0,0)" class="right mobile-visible">TOP</a> </div> <ul class="site-footer-links right mobile-hidden"> <li> <a href="javascript:window.scrollTo(0,0)" >TOP</a> </li> </ul> <br/> <script async src="https://slienceme.cn/assets/vendor/busuanzi/2.3/busuanzi.pure.mini.js"></script> <div class="mobile-hidden" style="margin-top:8px"> <span id="busuanzi_container_site_pv" style="display:none"> 本站访问量<span id="busuanzi_value_site_pv"></span>次 </span> <span id="busuanzi_container_site_uv" style="display:none"> / 本站访客数<span id="busuanzi_value_site_uv"></span>人 </span> <span id="busuanzi_container_page_pv" style="display:none"> / 本页访问量<span id="busuanzi_value_page_pv"></span>次 / 统计始于2024-12-01 </span> </div> </div> </footer> <div class="tools-wrapper"> <a class="gotop" href="#" title="回到顶部"><span class="octicon octicon-arrow-up"></span></a> </div> <script src="https://slienceme.cn/assets/vendor/share.js/dist/js/share.min.js"></script> <script src="https://slienceme.cn/assets/js/geopattern.js"></script> <script> jQuery(document).ready(function($) { $('.geopattern').each(function(){ $(this).geopattern($(this).data('pattern-id')); }); /* hljs.initHighlightingOnLoad(); */ }); </script> </body> </html>

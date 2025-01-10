@@ -1,0 +1,374 @@
+<!DOCTYPE html> <html lang="zh-cmn-Hans" prefix="og: http://ogp.me/ns#" class="han-init"> <head> <meta charset="utf-8"> <meta http-equiv="X-UA-Compatible" content="IE=edge"> <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1" /> <title>Java｜Mybatis基于代理Dao的CRUD操作 &mdash; Slience_me的博客</title> <link rel="stylesheet" href="https://slienceme.cn/assets/vendor/primer-css/css/primer.css"> <link rel="stylesheet" href="https://slienceme.cn/assets/css/components/collection.css"> <link rel="stylesheet" href="https://slienceme.cn/assets/css/components/repo-card.css"> <link rel="stylesheet" href="https://slienceme.cn/assets/css/sections/repo-list.css"> <link rel="stylesheet" href="https://slienceme.cn/assets/css/components/boxed-group.css"> <link rel="stylesheet" href="https://slienceme.cn/assets/css/globals/common.css"> <link rel="stylesheet" href="https://slienceme.cn/assets/css/globals/responsive.css"> <link rel="stylesheet" href="https://slienceme.cn/assets/css/posts/index.css"> <link rel="stylesheet" href="https://slienceme.cn/assets/vendor/octicons/octicons/octicons.css"> <link rel="stylesheet" href="https://mazhuang.org/rouge-themes/dist/github.css"> <link rel="stylesheet" href="https://slienceme.cn/assets/vendor/share.js/dist/css/share.min.css"> <link rel="canonical" href="https://slienceme.cn/2021/06/25/Mybatis%E5%9F%BA%E4%BA%8E%E4%BB%A3%E7%90%86Dao%E7%9A%84CRUD%E6%93%8D%E4%BD%9C/"> <link rel="alternate" type="application/atom+xml" title="Slience_me的博客" href="https://slienceme.cn/feed.xml"> <link rel="shortcut icon" href="https://slienceme.cn/favicon.ico"> <meta property="og:title" content="Java｜Mybatis基于代理Dao的CRUD操作"> <meta name="keywords" content="编程语言, Java"> <meta name="og:keywords" content="编程语言, Java"> <meta name="description" content="代码架构javaxyz.slienceme.dao.IUserDao"> <meta name="og:description" content="代码架构javaxyz.slienceme.dao.IUserDao"> <meta property="og:url" content="https://slienceme.cn/2021/06/25/Mybatis%E5%9F%BA%E4%BA%8E%E4%BB%A3%E7%90%86Dao%E7%9A%84CRUD%E6%93%8D%E4%BD%9C/"> <meta property="og:site_name" content="Slience_me的博客"> <meta property="og:type" content="article"> <meta property="og:locale" content="zh_CN" /> <meta property="article:published_time" content="2021-06-25"> <meta name="google-site-verification" content="2feHjT1GNs1Yi2JQfOtdYx7d048naG_-cMwZaDAopIA" /> <script src="https://slienceme.cn/assets/vendor/jquery/dist/jquery.min.js"></script> <script src="https://slienceme.cn/assets/js/main.js"></script> </head> <body class="" data-mz=""> <header class="site-header"> <div class="container"> <h1><a href="https://slienceme.cn/" title="Slience_me的博客"><span class="octicon octicon-mark-github"></span> Slience_me的博客</a></h1> <button class="collapsed mobile-visible" type="button" onclick="toggleMenu();"> <span class="icon-bar"></span> <span class="icon-bar"></span> <span class="icon-bar"></span> </button> <nav class="site-header-nav" role="navigation"> <a href="https://slienceme.cn/" class="site-header-nav-item" target="" title="首页">首页</a> <a href="https://slienceme.cn/categories/" class="site-header-nav-item" target="" title="分类">分类</a> <a href="https://slienceme.cn/archives/" class="mobile-hidden site-header-nav-item" target="" title="归档">归档</a> <a href="https://slienceme.cn/open-source/" class="mobile-hidden site-header-nav-item" target="" title="开源">开源</a> <a href="https://slienceme.cn/fragments/" class="site-header-nav-item" target="" title="片段">片段</a> <a href="https://slienceme.cn/wiki/" class="site-header-nav-item" target="" title="维基">维基</a> <a href="https://slienceme.cn/links/" class="mobile-hidden site-header-nav-item" target="" title="链接">链接</a> <a href="https://slienceme.cn/about/" class="site-header-nav-item" target="" title="关于">关于</a> <a class="mobile-hidden" href="https://slienceme.cn/feed.xml"><span class="octicon octicon-rss" style="color:orange;"></span></a> </nav> </div> </header> <section class="collection-head small geopattern" data-pattern-id="Java｜Mybatis基于代"> <div class="container"> <div class="columns"> <div class="column three-fourths"> <div class="collection-title"> <h1 class="collection-header">Java｜Mybatis基于代理Dao的CRUD操作</h1> <div class="collection-info"> <span class="meta-info"> <span class="octicon octicon-calendar"></span> 2021/06/25 </span> <span class="meta-info"> <span class="octicon octicon-file-directory"></span> <a href="https://slienceme.cn/categories/#Java" title="Java">Java</a> </span> <span class="meta-info"> <span class="octicon octicon-clock"></span> 共 7821 字，约 23 分钟 </span> </div> </div> </div> <div class="column one-fourth mobile-hidden"> <div class="collection-title"> </div> </div> </div> </div> </section> <section class="container content"> <div class="columns"> <div class="column three-fourths" > <article class="article-content markdown-body"> <h1 id="代码架构">代码架构</h1> <p><img src="https://slienceme.cn/images/posts/20210625114540639.png" alt="Alt Text" /></p> <h1 id="java">java</h1> <h2 id="xyzsliencemedaoiuserdao">xyz.slienceme.dao.IUserDao</h2> <div class="language-java highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kn">package</span> <span class="nn">xyz.slienceme.dao</span><span class="o">;</span>
+
+<span class="kn">import</span> <span class="nn">xyz.slienceme.domain.QueryVo</span><span class="o">;</span>
+<span class="kn">import</span> <span class="nn">xyz.slienceme.domain.User</span><span class="o">;</span>
+
+<span class="kn">import</span> <span class="nn">java.util.List</span><span class="o">;</span>
+<span class="kd">public</span> <span class="kd">interface</span> <span class="nc">IUserDao</span> <span class="o">{</span>
+
+    <span class="cm">/**
+     * 查询所有用户
+     * @return
+     */</span>
+    <span class="nc">List</span><span class="o">&lt;</span><span class="nc">User</span><span class="o">&gt;</span> <span class="nf">findAll</span><span class="o">();</span>
+
+    <span class="cm">/**
+     * 保存用户
+     * @param user
+     */</span>
+    <span class="kt">void</span> <span class="nf">saveUser</span><span class="o">(</span><span class="nc">User</span> <span class="n">user</span><span class="o">);</span>
+
+    <span class="cm">/**
+     * 更新用户
+     * @param user
+     */</span>
+    <span class="kt">void</span> <span class="nf">updateUser</span><span class="o">(</span><span class="nc">User</span> <span class="n">user</span><span class="o">);</span>
+
+    <span class="cm">/**
+     * 根据id删除用户
+     * @param userId
+     */</span>
+    <span class="kt">void</span> <span class="nf">deleteUser</span><span class="o">(</span><span class="nc">Integer</span> <span class="n">userId</span><span class="o">);</span>
+
+    <span class="cm">/**
+     * 根据id查询用户信息
+     * @param userId
+     * @return
+     */</span>
+    <span class="nc">User</span> <span class="nf">findById</span><span class="o">(</span><span class="nc">Integer</span> <span class="n">userId</span><span class="o">);</span>
+
+    <span class="cm">/**
+     * 根据名称模糊查询用户信息
+     * @param username
+     * @return
+     */</span>
+    <span class="nc">List</span><span class="o">&lt;</span><span class="nc">User</span><span class="o">&gt;</span> <span class="nf">findByName</span><span class="o">(</span><span class="nc">String</span> <span class="n">username</span><span class="o">);</span>
+
+    <span class="cm">/**
+     * 查询总用户数
+     * @return
+     */</span>
+    <span class="kt">int</span> <span class="nf">findTotal</span><span class="o">();</span>
+
+    <span class="cm">/**
+     * 根据Queryvo中的条件查询用户
+     * @param vo
+     * @return
+     */</span>
+    <span class="nc">List</span><span class="o">&lt;</span><span class="nc">User</span><span class="o">&gt;</span> <span class="nf">findUserByVo</span><span class="o">(</span><span class="nc">QueryVo</span> <span class="n">vo</span><span class="o">);</span>
+<span class="o">}</span>
+
+</code></pre></div></div> <h2 id="xyzsliencemedomainuser">xyz.slienceme.domain.User</h2> <div class="language-java highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kn">package</span> <span class="nn">xyz.slienceme.domain</span><span class="o">;</span>
+
+<span class="kn">import</span> <span class="nn">java.io.Serializable</span><span class="o">;</span>
+<span class="kn">import</span> <span class="nn">java.time.LocalDateTime</span><span class="o">;</span>
+<span class="kn">import</span> <span class="nn">java.util.Date</span><span class="o">;</span>
+
+<span class="kd">public</span> <span class="kd">class</span> <span class="nc">User</span> <span class="kd">implements</span> <span class="nc">Serializable</span> <span class="o">{</span>
+
+    <span class="kd">private</span> <span class="nc">Integer</span> <span class="n">id</span><span class="o">;</span>
+    <span class="kd">private</span> <span class="nc">String</span> <span class="n">username</span><span class="o">;</span>
+    <span class="kd">private</span> <span class="nc">String</span> <span class="n">address</span><span class="o">;</span>
+    <span class="kd">private</span> <span class="nc">String</span> <span class="n">sex</span><span class="o">;</span>
+    <span class="kd">private</span> <span class="nc">LocalDateTime</span> <span class="n">birthday</span><span class="o">;</span>
+
+    <span class="kd">public</span> <span class="nc">Integer</span> <span class="nf">getId</span><span class="o">()</span> <span class="o">{</span>
+        <span class="k">return</span> <span class="n">id</span><span class="o">;</span>
+    <span class="o">}</span>
+
+    <span class="kd">public</span> <span class="kt">void</span> <span class="nf">setId</span><span class="o">(</span><span class="nc">Integer</span> <span class="n">id</span><span class="o">)</span> <span class="o">{</span>
+        <span class="k">this</span><span class="o">.</span><span class="na">id</span> <span class="o">=</span> <span class="n">id</span><span class="o">;</span>
+    <span class="o">}</span>
+
+    <span class="kd">public</span> <span class="nc">String</span> <span class="nf">getUsername</span><span class="o">()</span> <span class="o">{</span>
+        <span class="k">return</span> <span class="n">username</span><span class="o">;</span>
+    <span class="o">}</span>
+
+    <span class="kd">public</span> <span class="kt">void</span> <span class="nf">setUsername</span><span class="o">(</span><span class="nc">String</span> <span class="n">username</span><span class="o">)</span> <span class="o">{</span>
+        <span class="k">this</span><span class="o">.</span><span class="na">username</span> <span class="o">=</span> <span class="n">username</span><span class="o">;</span>
+    <span class="o">}</span>
+
+    <span class="kd">public</span> <span class="nc">String</span> <span class="nf">getAddress</span><span class="o">()</span> <span class="o">{</span>
+        <span class="k">return</span> <span class="n">address</span><span class="o">;</span>
+    <span class="o">}</span>
+
+    <span class="kd">public</span> <span class="kt">void</span> <span class="nf">setAddress</span><span class="o">(</span><span class="nc">String</span> <span class="n">address</span><span class="o">)</span> <span class="o">{</span>
+        <span class="k">this</span><span class="o">.</span><span class="na">address</span> <span class="o">=</span> <span class="n">address</span><span class="o">;</span>
+    <span class="o">}</span>
+
+    <span class="kd">public</span> <span class="nc">String</span> <span class="nf">getSex</span><span class="o">()</span> <span class="o">{</span>
+        <span class="k">return</span> <span class="n">sex</span><span class="o">;</span>
+    <span class="o">}</span>
+
+    <span class="kd">public</span> <span class="kt">void</span> <span class="nf">setSex</span><span class="o">(</span><span class="nc">String</span> <span class="n">sex</span><span class="o">)</span> <span class="o">{</span>
+        <span class="k">this</span><span class="o">.</span><span class="na">sex</span> <span class="o">=</span> <span class="n">sex</span><span class="o">;</span>
+    <span class="o">}</span>
+
+    <span class="kd">public</span> <span class="nc">LocalDateTime</span> <span class="nf">getBirthday</span><span class="o">()</span> <span class="o">{</span>
+        <span class="k">return</span> <span class="n">birthday</span><span class="o">;</span>
+    <span class="o">}</span>
+
+    <span class="kd">public</span> <span class="kt">void</span> <span class="nf">setBirthday</span><span class="o">(</span><span class="nc">LocalDateTime</span> <span class="n">birthday</span><span class="o">)</span> <span class="o">{</span>
+        <span class="k">this</span><span class="o">.</span><span class="na">birthday</span> <span class="o">=</span> <span class="n">birthday</span><span class="o">;</span>
+    <span class="o">}</span>
+
+    <span class="nd">@Override</span>
+    <span class="kd">public</span> <span class="nc">String</span> <span class="nf">toString</span><span class="o">()</span> <span class="o">{</span>
+        <span class="k">return</span> <span class="s">"User{"</span> <span class="o">+</span>
+                <span class="s">"id="</span> <span class="o">+</span> <span class="n">id</span> <span class="o">+</span>
+                <span class="s">", username='"</span> <span class="o">+</span> <span class="n">username</span> <span class="o">+</span> <span class="sc">'\''</span> <span class="o">+</span>
+                <span class="s">", address='"</span> <span class="o">+</span> <span class="n">address</span> <span class="o">+</span> <span class="sc">'\''</span> <span class="o">+</span>
+                <span class="s">", sex='"</span> <span class="o">+</span> <span class="n">sex</span> <span class="o">+</span> <span class="sc">'\''</span> <span class="o">+</span>
+                <span class="s">", birthday="</span> <span class="o">+</span> <span class="n">birthday</span> <span class="o">+</span>
+                <span class="sc">'}'</span><span class="o">;</span>
+    <span class="o">}</span>
+<span class="o">}</span>
+
+</code></pre></div></div> <h2 id="xyzsliencemedomainqueryvo">xyz.slienceme.domain.QueryVo</h2> <div class="language-java highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kn">package</span> <span class="nn">xyz.slienceme.domain</span><span class="o">;</span>
+<span class="kd">public</span> <span class="kd">class</span> <span class="nc">QueryVo</span> <span class="o">{</span>
+    <span class="kd">private</span> <span class="nc">User</span> <span class="n">user</span><span class="o">;</span>
+
+    <span class="kd">public</span> <span class="nc">User</span> <span class="nf">getUser</span><span class="o">()</span> <span class="o">{</span>
+        <span class="k">return</span> <span class="n">user</span><span class="o">;</span>
+    <span class="o">}</span>
+
+    <span class="kd">public</span> <span class="kt">void</span> <span class="nf">setUser</span><span class="o">(</span><span class="nc">User</span> <span class="n">user</span><span class="o">)</span> <span class="o">{</span>
+        <span class="k">this</span><span class="o">.</span><span class="na">user</span> <span class="o">=</span> <span class="n">user</span><span class="o">;</span>
+    <span class="o">}</span>
+<span class="o">}</span>
+
+</code></pre></div></div> <h1 id="resources">resources</h1> <h2 id="xyzsliencemedaoiuserdaoxml">xyz.slienceme.dao.IUserDao.xml</h2> <ul> <li>针对数据库字段与成员属性名不一致的解决办法有两种 <ul> <li>方法一：直接修改sql语句 <code class="language-plaintext highlighter-rouge">select id as userId,username as userName,address as userAddress,sex as userSex,birthday as userBirthday from user;</code>利用id as userId方法,在查询过程修改，这种好处是执行效率快，后期修改维护繁琐。</li> <li>方法二：采用如下列代码<code class="language-plaintext highlighter-rouge">resultMap</code>的方法，配置 查询结果的列名和实体类的属性名的对应关系，然后采用 <code class="language-plaintext highlighter-rouge">resultMap="userMap"</code> 的方式，解决问题，这种方法效率相较前一种慢，但是可操作性强，便于后期修改维护。</li> </ul> </li> </ul> <hr /> <div class="language-xml highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="cp">&lt;?xml version="1.0" encoding="UTF-8"?&gt;</span>
+<span class="cp">&lt;!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd"&gt;</span>
+<span class="nt">&lt;mapper</span> <span class="na">namespace=</span><span class="s">"xyz.slienceme.dao.IUserDao"</span><span class="nt">&gt;</span>
+
+    <span class="c">&lt;!--    配置 查询结果的列名和实体类的属性名的对应关系--&gt;</span>
+    <span class="nt">&lt;resultMap</span> <span class="na">id=</span><span class="s">"userMap"</span> <span class="na">type=</span><span class="s">"xyz.slienceme.domain.User"</span><span class="nt">&gt;</span>
+        <span class="c">&lt;!--   主键字段的对应     --&gt;</span>
+        <span class="nt">&lt;id</span> <span class="na">property=</span><span class="s">"userId"</span> <span class="na">column=</span><span class="s">"id"</span><span class="nt">/&gt;</span>
+        <span class="c">&lt;!--   非主键字段的对应     --&gt;</span>
+        <span class="nt">&lt;result</span> <span class="na">property=</span><span class="s">"userName"</span> <span class="na">column=</span><span class="s">"username"</span><span class="nt">/&gt;</span>
+        <span class="nt">&lt;result</span> <span class="na">property=</span><span class="s">"userAddress"</span> <span class="na">column=</span><span class="s">"address"</span><span class="nt">/&gt;</span>
+        <span class="nt">&lt;result</span> <span class="na">property=</span><span class="s">"userSex"</span> <span class="na">column=</span><span class="s">"sex"</span><span class="nt">/&gt;</span>
+        <span class="nt">&lt;result</span> <span class="na">property=</span><span class="s">"userBirthday"</span> <span class="na">column=</span><span class="s">"birthday"</span><span class="nt">/&gt;</span>
+    <span class="nt">&lt;/resultMap&gt;</span>
+
+    <span class="c">&lt;!--  查询所有操作  --&gt;</span>
+<span class="c">&lt;!--    &lt;select id="findAll" resultType="xyz.slienceme.domain.User"&gt;--&gt;</span>
+<span class="c">&lt;!--    修改后，数据库字段与类名不同--&gt;</span>
+    <span class="nt">&lt;select</span> <span class="na">id=</span><span class="s">"findAll"</span> <span class="na">resultMap=</span><span class="s">"userMap"</span><span class="nt">&gt;</span>
+        select * from user;
+    <span class="nt">&lt;/select&gt;</span>
+    <span class="c">&lt;!--    保存用户--&gt;</span>
+    <span class="nt">&lt;insert</span> <span class="na">id=</span><span class="s">"saveUser"</span> <span class="na">parameterType=</span><span class="s">"xyz.slienceme.domain.User"</span><span class="nt">&gt;</span>
+    <span class="c">&lt;!-- 配置插入操作后，获取插入数据的id--&gt;</span>
+        <span class="nt">&lt;selectKey</span> <span class="na">keyProperty=</span><span class="s">"id"</span> <span class="na">keyColumn=</span><span class="s">"id"</span> <span class="na">resultType=</span><span class="s">"int"</span> <span class="na">order=</span><span class="s">"AFTER"</span><span class="nt">&gt;</span>
+            select last_insert_id();
+        <span class="nt">&lt;/selectKey&gt;</span>
+        insert into user(username,address,sex,birthday)values(#{username},#{address},#{sex},#{birthday});
+    <span class="nt">&lt;/insert&gt;</span>
+    <span class="c">&lt;!--    更新用户--&gt;</span>
+    <span class="nt">&lt;update</span> <span class="na">id=</span><span class="s">"updateUser"</span> <span class="na">parameterType=</span><span class="s">"xyz.slienceme.domain.User"</span><span class="nt">&gt;</span>
+        update user set username=#{username},address=#{address},sex=#{sex},birthday=#{birthday} where id=#{id};
+    <span class="nt">&lt;/update&gt;</span>
+    <span class="c">&lt;!--    删除用户--&gt;</span>
+    <span class="nt">&lt;delete</span> <span class="na">id=</span><span class="s">"deleteUser"</span> <span class="na">parameterType=</span><span class="s">"java.lang.Integer"</span><span class="nt">&gt;</span>
+        delete from user where id=#{uid};
+    <span class="nt">&lt;/delete&gt;</span>
+    <span class="c">&lt;!--根据id查询用户 --&gt;</span>
+    <span class="nt">&lt;select</span> <span class="na">id=</span><span class="s">"findById"</span> <span class="na">parameterType=</span><span class="s">"INT"</span> <span class="na">resultType=</span><span class="s">"xyz.slienceme.domain.User"</span><span class="nt">&gt;</span>
+        select * from user where id=#{uid};
+    <span class="nt">&lt;/select&gt;</span>
+    <span class="c">&lt;!--根据名称模糊查询用户信息 --&gt;</span>
+    <span class="nt">&lt;select</span> <span class="na">id=</span><span class="s">"findByName"</span> <span class="na">parameterType=</span><span class="s">"string"</span> <span class="na">resultType=</span><span class="s">"xyz.slienceme.domain.User"</span><span class="nt">&gt;</span>
+--         select * from user where username like #{name};
+        select * from user where username like '%${value}%';
+    <span class="nt">&lt;/select&gt;</span>
+    <span class="c">&lt;!--获取用户的总记录条数 --&gt;</span>
+    <span class="nt">&lt;select</span> <span class="na">id=</span><span class="s">"findTotal"</span> <span class="na">resultType=</span><span class="s">"int"</span><span class="nt">&gt;</span>
+        select count(id) from user;
+    <span class="nt">&lt;/select&gt;</span>
+    <span class="c">&lt;!--根据Queryvo中的条件查询用户--&gt;</span>
+    <span class="nt">&lt;select</span> <span class="na">id=</span><span class="s">"findUserByVo"</span> <span class="na">parameterType=</span><span class="s">"xyz.slienceme.domain.QueryVo"</span> <span class="na">resultType=</span><span class="s">"xyz.slienceme.domain.User"</span><span class="nt">&gt;</span>
+        select * from user where username like #{user.username};
+    <span class="nt">&lt;/select&gt;</span>
+<span class="nt">&lt;/mapper&gt;</span>
+</code></pre></div></div> <hr /> <ul> <li>根据<code class="language-plaintext highlighter-rouge">Queryvo</code>中的条件查询用户 <ul> <li><code class="language-plaintext highlighter-rouge">OGNL</code>表达式：<code class="language-plaintext highlighter-rouge">Object Graphic Navigation Language</code> 对象 图 导航 语言</li> <li>它是通过对象的取值方法来获取数据。在写法上把get给省略了。</li> <li>比如：我们获取用户的名称 <ul> <li>类中的写法：<code class="language-plaintext highlighter-rouge">user.getUsername();</code></li> <li><code class="language-plaintext highlighter-rouge">OGNL</code>表达式写法：<code class="language-plaintext highlighter-rouge">user.username</code></li> </ul> </li> <li><code class="language-plaintext highlighter-rouge">mybatis</code>中为什么能直接写<code class="language-plaintext highlighter-rouge">username</code>,而不用<code class="language-plaintext highlighter-rouge">user</code>.呢： <ul> <li>因为在<code class="language-plaintext highlighter-rouge">parameterType</code>中已经提供了属性所属的类，所以此时不需要写对象名</li> </ul> </li> </ul> </li> </ul> <div class="language-java highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kn">package</span> <span class="nn">xyz.slienceme.domain</span><span class="o">;</span>
+<span class="kd">public</span> <span class="kd">class</span> <span class="nc">QueryVo</span> <span class="o">{</span>
+    <span class="kd">private</span> <span class="nc">User</span> <span class="n">user</span><span class="o">;</span>
+    <span class="kd">public</span> <span class="nc">User</span> <span class="nf">getUser</span><span class="o">()</span> <span class="o">{</span>
+        <span class="k">return</span> <span class="n">user</span><span class="o">;</span>
+    <span class="o">}</span>
+    <span class="kd">public</span> <span class="kt">void</span> <span class="nf">setUser</span><span class="o">(</span><span class="nc">User</span> <span class="n">user</span><span class="o">)</span> <span class="o">{</span>
+        <span class="k">this</span><span class="o">.</span><span class="na">user</span> <span class="o">=</span> <span class="n">user</span><span class="o">;</span>
+    <span class="o">}</span>
+<span class="o">}</span>
+</code></pre></div></div> <ul> <li>上边源代码部分截取片段 <div class="language-xml highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="c">&lt;!--根据Queryvo中的条件查询用户--&gt;</span>
+  <span class="nt">&lt;select</span> <span class="na">id=</span><span class="s">"findUserByVo"</span> <span class="na">parameterType=</span><span class="s">"xyz.slienceme.domain.QueryVo"</span> <span class="na">resultType=</span><span class="s">"xyz.slienceme.domain.User"</span><span class="nt">&gt;</span>
+      select * from user where username like #{user.username};
+  <span class="nt">&lt;/select&gt;</span>
+</code></pre></div> </div> </li> <li>完整的SqlMapConfig.xml代码 ```xml &lt;?xml version=”1.0” encoding=”UTF-8”?&gt; &lt;!DOCTYPE configuration PUBLIC “-//mybatis.org//DTD Config 3.0//EN” “http://mybatis.org/dtd/mybatis-3-config.dtd”&gt;</li> </ul> <configuration> <environments default="mysql"> <environment id="mysql"> <transactionManager type="JDBC" /> <dataSource type="POOLED"> <property name="driver" value="com.mysql.cj.jdbc.Driver" /> <property name="url" value="jdbc:mysql://localhost:3306/eesy_mybatis" /> <property name="username" value="root" /> <property name="password" value="root" /> </dataSource> </environment> </environments> <mappers> <mapper resource="xyz/slienceme/dao/IUserDao.xml"></mapper> </mappers> </configuration> <div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code># test
+## xyz.slienceme.test.MybatisTest
+- 这里简单提及一下模糊查询，两个注解的使用
+
+```java
+package xyz.slienceme.test;
+import org.apache.ibatis.io.Resources;
+import org.apache.ibatis.session.SqlSession;
+import org.apache.ibatis.session.SqlSessionFactory;
+import org.apache.ibatis.session.SqlSessionFactoryBuilder;
+import org.junit.After;
+import org.junit.Before;
+import org.junit.Test;
+import xyz.slienceme.dao.IUserDao;
+import xyz.slienceme.domain.QueryVo;
+import xyz.slienceme.domain.User;
+import java.io.InputStream;
+import java.time.Instant;
+import java.time.LocalDateTime;
+import java.time.ZoneId;
+import java.util.Date;
+import java.util.List;
+public class MybatisTest {
+
+    private InputStream in;
+    private SqlSession sqlSession;
+    private IUserDao userDao;
+
+    @Before
+    public void init() throws Exception{
+        //1.读取配置文件，生成字节输入流
+        in = Resources.getResourceAsStream("SqlMapConfig.xml");
+        //2.获取SqlSessionFactory
+        SqlSessionFactory factory = new SqlSessionFactoryBuilder().build(in);
+        //3.获取SqlSession对象
+        sqlSession = factory.openSession();
+        //4.获取dao的代理对象
+        userDao = sqlSession.getMapper(IUserDao.class);
+    }
+
+    @After
+    public void destroy() throws Exception{
+        //提交事务
+        sqlSession.commit();
+        //6.释放资源
+        sqlSession.close();
+        in.close();
+    }
+
+    /**
+     * 测试查询所有
+     */
+    @Test
+    public void testFindAll(){
+        //5.执行查询所有方法
+        List&lt;User&gt; users = userDao.findAll();
+        for (User user : users) {
+            System.out.println(user);
+        }
+    }
+
+    /**
+     * 测试保存操作
+     * @throws Exception
+     */
+    @Test
+    public void testSave() throws Exception{
+        User user = new User();
+        user.setUsername("mybatis last insert");
+//        user.setUsername("mybatis saveuser");
+        user.setAddress("北京市顺义区");
+        user.setSex("男");
+
+        Date date = new Date();
+        LocalDateTime localDateTime = LocalDateTime.ofInstant(date.toInstant(), ZoneId.systemDefault());
+
+        user.setBirthday(localDateTime);
+        System.out.println("保存操作之前："+user);
+        //5.执行保存方法
+        userDao.saveUser(user);
+        System.out.println("保存操作之后："+user);
+    }
+
+    /**
+     * 测试更新操作
+     * @throws Exception
+     */
+    @Test
+    public void testUpdate() throws Exception{
+        User user = new User();
+        user.setId(50);
+        user.setUsername("mybatis update");
+        user.setAddress("北京市顺义区");
+        user.setSex("女");
+
+        Date date = new Date();
+        LocalDateTime localDateTime = LocalDateTime.ofInstant(date.toInstant(), ZoneId.systemDefault());
+
+        user.setBirthday(localDateTime);
+        //5.执行保存方法
+        userDao.updateUser(user);
+    }
+
+    /**
+     * 测试删除操作
+     * @throws Exception
+     */
+    @Test
+    public void testDelete(){
+        userDao.deleteUser(50);
+    }
+
+    /**
+     * 测试通过id查询操作
+     * @throws Exception
+     */
+    @Test
+    public void testFindOne(){
+        User user = userDao.findById(48);
+        System.out.println(user);
+    }
+
+    /**
+     * 测试模糊查询操作
+     * @throws Exception
+     */
+    @Test
+    public void testFindByName(){
+//        List&lt;User&gt; users = userDao.findByName("%王%");
+        List&lt;User&gt; users = userDao.findByName("王");
+        for (User user : users) {
+            System.out.println(user);
+        }
+    }
+
+    /**
+     * 测试查询用户的总记录条数
+     * @throws Exception
+     */
+    @Test
+    public void testFindTotal(){
+        int count = userDao.findTotal();
+        System.out.println(count);
+    }
+
+    /**
+     * 测试使用Queryvo作为条件
+     * @throws Exception
+     */
+    @Test
+    public void testFindByVo(){
+        QueryVo vo = new QueryVo();
+        User user = new User();
+        user.setUsername("%王%");
+        vo.setUser(user);
+//        List&lt;User&gt; users = userDao.findByName("%王%");
+        List&lt;User&gt; users = userDao.findUserByVo(vo);
+        for (User u : users) {
+            System.out.println(u);
+        }
+    }
+}
+
+</code></pre></div></div> <div style="margin-top:2em;padding:0 1.5em;border:1px solid #d3d3d3;background-color:#deebf7"> <h3>文档信息</h3> <ul> <li>本文作者：<a href="https://slienceme.cn" target="_blank">slience_me</a></li> <li>本文链接：<a href="https://slienceme.cn/2021/06/25/Mybatis%E5%9F%BA%E4%BA%8E%E4%BB%A3%E7%90%86Dao%E7%9A%84CRUD%E6%93%8D%E4%BD%9C/" target="_blank">https://slienceme.cn/2021/06/25/Mybatis%E5%9F%BA%E4%BA%8E%E4%BB%A3%E7%90%86Dao%E7%9A%84CRUD%E6%93%8D%E4%BD%9C/</a></li> <li>版权声明：自由转载-非商用-非衍生-保持署名（<a href="http://creativecommons.org/licenses/by-nc-nd/3.0/deed.zh" target="_blank">创意共享3.0许可证</a>）</li> </ul> </div> </article> <div class="share"> <div class="share-component" data-disabled='qq,facebook'></div> </div> <div class="comment"> <script src="https://giscus.app/client.js" data-repo="slience-me/blog-comments" data-repo-id="MDEwOlJlcG9zaXRvcnk5MzEyNzkxNw==" data-category="Announcements" data-category-id="DIC_kwDOBY0E7c4CRtg9" data-mapping="title" data-strict="1" data-reactions-enabled="1" data-emit-metadata="0" data-input-position="top" data-theme="light" data-lang="zh-CN" data-loading="lazy" crossorigin="anonymous" async> </script> </div> </div> <div class="column one-fourth"> <h3>Search</h3> <div id="site_search"> <input style="width:96%" type="text" id="search_box" placeholder="Search"> </div> <ul id="search_results" style="font-size:14px;list-style-type:none;padding-top:10px;padding-left:10px;"></ul> <script src="https://slienceme.cn/assets/js/simple-jekyll-search.min.js"></script> <script type="text/javascript"> SimpleJekyllSearch({ searchInput: document.getElementById('search_box'), resultsContainer: document.getElementById('search_results'), json: 'https://slienceme.cn/assets/search_data.json?v=1736474001', searchResultTemplate: '<li><a href="{url}" title="{title}">{title}</a></li>', noResultsText: 'No results found', limit: 10, fuzzy: false, exclude: ['Welcome'] }) </script> <h3 class="post-directory-title mobile-hidden">Table of Contents</h3> <div id="post-directory-module" class="mobile-hidden"> <section class="post-directory"> <dl></dl> </section> </div> <script src="https://slienceme.cn/assets/js/jquery.toc.js"></script> </div> </div> </section> <footer class="container"> <div class="site-footer" role="contentinfo"> <div class="copyright left mobile-block"> Copyright@ 2019-2025 slience_me 版权所有&emsp; <img src="/images/logo/logo.png" class="w-full" style="width: 12px;"> <a href="https://beian.mps.gov.cn/#/query/webSearch?code=13102202000626" rel="noreferrer" target="_blank">冀公网安备13102202000626</a>&emsp; <a href="https://beian.miit.gov.cn/#/Integrated/index" target="_blank" rel="noreferrer">津ICP备2024026565号-1</a> <a href="javascript:window.scrollTo(0,0)" class="right mobile-visible">TOP</a> </div> <ul class="site-footer-links right mobile-hidden"> <li> <a href="javascript:window.scrollTo(0,0)" >TOP</a> </li> </ul> <br/> <script async src="https://slienceme.cn/assets/vendor/busuanzi/2.3/busuanzi.pure.mini.js"></script> <div class="mobile-hidden" style="margin-top:8px"> <span id="busuanzi_container_site_pv" style="display:none"> 本站访问量<span id="busuanzi_value_site_pv"></span>次 </span> <span id="busuanzi_container_site_uv" style="display:none"> / 本站访客数<span id="busuanzi_value_site_uv"></span>人 </span> <span id="busuanzi_container_page_pv" style="display:none"> / 本页访问量<span id="busuanzi_value_page_pv"></span>次 / 统计始于2024-12-01 </span> </div> </div> </footer> <div class="tools-wrapper"> <a class="gotop" href="#" title="回到顶部"><span class="octicon octicon-arrow-up"></span></a> </div> <script src="https://slienceme.cn/assets/vendor/share.js/dist/js/share.min.js"></script> <script src="https://slienceme.cn/assets/js/geopattern.js"></script> <script> jQuery(document).ready(function($) { $('.geopattern').each(function(){ $(this).geopattern($(this).data('pattern-id')); }); /* hljs.initHighlightingOnLoad(); */ }); </script> </body> </html>

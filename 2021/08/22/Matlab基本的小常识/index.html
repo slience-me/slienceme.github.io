@@ -1,0 +1,235 @@
+<!DOCTYPE html> <html lang="zh-cmn-Hans" prefix="og: http://ogp.me/ns#" class="han-init"> <head> <meta charset="utf-8"> <meta http-equiv="X-UA-Compatible" content="IE=edge"> <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1" /> <title>Matlab｜Matlab基础 &mdash; Slience_me的博客</title> <link rel="stylesheet" href="https://slienceme.cn/assets/vendor/primer-css/css/primer.css"> <link rel="stylesheet" href="https://slienceme.cn/assets/css/components/collection.css"> <link rel="stylesheet" href="https://slienceme.cn/assets/css/components/repo-card.css"> <link rel="stylesheet" href="https://slienceme.cn/assets/css/sections/repo-list.css"> <link rel="stylesheet" href="https://slienceme.cn/assets/css/components/boxed-group.css"> <link rel="stylesheet" href="https://slienceme.cn/assets/css/globals/common.css"> <link rel="stylesheet" href="https://slienceme.cn/assets/css/globals/responsive.css"> <link rel="stylesheet" href="https://slienceme.cn/assets/css/posts/index.css"> <link rel="stylesheet" href="https://slienceme.cn/assets/vendor/octicons/octicons/octicons.css"> <link rel="stylesheet" href="https://mazhuang.org/rouge-themes/dist/github.css"> <link rel="stylesheet" href="https://slienceme.cn/assets/vendor/share.js/dist/css/share.min.css"> <link rel="canonical" href="https://slienceme.cn/2021/08/22/Matlab%E5%9F%BA%E6%9C%AC%E7%9A%84%E5%B0%8F%E5%B8%B8%E8%AF%86/"> <link rel="alternate" type="application/atom+xml" title="Slience_me的博客" href="https://slienceme.cn/feed.xml"> <link rel="shortcut icon" href="https://slienceme.cn/favicon.ico"> <meta property="og:title" content="Matlab｜Matlab基础"> <meta name="keywords" content="编程语言, Matlab"> <meta name="og:keywords" content="编程语言, Matlab"> <meta name="description" content="Matlab基本的小常识```python% (1) 在每一行的语句后面加上分号(一定要是英文的;中文的长这个样子；)表示不显示运行结果a = 3;a = 5"> <meta name="og:description" content="Matlab基本的小常识```python% (1) 在每一行的语句后面加上分号(一定要是英文的;中文的长这个样子；)表示不显示运行结果a = 3;a = 5"> <meta property="og:url" content="https://slienceme.cn/2021/08/22/Matlab%E5%9F%BA%E6%9C%AC%E7%9A%84%E5%B0%8F%E5%B8%B8%E8%AF%86/"> <meta property="og:site_name" content="Slience_me的博客"> <meta property="og:type" content="article"> <meta property="og:locale" content="zh_CN" /> <meta property="article:published_time" content="2021-08-22"> <meta name="google-site-verification" content="2feHjT1GNs1Yi2JQfOtdYx7d048naG_-cMwZaDAopIA" /> <script src="https://slienceme.cn/assets/vendor/jquery/dist/jquery.min.js"></script> <script src="https://slienceme.cn/assets/js/main.js"></script> </head> <body class="" data-mz=""> <header class="site-header"> <div class="container"> <h1><a href="https://slienceme.cn/" title="Slience_me的博客"><span class="octicon octicon-mark-github"></span> Slience_me的博客</a></h1> <button class="collapsed mobile-visible" type="button" onclick="toggleMenu();"> <span class="icon-bar"></span> <span class="icon-bar"></span> <span class="icon-bar"></span> </button> <nav class="site-header-nav" role="navigation"> <a href="https://slienceme.cn/" class="site-header-nav-item" target="" title="首页">首页</a> <a href="https://slienceme.cn/categories/" class="site-header-nav-item" target="" title="分类">分类</a> <a href="https://slienceme.cn/archives/" class="mobile-hidden site-header-nav-item" target="" title="归档">归档</a> <a href="https://slienceme.cn/open-source/" class="mobile-hidden site-header-nav-item" target="" title="开源">开源</a> <a href="https://slienceme.cn/fragments/" class="site-header-nav-item" target="" title="片段">片段</a> <a href="https://slienceme.cn/wiki/" class="site-header-nav-item" target="" title="维基">维基</a> <a href="https://slienceme.cn/links/" class="mobile-hidden site-header-nav-item" target="" title="链接">链接</a> <a href="https://slienceme.cn/about/" class="site-header-nav-item" target="" title="关于">关于</a> <a class="mobile-hidden" href="https://slienceme.cn/feed.xml"><span class="octicon octicon-rss" style="color:orange;"></span></a> </nav> </div> </header> <section class="collection-head small geopattern" data-pattern-id="Matlab｜Matlab基础"> <div class="container"> <div class="columns"> <div class="column three-fourths"> <div class="collection-title"> <h1 class="collection-header">Matlab｜Matlab基础</h1> <div class="collection-info"> <span class="meta-info"> <span class="octicon octicon-calendar"></span> 2021/08/22 </span> <span class="meta-info"> <span class="octicon octicon-file-directory"></span> <a href="https://slienceme.cn/categories/#Matlab" title="Matlab">Matlab</a> </span> <span class="meta-info"> <span class="octicon octicon-clock"></span> 共 3566 字，约 11 分钟 </span> </div> </div> </div> <div class="column one-fourth mobile-hidden"> <div class="collection-title"> </div> </div> </div> </div> </section> <section class="container content"> <div class="columns"> <div class="column three-fourths" > <article class="article-content markdown-body"> <h2 id="matlab基本的小常识"><font color="orange">Matlab基本的小常识</font></h2> <div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="o">%</span> <span class="p">(</span><span class="mi">1</span><span class="p">)</span> <span class="n">在每一行的语句后面加上分号</span><span class="p">(</span><span class="n">一定要是英文的</span><span class="p">;</span><span class="n">中文的长这个样子</span><span class="err">；</span><span class="p">)</span><span class="n">表示不显示运行结果</span>
+<span class="n">a</span> <span class="o">=</span> <span class="mi">3</span><span class="p">;</span>
+<span class="n">a</span> <span class="o">=</span> <span class="mi">5</span>
+
+<span class="o">%</span> <span class="p">(</span><span class="mi">2</span><span class="p">)</span><span class="n">多行注释</span><span class="p">:</span><span class="n">选中要注释的若干语句</span><span class="p">,</span><span class="n">快捷键Ctrl</span><span class="o">+</span><span class="n">R</span>
+<span class="o">%</span> <span class="p">(</span><span class="mi">3</span><span class="p">)</span><span class="n">取消注释</span><span class="p">:</span><span class="n">选中要取消注释的语句</span><span class="p">,</span><span class="n">快捷键Ctrl</span><span class="o">+</span><span class="n">T</span>
+
+<span class="o">%</span> <span class="n">clear可以清楚工作区的所有变量</span>
+<span class="n">clear</span>
+
+<span class="o">%</span> <span class="n">clc可以清除命令行窗口中的所有文本</span><span class="p">,</span><span class="n">让屏幕变得干净</span>
+<span class="n">clc</span>
+
+<span class="n">clear</span><span class="p">;</span><span class="n">clc</span>   <span class="o">%</span> <span class="n">分号也用于区分行</span><span class="err">。</span>
+<span class="o">%</span> <span class="n">这两条一起使用</span><span class="err">，</span><span class="n">起到</span><span class="err">“</span><span class="n">初始化</span><span class="err">”</span><span class="n">的作用</span><span class="err">，</span><span class="n">防止之前的结果对新脚本文件</span><span class="err">（</span><span class="n">后缀名是</span> <span class="p">.</span><span class="n">m</span><span class="err">）</span><span class="n">产生干扰</span><span class="err">。</span>
+</code></pre></div></div> <h3 id="font-colorff4777输出和输入函数disp-和-inputfont">&lt;font color=#ff4777&gt;输出和输入函数(disp 和 input)&lt;/font&gt;</h3> <div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">disp</span><span class="p">(</span><span class="s">'我是slience_me'</span><span class="p">)</span>
+<span class="n">a</span> <span class="o">=</span> <span class="p">[</span><span class="mi">1</span><span class="p">,</span><span class="mi">2</span><span class="p">,</span><span class="mi">3</span><span class="p">]</span>    <span class="o">%</span><span class="n">同一行中间用逗号分隔</span><span class="err">，</span><span class="n">也可以不用逗号</span><span class="err">，</span><span class="n">直接用空格</span>
+<span class="n">a</span> <span class="o">=</span> <span class="p">[</span><span class="mi">1</span> <span class="mi">2</span> <span class="mi">3</span><span class="p">]</span>
+<span class="n">disp</span><span class="p">(</span><span class="n">a</span><span class="p">)</span> 
+<span class="o">%</span> <span class="n">注意</span><span class="err">，</span><span class="n">disp函数比较特殊</span><span class="err">，</span><span class="n">这里可要分号</span><span class="err">，</span><span class="n">可不要分号哦</span>
+<span class="n">disp</span><span class="p">(</span><span class="n">a</span><span class="p">);</span>
+
+<span class="o">%</span> <span class="n">input函数</span>
+<span class="o">%</span> <span class="n">一般我们会将输入的数</span><span class="err">、</span><span class="n">向量</span><span class="err">、</span><span class="n">矩阵</span><span class="err">、</span><span class="n">字符串等赋给一个变量</span><span class="err">，</span><span class="n">这里我们赋给A</span>
+<span class="n">A</span> <span class="o">=</span> <span class="nb">input</span><span class="p">(</span><span class="s">'请输入A：'</span><span class="p">);</span>
+<span class="n">B</span> <span class="o">=</span> <span class="nb">input</span><span class="p">(</span><span class="s">'请输入B：'</span><span class="p">)</span>
+<span class="o">%</span> <span class="n">注意观察工作区</span><span class="err">，</span><span class="n">并体会input后面加分号和不加分号的区别</span>
+</code></pre></div></div> <h3 id="font-colorff4777两个字符串的合并有两种方法font">&lt;font color=#ff4777&gt;两个字符串的合并有两种方法&lt;/font&gt;</h3> <div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="o">%</span> <span class="n">matlab中两个字符串的合并有两种方法</span>
+<span class="o">%</span> <span class="err">（</span><span class="mi">1</span><span class="err">）</span><span class="n">strcat</span><span class="p">(</span><span class="n">str1</span><span class="p">,</span><span class="n">str2</span><span class="err">……</span><span class="p">,</span><span class="n">strn</span><span class="p">)</span> 
+ <span class="n">strcat</span><span class="p">(</span><span class="s">'字符串1'</span><span class="p">,</span><span class="s">'字符串2'</span><span class="p">)</span> 
+
+<span class="o">%</span> <span class="err">（</span><span class="mi">2</span><span class="err">）</span><span class="p">[</span><span class="nb">str</span> <span class="mi">1</span><span class="p">,</span><span class="nb">str</span> <span class="mi">2</span><span class="err">，……</span><span class="p">,</span> <span class="nb">str</span> <span class="n">n</span><span class="p">]</span><span class="n">或</span><span class="p">[</span><span class="n">str1</span>  <span class="n">str2</span>  <span class="err">……</span>  <span class="n">strn</span><span class="p">]</span>
+<span class="p">[</span><span class="s">'字符串1'</span>  <span class="s">'字符串2'</span><span class="p">]</span>
+<span class="p">[</span><span class="s">'字符串1'</span><span class="p">,</span><span class="s">'字符串2'</span><span class="p">]</span>
+
+<span class="o">%</span> <span class="n">一个有用的字符串函数</span><span class="err">：</span><span class="n">num2str</span>  <span class="n">将数字转换为字符串</span>
+<span class="n">c</span> <span class="o">=</span> <span class="mi">100</span>
+<span class="n">num2str</span><span class="p">(</span><span class="n">c</span><span class="p">)</span>
+<span class="n">disp</span><span class="p">([</span><span class="s">'c的取值为'</span> <span class="n">num2str</span><span class="p">(</span><span class="n">c</span><span class="p">)])</span>
+<span class="n">disp</span><span class="p">(</span><span class="n">strcat</span><span class="p">(</span><span class="s">'c的取值为'</span><span class="p">,</span> <span class="n">num2str</span><span class="p">(</span><span class="n">c</span><span class="p">)))</span>
+</code></pre></div></div> <h3 id="font-colorff4777sum函数font">&lt;font color=#ff4777&gt;sum函数&lt;/font&gt;</h3> <div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="o">%</span> <span class="err">（</span><span class="mi">1</span><span class="err">）</span><span class="n">如果是向量</span><span class="err">（</span><span class="n">无论是行向量还是列向量</span><span class="err">），</span><span class="n">都是直接求和</span>
+<span class="n">E</span> <span class="o">=</span> <span class="p">[</span><span class="mi">1</span><span class="p">,</span><span class="mi">2</span><span class="p">,</span><span class="mi">3</span><span class="p">]</span>
+<span class="nb">sum</span><span class="p">(</span><span class="n">E</span><span class="p">)</span>
+<span class="n">E</span> <span class="o">=</span> <span class="p">[</span><span class="mi">1</span><span class="p">;</span><span class="mi">2</span><span class="p">;</span><span class="mi">3</span><span class="p">]</span>
+<span class="nb">sum</span><span class="p">(</span><span class="n">E</span><span class="p">)</span>
+
+<span class="o">%</span> <span class="err">（</span><span class="mi">2</span><span class="err">）</span><span class="n">如果是矩阵</span><span class="err">，</span><span class="n">则需要根据行和列的方向作区分</span>
+<span class="n">clc</span>
+<span class="n">E</span> <span class="o">=</span> <span class="p">[</span><span class="mi">1</span><span class="p">,</span><span class="mi">2</span><span class="p">;</span><span class="mi">3</span><span class="p">,</span><span class="mi">4</span><span class="p">;</span><span class="mi">5</span><span class="p">,</span><span class="mi">6</span><span class="p">]</span>
+<span class="o">%</span> <span class="n">a</span><span class="o">=</span><span class="nb">sum</span><span class="p">(</span><span class="n">x</span><span class="p">);</span> <span class="o">%</span><span class="n">按列求和</span><span class="p">(</span><span class="n">得到一个行向量</span><span class="err">）</span>
+<span class="n">a</span> <span class="o">=</span> <span class="nb">sum</span><span class="p">(</span><span class="n">E</span><span class="p">)</span>
+<span class="n">a</span> <span class="o">=</span> <span class="nb">sum</span><span class="p">(</span><span class="n">E</span><span class="p">,</span><span class="mi">1</span><span class="p">)</span>
+
+<span class="o">%</span> <span class="n">a</span><span class="o">=</span><span class="nb">sum</span><span class="p">(</span><span class="n">x</span><span class="p">,</span><span class="mi">2</span><span class="p">);</span> <span class="o">%</span><span class="n">按行求和</span><span class="p">(</span><span class="n">得到一个列向量</span><span class="err">）</span>
+<span class="n">a</span> <span class="o">=</span> <span class="nb">sum</span><span class="p">(</span><span class="n">E</span><span class="p">,</span><span class="mi">2</span><span class="p">)</span>
+
+<span class="o">%</span> <span class="n">a</span><span class="o">=</span><span class="nb">sum</span><span class="p">(</span><span class="n">x</span><span class="p">(:));</span><span class="o">%</span><span class="n">对整个矩阵求和</span>
+<span class="n">a</span> <span class="o">=</span> <span class="nb">sum</span><span class="p">(</span><span class="nb">sum</span><span class="p">(</span><span class="n">E</span><span class="p">))</span>
+<span class="n">a</span> <span class="o">=</span> <span class="nb">sum</span><span class="p">(</span><span class="n">E</span><span class="p">(:))</span>
+</code></pre></div></div> <h3 id="font-colorff4777提取矩阵中指定位置的元素font">&lt;font color=#ff4777&gt;提取矩阵中指定位置的元素&lt;/font&gt;</h3> <div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="o">%</span> <span class="err">（</span><span class="mi">1</span><span class="err">）</span><span class="n">取指定行和列的一个元素</span><span class="err">（</span><span class="n">输出的是一个值</span><span class="err">）</span>
+<span class="n">clc</span><span class="p">;</span><span class="n">A</span><span class="o">=</span><span class="p">[</span><span class="mi">1</span> <span class="mi">1</span> <span class="mi">4</span> <span class="mi">1</span><span class="o">/</span><span class="mi">3</span> <span class="mi">3</span><span class="p">;</span><span class="mi">1</span> <span class="mi">1</span> <span class="mi">4</span> <span class="mi">1</span><span class="o">/</span><span class="mi">3</span> <span class="mi">3</span><span class="p">;</span><span class="mi">1</span><span class="o">/</span><span class="mi">4</span> <span class="mi">1</span><span class="o">/</span><span class="mi">4</span> <span class="mi">1</span> <span class="mi">1</span><span class="o">/</span><span class="mi">3</span> <span class="mi">1</span><span class="o">/</span><span class="mi">2</span><span class="p">;</span><span class="mi">3</span> <span class="mi">3</span> <span class="mi">3</span> <span class="mi">1</span> <span class="mi">3</span><span class="p">;</span><span class="mi">1</span><span class="o">/</span><span class="mi">3</span> <span class="mi">1</span><span class="o">/</span><span class="mi">3</span> <span class="mi">2</span> <span class="mi">1</span><span class="o">/</span><span class="mi">3</span> <span class="mi">1</span><span class="p">];</span>
+<span class="n">A</span>
+<span class="n">A</span> <span class="o">=</span>
+
+    <span class="mf">1.0000</span>    <span class="mf">1.0000</span>    <span class="mf">4.0000</span>    <span class="mf">0.3333</span>    <span class="mf">3.0000</span>
+    <span class="mf">1.0000</span>    <span class="mf">1.0000</span>    <span class="mf">4.0000</span>    <span class="mf">0.3333</span>    <span class="mf">3.0000</span>
+    <span class="mf">0.2500</span>    <span class="mf">0.2500</span>    <span class="mf">1.0000</span>    <span class="mf">0.3333</span>    <span class="mf">0.5000</span>
+    <span class="mf">3.0000</span>    <span class="mf">3.0000</span>    <span class="mf">3.0000</span>    <span class="mf">1.0000</span>    <span class="mf">3.0000</span>
+    <span class="mf">0.3333</span>    <span class="mf">0.3333</span>    <span class="mf">2.0000</span>    <span class="mf">0.3333</span>    <span class="mf">1.0000</span>
+
+<span class="n">A</span><span class="p">(</span><span class="mi">2</span><span class="p">,</span><span class="mi">1</span><span class="p">)</span> <span class="o">%</span> <span class="mi">1</span>
+<span class="n">A</span><span class="p">(</span><span class="mi">3</span><span class="p">,</span><span class="mi">2</span><span class="p">)</span> <span class="o">%</span> <span class="mf">0.2500</span>
+
+<span class="o">%</span> <span class="err">（</span><span class="mi">2</span><span class="err">）</span><span class="n">取指定的某一行的全部元素</span><span class="err">（</span><span class="n">输出的是一个行向量</span><span class="err">）</span>
+<span class="n">clc</span><span class="p">;</span><span class="n">A</span>
+<span class="n">A</span><span class="p">(</span><span class="mi">2</span><span class="p">,:)</span>
+<span class="n">A</span><span class="p">(</span><span class="mi">5</span><span class="p">,:)</span>
+
+<span class="o">%</span> <span class="err">（</span><span class="mi">3</span><span class="err">）</span><span class="n">取指定的某一列的全部元素</span><span class="err">（</span><span class="n">输出的是一个列向量</span><span class="err">）</span>
+<span class="n">clc</span><span class="p">;</span><span class="n">A</span>
+<span class="n">A</span><span class="p">(:,</span><span class="mi">1</span><span class="p">)</span>
+<span class="n">A</span><span class="p">(:,</span><span class="mi">3</span><span class="p">)</span>
+
+<span class="o">%</span> <span class="err">（</span><span class="mi">4</span><span class="err">）</span><span class="n">取指定的某些行的全部元素</span><span class="err">（</span><span class="n">输出的是一个矩阵</span><span class="err">）</span>
+<span class="n">clc</span><span class="p">;</span><span class="n">A</span>
+<span class="n">A</span><span class="p">([</span><span class="mi">2</span><span class="p">,</span><span class="mi">5</span><span class="p">],:)</span>      <span class="o">%</span> <span class="n">只取第二行和第五行</span><span class="err">（</span><span class="n">一共2行</span><span class="err">）</span>
+<span class="n">A</span><span class="p">(</span><span class="mi">2</span><span class="p">:</span><span class="mi">5</span><span class="p">,:)</span>        <span class="o">%</span> <span class="n">取第二行到第五行</span><span class="err">（</span><span class="n">一共4行</span><span class="err">）</span>
+<span class="n">A</span><span class="p">(</span><span class="mi">2</span><span class="p">:</span><span class="mi">2</span><span class="p">:</span><span class="mi">5</span><span class="p">,:)</span>     <span class="o">%</span> <span class="n">取第二行和第四行</span> <span class="err">（</span><span class="n">从2开始</span><span class="err">，</span><span class="n">每次递增2个单位</span><span class="err">，</span><span class="n">到5结束</span><span class="err">）</span>
+
+<span class="mi">1</span><span class="p">:</span><span class="mi">3</span><span class="p">:</span><span class="mi">10</span>  		<span class="o">%</span>  <span class="mi">1</span>     <span class="mi">4</span>     <span class="mi">7</span>    <span class="mi">10</span>
+<span class="mi">10</span><span class="p">:</span><span class="o">-</span><span class="mi">1</span><span class="p">:</span><span class="mi">1</span>  		<span class="o">%</span> <span class="mi">10</span>     <span class="mi">9</span>     <span class="mi">8</span>     <span class="mi">7</span>     <span class="mi">6</span>     <span class="mi">5</span>     <span class="mi">4</span>     <span class="mi">3</span>     <span class="mi">2</span>     <span class="mi">1</span>
+
+<span class="n">A</span><span class="p">(</span><span class="mi">2</span><span class="p">:</span><span class="n">end</span><span class="p">,:)</span>      <span class="o">%</span> <span class="n">取第二行到最后一行</span>
+<span class="n">A</span><span class="p">(</span><span class="mi">2</span><span class="p">:</span><span class="n">end</span><span class="o">-</span><span class="mi">1</span><span class="p">,:)</span>    <span class="o">%</span> <span class="n">取第二行到倒数第二行</span>
+
+<span class="o">%</span> <span class="err">（</span><span class="mi">5</span><span class="err">）</span><span class="n">取全部元素</span><span class="p">(</span><span class="n">按列拼接的</span><span class="err">，</span><span class="n">最终输出的是一个列向量</span><span class="p">)</span>
+<span class="n">clc</span><span class="p">;</span><span class="n">A</span>
+<span class="n">A</span><span class="p">(:)</span>
+<span class="n">ans</span> <span class="o">=</span>
+
+    <span class="mf">1.0000</span>
+    <span class="mf">1.0000</span>
+    <span class="mf">0.2500</span>
+    <span class="mf">3.0000</span>
+    <span class="mf">0.3333</span>
+    <span class="mf">1.0000</span>
+    <span class="mf">1.0000</span>
+    <span class="mf">0.2500</span>
+    <span class="mf">3.0000</span>
+    <span class="mf">0.3333</span>
+    <span class="mf">4.0000</span>
+    <span class="mf">4.0000</span>
+    <span class="mf">1.0000</span>
+    <span class="mf">3.0000</span>
+    <span class="mf">2.0000</span>
+    <span class="mf">0.3333</span>
+    <span class="mf">0.3333</span>
+    <span class="mf">0.3333</span>
+    <span class="mf">1.0000</span>
+    <span class="mf">0.3333</span>
+    <span class="mf">3.0000</span>
+    <span class="mf">3.0000</span>
+    <span class="mf">0.5000</span>
+    <span class="mf">3.0000</span>
+    <span class="mf">1.0000</span>
+</code></pre></div></div> <h3 id="font-colorff4777size函数font">&lt;font color=#ff4777&gt;size函数&lt;/font&gt;</h3> <div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">clc</span><span class="p">;</span>
+<span class="n">A</span> <span class="o">=</span> <span class="p">[</span><span class="mi">1</span><span class="p">,</span><span class="mi">2</span><span class="p">,</span><span class="mi">3</span><span class="p">;</span><span class="mi">4</span><span class="p">,</span><span class="mi">5</span><span class="p">,</span><span class="mi">6</span><span class="p">]</span>
+<span class="n">B</span> <span class="o">=</span> <span class="p">[</span><span class="mi">1</span><span class="p">,</span><span class="mi">2</span><span class="p">,</span><span class="mi">3</span><span class="p">,</span><span class="mi">4</span><span class="p">,</span><span class="mi">5</span><span class="p">,</span><span class="mi">6</span><span class="p">]</span>
+<span class="n">size</span><span class="p">(</span><span class="n">A</span><span class="p">)</span>
+<span class="n">size</span><span class="p">(</span><span class="n">B</span><span class="p">)</span>
+<span class="o">%</span> <span class="n">size</span><span class="p">(</span><span class="n">A</span><span class="p">)</span><span class="n">函数是用来求矩阵A的大小的</span><span class="p">,</span><span class="n">它返回一个行向量</span><span class="err">，</span><span class="n">第一个元素是矩阵的行数</span><span class="err">，</span><span class="n">第二个元素是矩阵的列数</span>
+<span class="p">[</span><span class="n">r</span><span class="p">,</span><span class="n">c</span><span class="p">]</span> <span class="o">=</span> <span class="n">size</span><span class="p">(</span><span class="n">A</span><span class="p">)</span>
+<span class="o">%</span> <span class="n">将矩阵A的行数返回到第一个变量r</span><span class="err">，</span><span class="n">将矩阵的列数返回到第二个变量c</span>
+<span class="n">r</span> <span class="o">=</span> <span class="n">size</span><span class="p">(</span><span class="n">A</span><span class="p">,</span><span class="mi">1</span><span class="p">)</span>  <span class="o">%</span><span class="n">返回行数</span>
+<span class="n">c</span> <span class="o">=</span> <span class="n">size</span><span class="p">(</span><span class="n">A</span><span class="p">,</span><span class="mi">2</span><span class="p">)</span> <span class="o">%</span><span class="n">返回列数</span>
+</code></pre></div></div> <h3 id="font-colorff4777repmat函数font">&lt;font color=#ff4777&gt;repmat函数&lt;/font&gt;</h3> <p><code class="language-plaintext highlighter-rouge">B = repmat(A,m,n)</code>:将矩阵A复制m×n块，即把A作为B的元素，B由m×n个A平铺而成。</p> <div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">A</span> <span class="o">=</span> <span class="p">[</span><span class="mi">1</span><span class="p">,</span><span class="mi">2</span><span class="p">,</span><span class="mi">3</span><span class="p">;</span><span class="mi">4</span><span class="p">,</span><span class="mi">5</span><span class="p">,</span><span class="mi">6</span><span class="p">]</span>
+<span class="n">A</span> <span class="o">=</span>
+
+     <span class="mi">1</span>     <span class="mi">2</span>     <span class="mi">3</span>
+     <span class="mi">4</span>     <span class="mi">5</span>     <span class="mi">6</span>
+     
+<span class="n">B</span> <span class="o">=</span> <span class="n">repmat</span><span class="p">(</span><span class="n">A</span><span class="p">,</span><span class="mi">2</span><span class="p">,</span><span class="mi">1</span><span class="p">)</span>
+<span class="n">B</span> <span class="o">=</span> <span class="n">repmat</span><span class="p">(</span><span class="n">A</span><span class="p">,</span><span class="mi">3</span><span class="p">,</span><span class="mi">2</span><span class="p">)</span>
+
+<span class="n">B</span> <span class="o">=</span>
+
+     <span class="mi">1</span>     <span class="mi">2</span>     <span class="mi">3</span>     <span class="mi">1</span>     <span class="mi">2</span>     <span class="mi">3</span>
+     <span class="mi">4</span>     <span class="mi">5</span>     <span class="mi">6</span>     <span class="mi">4</span>     <span class="mi">5</span>     <span class="mi">6</span>
+     <span class="mi">1</span>     <span class="mi">2</span>     <span class="mi">3</span>     <span class="mi">1</span>     <span class="mi">2</span>     <span class="mi">3</span>
+     <span class="mi">4</span>     <span class="mi">5</span>     <span class="mi">6</span>     <span class="mi">4</span>     <span class="mi">5</span>     <span class="mi">6</span>
+     <span class="mi">1</span>     <span class="mi">2</span>     <span class="mi">3</span>     <span class="mi">1</span>     <span class="mi">2</span>     <span class="mi">3</span>
+     <span class="mi">4</span>     <span class="mi">5</span>     <span class="mi">6</span>     <span class="mi">4</span>     <span class="mi">5</span>     <span class="mi">6</span>
+</code></pre></div></div> <h3 id="font-colorff4777矩阵的运算font">&lt;font color=#ff4777&gt;矩阵的运算&lt;/font&gt;</h3> <p>MATLAB在矩阵的运算中，<code class="language-plaintext highlighter-rouge">“*”</code>号和<code class="language-plaintext highlighter-rouge">“/”</code>号代表矩阵之间的乘法与除法<code class="language-plaintext highlighter-rouge">(A/B = A*inv(B))</code></p> <div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">A</span> <span class="o">=</span> <span class="p">[</span><span class="mi">1</span><span class="p">,</span><span class="mi">2</span><span class="p">;</span><span class="mi">3</span><span class="p">,</span><span class="mi">4</span><span class="p">]</span>
+<span class="n">B</span> <span class="o">=</span> <span class="p">[</span><span class="mi">1</span><span class="p">,</span><span class="mi">0</span><span class="p">;</span><span class="mi">1</span><span class="p">,</span><span class="mi">1</span><span class="p">]</span>
+<span class="n">A</span> <span class="o">*</span> <span class="n">B</span>
+<span class="n">inv</span><span class="p">(</span><span class="n">B</span><span class="p">)</span>  <span class="o">%</span> <span class="n">求B的逆矩阵</span>
+<span class="n">B</span> <span class="o">*</span> <span class="n">inv</span><span class="p">(</span><span class="n">B</span><span class="p">)</span>
+<span class="n">A</span> <span class="o">*</span> <span class="n">inv</span><span class="p">(</span><span class="n">B</span><span class="p">)</span>
+<span class="n">A</span> <span class="o">/</span> <span class="n">B</span>
+
+<span class="o">%</span> <span class="n">两个形状相同的矩阵对应元素之间的乘除法需要使用</span><span class="err">“</span><span class="p">.</span><span class="o">*</span><span class="err">”</span><span class="n">和</span><span class="err">“</span><span class="p">.</span><span class="o">/</span><span class="err">”</span>
+<span class="n">A</span> <span class="o">=</span> <span class="p">[</span><span class="mi">1</span><span class="p">,</span><span class="mi">2</span><span class="p">;</span><span class="mi">3</span><span class="p">,</span><span class="mi">4</span><span class="p">]</span>
+<span class="n">B</span> <span class="o">=</span> <span class="p">[</span><span class="mi">1</span><span class="p">,</span><span class="mi">0</span><span class="p">;</span><span class="mi">1</span><span class="p">,</span><span class="mi">1</span><span class="p">]</span>
+<span class="n">A</span> <span class="p">.</span><span class="o">*</span> <span class="n">B</span>
+<span class="n">A</span> <span class="p">.</span><span class="o">/</span> <span class="n">B</span>
+
+<span class="o">%</span> <span class="n">每个元素同时和常数相乘或相除操作都可以使用</span>
+<span class="n">A</span> <span class="o">=</span> <span class="p">[</span><span class="mi">1</span><span class="p">,</span><span class="mi">2</span><span class="p">;</span><span class="mi">3</span><span class="p">,</span><span class="mi">4</span><span class="p">]</span>
+<span class="n">A</span> <span class="o">*</span> <span class="mi">2</span>
+<span class="n">A</span> <span class="p">.</span><span class="o">*</span> <span class="mi">2</span>
+<span class="n">A</span> <span class="o">/</span> <span class="mi">2</span> 
+<span class="n">A</span> <span class="p">.</span><span class="o">/</span> <span class="mi">2</span>
+
+<span class="o">%</span> <span class="n">每个元素同时乘方时只能用</span> <span class="p">.</span><span class="o">^</span>
+<span class="n">A</span> <span class="o">=</span> <span class="p">[</span><span class="mi">1</span><span class="p">,</span><span class="mi">2</span><span class="p">;</span><span class="mi">3</span><span class="p">,</span><span class="mi">4</span><span class="p">]</span>
+<span class="n">A</span> <span class="p">.</span><span class="o">^</span> <span class="mi">2</span>
+<span class="o">%</span> <span class="n">自己乘积自己</span>
+<span class="n">A</span> <span class="o">^</span> <span class="mi">2</span> 
+<span class="n">A</span> <span class="o">*</span> <span class="n">A</span>
+</code></pre></div></div> <h3 id="font-colorff4777求特征值和特征向量font">&lt;font color=#ff4777&gt;求特征值和特征向量&lt;/font&gt;</h3> <p>在Matlab中，计算矩阵A的特征值和特征向量的函数是<code class="language-plaintext highlighter-rouge">eig(A)</code>,其中最常用的两个用法：</p> <div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">A</span> <span class="o">=</span> <span class="p">[</span><span class="mi">1</span> <span class="mi">2</span> <span class="mi">3</span> <span class="p">;</span><span class="mi">2</span> <span class="mi">2</span> <span class="mi">1</span><span class="p">;</span><span class="mi">2</span> <span class="mi">0</span> <span class="mi">3</span><span class="p">]</span>
+<span class="o">%</span> <span class="err">（</span><span class="mi">1</span><span class="err">）</span><span class="n">E</span><span class="o">=</span><span class="n">eig</span><span class="p">(</span><span class="n">A</span><span class="p">)</span><span class="err">：</span><span class="n">求矩阵A的全部特征值</span><span class="err">，</span><span class="n">构成向量E</span><span class="err">。</span>
+<span class="n">E</span><span class="o">=</span><span class="n">eig</span><span class="p">(</span><span class="n">A</span><span class="p">)</span>
+<span class="o">%</span> <span class="err">（</span><span class="mi">2</span><span class="err">）</span><span class="p">[</span><span class="n">V</span><span class="p">,</span><span class="n">D</span><span class="p">]</span><span class="o">=</span><span class="n">eig</span><span class="p">(</span><span class="n">A</span><span class="p">)</span><span class="err">：</span><span class="n">求矩阵A的全部特征值</span><span class="err">，</span><span class="n">构成对角阵D</span><span class="err">，</span><span class="n">并求A的特征向量构成V的列向量</span><span class="err">。（</span><span class="n">V的每一列都是D中与之相同列的特征值的特征向量</span><span class="err">）</span>
+<span class="p">[</span><span class="n">V</span><span class="p">,</span><span class="n">D</span><span class="p">]</span><span class="o">=</span><span class="n">eig</span><span class="p">(</span><span class="n">A</span><span class="p">)</span>
+</code></pre></div></div> <div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">A</span> <span class="o">=</span>
+     <span class="mi">1</span>     <span class="mi">2</span>     <span class="mi">3</span>
+     <span class="mi">2</span>     <span class="mi">2</span>     <span class="mi">1</span>
+     <span class="mi">2</span>     <span class="mi">0</span>     <span class="mi">3</span>
+
+<span class="n">K</span><span class="o">&gt;&gt;</span> <span class="n">E</span><span class="o">=</span><span class="n">eig</span><span class="p">(</span><span class="n">A</span><span class="p">)</span>
+
+<span class="n">E</span> <span class="o">=</span>
+   <span class="o">-</span><span class="mf">1.3166</span>
+    <span class="mf">5.3166</span>
+    <span class="mf">2.0000</span>
+
+<span class="n">K</span><span class="o">&gt;&gt;</span> <span class="p">[</span><span class="n">V</span><span class="p">,</span><span class="n">D</span><span class="p">]</span><span class="o">=</span><span class="n">eig</span><span class="p">(</span><span class="n">A</span><span class="p">)</span>
+
+<span class="n">V</span> <span class="o">=</span>
+    <span class="mf">0.8364</span>   <span class="o">-</span><span class="mf">0.6336</span>   <span class="o">-</span><span class="mf">0.2408</span>
+   <span class="o">-</span><span class="mf">0.3875</span>   <span class="o">-</span><span class="mf">0.5470</span>   <span class="o">-</span><span class="mf">0.8427</span>
+   <span class="o">-</span><span class="mf">0.3875</span>   <span class="o">-</span><span class="mf">0.5470</span>    <span class="mf">0.4815</span>
+
+
+<span class="n">D</span> <span class="o">=</span>
+   <span class="o">-</span><span class="mf">1.3166</span>         <span class="mi">0</span>         <span class="mi">0</span>
+         <span class="mi">0</span>    <span class="mf">5.3166</span>         <span class="mi">0</span>
+         <span class="mi">0</span>         <span class="mi">0</span>    <span class="mf">2.0000</span>
+</code></pre></div></div> <h3 id="font-colorff4777find函数的基本用法font">&lt;font color=#ff4777&gt;find函数的基本用法&lt;/font&gt;</h3> <p>它可以用来返回向量或者矩阵中不为0的元素的位置索引。</p> <div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">clc</span><span class="p">;</span><span class="n">X</span> <span class="o">=</span> <span class="p">[</span><span class="mi">1</span> <span class="mi">0</span> <span class="mi">4</span> <span class="o">-</span><span class="mi">3</span> <span class="mi">0</span> <span class="mi">0</span> <span class="mi">0</span> <span class="mi">8</span> <span class="mi">6</span><span class="p">]</span>
+<span class="n">ind</span> <span class="o">=</span> <span class="n">find</span><span class="p">(</span><span class="n">X</span><span class="p">)</span>
+
+<span class="o">%</span> <span class="n">其有多种用法</span><span class="err">，</span><span class="n">比如返回前2个不为0的元素的位置</span><span class="err">：</span>
+<span class="n">ind</span> <span class="o">=</span> <span class="n">find</span><span class="p">(</span><span class="n">X</span><span class="p">,</span><span class="mi">2</span><span class="p">)</span>
+
+<span class="o">%</span><span class="n">上面针对的是向量</span><span class="err">（</span><span class="n">一维</span><span class="err">），</span><span class="n">若X是一个矩阵</span><span class="err">（</span><span class="n">二维</span><span class="err">，</span><span class="n">有行和列</span><span class="err">），</span><span class="n">索引该如何返回呢</span><span class="err">？</span>
+<span class="n">clc</span><span class="p">;</span><span class="n">X</span> <span class="o">=</span> <span class="p">[</span><span class="mi">1</span> <span class="o">-</span><span class="mi">3</span> <span class="mi">0</span><span class="p">;</span><span class="mi">0</span> <span class="mi">0</span> <span class="mi">8</span><span class="p">;</span><span class="mi">4</span> <span class="mi">0</span> <span class="mi">6</span><span class="p">]</span>
+<span class="n">ind</span> <span class="o">=</span> <span class="n">find</span><span class="p">(</span><span class="n">X</span><span class="p">)</span>
+<span class="o">%</span> <span class="n">这是因为在Matlab在存储矩阵时</span><span class="err">，</span><span class="n">是一列一列存储的</span><span class="err">，</span><span class="n">我们可以做一下验证</span><span class="err">：</span>
+<span class="n">X</span><span class="p">(</span><span class="mi">4</span><span class="p">)</span>
+<span class="o">%</span> <span class="n">假如你需要按照行列的信息输出该怎么办呢</span><span class="err">？</span>
+<span class="p">[</span><span class="n">r</span><span class="p">,</span><span class="n">c</span><span class="p">]</span> <span class="o">=</span> <span class="n">find</span><span class="p">(</span><span class="n">X</span><span class="p">)</span>
+<span class="p">[</span><span class="n">r</span><span class="p">,</span><span class="n">c</span><span class="p">]</span> <span class="o">=</span> <span class="n">find</span><span class="p">(</span><span class="n">X</span><span class="p">,</span><span class="mi">1</span><span class="p">)</span> <span class="o">%</span><span class="n">只找第一个非0元素</span>
+</code></pre></div></div> <h3 id="font-colorff4777矩阵与常数的大小判断运算font">&lt;font color=#ff4777&gt;矩阵与常数的大小判断运算&lt;/font&gt;</h3> <p>共有三种运算符：大于&gt; ;小于&lt; ;等于 == （一个等号表示赋值；两个等号表示判断）</p> <div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">clc</span>
+<span class="n">X</span> <span class="o">=</span> <span class="p">[</span><span class="mi">1</span> <span class="o">-</span><span class="mi">3</span> <span class="mi">0</span><span class="p">;</span><span class="mi">0</span> <span class="mi">0</span> <span class="mi">8</span><span class="p">;</span><span class="mi">4</span> <span class="mi">0</span> <span class="mi">6</span><span class="p">]</span>
+<span class="n">X</span> <span class="o">&gt;</span> <span class="mi">0</span>
+<span class="n">X</span> <span class="o">==</span> <span class="mi">4</span>
+</code></pre></div></div> <h3 id="font-colorff4777判断语句font">&lt;font color=#ff4777&gt;判断语句&lt;/font&gt;</h3> <p>Matlab的判断语句，if所在的行不需要冒号，语句的最后一定要以end结尾 ；中间的语句要注意缩进。</p> <div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">a</span> <span class="o">=</span> <span class="nb">input</span><span class="p">(</span><span class="s">'请输入考试分数:'</span><span class="p">)</span>
+<span class="k">if</span> <span class="n">a</span> <span class="o">&gt;=</span> <span class="mi">85</span>  
+    <span class="n">disp</span><span class="p">(</span><span class="s">'成绩优秀'</span><span class="p">)</span>
+<span class="n">elseif</span> <span class="n">a</span> <span class="o">&gt;=</span> <span class="mi">60</span> 
+    <span class="n">disp</span><span class="p">(</span><span class="s">'成绩合格'</span><span class="p">)</span>
+<span class="k">else</span>
+    <span class="n">disp</span><span class="p">(</span><span class="s">'成绩挂科'</span><span class="p">)</span>
+<span class="n">end</span>
+</code></pre></div></div> <div style="margin-top:2em;padding:0 1.5em;border:1px solid #d3d3d3;background-color:#deebf7"> <h3>文档信息</h3> <ul> <li>本文作者：<a href="https://slienceme.cn" target="_blank">slience_me</a></li> <li>本文链接：<a href="https://slienceme.cn/2021/08/22/Matlab%E5%9F%BA%E6%9C%AC%E7%9A%84%E5%B0%8F%E5%B8%B8%E8%AF%86/" target="_blank">https://slienceme.cn/2021/08/22/Matlab%E5%9F%BA%E6%9C%AC%E7%9A%84%E5%B0%8F%E5%B8%B8%E8%AF%86/</a></li> <li>版权声明：自由转载-非商用-非衍生-保持署名（<a href="http://creativecommons.org/licenses/by-nc-nd/3.0/deed.zh" target="_blank">创意共享3.0许可证</a>）</li> </ul> </div> </article> <div class="share"> <div class="share-component" data-disabled='qq,facebook'></div> </div> <div class="comment"> <script src="https://giscus.app/client.js" data-repo="slience-me/blog-comments" data-repo-id="MDEwOlJlcG9zaXRvcnk5MzEyNzkxNw==" data-category="Announcements" data-category-id="DIC_kwDOBY0E7c4CRtg9" data-mapping="title" data-strict="1" data-reactions-enabled="1" data-emit-metadata="0" data-input-position="top" data-theme="light" data-lang="zh-CN" data-loading="lazy" crossorigin="anonymous" async> </script> </div> </div> <div class="column one-fourth"> <h3>Search</h3> <div id="site_search"> <input style="width:96%" type="text" id="search_box" placeholder="Search"> </div> <ul id="search_results" style="font-size:14px;list-style-type:none;padding-top:10px;padding-left:10px;"></ul> <script src="https://slienceme.cn/assets/js/simple-jekyll-search.min.js"></script> <script type="text/javascript"> SimpleJekyllSearch({ searchInput: document.getElementById('search_box'), resultsContainer: document.getElementById('search_results'), json: 'https://slienceme.cn/assets/search_data.json?v=1736474002', searchResultTemplate: '<li><a href="{url}" title="{title}">{title}</a></li>', noResultsText: 'No results found', limit: 10, fuzzy: false, exclude: ['Welcome'] }) </script> <h3 class="post-directory-title mobile-hidden">Table of Contents</h3> <div id="post-directory-module" class="mobile-hidden"> <section class="post-directory"> <dl></dl> </section> </div> <script src="https://slienceme.cn/assets/js/jquery.toc.js"></script> </div> </div> </section> <footer class="container"> <div class="site-footer" role="contentinfo"> <div class="copyright left mobile-block"> Copyright@ 2019-2025 slience_me 版权所有&emsp; <img src="/images/logo/logo.png" class="w-full" style="width: 12px;"> <a href="https://beian.mps.gov.cn/#/query/webSearch?code=13102202000626" rel="noreferrer" target="_blank">冀公网安备13102202000626</a>&emsp; <a href="https://beian.miit.gov.cn/#/Integrated/index" target="_blank" rel="noreferrer">津ICP备2024026565号-1</a> <a href="javascript:window.scrollTo(0,0)" class="right mobile-visible">TOP</a> </div> <ul class="site-footer-links right mobile-hidden"> <li> <a href="javascript:window.scrollTo(0,0)" >TOP</a> </li> </ul> <br/> <script async src="https://slienceme.cn/assets/vendor/busuanzi/2.3/busuanzi.pure.mini.js"></script> <div class="mobile-hidden" style="margin-top:8px"> <span id="busuanzi_container_site_pv" style="display:none"> 本站访问量<span id="busuanzi_value_site_pv"></span>次 </span> <span id="busuanzi_container_site_uv" style="display:none"> / 本站访客数<span id="busuanzi_value_site_uv"></span>人 </span> <span id="busuanzi_container_page_pv" style="display:none"> / 本页访问量<span id="busuanzi_value_page_pv"></span>次 / 统计始于2024-12-01 </span> </div> </div> </footer> <div class="tools-wrapper"> <a class="gotop" href="#" title="回到顶部"><span class="octicon octicon-arrow-up"></span></a> </div> <script src="https://slienceme.cn/assets/vendor/share.js/dist/js/share.min.js"></script> <script src="https://slienceme.cn/assets/js/geopattern.js"></script> <script> jQuery(document).ready(function($) { $('.geopattern').each(function(){ $(this).geopattern($(this).data('pattern-id')); }); /* hljs.initHighlightingOnLoad(); */ }); </script> </body> </html>
