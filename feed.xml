@@ -1,4 +1,4 @@
-<?xml version="1.0" encoding="utf-8"?><feed xmlns="http://www.w3.org/2005/Atom" ><generator uri="https://jekyllrb.com/" version="3.10.0">Jekyll</generator><link href="https://slienceme.cn/feed.xml" rel="self" type="application/atom+xml" /><link href="https://slienceme.cn/" rel="alternate" type="text/html" /><updated>2025-01-11T20:17:50+08:00</updated><id>https://slienceme.cn/feed.xml</id><title type="html">Slience_me的博客</title><subtitle>slience_me的个人博客</subtitle><author><name>slience_me</name></author><entry><title type="html">Linux｜服务器系统重装&amp;amp;SSH&amp;amp;xrdp&amp;amp;CUDA</title><link href="https://slienceme.cn/2024/10/24/%E6%9C%8D%E5%8A%A1%E5%99%A8%E7%B3%BB%E7%BB%9F%E9%87%8D%E8%A3%85&SSH&xrdp&cuda/" rel="alternate" type="text/html" title="Linux｜服务器系统重装&amp;amp;SSH&amp;amp;xrdp&amp;amp;CUDA" /><published>2024-10-24T00:00:00+08:00</published><updated>2024-10-24T00:00:00+08:00</updated><id>https://slienceme.cn/2024/10/24/%E6%9C%8D%E5%8A%A1%E5%99%A8%E7%B3%BB%E7%BB%9F%E9%87%8D%E8%A3%85&amp;SSH&amp;xrdp&amp;cuda</id><content type="html" xml:base="https://slienceme.cn/2024/10/24/%E6%9C%8D%E5%8A%A1%E5%99%A8%E7%B3%BB%E7%BB%9F%E9%87%8D%E8%A3%85&amp;SSH&amp;xrdp&amp;cuda/"><![CDATA[<p><img src="https://i-blog.csdnimg.cn/blog_migrate/e9a9ce64f17b96904b03f129f0317e3d.png" alt="在这里插入图片描述" /></p>
+<?xml version="1.0" encoding="utf-8"?><feed xmlns="http://www.w3.org/2005/Atom" ><generator uri="https://jekyllrb.com/" version="3.10.0">Jekyll</generator><link href="https://slienceme.cn/feed.xml" rel="self" type="application/atom+xml" /><link href="https://slienceme.cn/" rel="alternate" type="text/html" /><updated>2025-01-16T11:38:25+08:00</updated><id>https://slienceme.cn/feed.xml</id><title type="html">Slience_me的博客</title><subtitle>slience_me的个人博客</subtitle><author><name>slience_me</name></author><entry><title type="html">Linux｜服务器系统重装&amp;amp;SSH&amp;amp;xrdp&amp;amp;CUDA</title><link href="https://slienceme.cn/2024/10/24/%E6%9C%8D%E5%8A%A1%E5%99%A8%E7%B3%BB%E7%BB%9F%E9%87%8D%E8%A3%85&SSH&xrdp&cuda/" rel="alternate" type="text/html" title="Linux｜服务器系统重装&amp;amp;SSH&amp;amp;xrdp&amp;amp;CUDA" /><published>2024-10-24T00:00:00+08:00</published><updated>2024-10-24T00:00:00+08:00</updated><id>https://slienceme.cn/2024/10/24/%E6%9C%8D%E5%8A%A1%E5%99%A8%E7%B3%BB%E7%BB%9F%E9%87%8D%E8%A3%85&amp;SSH&amp;xrdp&amp;cuda</id><content type="html" xml:base="https://slienceme.cn/2024/10/24/%E6%9C%8D%E5%8A%A1%E5%99%A8%E7%B3%BB%E7%BB%9F%E9%87%8D%E8%A3%85&amp;SSH&amp;xrdp&amp;cuda/"><![CDATA[<p><img src="https://i-blog.csdnimg.cn/blog_migrate/e9a9ce64f17b96904b03f129f0317e3d.png" alt="在这里插入图片描述" /></p>
 
 <p>本文作者： <a href="https://slienceme.cn/">slience_me</a></p>
 
@@ -1124,7 +1124,8 @@ One-Hot Encoding 则是将单词编码为稀疏的二进制向量，以便计算
 
 <p><img src="https://raw.githubusercontent.com/slience-me/picGo/master/images/image-20240202111041463.png" alt="image-20240202111041463" /></p>
 
-<p>安装过程中，选择nvm的安装路径，然后选择原始node的安装路径(可以直接下一步)，出现了某版本已安装，是否交给nvm管理，点击是即可</p>
+<p>安装过程中，选择nvm的安装路径，然后选择原始node的安装路径(可以直接下一步)，出现了某版本已安装，是否交给nvm管理，点击是即可
+建议使用1.1.12版本, 最新的版本存在路径bug</p>
 
 <p>NVM常用命令</p>
 
@@ -1134,10 +1135,17 @@ One-Hot Encoding 则是将单词编码为稀疏的二进制向量，以便计算
 
 <p><code class="language-plaintext highlighter-rouge">nvm -v</code>：查看NVM的版本</p>
 
-<p><code class="language-plaintext highlighter-rouge">nvm node_mirror https://npm.taobao.org/mirrors/node/</code> ：配置下载源（最新的源可能改变为<code class="language-plaintext highlighter-rouge">https://registry.npmmirror.com</code>）</p>
+<p><code class="language-plaintext highlighter-rouge">nvm node_mirror https://npm.taobao.org/mirrors/node/</code> ：配置下载源（最新的源可能改变为<code class="language-plaintext highlighter-rouge">https://npmmirror.com/mirrors/node/</code>）</p>
 
-<p><code class="language-plaintext highlighter-rouge">nvm install 18.19.0</code>：下载Node(以18.19.0版本为例，通过多次下载可以下载多个版本的Node)
-<code class="language-plaintext highlighter-rouge">ctrl D</code>退出Node命令行</p>]]></content><author><name>slience_me</name></author><category term="教程" /><summary type="html"><![CDATA[【已解决】安装不同版本的nodejs环境以及版本切换]]></summary></entry><entry><title type="html">教程｜GitHub图床&amp;amp;Typora&amp;amp;PicGo相关配置</title><link href="https://slienceme.cn/2024/01/20/GitHub%E5%9B%BE%E5%BA%8A&Typora&PicGo/" rel="alternate" type="text/html" title="教程｜GitHub图床&amp;amp;Typora&amp;amp;PicGo相关配置" /><published>2024-01-20T00:00:00+08:00</published><updated>2024-01-20T00:00:00+08:00</updated><id>https://slienceme.cn/2024/01/20/GitHub%E5%9B%BE%E5%BA%8A&amp;Typora&amp;PicGo</id><content type="html" xml:base="https://slienceme.cn/2024/01/20/GitHub%E5%9B%BE%E5%BA%8A&amp;Typora&amp;PicGo/"><![CDATA[<p><img src="https://raw.githubusercontent.com/slience-me/picGo/master/images/logo_slienceme3.jpeg" alt="img" /></p>
+<p><code class="language-plaintext highlighter-rouge">nvm install 18.19.0</code>：下载Node(以18.19.0版本为例，通过多次下载可以下载多个版本的Node) 注意: 安装前记得切换到指定磁盘,否则会失败
+<code class="language-plaintext highlighter-rouge">ctrl D</code>退出Node命令行</p>
+
+<p>注意可能需要去安装路径下修改<code class="language-plaintext highlighter-rouge">settings.txt</code>文件，将<code class="language-plaintext highlighter-rouge">node_mirror</code>和<code class="language-plaintext highlighter-rouge">npm_mirror</code>的地址修改为淘宝镜像地址</p>
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>root: D:\temp_environment\nvm
+path: D:\temp_environment\nodejshub
+node_mirror: https://npmmirror.com/mirrors/node/
+npm_mirror: https://npmmirror.com/mirrors/npm/
+</code></pre></div></div>]]></content><author><name>slience_me</name></author><category term="教程" /><summary type="html"><![CDATA[【已解决】安装不同版本的nodejs环境以及版本切换]]></summary></entry><entry><title type="html">教程｜GitHub图床&amp;amp;Typora&amp;amp;PicGo相关配置</title><link href="https://slienceme.cn/2024/01/20/GitHub%E5%9B%BE%E5%BA%8A&Typora&PicGo/" rel="alternate" type="text/html" title="教程｜GitHub图床&amp;amp;Typora&amp;amp;PicGo相关配置" /><published>2024-01-20T00:00:00+08:00</published><updated>2024-01-20T00:00:00+08:00</updated><id>https://slienceme.cn/2024/01/20/GitHub%E5%9B%BE%E5%BA%8A&amp;Typora&amp;PicGo</id><content type="html" xml:base="https://slienceme.cn/2024/01/20/GitHub%E5%9B%BE%E5%BA%8A&amp;Typora&amp;PicGo/"><![CDATA[<p><img src="https://raw.githubusercontent.com/slience-me/picGo/master/images/logo_slienceme3.jpeg" alt="img" /></p>
 
 <p>本文作者： <a href="https://slienceme.cn/">slience_me</a></p>
 
