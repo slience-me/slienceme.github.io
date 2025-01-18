@@ -1,1 +1,1 @@
-Sitemap: https://slienceme.cn/sitemap.xml
+Sitemap: https://slienceme.cn/pages/slience-me/slienceme.github.io/sitemap.xml
