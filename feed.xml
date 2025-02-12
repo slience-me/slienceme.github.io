@@ -1,11 +1,548 @@
-<?xml version="1.0" encoding="utf-8"?><feed xmlns="http://www.w3.org/2005/Atom" ><generator uri="https://jekyllrb.com/" version="3.10.0">Jekyll</generator><link href="https://slienceme.cn/pages/slience-me/slienceme.github.io/feed.xml" rel="self" type="application/atom+xml" /><link href="https://slienceme.cn/pages/slience-me/slienceme.github.io/" rel="alternate" type="text/html" /><updated>2025-02-11T21:16:58+08:00</updated><id>https://slienceme.cn/pages/slience-me/slienceme.github.io/feed.xml</id><title type="html">Slience_me的博客</title><subtitle>slience_me的个人博客</subtitle><author><name>slience_me</name></author><entry><title type="html">Linux｜服务器系统重装&amp;amp;SSH&amp;amp;xrdp&amp;amp;CUDA</title><link href="https://slienceme.cn/pages/slience-me/slienceme.github.io/2024/10/24/%E6%9C%8D%E5%8A%A1%E5%99%A8%E7%B3%BB%E7%BB%9F%E9%87%8D%E8%A3%85&SSH&xrdp&cuda/" rel="alternate" type="text/html" title="Linux｜服务器系统重装&amp;amp;SSH&amp;amp;xrdp&amp;amp;CUDA" /><published>2024-10-24T00:00:00+08:00</published><updated>2024-10-24T00:00:00+08:00</updated><id>https://slienceme.cn/pages/slience-me/slienceme.github.io/2024/10/24/%E6%9C%8D%E5%8A%A1%E5%99%A8%E7%B3%BB%E7%BB%9F%E9%87%8D%E8%A3%85&amp;SSH&amp;xrdp&amp;cuda</id><content type="html" xml:base="https://slienceme.cn/pages/slience-me/slienceme.github.io/2024/10/24/%E6%9C%8D%E5%8A%A1%E5%99%A8%E7%B3%BB%E7%BB%9F%E9%87%8D%E8%A3%85&amp;SSH&amp;xrdp&amp;cuda/"><![CDATA[<p><img src="https://i-blog.csdnimg.cn/blog_migrate/e9a9ce64f17b96904b03f129f0317e3d.png" alt="在这里插入图片描述" /></p>
+<?xml version="1.0" encoding="utf-8"?><feed xmlns="http://www.w3.org/2005/Atom" ><generator uri="https://jekyllrb.com/" version="3.10.0">Jekyll</generator><link href="https://slienceme.cn/pages/slience-me/slienceme.github.io/feed.xml" rel="self" type="application/atom+xml" /><link href="https://slienceme.cn/pages/slience-me/slienceme.github.io/" rel="alternate" type="text/html" /><updated>2025-02-12T16:50:45+08:00</updated><id>https://slienceme.cn/pages/slience-me/slienceme.github.io/feed.xml</id><title type="html">Slience_me的博客</title><subtitle>slience_me的个人博客</subtitle><author><name>slience_me</name></author><entry><title type="html">前端｜ES6新特性合集</title><link href="https://slienceme.cn/pages/slience-me/slienceme.github.io/2025/02/12/ES6%E6%96%B0%E7%89%B9%E6%80%A7%E5%90%88%E9%9B%86/" rel="alternate" type="text/html" title="前端｜ES6新特性合集" /><published>2025-02-12T00:00:00+08:00</published><updated>2025-02-12T00:00:00+08:00</updated><id>https://slienceme.cn/pages/slience-me/slienceme.github.io/2025/02/12/ES6%E6%96%B0%E7%89%B9%E6%80%A7%E5%90%88%E9%9B%86</id><content type="html" xml:base="https://slienceme.cn/pages/slience-me/slienceme.github.io/2025/02/12/ES6%E6%96%B0%E7%89%B9%E6%80%A7%E5%90%88%E9%9B%86/"><![CDATA[<p><img src="https://raw.githubusercontent.com/slience-me/picGo/master/images/logo_slienceme3.jpeg" alt="img" /></p>
 
 <p>本文作者： <a href="https://slienceme.cn/">slience_me</a></p>
 
 <hr />
-<h1 id="ubuntu系统重装操作合集">Ubuntu系统重装操作合集</h1>
+
+<h1 id="es6新特性汇总">ES6新特性汇总</h1>
+
+<h2 id="1-let声明变量">1. let声明变量</h2>
+
+<h3 id="1let作用域">1）let作用域</h3>
+
+<div class="language-javascript highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="c1">// var 声明的变量往往会越域</span>
+<span class="c1">// let 声明的变量有严格的局部作用域</span>
+<span class="p">{</span>
+    <span class="kd">var</span> <span class="nx">a</span> <span class="o">=</span> <span class="mi">1</span><span class="p">;</span>
+    <span class="kd">let</span> <span class="nx">b</span> <span class="o">=</span> <span class="mi">2</span><span class="p">;</span>
+<span class="p">}</span>
+<span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="nx">a</span><span class="p">);</span> <span class="c1">// 1</span>
+<span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="nx">b</span><span class="p">);</span> <span class="c1">// 报错 b is not defined</span>
+</code></pre></div></div>
+
+<h3 id="2声明次数">2）声明次数</h3>
+
+<div class="language-javascript highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="c1">// var 可以声明多次</span>
+<span class="c1">// let 只能声明一次</span>
+<span class="kd">var</span> <span class="nx">m</span> <span class="o">=</span> <span class="mi">1</span><span class="p">;</span>
+<span class="kd">var</span> <span class="nx">m</span> <span class="o">=</span> <span class="mi">2</span><span class="p">;</span>
+<span class="kd">let</span> <span class="nx">n</span> <span class="o">=</span> <span class="mi">3</span><span class="p">;</span>
+<span class="c1">// let n = 4; // 报错 n is already declared</span>
+<span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="nx">m</span><span class="p">);</span> <span class="c1">// 2</span>
+<span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="nx">n</span><span class="p">);</span> <span class="c1">// 报错 n is already declared</span>
+</code></pre></div></div>
+
+<h3 id="3变量提升">3）变量提升</h3>
+
+<div class="language-javascript highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="c1">// var 会变量提升</span>
+<span class="c1">// let 不会变量提升，但需要先声明后使用</span>
+<span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="nx">x</span><span class="p">);</span> <span class="c1">// undefined</span>
+<span class="kd">var</span> <span class="nx">x</span> <span class="o">=</span> <span class="mi">10</span><span class="p">;</span>
+<span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="nx">y</span><span class="p">);</span> <span class="c1">// 报错 y is not defined</span>
+<span class="kd">let</span> <span class="nx">y</span> <span class="o">=</span> <span class="mi">20</span><span class="p">;</span>
+</code></pre></div></div>
+
+<h2 id="2-const声明常量只读变量">2. const声明常量(只读变量)</h2>
+
+<div class="language-javascript highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="c1">// 1. 声明之后不允许改变</span>
+<span class="c1">// 2. 一旦声明必须初始化，不能留到以后赋值, 否则报错</span>
+<span class="kd">const</span> <span class="nx">PI</span> <span class="o">=</span> <span class="mf">3.14</span><span class="p">;</span>
+<span class="nx">PI</span> <span class="o">=</span> <span class="mf">3.1415926</span><span class="p">;</span> <span class="c1">// 报错 Assignment to constant variable.</span>
+</code></pre></div></div>
+
+<h2 id="3-解构表达式">3. 解构表达式</h2>
+
+<h3 id="1数组解构">1）数组解构</h3>
+
+<div class="language-javascript highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kd">let</span> <span class="nx">arr</span> <span class="o">=</span> <span class="p">[</span><span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">3</span><span class="p">];</span>
+<span class="c1">// 传统写法</span>
+<span class="c1">// let a = arr[0];</span>
+<span class="c1">// let b = arr[1];</span>
+<span class="c1">// let c = arr[2];</span>
+<span class="c1">// console.log(a, b, c);</span>
+<span class="c1">// ES6 写法</span>
+<span class="kd">let</span> <span class="p">[</span><span class="nx">a</span><span class="p">,</span> <span class="nx">b</span><span class="p">,</span> <span class="nx">c</span><span class="p">]</span> <span class="o">=</span> <span class="nx">arr</span><span class="p">;</span>
+<span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="nx">a</span><span class="p">,</span> <span class="nx">b</span><span class="p">,</span> <span class="nx">c</span><span class="p">);</span>
+</code></pre></div></div>
+
+<h3 id="2对象解构">2）对象解构</h3>
+
+<div class="language-javascript highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kd">let</span> <span class="nx">person</span> <span class="o">=</span> <span class="p">{</span><span class="na">name</span><span class="p">:</span> <span class="dl">'</span><span class="s1">Tom</span><span class="dl">'</span><span class="p">,</span> <span class="na">age</span><span class="p">:</span> <span class="mi">18</span><span class="p">};</span>
+<span class="c1">// 传统写法</span>
+<span class="c1">// let name = person.name;</span>
+<span class="c1">// let age = person.age;</span>
+<span class="c1">// console.log(name, age);</span>
+<span class="c1">// ES6 写法</span>
+<span class="kd">let</span> <span class="p">{</span><span class="nx">name</span><span class="p">,</span> <span class="nx">age</span><span class="p">}</span> <span class="o">=</span> <span class="nx">person</span><span class="p">;</span>
+<span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="nx">name</span><span class="p">,</span> <span class="nx">age</span><span class="p">);</span>
+<span class="c1">// 换名字</span>
+<span class="kd">let</span> <span class="p">{</span><span class="na">name</span><span class="p">:</span> <span class="nx">myName</span><span class="p">,</span> <span class="na">age</span><span class="p">:</span> <span class="nx">myAge</span><span class="p">}</span> <span class="o">=</span> <span class="nx">person</span><span class="p">;</span>
+<span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="nx">myName</span><span class="p">,</span> <span class="nx">myAge</span><span class="p">);</span>
+</code></pre></div></div>
+
+<h2 id="4-字符串扩展">4. 字符串扩展</h2>
+
+<div class="language-javascript highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="c1">// 字符串模板</span>
+<span class="c1">// 1、多行字符串</span>
+<span class="kd">let</span> <span class="nx">ss</span> <span class="o">=</span> <span class="s2">`&lt;div&gt;
+&lt;span&gt;hello&lt;/span&gt;
+&lt;/div&gt;`</span><span class="p">;</span>
+<span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="nx">ss</span><span class="p">);</span>
+
+<span class="c1">// 2、字符串插入变量和表达式</span>
+<span class="kd">let</span> <span class="nx">name</span> <span class="o">=</span> <span class="dl">'</span><span class="s1">Tom</span><span class="dl">'</span><span class="p">;</span>
+<span class="kd">let</span> <span class="nx">age</span> <span class="o">=</span> <span class="mi">18</span><span class="p">;</span>
+<span class="kd">let</span> <span class="nx">info</span> <span class="o">=</span> <span class="s2">`My name is </span><span class="p">${</span><span class="nx">name</span><span class="p">}</span><span class="s2">, I'm </span><span class="p">${</span><span class="nx">age</span> <span class="o">+</span> <span class="mi">1</span><span class="p">}</span><span class="s2">`</span><span class="p">;</span>
+<span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="nx">info</span><span class="p">);</span>
+
+<span class="kd">function</span> <span class="nx">fun</span><span class="p">(){</span>
+    <span class="k">return</span> <span class="dl">'</span><span class="s1">have fun</span><span class="dl">'</span><span class="p">;</span>
+<span class="p">}</span>
+
+<span class="kd">let</span> <span class="nx">info2</span> <span class="o">=</span> <span class="s2">`My name is </span><span class="p">${</span><span class="nx">name</span><span class="p">}</span><span class="s2">, I'm </span><span class="p">${</span><span class="nx">age</span> <span class="o">+</span> <span class="mi">1</span><span class="p">}</span><span class="s2">, I say </span><span class="p">${</span><span class="nx">fun</span><span class="p">()}</span><span class="s2">`</span><span class="p">;</span>
+</code></pre></div></div>
+
+<h2 id="5-函数优化">5. 函数优化</h2>
+
+<h3 id="1函数参数的默认值">1）函数参数的默认值</h3>
+
+<div class="language-javascript highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="c1">// 在ES6以前，我们无法给函数参数设置默认值，只能通过逻辑或运算符来达到目的</span>
+<span class="kd">function</span> <span class="nx">add</span><span class="p">(</span><span class="nx">a</span><span class="p">,</span> <span class="nx">b</span><span class="p">)</span> <span class="p">{</span>
+    <span class="c1">// 判断b是否为空，为空则给默认值1</span>
+    <span class="nx">b</span> <span class="o">=</span> <span class="nx">b</span> <span class="o">||</span> <span class="mi">1</span><span class="p">;</span>  <span class="c1">// b = b ? b : 1;</span>
+    <span class="k">return</span> <span class="nx">a</span> <span class="o">+</span> <span class="nx">b</span><span class="p">;</span>
+<span class="p">}</span>
+<span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="nx">add</span><span class="p">(</span><span class="mi">1</span><span class="p">));</span> <span class="c1">// 2</span>
+<span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="nx">add</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">));</span> <span class="c1">// 3</span>
+<span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="nx">add</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="kc">undefined</span><span class="p">));</span> <span class="c1">// 2</span>
+<span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="nx">add</span><span class="p">(</span><span class="kc">undefined</span><span class="p">,</span> <span class="mi">2</span><span class="p">));</span> <span class="c1">// NaN</span>
+
+<span class="c1">// 在ES6中，我们可以通过函数参数的默认值来设置参数的默认值</span>
+<span class="kd">function</span> <span class="nx">add2</span><span class="p">(</span><span class="nx">a</span><span class="p">,</span> <span class="nx">b</span> <span class="o">=</span> <span class="mi">1</span><span class="p">)</span> <span class="p">{</span>
+    <span class="k">return</span> <span class="nx">a</span> <span class="o">+</span> <span class="nx">b</span><span class="p">;</span>
+<span class="p">}</span>
+<span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="nx">add2</span><span class="p">(</span><span class="mi">1</span><span class="p">));</span> <span class="c1">// 2</span>
+</code></pre></div></div>
+
+<h3 id="2不定参数">2）不定参数</h3>
+
+<div class="language-javascript highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="c1">// 2、 不定参数</span>
+<span class="c1">// 1. 使用...args来表示不定参数，args是一个数组</span>
+<span class="kd">function</span> <span class="nx">fun</span><span class="p">(...</span><span class="nx">args</span><span class="p">)</span> <span class="p">{</span>
+    <span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="nx">args</span><span class="p">.</span><span class="nx">length</span><span class="p">);</span>
+<span class="p">}</span>
+<span class="nx">fun</span><span class="p">();</span> <span class="c1">// 0</span>
+<span class="nx">fun</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">3</span><span class="p">);</span> <span class="c1">// 3</span>
+
+<span class="c1">// 2. 如果不定参数不是函数的第一个参数，那么不定参数后面不能再跟其他参数</span>
+<span class="c1">// function add6(a, ...args, b) {</span>
+<span class="c1">//     console.log(a); // 1</span>
+<span class="c1">//     console.log(args); // 报错 SyntaxError: Rest parameter must be last formal parameter</span>
+<span class="c1">//     console.log(b); // 报错 SyntaxError: Rest parameter must be last formal parameter</span>
+<span class="c1">// }</span>
+<span class="c1">// add6(1, 2, 3, 4);</span>
+
+<span class="c1">// 3. 如果函数的参数有默认值，那么不定参数必须放在最后</span>
+<span class="kd">function</span> <span class="nx">add7</span><span class="p">(</span><span class="nx">a</span><span class="p">,</span> <span class="nx">b</span><span class="p">,</span> <span class="p">...</span><span class="nx">args</span><span class="p">)</span> <span class="p">{</span>
+    <span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="nx">a</span><span class="p">);</span> <span class="c1">// 1</span>
+    <span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="nx">b</span><span class="p">);</span> <span class="c1">// 2</span>
+    <span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="nx">args</span><span class="p">);</span> <span class="c1">// [3, 4]</span>
+<span class="p">}</span>
+<span class="nx">add7</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">3</span><span class="p">,</span> <span class="mi">4</span><span class="p">);</span>
+</code></pre></div></div>
+
+<h3 id="3箭头函数">3）箭头函数</h3>
+
+<div class="language-javascript highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="c1">// 以前声明一个方法(单参数)</span>
+<span class="kd">var</span> <span class="nx">print</span> <span class="o">=</span> <span class="kd">function</span> <span class="p">(</span><span class="nx">obj</span><span class="p">)</span> <span class="p">{</span>
+    <span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="nx">obj</span><span class="p">);</span>
+<span class="p">}</span>
+<span class="nx">print</span><span class="p">({</span> <span class="na">name</span><span class="p">:</span> <span class="dl">'</span><span class="s1">张三</span><span class="dl">'</span> <span class="p">});</span> <span class="c1">// { name: '张三' }</span>
+
+<span class="c1">// 箭头函数的声明</span>
+<span class="kd">var</span> <span class="nx">print_</span> <span class="o">=</span> <span class="nx">obj</span> <span class="o">=&gt;</span> <span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="nx">obj</span><span class="p">);</span>
+<span class="nx">print_</span><span class="p">({</span> <span class="na">name</span><span class="p">:</span> <span class="dl">'</span><span class="s1">张三</span><span class="dl">'</span> <span class="p">});</span> <span class="c1">// { name: '张三' }</span>
+
+<span class="c1">// 以前声明一个方法(多参数)</span>
+<span class="kd">var</span> <span class="nx">add2</span> <span class="o">=</span> <span class="kd">function</span> <span class="p">(</span><span class="nx">a</span><span class="p">,</span> <span class="nx">b</span><span class="p">)</span> <span class="p">{</span>
+    <span class="k">return</span> <span class="nx">a</span> <span class="o">+</span> <span class="nx">b</span><span class="p">;</span>
+<span class="p">}</span>
+<span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="nx">add2</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">));</span> <span class="c1">// 3</span>
+
+<span class="c1">// 箭头函数的声明</span>
+<span class="kd">var</span> <span class="nx">add3</span> <span class="o">=</span> <span class="p">(</span><span class="nx">a</span><span class="p">,</span> <span class="nx">b</span><span class="p">)</span> <span class="o">=&gt;</span> <span class="nx">a</span> <span class="o">+</span> <span class="nx">b</span><span class="p">;</span>
+<span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="nx">add3</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">));</span> <span class="c1">// 3</span>
+
+<span class="c1">// 方法体内有多行代码</span>
+<span class="c1">// 传统</span>
+<span class="kd">var</span> <span class="nx">add4</span> <span class="o">=</span> <span class="kd">function</span> <span class="p">(</span><span class="nx">a</span><span class="p">,</span> <span class="nx">b</span><span class="p">)</span> <span class="p">{</span>
+    <span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="nx">a</span> <span class="o">+</span> <span class="nx">b</span><span class="p">);</span>
+    <span class="k">return</span> <span class="nx">a</span> <span class="o">+</span> <span class="nx">b</span><span class="p">;</span>
+<span class="p">}</span>
+<span class="c1">// 箭头函数</span>
+<span class="kd">var</span> <span class="nx">add5</span> <span class="o">=</span> <span class="p">(</span><span class="nx">a</span><span class="p">,</span> <span class="nx">b</span><span class="p">)</span> <span class="o">=&gt;</span> <span class="p">{</span>
+    <span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="nx">a</span> <span class="o">+</span> <span class="nx">b</span><span class="p">);</span>
+    <span class="k">return</span> <span class="nx">a</span> <span class="o">+</span> <span class="nx">b</span><span class="p">;</span>
+<span class="p">}</span>
+<span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="nx">add5</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">));</span> <span class="c1">// 3</span>
+</code></pre></div></div>
+
+<h3 id="4实战箭头函数结合结构表达式">4）实战：箭头函数结合结构表达式</h3>
+
+<div class="language-javascript highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kd">const</span> <span class="nx">person</span> <span class="o">=</span> <span class="p">{</span>
+    <span class="na">name</span><span class="p">:</span> <span class="dl">'</span><span class="s1">张三</span><span class="dl">'</span><span class="p">,</span>
+    <span class="na">age</span><span class="p">:</span> <span class="mi">18</span><span class="p">,</span>
+    <span class="na">language</span><span class="p">:</span> <span class="p">[</span><span class="dl">'</span><span class="s1">java</span><span class="dl">'</span><span class="p">,</span> <span class="dl">'</span><span class="s1">js</span><span class="dl">'</span><span class="p">,</span> <span class="dl">'</span><span class="s1">css</span><span class="dl">'</span><span class="p">],</span>
+<span class="p">}</span>
+<span class="c1">// 传统</span>
+<span class="kd">function</span> <span class="nx">hello</span><span class="p">()</span> <span class="p">{</span>
+    <span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="dl">'</span><span class="s1">hello, </span><span class="dl">'</span> <span class="o">+</span> <span class="nx">person</span><span class="p">.</span><span class="nx">name</span><span class="p">);</span>
+<span class="p">}</span>
+<span class="c1">// 箭头函数</span>
+<span class="kd">var</span> <span class="nx">hello2</span> <span class="o">=</span> <span class="p">(</span><span class="nx">person</span><span class="p">)</span> <span class="o">=&gt;</span> <span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="dl">'</span><span class="s1">hello, </span><span class="dl">'</span> <span class="o">+</span> <span class="nx">person</span><span class="p">.</span><span class="nx">name</span><span class="p">);</span>
+<span class="nx">hello2</span><span class="p">(</span><span class="nx">person</span><span class="p">);</span> <span class="c1">// hello, 张三</span>
+
+<span class="c1">// 箭头函数+解构</span>
+<span class="kd">var</span> <span class="nx">hello3</span> <span class="o">=</span> <span class="p">({</span> <span class="nx">name</span> <span class="p">})</span> <span class="o">=&gt;</span> <span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="dl">'</span><span class="s1">hello, </span><span class="dl">'</span> <span class="o">+</span> <span class="nx">name</span><span class="p">);</span>
+<span class="nx">hello3</span><span class="p">(</span><span class="nx">person</span><span class="p">);</span> <span class="c1">// hello, 张三</span>
+</code></pre></div></div>
+
+<h2 id="6-对象优化">6. 对象优化</h2>
+
+<h3 id="1新增的api">1）新增的API</h3>
+
+<div class="language-javascript highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kd">const</span> <span class="nx">person</span> <span class="o">=</span> <span class="p">{</span>
+    <span class="na">name</span><span class="p">:</span> <span class="dl">'</span><span class="s1">张三</span><span class="dl">'</span><span class="p">,</span>
+    <span class="na">age</span><span class="p">:</span> <span class="mi">18</span><span class="p">,</span>
+    <span class="na">language</span><span class="p">:</span> <span class="p">[</span><span class="dl">'</span><span class="s1">javascript</span><span class="dl">'</span><span class="p">,</span> <span class="dl">'</span><span class="s1">python</span><span class="dl">'</span><span class="p">,</span> <span class="dl">'</span><span class="s1">java</span><span class="dl">'</span><span class="p">]</span>
+<span class="p">}</span>
+<span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="nb">Object</span><span class="p">.</span><span class="nx">keys</span><span class="p">(</span><span class="nx">person</span><span class="p">))</span><span class="c1">//获取对象所有的键['name', 'age', 'language']</span>
+<span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="nb">Object</span><span class="p">.</span><span class="nx">values</span><span class="p">(</span><span class="nx">person</span><span class="p">))</span><span class="c1">//获取对象所有的值['张三', 18, Array(3)]</span>
+<span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="nb">Object</span><span class="p">.</span><span class="nx">entries</span><span class="p">(</span><span class="nx">person</span><span class="p">))</span><span class="c1">//获取对象所有的键值对[Array(2), Array(2), Array(2)]</span>
+
+<span class="kd">const</span> <span class="nx">target</span> <span class="o">=</span> <span class="p">{</span><span class="na">a</span><span class="p">:</span> <span class="mi">1</span><span class="p">}</span>
+<span class="kd">const</span> <span class="nx">source1</span> <span class="o">=</span> <span class="p">{</span><span class="na">b</span><span class="p">:</span> <span class="mi">2</span><span class="p">}</span>
+<span class="kd">const</span> <span class="nx">source2</span> <span class="o">=</span> <span class="p">{</span><span class="na">c</span><span class="p">:</span> <span class="mi">3</span><span class="p">}</span>
+<span class="c1">// Object.assign方法的第一个参数是目标对象，后面的参数是源对象</span>
+<span class="nb">Object</span><span class="p">.</span><span class="nx">assign</span><span class="p">(</span><span class="nx">target</span><span class="p">,</span> <span class="nx">source1</span><span class="p">,</span> <span class="nx">source2</span><span class="p">)</span><span class="c1">//合并对象</span>
+<span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="nx">target</span><span class="p">)</span><span class="c1">//{a: 1, b: 2, c: 3}</span>
+</code></pre></div></div>
+
+<h3 id="2声明对象简写">2）声明对象简写</h3>
+
+<div class="language-javascript highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kd">const</span> <span class="nx">name</span> <span class="o">=</span> <span class="dl">'</span><span class="s1">张三</span><span class="dl">'</span>
+<span class="kd">const</span> <span class="nx">age</span> <span class="o">=</span> <span class="mi">18</span>
+
+<span class="c1">// 传统</span>
+<span class="kd">const</span> <span class="nx">person1</span> <span class="o">=</span> <span class="p">{</span><span class="na">name</span><span class="p">:</span> <span class="nx">name</span><span class="p">,</span> <span class="na">age</span><span class="p">:</span> <span class="nx">age</span><span class="p">}</span>
+<span class="c1">// 简写 ES6: 一样的情况可以简写</span>
+<span class="kd">const</span> <span class="nx">person2</span> <span class="o">=</span> <span class="p">{</span><span class="nx">name</span><span class="p">,</span> <span class="nx">age</span><span class="p">}</span><span class="c1">//声明对象简写</span>
+<span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="nx">person1</span><span class="p">,</span> <span class="nx">person2</span><span class="p">)</span><span class="c1">//{name: '张三', age: 18} {name: '张三', age: 18}</span>
+</code></pre></div></div>
+
+<h3 id="3对象的函数属性简写">3）对象的函数属性简写</h3>
+
+<div class="language-javascript highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kd">const</span> <span class="nx">person3</span> <span class="o">=</span> <span class="p">{</span>
+    <span class="na">name</span><span class="p">:</span> <span class="dl">'</span><span class="s1">张三</span><span class="dl">'</span><span class="p">,</span>
+    <span class="c1">// 以前</span>
+    <span class="na">eat</span><span class="p">:</span> <span class="kd">function</span> <span class="p">(</span><span class="nx">food</span><span class="p">)</span> <span class="p">{</span>
+        <span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="k">this</span><span class="p">.</span><span class="nx">name</span> <span class="o">+</span> <span class="dl">'</span><span class="s1">正在吃</span><span class="dl">'</span> <span class="o">+</span> <span class="nx">food</span><span class="p">)</span>
+    <span class="p">},</span>
+    <span class="c1">// 箭头函数版</span>
+    <span class="na">eat2</span><span class="p">:</span> <span class="nx">food</span> <span class="o">=&gt;</span> <span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="k">this</span><span class="p">.</span><span class="nx">name</span> <span class="o">+</span> <span class="dl">'</span><span class="s1">正在吃</span><span class="dl">'</span> <span class="o">+</span> <span class="nx">food</span><span class="p">),</span>
+    <span class="c1">// 简写</span>
+    <span class="nx">eat3</span><span class="p">(</span><span class="nx">food</span><span class="p">)</span> <span class="p">{</span><span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="k">this</span><span class="p">.</span><span class="nx">name</span> <span class="o">+</span> <span class="dl">'</span><span class="s1">正在吃</span><span class="dl">'</span> <span class="o">+</span> <span class="nx">food</span><span class="p">);}</span>
+<span class="p">}</span>
+<span class="nx">person3</span><span class="p">.</span><span class="nx">eat</span><span class="p">(</span><span class="dl">'</span><span class="s1">苹果</span><span class="dl">'</span><span class="p">)</span><span class="c1">//张三正在吃苹果</span>
+</code></pre></div></div>
+
+<h3 id="4对象拓展运算符">4）对象拓展运算符</h3>
+
+<div class="language-javascript highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="c1">// 4. 对象拓展运算符</span>
+<span class="c1">// 4.1. 拷贝对象(深拷贝)</span>
+<span class="kd">let</span> <span class="nx">person</span> <span class="o">=</span> <span class="p">{</span><span class="na">name</span><span class="p">:</span> <span class="dl">'</span><span class="s1">张三</span><span class="dl">'</span><span class="p">,</span> <span class="na">age</span><span class="p">:</span> <span class="mi">18</span><span class="p">}</span>
+<span class="c1">// 传统</span>
+<span class="kd">const</span> <span class="nx">someone1</span> <span class="o">=</span> <span class="p">{}</span>
+<span class="k">for</span> <span class="p">(</span><span class="kd">let</span> <span class="nx">key</span> <span class="k">in</span> <span class="nx">person</span><span class="p">)</span> <span class="p">{</span>
+<span class="nx">someone1</span><span class="p">[</span><span class="nx">key</span><span class="p">]</span> <span class="o">=</span> <span class="nx">person</span><span class="p">[</span><span class="nx">key</span><span class="p">]</span>
+<span class="p">}</span>
+<span class="c1">// ES6</span>
+<span class="kd">let</span> <span class="nx">someone2</span> <span class="o">=</span> <span class="p">{...</span><span class="nx">person</span><span class="p">}</span>
+<span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="nx">someone2</span><span class="p">)</span><span class="c1">//{name: '张三', age: 18}</span>
+
+
+<span class="c1">// 4.2. 合并对象</span>
+<span class="kd">const</span> <span class="nx">person_with_name</span> <span class="o">=</span> <span class="p">{</span><span class="na">name</span><span class="p">:</span> <span class="dl">'</span><span class="s1">张三</span><span class="dl">'</span><span class="p">}</span>
+<span class="kd">const</span> <span class="nx">person_with_age</span> <span class="o">=</span> <span class="p">{</span><span class="na">age</span><span class="p">:</span> <span class="mi">18</span><span class="p">}</span>
+<span class="kd">const</span> <span class="nx">person1</span> <span class="o">=</span> <span class="p">{...</span><span class="nx">person_with_name</span><span class="p">,</span> <span class="p">...</span><span class="nx">person_with_age</span><span class="p">}</span>
+<span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="nx">person1</span><span class="p">)</span><span class="c1">//{name: '张三', age: 18}</span>
+</code></pre></div></div>
+
+<h2 id="7-map和reduce">7. map和reduce</h2>
+
+<h3 id="1map">1）map</h3>
+
+<div class="language-javascript highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="c1">// 数组中新增了map和reduce方法</span>
+<span class="c1">// map: 映射，将数组中的每个元素映射成另一个值，最终生成一个新数组</span>
+<span class="kd">let</span> <span class="nx">arr</span> <span class="o">=</span> <span class="p">[</span><span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">3</span><span class="p">,</span> <span class="mi">4</span><span class="p">,</span> <span class="mi">5</span><span class="p">];</span>
+<span class="kd">let</span> <span class="nx">arr2</span> <span class="o">=</span> <span class="nx">arr</span><span class="p">.</span><span class="nx">map</span><span class="p">(</span><span class="kd">function</span> <span class="p">(</span><span class="nx">item</span><span class="p">)</span> <span class="p">{</span>
+<span class="k">return</span> <span class="nx">item</span> <span class="o">*</span> <span class="mi">2</span><span class="p">;</span>
+<span class="p">});</span>
+<span class="c1">// 箭头函数简写</span>
+<span class="c1">// let arr2 = arr.map(item =&gt; item * 2);</span>
+<span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="nx">arr2</span><span class="p">);</span>
+</code></pre></div></div>
+
+<h3 id="2reduce">2）reduce</h3>
+
+<div class="language-javascript highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="c1">// reduce: 累加器，将数组中的每个元素累加起来，最终生成一个值，可以设置初始值</span>
+<span class="kd">let</span> <span class="nx">arr3</span> <span class="o">=</span> <span class="nx">arr</span><span class="p">.</span><span class="nx">reduce</span><span class="p">(</span><span class="kd">function</span> <span class="p">(</span><span class="nx">prev</span><span class="p">,</span> <span class="nx">item</span><span class="p">)</span> <span class="p">{</span>
+<span class="k">return</span> <span class="nx">prev</span> <span class="o">+</span> <span class="nx">item</span><span class="p">;</span>
+<span class="p">},</span> <span class="mi">0</span><span class="p">);</span>
+<span class="c1">// 箭头函数简写</span>
+<span class="c1">// let arr3 = arr.reduce((prev, item) =&gt; prev + item, 0);</span>
+<span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="nx">arr3</span><span class="p">);</span>
+</code></pre></div></div>
+
+<h2 id="8-promise">8. Promise</h2>
+
+<p><strong>传统的Ajax写法</strong></p>
+
+<p>首先创建一些json文件</p>
+
+<ul>
+  <li>mock
+	- user.json
+	- course_score_10.json
+	- user_course_1.json</li>
+</ul>
+
+<p>具体的内容：</p>
+
+<div class="language-json highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="err">//</span><span class="w"> </span><span class="err">user.json</span><span class="w">
+</span><span class="p">{</span><span class="w">
+  </span><span class="nl">"id"</span><span class="p">:</span><span class="w"> </span><span class="mi">1</span><span class="p">,</span><span class="w">
+  </span><span class="nl">"name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"张三"</span><span class="p">,</span><span class="w">
+  </span><span class="nl">"password"</span><span class="p">:</span><span class="w"> </span><span class="s2">"123456"</span><span class="w">
+</span><span class="p">}</span><span class="w">
+
+</span><span class="err">//</span><span class="w"> </span><span class="err">course_score_</span><span class="mi">10</span><span class="err">.json</span><span class="w">
+</span><span class="p">{</span><span class="w">
+  </span><span class="nl">"id"</span><span class="p">:</span><span class="w"> </span><span class="mi">100</span><span class="p">,</span><span class="w">
+  </span><span class="nl">"score"</span><span class="p">:</span><span class="w"> </span><span class="mi">90</span><span class="w">
+</span><span class="p">}</span><span class="w">
+
+</span><span class="err">//</span><span class="w"> </span><span class="err">user_course_</span><span class="mi">1</span><span class="err">.json</span><span class="w">
+</span><span class="p">{</span><span class="w">
+  </span><span class="nl">"id"</span><span class="p">:</span><span class="w"> </span><span class="mi">10</span><span class="p">,</span><span class="w">
+  </span><span class="nl">"name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"chinese"</span><span class="w">
+</span><span class="p">}</span><span class="w">
+</span></code></pre></div></div>
+
+<p>Ajax调用：</p>
+
+<div class="language-javascript highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="c1">// 1、查出当前用户信息</span>
+<span class="c1">// 2、按照当前用户查出来的ID查询他的课程</span>
+<span class="c1">// 3、按照当前课程ID查询他的分数</span>
+<span class="nx">$</span><span class="p">.</span><span class="nx">ajax</span><span class="p">({</span>
+    <span class="na">url</span><span class="p">:</span> <span class="dl">'</span><span class="s1">mock/user.json</span><span class="dl">'</span><span class="p">,</span>
+    <span class="nx">success</span><span class="p">(</span><span class="nx">data</span><span class="p">)</span> <span class="p">{</span> <span class="c1">// 1、查出当前用户信息</span>
+        <span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="dl">"</span><span class="s2">查询用户: </span><span class="dl">"</span><span class="p">,</span> <span class="nx">data</span><span class="p">)</span>
+        <span class="nx">$</span><span class="p">.</span><span class="nx">ajax</span><span class="p">({</span>
+            <span class="na">url</span><span class="p">:</span> <span class="s2">`mock/user_course_</span><span class="p">${</span><span class="nx">data</span><span class="p">.</span><span class="nx">id</span><span class="p">}</span><span class="s2">.json`</span><span class="p">,</span>
+            <span class="nx">success</span><span class="p">(</span><span class="nx">data</span><span class="p">)</span> <span class="p">{</span> <span class="c1">// 2、按照当前用户查出来的ID查询他的课程</span>
+                <span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="dl">"</span><span class="s2">查询到课程: </span><span class="dl">"</span><span class="p">,</span> <span class="nx">data</span><span class="p">)</span>
+                <span class="nx">$</span><span class="p">.</span><span class="nx">ajax</span><span class="p">({</span>
+                    <span class="na">url</span><span class="p">:</span> <span class="s2">`mock/course_score_</span><span class="p">${</span><span class="nx">data</span><span class="p">.</span><span class="nx">id</span><span class="p">}</span><span class="s2">.json`</span><span class="p">,</span>
+                    <span class="nx">success</span><span class="p">(</span><span class="nx">data</span><span class="p">)</span> <span class="p">{</span> <span class="c1">// 3、按照当前课程ID查询他的分数</span>
+                        <span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="dl">"</span><span class="s2">查询到分数: </span><span class="dl">"</span><span class="p">,</span> <span class="nx">data</span><span class="p">)</span>
+                    <span class="p">},</span>
+                    <span class="nx">error</span><span class="p">(</span><span class="nx">error</span><span class="p">)</span> <span class="p">{</span>
+                        <span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="dl">"</span><span class="s2">出现错误: </span><span class="dl">"</span><span class="p">,</span> <span class="nx">error</span><span class="p">)</span>
+                    <span class="p">}</span>
+                <span class="p">})</span>
+            <span class="p">},</span>
+            <span class="nx">error</span><span class="p">(</span><span class="nx">error</span><span class="p">)</span> <span class="p">{</span>
+                <span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="dl">"</span><span class="s2">出现错误: </span><span class="dl">"</span><span class="p">,</span> <span class="nx">error</span><span class="p">)</span>
+            <span class="p">}</span>
+        <span class="p">})</span>
+    <span class="p">},</span>
+    <span class="nx">error</span><span class="p">(</span><span class="nx">error</span><span class="p">)</span> <span class="p">{</span>
+        <span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="dl">"</span><span class="s2">出现错误: </span><span class="dl">"</span><span class="p">,</span> <span class="nx">error</span><span class="p">)</span>
+    <span class="p">}</span>
+<span class="p">})</span>
+</code></pre></div></div>
+
+<h3 id="1promise语法">1）Promise语法</h3>
+
+<div class="language-javascript highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kd">let</span> <span class="nx">p</span> <span class="o">=</span> <span class="k">new</span> <span class="nb">Promise</span><span class="p">((</span><span class="nx">resolve</span><span class="p">,</span> <span class="nx">reject</span><span class="p">)</span> <span class="o">=&gt;</span> <span class="p">{</span> <span class="c1">// resolve和reject是两个函数</span>
+    <span class="k">if</span> <span class="p">(</span><span class="kc">true</span><span class="p">)</span> <span class="p">{</span>
+        <span class="nx">resolve</span><span class="p">(</span><span class="nx">data</span><span class="p">)</span>
+    <span class="p">}</span> <span class="k">else</span> <span class="p">{</span>
+        <span class="nx">reject</span><span class="p">(</span><span class="nx">err</span><span class="p">);</span>
+    <span class="p">}</span>
+<span class="p">});</span>
+</code></pre></div></div>
+
+<h3 id="2处理异步结果">2）处理异步结果</h3>
+
+<div class="language-javascript highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nx">p</span><span class="p">.</span><span class="nx">then</span><span class="p">((</span><span class="nx">obj</span><span class="p">)</span> <span class="o">=&gt;</span> <span class="p">{</span>
+    <span class="k">return</span> <span class="k">new</span> <span class="nb">Promise</span><span class="p">((</span><span class="nx">resolve</span><span class="p">,</span> <span class="nx">reject</span><span class="p">)</span> <span class="o">=&gt;</span> <span class="p">{</span>
+      <span class="k">if</span> <span class="p">(</span><span class="kc">true</span><span class="p">)</span> <span class="p">{</span>
+        <span class="nx">resolve</span><span class="p">(</span><span class="nx">data</span><span class="p">)</span>
+    <span class="p">}</span> <span class="k">else</span> <span class="p">{</span>
+        <span class="nx">reject</span><span class="p">(</span><span class="nx">err</span><span class="p">);</span>
+    <span class="p">}</span>
+  <span class="p">})</span>
+<span class="p">}).</span><span class="k">catch</span><span class="p">((</span><span class="nx">err</span><span class="p">)</span> <span class="o">=&gt;</span> <span class="p">{</span> <span class="c1">// 失败</span>
+    <span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="dl">"</span><span class="s2">出现错误: </span><span class="dl">"</span><span class="p">,</span> <span class="nx">err</span><span class="p">)</span>
+<span class="p">})</span>
+</code></pre></div></div>
+
+<h3 id="3promise改造以前嵌套方式">3）Promise改造以前嵌套方式</h3>
+
+<div class="language-javascript highlighter-rouge"><div class="highlight"><pre class="highlight"><code>  <span class="c1">// Promise</span>
+  <span class="c1">// 1. Promise可以封装异步操作</span>
+  <span class="kd">let</span> <span class="nx">p</span> <span class="o">=</span> <span class="k">new</span> <span class="nb">Promise</span><span class="p">((</span><span class="nx">resolve</span><span class="p">,</span> <span class="nx">reject</span><span class="p">)</span> <span class="o">=&gt;</span> <span class="p">{</span> <span class="c1">// resolve和reject是两个函数</span>
+    <span class="c1">// 1. 异步操作</span>
+    <span class="nx">$</span><span class="p">.</span><span class="nx">ajax</span><span class="p">({</span>
+      <span class="na">url</span><span class="p">:</span> <span class="dl">'</span><span class="s1">mock/user.json</span><span class="dl">'</span><span class="p">,</span>
+      <span class="na">success</span><span class="p">:</span><span class="kd">function</span> <span class="p">(</span><span class="nx">data</span><span class="p">)</span> <span class="p">{</span> <span class="c1">// 1、查出当前用户信息</span>
+        <span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="dl">"</span><span class="s2">查询用户: </span><span class="dl">"</span><span class="p">,</span> <span class="nx">data</span><span class="p">)</span>
+        <span class="nx">resolve</span><span class="p">(</span><span class="nx">data</span><span class="p">);</span>
+      <span class="p">},</span>
+      <span class="na">error</span><span class="p">:</span><span class="kd">function</span> <span class="p">(</span><span class="nx">err</span><span class="p">)</span> <span class="p">{</span>
+        <span class="nx">reject</span><span class="p">(</span><span class="nx">err</span><span class="p">);</span>
+      <span class="p">}</span>
+    <span class="p">})</span>
+  <span class="p">});</span>
+  <span class="nx">p</span><span class="p">.</span><span class="nx">then</span><span class="p">((</span><span class="nx">obj</span><span class="p">)</span> <span class="o">=&gt;</span> <span class="p">{</span> <span class="c1">// 成功</span>
+    <span class="k">return</span> <span class="k">new</span> <span class="nb">Promise</span><span class="p">((</span><span class="nx">resolve</span><span class="p">,</span> <span class="nx">reject</span><span class="p">)</span> <span class="o">=&gt;</span> <span class="p">{</span>
+      <span class="nx">$</span><span class="p">.</span><span class="nx">ajax</span><span class="p">({</span>
+        <span class="na">url</span><span class="p">:</span> <span class="s2">`mock/user_course_</span><span class="p">${</span><span class="nx">obj</span><span class="p">.</span><span class="nx">id</span><span class="p">}</span><span class="s2">.json`</span><span class="p">,</span>
+        <span class="na">success</span><span class="p">:</span><span class="kd">function</span> <span class="p">(</span><span class="nx">data</span><span class="p">)</span> <span class="p">{</span> <span class="c1">// 1、查出当前用户信息</span>
+          <span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="dl">"</span><span class="s2">查询到课程: </span><span class="dl">"</span><span class="p">,</span> <span class="nx">data</span><span class="p">)</span>
+          <span class="nx">resolve</span><span class="p">(</span><span class="nx">data</span><span class="p">);</span>
+        <span class="p">},</span>
+        <span class="na">error</span><span class="p">:</span><span class="kd">function</span> <span class="p">(</span><span class="nx">err</span><span class="p">)</span> <span class="p">{</span>
+          <span class="nx">reject</span><span class="p">(</span><span class="nx">err</span><span class="p">);</span>
+        <span class="p">}</span>
+      <span class="p">})</span>
+    <span class="p">})</span>
+  <span class="p">}).</span><span class="nx">then</span><span class="p">((</span><span class="nx">data</span><span class="p">)</span> <span class="o">=&gt;</span> <span class="p">{</span> <span class="c1">// 成功</span>
+    <span class="nx">$</span><span class="p">.</span><span class="nx">ajax</span><span class="p">({</span>
+      <span class="na">url</span><span class="p">:</span> <span class="s2">`mock/course_score_</span><span class="p">${</span><span class="nx">data</span><span class="p">.</span><span class="nx">id</span><span class="p">}</span><span class="s2">.json`</span><span class="p">,</span>
+      <span class="na">success</span><span class="p">:</span><span class="kd">function</span> <span class="p">(</span><span class="nx">data</span><span class="p">)</span> <span class="p">{</span> <span class="c1">// 1、查出当前用户信息</span>
+        <span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="dl">"</span><span class="s2">查询到分数: </span><span class="dl">"</span><span class="p">,</span> <span class="nx">data</span><span class="p">)</span>
+      <span class="p">},</span>
+      <span class="na">error</span><span class="p">:</span><span class="kd">function</span> <span class="p">(</span><span class="nx">err</span><span class="p">)</span> <span class="p">{</span>
+        <span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="dl">"</span><span class="s2">出现错误: </span><span class="dl">"</span><span class="p">,</span> <span class="nx">err</span><span class="p">)</span>
+      <span class="p">}</span>
+    <span class="p">})</span>
+
+  <span class="p">}).</span><span class="k">catch</span><span class="p">((</span><span class="nx">err</span><span class="p">)</span> <span class="o">=&gt;</span> <span class="p">{</span> <span class="c1">// 失败</span>
+    <span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="dl">"</span><span class="s2">出现错误: </span><span class="dl">"</span><span class="p">,</span> <span class="nx">err</span><span class="p">)</span>
+  <span class="p">})</span>
+</code></pre></div></div>
+
+<h3 id="4优化处理">4）优化处理</h3>
+
+<div class="language-javascript highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kd">function</span> <span class="kd">get</span><span class="p">(</span><span class="nx">url</span><span class="p">,</span> <span class="nx">data</span><span class="p">)</span> <span class="p">{</span>
+     <span class="k">return</span> <span class="k">new</span> <span class="nb">Promise</span><span class="p">((</span><span class="nx">resolve</span><span class="p">,</span> <span class="nx">reject</span><span class="p">)</span> <span class="o">=&gt;</span> <span class="p">{</span>
+        <span class="nx">$</span><span class="p">.</span><span class="nx">ajax</span><span class="p">({</span>
+          <span class="na">url</span><span class="p">:</span> <span class="nx">url</span><span class="p">,</span>
+          <span class="na">data</span><span class="p">:</span> <span class="nx">data</span><span class="p">,</span>
+          <span class="na">success</span><span class="p">:</span> <span class="kd">function</span> <span class="p">(</span><span class="nx">data</span><span class="p">)</span> <span class="p">{</span>
+            <span class="nx">resolve</span><span class="p">(</span><span class="nx">data</span><span class="p">);</span>
+
+          <span class="p">},</span>
+          <span class="na">error</span><span class="p">:</span> <span class="kd">function</span> <span class="p">(</span><span class="nx">err</span><span class="p">)</span> <span class="p">{</span>
+            <span class="nx">reject</span><span class="p">(</span><span class="nx">err</span><span class="p">);</span>
+          <span class="p">}</span>
+        <span class="p">});</span>
+     <span class="p">});</span>
+  <span class="p">}</span>
+
+<span class="kd">get</span><span class="p">(</span><span class="s2">`mock/user.json`</span><span class="p">)</span>
+    <span class="p">.</span><span class="nx">then</span><span class="p">((</span><span class="nx">data</span><span class="p">)</span> <span class="o">=&gt;</span> <span class="p">{</span>
+    <span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="dl">"</span><span class="s2">用户查询成功: </span><span class="dl">"</span><span class="p">,</span> <span class="nx">data</span><span class="p">)</span>
+    <span class="k">return</span> <span class="kd">get</span><span class="p">(</span><span class="s2">`mock/user_course_</span><span class="p">${</span><span class="nx">data</span><span class="p">.</span><span class="nx">id</span><span class="p">}</span><span class="s2">.json`</span><span class="p">)</span>
+<span class="p">}).</span><span class="nx">then</span><span class="p">((</span><span class="nx">data</span><span class="p">)</span> <span class="o">=&gt;</span> <span class="p">{</span>
+    <span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="dl">"</span><span class="s2">课程查询成功: </span><span class="dl">"</span><span class="p">,</span> <span class="nx">data</span><span class="p">)</span>
+    <span class="k">return</span> <span class="kd">get</span><span class="p">(</span><span class="s2">`mock/course_score_</span><span class="p">${</span><span class="nx">data</span><span class="p">.</span><span class="nx">id</span><span class="p">}</span><span class="s2">.json`</span><span class="p">)</span>
+<span class="p">}).</span><span class="nx">then</span><span class="p">((</span><span class="nx">data</span><span class="p">)</span> <span class="o">=&gt;</span> <span class="p">{</span>
+    <span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="dl">"</span><span class="s2">课程成绩查询成功: </span><span class="dl">"</span><span class="p">,</span> <span class="nx">data</span><span class="p">)</span>
+<span class="p">}).</span><span class="k">catch</span><span class="p">((</span><span class="nx">err</span><span class="p">)</span> <span class="o">=&gt;</span> <span class="p">{</span>
+    <span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="dl">"</span><span class="s2">出现错误: </span><span class="dl">"</span><span class="p">,</span> <span class="nx">err</span><span class="p">)</span>
+<span class="p">})</span>
+</code></pre></div></div>
+
+<h2 id="9-模块化">9. 模块化</h2>
+
+<h3 id="1什么是模块化">1）什么是模块化</h3>
+
+<p>模块化就是把代码进行拆分，方便重复利用。类似java中的导包:要使用一个包，必须先导包。而 JS中没有包的概念，换来的是模块。</p>
+
+<p>模块功能主要由两个命令构成:<code class="language-plaintext highlighter-rouge">export</code>和<code class="language-plaintext highlighter-rouge">import</code>。</p>
+
+<ul>
+  <li><code class="language-plaintext highlighter-rouge">export</code>命令用于规定模块的对外接口。</li>
+  <li><code class="language-plaintext highlighter-rouge">import</code>命令用于导入其他模块提供的功能。</li>
+</ul>
+
+<h3 id="2export">2）export</h3>
+
+<div class="language-javascript highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kd">const</span> <span class="nx">util</span> <span class="o">=</span> <span class="p">{</span>
+    <span class="nx">sum</span><span class="p">(</span><span class="nx">a</span><span class="p">,</span> <span class="nx">b</span><span class="p">)</span> <span class="p">{</span>
+        <span class="k">return</span> <span class="nx">a</span> <span class="o">+</span> <span class="nx">b</span><span class="p">;</span>
+    <span class="p">}</span>
+<span class="p">}</span>
+
+<span class="k">export</span> <span class="p">{</span><span class="nx">util</span><span class="p">};</span> <span class="c1">//批量导出</span>
+
+</code></pre></div></div>
+
+<div class="language-javascript highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="c1">// 起名字 导出导入需要同名</span>
+<span class="k">export</span> <span class="kd">const</span> <span class="nx">util</span> <span class="o">=</span> <span class="p">{</span>
+    <span class="nx">sum</span><span class="p">(</span><span class="nx">a</span><span class="p">,</span> <span class="nx">b</span><span class="p">)</span> <span class="p">{</span>
+        <span class="k">return</span> <span class="nx">a</span> <span class="o">+</span> <span class="nx">b</span><span class="p">;</span>
+    <span class="p">}</span>
+<span class="p">}</span>
+</code></pre></div></div>
+
+<div class="language-javascript highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="c1">// 不起名字 导出导入不需要同名</span>
+<span class="k">export</span> <span class="k">default</span> <span class="p">{</span>
+    <span class="nx">sum</span><span class="p">(</span><span class="nx">a</span><span class="p">,</span> <span class="nx">b</span><span class="p">)</span> <span class="p">{</span>
+        <span class="k">return</span> <span class="nx">a</span> <span class="o">+</span> <span class="nx">b</span><span class="p">;</span>
+    <span class="p">}</span>
+<span class="p">}</span>
+<span class="c1">// export 不仅可以导出对象，一切JS变量都可以导出；比如：基本类型变量、函数、数组、对象。</span>
+</code></pre></div></div>
+
+<div class="language-javascript highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kd">var</span> <span class="nx">name</span> <span class="o">=</span> <span class="dl">'</span><span class="s1">John</span><span class="dl">'</span><span class="p">;</span>
+<span class="kd">var</span> <span class="nx">age</span> <span class="o">=</span> <span class="mi">30</span><span class="p">;</span>
+<span class="kd">function</span> <span class="nx">add</span><span class="p">(</span><span class="nx">a</span><span class="p">,</span> <span class="nx">b</span><span class="p">)</span> <span class="p">{</span>
+    <span class="k">return</span> <span class="nx">a</span> <span class="o">+</span> <span class="nx">b</span><span class="p">;</span>
+<span class="p">}</span>
+
+<span class="k">export</span> <span class="p">{</span><span class="nx">name</span><span class="p">,</span> <span class="nx">age</span><span class="p">,</span> <span class="nx">add</span><span class="p">}</span>
+</code></pre></div></div>
+
+<h3 id="3import">3）import</h3>
+
+<div class="language-javascript highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="k">import</span> <span class="nx">util</span> <span class="k">from</span> <span class="dl">"</span><span class="s2">./hello</span><span class="dl">"</span>
+<span class="k">import</span> <span class="p">{</span><span class="nx">name</span><span class="p">,</span> <span class="nx">age</span><span class="p">,</span> <span class="nx">add</span><span class="p">}</span> <span class="k">from</span> <span class="dl">"</span><span class="s2">./user</span><span class="dl">"</span>
+
+<span class="nx">util</span><span class="p">.</span><span class="nx">sum</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">)</span>
+<span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="nx">name</span><span class="p">)</span>
+<span class="nx">add</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">);</span>
+</code></pre></div></div>]]></content><author><name>slience_me</name></author><category term="前端" /><summary type="html"><![CDATA[ES6新特性合集]]></summary></entry><entry><title type="html">Linux｜服务器系统重装&amp;amp;SSH&amp;amp;xrdp&amp;amp;CUDA</title><link href="https://slienceme.cn/pages/slience-me/slienceme.github.io/2024/10/24/%E6%9C%8D%E5%8A%A1%E5%99%A8%E7%B3%BB%E7%BB%9F%E9%87%8D%E8%A3%85&SSH&xrdp&cuda/" rel="alternate" type="text/html" title="Linux｜服务器系统重装&amp;amp;SSH&amp;amp;xrdp&amp;amp;CUDA" /><published>2024-10-24T00:00:00+08:00</published><updated>2024-10-24T00:00:00+08:00</updated><id>https://slienceme.cn/pages/slience-me/slienceme.github.io/2024/10/24/%E6%9C%8D%E5%8A%A1%E5%99%A8%E7%B3%BB%E7%BB%9F%E9%87%8D%E8%A3%85&amp;SSH&amp;xrdp&amp;cuda</id><content type="html" xml:base="https://slienceme.cn/pages/slience-me/slienceme.github.io/2024/10/24/%E6%9C%8D%E5%8A%A1%E5%99%A8%E7%B3%BB%E7%BB%9F%E9%87%8D%E8%A3%85&amp;SSH&amp;xrdp&amp;cuda/"><![CDATA[<p><img src="https://raw.githubusercontent.com/slience-me/picGo/master/images/logo_slienceme3.jpeg" alt="img" /></p>
+
+<p>本文作者： <a href="https://slienceme.cn/">slience_me</a></p>
 
 <hr />
+
+<h1 id="ubuntu系统重装操作合集">Ubuntu系统重装操作合集</h1>
 
 <h2 id="11-系统安装">1.1 系统安装：</h2>
 
@@ -370,7 +907,7 @@ wget https://developer.download.nvidia.com/compute/cuda/12.6.2/local_installers/
   </ol>
 
   <p>通过这些步骤，你应该能够在 Ubuntu 上顺利安装 CUDA 工具包，并开始使用 GPU 加速你的计算任务。</p>
-</blockquote>]]></content><author><name>slience_me</name></author><category term="Linux" /><summary type="html"><![CDATA[服务器系统重装&SSH,xrdp,CUDA]]></summary></entry><entry><title type="html">Linux｜ubuntu多版本cuda如何指定cuda版本</title><link href="https://slienceme.cn/pages/slience-me/slienceme.github.io/2024/06/21/ubuntu%E5%A4%9A%E7%89%88%E6%9C%ACcuda%E5%A6%82%E4%BD%95%E6%8C%87%E5%AE%9Acuda%E7%89%88%E6%9C%AC/" rel="alternate" type="text/html" title="Linux｜ubuntu多版本cuda如何指定cuda版本" /><published>2024-06-21T00:00:00+08:00</published><updated>2024-06-21T00:00:00+08:00</updated><id>https://slienceme.cn/pages/slience-me/slienceme.github.io/2024/06/21/ubuntu%E5%A4%9A%E7%89%88%E6%9C%ACcuda%E5%A6%82%E4%BD%95%E6%8C%87%E5%AE%9Acuda%E7%89%88%E6%9C%AC</id><content type="html" xml:base="https://slienceme.cn/pages/slience-me/slienceme.github.io/2024/06/21/ubuntu%E5%A4%9A%E7%89%88%E6%9C%ACcuda%E5%A6%82%E4%BD%95%E6%8C%87%E5%AE%9Acuda%E7%89%88%E6%9C%AC/"><![CDATA[<p><img src="https://i-blog.csdnimg.cn/blog_migrate/e9a9ce64f17b96904b03f129f0317e3d.png" alt="在这里插入图片描述" /></p>
+</blockquote>]]></content><author><name>slience_me</name></author><category term="Linux" /><summary type="html"><![CDATA[服务器系统重装&SSH,xrdp,CUDA]]></summary></entry><entry><title type="html">Linux｜ubuntu多版本cuda如何指定cuda版本</title><link href="https://slienceme.cn/pages/slience-me/slienceme.github.io/2024/06/21/ubuntu%E5%A4%9A%E7%89%88%E6%9C%ACcuda%E5%A6%82%E4%BD%95%E6%8C%87%E5%AE%9Acuda%E7%89%88%E6%9C%AC/" rel="alternate" type="text/html" title="Linux｜ubuntu多版本cuda如何指定cuda版本" /><published>2024-06-21T00:00:00+08:00</published><updated>2024-06-21T00:00:00+08:00</updated><id>https://slienceme.cn/pages/slience-me/slienceme.github.io/2024/06/21/ubuntu%E5%A4%9A%E7%89%88%E6%9C%ACcuda%E5%A6%82%E4%BD%95%E6%8C%87%E5%AE%9Acuda%E7%89%88%E6%9C%AC</id><content type="html" xml:base="https://slienceme.cn/pages/slience-me/slienceme.github.io/2024/06/21/ubuntu%E5%A4%9A%E7%89%88%E6%9C%ACcuda%E5%A6%82%E4%BD%95%E6%8C%87%E5%AE%9Acuda%E7%89%88%E6%9C%AC/"><![CDATA[<p><img src="https://raw.githubusercontent.com/slience-me/picGo/master/images/logo_slienceme3.jpeg" alt="img" /></p>
 
 <p>本文作者： <a href="https://slienceme.cn/">slience_me</a></p>
 
@@ -1066,6 +1603,7 @@ One-Hot Encoding 则是将单词编码为稀疏的二进制向量，以便计算
 <p>本文作者： <a href="https://slienceme.cn/">slience_me</a></p>
 
 <hr />
+
 <h1 id="绝对位置编码与相对位置编码区别">绝对位置编码与相对位置编码区别</h1>
 
 <p>绝对位置编码（Absolute Positional Encoding）和相对位置编码（Relative Positional Encoding）是用于在Transformer等模型中处理序列数据时引入位置信息的两种不同方法。</p>
@@ -1288,7 +1826,7 @@ npm_mirror: https://npmmirror.com/mirrors/npm/
   <li>或者设置直接上传</li>
 </ol>
 
-<p><img src="https://raw.githubusercontent.com/slience-me/picGo/master/images/image-20240120184135560.png" alt="image-20240120184135560" /></p>]]></content><author><name>slience_me</name></author><category term="教程" /><summary type="html"><![CDATA[GitHub图床&Typora&PicGo相关配置]]></summary></entry><entry><title type="html">论文笔记｜关于去除信号中的直流分量效果演示</title><link href="https://slienceme.cn/pages/slience-me/slienceme.github.io/2024/01/20/%E5%85%B3%E4%BA%8E%E5%8E%BB%E9%99%A4%E4%BF%A1%E5%8F%B7%E4%B8%AD%E7%9A%84%E7%9B%B4%E6%B5%81%E5%88%86%E9%87%8F/" rel="alternate" type="text/html" title="论文笔记｜关于去除信号中的直流分量效果演示" /><published>2024-01-20T00:00:00+08:00</published><updated>2024-01-20T00:00:00+08:00</updated><id>https://slienceme.cn/pages/slience-me/slienceme.github.io/2024/01/20/%E5%85%B3%E4%BA%8E%E5%8E%BB%E9%99%A4%E4%BF%A1%E5%8F%B7%E4%B8%AD%E7%9A%84%E7%9B%B4%E6%B5%81%E5%88%86%E9%87%8F</id><content type="html" xml:base="https://slienceme.cn/pages/slience-me/slienceme.github.io/2024/01/20/%E5%85%B3%E4%BA%8E%E5%8E%BB%E9%99%A4%E4%BF%A1%E5%8F%B7%E4%B8%AD%E7%9A%84%E7%9B%B4%E6%B5%81%E5%88%86%E9%87%8F/"><![CDATA[<p><img src="https://img-blog.csdnimg.cn/img_convert/deb6477b5f7eff71beed3a030757805a.jpeg" alt="img" /></p>
+<p><img src="https://raw.githubusercontent.com/slience-me/picGo/master/images/image-20240120184135560.png" alt="image-20240120184135560" /></p>]]></content><author><name>slience_me</name></author><category term="教程" /><summary type="html"><![CDATA[GitHub图床&Typora&PicGo相关配置]]></summary></entry><entry><title type="html">论文笔记｜关于去除信号中的直流分量效果演示</title><link href="https://slienceme.cn/pages/slience-me/slienceme.github.io/2024/01/20/%E5%85%B3%E4%BA%8E%E5%8E%BB%E9%99%A4%E4%BF%A1%E5%8F%B7%E4%B8%AD%E7%9A%84%E7%9B%B4%E6%B5%81%E5%88%86%E9%87%8F/" rel="alternate" type="text/html" title="论文笔记｜关于去除信号中的直流分量效果演示" /><published>2024-01-20T00:00:00+08:00</published><updated>2024-01-20T00:00:00+08:00</updated><id>https://slienceme.cn/pages/slience-me/slienceme.github.io/2024/01/20/%E5%85%B3%E4%BA%8E%E5%8E%BB%E9%99%A4%E4%BF%A1%E5%8F%B7%E4%B8%AD%E7%9A%84%E7%9B%B4%E6%B5%81%E5%88%86%E9%87%8F</id><content type="html" xml:base="https://slienceme.cn/pages/slience-me/slienceme.github.io/2024/01/20/%E5%85%B3%E4%BA%8E%E5%8E%BB%E9%99%A4%E4%BF%A1%E5%8F%B7%E4%B8%AD%E7%9A%84%E7%9B%B4%E6%B5%81%E5%88%86%E9%87%8F/"><![CDATA[<p><img src="https://raw.githubusercontent.com/slience-me/picGo/master/images/logo_slienceme3.jpeg" alt="img" /></p>
 
 <p>本文作者： <a href="https://slienceme.cn/">slience_me</a></p>
 
@@ -1416,330 +1954,4 @@ npm_mirror: https://npmmirror.com/mirrors/npm/
 
 <span class="n">plt</span><span class="p">.</span><span class="n">tight_layout</span><span class="p">()</span>
 <span class="n">plt</span><span class="p">.</span><span class="n">show</span><span class="p">()</span>
-</code></pre></div></div>]]></content><author><name>slience_me</name></author><category term="论文笔记" /><summary type="html"><![CDATA[关于去除信号中的直流分量效果演示（零频率分量）]]></summary></entry><entry><title type="html">论文笔记｜【论文笔记合集】TimesNet之FFT详解</title><link href="https://slienceme.cn/pages/slience-me/slienceme.github.io/2024/01/19/TimesNet%E4%B9%8BFFT%E8%AF%A6%E8%A7%A3/" rel="alternate" type="text/html" title="论文笔记｜【论文笔记合集】TimesNet之FFT详解" /><published>2024-01-19T00:00:00+08:00</published><updated>2024-01-19T00:00:00+08:00</updated><id>https://slienceme.cn/pages/slience-me/slienceme.github.io/2024/01/19/TimesNet%E4%B9%8BFFT%E8%AF%A6%E8%A7%A3</id><content type="html" xml:base="https://slienceme.cn/pages/slience-me/slienceme.github.io/2024/01/19/TimesNet%E4%B9%8BFFT%E8%AF%A6%E8%A7%A3/"><![CDATA[<p><img src="https://raw.githubusercontent.com/slience-me/picGo/master/images/logo_slienceme3.jpeg" alt="img" /></p>
-
-<p>本文作者： <a href="https://slienceme.cn/">slience_me</a></p>
-
-<hr />
-
-<h1 id="timesnet之fft详解">TimesNet之FFT详解</h1>
-
-<p><img src="https://raw.githubusercontent.com/slience-me/picGo/master/images/image-20240119162800528.png" alt="image-20240119162800528" /></p>
-
-<h2 id="1-源代码">1. 源代码</h2>
-
-<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="k">def</span> <span class="nf">FFT_for_Period</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="n">k</span><span class="o">=</span><span class="mi">2</span><span class="p">):</span>
-    <span class="n">xf</span> <span class="o">=</span> <span class="n">torch</span><span class="p">.</span><span class="n">fft</span><span class="p">.</span><span class="n">rfft</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="n">dim</span><span class="o">=</span><span class="mi">1</span><span class="p">)</span>
-    <span class="n">frequency_list</span> <span class="o">=</span> <span class="nb">abs</span><span class="p">(</span><span class="n">xf</span><span class="p">).</span><span class="n">mean</span><span class="p">(</span><span class="mi">0</span><span class="p">).</span><span class="n">mean</span><span class="p">(</span><span class="o">-</span><span class="mi">1</span><span class="p">)</span>
-    <span class="n">frequency_list</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span> <span class="o">=</span> <span class="mi">0</span>
-    <span class="n">_</span><span class="p">,</span> <span class="n">top_list</span> <span class="o">=</span> <span class="n">torch</span><span class="p">.</span><span class="n">topk</span><span class="p">(</span><span class="n">frequency_list</span><span class="p">,</span> <span class="n">k</span><span class="p">)</span>
-    <span class="n">top_list</span> <span class="o">=</span> <span class="n">top_list</span><span class="p">.</span><span class="n">detach</span><span class="p">().</span><span class="n">cpu</span><span class="p">().</span><span class="n">numpy</span><span class="p">()</span>
-    <span class="n">period</span> <span class="o">=</span> <span class="n">x</span><span class="p">.</span><span class="n">shape</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span> <span class="o">//</span> <span class="n">top_list</span>
-    <span class="k">return</span> <span class="n">period</span><span class="p">,</span> <span class="nb">abs</span><span class="p">(</span><span class="n">xf</span><span class="p">).</span><span class="n">mean</span><span class="p">(</span><span class="o">-</span><span class="mi">1</span><span class="p">)[:,</span> <span class="n">top_list</span><span class="p">]</span>
-</code></pre></div></div>
-
-<h3 id="11-torchfftrfftx-dim1">1.1 torch.fft.rfft(x, dim=1)</h3>
-
-<ul>
-  <li><strong>torch.fft.rfft()</strong></li>
-</ul>
-
-<p><code class="language-plaintext highlighter-rouge">torch.fft.rfft()</code> 是 PyTorch 中用于执行实数输入的快速傅里叶变换（FFT）的函数。该函数主要用于将实数输入转换为复数频谱。下面是一个详细解释和示例：</p>
-
-<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kn">import</span> <span class="nn">torch</span>
-
-<span class="c1"># 创建一个实数输入的张量
-</span><span class="n">input_tensor</span> <span class="o">=</span> <span class="n">torch</span><span class="p">.</span><span class="n">tensor</span><span class="p">([</span><span class="mf">1.0</span><span class="p">,</span> <span class="mf">2.0</span><span class="p">,</span> <span class="mf">3.0</span><span class="p">,</span> <span class="mf">4.0</span><span class="p">])</span>
-
-<span class="c1"># 使用 torch.fft.rfft() 进行实数输入的快速傅里叶变换
-</span><span class="n">complex_spectrum</span> <span class="o">=</span> <span class="n">torch</span><span class="p">.</span><span class="n">fft</span><span class="p">.</span><span class="n">rfft</span><span class="p">(</span><span class="n">input_tensor</span><span class="p">)</span>
-
-<span class="c1"># 打印变换后的复数频谱
-</span><span class="k">print</span><span class="p">(</span><span class="s">"Complex Spectrum:"</span><span class="p">,</span> <span class="n">complex_spectrum</span><span class="p">)</span>
-
-<span class="c1"># 获取频谱的实部和虚部
-</span><span class="n">real_part</span> <span class="o">=</span> <span class="n">complex_spectrum</span><span class="p">.</span><span class="n">real</span>
-<span class="n">imaginary_part</span> <span class="o">=</span> <span class="n">complex_spectrum</span><span class="p">.</span><span class="n">imag</span>
-
-<span class="c1"># 打印实部和虚部
-</span><span class="k">print</span><span class="p">(</span><span class="s">"Real Part:"</span><span class="p">,</span> <span class="n">real_part</span><span class="p">)</span>
-<span class="k">print</span><span class="p">(</span><span class="s">"Imaginary Part:"</span><span class="p">,</span> <span class="n">imaginary_part</span><span class="p">)</span>
-</code></pre></div></div>
-
-<p><strong>解释：</strong></p>
-
-<ol>
-  <li>首先，我们创建一个包含实数值的 PyTorch 张量 <code class="language-plaintext highlighter-rouge">input_tensor</code>。</li>
-  <li>然后，我们使用 <code class="language-plaintext highlighter-rouge">torch.fft.rfft()</code> 函数对该实数输入进行快速傅里叶变换，得到一个复数频谱 <code class="language-plaintext highlighter-rouge">complex_spectrum</code>。</li>
-  <li>最后，我们打印复数频谱，并将其实部和虚部分别打印出来。</li>
-</ol>
-
-<p>在这个例子中，<code class="language-plaintext highlighter-rouge">torch.fft.rfft()</code> 的输出是一个包含复数的张量，其中实部包含输入信号的正半轴频谱，而虚部则包含负半轴频谱。这种变换通常用于分析信号在频域中的特性。</p>
-
-<p><strong>输出为：</strong></p>
-
-<blockquote>
-  <p>Complex Spectrum: tensor([10.+0.j, -2.+2.j, -2.+0.j])
-Real Part: tensor([10., -2., -2.])
-Imaginary Part: tensor([0., 2., 0.])</p>
-</blockquote>
-
-<p><strong>为什么四个输入得到3个输出？</strong></p>
-
-<blockquote>
-  <p>在傅里叶变换中，由于对称性，实数序列的傅里叶变换结果是具有一定规律的。对于长度为 <code class="language-plaintext highlighter-rouge">n</code> 的实数序列，其傅里叶变换结果的长度是 <code class="language-plaintext highlighter-rouge">n/2 + 1</code>。这是因为复数的共轭对称性，导致一半的频谱是冗余的。</p>
-
-  <p>在你的例子中，输入张量的长度为4，因此傅里叶变换的输出长度是 <code class="language-plaintext highlighter-rouge">4/2 + 1 = 3</code>。</p>
-
-  <p>如果你对具体的计算感兴趣，可以考虑查看傅里叶变换的相关数学理论。总体来说，这种长度减半的规律是由于信号是实数序列，而复数频谱是共轭对称的性质造成的。</p>
-</blockquote>
-
-<p><strong>复数的共轭对称性</strong></p>
-
-<blockquote>
-  <p>复数的共轭对称性是指对于一个复数，它的共轭（conjugate）在复平面上关于实轴对称。对于复数 <code class="language-plaintext highlighter-rouge">a + bi</code>，其中 <code class="language-plaintext highlighter-rouge">a</code> 和 <code class="language-plaintext highlighter-rouge">b</code> 分别是实部和虚部，其共轭记为 <code class="language-plaintext highlighter-rouge">a - bi</code>。</p>
-
-  <p>更具体地说，如果有复数 <code class="language-plaintext highlighter-rouge">z = a + bi</code>，那么其共轭 <code class="language-plaintext highlighter-rouge">z*</code> 是 <code class="language-plaintext highlighter-rouge">a - bi</code>。这可以用下面的图示来表示：</p>
-
-  <div class="language-text highlighter-rouge"><div class="highlight"><pre class="highlight"><code> b |   .  * (a, b)
-     |   
-     |   
- 0 |------------------ a (实轴)
-     |   
-     | 
--b|   .  * (a, -b)  &lt;- 共轭对称
-</code></pre></div>  </div>
-
-  <p>在频谱分析的上下文中，共轭对称性体现在傅里叶变换的频谱中。如果一个信号是实数序列，在频谱中正频率和负频率部分是共轭对称的。具体来说，如果某个频率分量 <code class="language-plaintext highlighter-rouge">f</code> 存在于正频率部分，那么 <code class="language-plaintext highlighter-rouge">-f</code> 就存在于负频率部分，且它们的振幅和相位是共轭关系。</p>
-
-  <p>这种对称性使得在频谱中只需存储一半的信息，因为另一半可以通过共轭关系获得。这也是为什么在实数序列的傅里叶变换中，输出的长度是输入长度的一半加一。</p>
-</blockquote>
-
-<hr />
-
-<ul>
-  <li><strong>torch.fft.rfft(x, dim=1)</strong></li>
-</ul>
-
-<p><code class="language-plaintext highlighter-rouge">torch.fft.rfft(x, dim=1)</code> 是 PyTorch 中进行实数输入的一维快速傅里叶变换（FFT）的函数，其中 <code class="language-plaintext highlighter-rouge">dim=1</code> 指定了沿着哪个维度进行变换。</p>
-
-<p>首先，假设 <code class="language-plaintext highlighter-rouge">x</code> 是一个张量，其中包含实数序列。通常情况下，<code class="language-plaintext highlighter-rouge">x</code> 的最后一个维度（<code class="language-plaintext highlighter-rouge">dim=-1</code>）应该是实数序列的维度。例如， <code class="language-plaintext highlighter-rouge">x</code> 的形状是 <code class="language-plaintext highlighter-rouge">(batch_size, 序列长度, 通道数)</code>，那么 <code class="language-plaintext highlighter-rouge">dim=-1</code> 就是在序列长度的维度上进行傅里叶变换。</p>
-
-<p>现在，如果我们调用 <code class="language-plaintext highlighter-rouge">torch.fft.rfft(x, dim=1)</code>，它会在指定的维度上执行傅里叶变换。这就意味着对于输入张量 <code class="language-plaintext highlighter-rouge">x</code> 中的每个切片（沿着 <code class="language-plaintext highlighter-rouge">dim=1</code> 的方向），都会进行一维实数输入的快速傅里叶变换。</p>
-
-<p><strong>示例：</strong></p>
-
-<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kn">import</span> <span class="nn">torch</span>
-
-<span class="c1"># 假设 x 的形状为 (batch_size, sequence_length)
-</span><span class="n">x</span> <span class="o">=</span> <span class="n">torch</span><span class="p">.</span><span class="n">randn</span><span class="p">(</span><span class="mi">3</span><span class="p">,</span> <span class="mi">4</span><span class="p">,</span> <span class="mi">2</span><span class="p">)</span>
-
-<span class="c1"># 在序列长度的维度上进行实数输入的一维 FFT
-</span><span class="n">result</span> <span class="o">=</span> <span class="n">torch</span><span class="p">.</span><span class="n">fft</span><span class="p">.</span><span class="n">rfft</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="n">dim</span><span class="o">=</span><span class="mi">1</span><span class="p">)</span>
-
-<span class="c1"># 打印结果
-# (3, 4//2+1, 2)
-# (3, 3, 2)
-</span><span class="k">print</span><span class="p">(</span><span class="n">result</span><span class="p">)</span>
-<span class="k">print</span><span class="p">(</span><span class="n">result</span><span class="p">.</span><span class="n">shape</span><span class="p">)</span>
-</code></pre></div></div>
-
-<p>在这个示例中，<code class="language-plaintext highlighter-rouge">x</code> 是一个形状为 <code class="language-plaintext highlighter-rouge">(3, 4)</code> 的张量，其中 <code class="language-plaintext highlighter-rouge">dim=1</code> 表示在每个序列的长度维度上执行傅里叶变换。<code class="language-plaintext highlighter-rouge">result</code> 是变换后的结果。</p>
-
-<p>需要注意的是，<code class="language-plaintext highlighter-rouge">torch.fft.rfft</code> 返回的结果是复数频谱的张量。如果需要获取实部和虚部，可以使用 <code class="language-plaintext highlighter-rouge">.real</code> 和 <code class="language-plaintext highlighter-rouge">.imag</code> 属性。</p>
-
-<p><strong>输出结果为：</strong></p>
-
-<blockquote>
-  <p>tensor([[[-1.4285+0.0000j,  0.6463+0.0000j],
-               [-1.8562+1.6229j,  1.0616+0.0355j],
-               [-3.8019+0.0000j,  1.3853+0.0000j]],</p>
-
-  <p>​              [[-2.6533+0.0000j, -2.2790+0.0000j],
-​               [ 0.6657-0.6588j, -1.7569-1.6168j],
-​               [-0.3022+0.0000j, -1.0560+0.0000j]],</p>
-
-  <p>​              [[-3.9908+0.0000j,  1.0519+0.0000j],
-​               [-2.7840+0.2070j, -3.1494+0.0602j],
-​               [-0.4287+0.0000j, -0.7184+0.0000j]]])</p>
-
-  <p>torch.Size([3, 3, 2])</p>
-</blockquote>
-
-<h2 id="12-frequency_list--absxfmean0mean-1">1.2 frequency_list = abs(xf).mean(0).mean(-1)</h2>
-
-<p>这一行代码涉及到对傅里叶变换结果的处理，计算频谱的平均振幅。让我们逐步解释：</p>
-
-<ol>
-  <li><code class="language-plaintext highlighter-rouge">frequency_list = abs(xf).mean(0).mean(-1)</code>: 这一部分是对频谱进行处理：
-    <ul>
-      <li><code class="language-plaintext highlighter-rouge">abs(xf)</code>: 计算复数频谱的振幅，即取绝对值。</li>
-      <li><code class="language-plaintext highlighter-rouge">.mean(0)</code>: 沿着第一个维度（即 batch_size 维度）计算平均值，得到每个样本的平均振幅。</li>
-      <li><code class="language-plaintext highlighter-rouge">.mean(-1)</code>: 沿着最后一个维度（即频率/通道/特征维度）计算平均值，得到每个样本、每个频率的平均振幅。</li>
-    </ul>
-  </li>
-</ol>
-
-<p>最终，<code class="language-plaintext highlighter-rouge">frequency_list</code> 包含了每个频率的平均振幅。这样的处理可以用于分析信号在频域上的能量分布，因为平均振幅反映了信号中各个频率成分的相对贡献。</p>
-
-<p>举例来说，如果 <code class="language-plaintext highlighter-rouge">frequency_list</code> 的第 i 个元素表示第 i 个频率的平均振幅，那么可以通过分析这个列表来了解信号中哪些频率成分具有较大的能量。</p>
-
-<p><strong>这样的好处是什么，为什么需要求frequency_list ？</strong></p>
-
-<blockquote>
-  <ol>
-    <li>
-      <p><strong>频域分析：</strong> 平均振幅提供了信号在频域上的分布信息。通过分析频率谱，你可以了解信号中各个频率成分的相对贡献。这对于理解信号的频率特征、检测特定频率的成分以及识别周期性模式都很有用。</p>
-    </li>
-    <li>
-      <p><strong>能量分布：</strong> 平均振幅可以视为信号在不同频率上的能量分布。这对于识别信号中的主要频率、找到频域上的能量集中点以及确定信号的频率特征非常有帮助。</p>
-    </li>
-    <li>
-      <p><strong>特征提取：</strong> 在某些应用中，频率分析可以用于提取信号的关键特征。通过计算频率谱的平均振幅，可以捕获信号中与频率相关的信息，这在一些信号处理任务中是有用的。</p>
-    </li>
-    <li>
-      <p><strong>滤波和去噪：</strong> 通过频率分析，可以了解信号中的频率成分，从而进行滤波或去除噪音。对频率谱进行分析可以帮助确定哪些频率应该保留或去除，从而对信号进行处理。</p>
-    </li>
-  </ol>
-
-  <p>总体而言，对频率谱进行分析和计算平均振幅可以提供对信号在频域上的理解，这对于很多信号处理和分析任务都是至关重要的。</p>
-</blockquote>
-
-<h2 id="13-frequency_list0--0">1.3 frequency_list[0] = 0</h2>
-
-<p>将 <code class="language-plaintext highlighter-rouge">frequency_list[0]</code> 置零可能是为了去除直流分量（零频率分量）的影响。在频率谱中，索引为0的位置通常对应于零频率，也就是直流成分。</p>
-
-<p>直流成分表示信号的平均值或偏移。在某些情况下，我们可能对信号的变化更感兴趣，而不是整个信号的平均值。通过将 <code class="language-plaintext highlighter-rouge">frequency_list[0]</code> 置零，我们可以去除直流成分的影响，更关注信号中的变化和其他频率成分。</p>
-
-<p>这种操作在信号处理和频谱分析中是常见的，特别是当我们关注信号的变化或周期性成分而不关心平均水平时。它有助于突出频谱中的其他特征，使得分析更加集中于信号的变动和周期性。</p>
-
-<p><strong>关于直流分量的解释</strong></p>
-
-<blockquote>
-  <p>直流分量是信号中的恒定成分，通常表示信号的平均值或直流偏移。直流分量不随时间变化，它是信号在水平方向上的偏移或平移。</p>
-
-  <p>让我们通过一个直观的例子来理解直流分量：</p>
-
-  <p>假设有一个以时间为横轴的信号图，其中纵轴表示信号的振幅。如果信号在整个时间范围内都有一个常数振幅，那么这个信号就包含直流分量。直流分量的存在会使整个信号在纵轴上发生平移，即整个信号的基准水平线上下移动。</p>
-
-  <p>举个例子，考虑一个表示温度的信号。如果这个信号中存在直流分量，那么它可能表示一个常数的环境温度，而信号的波动则表示温度随时间的变化。直流分量可以看作是整个信号的平均温度，而波动则反映了温度相对于平均值的变化。</p>
-
-  <p>在频谱分析中，直流分量通常对应于频谱中的零频率分量，即索引为0的位置。通过将直流分量从频谱中去除，我们可以更专注于信号中变化的频率成分，而不受整体平移的影响。这在很多信号处理任务中是有用的，特别是当我们关注信号的变动和周期性成分时。</p>
-</blockquote>
-
-<h2 id="14-_-top_list--torchtopkfrequency_list-k">1.4 _, top_list = torch.topk(frequency_list, k)</h2>
-
-<p><code class="language-plaintext highlighter-rouge">torch.topk</code> 是 PyTorch 中用于获取张量中最大的 k 个元素的函数。frequency_list<code class="language-plaintext highlighter-rouge"> 是一个包含频率振幅的张量，而 </code>_<code class="language-plaintext highlighter-rouge"> 和 </code>top_list` 是函数的返回结果。</p>
-
-<p>让我们逐步解释这行代码：</p>
-
-<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">_</span><span class="p">,</span> <span class="n">top_list</span> <span class="o">=</span> <span class="n">torch</span><span class="p">.</span><span class="n">topk</span><span class="p">(</span><span class="n">frequency_list</span><span class="p">,</span> <span class="n">k</span><span class="p">)</span>
-</code></pre></div></div>
-
-<ul>
-  <li>
-    <p><code class="language-plaintext highlighter-rouge">torch.topk</code>: 这个函数用于获取张量中最大的 k 个元素。它返回两个张量，第一个是最大值的值（在这里我们用 <code class="language-plaintext highlighter-rouge">_</code> 表示忽略，因为我们不使用这个值），第二个是最大值对应的索引。</p>
-  </li>
-  <li>
-    <p><code class="language-plaintext highlighter-rouge">frequency_list</code>: 这是包含频率振幅的张量，其中每个元素表示某个频率的平均振幅。</p>
-  </li>
-  <li>
-    <p><code class="language-plaintext highlighter-rouge">k</code>: 这是要获取的最大元素的数量。</p>
-  </li>
-  <li>
-    <p><code class="language-plaintext highlighter-rouge">_, top_list</code>: 这是用来接收 <code class="language-plaintext highlighter-rouge">torch.topk</code> 函数的返回结果。<code class="language-plaintext highlighter-rouge">_</code> 用于忽略最大值的值，而 <code class="language-plaintext highlighter-rouge">top_list</code> 包含最大值对应的索引。</p>
-  </li>
-</ul>
-
-<p>总体而言，这行代码的目的是从 <code class="language-plaintext highlighter-rouge">frequency_list</code> 中找到最大的 k 个频率振幅，并获取这些最大值对应的索引。这可以用于找到信号中主要的频率成分。如果 <code class="language-plaintext highlighter-rouge">top_list</code> 包含的是频率的索引，你可以通过这些索引查找对应的频率值。</p>
-
-<p><strong>举例：</strong></p>
-
-<p>假设我们有一个包含频率振幅的张量 <code class="language-plaintext highlighter-rouge">frequency_list</code>，内容如下：</p>
-
-<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kn">import</span> <span class="nn">torch</span>
-
-<span class="n">frequency_list</span> <span class="o">=</span> <span class="n">torch</span><span class="p">.</span><span class="n">tensor</span><span class="p">([</span><span class="mf">5.0</span><span class="p">,</span> <span class="mf">2.0</span><span class="p">,</span> <span class="mf">8.0</span><span class="p">,</span> <span class="mf">3.0</span><span class="p">,</span> <span class="mf">1.0</span><span class="p">])</span>
-</code></pre></div></div>
-
-<p>现在，我们想找到最大的两个频率振幅对应的索引。我们可以使用 <code class="language-plaintext highlighter-rouge">torch.topk</code> 函数来实现：</p>
-
-<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">k</span> <span class="o">=</span> <span class="mi">2</span>
-<span class="n">_</span><span class="p">,</span> <span class="n">top_list</span> <span class="o">=</span> <span class="n">torch</span><span class="p">.</span><span class="n">topk</span><span class="p">(</span><span class="n">frequency_list</span><span class="p">,</span> <span class="n">k</span><span class="p">)</span>
-
-<span class="k">print</span><span class="p">(</span><span class="s">"Top k frequencies indices:"</span><span class="p">,</span> <span class="n">top_list</span><span class="p">)</span>
-</code></pre></div></div>
-
-<p>输出是：</p>
-
-<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>Top k frequencies indices: tensor([2, 0])
-</code></pre></div></div>
-
-<p>这表示在 <code class="language-plaintext highlighter-rouge">frequency_list</code> 中，最大的两个频率振幅对应的索引分别是2和0。也就是说，频率振幅最大的是索引为2的元素（8.0），其次是索引为0的元素（5.0）。</p>
-
-<h2 id="15-top_list--top_listdetachcpunumpy">1.5 top_list = top_list.detach().cpu().numpy()</h2>
-
-<p>这行代码对 <code class="language-plaintext highlighter-rouge">top_list</code> 进行了一系列操作，将其从 PyTorch 的张量类型转换为 NumPy 数组。让我们逐步解释这些操作：</p>
-
-<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">top_list</span> <span class="o">=</span> <span class="n">top_list</span><span class="p">.</span><span class="n">detach</span><span class="p">().</span><span class="n">cpu</span><span class="p">().</span><span class="n">numpy</span><span class="p">()</span>
-</code></pre></div></div>
-
-<ul>
-  <li>
-    <p><code class="language-plaintext highlighter-rouge">top_list.detach()</code>: <code class="language-plaintext highlighter-rouge">detach()</code> 方法用于创建一个没有梯度信息的张量副本。在 PyTorch 中，张量的梯度信息通常用于自动微分。<code class="language-plaintext highlighter-rouge">detach()</code> 可以用于生成新的张量，该张量与原始张量共享数据，但没有梯度信息。</p>
-  </li>
-  <li>
-    <p><code class="language-plaintext highlighter-rouge">.cpu()</code>: 如果张量存储在 GPU 上，<code class="language-plaintext highlighter-rouge">cpu()</code> 方法用于将其移到 CPU 上。在这里，这一步可能是为了确保张量在 CPU 上，以便进行 NumPy 转换。</p>
-  </li>
-  <li>
-    <p><code class="language-plaintext highlighter-rouge">.numpy()</code>: <code class="language-plaintext highlighter-rouge">numpy()</code> 方法用于将 PyTorch 张量转换为 NumPy 数组。这是因为 PyTorch 和 NumPy 是两个不同的库，有时需要在它们之间进行数据转换。</p>
-  </li>
-</ul>
-
-<p>综合这些步骤，<code class="language-plaintext highlighter-rouge">top_list</code> 最终被转换为一个不带梯度信息的 CPU 上的 NumPy 数组。这样的转换通常是为了在 PyTorch 和 NumPy 之间进行数据交互，因为它们在许多方面具有互操作性。 NumPy 数组是 Python 中广泛使用的数据结构，可以用于进行各种科学计算和数据分析任务。</p>
-
-<h2 id="16-period--xshape1--top_list">1.6 period = x.shape[1] // top_list</h2>
-
-<p>这行代码计算了一个名为 <code class="language-plaintext highlighter-rouge">period</code> 的值，它是 <code class="language-plaintext highlighter-rouge">x</code> 张量的第二个维度（即序列长度）除以 <code class="language-plaintext highlighter-rouge">top_list</code> 中每个元素的值。这通常是用于计算信号中特定频率成分的周期。</p>
-
-<p>让我们分解这行代码：</p>
-
-<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">period</span> <span class="o">=</span> <span class="n">x</span><span class="p">.</span><span class="n">shape</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span> <span class="o">//</span> <span class="n">top_list</span>
-</code></pre></div></div>
-
-<ul>
-  <li>
-    <p><code class="language-plaintext highlighter-rouge">x.shape[1]</code>: 这是张量 <code class="language-plaintext highlighter-rouge">x</code> 的第二个维度的长度，即序列长度。在这个上下文中，我们假设 <code class="language-plaintext highlighter-rouge">x</code> 的形状是 <code class="language-plaintext highlighter-rouge">(batch_size, sequence_length)</code>。</p>
-  </li>
-  <li>
-    <p><code class="language-plaintext highlighter-rouge">top_list</code>: 这是包含最大频率振幅的索引的列表。每个索引对应于在 <code class="language-plaintext highlighter-rouge">x</code> 中找到的重要频率。</p>
-  </li>
-  <li>
-    <p><code class="language-plaintext highlighter-rouge">//</code>: 这是整数除法运算符，返回除法的整数部分。在这里，它用于计算 <code class="language-plaintext highlighter-rouge">x.shape[1]</code> 除以 <code class="language-plaintext highlighter-rouge">top_list</code> 中的每个元素。</p>
-  </li>
-</ul>
-
-<p>最终，<code class="language-plaintext highlighter-rouge">period</code> 将包含每个最大频率对应的周期。例如，如果 <code class="language-plaintext highlighter-rouge">top_list</code> 中的某个元素是2，那么 <code class="language-plaintext highlighter-rouge">period</code> 中对应的值将是 <code class="language-plaintext highlighter-rouge">x</code> 中的信号在该频率上的周期长度。这样的计算可以用于分析信号的周期性成分。</p>
-
-<h2 id="17-return-period-absxfmean-1-top_list">1.7 return period, abs(xf).mean(-1)[:, top_list]</h2>
-
-<p>这行代码包含了一个返回语句，返回两个值：<code class="language-plaintext highlighter-rouge">period</code> 和一个部分截取的频谱信息。让我们逐步解释这行代码：</p>
-
-<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="k">return</span> <span class="n">period</span><span class="p">,</span> <span class="nb">abs</span><span class="p">(</span><span class="n">xf</span><span class="p">).</span><span class="n">mean</span><span class="p">(</span><span class="o">-</span><span class="mi">1</span><span class="p">)[:,</span> <span class="n">top_list</span><span class="p">]</span>
-</code></pre></div></div>
-
-<ol>
-  <li>
-    <p><code class="language-plaintext highlighter-rouge">period</code>: 这是之前计算的周期，表示信号中每个最大频率成分的周期长度。</p>
-  </li>
-  <li>
-    <p><code class="language-plaintext highlighter-rouge">abs(xf).mean(-1)[:, top_list]</code>：</p>
-    <ul>
-      <li><code class="language-plaintext highlighter-rouge">abs(xf)</code>: 先取复数频谱的振幅，即绝对值。这表示我们对频谱的振幅部分感兴趣。</li>
-      <li><code class="language-plaintext highlighter-rouge">.mean(-1)</code>: 沿着最后一个维度（通常是频率维度）计算平均值，得到每个样本、每个频率的平均振幅。这部分可以看作是对整个频谱的平均振幅信息。</li>
-      <li><code class="language-plaintext highlighter-rouge">[:, top_list]</code>: 通过索引 <code class="language-plaintext highlighter-rouge">top_list</code>，选择仅包含最大频率成分的部分。</li>
-    </ul>
-  </li>
-</ol>
-
-<p>综合起来，这行代码返回了信号中每个最大频率成分的周期长度以及相应频率成分的平均振幅信息。这样的返回结果可能用于进一步分析信号中不同频率的周期性成分及其振幅特征。</p>]]></content><author><name>slience_me</name></author><category term="论文笔记" /><summary type="html"><![CDATA[【论文笔记合集】TimesNet之FFT详解]]></summary></entry></feed>
+</code></pre></div></div>]]></content><author><name>slience_me</name></author><category term="论文笔记" /><summary type="html"><![CDATA[关于去除信号中的直流分量效果演示（零频率分量）]]></summary></entry></feed>
