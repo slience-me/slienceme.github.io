@@ -1,10 +1,14 @@
-<?xml version="1.0" encoding="utf-8"?><feed xmlns="http://www.w3.org/2005/Atom" ><generator uri="https://jekyllrb.com/" version="3.10.0">Jekyll</generator><link href="https://slienceme.cn/pages/slience-me/slienceme.github.io/feed.xml" rel="self" type="application/atom+xml" /><link href="https://slienceme.cn/pages/slience-me/slienceme.github.io/" rel="alternate" type="text/html" /><updated>2025-02-16T16:37:23+08:00</updated><id>https://slienceme.cn/pages/slience-me/slienceme.github.io/feed.xml</id><title type="html">Slience_me的博客</title><subtitle>slience_me的个人博客</subtitle><author><name>slience_me</name></author><entry><title type="html">网站汇总｜【测试】编程技术栈导航</title><link href="https://slienceme.cn/pages/slience-me/slienceme.github.io/2025/02/16/%E6%8A%80%E6%9C%AF%E6%A0%88%E5%90%88%E9%9B%86/" rel="alternate" type="text/html" title="网站汇总｜【测试】编程技术栈导航" /><published>2025-02-16T00:00:00+08:00</published><updated>2025-02-16T00:00:00+08:00</updated><id>https://slienceme.cn/pages/slience-me/slienceme.github.io/2025/02/16/%E6%8A%80%E6%9C%AF%E6%A0%88%E5%90%88%E9%9B%86</id><content type="html" xml:base="https://slienceme.cn/pages/slience-me/slienceme.github.io/2025/02/16/%E6%8A%80%E6%9C%AF%E6%A0%88%E5%90%88%E9%9B%86/"><![CDATA[<p>本文作者： <a href="https://slienceme.cn/">slience_me</a></p>
+<?xml version="1.0" encoding="utf-8"?><feed xmlns="http://www.w3.org/2005/Atom" ><generator uri="https://jekyllrb.com/" version="3.10.0">Jekyll</generator><link href="https://slienceme.cn/pages/slience-me/slienceme.github.io/feed.xml" rel="self" type="application/atom+xml" /><link href="https://slienceme.cn/pages/slience-me/slienceme.github.io/" rel="alternate" type="text/html" /><updated>2025-02-16T20:56:55+08:00</updated><id>https://slienceme.cn/pages/slience-me/slienceme.github.io/feed.xml</id><title type="html">Slience_me的博客</title><subtitle>slience_me的个人博客</subtitle><author><name>slience_me</name></author><entry><title type="html">网站汇总｜【测试】编程技术栈导航</title><link href="https://slienceme.cn/pages/slience-me/slienceme.github.io/2025/02/16/%E6%8A%80%E6%9C%AF%E6%A0%88%E5%90%88%E9%9B%86/" rel="alternate" type="text/html" title="网站汇总｜【测试】编程技术栈导航" /><published>2025-02-16T00:00:00+08:00</published><updated>2025-02-16T00:00:00+08:00</updated><id>https://slienceme.cn/pages/slience-me/slienceme.github.io/2025/02/16/%E6%8A%80%E6%9C%AF%E6%A0%88%E5%90%88%E9%9B%86</id><content type="html" xml:base="https://slienceme.cn/pages/slience-me/slienceme.github.io/2025/02/16/%E6%8A%80%E6%9C%AF%E6%A0%88%E5%90%88%E9%9B%86/"><![CDATA[<p>本文作者： <a href="https://slienceme.cn/">slience_me</a></p>
 
 <hr />
 
 <h1 id="编程技术栈导航测试">编程技术栈导航(测试)</h1>
-
 <p>欢迎来到我们的编程技术栈导航页面！这里汇总了前端、后端、数据库以及其他有用工具的学习资源。点击相应模块，你可以快速跳转到相关的技术网站。</p>
+
+<!-- 引入 Font Awesome 图标库 -->
+<head>
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css" rel="stylesheet" />
+</head>
 
 <div style="display: flex; flex-wrap: wrap; gap: 20px; justify-content: center;">
 
@@ -12,11 +16,42 @@
 <div style="flex: 1 1 300px; min-width: 250px; background-color: #e3f2fd; border-radius: 12px; box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); padding: 20px; transition: transform 0.3s ease-in-out;">
     <h2 style="color: #1e88e5; text-align: center;">前端开发</h2>
     <ul style="list-style: none; padding: 0;">
-        <li><a href="https://developer.mozilla.org/en-US/docs/Web/HTML" target="_blank" style="color: #0d47a1; text-decoration: none; font-weight: bold; padding: 10px 0; display: block; border-bottom: 1px solid #ccc;">MDN Web Docs (HTML)</a></li>
-        <li><a href="https://css-tricks.com/" target="_blank" style="color: #0d47a1; text-decoration: none; font-weight: bold; padding: 10px 0; display: block; border-bottom: 1px solid #ccc;">CSS-Tricks</a></li>
-        <li><a href="https://reactjs.org/docs/getting-started.html" target="_blank" style="color: #0d47a1; text-decoration: none; font-weight: bold; padding: 10px 0; display: block; border-bottom: 1px solid #ccc;">React 官方文档</a></li>
-        <li><a href="https://vuejs.org/" target="_blank" style="color: #0d47a1; text-decoration: none; font-weight: bold; padding: 10px 0; display: block; border-bottom: 1px solid #ccc;">Vue.js 官方文档</a></li>
-        <li><a href="https://angular.io/docs" target="_blank" style="color: #0d47a1; text-decoration: none; font-weight: bold; padding: 10px 0; display: block;">Angular 官方文档</a></li>
+        <li><a href="https://weapp.iviewui.com/" target="_blank" style="color: #0d47a1; text-decoration: none; font-weight: bold; padding: 10px 0; display: block; border-bottom: 1px solid #ccc;">
+            <img src="https://camo.githubusercontent.com/aaa0d4bf85f00f31e64924ae1b09f9519ba551d9847b53212be7c0509ed81dd8/68747470733a2f2f66696c652e697669657775692e636f6d2f77656170702d6c6f676f2e737667" alt="React" style="height: 20px; margin-right: 10px; vertical-align: middle;" />iView Weapp</a></li>
+        <li><a href="https://buefy.org/" target="_blank" style="color: #0d47a1; text-decoration: none; font-weight: bold; padding: 10px 0; display: block; border-bottom: 1px solid #ccc;">
+            <img src="https://buefy.org/static/img/buefy.1d65c18.png" alt="React" style="height: 20px; margin-right: 10px; vertical-align: middle;" />Buefy</a></li>
+        <li><a href="https://element.eleme.cn/#/zh-CN" target="_blank" style="color: #0d47a1; text-decoration: none; font-weight: bold; padding: 10px 0; display: block; border-bottom: 1px solid #ccc;">
+            <img src="https://raw.githubusercontent.com/slience-me/picGo/master/img/2025/02/16/202502162033556.svg" alt="React" style="height: 20px; margin-right: 10px; vertical-align: middle;" />Element UI</a></li>
+        <li><a href="https://vuetifyjs.com/zh-Hans/" target="_blank" style="color: #0d47a1; text-decoration: none; font-weight: bold; padding: 10px 0; display: block; border-bottom: 1px solid #ccc;">
+            <img src="https://cdn.vuetifyjs.com/docs/images/one/logos/vuetify-logo-light.png" alt="React" style="height: 20px; margin-right: 10px; vertical-align: middle;" />VUETIFY</a></li>
+        <li><a href="https://www.antdv.com/docs/vue/introduce-cn/" target="_blank" style="color: #0d47a1; text-decoration: none; font-weight: bold; padding: 10px 0; display: block; border-bottom: 1px solid #ccc;">
+            <img src="https://camo.githubusercontent.com/7c30e845c98884c9cb1cb789b1d0d155426faa659ea47aa143668f7f74d61c1a/68747470733a2f2f616c6979756e63646e2e616e7464762e636f6d2f6c6f676f2e706e67" alt="React" style="height: 20px; margin-right: 10px; vertical-align: middle;" />Ant Design Vue</a></li>
+        <li><a href="https://www.runoob.com/" target="_blank" style="color: #0d47a1; text-decoration: none; font-weight: bold; padding: 10px 0; display: block; border-bottom: 1px solid #ccc;">
+            <img src="https://raw.githubusercontent.com/slience-me/picGo/master/img/2025/02/16/202502162043092.png" alt="React" style="height: 20px; margin-right: 10px; vertical-align: middle;" />菜鸟教程</a></li>
+        <li><a href="https://www.w3school.com.cn/" target="_blank" style="color: #0d47a1; text-decoration: none; font-weight: bold; padding: 10px 0; display: block; border-bottom: 1px solid #ccc;">
+            <img src="https://raw.githubusercontent.com/slience-me/picGo/master/img/2025/02/16/202502162043092.png" alt="React" style="height: 20px; margin-right: 10px; vertical-align: middle;" />菜鸟教程</a></li>
+        <li><a href="https://www.runoob.com/" target="_blank" style="color: #0d47a1; text-decoration: none; font-weight: bold; padding: 10px 0; display: block; border-bottom: 1px solid #ccc;">
+            <img src="https://raw.githubusercontent.com/slience-me/picGo/master/img/2025/02/16/202502162043092.png" alt="React" style="height: 20px; margin-right: 10px; vertical-align: middle;" />菜鸟教程</a></li>
+        <li><a href="https://www.runoob.com/" target="_blank" style="color: #0d47a1; text-decoration: none; font-weight: bold; padding: 10px 0; display: block; border-bottom: 1px solid #ccc;">
+            <img src="https://raw.githubusercontent.com/slience-me/picGo/master/img/2025/02/16/202502162043092.png" alt="React" style="height: 20px; margin-right: 10px; vertical-align: middle;" />菜鸟教程</a></li>
+        <li><a href="https://www.runoob.com/" target="_blank" style="color: #0d47a1; text-decoration: none; font-weight: bold; padding: 10px 0; display: block; border-bottom: 1px solid #ccc;">
+            <img src="https://raw.githubusercontent.com/slience-me/picGo/master/img/2025/02/16/202502162043092.png" alt="React" style="height: 20px; margin-right: 10px; vertical-align: middle;" />菜鸟教程</a></li>
+        <li><a href="https://www.runoob.com/" target="_blank" style="color: #0d47a1; text-decoration: none; font-weight: bold; padding: 10px 0; display: block; border-bottom: 1px solid #ccc;">
+            <img src="https://raw.githubusercontent.com/slience-me/picGo/master/img/2025/02/16/202502162043092.png" alt="React" style="height: 20px; margin-right: 10px; vertical-align: middle;" />菜鸟教程</a></li>
+        <li><a href="https://www.runoob.com/" target="_blank" style="color: #0d47a1; text-decoration: none; font-weight: bold; padding: 10px 0; display: block; border-bottom: 1px solid #ccc;">
+            <img src="https://raw.githubusercontent.com/slience-me/picGo/master/img/2025/02/16/202502162043092.png" alt="React" style="height: 20px; margin-right: 10px; vertical-align: middle;" />菜鸟教程</a></li>
+        <li><a href="https://www.runoob.com/" target="_blank" style="color: #0d47a1; text-decoration: none; font-weight: bold; padding: 10px 0; display: block; border-bottom: 1px solid #ccc;">
+            <img src="https://raw.githubusercontent.com/slience-me/picGo/master/img/2025/02/16/202502162043092.png" alt="React" style="height: 20px; margin-right: 10px; vertical-align: middle;" />菜鸟教程</a></li>
+        <li><a href="https://developer.mozilla.org/en-US/docs/Web/HTML" target="_blank" style="color: #0d47a1; text-decoration: none; font-weight: bold; padding: 10px 0; display: block; border-bottom: 1px solid #ccc;">
+            <i class="fas fa-html5" style="margin-right: 10px;"></i>MDN Web Docs (HTML)</a></li>
+        <li><a href="https://css-tricks.com/" target="_blank" style="color: #0d47a1; text-decoration: none; font-weight: bold; padding: 10px 0; display: block; border-bottom: 1px solid #ccc;">
+            <i class="fab fa-css3-alt" style="margin-right: 10px;"></i>CSS-Tricks</a></li>
+        <li><a href="https://reactjs.org/docs/getting-started.html" target="_blank" style="color: #0d47a1; text-decoration: none; font-weight: bold; padding: 10px 0; display: block; border-bottom: 1px solid #ccc;">
+            <img src="https://upload.wikimedia.org/wikipedia/commons/a/a7/React-icon.svg" alt="React" style="width: 20px; height: 20px; margin-right: 10px; vertical-align: middle;" /> React 官方文档</a></li>
+        <li><a href="https://vuejs.org/" target="_blank" style="color: #0d47a1; text-decoration: none; font-weight: bold; padding: 10px 0; display: block; border-bottom: 1px solid #ccc;">
+            <img src="https://vuejs.org/images/logo.png" alt="Vue.js" style="width: 20px; height: 20px; margin-right: 10px; vertical-align: middle;" /> Vue.js 官方文档</a></li>
+        <li><a href="https://angular.io/docs" target="_blank" style="color: #0d47a1; text-decoration: none; font-weight: bold; padding: 10px 0; display: block;">
+            <img src="https://angular.io/assets/images/logos/angular/angular.svg" alt="Angular" style="width: 20px; height: 20px; margin-right: 10px; vertical-align: middle;" /> Angular 官方文档</a></li>
     </ul>
 </div>
 
@@ -24,10 +59,14 @@
 <div style="flex: 1 1 300px; min-width: 250px; background-color: #f1f8e9; border-radius: 12px; box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); padding: 20px; transition: transform 0.3s ease-in-out;">
     <h2 style="color: #388e3c; text-align: center;">后端开发</h2>
     <ul style="list-style: none; padding: 0;">
-        <li><a href="https://nodejs.org/en/docs/" target="_blank" style="color: #2e7d32; text-decoration: none; font-weight: bold; padding: 10px 0; display: block; border-bottom: 1px solid #ccc;">Node.js 官方文档</a></li>
-        <li><a href="https://expressjs.com/" target="_blank" style="color: #2e7d32; text-decoration: none; font-weight: bold; padding: 10px 0; display: block; border-bottom: 1px solid #ccc;">Express.js 官方文档</a></li>
-        <li><a href="https://www.djangoproject.com/" target="_blank" style="color: #2e7d32; text-decoration: none; font-weight: bold; padding: 10px 0; display: block; border-bottom: 1px solid #ccc;">Django 官方文档</a></li>
-        <li><a href="https://spring.io/projects/spring-boot" target="_blank" style="color: #2e7d32; text-decoration: none; font-weight: bold; padding: 10px 0; display: block;">Spring Boot 官方文档</a></li>
+        <li><a href="https://nodejs.org/en/docs/" target="_blank" style="color: #2e7d32; text-decoration: none; font-weight: bold; padding: 10px 0; display: block; border-bottom: 1px solid #ccc;">
+            <img src="https://upload.wikimedia.org/wikipedia/commons/d/d9/Node.js_logo.svg" alt="Node.js" style="width: 20px; height: 20px; margin-right: 10px; vertical-align: middle;" /> Node.js 官方文档</a></li>
+        <li><a href="https://expressjs.com/" target="_blank" style="color: #2e7d32; text-decoration: none; font-weight: bold; padding: 10px 0; display: block; border-bottom: 1px solid #ccc;">
+            <img src="https://upload.wikimedia.org/wikipedia/commons/6/64/Expressjs.png" alt="Express.js" style="width: 20px; height: 20px; margin-right: 10px; vertical-align: middle;" /> Express.js 官方文档</a></li>
+        <li><a href="https://www.djangoproject.com/" target="_blank" style="color: #2e7d32; text-decoration: none; font-weight: bold; padding: 10px 0; display: block; border-bottom: 1px solid #ccc;">
+            <img src="https://www.djangoproject.com/m/img/logos/django-logo-negative.svg" alt="Django" style="width: 20px; height: 20px; margin-right: 10px; vertical-align: middle;" /> Django 官方文档</a></li>
+        <li><a href="https://spring.io/projects/spring-boot" target="_blank" style="color: #2e7d32; text-decoration: none; font-weight: bold; padding: 10px 0; display: block;">
+            <img src="https://spring.io/images/spring-boot-logo.svg" alt="Spring Boot" style="width: 20px; height: 20px; margin-right: 10px; vertical-align: middle;" /> Spring Boot 官方文档</a></li>
     </ul>
 </div>
 
@@ -35,9 +74,12 @@
 <div style="flex: 1 1 300px; min-width: 250px; background-color: #fff3e0; border-radius: 12px; box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); padding: 20px; transition: transform 0.3s ease-in-out;">
     <h2 style="color: #f57c00; text-align: center;">数据库技术</h2>
     <ul style="list-style: none; padding: 0;">
-        <li><a href="https://dev.mysql.com/doc/" target="_blank" style="color: #e65100; text-decoration: none; font-weight: bold; padding: 10px 0; display: block; border-bottom: 1px solid #ccc;">MySQL 官方文档</a></li>
-        <li><a href="https://www.postgresql.org/docs/" target="_blank" style="color: #e65100; text-decoration: none; font-weight: bold; padding: 10px 0; display: block; border-bottom: 1px solid #ccc;">PostgreSQL 官方文档</a></li>
-        <li><a href="https://www.mongodb.com/docs/" target="_blank" style="color: #e65100; text-decoration: none; font-weight: bold; padding: 10px 0; display: block;">MongoDB 官方文档</a></li>
+        <li><a href="https://dev.mysql.com/doc/" target="_blank" style="color: #e65100; text-decoration: none; font-weight: bold; padding: 10px 0; display: block; border-bottom: 1px solid #ccc;">
+            <img src="https://upload.wikimedia.org/wikipedia/commons/7/77/MySQL_logo.png" alt="MySQL" style="width: 20px; height: 20px; margin-right: 10px; vertical-align: middle;" /> MySQL 官方文档</a></li>
+        <li><a href="https://www.postgresql.org/docs/" target="_blank" style="color: #e65100; text-decoration: none; font-weight: bold; padding: 10px 0; display: block; border-bottom: 1px solid #ccc;">
+            <img src="https://upload.wikimedia.org/wikipedia/commons/a/a4/Postgresql_elephant.svg" alt="PostgreSQL" style="width: 20px; height: 20px; margin-right: 10px; vertical-align: middle;" /> PostgreSQL 官方文档</a></li>
+        <li><a href="https://www.mongodb.com/docs/" target="_blank" style="color: #e65100; text-decoration: none; font-weight: bold; padding: 10px 0; display: block;">
+            <img src="https://www.mongodb.com/assets/images/global/logo.svg" alt="MongoDB" style="width: 20px; height: 20px; margin-right: 10px; vertical-align: middle;" /> MongoDB 官方文档</a></li>
     </ul>
 </div>
 
@@ -45,9 +87,12 @@
 <div style="flex: 1 1 300px; min-width: 250px; background-color: #e8f5e9; border-radius: 12px; box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); padding: 20px; transition: transform 0.3s ease-in-out;">
     <h2 style="color: #388e3c; text-align: center;">工具与框架</h2>
     <ul style="list-style: none; padding: 0;">
-        <li><a href="https://git-scm.com/doc" target="_blank" style="color: #1b5e20; text-decoration: none; font-weight: bold; padding: 10px 0; display: block; border-bottom: 1px solid #ccc;">Git 官方文档</a></li>
-        <li><a href="https://www.docker.com/resources/what-container" target="_blank" style="color: #1b5e20; text-decoration: none; font-weight: bold; padding: 10px 0; display: block; border-bottom: 1px solid #ccc;">Docker 官方文档</a></li>
-        <li><a href="https://kubernetes.io/docs/" target="_blank" style="color: #1b5e20; text-decoration: none; font-weight: bold; padding: 10px 0; display: block;">Kubernetes 官方文档</a></li>
+        <li><a href="https://git-scm.com/doc" target="_blank" style="color: #1b5e20; text-decoration: none; font-weight: bold; padding: 10px 0; display: block; border-bottom: 1px solid #ccc;">
+            <i class="fab fa-git" style="margin-right: 10px;"></i> Git 官方文档</a></li>
+        <li><a href="https://www.docker.com/resources/what-container" target="_blank" style="color: #1b5e20; text-decoration: none; font-weight: bold; padding: 10px 0; display: block; border-bottom: 1px solid #ccc;">
+            <i class="fab fa-docker" style="margin-right: 10px;"></i> Docker 官方文档</a></li>
+        <li><a href="https://kubernetes.io/docs/" target="_blank" style="color: #1b5e20; text-decoration: none; font-weight: bold; padding: 10px 0; display: block;">
+            <img src="https://upload.wikimedia.org/wikipedia/commons/e/e3/Kubernetes_logo.svg" alt="Kubernetes" style="width: 20px; height: 20px; margin-right: 10px; vertical-align: middle;" /> Kubernetes 官方文档</a></li>
     </ul>
 </div>
 
@@ -57,9 +102,12 @@
 <div style="margin-top: 40px; padding: 20px; background-color: #fafafa; border-radius: 12px; box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);">
     <h3 style="text-align: center; color: #1976d2;">学习平台</h3>
     <div style="display: flex; justify-content: center; gap: 20px;">
-        <a href="https://www.freecodecamp.org/" target="_blank" style="background-color: #1976d2; color: white; padding: 12px 20px; border-radius: 8px; text-decoration: none; font-weight: bold; transition: background-color 0.3s ease;">freeCodeCamp</a>
-        <a href="https://www.codecademy.com/" target="_blank" style="background-color: #1976d2; color: white; padding: 12px 20px; border-radius: 8px; text-decoration: none; font-weight: bold; transition: background-color 0.3s ease;">Codecademy</a>
-        <a href="https://leetcode.com/" target="_blank" style="background-color: #1976d2; color: white; padding: 12px 20px; border-radius: 8px; text-decoration: none; font-weight: bold; transition: background-color 0.3s ease;">LeetCode</a>
+        <a href="https://www.freecodecamp.org/" target="_blank" style="background-color: #1976d2; color: white; padding: 12px 20px; border-radius: 8px; text-decoration: none; font-weight: bold; transition: background-color 0.3s ease;">
+            <i class="fas fa-graduation-cap" style="margin-right: 10px;"></i> freeCodeCamp</a>
+        <a href="https://www.codecademy.com/" target="_blank" style="background-color: #1976d2; color: white; padding: 12px 20px; border-radius: 8px; text-decoration: none; font-weight: bold; transition: background-color 0.3s ease;">
+            <i class="fas fa-laptop-code" style="margin-right: 10px;"></i> Codecademy</a>
+        <a href="https://leetcode.com/" target="_blank" style="background-color: #1976d2; color: white; padding: 12px 20px; border-radius: 8px; text-decoration: none; font-weight: bold; transition: background-color 0.3s ease;">
+            <i class="fas fa-cogs" style="margin-right: 10px;"></i> LeetCode</a>
     </div>
 </div>
 
