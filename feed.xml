@@ -1,4 +1,73 @@
-<?xml version="1.0" encoding="utf-8"?><feed xmlns="http://www.w3.org/2005/Atom" ><generator uri="https://jekyllrb.com/" version="3.10.0">Jekyll</generator><link href="https://slienceme.cn/pages/slience-me/slienceme.github.io/feed.xml" rel="self" type="application/atom+xml" /><link href="https://slienceme.cn/pages/slience-me/slienceme.github.io/" rel="alternate" type="text/html" /><updated>2025-02-15T21:31:49+08:00</updated><id>https://slienceme.cn/pages/slience-me/slienceme.github.io/feed.xml</id><title type="html">Slience_me的博客</title><subtitle>slience_me的个人博客</subtitle><author><name>slience_me</name></author><entry><title type="html">指令汇总｜【指令集】Nginx</title><link href="https://slienceme.cn/pages/slience-me/slienceme.github.io/2025/02/15/Nginx%E6%93%8D%E4%BD%9C%E5%90%88%E9%9B%86/" rel="alternate" type="text/html" title="指令汇总｜【指令集】Nginx" /><published>2025-02-15T00:00:00+08:00</published><updated>2025-02-15T00:00:00+08:00</updated><id>https://slienceme.cn/pages/slience-me/slienceme.github.io/2025/02/15/Nginx%E6%93%8D%E4%BD%9C%E5%90%88%E9%9B%86</id><content type="html" xml:base="https://slienceme.cn/pages/slience-me/slienceme.github.io/2025/02/15/Nginx%E6%93%8D%E4%BD%9C%E5%90%88%E9%9B%86/"><![CDATA[<p><img src="/images/posts/logo_slienceme3.png" alt="img" /></p>
+<?xml version="1.0" encoding="utf-8"?><feed xmlns="http://www.w3.org/2005/Atom" ><generator uri="https://jekyllrb.com/" version="3.10.0">Jekyll</generator><link href="https://slienceme.cn/pages/slience-me/slienceme.github.io/feed.xml" rel="self" type="application/atom+xml" /><link href="https://slienceme.cn/pages/slience-me/slienceme.github.io/" rel="alternate" type="text/html" /><updated>2025-02-16T16:37:23+08:00</updated><id>https://slienceme.cn/pages/slience-me/slienceme.github.io/feed.xml</id><title type="html">Slience_me的博客</title><subtitle>slience_me的个人博客</subtitle><author><name>slience_me</name></author><entry><title type="html">网站汇总｜【测试】编程技术栈导航</title><link href="https://slienceme.cn/pages/slience-me/slienceme.github.io/2025/02/16/%E6%8A%80%E6%9C%AF%E6%A0%88%E5%90%88%E9%9B%86/" rel="alternate" type="text/html" title="网站汇总｜【测试】编程技术栈导航" /><published>2025-02-16T00:00:00+08:00</published><updated>2025-02-16T00:00:00+08:00</updated><id>https://slienceme.cn/pages/slience-me/slienceme.github.io/2025/02/16/%E6%8A%80%E6%9C%AF%E6%A0%88%E5%90%88%E9%9B%86</id><content type="html" xml:base="https://slienceme.cn/pages/slience-me/slienceme.github.io/2025/02/16/%E6%8A%80%E6%9C%AF%E6%A0%88%E5%90%88%E9%9B%86/"><![CDATA[<p>本文作者： <a href="https://slienceme.cn/">slience_me</a></p>
+
+<hr />
+
+<h1 id="编程技术栈导航测试">编程技术栈导航(测试)</h1>
+
+<p>欢迎来到我们的编程技术栈导航页面！这里汇总了前端、后端、数据库以及其他有用工具的学习资源。点击相应模块，你可以快速跳转到相关的技术网站。</p>
+
+<div style="display: flex; flex-wrap: wrap; gap: 20px; justify-content: center;">
+
+<!-- Frontend Section -->
+<div style="flex: 1 1 300px; min-width: 250px; background-color: #e3f2fd; border-radius: 12px; box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); padding: 20px; transition: transform 0.3s ease-in-out;">
+    <h2 style="color: #1e88e5; text-align: center;">前端开发</h2>
+    <ul style="list-style: none; padding: 0;">
+        <li><a href="https://developer.mozilla.org/en-US/docs/Web/HTML" target="_blank" style="color: #0d47a1; text-decoration: none; font-weight: bold; padding: 10px 0; display: block; border-bottom: 1px solid #ccc;">MDN Web Docs (HTML)</a></li>
+        <li><a href="https://css-tricks.com/" target="_blank" style="color: #0d47a1; text-decoration: none; font-weight: bold; padding: 10px 0; display: block; border-bottom: 1px solid #ccc;">CSS-Tricks</a></li>
+        <li><a href="https://reactjs.org/docs/getting-started.html" target="_blank" style="color: #0d47a1; text-decoration: none; font-weight: bold; padding: 10px 0; display: block; border-bottom: 1px solid #ccc;">React 官方文档</a></li>
+        <li><a href="https://vuejs.org/" target="_blank" style="color: #0d47a1; text-decoration: none; font-weight: bold; padding: 10px 0; display: block; border-bottom: 1px solid #ccc;">Vue.js 官方文档</a></li>
+        <li><a href="https://angular.io/docs" target="_blank" style="color: #0d47a1; text-decoration: none; font-weight: bold; padding: 10px 0; display: block;">Angular 官方文档</a></li>
+    </ul>
+</div>
+
+<!-- Backend Section -->
+<div style="flex: 1 1 300px; min-width: 250px; background-color: #f1f8e9; border-radius: 12px; box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); padding: 20px; transition: transform 0.3s ease-in-out;">
+    <h2 style="color: #388e3c; text-align: center;">后端开发</h2>
+    <ul style="list-style: none; padding: 0;">
+        <li><a href="https://nodejs.org/en/docs/" target="_blank" style="color: #2e7d32; text-decoration: none; font-weight: bold; padding: 10px 0; display: block; border-bottom: 1px solid #ccc;">Node.js 官方文档</a></li>
+        <li><a href="https://expressjs.com/" target="_blank" style="color: #2e7d32; text-decoration: none; font-weight: bold; padding: 10px 0; display: block; border-bottom: 1px solid #ccc;">Express.js 官方文档</a></li>
+        <li><a href="https://www.djangoproject.com/" target="_blank" style="color: #2e7d32; text-decoration: none; font-weight: bold; padding: 10px 0; display: block; border-bottom: 1px solid #ccc;">Django 官方文档</a></li>
+        <li><a href="https://spring.io/projects/spring-boot" target="_blank" style="color: #2e7d32; text-decoration: none; font-weight: bold; padding: 10px 0; display: block;">Spring Boot 官方文档</a></li>
+    </ul>
+</div>
+
+<!-- Database Section -->
+<div style="flex: 1 1 300px; min-width: 250px; background-color: #fff3e0; border-radius: 12px; box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); padding: 20px; transition: transform 0.3s ease-in-out;">
+    <h2 style="color: #f57c00; text-align: center;">数据库技术</h2>
+    <ul style="list-style: none; padding: 0;">
+        <li><a href="https://dev.mysql.com/doc/" target="_blank" style="color: #e65100; text-decoration: none; font-weight: bold; padding: 10px 0; display: block; border-bottom: 1px solid #ccc;">MySQL 官方文档</a></li>
+        <li><a href="https://www.postgresql.org/docs/" target="_blank" style="color: #e65100; text-decoration: none; font-weight: bold; padding: 10px 0; display: block; border-bottom: 1px solid #ccc;">PostgreSQL 官方文档</a></li>
+        <li><a href="https://www.mongodb.com/docs/" target="_blank" style="color: #e65100; text-decoration: none; font-weight: bold; padding: 10px 0; display: block;">MongoDB 官方文档</a></li>
+    </ul>
+</div>
+
+<!-- Tools Section -->
+<div style="flex: 1 1 300px; min-width: 250px; background-color: #e8f5e9; border-radius: 12px; box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); padding: 20px; transition: transform 0.3s ease-in-out;">
+    <h2 style="color: #388e3c; text-align: center;">工具与框架</h2>
+    <ul style="list-style: none; padding: 0;">
+        <li><a href="https://git-scm.com/doc" target="_blank" style="color: #1b5e20; text-decoration: none; font-weight: bold; padding: 10px 0; display: block; border-bottom: 1px solid #ccc;">Git 官方文档</a></li>
+        <li><a href="https://www.docker.com/resources/what-container" target="_blank" style="color: #1b5e20; text-decoration: none; font-weight: bold; padding: 10px 0; display: block; border-bottom: 1px solid #ccc;">Docker 官方文档</a></li>
+        <li><a href="https://kubernetes.io/docs/" target="_blank" style="color: #1b5e20; text-decoration: none; font-weight: bold; padding: 10px 0; display: block;">Kubernetes 官方文档</a></li>
+    </ul>
+</div>
+
+</div>
+
+<!-- Learning Platforms Section -->
+<div style="margin-top: 40px; padding: 20px; background-color: #fafafa; border-radius: 12px; box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);">
+    <h3 style="text-align: center; color: #1976d2;">学习平台</h3>
+    <div style="display: flex; justify-content: center; gap: 20px;">
+        <a href="https://www.freecodecamp.org/" target="_blank" style="background-color: #1976d2; color: white; padding: 12px 20px; border-radius: 8px; text-decoration: none; font-weight: bold; transition: background-color 0.3s ease;">freeCodeCamp</a>
+        <a href="https://www.codecademy.com/" target="_blank" style="background-color: #1976d2; color: white; padding: 12px 20px; border-radius: 8px; text-decoration: none; font-weight: bold; transition: background-color 0.3s ease;">Codecademy</a>
+        <a href="https://leetcode.com/" target="_blank" style="background-color: #1976d2; color: white; padding: 12px 20px; border-radius: 8px; text-decoration: none; font-weight: bold; transition: background-color 0.3s ease;">LeetCode</a>
+    </div>
+</div>
+
+<hr />
+
+<div style="text-align: center; margin-top: 40px;">
+    <p style="font-size: 16px; color: #777;">感谢你的阅读，祝你编程愉快！</p>
+</div>]]></content><author><name>slience_me</name></author><category term="网站汇总" /><summary type="html"><![CDATA[编程技术栈导航]]></summary></entry><entry><title type="html">指令汇总｜【指令集】Nginx</title><link href="https://slienceme.cn/pages/slience-me/slienceme.github.io/2025/02/15/Nginx%E6%93%8D%E4%BD%9C%E5%90%88%E9%9B%86/" rel="alternate" type="text/html" title="指令汇总｜【指令集】Nginx" /><published>2025-02-15T00:00:00+08:00</published><updated>2025-02-15T00:00:00+08:00</updated><id>https://slienceme.cn/pages/slience-me/slienceme.github.io/2025/02/15/Nginx%E6%93%8D%E4%BD%9C%E5%90%88%E9%9B%86</id><content type="html" xml:base="https://slienceme.cn/pages/slience-me/slienceme.github.io/2025/02/15/Nginx%E6%93%8D%E4%BD%9C%E5%90%88%E9%9B%86/"><![CDATA[<p><img src="/images/posts/logo_slienceme3.png" alt="img" /></p>
 
 <p>本文作者： <a href="https://slienceme.cn/">slience_me</a></p>
 
@@ -2261,147 +2330,4 @@ One-Hot Encoding 则是将单词编码为稀疏的二进制向量，以便计算
 path: D:\temp_environment\nodejshub
 node_mirror: https://npmmirror.com/mirrors/node/
 npm_mirror: https://npmmirror.com/mirrors/npm/
-</code></pre></div></div>]]></content><author><name>slience_me</name></author><category term="教程" /><summary type="html"><![CDATA[【已解决】安装不同版本的nodejs环境以及版本切换]]></summary></entry><entry><title type="html">教程｜GitHub图床&amp;amp;Typora&amp;amp;PicGo相关配置</title><link href="https://slienceme.cn/pages/slience-me/slienceme.github.io/2024/01/20/GitHub%E5%9B%BE%E5%BA%8A&Typora&PicGo/" rel="alternate" type="text/html" title="教程｜GitHub图床&amp;amp;Typora&amp;amp;PicGo相关配置" /><published>2024-01-20T00:00:00+08:00</published><updated>2024-01-20T00:00:00+08:00</updated><id>https://slienceme.cn/pages/slience-me/slienceme.github.io/2024/01/20/GitHub%E5%9B%BE%E5%BA%8A&amp;Typora&amp;PicGo</id><content type="html" xml:base="https://slienceme.cn/pages/slience-me/slienceme.github.io/2024/01/20/GitHub%E5%9B%BE%E5%BA%8A&amp;Typora&amp;PicGo/"><![CDATA[<p><img src="/images/posts/logo_slienceme3.png" alt="img" /></p>
-
-<p>本文作者： <a href="https://slienceme.cn/">slience_me</a></p>
-
-<hr />
-
-<h1 id="github图床typorapicgo相关配置">GitHub图床&amp;Typora&amp;PicGo相关配置</h1>
-
-<blockquote>
-  <p>关于Typora旧版的百度网盘下载路径</p>
-
-  <p>链接：https://pan.baidu.com/s/12mq-dMqWnRRoreGo4MTbKg?pwd=oq22 
-提取码：oq22</p>
-
-  <p>如果有不妥，请及时联系我，电子邮件：<a href="mailto:slienceme520@gmail.com">slienceme520@gmail.com</a></p>
-
-  <p>我将下载链接删除</p>
-</blockquote>
-
-<hr />
-
-<h2 id="1-github配置">1. Github配置</h2>
-
-<ol>
-  <li>创建一个图片仓库</li>
-</ol>
-
-<p><img src="https://raw.githubusercontent.com/slience-me/picGo/master/images/image-20240120181745928.png" alt="image-20240120181745928" /></p>
-
-<ol>
-  <li>进入设置</li>
-</ol>
-
-<p><img src="https://raw.githubusercontent.com/slience-me/picGo/master/images/image-20240120182004001.png" alt="image-20240120182004001" /></p>
-
-<ol>
-  <li>点击开发者设置</li>
-</ol>
-
-<p><img src="https://raw.githubusercontent.com/slience-me/picGo/master/images/image-20240120182039496.png" alt="image-20240120182039496" /></p>
-
-<ol>
-  <li>点击Token</li>
-</ol>
-
-<p><img src="https://raw.githubusercontent.com/slience-me/picGo/master/images/image-20240120182111233.png" alt="image-20240120182111233" /></p>
-
-<ol>
-  <li>用新出的这个</li>
-</ol>
-
-<p><img src="https://raw.githubusercontent.com/slience-me/picGo/master/images/image-20240120182252639.png" alt="image-20240120182252639" /></p>
-
-<ol>
-  <li>设置部分内容</li>
-</ol>
-
-<p><img src="https://raw.githubusercontent.com/slience-me/picGo/master/images/image-20240120182448852.png" alt="image-20240120182448852" /></p>
-
-<ol>
-  <li>给出以下权限</li>
-</ol>
-
-<p><img src="https://raw.githubusercontent.com/slience-me/picGo/master/images/image-20240120182711462.png" alt="image-20240120182711462" /></p>
-
-<ol>
-  <li>点击生成按钮即可</li>
-</ol>
-
-<p><img src="https://raw.githubusercontent.com/slience-me/picGo/master/images/image-20240120182757552.png" alt="image-20240120182757552" /></p>
-
-<ol>
-  <li>复制一份这个token，token仅出现一次</li>
-</ol>
-
-<p><img src="https://raw.githubusercontent.com/slience-me/picGo/master/images/image-20240120182859273.png" alt="image-20240120182859273" /></p>
-
-<ol>
-  <li>下一步，下载安装picGo</li>
-</ol>
-
-<h2 id="2-picgo配置">2. picGo配置</h2>
-
-<p>进入<a href="https://github.com/Molunerfinn/PicGo/releases">下载地址</a> 选择一个稳定版</p>
-
-<p><img src="https://raw.githubusercontent.com/slience-me/picGo/master/images/image-20240120183130700.png" alt="image-20240120183130700" /></p>
-
-<p>windows默认选择红框内的即可</p>
-
-<p><img src="https://raw.githubusercontent.com/slience-me/picGo/master/images/image-20240120183219810.png" alt="image-20240120183219810" /></p>
-
-<p>点击确定即可</p>
-
-<p><img src="https://raw.githubusercontent.com/slience-me/picGo/master/images/image-20240120183501625.png" alt="image-20240120183501625" /></p>
-
-<h2 id="3-typora配置">3. Typora配置</h2>
-
-<ol>
-  <li>点击文件</li>
-</ol>
-
-<p><img src="https://raw.githubusercontent.com/slience-me/picGo/master/images/image-20240120183544385.png" alt="image-20240120183544385" /></p>
-
-<ol>
-  <li>点击偏好设置</li>
-</ol>
-
-<p><img src="https://raw.githubusercontent.com/slience-me/picGo/master/images/image-20240120183610568.png" alt="image-20240120183610568" /></p>
-
-<ol>
-  <li>点击图像</li>
-</ol>
-
-<p><img src="https://raw.githubusercontent.com/slience-me/picGo/master/images/image-20240120183630072.png" alt="image-20240120183630072" /></p>
-
-<ol>
-  <li>选择完成后，可以验证是否上传成功</li>
-</ol>
-
-<p><img src="https://raw.githubusercontent.com/slience-me/picGo/master/images/image-20240120183739694.png" alt="image-20240120183739694" /></p>
-
-<ol>
-  <li>这个根据个人情况自行设置即可</li>
-</ol>
-
-<p><img src="https://raw.githubusercontent.com/slience-me/picGo/master/images/image-20240120183824466.png" alt="image-20240120183824466" /></p>
-
-<ol>
-  <li>图片右键点击上传即可</li>
-</ol>
-
-<p><img src="https://raw.githubusercontent.com/slience-me/picGo/master/images/image-20240120183909360.png" alt="image-20240120183909360" /></p>
-
-<ol>
-  <li>或者统一上传</li>
-</ol>
-
-<p><img src="https://raw.githubusercontent.com/slience-me/picGo/master/images/image-20240120184108178.png" alt="image-20240120184108178" /></p>
-
-<ol>
-  <li>或者设置直接上传</li>
-</ol>
-
-<p><img src="https://raw.githubusercontent.com/slience-me/picGo/master/images/image-20240120184135560.png" alt="image-20240120184135560" /></p>]]></content><author><name>slience_me</name></author><category term="教程" /><summary type="html"><![CDATA[GitHub图床&Typora&PicGo相关配置]]></summary></entry></feed>
+</code></pre></div></div>]]></content><author><name>slience_me</name></author><category term="教程" /><summary type="html"><![CDATA[【已解决】安装不同版本的nodejs环境以及版本切换]]></summary></entry></feed>
