@@ -129,7 +129,7 @@
 
   
     {
-      "title"    : "指令汇总｜常用执行指令汇总大全",
+      "title"    : "指令汇总｜常用执行指令大全",
       "category" : "指令汇总",
       
       "url"      : "https://slienceme.cn/2019/01/01/readme/",
@@ -1462,6 +1462,14 @@
       
       "url"      : "https://slienceme.cn/2025/02/16/%E6%8A%80%E6%9C%AF%E6%A0%88%E5%90%88%E9%9B%86/",
       "keywords" : "网站汇总"
+    } ,
+  
+    {
+      "title"    : "Linux｜FRP内网穿透",
+      "category" : "Linux",
+      
+      "url"      : "https://slienceme.cn/2025/02/19/frp/",
+      "keywords" : "Linux, 服务器, 内网穿透"
     } ,
   
     {

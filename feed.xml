@@ -1,4 +1,1022 @@
-<?xml version="1.0" encoding="utf-8"?><feed xmlns="http://www.w3.org/2005/Atom" ><generator uri="https://jekyllrb.com/" version="3.10.0">Jekyll</generator><link href="https://slienceme.cn/pages/slience-me/slienceme.github.io/feed.xml" rel="self" type="application/atom+xml" /><link href="https://slienceme.cn/pages/slience-me/slienceme.github.io/" rel="alternate" type="text/html" /><updated>2025-02-17T22:00:00+08:00</updated><id>https://slienceme.cn/pages/slience-me/slienceme.github.io/feed.xml</id><title type="html">Slience_me的博客</title><subtitle>slience_me的个人博客</subtitle><author><name>slience_me</name></author><entry><title type="html">网站汇总｜编程技术栈导航</title><link href="https://slienceme.cn/pages/slience-me/slienceme.github.io/2025/02/16/%E6%8A%80%E6%9C%AF%E6%A0%88%E5%90%88%E9%9B%86/" rel="alternate" type="text/html" title="网站汇总｜编程技术栈导航" /><published>2025-02-16T00:00:00+08:00</published><updated>2025-02-16T00:00:00+08:00</updated><id>https://slienceme.cn/pages/slience-me/slienceme.github.io/2025/02/16/%E6%8A%80%E6%9C%AF%E6%A0%88%E5%90%88%E9%9B%86</id><content type="html" xml:base="https://slienceme.cn/pages/slience-me/slienceme.github.io/2025/02/16/%E6%8A%80%E6%9C%AF%E6%A0%88%E5%90%88%E9%9B%86/"><![CDATA[<h1 id="编程技术栈导航">编程技术栈导航</h1>
+<?xml version="1.0" encoding="utf-8"?><feed xmlns="http://www.w3.org/2005/Atom" ><generator uri="https://jekyllrb.com/" version="3.10.0">Jekyll</generator><link href="https://slienceme.cn/pages/slience-me/slienceme.github.io/feed.xml" rel="self" type="application/atom+xml" /><link href="https://slienceme.cn/pages/slience-me/slienceme.github.io/" rel="alternate" type="text/html" /><updated>2025-02-19T19:13:36+08:00</updated><id>https://slienceme.cn/pages/slience-me/slienceme.github.io/feed.xml</id><title type="html">Slience_me的博客</title><subtitle>slience_me的个人博客</subtitle><author><name>slience_me</name></author><entry><title type="html">Linux｜FRP内网穿透</title><link href="https://slienceme.cn/pages/slience-me/slienceme.github.io/2025/02/19/frp/" rel="alternate" type="text/html" title="Linux｜FRP内网穿透" /><published>2025-02-19T00:00:00+08:00</published><updated>2025-02-19T00:00:00+08:00</updated><id>https://slienceme.cn/pages/slience-me/slienceme.github.io/2025/02/19/frp</id><content type="html" xml:base="https://slienceme.cn/pages/slience-me/slienceme.github.io/2025/02/19/frp/"><![CDATA[<p><img src="/images/posts/logo_slienceme3.png" alt="img" /></p>
+
+<p>本文作者： <a href="https://slienceme.cn/">slience_me</a></p>
+
+<hr />
+
+<blockquote>
+  <p>PS: 由于我有一台闲置的ThinkPad笔记本4c16g和一个低性能的云服务器2c2g，所以采用FRP去使用高性能的本地服务器</p>
+</blockquote>
+
+<h1 id="frp内网穿透">FRP内网穿透</h1>
+
+<h2 id="一-frp简介">一. Frp简介</h2>
+
+<p>frp（Fast Reverse Proxy）是一款高性能的反向代理应用，专为内网穿透设计。它支持多种协议，包括 TCP、UDP、HTTP、HTTPS 等，同时也具备 P2P（点对点）通信功能。通过在一个具有公网 IP 地址的中转节点上运行 frp，用户可以将内网服务暴露到公网，从而简化内网访问和管理的复杂性。</p>
+
+<p>在实际应用中，frp 能够有效解决内网服务无法直接访问的问题。无论是个人用户在家搭建的 Web 服务，还是公司内部的开发环境，只需要在内网一端运行 frp 客户端，通过公网节点中转，即可实现内网服务的远程访问。这样的配置既安全可靠，又能大幅降低网络架构的复杂度。</p>
+
+<p>除了常见的 Web 服务，frp 还支持一系列高级功能，包括：</p>
+
+<ul>
+  <li>通过端口映射将多个内网服务暴露到外部；</li>
+  <li>支持多种认证方式和加密传输，确保数据的安全性；</li>
+  <li>支持基于域名的路由分发，将不同域名映射到不同的内网服务；</li>
+  <li>提供自动重连和断点续传等稳定性和容错机制。</li>
+</ul>
+
+<p>frp 的高效性和灵活性使其广泛应用于开发、运维、远程访问、物联网（IoT）设备接入等场景，是解决内网穿透需求的理想工具。</p>
+
+<p>frp 项目地址：https://github.com/fatedier/frp</p>
+
+<h2 id="二-frp特性">二. Frp特性</h2>
+
+<p>通过在具有公网 IP 地址的节点上部署 frp 服务端，用户可以轻松实现内网服务的公网穿透，同时享受以下多种专业功能特性：</p>
+
+<ul>
+  <li><strong>多协议支持</strong>：客户端与服务端之间支持 TCP、QUIC、KCP、WebSocket 等多种协议，灵活应对不同的应用需求。</li>
+  <li><strong>TCP连接流式复用</strong>：采用流式复用技术，在单一连接中承载更多请求，显著降低连接建立时间和请求延迟。</li>
+  <li><strong>负载均衡</strong>：支持代理组间的负载均衡，优化资源分配，提高服务性能和可靠性。</li>
+  <li><strong>端口复用</strong>：多个服务可以通过同一个服务端端口进行暴露，节省端口资源，简化配置。</li>
+  <li><strong>P2P通信</strong>：支持 P2P 通信模式，流量绕过服务器中转，充分利用带宽资源，降低延迟。</li>
+  <li><strong>原生客户端插件支持</strong>：提供多个原生客户端插件，例如静态文件查看、HTTPS/HTTP 协议转换、HTTP/SOCKS5 代理等，便于独立使用 frp 客户端完成特定任务。</li>
+  <li><strong>高度可扩展的插件系统</strong>：服务端插件系统具备高度的扩展性，用户可以根据需求扩展功能。</li>
+  <li><strong>UI支持</strong>：提供服务端和客户端的图形界面（UI），使配置和管理更加简便直观。</li>
+</ul>
+
+<p>这些特性使得 frp 在企业级应用、远程办公、云计算等领域具有广泛的应用场景，成为一款功能全面、稳定高效的内网穿透解决方案。</p>
+
+<h2 id="三-架构与工作原理">三. 架构与工作原理</h2>
+
+<p>frp 由两个核心组件构成：客户端 (frpc) 和 服务端 (frps)。通常情况下，服务端（frps）部署在具有公网 IP 地址的服务器上，而客户端（frpc）则运行在需要穿透的内网机器上。</p>
+
+<h3 id="41-架构概述">4.1. 架构概述</h3>
+
+<p>在典型的应用场景中，内网机器通常无法直接与外网进行通信，因为它们没有公网 IP 地址。因此，这些机器上的服务（如 Web 服务、数据库、SSH 连接等）无法被外部用户直接访问。frp 通过建立客户端与服务端的连接，解决了这一问题。</p>
+
+<ul>
+  <li><strong>服务端（frps）</strong>：部署在公网可访问的服务器上，负责接收来自外部的请求，并将这些请求转发到连接到该服务端的内网客户端。服务端是整个架构的“网关”，它负责处理所有外部的网络请求。</li>
+  <li><strong>客户端（frpc）</strong>：运行在内网的机器上，负责与服务端建立连接并保持通信。客户端通过 frp 配置文件指定需要暴露的内网服务端口或应用，服务端接收到请求后，会通过已经建立的连接将请求转发到对应的内网服务。</li>
+</ul>
+
+<h3 id="42-工作原理">4.2. 工作原理</h3>
+
+<ol>
+  <li><strong>连接建立</strong>：当客户端启动时，frpc 会通过预先配置好的设置与服务端（frps）建立一个稳定的长连接。这个连接通常是 TCP 或 UDP 类型，确保客户端和服务端之间的持续通信。</li>
+  <li><strong>请求转发</strong>：外部用户访问服务端的公网 IP 地址时，frps 会根据请求的端口、协议或域名等信息，判断请求应当转发到哪个内网客户端。frps 通过已经建立的连接，将请求转发到相应的 frpc 客户端。</li>
+  <li><strong>内网服务响应</strong>：内网的 frpc 客户端收到请求后，将请求转发到本地运行的服务（如 Web 服务器、数据库、SSH 等），并获取响应数据。之后，frpc 将响应数据通过已建立的长连接返回给服务端，服务端再将响应数据传递给外部用户。</li>
+  <li><strong>双向通信</strong>：通过上述过程，外部用户能够像访问公网服务一样与内网服务进行通信，而内网服务也可以通过服务端与外部进行双向交互。整个过程中，内网机器无需直接暴露给外网，大大增强了安全性。</li>
+</ol>
+
+<h3 id="43-特点与优势">4.3. 特点与优势</h3>
+
+<ul>
+  <li><strong>简化网络架构</strong>：frp 将内网服务暴露到外网的过程完全透明，用户不需要进行复杂的端口映射或公网 IP 配置，极大简化了网络架构。</li>
+  <li><strong>灵活的路由机制</strong>：服务端根据不同的请求信息（如端口、域名等），智能地将请求路由到相应的内网服务。通过域名和端口映射，用户可以将多个不同的内网服务暴露到公网。</li>
+  <li><strong>高效的连接管理</strong>：frp 利用持久的连接和流式复用技术，最大限度地减少了连接的建立和中转延迟，使得内外网通信更加高效。</li>
+  <li><strong>安全可靠</strong>：通过加密传输、身份认证等机制，frp 确保数据的安全性。此外，客户端与服务端的长连接和断点续传功能，使得即使在网络中断时也能够自动恢复，保障了稳定性。</li>
+</ul>
+
+<p><img src="/images/posts/architecture.png" alt="img" /></p>
+
+<h2 id="四-相关概念">四. 相关概念</h2>
+
+<h3 id="41-代理">4.1. 代理</h3>
+
+<p>在 frp 中，<strong>代理</strong>是指将内网服务暴露到公网的配置项。每个代理对应一个内网服务，负责将外部请求转发到该内网服务上。通过配置不同的代理，用户可以将多个内网服务同时暴露到外部网络。例如，用户可以同时将 Web 服务、SSH 服务和数据库服务通过不同的代理进行暴露。</p>
+
+<p>一个客户端（frpc）可以同时配置多个代理，以满足多种不同的需求。这使得 frp 在复杂网络环境中，能够灵活地支持多种应用场景，帮助用户高效地管理和访问不同的内网服务。</p>
+
+<h3 id="42-代理类型">4.2. 代理类型</h3>
+
+<p>frp 提供了多种代理类型，以适应不同的应用需求和使用场景。以下是一些常见的代理类型：</p>
+
+<ul>
+  <li><strong>TCP</strong>：提供传统的 TCP 端口映射功能。通过 TCP 代理，服务端可以根据请求的端口将流量转发到不同的内网服务。适用于需要在外网访问 TCP 协议的服务，如 Web 服务、SSH 等。</li>
+  <li><strong>UDP</strong>：与 TCP 代理类似，但专为 UDP 流量设计。UDP 代理可以将外部的 UDP 请求转发到内网的 UDP 服务，适用于实时通信、视频流、VoIP 等场景。</li>
+  <li><strong>HTTP</strong>：专门为 HTTP 协议设计的代理，支持通过 HTTP 请求转发流量。除了基本的端口映射功能外，HTTP 代理还可以进行额外的处理，如修改 Host Header 和增加访问鉴权功能。这对于 Web 应用场景非常有用，特别是在需要进行反向代理或负载均衡时。</li>
+  <li><strong>HTTPS</strong>：与 HTTP 代理类似，HTTPS 代理专为处理加密的 HTTPS 流量设计。它不仅能够转发 HTTPS 请求，还能提供 SSL/TLS 终止，帮助用户实现更加安全的内网服务暴露。</li>
+  <li><strong>STCP</strong>：提供安全的 TCP 内网代理。STCP 代理使用加密技术来保护数据传输，确保流量的安全性。在 STCP 代理中，数据通过加密隧道传输，因此无需在服务端暴露端口，也能保证通信的安全性。STCP 适用于需要高安全性的环境。</li>
+  <li><strong>SUDP</strong>：与 STCP 类似，SUDP 提供安全的 UDP 内网代理。它同样使用加密隧道来保护 UDP 流量，在无需在服务端暴露端口的情况下实现安全的 UDP 内网穿透。这对于需要加密保护的实时流量非常适用。</li>
+  <li><strong>XTCP</strong>：点对点（P2P）内网穿透代理。XTCP 代理不需要通过服务端进行流量中转，而是直接建立内网客户端之间的连接，利用点对点技术进行通信。通过 XTPC，内网服务可以在不通过公网服务器的情况下直接连接，减少延迟并提高带宽利用率。适用于需要高效、低延迟的通信场景。</li>
+  <li><strong>TCPMUX</strong>：提供服务端 TCP 端口的多路复用。通过 TCPMUX，多个内网服务可以共享同一个服务端端口。请求通过不同的标识符（如端口号或协议）来区分，从而访问不同的内网服务。这种方式能够显著减少对公网端口的需求，优化资源使用。</li>
+</ul>
+
+<h3 id="43-代理类型选择">4.3. 代理类型选择</h3>
+
+<p>每种代理类型针对特定的需求和场景进行优化，因此用户应根据实际使用情况选择最合适的代理类型。例如，如果需要在外部访问 Web 服务，HTTP 或 HTTPS 代理将是最好的选择；如果需要实现加密传输和提高安全性，则 STCP 或 SUDP 会更为合适；对于高性能和低延迟的场景，XTCP 可以提供更优的体验。</p>
+
+<p>通过合理选择代理类型，用户能够更加灵活地配置 frp，满足不同的网络穿透需求。</p>
+
+<h2 id="五-安装">五. 安装</h2>
+
+<h3 id="51-需求描述">5.1. 需求描述</h3>
+
+<p>公司内部有一台位于内网的服务器 A 和一台拥有公网 IP 地址的云服务器 B。在内网服务器 A 上运行着 web服务，现在需要将 web服务通过公网暴露出来，以便外部用户能够通过云服务器 B 的公网 IP 进行访问。</p>
+
+<blockquote>
+  <p>PS: 我有一台位于内网的ThinkPad服务器A和一台拥有公网IP地址的云服务器B。在内网服务器A上运行着web服务，现在需要将web务通过公网暴露出来，以便外部用户能够通过云服务器 B 的公网 IP 进行访问。</p>
+</blockquote>
+
+<h3 id="52-下载安装包">5.2. 下载安装包</h3>
+
+<p>从官方 GitHub Release 页面下载 frp 的最新二进制安装包：<a href="https://github.com/fatedier/frp/releases">frp Releases</a>。截至目前，最新版本为 v0.54.0。Linux 版本的下载链接为：<a href="https://github.com/fatedier/frp/releases/download/v0.54.0/frp_0.54.0_linux_amd64.tar.gz">frp_0.54.0_linux_amd64.tar.gz</a>。</p>
+
+<h3 id="53-公网服务器部署-frp">5.3. 公网服务器部署 frp</h3>
+
+<blockquote>
+  <p>当前服务器的公网IP：xxx.xxx.xxx.xxx</p>
+</blockquote>
+
+<h4 id="1-上传安装包并解压">(1) 上传安装包并解压</h4>
+
+<div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nb">tar</span> <span class="nt">-xf</span> frp_0.54.0_linux_amd64.tar.gz
+<span class="nb">mv </span>frp_0.54.0_linux_amd64 frp
+<span class="nb">cd </span>frp
+</code></pre></div></div>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code># 目录结构
+frp
+├── frpc
+├── frpc.toml
+├── frps
+├── frps.log
+├── frps.toml
+├── LICENSE
+└── logs
+    └── frps.log
+</code></pre></div></div>
+
+<h4 id="2-修改配置">(2) 修改配置</h4>
+
+<p>编辑 <code class="language-plaintext highlighter-rouge">frps.toml</code> 配置文件，设置服务端的相关参数。</p>
+
+<div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code>vim frps.toml
+</code></pre></div></div>
+
+<p>配置内容：</p>
+
+<blockquote>
+  <p>现在需要详细的介绍一下：
+<code class="language-plaintext highlighter-rouge">bindAddr</code>：服务端监听地址，用于接收 frpc 的连接，默认监听 0.0.0.0</p>
+
+  <p><code class="language-plaintext highlighter-rouge">bindPort</code>：服务端监听端口，默认值为 7000</p>
+
+  <p><code class="language-plaintext highlighter-rouge">auth.method</code>：鉴权方式，可选值为 token 或 oidc，默认为 token</p>
+
+  <p><code class="language-plaintext highlighter-rouge">auth.token</code>：在 method 为 token 时生效，客户端需要设置一样的值才能鉴权通过</p>
+
+  <p><code class="language-plaintext highlighter-rouge">webServer</code>：用于服务器端的web界面显示</p>
+</blockquote>
+
+<div class="language-toml highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="c"># 服务绑定的IP与端口</span>
+<span class="py">bindAddr</span> <span class="p">=</span> <span class="s">"0.0.0.0"</span>
+<span class="py">bindPort</span> <span class="p">=</span> <span class="mi">7000</span>
+
+<span class="c"># Web Dashboard 配置</span>
+<span class="py">webServer.addr</span> <span class="p">=</span> <span class="s">"0.0.0.0"</span>
+<span class="py">webServer.port</span> <span class="p">=</span> <span class="mi">7500</span>
+<span class="py">webServer.user</span> <span class="p">=</span> <span class="s">"admin"</span>
+<span class="py">webServer.password</span> <span class="p">=</span> <span class="s">"admin"</span>
+
+<span class="c"># 启用 Prometheus 监控指标</span>
+<span class="py">enablePrometheus</span> <span class="p">=</span> <span class="kc">true</span>
+
+<span class="c"># Token 权限验证，需与客户端配置一致</span>
+<span class="py">auth.method</span> <span class="p">=</span> <span class="s">"token"</span>
+<span class="py">auth.token</span> <span class="p">=</span> <span class="s">"123456"</span>
+
+<span class="c"># 日志配置</span>
+<span class="py">log.to</span> <span class="p">=</span> <span class="s">"/app/frp/logs/frps.log"</span>
+<span class="py">log.level</span> <span class="p">=</span> <span class="s">"info"</span>
+<span class="py">log.maxDays</span> <span class="p">=</span> <span class="mi">3</span>
+</code></pre></div></div>
+
+<h4 id="3-创建日志目录">(3) 创建日志目录</h4>
+
+<div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nb">mkdir</span> /app/frp/logs
+</code></pre></div></div>
+
+<h4 id="4-启动服务">(4) 启动服务</h4>
+
+<ol>
+  <li>
+    <p><strong>命令行方式启动</strong>：</p>
+
+    <div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code> ./frps <span class="nt">-c</span> ./frps.toml
+</code></pre></div>    </div>
+  </li>
+  <li>
+    <p><strong>后台启动</strong>：</p>
+
+    <div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code> <span class="nb">nohup</span> ./frps <span class="nt">-c</span> ./frps.toml &amp;&gt; /dev/null &amp;
+</code></pre></div>    </div>
+  </li>
+  <li>
+    <p><strong>使用 systemd 启动</strong>：</p>
+
+    <ul>
+      <li>创建 <code class="language-plaintext highlighter-rouge">frps.service</code> 启动文件：</li>
+    </ul>
+
+    <div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code> vim /etc/systemd/system/frps.service
+</code></pre></div>    </div>
+  </li>
+</ol>
+
+<p>配置文件内容：</p>
+
+<div class="language-ini highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nn">[Unit]</span>
+<span class="c"># 服务名称，可自定义
+</span><span class="py">Description</span> <span class="p">=</span> <span class="s">frp server</span>
+<span class="py">After</span> <span class="p">=</span> <span class="s">network.target syslog.target</span>
+<span class="py">Wants</span> <span class="p">=</span> <span class="s">network.target</span>
+
+<span class="nn">[Service]</span>
+<span class="py">Type</span> <span class="p">=</span> <span class="s">simple</span>
+<span class="c"># 启动 frps 的命令，需修改为您的 frps 安装路径
+</span><span class="py">ExecStart</span> <span class="p">=</span> <span class="s">/app/frp/frps -c /app/frp/frps.toml</span>
+
+<span class="nn">[Install]</span>
+<span class="py">WantedBy</span> <span class="p">=</span> <span class="s">multi-user.target</span>
+</code></pre></div></div>
+
+<ul>
+  <li>启动服务：</li>
+</ul>
+
+<div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code>systemctl daemon-reload
+systemctl start frps
+</code></pre></div></div>
+
+<h4 id="5-开放防火墙">(5) 开放防火墙</h4>
+
+<blockquote>
+  <p>去 <code class="language-plaintext highlighter-rouge">云服务器</code> 后台的 <code class="language-plaintext highlighter-rouge">安全组</code> 开放端口</p>
+</blockquote>
+
+<h4 id="6-测试服务端后台">(6) 测试服务端后台</h4>
+
+<blockquote>
+  <p>访问：<code class="language-plaintext highlighter-rouge">http://xxx.xxx.xxx.xxx:7500</code></p>
+
+  <p>用户名：<code class="language-plaintext highlighter-rouge">admin</code></p>
+
+  <p>密码：<code class="language-plaintext highlighter-rouge">admin</code></p>
+</blockquote>
+
+<p><img src="/images/posts/image-20250219182117453.png" alt="image-20250219182117453" /></p>
+
+<p><img src="/images/posts/image-20250219182229288.png" alt="image-20250219182229288" /></p>
+
+<h3 id="54-内网服务器部署-frp">5.4. 内网服务器部署 frp</h3>
+
+<blockquote>
+  <p>当前服务器的内网IP：127.0.0.1</p>
+</blockquote>
+
+<h4 id="1-上传安装包并解压-1">(1) 上传安装包并解压</h4>
+
+<div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nb">tar</span> <span class="nt">-xf</span> frp_0.54.0_linux_amd64.tar.gz
+<span class="nb">mv </span>frp_0.54.0_linux_amd64 frp
+<span class="nb">cd </span>frp
+</code></pre></div></div>
+
+<div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="c"># 目录结构</span>
+frp
+├── conf.d
+│└── purecolor.toml
+├── frpc
+├── frpc.toml
+├── frps
+├── frps.toml
+├── LICENSE
+└── logs
+    └── frpc.log
+</code></pre></div></div>
+
+<h4 id="2-创建代理配置目录与日志存储目录">(2) 创建代理配置目录与日志存储目录</h4>
+
+<div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nb">mkdir </span>logs conf.d
+</code></pre></div></div>
+
+<h4 id="3-修改配置">(3) 修改配置</h4>
+
+<p>编辑 <code class="language-plaintext highlighter-rouge">frpc.toml</code> 配置文件，设置客户端的相关参数。</p>
+
+<div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code>vim frpc.toml
+</code></pre></div></div>
+
+<p>配置内容：</p>
+
+<blockquote>
+  <p>现在需要详细的介绍一下：
+<code class="language-plaintext highlighter-rouge">serverAddr</code>：连接服务端的地址</p>
+
+  <p><code class="language-plaintext highlighter-rouge">serverPort</code>：连接服务端的端口，默认为 7000</p>
+
+  <p><code class="language-plaintext highlighter-rouge">auth.method</code>：鉴权方式，可选值为 token 或 oidc，默认为 token</p>
+
+  <p><code class="language-plaintext highlighter-rouge">auth.token</code>：在 method 为 token 时生效，客户端需要设置一样的值才能鉴权通过</p>
+
+  <p><code class="language-plaintext highlighter-rouge">webServer</code>：用于服务器端的web界面显示</p>
+
+  <p><code class="language-plaintext highlighter-rouge">./conf.d/</code>：这里面存放不同的代理配置</p>
+</blockquote>
+
+<div class="language-toml highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="c"># 配置公网服务器上 frp 服务的 IP 与端口</span>
+<span class="py">serverAddr</span> <span class="p">=</span> <span class="s">"xxx.xxx.xxx.xxx"</span>  <span class="c"># 填写公网服务器 IP</span>
+<span class="py">serverPort</span> <span class="p">=</span> <span class="mi">7000</span>
+
+<span class="c"># Web Dashboard 配置</span>
+<span class="py">webServer.addr</span> <span class="p">=</span> <span class="s">"0.0.0.0"</span>
+<span class="py">webServer.port</span> <span class="p">=</span> <span class="mi">7400</span>
+<span class="py">webServer.user</span> <span class="p">=</span> <span class="s">"admin"</span>
+<span class="py">webServer.password</span> <span class="p">=</span> <span class="s">"admin"</span>
+
+<span class="c"># 日志配置</span>
+<span class="py">log.to</span> <span class="p">=</span> <span class="s">"/app/frp/logs/frpc.log"</span>
+<span class="py">log.level</span> <span class="p">=</span> <span class="s">"info"</span>
+<span class="py">log.maxDays</span> <span class="p">=</span> <span class="mi">3</span>
+
+<span class="c"># Token 权限验证，需与服务端配置一致</span>
+<span class="py">auth.method</span> <span class="p">=</span> <span class="s">"token"</span>
+<span class="py">auth.token</span> <span class="p">=</span> <span class="s">"123456"</span>
+
+<span class="c"># 代理配置，这里使用引用文件的方式</span>
+<span class="py">includes</span> <span class="p">=</span> <span class="nn">["./conf.d/*.toml"]</span>
+</code></pre></div></div>
+
+<p>编辑代理配置文件 <code class="language-plaintext highlighter-rouge">webapp.toml</code>，将内网 Jenkins 服务暴露到公网。</p>
+
+<div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code>vim ./conf.d/webapp.toml
+</code></pre></div></div>
+
+<p>配置内容：</p>
+
+<div class="language-toml highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nn">[[proxies]]</span>
+<span class="py">name</span> <span class="p">=</span> <span class="s">"mywebapp"</span>           <span class="c"># 代理名称</span>
+<span class="py">type</span> <span class="p">=</span> <span class="s">"tcp"</span>                <span class="c"># 代理类型，TCP</span>
+<span class="py">localIP</span> <span class="p">=</span> <span class="s">"127.0.0.1"</span>       <span class="c"># 内网服务的 IP</span>
+<span class="py">localPort</span> <span class="p">=</span> <span class="mi">8080</span>            <span class="c"># 服务监听的端口(即内网web项目服务的端口)</span>
+<span class="py">remotePort</span> <span class="p">=</span> <span class="mi">8500</span>           <span class="c"># 公网服务器上监听的端口(设置服务器所对应的端口)</span>
+</code></pre></div></div>
+
+<blockquote>
+  <p>(内网)127.0.0.1:8080 -&gt; (公网) xxx.xxx.xxx.xxx:8500</p>
+</blockquote>
+
+<h4 id="4-启动服务-1">(4) 启动服务</h4>
+
+<ol>
+  <li><strong>命令行方式启动</strong>：</li>
+</ol>
+
+<div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code>./frpc <span class="nt">-c</span> ./frpc.toml
+</code></pre></div></div>
+
+<ol>
+  <li><strong>后台启动</strong>：</li>
+</ol>
+
+<div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nb">nohup</span> ./frpc <span class="nt">-c</span> ./frpc.toml &amp;&gt; /dev/null &amp;
+</code></pre></div></div>
+
+<ol>
+  <li><strong>使用 systemd 启动</strong>：</li>
+</ol>
+
+<ul>
+  <li>创建 <code class="language-plaintext highlighter-rouge">frpc.service</code> 启动文件：</li>
+</ul>
+
+<div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code>vim /etc/systemd/system/frpc.service
+</code></pre></div></div>
+
+<p>配置文件内容：</p>
+
+<div class="language-ini highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nn">[Unit]</span>
+<span class="c"># 服务名称，可自定义
+</span><span class="py">Description</span> <span class="p">=</span> <span class="s">frp client</span>
+<span class="py">After</span> <span class="p">=</span> <span class="s">network.target syslog.target</span>
+<span class="py">Wants</span> <span class="p">=</span> <span class="s">network.target</span>
+
+<span class="nn">[Service]</span>
+<span class="py">Type</span> <span class="p">=</span> <span class="s">simple</span>
+<span class="c"># 启动 frpc 的命令，需修改为您的 frpc 安装路径
+</span><span class="py">ExecStart</span> <span class="p">=</span> <span class="s">/app/frp/frpc -c /app/frp/frpc.toml</span>
+
+<span class="nn">[Install]</span>
+<span class="py">WantedBy</span> <span class="p">=</span> <span class="s">multi-user.target</span>
+</code></pre></div></div>
+
+<ul>
+  <li>启动服务：</li>
+</ul>
+
+<div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code>systemctl daemon-reload
+systemctl start frpc
+</code></pre></div></div>
+
+<h4 id="5-开放防火墙-1">(5) 开放防火墙</h4>
+
+<blockquote>
+  <p>去 <code class="language-plaintext highlighter-rouge">本地服务器</code> 的开放端口</p>
+
+  <p><code class="language-plaintext highlighter-rouge">ufw allow xxxx</code></p>
+</blockquote>
+
+<h4 id="6-测试服务端后台-1">(6) 测试服务端后台</h4>
+
+<blockquote>
+  <p>访问：<code class="language-plaintext highlighter-rouge">http://127.0.0.1:7400</code></p>
+
+  <p>用户名：<code class="language-plaintext highlighter-rouge">admin</code></p>
+
+  <p>密码：<code class="language-plaintext highlighter-rouge">admin</code></p>
+</blockquote>
+
+<p><img src="/images/posts/image-20250219185741385.png" alt="image-20250219185741385" /></p>
+
+<h3 id="55-访问测试汇总">5.5. 访问测试汇总</h3>
+
+<ul>
+  <li>在浏览器中访问公网服务器的 web 服务：
+ <code class="language-plaintext highlighter-rouge">http://xxx.xxx.xxx.xxx:8500</code>
+ 即可访问到内网的 web服务。</li>
+  <li>公网服务器的 Web Dashboard：
+ <code class="language-plaintext highlighter-rouge">http://xxx.xxx.xxx.xxx:7500</code>
+ 登录界面将显示为 <code class="language-plaintext highlighter-rouge">admin</code> 用户，密码为 <code class="language-plaintext highlighter-rouge">admin</code>。</li>
+  <li>公网服务器的 Prometheus 监控指标：
+ <code class="language-plaintext highlighter-rouge">http://xxx.xxx.xxx.xxx:7500/metrics</code>
+ 用于查看服务的实时监控数据。</li>
+</ul>
+
+<blockquote>
+  <p><strong>注意：</strong> 如果公网服务器启用了安全组或防火墙，请确保相应的端口已开放。</p>
+</blockquote>
+
+<h2 id="六-附录">六. 附录：</h2>
+
+<p>从官网下载了服务端与客户端的全配置文件，仅供参考</p>
+
+<h3 id="61-服务端全配置文件">6.1. 服务端全配置文件</h3>
+
+<p>frps_full_example.toml</p>
+
+<div class="language-toml highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="c"># This configuration file is for reference only. Please do not use this configuration directly to run the program as it may have various issues.</span>
+
+<span class="c"># A literal address or host name for IPv6 must be enclosed</span>
+<span class="c"># in square brackets, as in "[::1]:80", "[ipv6-host]:http" or "[ipv6-host%zone]:80"</span>
+<span class="c"># For single "bindAddr" field, no need square brackets, like `bindAddr = "::"`.</span>
+<span class="py">bindAddr</span> <span class="p">=</span> <span class="s">"0.0.0.0"</span>
+<span class="py">bindPort</span> <span class="p">=</span> <span class="mi">7000</span>
+
+<span class="c"># udp port used for kcp protocol, it can be same with 'bindPort'.</span>
+<span class="c"># if not set, kcp is disabled in frps.</span>
+<span class="py">kcpBindPort</span> <span class="p">=</span> <span class="mi">7000</span>
+
+<span class="c"># udp port used for quic protocol.</span>
+<span class="c"># if not set, quic is disabled in frps.</span>
+<span class="c"># quicBindPort = 7002</span>
+
+<span class="c"># Specify which address proxy will listen for, default value is same with bindAddr</span>
+<span class="c"># proxyBindAddr = "127.0.0.1"</span>
+
+<span class="c"># quic protocol options</span>
+<span class="c"># transport.quic.keepalivePeriod = 10</span>
+<span class="c"># transport.quic.maxIdleTimeout = 30</span>
+<span class="c"># transport.quic.maxIncomingStreams = 100000</span>
+
+<span class="c"># Heartbeat configure, it's not recommended to modify the default value</span>
+<span class="c"># The default value of heartbeatTimeout is 90. Set negative value to disable it.</span>
+<span class="c"># transport.heartbeatTimeout = 90</span>
+
+<span class="c"># Pool count in each proxy will keep no more than maxPoolCount.</span>
+<span class="py">transport.maxPoolCount</span> <span class="p">=</span> <span class="mi">5</span>
+
+<span class="c"># If tcp stream multiplexing is used, default is true</span>
+<span class="c"># transport.tcpMux = true</span>
+
+<span class="c"># Specify keep alive interval for tcp mux.</span>
+<span class="c"># only valid if tcpMux is true.</span>
+<span class="c"># transport.tcpMuxKeepaliveInterval = 60</span>
+
+<span class="c"># tcpKeepalive specifies the interval between keep-alive probes for an active network connection between frpc and frps.</span>
+<span class="c"># If negative, keep-alive probes are disabled.</span>
+<span class="c"># transport.tcpKeepalive = 7200</span>
+
+<span class="c"># transport.tls.force specifies whether to only accept TLS-encrypted connections. By default, the value is false.</span>
+<span class="py">transport.tls.force</span> <span class="p">=</span> <span class="kc">false</span>
+
+<span class="c"># transport.tls.certFile = "server.crt"</span>
+<span class="c"># transport.tls.keyFile = "server.key"</span>
+<span class="c"># transport.tls.trustedCaFile = "ca.crt"</span>
+
+<span class="c"># If you want to support virtual host, you must set the http port for listening (optional)</span>
+<span class="c"># Note: http port and https port can be same with bindPort</span>
+<span class="py">vhostHTTPPort</span> <span class="p">=</span> <span class="mi">80</span>
+<span class="py">vhostHTTPSPort</span> <span class="p">=</span> <span class="mi">443</span>
+
+<span class="c"># Response header timeout(seconds) for vhost http server, default is 60s</span>
+<span class="c"># vhostHTTPTimeout = 60</span>
+
+<span class="c"># tcpmuxHTTPConnectPort specifies the port that the server listens for TCP</span>
+<span class="c"># HTTP CONNECT requests. If the value is 0, the server will not multiplex TCP</span>
+<span class="c"># requests on one single port. If it's not - it will listen on this value for</span>
+<span class="c"># HTTP CONNECT requests. By default, this value is 0.</span>
+<span class="c"># tcpmuxHTTPConnectPort = 1337</span>
+
+<span class="c"># If tcpmuxPassthrough is true, frps won't do any update on traffic.</span>
+<span class="c"># tcpmuxPassthrough = false</span>
+
+<span class="c"># Configure the web server to enable the dashboard for frps.</span>
+<span class="c"># dashboard is available only if webServer.port is set.</span>
+<span class="py">webServer.addr</span> <span class="p">=</span> <span class="s">"127.0.0.1"</span>
+<span class="py">webServer.port</span> <span class="p">=</span> <span class="mi">7500</span>
+<span class="py">webServer.user</span> <span class="p">=</span> <span class="s">"admin"</span>
+<span class="py">webServer.password</span> <span class="p">=</span> <span class="s">"admin"</span>
+<span class="c"># webServer.tls.certFile = "server.crt"</span>
+<span class="c"># webServer.tls.keyFile = "server.key"</span>
+<span class="c"># dashboard assets directory(only for debug mode)</span>
+<span class="c"># webServer.assetsDir = "./static"</span>
+
+<span class="c"># Enable golang pprof handlers in dashboard listener.</span>
+<span class="c"># Dashboard port must be set first</span>
+<span class="py">webServer.pprofEnable</span> <span class="p">=</span> <span class="kc">false</span>
+
+<span class="c"># enablePrometheus will export prometheus metrics on webServer in /metrics api.</span>
+<span class="py">enablePrometheus</span> <span class="p">=</span> <span class="kc">true</span>
+
+<span class="c"># console or real logFile path like ./frps.log</span>
+<span class="py">log.to</span> <span class="p">=</span> <span class="s">"./frps.log"</span>
+<span class="c"># trace, debug, info, warn, error</span>
+<span class="py">log.level</span> <span class="p">=</span> <span class="s">"info"</span>
+<span class="py">log.maxDays</span> <span class="p">=</span> <span class="mi">3</span>
+<span class="c"># disable log colors when log.to is console, default is false</span>
+<span class="py">log.disablePrintColor</span> <span class="p">=</span> <span class="kc">false</span>
+
+<span class="c"># DetailedErrorsToClient defines whether to send the specific error (with debug info) to frpc. By default, this value is true.</span>
+<span class="py">detailedErrorsToClient</span> <span class="p">=</span> <span class="kc">true</span>
+
+<span class="c"># auth.method specifies what authentication method to use authenticate frpc with frps.</span>
+<span class="c"># If "token" is specified - token will be read into login message.</span>
+<span class="c"># If "oidc" is specified - OIDC (Open ID Connect) token will be issued using OIDC settings. By default, this value is "token".</span>
+<span class="py">auth.method</span> <span class="p">=</span> <span class="s">"token"</span>
+
+<span class="c"># auth.additionalScopes specifies additional scopes to include authentication information.</span>
+<span class="c"># Optional values are HeartBeats, NewWorkConns.</span>
+<span class="c"># auth.additionalScopes = ["HeartBeats", "NewWorkConns"]</span>
+
+<span class="c"># auth token</span>
+<span class="py">auth.token</span> <span class="p">=</span> <span class="s">"12345678"</span>
+
+<span class="c"># oidc issuer specifies the issuer to verify OIDC tokens with.</span>
+<span class="py">auth.oidc.issuer</span> <span class="p">=</span> <span class="s">""</span>
+<span class="c"># oidc audience specifies the audience OIDC tokens should contain when validated.</span>
+<span class="py">auth.oidc.audience</span> <span class="p">=</span> <span class="s">""</span>
+<span class="c"># oidc skipExpiryCheck specifies whether to skip checking if the OIDC token is expired.</span>
+<span class="py">auth.oidc.skipExpiryCheck</span> <span class="p">=</span> <span class="kc">false</span>
+<span class="c"># oidc skipIssuerCheck specifies whether to skip checking if the OIDC token's issuer claim matches the issuer specified in OidcIssuer.</span>
+<span class="py">auth.oidc.skipIssuerCheck</span> <span class="p">=</span> <span class="kc">false</span>
+
+<span class="c"># userConnTimeout specifies the maximum time to wait for a work connection.</span>
+<span class="c"># userConnTimeout = 10</span>
+
+<span class="c"># Only allow frpc to bind ports you list. By default, there won't be any limit.</span>
+<span class="py">allowPorts</span> <span class="p">=</span> <span class="p">[</span>
+  <span class="err">{</span> <span class="py">start</span> <span class="p">=</span> <span class="mi">2000</span><span class="p">,</span> <span class="py">end</span> <span class="p">=</span> <span class="mi">3000</span> <span class="err">}</span><span class="p">,</span>
+  <span class="err">{</span> <span class="py">single</span> <span class="p">=</span> <span class="mi">3001</span> <span class="err">}</span><span class="p">,</span>
+  <span class="err">{</span> <span class="py">single</span> <span class="p">=</span> <span class="mi">3003</span> <span class="err">}</span><span class="p">,</span>
+  <span class="err">{</span> <span class="py">start</span> <span class="p">=</span> <span class="mi">4000</span><span class="p">,</span> <span class="py">end</span> <span class="p">=</span> <span class="mi">50000</span> <span class="err">}</span>
+<span class="p">]</span>
+
+<span class="c"># Max ports can be used for each client, default value is 0 means no limit</span>
+<span class="py">maxPortsPerClient</span> <span class="p">=</span> <span class="mi">0</span>
+
+<span class="c"># If subDomainHost is not empty, you can set subdomain when type is http or https in frpc's configure file</span>
+<span class="c"># When subdomain is test, the host used by routing is test.frps.com</span>
+<span class="py">subDomainHost</span> <span class="p">=</span> <span class="s">"frps.com"</span>
+
+<span class="c"># custom 404 page for HTTP requests</span>
+<span class="c"># custom404Page = "/path/to/404.html"</span>
+
+<span class="c"># specify udp packet size, unit is byte. If not set, the default value is 1500.</span>
+<span class="c"># This parameter should be same between client and server.</span>
+<span class="c"># It affects the udp and sudp proxy.</span>
+<span class="py">udpPacketSize</span> <span class="p">=</span> <span class="mi">1500</span>
+
+<span class="c"># Retention time for NAT hole punching strategy data.</span>
+<span class="py">natholeAnalysisDataReserveHours</span> <span class="p">=</span> <span class="mi">168</span>
+
+<span class="c"># ssh tunnel gateway</span>
+<span class="c"># If you want to enable this feature, the bindPort parameter is required, while others are optional.</span>
+<span class="c"># By default, this feature is disabled. It will be enabled if bindPort is greater than 0.</span>
+<span class="c"># sshTunnelGateway.bindPort = 2200</span>
+<span class="c"># sshTunnelGateway.privateKeyFile = "/home/frp-user/.ssh/id_rsa"</span>
+<span class="c"># sshTunnelGateway.autoGenPrivateKeyPath = ""</span>
+<span class="c"># sshTunnelGateway.authorizedKeysFile = "/home/frp-user/.ssh/authorized_keys"</span>
+
+<span class="nn">[[httpPlugins]]</span>
+<span class="py">name</span> <span class="p">=</span> <span class="s">"user-manager"</span>
+<span class="py">addr</span> <span class="p">=</span> <span class="s">"127.0.0.1:9000"</span>
+<span class="py">path</span> <span class="p">=</span> <span class="s">"/handler"</span>
+<span class="py">ops</span> <span class="p">=</span> <span class="nn">["Login"]</span>
+
+<span class="nn">[[httpPlugins]]</span>
+<span class="py">name</span> <span class="p">=</span> <span class="s">"port-manager"</span>
+<span class="py">addr</span> <span class="p">=</span> <span class="s">"127.0.0.1:9001"</span>
+<span class="py">path</span> <span class="p">=</span> <span class="s">"/handler"</span>
+<span class="py">ops</span> <span class="p">=</span> <span class="nn">["NewProxy"]</span>
+</code></pre></div></div>
+
+<h3 id="62-客户端全配置文件">6.2. 客户端全配置文件</h3>
+
+<p><strong>frpc_full_example.toml</strong></p>
+
+<div class="language-toml highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="c"># This configuration file is for reference only. Please do not use this configuration directly to run the program as it may have various issues.</span>
+
+<span class="c"># your proxy name will be changed to {user}.{proxy}</span>
+<span class="py">user</span> <span class="p">=</span> <span class="s">"your_name"</span>
+
+<span class="c"># A literal address or host name for IPv6 must be enclosed</span>
+<span class="c"># in square brackets, as in "[::1]:80", "[ipv6-host]:http" or "[ipv6-host%zone]:80"</span>
+<span class="c"># For single serverAddr field, no need square brackets, like serverAddr = "::".</span>
+<span class="py">serverAddr</span> <span class="p">=</span> <span class="s">"0.0.0.0"</span>
+<span class="py">serverPort</span> <span class="p">=</span> <span class="mi">7000</span>
+
+<span class="c"># STUN server to help penetrate NAT hole.</span>
+<span class="c"># natHoleStunServer = "stun.easyvoip.com:3478"</span>
+
+<span class="c"># Decide if exit program when first login failed, otherwise continuous relogin to frps</span>
+<span class="c"># default is true</span>
+<span class="py">loginFailExit</span> <span class="p">=</span> <span class="kc">true</span>
+
+<span class="c"># console or real logFile path like ./frpc.log</span>
+<span class="py">log.to</span> <span class="p">=</span> <span class="s">"./frpc.log"</span>
+<span class="c"># trace, debug, info, warn, error</span>
+<span class="py">log.level</span> <span class="p">=</span> <span class="s">"info"</span>
+<span class="py">log.maxDays</span> <span class="p">=</span> <span class="mi">3</span>
+<span class="c"># disable log colors when log.to is console, default is false</span>
+<span class="py">log.disablePrintColor</span> <span class="p">=</span> <span class="kc">false</span>
+
+<span class="py">auth.method</span> <span class="p">=</span> <span class="s">"token"</span>
+<span class="c"># auth.additionalScopes specifies additional scopes to include authentication information.</span>
+<span class="c"># Optional values are HeartBeats, NewWorkConns.</span>
+<span class="c"># auth.additionalScopes = ["HeartBeats", "NewWorkConns"]</span>
+
+<span class="c"># auth token</span>
+<span class="py">auth.token</span> <span class="p">=</span> <span class="s">"12345678"</span>
+
+<span class="c"># oidc.clientID specifies the client ID to use to get a token in OIDC authentication.</span>
+<span class="c"># auth.oidc.clientID = ""</span>
+<span class="c"># oidc.clientSecret specifies the client secret to use to get a token in OIDC authentication.</span>
+<span class="c"># auth.oidc.clientSecret = ""</span>
+<span class="c"># oidc.audience specifies the audience of the token in OIDC authentication.</span>
+<span class="c"># auth.oidc.audience = ""</span>
+<span class="c"># oidc.scope specifies the permissions of the token in OIDC authentication if AuthenticationMethod == "oidc". By default, this value is "".</span>
+<span class="c"># auth.oidc.scope = ""</span>
+<span class="c"># oidc.tokenEndpointURL specifies the URL which implements OIDC Token Endpoint.</span>
+<span class="c"># It will be used to get an OIDC token.</span>
+<span class="c"># auth.oidc.tokenEndpointURL = ""</span>
+
+<span class="c"># oidc.additionalEndpointParams specifies additional parameters to be sent to the OIDC Token Endpoint.</span>
+<span class="c"># For example, if you want to specify the "audience" parameter, you can set as follow.</span>
+<span class="c"># frp will add "audience=&lt;value&gt;" "var1=&lt;value&gt;" to the additional parameters.</span>
+<span class="c"># auth.oidc.additionalEndpointParams.audience = "https://dev.auth.com/api/v2/"</span>
+<span class="c"># auth.oidc.additionalEndpointParams.var1 = "foobar"</span>
+
+<span class="c"># Set admin address for control frpc's action by http api such as reload</span>
+<span class="py">webServer.addr</span> <span class="p">=</span> <span class="s">"127.0.0.1"</span>
+<span class="py">webServer.port</span> <span class="p">=</span> <span class="mi">7400</span>
+<span class="py">webServer.user</span> <span class="p">=</span> <span class="s">"admin"</span>
+<span class="py">webServer.password</span> <span class="p">=</span> <span class="s">"admin"</span>
+<span class="c"># Admin assets directory. By default, these assets are bundled with frpc.</span>
+<span class="c"># webServer.assetsDir = "./static"</span>
+
+<span class="c"># Enable golang pprof handlers in admin listener.</span>
+<span class="py">webServer.pprofEnable</span> <span class="p">=</span> <span class="kc">false</span>
+
+<span class="c"># The maximum amount of time a dial to server will wait for a connect to complete. Default value is 10 seconds.</span>
+<span class="c"># transport.dialServerTimeout = 10</span>
+
+<span class="c"># dialServerKeepalive specifies the interval between keep-alive probes for an active network connection between frpc and frps.</span>
+<span class="c"># If negative, keep-alive probes are disabled.</span>
+<span class="c"># transport.dialServerKeepalive = 7200</span>
+
+<span class="c"># connections will be established in advance, default value is zero</span>
+<span class="py">transport.poolCount</span> <span class="p">=</span> <span class="mi">5</span>
+
+<span class="c"># If tcp stream multiplexing is used, default is true, it must be same with frps</span>
+<span class="c"># transport.tcpMux = true</span>
+
+<span class="c"># Specify keep alive interval for tcp mux.</span>
+<span class="c"># only valid if tcpMux is enabled.</span>
+<span class="c"># transport.tcpMuxKeepaliveInterval = 60</span>
+
+<span class="c"># Communication protocol used to connect to server</span>
+<span class="c"># supports tcp, kcp, quic, websocket and wss now, default is tcp</span>
+<span class="py">transport.protocol</span> <span class="p">=</span> <span class="s">"tcp"</span>
+
+<span class="c"># set client binding ip when connect server, default is empty.</span>
+<span class="c"># only when protocol = tcp or websocket, the value will be used.</span>
+<span class="py">transport.connectServerLocalIP</span> <span class="p">=</span> <span class="s">"0.0.0.0"</span>
+
+<span class="c"># if you want to connect frps by http proxy or socks5 proxy or ntlm proxy, you can set proxyURL here or in global environment variables</span>
+<span class="c"># it only works when protocol is tcp</span>
+<span class="c"># transport.proxyURL = "http://user:passwd@192.168.1.128:8080"</span>
+<span class="c"># transport.proxyURL = "socks5://user:passwd@192.168.1.128:1080"</span>
+<span class="c"># transport.proxyURL = "ntlm://user:passwd@192.168.1.128:2080"</span>
+
+<span class="c"># quic protocol options</span>
+<span class="c"># transport.quic.keepalivePeriod = 10</span>
+<span class="c"># transport.quic.maxIdleTimeout = 30</span>
+<span class="c"># transport.quic.maxIncomingStreams = 100000</span>
+
+<span class="c"># If tls.enable is true, frpc will connect frps by tls.</span>
+<span class="c"># Since v0.50.0, the default value has been changed to true, and tls is enabled by default.</span>
+<span class="py">transport.tls.enable</span> <span class="p">=</span> <span class="kc">true</span>
+
+<span class="c"># transport.tls.certFile = "client.crt"</span>
+<span class="c"># transport.tls.keyFile = "client.key"</span>
+<span class="c"># transport.tls.trustedCaFile = "ca.crt"</span>
+<span class="c"># transport.tls.serverName = "example.com"</span>
+
+<span class="c"># If the disableCustomTLSFirstByte is set to false, frpc will establish a connection with frps using the</span>
+<span class="c"># first custom byte when tls is enabled.</span>
+<span class="c"># Since v0.50.0, the default value has been changed to true, and the first custom byte is disabled by default.</span>
+<span class="c"># transport.tls.disableCustomTLSFirstByte = true</span>
+
+<span class="c"># Heartbeat configure, it's not recommended to modify the default value.</span>
+<span class="c"># The default value of heartbeatInterval is 10 and heartbeatTimeout is 90. Set negative value</span>
+<span class="c"># to disable it.</span>
+<span class="c"># transport.heartbeatInterval = 30</span>
+<span class="c"># transport.heartbeatTimeout = 90</span>
+
+<span class="c"># Specify a dns server, so frpc will use this instead of default one</span>
+<span class="c"># dnsServer = "8.8.8.8"</span>
+
+<span class="c"># Proxy names you want to start.</span>
+<span class="c"># Default is empty, means all proxies.</span>
+<span class="c"># start = ["ssh", "dns"]</span>
+
+<span class="c"># Specify udp packet size, unit is byte. If not set, the default value is 1500.</span>
+<span class="c"># This parameter should be same between client and server.</span>
+<span class="c"># It affects the udp and sudp proxy.</span>
+<span class="py">udpPacketSize</span> <span class="p">=</span> <span class="mi">1500</span>
+
+<span class="c"># Additional metadatas for client.</span>
+<span class="py">metadatas.var1</span> <span class="p">=</span> <span class="s">"abc"</span>
+<span class="py">metadatas.var2</span> <span class="p">=</span> <span class="s">"123"</span>
+
+<span class="c"># Include other config files for proxies.</span>
+<span class="c"># includes = ["./confd/*.ini"]</span>
+
+<span class="nn">[[proxies]]</span>
+<span class="c"># 'ssh' is the unique proxy name</span>
+<span class="c"># If global user is not empty, it will be changed to {user}.{proxy} such as 'your_name.ssh'</span>
+<span class="py">name</span> <span class="p">=</span> <span class="s">"ssh"</span>
+<span class="py">type</span> <span class="p">=</span> <span class="s">"tcp"</span>
+<span class="py">localIP</span> <span class="p">=</span> <span class="s">"127.0.0.1"</span>
+<span class="py">localPort</span> <span class="p">=</span> <span class="mi">22</span>
+<span class="c"># Limit bandwidth for this proxy, unit is KB and MB</span>
+<span class="py">transport.bandwidthLimit</span> <span class="p">=</span> <span class="s">"1MB"</span>
+<span class="c"># Where to limit bandwidth, can be 'client' or 'server', default is 'client'</span>
+<span class="py">transport.bandwidthLimitMode</span> <span class="p">=</span> <span class="s">"client"</span>
+<span class="c"># If true, traffic of this proxy will be encrypted, default is false</span>
+<span class="py">transport.useEncryption</span> <span class="p">=</span> <span class="kc">false</span>
+<span class="c"># If true, traffic will be compressed</span>
+<span class="py">transport.useCompression</span> <span class="p">=</span> <span class="kc">false</span>
+<span class="c"># Remote port listen by frps</span>
+<span class="py">remotePort</span> <span class="p">=</span> <span class="mi">6001</span>
+<span class="c"># frps will load balancing connections for proxies in same group</span>
+<span class="py">loadBalancer.group</span> <span class="p">=</span> <span class="s">"test_group"</span>
+<span class="c"># group should have same group key</span>
+<span class="py">loadBalancer.groupKey</span> <span class="p">=</span> <span class="s">"123456"</span>
+<span class="c"># Enable health check for the backend service, it supports 'tcp' and 'http' now.</span>
+<span class="c"># frpc will connect local service's port to detect it's healthy status</span>
+<span class="py">healthCheck.type</span> <span class="p">=</span> <span class="s">"tcp"</span>
+<span class="c"># Health check connection timeout</span>
+<span class="py">healthCheck.timeoutSeconds</span> <span class="p">=</span> <span class="mi">3</span>
+<span class="c"># If continuous failed in 3 times, the proxy will be removed from frps</span>
+<span class="py">healthCheck.maxFailed</span> <span class="p">=</span> <span class="mi">3</span>
+<span class="c"># Every 10 seconds will do a health check</span>
+<span class="py">healthCheck.intervalSeconds</span> <span class="p">=</span> <span class="mi">10</span>
+<span class="c"># Additional meta info for each proxy. It will be passed to the server-side plugin for use.</span>
+<span class="py">metadatas.var1</span> <span class="p">=</span> <span class="s">"abc"</span>
+<span class="py">metadatas.var2</span> <span class="p">=</span> <span class="s">"123"</span>
+<span class="c"># You can add some extra information to the proxy through annotations.</span>
+<span class="c"># These annotations will be displayed on the frps dashboard.</span>
+<span class="nn">[proxies.annotations]</span>
+<span class="py">key1</span> <span class="p">=</span> <span class="s">"value1"</span>
+<span class="py">"prefix/key2"</span> <span class="p">=</span> <span class="s">"value2"</span>
+
+<span class="nn">[[proxies]]</span>
+<span class="py">name</span> <span class="p">=</span> <span class="s">"ssh_random"</span>
+<span class="py">type</span> <span class="p">=</span> <span class="s">"tcp"</span>
+<span class="py">localIP</span> <span class="p">=</span> <span class="s">"192.168.31.100"</span>
+<span class="py">localPort</span> <span class="p">=</span> <span class="mi">22</span>
+<span class="c"># If remotePort is 0, frps will assign a random port for you</span>
+<span class="py">remotePort</span> <span class="p">=</span> <span class="mi">0</span>
+
+<span class="nn">[[proxies]]</span>
+<span class="py">name</span> <span class="p">=</span> <span class="s">"dns"</span>
+<span class="py">type</span> <span class="p">=</span> <span class="s">"udp"</span>
+<span class="py">localIP</span> <span class="p">=</span> <span class="s">"114.114.114.114"</span>
+<span class="py">localPort</span> <span class="p">=</span> <span class="mi">53</span>
+<span class="py">remotePort</span> <span class="p">=</span> <span class="mi">6002</span>
+
+<span class="c"># Resolve your domain names to [serverAddr] so you can use http://web01.yourdomain.com to browse web01 and http://web02.yourdomain.com to browse web02</span>
+<span class="nn">[[proxies]]</span>
+<span class="py">name</span> <span class="p">=</span> <span class="s">"web01"</span>
+<span class="py">type</span> <span class="p">=</span> <span class="s">"http"</span>
+<span class="py">localIP</span> <span class="p">=</span> <span class="s">"127.0.0.1"</span>
+<span class="py">localPort</span> <span class="p">=</span> <span class="mi">80</span>
+<span class="c"># http username and password are safety certification for http protocol</span>
+<span class="c"># if not set, you can access this customDomains without certification</span>
+<span class="py">httpUser</span> <span class="p">=</span> <span class="s">"admin"</span>
+<span class="py">httpPassword</span> <span class="p">=</span> <span class="s">"admin"</span>
+<span class="c"># if domain for frps is frps.com, then you can access [web01] proxy by URL http://web01.frps.com</span>
+<span class="py">subdomain</span> <span class="p">=</span> <span class="s">"web01"</span>
+<span class="py">customDomains</span> <span class="p">=</span> <span class="nn">["web01.yourdomain.com"]</span>
+<span class="c"># locations is only available for http type</span>
+<span class="py">locations</span> <span class="p">=</span> <span class="p">[</span><span class="s">"/"</span><span class="p">,</span> <span class="s">"/pic"</span><span class="p">]</span>
+<span class="c"># route requests to this service if http basic auto user is abc</span>
+<span class="c"># routeByHTTPUser = abc</span>
+<span class="py">hostHeaderRewrite</span> <span class="p">=</span> <span class="s">"example.com"</span>
+<span class="py">requestHeaders.set.x-from-where</span> <span class="p">=</span> <span class="s">"frp"</span>
+<span class="py">healthCheck.type</span> <span class="p">=</span> <span class="s">"http"</span>
+<span class="c"># frpc will send a GET http request '/status' to local http service</span>
+<span class="c"># http service is alive when it return 2xx http response code</span>
+<span class="py">healthCheck.path</span> <span class="p">=</span> <span class="s">"/status"</span>
+<span class="py">healthCheck.intervalSeconds</span> <span class="p">=</span> <span class="mi">10</span>
+<span class="py">healthCheck.maxFailed</span> <span class="p">=</span> <span class="mi">3</span>
+<span class="py">healthCheck.timeoutSeconds</span> <span class="p">=</span> <span class="mi">3</span>
+
+<span class="nn">[[proxies]]</span>
+<span class="py">name</span> <span class="p">=</span> <span class="s">"web02"</span>
+<span class="py">type</span> <span class="p">=</span> <span class="s">"https"</span>
+<span class="py">localIP</span> <span class="p">=</span> <span class="s">"127.0.0.1"</span>
+<span class="py">localPort</span> <span class="p">=</span> <span class="mi">8000</span>
+<span class="py">subdomain</span> <span class="p">=</span> <span class="s">"web02"</span>
+<span class="py">customDomains</span> <span class="p">=</span> <span class="nn">["web02.yourdomain.com"]</span>
+<span class="c"># if not empty, frpc will use proxy protocol to transfer connection info to your local service</span>
+<span class="c"># v1 or v2 or empty</span>
+<span class="py">transport.proxyProtocolVersion</span> <span class="p">=</span> <span class="s">"v2"</span>
+
+<span class="nn">[[proxies]]</span>
+<span class="py">name</span> <span class="p">=</span> <span class="s">"tcpmuxhttpconnect"</span>
+<span class="py">type</span> <span class="p">=</span> <span class="s">"tcpmux"</span>
+<span class="py">multiplexer</span> <span class="p">=</span> <span class="s">"httpconnect"</span>
+<span class="py">localIP</span> <span class="p">=</span> <span class="s">"127.0.0.1"</span>
+<span class="py">localPort</span> <span class="p">=</span> <span class="mi">10701</span>
+<span class="py">customDomains</span> <span class="p">=</span> <span class="nn">["tunnel1"]</span>
+<span class="c"># routeByHTTPUser = "user1"</span>
+
+<span class="nn">[[proxies]]</span>
+<span class="py">name</span> <span class="p">=</span> <span class="s">"plugin_unix_domain_socket"</span>
+<span class="py">type</span> <span class="p">=</span> <span class="s">"tcp"</span>
+<span class="py">remotePort</span> <span class="p">=</span> <span class="mi">6003</span>
+<span class="c"># if plugin is defined, localIP and localPort is useless</span>
+<span class="c"># plugin will handle connections got from frps</span>
+<span class="nn">[proxies.plugin]</span>
+<span class="py">type</span> <span class="p">=</span> <span class="s">"unix_domain_socket"</span>
+<span class="py">unixPath</span> <span class="p">=</span> <span class="s">"/var/run/docker.sock"</span>
+
+<span class="nn">[[proxies]]</span>
+<span class="py">name</span> <span class="p">=</span> <span class="s">"plugin_http_proxy"</span>
+<span class="py">type</span> <span class="p">=</span> <span class="s">"tcp"</span>
+<span class="py">remotePort</span> <span class="p">=</span> <span class="mi">6004</span>
+<span class="nn">[proxies.plugin]</span>
+<span class="py">type</span> <span class="p">=</span> <span class="s">"http_proxy"</span>
+<span class="py">httpUser</span> <span class="p">=</span> <span class="s">"abc"</span>
+<span class="py">httpPassword</span> <span class="p">=</span> <span class="s">"abc"</span>
+
+<span class="nn">[[proxies]]</span>
+<span class="py">name</span> <span class="p">=</span> <span class="s">"plugin_socks5"</span>
+<span class="py">type</span> <span class="p">=</span> <span class="s">"tcp"</span>
+<span class="py">remotePort</span> <span class="p">=</span> <span class="mi">6005</span>
+<span class="nn">[proxies.plugin]</span>
+<span class="py">type</span> <span class="p">=</span> <span class="s">"socks5"</span>
+<span class="py">username</span> <span class="p">=</span> <span class="s">"abc"</span>
+<span class="py">password</span> <span class="p">=</span> <span class="s">"abc"</span>
+
+<span class="nn">[[proxies]]</span>
+<span class="py">name</span> <span class="p">=</span> <span class="s">"plugin_static_file"</span>
+<span class="py">type</span> <span class="p">=</span> <span class="s">"tcp"</span>
+<span class="py">remotePort</span> <span class="p">=</span> <span class="mi">6006</span>
+<span class="nn">[proxies.plugin]</span>
+<span class="py">type</span> <span class="p">=</span> <span class="s">"static_file"</span>
+<span class="py">localPath</span> <span class="p">=</span> <span class="s">"/var/www/blog"</span>
+<span class="py">stripPrefix</span> <span class="p">=</span> <span class="s">"static"</span>
+<span class="py">httpUser</span> <span class="p">=</span> <span class="s">"abc"</span>
+<span class="py">httpPassword</span> <span class="p">=</span> <span class="s">"abc"</span>
+
+<span class="nn">[[proxies]]</span>
+<span class="py">name</span> <span class="p">=</span> <span class="s">"plugin_https2http"</span>
+<span class="py">type</span> <span class="p">=</span> <span class="s">"https"</span>
+<span class="py">customDomains</span> <span class="p">=</span> <span class="nn">["test.yourdomain.com"]</span>
+<span class="nn">[proxies.plugin]</span>
+<span class="py">type</span> <span class="p">=</span> <span class="s">"https2http"</span>
+<span class="py">localAddr</span> <span class="p">=</span> <span class="s">"127.0.0.1:80"</span>
+<span class="py">crtPath</span> <span class="p">=</span> <span class="s">"./server.crt"</span>
+<span class="py">keyPath</span> <span class="p">=</span> <span class="s">"./server.key"</span>
+<span class="py">hostHeaderRewrite</span> <span class="p">=</span> <span class="s">"127.0.0.1"</span>
+<span class="py">requestHeaders.set.x-from-where</span> <span class="p">=</span> <span class="s">"frp"</span>
+
+<span class="nn">[[proxies]]</span>
+<span class="py">name</span> <span class="p">=</span> <span class="s">"plugin_https2https"</span>
+<span class="py">type</span> <span class="p">=</span> <span class="s">"https"</span>
+<span class="py">customDomains</span> <span class="p">=</span> <span class="nn">["test.yourdomain.com"]</span>
+<span class="nn">[proxies.plugin]</span>
+<span class="py">type</span> <span class="p">=</span> <span class="s">"https2https"</span>
+<span class="py">localAddr</span> <span class="p">=</span> <span class="s">"127.0.0.1:443"</span>
+<span class="py">crtPath</span> <span class="p">=</span> <span class="s">"./server.crt"</span>
+<span class="py">keyPath</span> <span class="p">=</span> <span class="s">"./server.key"</span>
+<span class="py">hostHeaderRewrite</span> <span class="p">=</span> <span class="s">"127.0.0.1"</span>
+<span class="py">requestHeaders.set.x-from-where</span> <span class="p">=</span> <span class="s">"frp"</span>
+
+<span class="nn">[[proxies]]</span>
+<span class="py">name</span> <span class="p">=</span> <span class="s">"plugin_http2https"</span>
+<span class="py">type</span> <span class="p">=</span> <span class="s">"http"</span>
+<span class="py">customDomains</span> <span class="p">=</span> <span class="nn">["test.yourdomain.com"]</span>
+<span class="nn">[proxies.plugin]</span>
+<span class="py">type</span> <span class="p">=</span> <span class="s">"http2https"</span>
+<span class="py">localAddr</span> <span class="p">=</span> <span class="s">"127.0.0.1:443"</span>
+<span class="py">hostHeaderRewrite</span> <span class="p">=</span> <span class="s">"127.0.0.1"</span>
+<span class="py">requestHeaders.set.x-from-where</span> <span class="p">=</span> <span class="s">"frp"</span>
+
+<span class="nn">[[proxies]]</span>
+<span class="py">name</span> <span class="p">=</span> <span class="s">"secret_tcp"</span>
+<span class="c"># If the type is secret tcp, remotePort is useless</span>
+<span class="c"># Who want to connect local port should deploy another frpc with stcp proxy and role is visitor</span>
+<span class="py">type</span> <span class="p">=</span> <span class="s">"stcp"</span>
+<span class="c"># secretKey is used for authentication for visitors</span>
+<span class="py">secretKey</span> <span class="p">=</span> <span class="s">"abcdefg"</span>
+<span class="py">localIP</span> <span class="p">=</span> <span class="s">"127.0.0.1"</span>
+<span class="py">localPort</span> <span class="p">=</span> <span class="mi">22</span>
+<span class="c"># If not empty, only visitors from specified users can connect.</span>
+<span class="c"># Otherwise, visitors from same user can connect. '*' means allow all users.</span>
+<span class="py">allowUsers</span> <span class="p">=</span> <span class="nn">["*"]</span>
+
+<span class="nn">[[proxies]]</span>
+<span class="py">name</span> <span class="p">=</span> <span class="s">"p2p_tcp"</span>
+<span class="py">type</span> <span class="p">=</span> <span class="s">"xtcp"</span>
+<span class="py">secretKey</span> <span class="p">=</span> <span class="s">"abcdefg"</span>
+<span class="py">localIP</span> <span class="p">=</span> <span class="s">"127.0.0.1"</span>
+<span class="py">localPort</span> <span class="p">=</span> <span class="mi">22</span>
+<span class="c"># If not empty, only visitors from specified users can connect.</span>
+<span class="c"># Otherwise, visitors from same user can connect. '*' means allow all users.</span>
+<span class="py">allowUsers</span> <span class="p">=</span> <span class="p">[</span><span class="s">"user1"</span><span class="p">,</span> <span class="s">"user2"</span><span class="p">]</span>
+
+<span class="c"># frpc role visitor -&gt; frps -&gt; frpc role server</span>
+<span class="nn">[[visitors]]</span>
+<span class="py">name</span> <span class="p">=</span> <span class="s">"secret_tcp_visitor"</span>
+<span class="py">type</span> <span class="p">=</span> <span class="s">"stcp"</span>
+<span class="c"># the server name you want to visitor</span>
+<span class="py">serverName</span> <span class="p">=</span> <span class="s">"secret_tcp"</span>
+<span class="py">secretKey</span> <span class="p">=</span> <span class="s">"abcdefg"</span>
+<span class="c"># connect this address to visitor stcp server</span>
+<span class="py">bindAddr</span> <span class="p">=</span> <span class="s">"127.0.0.1"</span>
+<span class="c"># bindPort can be less than 0, it means don't bind to the port and only receive connections redirected from</span>
+<span class="c"># other visitors. (This is not supported for SUDP now)</span>
+<span class="py">bindPort</span> <span class="p">=</span> <span class="mi">9000</span>
+
+<span class="nn">[[visitors]]</span>
+<span class="py">name</span> <span class="p">=</span> <span class="s">"p2p_tcp_visitor"</span>
+<span class="py">type</span> <span class="p">=</span> <span class="s">"xtcp"</span>
+<span class="c"># if the server user is not set, it defaults to the current user</span>
+<span class="py">serverUser</span> <span class="p">=</span> <span class="s">"user1"</span>
+<span class="py">serverName</span> <span class="p">=</span> <span class="s">"p2p_tcp"</span>
+<span class="py">secretKey</span> <span class="p">=</span> <span class="s">"abcdefg"</span>
+<span class="py">bindAddr</span> <span class="p">=</span> <span class="s">"127.0.0.1"</span>
+<span class="c"># bindPort can be less than 0, it means don't bind to the port and only receive connections redirected from</span>
+<span class="c"># other visitors. (This is not supported for SUDP now)</span>
+<span class="py">bindPort</span> <span class="p">=</span> <span class="mi">9001</span>
+<span class="c"># when automatic tunnel persistence is required, set it to true</span>
+<span class="py">keepTunnelOpen</span> <span class="p">=</span> <span class="kc">false</span>
+<span class="c"># effective when keepTunnelOpen is set to true, the number of attempts to punch through per hour</span>
+<span class="py">maxRetriesAnHour</span> <span class="p">=</span> <span class="mi">8</span>
+<span class="py">minRetryInterval</span> <span class="p">=</span> <span class="mi">90</span>
+<span class="c"># fallbackTo = "stcp_visitor"</span>
+<span class="c"># fallbackTimeoutMs = 500</span>
+</code></pre></div></div>
+
+<h3 id="63-官网示例配置参考">6.3. 官网示例配置参考</h3>
+
+<p>英文：https://github.com/fatedier/frp?tab=readme-ov-file#example-usage</p>
+
+<p>中文：https://gofrp.org/zh-cn/docs/examples/</p>
+
+<p>参考链接：</p>
+
+<ol>
+  <li><a href="https://www.cnblogs.com/hovin/p/18023593">使用Frp配置内网访问（穿透）</a></li>
+  <li><a href="https://blog.csdn.net/m0_53721382/article/details/145725039">XXL-JOB通过内网穿透来实现执行器添加</a></li>
+  <li><a href="https://sspai.com/post/85402">frp内网穿透教程，手把手教学</a></li>
+  <li><a href="https://zhuanlan.zhihu.com/p/626471788">使用FRP实现内网穿透</a></li>
+  <li><a href="https://note.slienceme.cn/CentOS/Frp%E5%86%85%E7%BD%91%E7%A9%BF%E9%80%8F%E6%90%AD%E5%BB%BA.html">Frp内网穿透搭建</a></li>
+</ol>]]></content><author><name>slience_me</name></author><category term="Linux" /><category term="内网穿透" /><summary type="html"><![CDATA[FRP内网穿透]]></summary></entry><entry><title type="html">网站汇总｜编程技术栈导航</title><link href="https://slienceme.cn/pages/slience-me/slienceme.github.io/2025/02/16/%E6%8A%80%E6%9C%AF%E6%A0%88%E5%90%88%E9%9B%86/" rel="alternate" type="text/html" title="网站汇总｜编程技术栈导航" /><published>2025-02-16T00:00:00+08:00</published><updated>2025-02-16T00:00:00+08:00</updated><id>https://slienceme.cn/pages/slience-me/slienceme.github.io/2025/02/16/%E6%8A%80%E6%9C%AF%E6%A0%88%E5%90%88%E9%9B%86</id><content type="html" xml:base="https://slienceme.cn/pages/slience-me/slienceme.github.io/2025/02/16/%E6%8A%80%E6%9C%AF%E6%A0%88%E5%90%88%E9%9B%86/"><![CDATA[<h1 id="编程技术栈导航">编程技术栈导航</h1>
 
 <p>欢迎来到我们的编程技术栈导航页面！</p>
 
@@ -2569,63 +3587,4 @@ One-Hot Encoding 则是将单词编码为稀疏的二进制向量，以便计算
 <ul>
   <li>区别：绝对位置编码是固定的、不考虑元素之间的关系，而相对位置编码是动态的、根据元素之间的相对关系来分配编码。</li>
   <li>举例：在处理一个长度为5的序列时，绝对位置编码会为每个位置分配一个固定的编码，而相对位置编码会根据不同的位置关系动态地生成不同的编码。比如，对于相对位置编码，如果元素之间的相对关系是“前一个位置在前”，那么它可能会被编码为[0.8, -0.2]；如果是“后一个位置在前”，那么可能会被编码为[-0.3, 0.6]。</li>
-</ul>]]></content><author><name>slience_me</name></author><category term="论文笔记" /><summary type="html"><![CDATA[绝对位置编码与相对位置编码区别]]></summary></entry><entry><title type="html">教程｜安装不同版本的nodejs环境以及版本切换</title><link href="https://slienceme.cn/pages/slience-me/slienceme.github.io/2024/02/02/%E5%AE%89%E8%A3%85%E4%B8%8D%E5%90%8C%E7%89%88%E6%9C%AC%E7%9A%84nodejs%E7%8E%AF%E5%A2%83%E4%BB%A5%E5%8F%8A%E7%89%88%E6%9C%AC%E5%88%87%E6%8D%A2/" rel="alternate" type="text/html" title="教程｜安装不同版本的nodejs环境以及版本切换" /><published>2024-02-02T00:00:00+08:00</published><updated>2024-02-02T00:00:00+08:00</updated><id>https://slienceme.cn/pages/slience-me/slienceme.github.io/2024/02/02/%E5%AE%89%E8%A3%85%E4%B8%8D%E5%90%8C%E7%89%88%E6%9C%AC%E7%9A%84nodejs%E7%8E%AF%E5%A2%83%E4%BB%A5%E5%8F%8A%E7%89%88%E6%9C%AC%E5%88%87%E6%8D%A2</id><content type="html" xml:base="https://slienceme.cn/pages/slience-me/slienceme.github.io/2024/02/02/%E5%AE%89%E8%A3%85%E4%B8%8D%E5%90%8C%E7%89%88%E6%9C%AC%E7%9A%84nodejs%E7%8E%AF%E5%A2%83%E4%BB%A5%E5%8F%8A%E7%89%88%E6%9C%AC%E5%88%87%E6%8D%A2/"><![CDATA[<h1 id="已解决安装不同版本的nodejs环境以及版本切换">【已解决】安装不同版本的nodejs环境以及版本切换</h1>
-
-<p><img src="/images/posts/logo_slienceme3.png" alt="img" /></p>
-
-<p>本文作者： <a href="https://slienceme.cn/">slience_me</a></p>
-
-<hr />
-
-<h2 id="方案一简单版直接安装不同的版本nodejs">方案一：(简单版)直接安装不同的版本nodejs</h2>
-
-<p>假如你要安装以下两个版本node</p>
-
-<p><img src="https://raw.githubusercontent.com/slience-me/picGo/master/images/image-20240202105908677.png" alt="image-20240202105908677" /></p>
-
-<p>建议先安装低版本的node</p>
-
-<p>选择安装路径为<code class="language-plaintext highlighter-rouge">C:\Program Files\nodejs\v10.14.2\</code>,进行安装，一直下一步即可，安装包会自动添加环境变量</p>
-
-<p>安装完成后，更改文件名称<code class="language-plaintext highlighter-rouge">v10.14.2</code>为<code class="language-plaintext highlighter-rouge">nodejsv10.14.2</code>，否则安装高版本会覆盖低版本的内容，环境变量已经指明安装路径了</p>
-
-<p>更改完文件名后，安装高版本的node</p>
-
-<p>选择安装路径为<code class="language-plaintext highlighter-rouge">C:\Program Files\nodejs\v18.19.0\</code>,进行安装，一直下一步即可，安装包会自动添加环境变量</p>
-
-<p>环境变量中，添加这个<code class="language-plaintext highlighter-rouge">C:\Program Files\nodejs\v18.19.0\</code>和<code class="language-plaintext highlighter-rouge">C:\Program Files\nodejs\v10.14.2\</code></p>
-
-<p><img src="https://raw.githubusercontent.com/slience-me/picGo/master/images/image-20240202110534144.png" alt="image-20240202110534144" /></p>
-
-<p>在需要更改激活的node版本时候，修改<code class="language-plaintext highlighter-rouge">C:\Program Files\nodejs\</code>中文件的文件名即可，比如我现在想要激活版本<code class="language-plaintext highlighter-rouge">v18.19.0</code>，我将文件夹<code class="language-plaintext highlighter-rouge">v10.14.2</code>更改为<code class="language-plaintext highlighter-rouge">nodejsv10.14.2</code>即可，环境变量就找不到10版本的了，因此就18版本生效</p>
-
-<h2 id="方案二一劳永逸版安装node版本管理工具nvm">方案二：(一劳永逸版)安装node版本管理工具nvm</h2>
-
-<p><a href="https://github.com/coreybutler/nvm-windows/releases">点击下载链接</a></p>
-
-<p>根据自己电脑版本选择安装包</p>
-
-<p><img src="https://raw.githubusercontent.com/slience-me/picGo/master/images/image-20240202111041463.png" alt="image-20240202111041463" /></p>
-
-<p>安装过程中，选择nvm的安装路径，然后选择原始node的安装路径(可以直接下一步)，出现了某版本已安装，是否交给nvm管理，点击是即可
-建议使用1.1.12版本, 最新的版本存在路径bug</p>
-
-<p>NVM常用命令</p>
-
-<p><code class="language-plaintext highlighter-rouge">nvm list </code> ：查看已安装的Node版本</p>
-
-<p><code class="language-plaintext highlighter-rouge">nvm use 10.14.2</code>：切换Node版本(以10.14.2版本为例)</p>
-
-<p><code class="language-plaintext highlighter-rouge">nvm -v</code>：查看NVM的版本</p>
-
-<p><code class="language-plaintext highlighter-rouge">nvm node_mirror https://npm.taobao.org/mirrors/node/</code> ：配置下载源（最新的源可能改变为<code class="language-plaintext highlighter-rouge">https://npmmirror.com/mirrors/node/</code>）</p>
-
-<p><code class="language-plaintext highlighter-rouge">nvm install 18.19.0</code>：下载Node(以18.19.0版本为例，通过多次下载可以下载多个版本的Node) 注意: 安装前记得切换到指定磁盘,否则会失败
-<code class="language-plaintext highlighter-rouge">ctrl D</code>退出Node命令行</p>
-
-<p>注意可能需要去安装路径下修改<code class="language-plaintext highlighter-rouge">settings.txt</code>文件，将<code class="language-plaintext highlighter-rouge">node_mirror</code>和<code class="language-plaintext highlighter-rouge">npm_mirror</code>的地址修改为淘宝镜像地址</p>
-<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>root: D:\temp_environment\nvm
-path: D:\temp_environment\nodejshub
-node_mirror: https://npmmirror.com/mirrors/node/
-npm_mirror: https://npmmirror.com/mirrors/npm/
-</code></pre></div></div>]]></content><author><name>slience_me</name></author><category term="教程" /><summary type="html"><![CDATA[【已解决】安装不同版本的nodejs环境以及版本切换]]></summary></entry></feed>
+</ul>]]></content><author><name>slience_me</name></author><category term="论文笔记" /><summary type="html"><![CDATA[绝对位置编码与相对位置编码区别]]></summary></entry></feed>
