@@ -1,0 +1,98 @@
+/***** vitepress 样式优化 ******/
+
+/* 大屏大一点，调整文档内容容器的最大宽度为100% */
+@media (min-width: 1440px) {
+  .VPDoc.has-aside .content-container.content-container {
+    max-width: 100%;
+  }
+}
+
+/* 解决 nav 在小屏幕下换行的问题：
+   在 960px 以下时，增加导航项的左右内边距，避免过于拥挤 */
+@media (max-width: 960px) {
+  .VPNav {
+    .VPNavBarMenuLink,
+    .VPNavBarMenuGroup .button {
+      padding-left: 10px;
+      padding-right: 10px;
+    }
+  }
+}
+
+/* 首页样式修改：
+   使背景图的透明度稍微降低，并在 hover 时变得更加透明 */
+.VPHero {
+  .image-bg {
+    opacity: 0.8;
+    transition: opacity 1s ease;
+  }
+  .image-container:hover .image-bg {
+    opacity: 0.4;
+  }
+}
+
+/* 自定义块样式：
+   修改自定义块标题的字体大小
+   修改提示块的标题颜色 */
+.custom-block .custom-block-title {
+  font-size: 16px;
+}
+.custom-block.tip .custom-block-title {
+  color: var(--vp-c-brand-1);  // 使用品牌色1
+}
+
+/* code-group 样式：
+   使 code-group 中的标签背景色透明 */
+.vp-code-group .tabs label {
+  background-color: transparent;
+}
+
+/* table 样式：
+   让表格宽度始终为 100%，强制应用此样式 */
+table {
+  width: 100% !important;
+  display: table !important;
+}
+
+/**
+ * VitePress: Custom fix
+ * -------------------------------------------------------------------------- */
+
+/*
+  针对暗黑模式：使用较浅的链接颜色以增强可访问性（a11y）
+  同时通过重复指定类来提高特定选择器的优先级
+*/
+.link.active,
+.link.active span,
+.VPNavBarMenuLink:hover span,
+.VPSidebarItem.is-active .link,
+.VPSidebar .link:hover {
+  color: var(--vp-c-brand-1);  // 使用品牌色1
+}
+
+.vp-doc a:hover,
+.vp-doc a > code:hover {
+  color: var(--vp-c-brand-2);  // 使用品牌色2
+}
+
+/* 为了更平滑的过渡效果，使用颜色过渡而非透明度 */
+.dark .vp-doc .custom-block a {
+  transition: color 0.25s;
+}
+
+/* 暗/光模式下的环形过渡效果 */
+::view-transition-old(root),
+::view-transition-new(root) {
+  animation: none;
+  mix-blend-mode: normal;  // 默认混合模式为正常
+}
+
+::view-transition-old(root),
+.dark::view-transition-new(root) {
+  z-index: 1;  // 控制过渡前元素的层级
+}
+
+::view-transition-new(root),
+.dark::view-transition-old(root) {
+  z-index: 9999;  // 控制过渡后元素的层级
+}

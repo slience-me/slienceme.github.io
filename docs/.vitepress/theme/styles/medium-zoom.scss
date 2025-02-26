@@ -1,0 +1,17 @@
+/* 定义根元素的CSS变量 */
+:root {
+  --medium-zoom-z-index: 100; /* 设置medium-zoom效果的z-index值 */
+  --medium-zoom-c-bg: var(--vp-c-bg); /* 设置medium-zoom背景颜色，继承自--vp-c-bg变量 */
+}
+
+/* medium-zoom遮罩层的样式 */
+.medium-zoom-overlay {
+  /* 覆盖medium-zoom脚本设置的元素样式 */
+  z-index: var(--medium-zoom-z-index); /* 使用定义的z-index值 */
+  background-color: var(--medium-zoom-c-bg) !important; /* 使用定义的背景颜色，并强制覆盖其他样式 */
+}
+
+/* medium-zoom遮罩层下的图片样式 */
+.medium-zoom-overlay ~ img {
+  z-index: calc(var(--medium-zoom-z-index) + 1); /* 设置图片的z-index值，比遮罩层高1，确保图片在遮罩层上方 */
+}

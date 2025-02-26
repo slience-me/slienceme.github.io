@@ -1,0 +1,14 @@
+/* 导入其他样式 */
+@use './rainbow.scss';  // 导入 rainbow.scss 文件，用于彩虹效果的样式
+@use './vars.scss';  // 导入 vars.scss 文件，通常用于存放变量，如颜色、尺寸等
+@use './vitepress.scss';  // 导入 vitepress.scss 文件，可能是与 VitePress 相关的样式文件
+@use './medium-zoom.scss';  // 导入 medium-zoom.scss 文件，可能是实现图片缩放效果的样式
+@use './tailwind.scss';  // 导入 tailwind.scss 文件，整合 Tailwind CSS 样式
+@use './vp-code.css'; // 导入 vp-code.css 文件，代码块美化样式
+@use './vp-code-group.css'; // 导入 vp-code-group.css 文件，代码块分组样式
+@use './blockquote.css'; // 引用框
+@use './custom-block.css'; // 个性化容器
+@use './blur.css';  // 导航栏毛玻璃
+@use './hidden.css';  // 隐藏横条
+@use './vp-code-title.css';  // 代码块标题
+@use './global.css'; // 全局样式
