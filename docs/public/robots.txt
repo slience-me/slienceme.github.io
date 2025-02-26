@@ -1,1 +1,4 @@
-# Algolia-Crawler-Verif: CED37A7E74DFC4A4
+User-agent: *
+Allow: /
+
+Sitemap: https://slienceme.cn/sitemap.xml
