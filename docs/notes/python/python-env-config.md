@@ -211,7 +211,7 @@ conda env list
 
 ![image-20240118195911999](https://raw.githubusercontent.com/slience-me/picGo/master/images/image-20240118195911999.png)
 
-下面是一些相关的指令： [我的指令本](https://slienceme.cn/2019/01/01/readme/)
+下面是一些相关的指令： [我的指令本](https://blog.slienceme.cn/2019/01/01/readme/)
 
 ```bash
 # 激活环境

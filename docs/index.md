@@ -11,7 +11,7 @@ hero:
     alt: slience_me
   actions:
     - text: Slience_me的博客
-      link: https://slienceme.cn
+      link: https://blog.slienceme.cn
     - text: 编程导航
       link: /nav/
       theme: alt

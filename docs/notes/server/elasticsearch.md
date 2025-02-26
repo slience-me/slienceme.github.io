@@ -2,7 +2,7 @@
 
 ## 1. 安装
 
-见 [我的博客(基于docker)](https://slienceme.cn/2025/02/22/Docker/)
+见 [我的博客(基于docker)](https://blog.slienceme.cn/2025/02/22/Docker/)
 
 ## 2. 初步检索
 
@@ -2779,7 +2779,7 @@ GET my_index/_analyze
 
 #### （3）自定义词库
 
-先安装nginx， 见 [我的博客(基于docker)](https://slienceme.cn/2025/02/22/Docker/)
+先安装nginx， 见 [我的博客(基于docker)](https://blog.slienceme.cn/2025/02/22/Docker/)
 
 然后在`/home/slienceme/docker/nginx/html/`创建文件夹`es`
 

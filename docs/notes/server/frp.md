@@ -976,8 +976,6 @@ minRetryInterval = 90
 2. [XXL-JOB通过内网穿透来实现执行器添加](https://blog.csdn.net/m0_53721382/article/details/145725039)
 3. [frp内网穿透教程，手把手教学](https://sspai.com/post/85402)
 4. [使用FRP实现内网穿透](https://zhuanlan.zhihu.com/p/626471788)
-5. [Frp内网穿透搭建](https://note.slienceme.cn/CentOS/Frp%E5%86%85%E7%BD%91%E7%A9%BF%E9%80%8F%E6%90%AD%E5%BB%BA.html)
-
 
 ::: tip 发布时间:
 2025-02-19

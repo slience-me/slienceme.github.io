@@ -10,10 +10,10 @@ export const NAV_DATA: NavData[] = [
     title: '偷懒合集',
     items: [
       {
-        icon: 'https://slienceme.cn/favicon.ico',
+        icon: 'https://blog.slienceme.cn/favicon.ico',
         title: '编程技术栈导航',
         desc: '偷懒, 映射到我的另一个简单的合集',
-        link: 'https://slienceme.cn/2025/02/16/%E6%8A%80%E6%9C%AF%E6%A0%88%E5%90%88%E9%9B%86/',
+        link: 'https://blog.slienceme.cn/2025/02/16/%E6%8A%80%E6%9C%AF%E6%A0%88%E5%90%88%E9%9B%86/',
       },
       {
         icon: 'https://fe-mm.com/favicon.ico',
