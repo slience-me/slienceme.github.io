@@ -35,6 +35,14 @@ export default defineConfig({
 
     nav,
     sidebar,
+    search: {
+      provider: 'algolia',
+      options: {
+        appId: 'XQAKHAIM7H',
+        apiKey: '7e572e359cb50429239335044230ac29',
+        indexName: 'slience-me',
+      }
+    },
 
     /* 右侧大纲配置 */
     outline: {
