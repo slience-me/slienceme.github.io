@@ -40,7 +40,7 @@ export default defineConfig({
       options: {
         appId: 'XQAKHAIM7H',
         apiKey: '7e572e359cb50429239335044230ac29',
-        indexName: 'slience-me',
+        indexName: 'slienceme_cn_xqakhaim7h_pages',
       }
     },
 
