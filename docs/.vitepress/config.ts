@@ -35,6 +35,14 @@ export default defineConfig({
 
     nav,
     sidebar,
+    search: {
+      provider: 'algolia',
+      options: {
+        appId: 'H43D1TRK5F',
+        apiKey: 'eee591ec005a5f9ce1d40359cee5e48b',
+        indexName: 'slience-me'
+      },
+    },
 
     /* 右侧大纲配置 */
     outline: {
@@ -58,9 +66,6 @@ export default defineConfig({
         timeStyle: 'medium',
       },
     },
-
-    /* Algolia DocSearch 配置 */
-    algolia,
 
     docFooter: {
       prev: '上一篇',
