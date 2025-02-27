@@ -16,6 +16,30 @@
     border-top: none;
   }
 
+  .VPFooter .container .message {
+    a { text-decoration: none; }
+  }
+  .VPFooter .container .copyright {
+    a { text-decoration: none; }
+  }
+
+  @media (max-width: 960px) {
+    .VPFooter .container .message {
+      font-size: 10px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      margin-left: 8px;
+    }
+    .VPFooter .container .copyright {
+      font-size: 10px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      margin-left: 8px;
+    }
+  }
+
   /* 手机端菜单栏顶部横条隐藏 */
   .VPNavBar.screen-open {
     border-bottom: none;

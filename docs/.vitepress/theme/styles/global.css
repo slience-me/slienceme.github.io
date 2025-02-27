@@ -3,32 +3,105 @@
  */
 
 
-
 /* 浅色模式 */
 :root {
-  --vp-c-bg: rgba(255, 255, 255, 0); /* 把全局颜色改了 */
+  --vp-c-bg: rgba(255, 255, 255, 0);
   --vp-home-body-bg-image: url('/bg.png');
   --vp-home-body-bg-image-gradient: linear-gradient(rgba(255, 255, 255, 0.9), rgba(255, 255, 255, 0.9));
+
+  /*整体背景图片*/
   body {
-    background-image: var(--vp-home-body-bg-image),
-    var(--vp-home-body-bg-image-gradient);
+    background-image: var(--vp-home-body-bg-image), var(--vp-home-body-bg-image-gradient);
     background-size: auto;
     background-position: top left;
     background-repeat: repeat;
     background-blend-mode: soft-light; /* multiply  color-burn soft-light */
   }
+
+  /*文章主页左侧文章列表 浅色模式*/
   .VPSidebar {
     opacity: 0.7; /* 增加透明度 */
   }
+
+  /*主页卡片背景显示效果 浅色模式*/
+  .VPFeature {
+    background-color: rgba(255, 255, 255, 0.7); /* 半透明背景 */
+  }
+
+  /*mobile模式 顶部右侧折叠nav显示效果 浅色模式*/
+  .VPNavScreen .container {
+    /* 毛玻璃效果 */
+    /*  background-color: rgba(255, 255, 255, 0.6); !* 半透明背景 *!
+      backdrop-filter: blur(5px); !* 背景模糊 *!
+      border-radius: 10px; !* 圆角 *!
+      border: 1px solid rgba(0, 0, 0, 0.15); !* 轻微边框 *!
+      !* 阴影效果 *!
+      box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1), 0 1px 3px rgba(0, 0, 0, 0.08);
+      padding: 20px; !* 内边距 *!*/
+
+    background-color: rgba(255, 255, 255, 0.95);
+    /* 边框效果 */
+    border: 1px solid rgba(0, 0, 0, 0.15);
+    border-radius: 20px; /* 圆角边框 */
+    /* 阴影效果 */
+    box-shadow: 0 8px 24px rgba(0, 0, 0, 0.2), 0 1px 3px rgba(0, 0, 0, 0.16);
+    /* 这里使用了多层阴影，增强深度感 */
+    padding: 20px; /* 内边距，避免内容紧贴边缘 */
+  }
+  /*mobile模式 顶部右侧折叠nav内部的切换小窗口 显示效果 浅色模式*/
+  .VPNavScreenAppearance {
+    background-color: rgba(255, 255, 255, 0.95);
+    /* 边框效果 */
+    border: 1px solid rgba(0, 0, 0, 0.15);
+    border-radius: 20px; /* 圆角边框 */
+    /* 阴影效果 */
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1), 0 1px 3px rgba(0, 0, 0, 0.08);
+  }
 }
+
 .dark {
   --vp-home-body-bg-image-gradient: linear-gradient(rgba(0, 0, 0, 0.9), rgba(0, 0, 0, 0.9));
+  /*整体背景图片*/
   body {
-    background-image: var(--vp-home-body-bg-image),
-    var(--vp-home-body-bg-image-gradient);
+    background-image: var(--vp-home-body-bg-image), var(--vp-home-body-bg-image-gradient);
     background-size: auto;
     background-position: top left;
     background-repeat: repeat;
     background-blend-mode: multiply; /* multiply  color-burn soft-light */
+  }
+
+  /*主页卡片背景显示效果 深色模式*/
+  .VPFeature {
+    background-color: rgba(0, 0, 0, 0.7); /* 半透明背景 */
+  }
+
+  /*mobile模式 顶部右侧折叠nav显示效果 深色模式*/
+  .VPNavScreen .container {
+    /* 毛玻璃效果 */
+    /*  background-color: rgba(255, 255, 255, 0.6); !* 半透明背景 *!
+      backdrop-filter: blur(5px); !* 背景模糊 *!
+      border-radius: 10px; !* 圆角 *!
+      border: 1px solid rgba(0, 0, 0, 0.15); !* 轻微边框 *!
+      !* 阴影效果 *!
+      box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1), 0 1px 3px rgba(0, 0, 0, 0.08);
+      padding: 20px; !* 内边距 *!*/
+
+    background-color: rgba(0, 0, 0, 0.95);
+    /* 边框效果 */
+    border: 1px solid rgba(255, 255, 255, 0.15);
+    border-radius: 20px; /* 圆角边框 */
+    /* 阴影效果 */
+    box-shadow: 0 8px 24px rgba(255, 255, 255, 0.2), 0 1px 3px rgba(255, 255, 255, 0.16);
+    /* 这里使用了多层阴影，增强深度感 */
+    padding: 20px; /* 内边距，避免内容紧贴边缘 */
+  }
+  /*mobile模式 顶部右侧折叠nav内部的切换小窗口 显示效果 深色模式*/
+  .VPNavScreenAppearance {
+    background-color: rgba(0, 0, 0, 0.95);
+    /* 边框效果 */
+    border: 1px solid rgba(255, 255, 255, 0.15);
+    border-radius: 20px; /* 圆角边框 */
+    /* 阴影效果 */
+    box-shadow: 0 4px 12px rgba(255, 255, 255, 0.1), 0 1px 3px rgba(255, 255, 255, 0.08);
   }
 }

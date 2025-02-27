@@ -38,9 +38,9 @@ export default defineConfig({
     search: {
       provider: 'algolia',
       options: {
-        appId: 'XQAKHAIM7H',
-        apiKey: '7e572e359cb50429239335044230ac29',
-        indexName: 'slienceme_cn_xqakhaim7h_pages',
+        appId: 'BSC21UT37S',
+        apiKey: 'd4e10034b03ee0320bd76fab7247c3ce',
+        indexName: 'doc',
       }
     },
 
@@ -55,8 +55,8 @@ export default defineConfig({
     ],
 
     footer: {
-      message: 'Copyright © 2019-2025 slience_me 版权所有',
-      copyright: '冀公网安备13102202000626 | 津ICP备2024026565号-1'
+      message: `<a href="https://beian.miit.gov.cn/" target="_blank">冀公网安备13102202000626</a> | <a href="https://www.miit.gov.cn/" target="_blank">津ICP备2024026565号-1</a>`,
+      copyright: 'Copyright © 2019-present slience_me'
     },
 
     lastUpdated: {

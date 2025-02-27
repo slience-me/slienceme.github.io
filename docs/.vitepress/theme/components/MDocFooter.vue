@@ -13,7 +13,7 @@ const { hasSidebar } = useSidebar()
 const pageId = usePageId()
 
 const isDocFooterVisible = computed(() => {
-  return !DEV || footer.message || footer.copyright || visitor.badgeId
+  return !DEV || footer.message || footer.copyright || visitor?.badgeId
 })
 </script>
 
@@ -26,8 +26,10 @@ const isDocFooterVisible = computed(() => {
         :src="`https://visitor-badge.laobi.icu/badge?page_id=${visitor.badgeId}.${pageId}`"
         title="当前页面累计访问数"
         onerror="this.style.display='none'"
+        loading="lazy"
       />
-      <p v-if="footer?.message">{{ footer.message }}</p>
+      <img src="/icons/beian.png" alt="logo" class="logo" />
+      <p v-if="footer?.message" v-html="footer.message" class="m-doc-footer-message-text"></p>
     </div>
     <p class="m-doc-footer-copyright" v-if="footer?.copyright">
       {{ footer.copyright }}
@@ -53,15 +55,55 @@ const isDocFooterVisible = computed(() => {
 .m-doc-footer-copyright {
   display: flex;
   align-items: center;
+  justify-content: center;
+}
+
+.m-doc-footer-message-text {
+  margin-left: 8px;
+}
+
+@media (max-width: 768px) {
+  .m-doc-footer-message,
+  .m-doc-footer-copyright {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 10px;
+  }
+
+  .m-doc-footer-message-text {
+    font-size: 10px;
+    margin-left: 8px;
+  }
+
 }
 
 .visitor {
   margin-right: 8px;
+  max-height: 16px;
+}
+
+.logo {
+  height: 10px;
+  width: 10px;
 }
 
 @media (max-width: 414px) {
   .visitor {
     display: none;
+  }
+
+  .logo {
+    height: 8px;
+    width: 8px;
+  }
+
+  .m-doc-footer {
+    padding: 16px 12px 0;
+  }
+
+  .m-doc-footer-message-text {
+    font-size: 8px;
   }
 }
 </style>

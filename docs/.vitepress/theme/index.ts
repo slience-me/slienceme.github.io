@@ -24,23 +24,6 @@ export default {
 
     return h(MLayout, props)
   },
-  // layout: {
-  //   // 在这里设置全局样式
-  //   css: `
-  //     :root {
-  //       --vp-home-body-bg-image: url('bg.png');
-  //       --vp-home-body-bg-image-gradient: linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5));
-  //     }
-  //
-  //     body {
-  //       background-image: var(--vp-home-body-bg-image), var(--vp-home-body-bg-image-gradient);
-  //       background-size: auto;
-  //       background-position: top left;
-  //       background-repeat: repeat;
-  //       background-blend-mode: color-burn;
-  //     }
-  //   `,
-  // },
   enhanceApp({ app, router }: EnhanceAppContext) {
     createMediumZoomProvider(app, router)
 
