@@ -89,22 +89,23 @@ sudo docker pull mysql:5.7
 
 ##  2. docker常用指令
 ```bash
-docker version # 查看docker版本
+docker version 						# 查看docker版本
 docker -v
-sudo docker info #  查看docker信息
-sudo docker ps -a # 查看docker容器
-sudo docker images # 查看docker镜像
-sudo docker logs container_id # 查看docker容器日志
+sudo docker info 					#  查看docker信息
+sudo docker ps -a 					# 查看docker容器
+sudo docker images 					# 查看docker镜像
+sudo docker logs container_id 		# 查看docker容器日志
 sudo docker logs tail 100 container_id
 sudo docker logs -fnt container_id
-sudo docker port container_id # 查看docker容器端口映射
-sudo docker top container_id # 查看docker容器进程
-sudo docker inspect container_id # 查看docker容器详细信息
-sudo docker start container_id # 启动docker容器
-sudo docker stop container_id # 停止docker容器
-sudo docker restart container_id # 重启docker容器
-sudo docker rm container_id # 删除docker容器
-sudo docker rmi image_id # 删除docker镜像
+sudo docker port container_id 		# 查看docker容器端口映射
+sudo docker top container_id 		# 查看docker容器进程
+sudo docker inspect container_id 	# 查看docker容器详细信息
+sudo docker start container_id 		# 启动docker容器
+sudo docker stop container_id 		# 停止docker容器
+sudo docker restart container_id 	# 重启docker容器
+sudo docker rm container_id 		# 删除docker容器
+sudo docker rmi image_id 			# 删除docker镜像
+docker exec -it your_container_name /bin/bash # 进入容器
 ```
 
 ## 3. 镜像加速
@@ -132,7 +133,17 @@ sudo systemctl daemon-reload
 sudo systemctl restart docker
 ```
 
-## 4. docker安装mysql
+## 4. docker ufw端口管控
+
+> 最近，我发现使用docker运行的容器，进行端口映射后，可以正常访问，但是ufw防火墙并没有开放端口；这样岂不是防火墙失效了，这哪里行！
+>
+> 具体描述: Docker 默认使用自己的网络管理方式，导致 Docker 容器的端口不会直接与 UFW 配合，造成 Docker 容器端口不可访问或者 UFW 防火墙规则对容器端口不起作用。因此，UFW 并不会自动管理 Docker 容器的网络流量。
+>
+> 通过调整 Docker 和 UFW 的配置，确保容器的端口能够正确地通过 UFW 的规则进行访问。
+>
+> 现在仍然没有更好的方案，我选择停用ufw，改为firewalld
+
+## 5. docker安装mysql
 
 ```bash
 # 1. 拉取镜像
@@ -190,10 +201,13 @@ skip-name-resolve
 # ============================结束============================
 
 # 设置自动启动
-docker update mysql --restart=always 
+docker update mysql --restart=always
+
+# 非root用户, 需要将用户添加到docker组
+sudo usermod -aG docker slienceme
 ```
 
-## 5. docker安装redis
+## 6. docker安装redis
 
 ```bash
 # 1. 拉取镜像
@@ -211,9 +225,12 @@ docker exec -it redis redis-cli
 
 # 设置自动启动
 docker update redis --restart=always
+
+# 非root用户, 需要将用户添加到docker组
+sudo usermod -aG docker slienceme
 ```
 
-## 6. docker安装ElasticSearch&kibana
+## 7. docker安装ElasticSearch&kibana
 
 **安装ElasticSearch**
 
@@ -242,6 +259,9 @@ docker update elasticsearch --restart=always
 
 # 4. 测试
 # 查看elasticsearch版本信息： 访问 http://虚拟机IP:9200/
+
+# 非root用户, 需要将用户添加到docker组
+sudo usermod -aG docker slienceme
 ```
 
 **安装kibana**
@@ -270,9 +290,12 @@ docker update kibana --restart=always
 
 # 4. 测试
 # 访问Kibana： http://虚拟机IP:5601/app/kibana
+
+# 非root用户, 需要将用户添加到docker组
+sudo usermod -aG docker slienceme
 ```
 
-## 7. docker安装nginx
+## 8. docker安装nginx
 
 这种运行会出现问题, 因为需要先把配置文件复制出来才能正常run，所以直接按照第二种方案操作
 
@@ -298,6 +321,9 @@ docker run --name my-custom-nginx-container \
 
 # 3. 设置开机启动
 docker update nginx --restart=always
+
+# 非root用户, 需要将用户添加到docker组
+sudo usermod -aG docker slienceme
 ```
 
 教程其他操作：PS：感觉没啥用，还多出很多操作，我喜欢上面的操作
@@ -311,7 +337,7 @@ docker update nginx --restart=always
 ```bash
 # 另外也可以先不拉取镜像，直接run，docker发现没有会自动拉取
 # 随便启动一个nginx实例，只是为了复制出配置
-docker run -p80:80 --name nginx -d nginx:1.10   
+docker run -p 80:80 --name nginx -d nginx:1.10   
 
 # 创建映射文件夹
 mkdir -p /home/slienceme/docker/nginx/html
@@ -341,7 +367,7 @@ docker run -p 80:80 --name nginx \
  -v /mydata/nginx/logs:/var/log/nginx \
  -v /mydata/nginx/conf/:/etc/nginx \
  -d nginx:1.10
- 
+  
 # 设置开机启动nginx
 docker update nginx --restart=always
 
@@ -349,8 +375,14 @@ docker update nginx --restart=always
 echo '<h2>hello nginx!</h2>' >index.html
 
 # 访问：http://ngix所在主机的IP:80/index.html
+
+# 非root用户, 需要将用户添加到docker组
+sudo usermod -aG docker slienceme
 ```
+
+
 
 ::: tip 发布时间:
 2025-02-22
 :::
+

@@ -196,6 +196,18 @@ nginx -s reload        # 重新加载nginx配置
 nginx -s stop          # 停止nginx服务
 ```
 
+#### 10）卸载
+
+```bash
+sudo apt remove nginx
+sudo apt-get remove --purge nginx
+sudo apt autoremove  # 清理不再需要的依赖包
+sudo rm -rf /etc/nginx
+sudo rm -rf /var/log/nginx
+sudo rm -rf /var/www/html
+nginx -v # 检查是否卸载成功
+```
+
 ## 3. 个性化操作
 
 ### 3.1 自定义站点路径
@@ -477,6 +489,60 @@ sudo ufw allow 8080
 ```bash
 sudo apt install certbot python3-certbot-nginx
 sudo certbot --nginx
+```
+
+### 【docker.nginx部署】
+
+> docker容器的指令如下，所以有三个映射文件，因此需要依此填写配置文件、传输项目文件、运行
+
+```bash
+# docker容器的指令为，所以有三个映射文件
+docker run -p 80:80 --name nginx \
+ -v /home/slienceme/docker/nginx/html:/usr/share/nginx/html \
+ -v /home/slienceme/docker/nginx/logs:/var/log/nginx \
+ -v /home/slienceme/docker/nginx/conf:/etc/nginx \
+ -d nginx:1.10
+```
+
+#### 1）写配置文件
+
+> 进入映射路径`/home/slienceme/docker/nginx/conf`, 创建配置文件`project1.conf`
+
+```bash
+server {
+    listen 8080;  # 监听 8080 端口
+    server_name example.com;  # 配置你的域名，或者使用 IP 或 localhost
+
+    root /usr/share/nginx/html/project;  # Vue 项目构建文件所在目录
+    index index.html;  # 默认首页
+
+    location / {
+        try_files $uri $uri/ /index.html;  # 支持 Vue 的 SPA 路由
+    }
+
+    # 如果有后端 API，需要配置反向代理
+    location /api {
+        proxy_pass http://对应IP:3000;  # 反向代理到后端 API, 注意IP修改到正确IP，不再是本地，现在是容器内
+        proxy_set_header Host $host;
+        proxy_set_header X-Real-IP $remote_addr;
+        proxy_set_header X-Forwarded-For $proxy_add_x_forwarded_for;
+    }
+
+    # 禁止访问某些文件或目录
+    location ~ ^/(\.user.ini|\.htaccess|\.git|\.env|\.svn|\.project|LICENSE|README.md) {
+        return 404;
+    }
+}
+```
+
+#### 2）传文件
+
+> 进入映射路径`/home/slienceme/docker/nginx/html`, 创建项目文件`project1`，然后将项目放到该文件中
+
+#### 3）启动
+
+```bash
+docker exec -it nginx容器名 nginx -s reload
 ```
 
 ## 6. 部署PHP项目

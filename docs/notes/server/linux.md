@@ -1,6 +1,6 @@
 # Linux相关指令
 
-### 1. 常见指令
+## 1. 常见指令
 
 ```bash
 # 查看相关进程
@@ -85,6 +85,12 @@ ifconfig    # 显示网络接口信息 ifconfig -a
 ping        # 测试与目标主机之间的连通性 ping www.baidu.com
 netstat     # 显示网络状态信息 netstat -an
 netstat -antlp
+netstat -tuln | grep :80  # 网络状态命令，用于显示计算机网络的连接、路由表、接口统计等信息
+# -t: 显示 TCP 连接。
+# -u: 显示 UDP 连接。
+# -l: 仅显示正在监听的端口。
+# -n: 使用数字地址而不是解析主机名（即不显示域名，显示数字 IP 和端口号）。
+lsof -i :80 # 列出打开文件的命令，在 Linux 中一切都被视为文件（包括网络连接）
 
 ## 其他
 date        # 显示系统日期和时间
@@ -149,20 +155,39 @@ yum makecache
 /media/usb0:   # 挂载U盘0时的默认目录
 ```
 
-Ubuntu中使用apt-get进行软件包管理：
-
 ```bash
-# 安装：
-apt-get install name
-# 更新：
-apt-get update name
-# 卸载：
-apt-get remove name
-# 查找：
-apt-cache search name
+apt-get install name  # 安装
+apt-get update name   # 更新
+apt-get remove name   # 卸载
+apt-cache search name # 查找
 
-# 查看服务列表
-systemctl list-unit-files --type=service
+systemctl start <service_name>  	# 启动服务
+systemctl stop <service_name>  		# 停止服务
+systemctl restart <service_name>  	# 重启服务
+systemctl reload <service_name>  	# 重新加载服务配置
+systemctl status <service_name>  	# 查看服务状态
+systemctl enable <service_name>  	# 启用服务开机自启
+systemctl disable <service_name>  	# 禁用服务开机自启
+systemctl is-enabled <service_name> # 查看服务是否启用自启动
+systemctl reboot 				    # 重启系统
+systemctl poweroff  				# 关机
+systemctl suspend  					# 挂起系统
+systemctl hibernate  				# 休眠系统
+systemctl get-default  				# 查看系统的运行级别
+systemctl set-default <target>  	# 设置默认目标
+journalctl  						# 查看系统日志
+systemctl list-units --type=target  # 查看所有目标
+systemctl isolate <target>  		# 切换到指定目标
+systemctl list-units --type=service # 列出所有服务单元
+systemctl list-units  				# 列出所有已加载的单元
+systemctl show <unit_name>  		# 查看某个单元的详细信息
+sudo systemctl daemon-reload  		# 重新加载 systemd 配置
+sudo systemctl start <unit_file>  	# 启动单元
+sudo systemctl stop <unit_file>  	# 停止单元
+systemctl status  					# 查看系统信息
+systemctl is-active <service_name>  # 查看服务是否正在运行
+systemctl list-unit-files --state=enabled  	# 列出所有已启用的服务
+systemctl list-unit-files --state=disabled  # 列出所有已禁用的服务
 ```
 
 ### 2.2 配置Linux环境变量
@@ -177,22 +202,69 @@ source ~/.bashrc                  # 使环境变量生效
 
 ```bash
 # 配置防火墙操作 【ubuntu】
-ufw help  # 帮助清单
+ufw help  					# 帮助清单
 sudo apt install firewalld  # 安装
-ufw status    # 查看防火墙状态和开放的端口
-ufw status verbose   # 查看防火墙状态和开放的端口，并显示端口名称
-ufw status numbered   # 查看防火墙状态和开放的端口，并显示端口号
-ufw delete 序号  # 删除序号规则
-ufw enable    # 启动防火墙
-ufw disable   # 关闭防火墙
+ufw status    				# 查看防火墙状态和开放的端口
+ufw status verbose  	 	# 查看防火墙状态和开放的端口，并显示端口名称
+ufw status numbered   		# 查看防火墙状态和开放的端口，并显示端口号
+ufw delete 序号  			   # 删除序号规则
+ufw delete allow 22  		# 删除指令相关
+ufw enable    				# 启动防火墙
+ufw disable   				# 关闭防火墙
 ufw allow 22
+ufw allow 2290:2300/tcp 	# 范围开放端口
 ufw allow 80/tcp
 ufw reload
-netstat -antp          # 查看开放端口
+ufw allow from 192.168.0.104  # 允许来自xx的连接
+ufw allow form 192.168.0.0/24
+ufw allow from 192.168.0.104 proto tcp to any port 22
+netstat -antp          			# 查看开放端口
+ufw default deny incoming   	# 设置默认策略:设置默认拒绝所有传入连接
+ufw default allow outgoing  	# 设置默认允许所有传出连接
+sudo ufw logging on         	# 启动日志记录
+sudo tail -f /var/log/ufw.log  	# 查询日志
+```
 
-ufw default deny incoming   # 设置默认策略:设置默认拒绝所有传入连接
-ufw default allow outgoing  # 设置默认允许所有传出连接
+### 2.3 firewalld防火墙
 
+```bash
+sudo apt update && sudo apt install firewalld  # 安装 firewalld
+sudo systemctl start firewalld                 # 启动 firewalld 服务
+sudo systemctl stop firewalld                  # 停止 firewalld 服务
+sudo systemctl restart firewalld               # 重启 firewalld 服务
+sudo systemctl status firewalld                # 查看 firewalld 服务状态
+sudo systemctl enable firewalld                # 设置 firewalld 服务开机启动
+sudo systemctl disable firewalld               # 禁用 firewalld 服务开机启动
+
+sudo firewall-cmd --state                     # 查看防火墙状态（running 或 not running）
+sudo firewall-cmd --get-default-zone          # 获取当前防火墙的默认区域
+sudo firewall-cmd --set-default-zone=zone_name  # 设置防火墙默认区域
+sudo firewall-cmd --zone=zone_name --list-all  # 查看某个区域的详细规则
+sudo firewall-cmd --get-active-zones          # 查看当前激活的区域
+sudo firewall-cmd --list-services             # 查看当前已启用的服务
+
+sudo firewall-cmd --zone=zone_name --add-service=service_name  # 启用服务（如 http）
+sudo firewall-cmd --zone=zone_name --remove-service=service_name  # 禁用服务（如 http）
+sudo firewall-cmd --zone=zone_name --add-port=port/tcp   # 启用端口（如 80/tcp）
+sudo firewall-cmd --zone=zone_name --remove-port=port/tcp  # 禁用端口（如 80/tcp）
+sudo firewall-cmd --zone=public --add-port=22/tcp --permanent
+sudo firewall-cmd --zone=public --remove-port=22/tcp --permanent
+
+sudo firewall-cmd --permanent --zone=zone_name --add-service=service_name  # 永久添加服务
+sudo firewall-cmd --permanent --zone=zone_name --remove-service=service_name  # 永久移除服务
+sudo firewall-cmd --permanent --zone=zone_name --add-port=port/tcp  # 永久启用端口
+sudo firewall-cmd --permanent --zone=zone_name --remove-port=port/tcp  # 永久禁用端口
+
+sudo firewall-cmd --runtime-to-permanent    # 将当前规则保存为永久规则
+sudo firewall-cmd --reload                  # 重新加载防火墙配置
+sudo firewall-cmd --list-ports              # 查看所有开放的端口
+sudo firewall-cmd --zone=public --list-ports
+
+sudo firewall-cmd --direct --add-rule ipv4 filter INPUT 0 -p tcp --dport 80 -j ACCEPT  # 添加直接规则
+sudo firewall-cmd --direct --remove-rule ipv4 filter INPUT 0 -p tcp --dport 80 -j ACCEPT  # 移除直接规则
+
+sudo dpkg-reconfigure tzdata                 # 配置系统时区
+sudo timedatectl set-timezone Asia/Shanghai  # 设置时区为中国（上海）
 ```
 
 ### 2.4 查看IP
