@@ -1,6 +1,4 @@
-﻿# **服务器系统重装&SSH&xrdp&CUDA**
-
-# Ubuntu系统重装操作合集
+﻿# Ubuntu系统重装操作合集
 
 ## 1.1 系统安装：
 
@@ -17,6 +15,35 @@ efi: 1G  主分区
 swap : 64G 65536MB   逻辑分区。交换空间，一般是物理内存的1~2倍就行了
 
 ---
+
+**注意：**
+
+**开放root用户:**
+
+Ubuntu 默认情况下禁用了 `root`用户，因此你需要通过 `sudo` 来执行具有管理员权限的操作。
+
+```bash
+# 首先，打开终端。
+# 然后输入以下命令来切换到 root 用户： 
+sudo -i
+# 系统会要求你输入当前用户的密码。成功后，你将以 root 用户身份登录。
+
+# 修改 root 用户的密码, 修改 root 用户的密码
+passwd
+```
+
+**合盖后不睡眠**
+
+如果使用笔记本，希望合盖后不睡眠
+
+```bash
+# 1. 打开文件 `/etc/systemd/logind.conf`。
+# 2. 找到 `HandleLidSwitch=suspend`，如果前面有 `#`，去掉它。
+# 3. 改成 `HandleLidSwitch=lock`，然后保存文件。
+# 4. 重启 `systemd-logind` 服务以应用更改：
+sudo systemctl restart systemd-logind
+# 这样就能实现合盖时锁屏而不是休眠的效果。
+```
 
 ## 1.2 安装openssh-server
 

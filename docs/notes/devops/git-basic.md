@@ -1,6 +1,6 @@
-﻿### Git
+﻿# Git
 
-#### 1.Git的全局配置
+## 1.Git的全局配置
 
 ```bash
 $ git config -l  查看配置信息
@@ -11,7 +11,7 @@ $ git config --global user.name chenzelong
 $ git config --global user.email 1257433726@qq.com
 ```
 
-#### 2.创建仓库完成版本控制
+## 2.创建仓库完成版本控制
 
 > 创建本地git仓库
 
@@ -54,7 +54,7 @@ $ git reset --hard
 $ git reset --hard 版本号
 ```
 
-#### 3.把本地仓库信息提交到远程仓库
+## 3.把本地仓库信息提交到远程仓库
 
 ```bash
 # 建立本地仓库和远程仓库的链接
@@ -78,8 +78,8 @@ $ git branch 分支名称创建分支
 > 	3.每个成员写完自己的程序后，基于“git add / git commit”把自己修改的内容存放到历史区，然后通过“git pull / git push”把本地信息和远程仓库信息保持同步（可能涉及冲突的处理）
 -----
 
-### IDEA配置
-#### 1. 忽略文件
+# IDEA配置
+## 1. 忽略文件
 有些时候我们不想把某些文件纳入版本控制中，比如数据库文件，临时文件，设计文件等
 
 在主目录下建立"`.gitignore`"文件，此文件有如下规则：
@@ -105,7 +105,8 @@ $ git branch 分支名称创建分支
 build/       #忽略build/目录下的所有文件
 doc/*.txt    #会忽略 doc/notes.txt 但不包括 doc/server/arch.txt
 ```
-#### 2. gitee公钥配置
+## 2. gitee公钥配置
+
 [官网](https://gitee.com/)
 
 找到c盘用户路径下的文件夹.ssh，进去
@@ -124,7 +125,7 @@ git commit -m"message"
 git push
 ```
 
-#### 3. git中常用的分支命令
+## 3. git中常用的分支命令
 
 ```bash
 # 列出所有本地分支
