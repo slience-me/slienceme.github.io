@@ -260,6 +260,11 @@ sudo firewall-cmd --reload                  # 重新加载防火墙配置
 sudo firewall-cmd --list-ports              # 查看所有开放的端口
 sudo firewall-cmd --zone=public --list-ports
 
+
+sudo firewall-cmd --list-all  # 查看当前防火墙规则
+sudo firewall-cmd --permanent --add-rich-rule='rule family="ipv4" source address="192.168.1.100" port port=80 protocol=tcp accept'  # 开放某个 IP 访问指定端口
+sudo firewall-cmd --permanent --remove-rich-rule='rule family="ipv4" source address="192.168.1.100" port port=80 protocol=tcp accept'  # 删除已添加的规则
+
 sudo firewall-cmd --direct --add-rule ipv4 filter INPUT 0 -p tcp --dport 80 -j ACCEPT  # 添加直接规则
 sudo firewall-cmd --direct --remove-rule ipv4 filter INPUT 0 -p tcp --dport 80 -j ACCEPT  # 移除直接规则
 

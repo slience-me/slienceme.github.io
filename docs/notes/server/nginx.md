@@ -420,7 +420,7 @@ sudo nano /etc/nginx/sites-available/vue_project
 ```bash
 server {
     listen 8080;  # 监听 8080 端口
-    server_name example.com;  # 配置你的域名，或者使用 IP 或 localhost
+    server_name example1.com example2.com;  # 配置你的域名，或者使用 IP 或 localhost 多个用空格分隔开
 
     root /var/www/vue_project/dist;  # Vue 项目构建文件所在目录
     index index.html;  # 默认首页
@@ -511,7 +511,7 @@ docker run -p 80:80 --name nginx \
 ```bash
 server {
     listen 8080;  # 监听 8080 端口
-    server_name example.com;  # 配置你的域名，或者使用 IP 或 localhost
+    server_name example1.com example2.com;  # 配置你的域名，或者使用 IP 或 localhost 多个用空格分隔开
 
     root /usr/share/nginx/html/project;  # Vue 项目构建文件所在目录
     index index.html;  # 默认首页
@@ -614,7 +614,7 @@ netstat -lnt | grep 9000
 ```bash
 server {
     listen 7000;
-    server_name _._._._
+    server_name _._._._ 
     root /var/www/html;      #网站默认目录，以后可以自己改
     index index.php index.html index.htm;
     server_name www.a.com;      #网站地址
