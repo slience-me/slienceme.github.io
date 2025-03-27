@@ -1,6 +1,6 @@
 # Nodejs相关指令
 
-是否使用nvm去控制版本 [相关链接](/notes/devops/nvm-nodejs.md)
+是否使用nvm去控制版本 [相关链接](/notes/skill/nvm-nodejs.md)
 
 ```bash
 # 安装
