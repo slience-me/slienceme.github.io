@@ -2,6 +2,10 @@
 
 ## 1. 常见指令
 
+[跳转=>具体的指令笔记(基础)](/notes/hidden/linux-basic)
+
+[跳转=>具体的指令笔记(高级)](/notes/hidden/linux-advanced)
+
 ```bash
 # 查看相关进程
 ps aux|grep uwsgi(管道过滤)
@@ -122,6 +126,16 @@ sudo        # 以管理员身份执行命令 sudo command
 wget -O /etc/yum.repos.d/CentOS-Base.repo http://mirrors.aliyun.com/repo/Centos-7.repo
 yum clean all
 yum makecache
+```
+
+> 这里补充windows dos常用指令，不再单独创建新文件
+
+```bash
+netstat -anof   				# 查看网络开放端口
+netstat -anof | findstr 9000	# 查看网络开放端口9000  可以得到进程ID
+tasklist						# 查看全部进程
+tasklist | findstr 进程ID			# 查看进程ID程序源
+ping 
 ```
 
 ## 2. 配置相关
@@ -249,6 +263,7 @@ sudo firewall-cmd --zone=zone_name --add-port=port/tcp   # 启用端口（如 80
 sudo firewall-cmd --zone=zone_name --remove-port=port/tcp  # 禁用端口（如 80/tcp）
 sudo firewall-cmd --zone=public --add-port=22/tcp --permanent
 sudo firewall-cmd --zone=public --remove-port=22/tcp --permanent
+sudo firewall-cmd --zone=public --add-interface=<接口名> --permanent # 将指定的网络接口（网卡）绑定到 firewalld 的某个区域（zone）
 
 sudo firewall-cmd --permanent --zone=zone_name --add-service=service_name  # 永久添加服务
 sudo firewall-cmd --permanent --zone=zone_name --remove-service=service_name  # 永久移除服务
@@ -260,7 +275,6 @@ sudo firewall-cmd --reload                  # 重新加载防火墙配置
 sudo firewall-cmd --list-ports              # 查看所有开放的端口
 sudo firewall-cmd --zone=public --list-ports
 
-
 sudo firewall-cmd --list-all  # 查看当前防火墙规则
 sudo firewall-cmd --permanent --add-rich-rule='rule family="ipv4" source address="192.168.1.100" port port=80 protocol=tcp accept'  # 开放某个 IP 访问指定端口
 sudo firewall-cmd --permanent --remove-rich-rule='rule family="ipv4" source address="192.168.1.100" port port=80 protocol=tcp accept'  # 删除已添加的规则
@@ -270,6 +284,10 @@ sudo firewall-cmd --direct --remove-rule ipv4 filter INPUT 0 -p tcp --dport 80 -
 
 sudo dpkg-reconfigure tzdata                 # 配置系统时区
 sudo timedatectl set-timezone Asia/Shanghai  # 设置时区为中国（上海）
+
+sudo firewall-cmd --zone=public --add-masquerade --permanent  		# 开启命令 masquerade 允许 NAT，让内网设备通过服务器访问外网
+sudo firewall-cmd --zone=public --remove-masquerade --permanent 	# 关闭命令
+sudo firewall-cmd --add-forward-port=port=80:proto=tcp:toport=8080:toaddr=192.168.0.249 --permanent # 让外网访问服务器的80端口，然后 firewalld 转发到 内网设备的 8080
 ```
 
 ### 2.4 查看IP
@@ -364,31 +382,7 @@ service mysql stop    # 停止MySQL状态
 mysql -u root -p        # 连接MySQL数据库
 ```
 
-### 2.7 Redis(系统级)
-
-```bash
-# 配置Redis操作
-sudo apt install redis-server   # 安装
-service redis start   # 启动Redis服务
-service redis status  # 查看Redis状态
-service redis restart  # 重启服务
-service redis stop    # 停止Redis状态
-redis-server /etc/redis/redis.conf  # 启动Redis服务
-redis-cli                          # 连接Redis数据库
-```
-
-redis开启远程服务的操作方法：
-
-```
-1.打开redis的配置文件“redis.conf”。
-2.将“bind 127.0.0.1”注释掉。
-3.将“protected-mode yes”改成“protected-mode no”。
-4.添加以下一行代码。
-daemonize no
-5.重启redis服务即可。
-```
-
-### 2.8 配置uwsgi操作
+### 2.7 配置uwsgi操作
 
 ```bash
 # 配置uwsgi操作
@@ -396,7 +390,7 @@ uwsgi --ini uwsgi.ini  # 启动uwsgi服务
 uwsgi --stop uwsgi.pid  # 停止uwsgi服务
 ```
 
-### 2.9 安装SSH服务
+### 2.8 安装SSH服务
 
 ```bash
 # 安装SSH服务 ubuntu
@@ -406,3 +400,27 @@ service ssh start
 service ssh status
 service ssh restart  # 重启服务
 ```
+
+## 3. 常用技巧
+
+### 3.1 添加应用快捷方式到桌面
+
+```bash
+# 在桌面创建一个名称为 应用名称.desktop的文件，例如 test.desktop
+vim test.desktop
+
+# 编辑内容
+[Desktop Entry]
+Name=<程序/软件名> # test
+Comment=<自定义的描述> # 无
+Exec=<程序运行的绝对路径> # /home/slienceme/software/test/test-bin
+Type=<类型，有Application和Link两种类型> ApplicationA
+Terminal=<设置是否在终端运行，窗口应用程序填写false，命令行程序填true> # false
+Icon=<程序图标的绝对路径>  # /home/slienceme/software/test/test.icon
+
+# 然后给文件赋予权限
+sudo chmod +x test.desktop
+
+# 然后鼠标右键选取Allow Lanuching即可
+```
+

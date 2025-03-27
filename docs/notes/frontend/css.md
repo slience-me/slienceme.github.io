@@ -21,10 +21,10 @@
 **代码示例：**
 
 ```css
-div{
-	width:100px;
-	height:100px;
-	background:gold;
+div {
+  width: 100px;
+  height: 100px;
+  background: gold;
 }
 ```
 
@@ -45,6 +45,7 @@ css是层叠样式表，他是用来美化网页和控制页面布局的
 代码示例：
 
 ```html
+
 <div style="width:100px; height:100px; background:red ">hello</div>
 ```
 
@@ -54,18 +55,24 @@ css是层叠样式表，他是用来美化网页和控制页面布局的
 ### 1.2 内嵌式（内部样式）
 
 ```html
-在<head>标签内加入 <style> 标签，在<style>标签中编写css代码。
+在
+<head>标签内加入
+  <style> 标签，在
+
+  <
+  style > 标签中编写css代码。
 ```
 
 代码示例：
 
 ```html
+
 <head>
-    <style type="test/css">
-        h3{
-            color: red;
-        }
-    </style>
+  <style type="test/css">
+    h3 {
+      color: red;
+    }
+  </style>
 </head>
 ```
 
@@ -80,6 +87,7 @@ css是层叠样式表，他是用来美化网页和控制页面布局的
 示例代码：
 
 ```html
+
 <link rel="stylesheet" type="text/css" href="css/main.css">
 ```
 
@@ -99,30 +107,30 @@ css是层叠样式表，他是用来美化网页和控制页面布局的
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
-    <!-- 内嵌式 -->
-    <style>
-        /* css里边的注释 ctrl + / */
-        /* 选择器， css样式表可以由很多选择器组成，选择器就是用来选择标签给标签添加样式 */
-        a{
-            color: green;
-        }
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+  <!-- 内嵌式 -->
+  <style>
+    /* css里边的注释 ctrl + / */
+    /* 选择器， css样式表可以由很多选择器组成，选择器就是用来选择标签给标签添加样式 */
+    a {
+      color: green;
+    }
 
-        div{
-            width: 100px;
-            height: 100px;
-            background: blue;
-        }
-    </style>
+    div {
+      width: 100px;
+      height: 100px;
+      background: blue;
+    }
+  </style>
 </head>
 <body>
-    <!-- 行内式 -->
-    <p style="color: red;">我是一个段落标签</p>
-    <a href="http://www.baidu.com">百度</a>
-    <a href="http://www.baidu.com">谷歌</a>
-    <div>哈哈</div>
+<!-- 行内式 -->
+<p style="color: red;">我是一个段落标签</p>
+<a href="http://www.baidu.com">百度</a>
+<a href="http://www.baidu.com">谷歌</a>
+<div>哈哈</div>
 </body>
 </html>
 ```
@@ -151,10 +159,11 @@ css 选择器是用来选择标签的，选出来以后给标签加样式。
 示例代码
 
 ```html
+
 <style type="text/css">
-    p{
-        color: red;
-    }
+  p {
+    color: red;
+  }
 </style>
 
 <div>hello</div>
@@ -168,10 +177,21 @@ css 选择器是用来选择标签的，选出来以后给标签加样式。
 示例代码
 
 ```html
+
 <style type="text/css">
-    .blue{color:blue}
-    .big{font-size:20px}
-    .box{width:100px;height:100px;background:gold} 
+  .blue {
+    color: blue
+  }
+
+  .big {
+    font-size: 20px
+  }
+
+  .box {
+    width: 100px;
+    height: 100px;
+    background: gold
+  }
 </style>
 
 <div class="blue">这是一个div</div>
@@ -186,24 +206,39 @@ css 选择器是用来选择标签的，选出来以后给标签加样式。
 示例代码
 
 ```html
+
 <style type="text/css">
-    div p{
-        color: red;
-    }
-    .con{width:300px;height:80px;background:green}
-    .con span{color:red}
-    .con .pink{color:pink}
-    .con .gold{color:gold}    
+  div p {
+    color: red;
+  }
+
+  .con {
+    width: 300px;
+    height: 80px;
+    background: green
+  }
+
+  .con span {
+    color: red
+  }
+
+  .con .pink {
+    color: pink
+  }
+
+  .con .gold {
+    color: gold
+  }
 </style>
 
 <div>
-    <p>hello</p>
+  <p>hello</p>
 </div>
 
 <div class="con">
-    <span>哈哈</span>
-    <a href="#" class="pink">百度</a>
-    <a href="#" class="gold">谷歌</a>
+  <span>哈哈</span>
+  <a href="#" class="pink">百度</a>
+  <a href="#" class="gold">谷歌</a>
 </div>
 <span>你好</span>
 <a href="#" class="pink">新浪</a>
@@ -218,8 +253,11 @@ css 选择器是用来选择标签的，选出来以后给标签加样式。
 示例代码
 
 ```html
+
 <style type="text/css">
-    #box{color:red} 
+  #box {
+    color: red
+  }
 </style>
 
 <p id="box">这是一个段落标签</p>   <!-- 对应以上一条样式，其它元素不允许应用此样式 -->
@@ -236,11 +274,24 @@ css 选择器是用来选择标签的，选出来以后给标签加样式。
 示例代码
 
 ```html
+
 <style type="text/css">
-    .box1,.box2,.box3{width:100px;height:100px}
-    .box1{background:red}
-    .box2{background:pink}
-    .box2{background:gold}
+  .box1, .box2, .box3 {
+    width: 100px;
+    height: 100px
+  }
+
+  .box1 {
+    background: red
+  }
+
+  .box2 {
+    background: pink
+  }
+
+  .box2 {
+    background: gold
+  }
 </style>
 
 <div class="box1">这是第一个div</div>
@@ -255,9 +306,17 @@ css 选择器是用来选择标签的，选出来以后给标签加样式。
 示例代码
 
 ```html
+
 <style type="text/css">
-    .box1{width:100px;height:100px;background:gold;}
-    .box1:hover{width:300px;}
+  .box1 {
+    width: 100px;
+    height: 100px;
+    background: gold;
+  }
+
+  .box1:hover {
+    width: 300px;
+  }
 </style>
 
 <div class="box1">这是第一个div</div>
@@ -267,6 +326,7 @@ css 选择器是用来选择标签的，选出来以后给标签加样式。
 
 - css 选择器就是用来选择标签设置样式的
 - 常用的 css 选择器有六种，分别是:
+
 1. 标签选择器
 2. 类选择器
 3. 层级选择器(后代选择器)
@@ -282,15 +342,19 @@ css 选择器是用来选择标签的，选出来以后给标签加样式。
 
 - width 设置元素(标签)的宽度，如：width:100px;
 - height 设置元素(标签)的高度，如：height:200px;
-- background 设置元素背景色或者背景图片，如：background:gold; 设置元素的背景色, background: url(images/logo.png); 设置元素的背景图片。no-repeat  不重复拉伸
+- background 设置元素背景色或者背景图片，如：background:gold; 设置元素的背景色, background: url(images/logo.png);
+  设置元素的背景图片。no-repeat 不重复拉伸
 - border 设置元素四周的边框，如：border:1px solid black; 设置元素四周边框是1像素宽的黑色实线
 - 以上也可以拆分成四个边的写法，分别设置四个边的：
 - border-top 设置顶边边框，如：border-top:10px solid red;
 - border-left 设置左边边框，如：border-left:10px solid blue;
 - border-right 设置右边边框，如：border-right:10px solid green;
 - border-bottom 设置底边边框，如：border-bottom:10px solid pink;
-- padding 设置元素包含的内容和元素边框的距离，也叫内边距，如padding:20px;padding是同时设置4个边的，也可以像border一样拆分成分别设置四个边:padding-top、padding-left、padding-right、padding-bottom。
-- margin 设置元素和外界的距离，也叫外边距，如margin:20px;margin是同时设置4个边的，也可以像border一样拆分成分别设置四个边:margin-top、margin-left、margin-right、margin-bottom。
+- padding 设置元素包含的内容和元素边框的距离，也叫内边距，如padding:
+  20px;padding是同时设置4个边的，也可以像border一样拆分成分别设置四个边:
+  padding-top、padding-left、padding-right、padding-bottom。
+- margin 设置元素和外界的距离，也叫外边距，如margin:20px;margin是同时设置4个边的，也可以像border一样拆分成分别设置四个边:
+  margin-top、margin-left、margin-right、margin-bottom。
 - float 设置元素浮动，浮动可以让块元素排列在一行，浮动分为左浮动：float:left; 右浮动：float:right;
 
 ### 3.2 文本常用样式属性
@@ -307,95 +371,97 @@ css 选择器是用来选择标签的，选出来以后给标签加样式。
 ### 3.3 布局常用样式属性示例代码
 
 ```html
+
 <style>
 
-    .box1{
-        width: 200px; 
-        height: 200px; 
-        background:yellow; 
-        border: 1px solid black;
-    }
+  .box1 {
+    width: 200px;
+    height: 200px;
+    background: yellow;
+    border: 1px solid black;
+  }
 
-    .box2{
-        /* 这里是注释内容 */
-        /* 设置宽度 */
-        width: 100px;
-        /* 设置高度 */
-        height: 100px;
-        /* 设置背景色 */
-        background: red;
-        /* 设置四边边框 */
-        /* border: 10px solid black; */
-        border-top: 10px solid black;
-        border-left: 10px solid black;
-        border-right: 10px solid black;
-        border-bottom: 10px solid black;
-        /* 设置内边距， 内容到边框的距离，如果设置四边是上右下左 */
-        /* padding: 10px;   */
-        padding-left: 10px;
-        padding-top: 10px;
-        /* 设置外边距，设置元素边框到外界元素边框的距离 */
-        margin: 10px;
-        /* margin-top: 10px;
-        margin-left: 10px; */
-        float: left;
-    }
+  .box2 {
+    /* 这里是注释内容 */
+    /* 设置宽度 */
+    width: 100px;
+    /* 设置高度 */
+    height: 100px;
+    /* 设置背景色 */
+    background: red;
+    /* 设置四边边框 */
+    /* border: 10px solid black; */
+    border-top: 10px solid black;
+    border-left: 10px solid black;
+    border-right: 10px solid black;
+    border-bottom: 10px solid black;
+    /* 设置内边距， 内容到边框的距离，如果设置四边是上右下左 */
+    /* padding: 10px;   */
+    padding-left: 10px;
+    padding-top: 10px;
+    /* 设置外边距，设置元素边框到外界元素边框的距离 */
+    margin: 10px;
+    /* margin-top: 10px;
+    margin-left: 10px; */
+    float: left;
+  }
 
-    .box3{
-        width: 48px; 
-        height: 48px; 
-        background:pink; 
-        border: 1px solid black;
-        /*让div在一行显示，可以用浮动*/
-        float: left;
-    }
+  .box3 {
+    width: 48px;
+    height: 48px;
+    background: pink;
+    border: 1px solid black;
+    /*让div在一行显示，可以用浮动*/
+    float: left;
+  }
 
 </style>
 <!-- div>div*2  创建一个父div里面创建两个子div-->
 <div class="box1">
-    <div class="box2">
-        padding 设置元素包含的内容和元素边框的距离
-    </div>
-    <div class="box3">
-    </div>
+  <div class="box2">
+    padding 设置元素包含的内容和元素边框的距离
+  </div>
+  <div class="box3">
+  </div>
 </div>
 ```
 
 ### 3.4 文本常用样式属性示例
 
 ```html
-<style>
-    p{
-       /* 设置字体大小  浏览器默认是 16px */
-       font-size:20px;
-       /* 设置字体 */
-       font-family: "Microsoft YaHei"; 
-       /* 设置字体加粗 */
-       font-weight: bold;
-       /* 设置字体颜色 */
-       color: red;
-       /* 增加掉下划线  还有中划线 line-through 
-       上划线overline */
-       text-decoration: underline;
-       /* 设置行高  可以让文字垂直方向居中*/
-       line-height: 100px;
-       /* 设置背景色 */
-       background: green;
-       /* 设置文字居中 */
-       /* text-align: center; */
-       /* 文本缩进 */
-       text-indent: 40px;
-    }
 
-    a{
-        /* 去掉下划线 */
-        text-decoration: none;
-    }
+<style>
+  p {
+    /* 设置字体大小  浏览器默认是 16px */
+    font-size: 20px;
+    /* 设置字体 */
+    font-family: "Microsoft YaHei";
+    /* 设置字体加粗 */
+    font-weight: bold;
+    /* 设置字体颜色 */
+    color: red;
+    /* 增加掉下划线  还有中划线 line-through 
+    上划线overline */
+    text-decoration: underline;
+    /* 设置行高  可以让文字垂直方向居中*/
+    line-height: 100px;
+    /* 设置背景色 */
+    background: green;
+    /* 设置文字居中 */
+    /* text-align: center; */
+    /* 文本缩进 */
+    text-indent: 40px;
+  }
+
+  a {
+    /* 去掉下划线 */
+    text-decoration: none;
+  }
 </style>
 
 <a href="#">连接标签</a>
 <p>
-    你好，世界!
+  你好，世界!
 </p>
 ```
 
@@ -416,24 +482,26 @@ css 选择器是用来选择标签的，选出来以后给标签加样式。
 ### 4.2 示例代码
 
 ```html
+
 <style>
-    .box1{
-        width: 100px;
-        height: 200px;
-        background: red;
-        /* 在父级上设置子元素溢出的部分如何显示 */
-        /* overflow: hidden; */
-        overflow: auto;
-    }
-    .box2{
-        width: 50px;
-        height: 300px;
-        background: yellow;
-    }
+  .box1 {
+    width: 100px;
+    height: 200px;
+    background: red;
+    /* 在父级上设置子元素溢出的部分如何显示 */
+    /* overflow: hidden; */
+    overflow: auto;
+  }
+
+  .box2 {
+    width: 50px;
+    height: 300px;
+    background: yellow;
+  }
 </style>
 
 <div class="box1">
-    <div class="box2">hello</div>
+  <div class="box2">hello</div>
 </div>
 ```
 
@@ -450,29 +518,30 @@ display 属性是用来设置元素的类型及隐藏的，常用的属性有：
 ### 5.2 示例代码
 
 ```html
+
 <style>
-    .box{
-        /* 将块元素转化为行内元素 
-	设置div可以和其它元素在一行显示，以后就不能设置宽高*/
-/*以后既设置div的宽高又设置在一行显示，可以通过浮动来完成*/
-        display:inline;
-    } 
+  .box {
+    /* 将块元素转化为行内元素 
+设置div可以和其它元素在一行显示，以后就不能设置宽高*/
+    /*以后既设置div的宽高又设置在一行显示，可以通过浮动来完成*/
+    display: inline;
+  }
 
-    .link01{
-        /* 将行内元素转化为块元素 设置标签自己单独占一行，不和其它标签在一行 */
-        display:block;
-        background: red;
+  .link01 {
+    /* 将行内元素转化为块元素 设置标签自己单独占一行，不和其它标签在一行 */
+    display: block;
+    background: red;
 
-    }
+  }
 
-    .con{
-        width:200px;
-        height:200px;
-        background:gold;
+  .con {
+    width: 200px;
+    height: 200px;
+    background: gold;
 
-        /* 将元素隐藏 标签再次显示可以设置成block，删除display这个样式属性 div 默认block 自己霸占一行*/
-        display:none;
-    }
+    /* 将元素隐藏 标签再次显示可以设置成block，删除display这个样式属性 div 默认block 自己霸占一行*/
+    display: none;
+  }
 
 </style>
 
@@ -491,7 +560,8 @@ display 属性是用来设置元素的类型及隐藏的，常用的属性有：
 
 ### 6.1 盒子模型的介绍
 
-所谓的盒子模型就是把HTML页面的元素看作一个矩形盒子，矩形盒子是由内容(content)、内边距(padding)、边框(border)、外边距(margin)四部分组成。
+所谓的盒子模型就是把HTML页面的元素看作一个矩形盒子，矩形盒子是由内容(content)、内边距(padding)、边框(border)、外边距(margin)
+四部分组成。
 
 盒子模型示意图如下：
 

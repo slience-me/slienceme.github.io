@@ -5,6 +5,7 @@
 在 Ubuntu 系统上选择和管理 CUDA 的多个版本可以通过以下步骤进行：
 
 ### 1.1 查看当前安装的 CUDA 版本
+
 你可以通过以下命令查看当前安装的 CUDA 版本：
 
 ```bash
@@ -12,10 +13,14 @@ nvcc --version
 ```
 
 ### 1.2 下载并安装所需的 CUDA 版本
-你可以从 [NVIDIA CUDA Toolkit 下载页面](https://developer.nvidia.com/cuda-downloads) 下载你需要的 CUDA 版本。选择你的操作系统（Linux）、架构（x86_64）、发行版（Ubuntu）和版本，然后按照提示下载并安装。
+
+你可以从 [NVIDIA CUDA Toolkit 下载页面](https://developer.nvidia.com/cuda-downloads) 下载你需要的 CUDA
+版本。选择你的操作系统（Linux）、架构（x86_64）、发行版（Ubuntu）和版本，然后按照提示下载并安装。
 
 ### 1.3 设置环境变量
-每个 CUDA 版本都会安装在不同的目录中，例如 `/usr/local/cuda-10.1`, `/usr/local/cuda-10.2` 等。你可以通过设置环境变量 `CUDA_HOME` 和修改 `PATH` 来切换不同的 CUDA 版本。
+
+每个 CUDA 版本都会安装在不同的目录中，例如 `/usr/local/cuda-10.1`, `/usr/local/cuda-10.2` 等。你可以通过设置环境变量
+`CUDA_HOME` 和修改 `PATH` 来切换不同的 CUDA 版本。
 
 以下是一个示例脚本，可以根据你需要的 CUDA 版本进行修改：
 
@@ -34,6 +39,7 @@ export LD_LIBRARY_PATH=$CUDA_HOME/lib64:$LD_LIBRARY_PATH
 你可以将这个脚本添加到你的 `~/.bashrc` 或 `~/.zshrc` 文件中，或者每次需要切换 CUDA 版本时手动运行这个脚本。
 
 ### 1.4 验证切换
+
 切换 CUDA 版本后，可以运行以下命令来验证切换是否成功：
 
 ```bash
@@ -43,6 +49,7 @@ nvcc --version
 这个命令将显示当前使用的 CUDA 版本。
 
 ### 1.5 安装对应的 NVIDIA 驱动程序
+
 确保你安装了与所需 CUDA 版本兼容的 NVIDIA 驱动程序。如果需要更新或切换驱动程序，可以使用以下命令：
 
 ```bash
@@ -54,8 +61,8 @@ sudo ubuntu-drivers autoinstall
 
 通过以上步骤，你可以在 Ubuntu 系统上管理和切换多个 CUDA 版本。
 
-
 ## 2. 设置环境变量
+
 在 Ubuntu 上修改环境变量可以通过编辑 `~/.bashrc` 或 `~/.zshrc` 文件来实现，具体取决于你使用的是 Bash 还是 Zsh。以下是详细步骤：
 
 ### 2.1 打开终端

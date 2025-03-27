@@ -8,8 +8,8 @@
 // var 声明的变量往往会越域
 // let 声明的变量有严格的局部作用域
 {
-    var a = 1;
-    let b = 2;
+  var a = 1;
+  let b = 2;
 }
 console.log(a); // 1
 console.log(b); // 报错 b is not defined
@@ -96,8 +96,8 @@ let age = 18;
 let info = `My name is ${name}, I'm ${age + 1}`;
 console.log(info);
 
-function fun(){
-    return 'have fun';
+function fun() {
+  return 'have fun';
 }
 
 let info2 = `My name is ${name}, I'm ${age + 1}, I say ${fun()}`;
@@ -110,10 +110,11 @@ let info2 = `My name is ${name}, I'm ${age + 1}, I say ${fun()}`;
 ```javascript
 // 在ES6以前，我们无法给函数参数设置默认值，只能通过逻辑或运算符来达到目的
 function add(a, b) {
-    // 判断b是否为空，为空则给默认值1
-    b = b || 1;  // b = b ? b : 1;
-    return a + b;
+  // 判断b是否为空，为空则给默认值1
+  b = b || 1;  // b = b ? b : 1;
+  return a + b;
 }
+
 console.log(add(1)); // 2
 console.log(add(1, 2)); // 3
 console.log(add(1, undefined)); // 2
@@ -121,8 +122,9 @@ console.log(add(undefined, 2)); // NaN
 
 // 在ES6中，我们可以通过函数参数的默认值来设置参数的默认值
 function add2(a, b = 1) {
-    return a + b;
+  return a + b;
 }
+
 console.log(add2(1)); // 2
 ```
 
@@ -132,8 +134,9 @@ console.log(add2(1)); // 2
 // 2、 不定参数
 // 1. 使用...args来表示不定参数，args是一个数组
 function fun(...args) {
-    console.log(args.length);
+  console.log(args.length);
 }
+
 fun(); // 0
 fun(1, 2, 3); // 3
 
@@ -147,10 +150,11 @@ fun(1, 2, 3); // 3
 
 // 3. 如果函数的参数有默认值，那么不定参数必须放在最后
 function add7(a, b, ...args) {
-    console.log(a); // 1
-    console.log(b); // 2
-    console.log(args); // [3, 4]
+  console.log(a); // 1
+  console.log(b); // 2
+  console.log(args); // [3, 4]
 }
+
 add7(1, 2, 3, 4);
 ```
 
@@ -159,17 +163,17 @@ add7(1, 2, 3, 4);
 ```javascript
 // 以前声明一个方法(单参数)
 var print = function (obj) {
-    console.log(obj);
+  console.log(obj);
 }
-print({ name: '张三' }); // { name: '张三' }
+print({name: '张三'}); // { name: '张三' }
 
 // 箭头函数的声明
 var print_ = obj => console.log(obj);
-print_({ name: '张三' }); // { name: '张三' }
+print_({name: '张三'}); // { name: '张三' }
 
 // 以前声明一个方法(多参数)
 var add2 = function (a, b) {
-    return a + b;
+  return a + b;
 }
 console.log(add2(1, 2)); // 3
 
@@ -180,13 +184,13 @@ console.log(add3(1, 2)); // 3
 // 方法体内有多行代码
 // 传统
 var add4 = function (a, b) {
-    console.log(a + b);
-    return a + b;
+  console.log(a + b);
+  return a + b;
 }
 // 箭头函数
 var add5 = (a, b) => {
-    console.log(a + b);
-    return a + b;
+  console.log(a + b);
+  return a + b;
 }
 console.log(add5(1, 2)); // 3
 ```
@@ -195,20 +199,22 @@ console.log(add5(1, 2)); // 3
 
 ```javascript
 const person = {
-    name: '张三',
-    age: 18,
-    language: ['java', 'js', 'css'],
+  name: '张三',
+  age: 18,
+  language: ['java', 'js', 'css'],
 }
+
 // 传统
 function hello() {
-    console.log('hello, ' + person.name);
+  console.log('hello, ' + person.name);
 }
+
 // 箭头函数
 var hello2 = (person) => console.log('hello, ' + person.name);
 hello2(person); // hello, 张三
 
 // 箭头函数+解构
-var hello3 = ({ name }) => console.log('hello, ' + name);
+var hello3 = ({name}) => console.log('hello, ' + name);
 hello3(person); // hello, 张三
 ```
 
@@ -218,9 +224,9 @@ hello3(person); // hello, 张三
 
 ```javascript
 const person = {
-    name: '张三',
-    age: 18,
-    language: ['javascript', 'python', 'java']
+  name: '张三',
+  age: 18,
+  language: ['javascript', 'python', 'java']
 }
 console.log(Object.keys(person))//获取对象所有的键['name', 'age', 'language']
 console.log(Object.values(person))//获取对象所有的值['张三', 18, Array(3)]
@@ -251,15 +257,17 @@ console.log(person1, person2)//{name: '张三', age: 18} {name: '张三', age: 1
 
 ```javascript
 const person3 = {
-    name: '张三',
-    // 以前
-    eat: function (food) {
-        console.log(this.name + '正在吃' + food)
-    },
-    // 箭头函数版
-    eat2: food => console.log(this.name + '正在吃' + food),
-    // 简写
-    eat3(food) {console.log(this.name + '正在吃' + food);}
+  name: '张三',
+  // 以前
+  eat: function (food) {
+    console.log(this.name + '正在吃' + food)
+  },
+  // 箭头函数版
+  eat2: food => console.log(this.name + '正在吃' + food),
+  // 简写
+  eat3(food) {
+    console.log(this.name + '正在吃' + food);
+  }
 }
 person3.eat('苹果')//张三正在吃苹果
 ```
@@ -273,7 +281,7 @@ let person = {name: '张三', age: 18}
 // 传统
 const someone1 = {}
 for (let key in person) {
-someone1[key] = person[key]
+  someone1[key] = person[key]
 }
 // ES6
 let someone2 = {...person}
@@ -296,7 +304,7 @@ console.log(person1)//{name: '张三', age: 18}
 // map: 映射，将数组中的每个元素映射成另一个值，最终生成一个新数组
 let arr = [1, 2, 3, 4, 5];
 let arr2 = arr.map(function (item) {
-return item * 2;
+  return item * 2;
 });
 // 箭头函数简写
 // let arr2 = arr.map(item => item * 2);
@@ -308,7 +316,7 @@ console.log(arr2);
 ```javascript
 // reduce: 累加器，将数组中的每个元素累加起来，最终生成一个值，可以设置初始值
 let arr3 = arr.reduce(function (prev, item) {
-return prev + item;
+  return prev + item;
 }, 0);
 // 箭头函数简写
 // let arr3 = arr.reduce((prev, item) => prev + item, 0);
@@ -322,9 +330,9 @@ console.log(arr3);
 首先创建一些json文件
 
 - mock
-  	- user.json
-  	- course_score_10.json
-  	- user_course_1.json
+  - user.json
+  - course_score_10.json
+  - user_course_1.json
 
 具体的内容：
 
@@ -356,31 +364,31 @@ Ajax调用：
 // 2、按照当前用户查出来的ID查询他的课程
 // 3、按照当前课程ID查询他的分数
 $.ajax({
-    url: 'mock/user.json',
-    success(data) { // 1、查出当前用户信息
-        console.log("查询用户: ", data)
+  url: 'mock/user.json',
+  success(data) { // 1、查出当前用户信息
+    console.log("查询用户: ", data)
+    $.ajax({
+      url: `mock/user_course_${data.id}.json`,
+      success(data) { // 2、按照当前用户查出来的ID查询他的课程
+        console.log("查询到课程: ", data)
         $.ajax({
-            url: `mock/user_course_${data.id}.json`,
-            success(data) { // 2、按照当前用户查出来的ID查询他的课程
-                console.log("查询到课程: ", data)
-                $.ajax({
-                    url: `mock/course_score_${data.id}.json`,
-                    success(data) { // 3、按照当前课程ID查询他的分数
-                        console.log("查询到分数: ", data)
-                    },
-                    error(error) {
-                        console.log("出现错误: ", error)
-                    }
-                })
-            },
-            error(error) {
-                console.log("出现错误: ", error)
-            }
+          url: `mock/course_score_${data.id}.json`,
+          success(data) { // 3、按照当前课程ID查询他的分数
+            console.log("查询到分数: ", data)
+          },
+          error(error) {
+            console.log("出现错误: ", error)
+          }
         })
-    },
-    error(error) {
+      },
+      error(error) {
         console.log("出现错误: ", error)
-    }
+      }
+    })
+  },
+  error(error) {
+    console.log("出现错误: ", error)
+  }
 })
 ```
 
@@ -388,11 +396,11 @@ $.ajax({
 
 ```javascript
 let p = new Promise((resolve, reject) => { // resolve和reject是两个函数
-    if (true) {
-        resolve(data)
-    } else {
-        reject(err);
-    }
+  if (true) {
+    resolve(data)
+  } else {
+    reject(err);
+  }
 });
 ```
 
@@ -400,15 +408,15 @@ let p = new Promise((resolve, reject) => { // resolve和reject是两个函数
 
 ```javascript
 p.then((obj) => {
-    return new Promise((resolve, reject) => {
-      if (true) {
-        resolve(data)
+  return new Promise((resolve, reject) => {
+    if (true) {
+      resolve(data)
     } else {
-        reject(err);
+      reject(err);
     }
   })
 }).catch((err) => { // 失败
-    console.log("出现错误: ", err)
+  console.log("出现错误: ", err)
 })
 ```
 
@@ -417,82 +425,80 @@ p.then((obj) => {
 ```javascript
   // Promise
   // 1. Promise可以封装异步操作
-  let p = new Promise((resolve, reject) => { // resolve和reject是两个函数
-    // 1. 异步操作
+let p = new Promise((resolve, reject) => { // resolve和reject是两个函数
+                                           // 1. 异步操作
+  $.ajax({
+    url: 'mock/user.json',
+    success: function (data) { // 1、查出当前用户信息
+      console.log("查询用户: ", data)
+      resolve(data);
+    },
+    error: function (err) {
+      reject(err);
+    }
+  })
+});
+p.then((obj) => { // 成功
+  return new Promise((resolve, reject) => {
     $.ajax({
-      url: 'mock/user.json',
-      success:function (data) { // 1、查出当前用户信息
-        console.log("查询用户: ", data)
+      url: `mock/user_course_${obj.id}.json`,
+      success: function (data) { // 1、查出当前用户信息
+        console.log("查询到课程: ", data)
         resolve(data);
       },
-      error:function (err) {
+      error: function (err) {
         reject(err);
       }
     })
-  });
-  p.then((obj) => { // 成功
-    return new Promise((resolve, reject) => {
-      $.ajax({
-        url: `mock/user_course_${obj.id}.json`,
-        success:function (data) { // 1、查出当前用户信息
-          console.log("查询到课程: ", data)
-          resolve(data);
-        },
-        error:function (err) {
-          reject(err);
-        }
-      })
-    })
-  }).then((data) => { // 成功
-    $.ajax({
-      url: `mock/course_score_${data.id}.json`,
-      success:function (data) { // 1、查出当前用户信息
-        console.log("查询到分数: ", data)
-      },
-      error:function (err) {
-        console.log("出现错误: ", err)
-      }
-    })
-
-  }).catch((err) => { // 失败
-    console.log("出现错误: ", err)
   })
+}).then((data) => { // 成功
+  $.ajax({
+    url: `mock/course_score_${data.id}.json`,
+    success: function (data) { // 1、查出当前用户信息
+      console.log("查询到分数: ", data)
+    },
+    error: function (err) {
+      console.log("出现错误: ", err)
+    }
+  })
+
+}).catch((err) => { // 失败
+  console.log("出现错误: ", err)
+})
 ```
 
 ### 4）优化处理
 
 ```javascript
 function get(url, data) {
-     return new Promise((resolve, reject) => {
-        $.ajax({
-          url: url,
-          data: data,
-          success: function (data) {
-            resolve(data);
+  return new Promise((resolve, reject) => {
+    $.ajax({
+      url: url,
+      data: data,
+      success: function (data) {
+        resolve(data);
 
-          },
-          error: function (err) {
-            reject(err);
-          }
-        });
-     });
-  }
+      },
+      error: function (err) {
+        reject(err);
+      }
+    });
+  });
+}
 
 get(`mock/user.json`)
-    .then((data) => {
+  .then((data) => {
     console.log("用户查询成功: ", data)
     return get(`mock/user_course_${data.id}.json`)
+  }).then((data) => {
+  console.log("课程查询成功: ", data)
+  return get(`mock/course_score_${data.id}.json`)
 }).then((data) => {
-    console.log("课程查询成功: ", data)
-    return get(`mock/course_score_${data.id}.json`)
-}).then((data) => {
-    console.log("课程成绩查询成功: ", data)
+  console.log("课程成绩查询成功: ", data)
 }).catch((err) => {
-    console.log("出现错误: ", err)
+  console.log("出现错误: ", err)
 })
 ```
-
-
 
 ## 9. 模块化
 
@@ -509,9 +515,9 @@ get(`mock/user.json`)
 
 ```javascript
 const util = {
-    sum(a, b) {
-        return a + b;
-    }
+  sum(a, b) {
+    return a + b;
+  }
 }
 
 export {util}; //批量导出
@@ -521,18 +527,18 @@ export {util}; //批量导出
 ```javascript
 // 起名字 导出导入需要同名
 export const util = {
-    sum(a, b) {
-        return a + b;
-    }
+  sum(a, b) {
+    return a + b;
+  }
 }
 ```
 
 ```javascript
 // 不起名字 导出导入不需要同名
 export default {
-    sum(a, b) {
-        return a + b;
-    }
+  sum(a, b) {
+    return a + b;
+  }
 }
 // export 不仅可以导出对象，一切JS变量都可以导出；比如：基本类型变量、函数、数组、对象。
 ```
@@ -540,8 +546,9 @@ export default {
 ```javascript
 var name = 'John';
 var age = 30;
+
 function add(a, b) {
-    return a + b;
+  return a + b;
 }
 
 export {name, age, add}

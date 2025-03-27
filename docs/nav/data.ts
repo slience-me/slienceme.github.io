@@ -13,14 +13,91 @@ export const NAV_DATA: NavData[] = [
         icon: 'https://blog.slienceme.cn/favicon.ico',
         title: '编程技术栈导航',
         desc: '偷懒, 映射到我的另一个简单的合集',
-        link: 'https://blog.slienceme.cn/2025/02/16/%E6%8A%80%E6%9C%AF%E6%A0%88%E5%90%88%E9%9B%86/',
+        link: 'https://blog.slienceme.cn/2025/02/16/%E6%8A%80%E6%9C%AF%E6%A0%88%E5%90%88%E9%9B%86/'
       },
       {
         icon: 'https://fe-mm.com/favicon.ico',
         title: '茂茂物语',
         desc: '吾志所向，一往无前。',
-        link: 'https://fe-mm.com',
+        link: 'https://fe-mm.com'
+      },
+      {
+        icon: 'https://vitepress.yiov.top/logo.png',
+        title: 'yiov',
+        desc: 'vuepress快速教程',
+        link: 'https://vitepress.yiov.top/'
       }
+    ],
+  },
+  {
+    title: '后端开发',
+    items: [
+      {
+        icon: 'https://baomidou.com/favicon.svg',
+        title: 'MyBatis Plus',
+        desc: 'MyBatis 最佳搭档，只做增强不做改变，为简化开发、提高效率而生。',
+        link: 'https://baomidou.com/',
+      },
+      {
+        icon: 'https://spring.io/favicon-32x32.png?v=96334d577af708644f6f0495dd1c7bc8',
+        title: 'Spring',
+        desc: 'Spring makes Java simple.',
+        link: 'https://spring.io/',
+      },
+      {
+        icon: 'https://www.redis.net.cn/Application/Home/View/Public/img/icon.png',
+        title: 'Redis中文网',
+        desc: '一个高效的非关系型数据库',
+        link: 'https://www.redis.net.cn/',
+      },
+      {
+        icon: 'https://www.renren.io/favicon.ico',
+        title: '人人开源',
+        desc: '一个后端快速开发模板代码网站',
+        link: 'https://www.renren.io/',
+      },
+      {
+        icon: 'https://portal.cloud.hashicorp.com/favicon.svg',
+        title: 'Vagrant',
+        desc: 'Discover Vagrant Boxes',
+        link: 'https://portal.cloud.hashicorp.com/vagrant/discover',
+      },
+      {
+        icon: 'https://www.jenkins.io/favicon.ico',
+        title: 'Jenkins',
+        desc: '一个开源的自动化部署平台',
+        link: 'https://archives.jenkins.io/war-stable/',
+      },
+      {
+        icon: 'https://nginxserver.cn/favicon.ico',
+        title: 'Nginx',
+        desc: 'Nginx中文网',
+        link: 'https://nginxserver.cn/',
+      },
+      {
+        icon: 'https://mvnrepository.com/assets/images/7080b8b0f6f48e6fbaffd5f9d85fcc7f-favicon.ico',
+        title: 'MVN',
+        desc: 'Mvn仓库',
+        link: 'https://mvnrepository.com/',
+      },
+	    {
+        icon: 'https://img.alicdn.com/tfs/TB1_ZXuNcfpK1RjSZFOXXa6nFXa-32-32.ico',
+        title: 'Alibaba镜像源',
+        desc: '阿里巴巴开源镜像源',
+        link: 'https://developer.aliyun.com/mirror/',
+      },
+      {
+        icon: 'https://kubernetes.io/images/logo-header.png',
+        title: 'Kubernetes',
+        desc: 'K8s: 自动部署...',
+        link: 'https://kubernetes.io/',
+      },
+      {
+        icon: 'https://kubesphere.io/images/favicons/favicon.svg',
+        title: 'KubeSphere',
+        desc: 'KubeSphere 容器平台',
+        link: 'https://kubesphere.io/zh/',
+      },
     ],
   },
   {
@@ -80,59 +157,6 @@ export const NAV_DATA: NavData[] = [
         icon: 'https://global-uploads.webflow.com/59deb588800ae30001ec19c9/5d4891e0e260e3c1bc37b100_beautiful%20ai%20favicon%20%20blue%20square.png',
         title: 'Beautiful.ai（PPT）',
         link: 'https://www.beautiful.ai',
-      },
-    ],
-  },
-  {
-    title: '后端开发',
-    items: [
-      {
-        icon: 'https://baomidou.com/favicon.svg',
-        title: 'MyBatis Plus',
-        desc: 'MyBatis 最佳搭档，只做增强不做改变，为简化开发、提高效率而生。',
-        link: 'https://baomidou.com/',
-      },
-      {
-        icon: 'https://spring.io/favicon-32x32.png?v=96334d577af708644f6f0495dd1c7bc8',
-        title: 'Spring',
-        desc: 'Spring makes Java simple.',
-        link: 'https://spring.io/',
-      },
-      {
-        icon: 'https://www.redis.net.cn/Application/Home/View/Public/img/icon.png',
-        title: 'Redis中文网',
-        desc: '一个高效的非关系型数据库',
-        link: 'https://www.redis.net.cn/',
-      },
-      {
-        icon: 'https://www.renren.io/favicon.ico',
-        title: '人人开源',
-        desc: '一个后端快速开发模板代码网站',
-        link: 'https://www.renren.io/',
-      },
-      {
-        icon: 'https://portal.cloud.hashicorp.com/favicon.svg',
-        title: 'Vagrant',
-        desc: 'Discover Vagrant Boxes',
-        link: 'https://portal.cloud.hashicorp.com/vagrant/discover',
-      },
-      {
-        icon: 'https://www.jenkins.io/favicon.ico',
-        title: 'Jenkins',
-        desc: '一个开源的自动化部署平台',
-        link: 'https://archives.jenkins.io/war-stable/',
-      },
-      {
-        icon: 'https://nginxserver.cn/favicon.ico',
-        title: 'Nginx',
-        desc: 'Nginx中文网',
-        link: 'https://nginxserver.cn/',
-      },
-      {
-        icon: 'https://mvnrepository.com/assets/images/7080b8b0f6f48e6fbaffd5f9d85fcc7f-favicon.ico',
-        title: 'MVN',
-        desc: 'Mvn仓库',
-        link: 'https://mvnrepository.com/',
       },
     ],
   },

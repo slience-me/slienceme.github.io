@@ -1,9 +1,14 @@
 ﻿# Vue
+
 ## 1. 指令
+
 ### 1.1 mustache
+
 - mustache
-	- {{}} 
+  - {{}}
+
 ```html
+
 <div id="app">
   <h2>{{message}}</h2>
   <h2>{{message}},李银河！</h2>
@@ -21,16 +26,20 @@
       message: '你好啊！',
       firstName: 'kobe',
       lastName: 'bryant',
-      counter:100,
+      counter: 100,
     }
   })
 </script>
 ```
+
 ### 1.2 v-once
+
 - `v-once`：
-	- 该指令后边不需要跟任何表达式
-	- 该指令表示元素和组件只渲染一次，不会随着数据的改变而改变
+  - 该指令后边不需要跟任何表达式
+  - 该指令表示元素和组件只渲染一次，不会随着数据的改变而改变
+
 ```html
+
 <div id="app">
   <h2>{{message}}</h2>
   <h2 v-once>{{message}}</h2>
@@ -45,12 +54,17 @@
   })
 </script>
 ```
+
 ![Alt Text](/images/e1502fde71f643f0aa43c873acbba00e.png)
+
 ### 1.3 v-html
--  `v-html`：
-	- 该指令后边往往会跟上一个string类型
-	- 会将string的html解析出来并且渲染 
+
+- `v-html`：
+  - 该指令后边往往会跟上一个string类型
+  - 会将string的html解析出来并且渲染
+
 ```html
+
 <div id="app">
   <h2>{{url}}</h2>
   <h2 v-html="url"></h2>
@@ -66,13 +80,18 @@
   })
 </script>
 ```
+
 ![Alt Text](/images/086eee1cef3743f5a5d1c6e8c2cfe2c5.png)
+
 ### 1.4 v-text
--  `v-text`：
-	- 该指令和Mustache比较相似：都是用于将数据显示在界面中
-	- 该指令通常情况下，接受一个string类型
+
+- `v-text`：
+  - 该指令和Mustache比较相似：都是用于将数据显示在界面中
+  - 该指令通常情况下，接受一个string类型
 - 相对不灵活，不容易拼接内容，一般不用
+
 ```html
+
 <div id="app">
   <h2>{{message}},slience_me!</h2>
   <h2 v-text="message">,slience_me!</h2>
@@ -87,12 +106,17 @@
   })
 </script>
 ```
+
 ![Alt Text](/images/0113c0d5d81b47768283b1ece1ee47b8.png)
+
 ### 1.5 v-pre
+
 - `v-pre`:
-	- 该指令用于跳过这个元素和它的子元素的编译过程，用于显示原本的`Mustache`语法 
-	- 原封不动的显示出来
+  - 该指令用于跳过这个元素和它的子元素的编译过程，用于显示原本的`Mustache`语法
+  - 原封不动的显示出来
+
 ```html
+
 <div id="app">
   <h2>{{message}}</h2>
   <h2 v-pre>{{message}}</h2>
@@ -107,13 +131,17 @@
   })
 </script>
 ```
+
 ![Alt Text](/images/dfad27c1af4946afaed90b76f468f5d7.png)
+
 ### 1.6 v-cloak
+
 cloak:斗篷
 
 - `v-cloak`:
-	- 该指令防止不友好的{{message}}被看到
-	- 不会看到{{}}内容
+  - 该指令防止不友好的{{message}}被看到
+  - 不会看到{{}}内容
+
 ```html
 <!DOCTYPE html>
 <html lang="en">
@@ -147,16 +175,22 @@ cloak:斗篷
 </body>
 </html>
 ```
+
 ![Alt Text](/images/91db6067135a427d9d57051b5844ab19.png)
+
 ### 1.7 v-bind
+
 #### 1.7.1 基本使用
+
 - `v-bind`:
-	- 作用：动态绑定属性
-	- 缩写：`:`
-	- 预期：any(with argument) | Object (without argument)
-	- 参数：attrOrProp(optional)
+  - 作用：动态绑定属性
+  - 缩写：`:`
+  - 预期：any(with argument) | Object (without argument)
+  - 参数：attrOrProp(optional)
 - 例子：`<img :src="imgURL" alt="">`
+
 ```html
+
 <div id="app">
   <!--错误的语法：这里不可以使用mustache语法-->
   <!--<img src="{{imgURL}}" alt="">-->
@@ -175,23 +209,25 @@ cloak:斗篷
     el: '#app',
     data: {
       message: '你好啊！',
-      imgURL:'https://cn.vuejs.org/images/logo.svg',
+      imgURL: 'https://cn.vuejs.org/images/logo.svg',
       aHref: 'https://www.baidu.com'
     }
   })
 </script>
 ```
+
 #### 1.7.2 动态绑定class
 
 ##### 对象语法
 
 ```html
+
 <div id="app">
-<!--  <h2 class="active">{{message}}</h2>-->
-<!--  <h2 :class="active">{{message}}</h2>-->
-<!--  <h2 :class="{key1: value1,key2:value2}">{{message}}</h2>-->
-<!--  <h2 :class="{类名1: boolean,类名2:boolean}">{{message}}</h2>-->
-<!--  <h2 class="title" :class="{active: isActive,line:isLine}">{{message}}</h2>-->
+  <!--  <h2 class="active">{{message}}</h2>-->
+  <!--  <h2 :class="active">{{message}}</h2>-->
+  <!--  <h2 :class="{key1: value1,key2:value2}">{{message}}</h2>-->
+  <!--  <h2 :class="{类名1: boolean,类名2:boolean}">{{message}}</h2>-->
+  <!--  <h2 class="title" :class="{active: isActive,line:isLine}">{{message}}</h2>-->
   <h2 class="title" :class="getClasses()">{{message}}</h2>
   <button v-on:click="btnClick">按钮</button>
 </div>
@@ -204,21 +240,24 @@ cloak:斗篷
       isActive: true,
       isLine: true
     },
-    methods:{
-      btnClick:function (){
+    methods: {
+      btnClick: function () {
         this.isActive = !this.isActive
       },
-      getClasses:function () {
-        return {active: this.isActive,line: this.isLine}
+      getClasses: function () {
+        return {active: this.isActive, line: this.isLine}
       }
     }
   })
 </script>
 ```
+
 ![Alt Text](/images/66e1c9d7b345461a8aaaf399629b29b7.png)
+
 ##### 数组语法
 
 ```html
+
 <div id="app">
   <!-- 字符串 -->
   <h2 class="title" :class="['active', 'line']">{{message}}</h2>
@@ -243,8 +282,11 @@ cloak:斗篷
   })
 </script>
 ```
+
 ![Alt Text](/images/9b4e129c759e4b2587f07300a9370e6b.png)
+
 ##### 案例
+
 - 点击哪个那个变红
 
 ```html
@@ -254,17 +296,18 @@ cloak:斗篷
   <meta charset="UTF-8">
   <title>Title</title>
   <style>
-    .active{
-        color: red;
+    .active {
+      color: red;
     }
   </style>
 </head>
 <body>
 <div id="app">
   <ul>
-    <li v-for="(m, index) in movies" 
-     	@click="liClick(index)" 
-     	:class="{active:currentIndex===index}"> {{index}}-{{m}}</li>
+    <li v-for="(m, index) in movies"
+        @click="liClick(index)"
+        :class="{active:currentIndex===index}"> {{index}}-{{m}}
+    </li>
   </ul>
 </div>
 <script src="../js/vue.js"></script>
@@ -272,30 +315,33 @@ cloak:斗篷
   const app = new Vue({
     el: '#app',
     data: {
-      movies:['海王','海尔兄弟','火影忍者','进击的巨人'],
+      movies: ['海王', '海尔兄弟', '火影忍者', '进击的巨人'],
       currentIndex: 0
     },
-    methods:{
-    	liClick(index){
-			this.currentIndex = index;
-		}
+    methods: {
+      liClick(index) {
+        this.currentIndex = index;
+      }
     }
   })
 </script>
 </body>
 </html>
 ```
-![Alt Text](/images/b423fd366f614d2587b2fe48bba99758.png)
-#### 1.7.3 动态绑定style
-##### 对象绑定
 
+![Alt Text](/images/b423fd366f614d2587b2fe48bba99758.png)
+
+#### 1.7.3 动态绑定style
+
+##### 对象绑定
 
 - `:style="{fontSize:finalSize + 'px',color:finalColor}"`
 - `style`后边跟的是一个对象类型
-	- 对象的`key`是`CSS`属性名称
-	- 对象的`value`是具体赋的值，值可以来自于`data`中的属性
+  - 对象的`key`是`CSS`属性名称
+  - 对象的`value`是具体赋的值，值可以来自于`data`中的属性
 
 ```html
+
 <div id="app">
   <!--  <h2 :style="{key(属性名): value(属性值)}">{{message}}</h2>-->
   <!--  '50px'必须加上单引号，否则是当作一个变量去解析-->
@@ -315,21 +361,25 @@ cloak:斗篷
       finalSize: 100,
       finalColor: 'red'
     },
-    methods:{
-      getStyles:function () {
-        return {fontSize:this.fontSize + 'px',backgroundColor: this.finalColor}
+    methods: {
+      getStyles: function () {
+        return {fontSize: this.fontSize + 'px', backgroundColor: this.finalColor}
       }
     }
   })
 </script>
 ```
+
 ![Alt Text](/images/ae389144bd444645bd773f815ef8077a.png)
 
 ##### 数组绑定
+
 - `<div v-bind:style="[baseStyles, overridingStyles]"></div>`
 - `style`后边跟的是一个数组类型
-	- 多个值以逗号`,`分割即可
+  - 多个值以逗号`,`分割即可
+
 ```html
+
 <div id="app">
   <h2 :style="[baseStyle,baseStyle1]">{{message}}</h2>
 </div>
@@ -339,21 +389,26 @@ cloak:斗篷
     el: '#app',
     data: {
       message: '你好啊！',
-      baseStyle:{backgroundColor:'red'},
-      baseStyle1:{fontSize:'100px'},
+      baseStyle: {backgroundColor: 'red'},
+      baseStyle1: {fontSize: '100px'},
     }
   })
 </script>
 ```
+
 ![Alt Text](/images/f09c4ba6d38445308da6505f010d05c9.png)
+
 ### 1.8 v-on
+
 - 作用：绑定事件监听器
 - 缩写：`@`
 - 预期：Function|Inline Statement |Object
 - 参数： event
 
 #### 1.8.1 基本使用
+
 ```html
+
 <div id="app">
   <h2>{{counter}}</h2>
   <!--  <button v-on:click="counter++">+</button>-->
@@ -382,12 +437,15 @@ cloak:斗篷
   })
 </script>
 ```
+
 #### 1.8.2 参数问题
+
 - 情况一：如果该方法不需要额外参数，那么方法后的()可以不添加
-	- 但是注意：如果方法本身中有一个参数，那么会默认将原生事件event参数传递进去
+  - 但是注意：如果方法本身中有一个参数，那么会默认将原生事件event参数传递进去
 - 情况二：如果需要同时传入某个参数，同时需要event时，可以通过$event传入事件
 
 ```html
+
 <div id="app">
   <!--事件调用的方法没有参数-->
   <button @click="btn1Click()">按钮1</button>
@@ -412,32 +470,38 @@ cloak:斗篷
       message: '你好啊！',
       abc: 123
     },
-    methods:{
-      btn1Click(){
+    methods: {
+      btn1Click() {
         console.log('btn1Click');
       },
-      btn2Click(event){
-        console.log('btn2Click',event);
+      btn2Click(event) {
+        console.log('btn2Click', event);
       },
-      btn3Click(abc,event){
-        console.log('btn3Click',abc,event);
+      btn3Click(abc, event) {
+        console.log('btn3Click', abc, event);
       },
     }
   })
 </script>
 ```
+
 ![Alt Text](/images/4806fc79ee3c4087b40a4110ec229b42.png)
+
 #### 1.8.3 修饰符
+
 - Vue提供了修饰符来帮助我们方便的处理一些事件：
-	- `.stop` 调用 `event.stopPropagation()` 避免事件冒泡
-	- `.prevent`  调用 `event.preventDefault()` 阻止默认事件
-	- `.{keyCode|keyAlias}` 只是事件从特定键触发时才触发回调 监听键盘的某个键帽的点击
-	- `.native` 监听组件根元素的原生事件
-	- `.once` 只触发一次回调 
+  - `.stop` 调用 `event.stopPropagation()` 避免事件冒泡
+  - `.prevent`  调用 `event.preventDefault()` 阻止默认事件
+  - `.{keyCode|keyAlias}` 只是事件从特定键触发时才触发回调 监听键盘的某个键帽的点击
+  - `.native` 监听组件根元素的原生事件
+  - `.once` 只触发一次回调
 
 ![Alt Text](/images/9c1406914f454fd09f727cb2f4bf74e9.png)
+
 ### 1.9 v-if & v-else
+
 ```html
+
 <div id="app">
   <h2 v-if="score>=90">优秀</h2>
   <h2 v-else-if="score>=80">良好</h2>
@@ -453,17 +517,17 @@ cloak:斗篷
     data: {
       score: 88
     },
-    computed:{
-      result(){
+    computed: {
+      result() {
         let showMessage = ''
-        if (this.score>=90){
+        if (this.score >= 90) {
           showMessage = '优秀';
-        }else if(this.score>=80){
+        } else if (this.score >= 80) {
           showMessage = '良好';
-        }else if(this.score>=60){
-          showMessage='及格';
-        }else{
-          showMessage='不及格';
+        } else if (this.score >= 60) {
+          showMessage = '及格';
+        } else {
+          showMessage = '不及格';
         }
         return showMessage;
       }
@@ -471,10 +535,13 @@ cloak:斗篷
   })
 </script>
 ```
+
 ![Alt Text](/images/11bedbd918aa4f30a668ccec8dd5691d.png)
+
 ##### 条件渲染案例
 
 ```html
+
 <div id="app">
   <span v-if="isUser">
     <label for="username">用户账号</label>
@@ -497,14 +564,17 @@ cloak:斗篷
   })
 </script>
 ```
+
 ### 1.10 v-show
+
 - `v-if`和`v-show`都可以决定一个元素是否渲染，区别是：
-	- `v-if`当条件为false时，压根不会有对应的元素在DOM中
-	- `v-show`当条件为false时，仅仅是将元素的`display`属性设置为`none`而已
+  - `v-if`当条件为false时，压根不会有对应的元素在DOM中
+  - `v-show`当条件为false时，仅仅是将元素的`display`属性设置为`none`而已
 - 开发中需要在显示与隐藏之间切片很频繁时建议选择`v-show`
 - 只有一次切换时，建议使用`v-if`
 
 ```html
+
 <div id="app">
   <!--v-if:当条件为false时，包含v-if指令的元素，根本就不会存在dom中-->
   <h2 v-if="isShow" id="aaa">{{message}}</h2>
@@ -518,40 +588,48 @@ cloak:斗篷
     el: '#app',
     data: {
       message: '你好啊！',
-      isShow:true
+      isShow: true
     }
   })
 </script>
 ```
+
 ![Alt Text](/images/58d17a5687d349f6ad85645e10045201.png)
+
 ### 1.11 v-for
+
 - `v-for`的语法类似于`javaScript`中的`for`循环
 - 格式如下：`item in items`的形式
+
 ---
+
 - 如果便利的过程不需要索引值
-	- `v-for="movie in movies"`
-	- 依次从`movies`中取出`movie`，并且在元素中，我们可以使用`Mustache`语法，来使用`movie`
+  - `v-for="movie in movies"`
+  - 依次从`movies`中取出`movie`，并且在元素中，我们可以使用`Mustache`语法，来使用`movie`
 - 如果在遍历的过程中，我们需要拿到元素在数组中的索引值
-	- 语法格式：`v-for=(item, index) in items`
-	- 其中的`index`就代表了去除的`item`在原数组的索引值
+  - 语法格式：`v-for=(item, index) in items`
+  - 其中的`index`就代表了去除的`item`在原数组的索引值
+
 ---
+
 - 官方推荐我们在使用v-for时，给对应的元素或组件添加上一个`:key`属性
 - key的主要作用是为了高效的更新虚拟DOM
 
 ##### 遍历数组
 
 - 响应式的相关方法
-	- `push()` 在数组最后面添加元素
-	- `pop()`  删除数组最后面的元素
-	- `shift()`  删除数组的第一个元素
-	- `unshift()`  在数组最前面添加元素
-	- `splice()` 删除元素/插入元素/替换元素(start,num,value)
-	- `set()` (要修改的对象,索引值,修改后内容)
-	- `sort()` 数组排序
-	- `reverse()` 数组反转
-![Alt Text](/images/25184a3916294d7bb828a5ba724ae3f8.png)
+  - `push()` 在数组最后面添加元素
+  - `pop()`  删除数组最后面的元素
+  - `shift()`  删除数组的第一个元素
+  - `unshift()`  在数组最前面添加元素
+  - `splice()` 删除元素/插入元素/替换元素(start,num,value)
+  - `set()` (要修改的对象,索引值,修改后内容)
+  - `sort()` 数组排序
+  - `reverse()` 数组反转
+    ![Alt Text](/images/25184a3916294d7bb828a5ba724ae3f8.png)
 
 ```html
+
 <div id="app">
   <!--1. 在遍历的过程中，没有使用索引值（下标值）-->
   <ul>
@@ -567,7 +645,7 @@ cloak:斗篷
   const app = new Vue({
     el: '#app',
     data: {
-      names:['why','kobe','james','curry']
+      names: ['why', 'kobe', 'james', 'curry']
     }
   })
 </script>
@@ -576,6 +654,7 @@ cloak:斗篷
 ##### 遍历对象
 
 ```html
+
 <div id="app">
   <!--1. 在遍历对象的过程中，如果只是获取一个值，那么获取到的是value-->
   <ul>
@@ -592,18 +671,22 @@ cloak:斗篷
   const app = new Vue({
     el: '#app',
     data: {
-      info:{
-        name:'why',
-        age:18,
-        height:1.88
+      info: {
+        name: 'why',
+        age: 18,
+        height: 1.88
       }
     }
   })
 </script>
 ```
+
 ---
+
 - 绑定唯一key
+
 ```html
+
 <div id="app">
   <ul>
     <li v-for="item in letters" :key="item">{{item}}</li>
@@ -614,18 +697,21 @@ cloak:斗篷
   const app = new Vue({
     el: '#app',
     data: {
-     letters:['A','B','C','D','E']
+      letters: ['A', 'B', 'C', 'D', 'E']
     }
   })
 </script>
 ```
+
 ### 1.12 v-model
+
 ##### 原理
 
 ```html
+
 <div id="app">
-<!--  <input type="text" v-model="message">-->
-<!--  <input type="text" :value="message" @input="valueChange">-->
+  <!--  <input type="text" v-model="message">-->
+  <!--  <input type="text" :value="message" @input="valueChange">-->
   <input type="text" :value="message" @input="message = $event.target.value">
   {{message}}
 </div>
@@ -636,8 +722,8 @@ cloak:斗篷
     data: {
       message: '你好啊！'
     },
-    methods:{
-      valueChange(event){
+    methods: {
+      valueChange(event) {
         console.log('-----');
         console.log(event);
         this.message = event.target.value;
@@ -646,9 +732,11 @@ cloak:斗篷
   })
 </script>
 ```
+
 ##### 基本使用
 
 ```html
+
 <div id="app">
   <input type="text" v-model="message">
   {{message}}
@@ -663,9 +751,11 @@ cloak:斗篷
   })
 </script>
 ```
+
 ##### v-model:radio
 
 ```html
+
 <div id="app">
   <label for="male">
     <input type="radio" id="male" value="男" v-model="sex">男
@@ -681,7 +771,7 @@ cloak:斗篷
     el: '#app',
     data: {
       message: '你好啊！',
-      sex:'男',
+      sex: '男',
     }
   })
 </script>
@@ -690,6 +780,7 @@ cloak:斗篷
 ##### v-model:checkbox
 
 ```html
+
 <div id="app">
   <!--1. 单选框-->
   <label for="agreement">
@@ -714,16 +805,19 @@ cloak:斗篷
     el: '#app',
     data: {
       message: '你好啊！',
-      isAgree:false,
-      hobbies:[]
+      isAgree: false,
+      hobbies: []
     },
   })
 </script>
 ```
+
 ![Alt Text](/images/43f34a1af13e41f0a8c58c192ccc7938.png)
+
 ##### v-model:select
 
 ```html
+
 <div id="app">
   <!--1. 选择一个-->
   <select name="abc" v-model="fruit">
@@ -757,21 +851,25 @@ cloak:斗篷
     data: {
       message: '你好啊！',
       fruit: '香蕉', //单选框
-      fruits:[], //多选框
-      originFruits:['篮球','足球','乒乓球','羽毛球','台球','高尔夫球'],
-      balls:[],
+      fruits: [], //多选框
+      originFruits: ['篮球', '足球', '乒乓球', '羽毛球', '台球', '高尔夫球'],
+      balls: [],
     }
   })
 </script>
 ```
+
 ![Alt Text](/images/2ebe4ee340334fb696e6a2d9e87196cb.png)
+
 ##### 修饰符
+
 - `lazy`修饰符：
-	- 默认情况下，v-model默认是在input事件中同步输入框的数据的
-	- 一旦有数据发生改变对应的data中的数据就会自动发生改变
-	- lazy修饰符可以让数据失去焦点或者回车时才更新
+  - 默认情况下，v-model默认是在input事件中同步输入框的数据的
+  - 一旦有数据发生改变对应的data中的数据就会自动发生改变
+  - lazy修饰符可以让数据失去焦点或者回车时才更新
 
 ```html
+
 <div id="app">
   <!--修饰符：lazy-->
   <input type="text" v-model.lazy="message">
@@ -796,23 +894,28 @@ cloak:斗篷
   })
 </script>
 ```
+
 - `number`修饰符：
-	- 默认情况下，在输入框中无论输入字母还是数字，都被认为字符串处理
-	- 如果希望是数字类型，最好直接将内容数字处理
-	- number修饰符可以让输入框中的内容转成数字类型
+  - 默认情况下，在输入框中无论输入字母还是数字，都被认为字符串处理
+  - 如果希望是数字类型，最好直接将内容数字处理
+  - number修饰符可以让输入框中的内容转成数字类型
 
 - `trim`修饰符：
-	- trim修饰符可以去除两侧空格
+  - trim修饰符可以去除两侧空格
+
 ## -------------------------------
+
 ### 2.计算属性
+
 #### 2.1 基本使用
 
 ```html
+
 <div id="app">
   <h2>{{firstName + ' ' + lastName}}</h2>
   <h2>{{firstName}} {{lastName}}</h2>
   <h2>{{getFullName()}}</h2>
-  <h2 >{{fullName}}</h2>
+  <h2>{{fullName}}</h2>
 </div>
 <script src="../js/vue.js"></script>
 <script>
@@ -822,7 +925,7 @@ cloak:斗篷
       firstName: 'Lebron',
       lastName: 'James'
     },
-    computed:{
+    computed: {
       fullName: function () {
         return this.firstName + ' ' + this.lastName;
       }
@@ -835,9 +938,11 @@ cloak:斗篷
   })
 </script>
 ```
+
 #### 2.2 复杂操作
 
 ```html
+
 <div id="app">
   <h2>总价格：{{totalPrice}}</h2>
 </div>
@@ -856,7 +961,7 @@ cloak:斗篷
     computed: {
       totalPrice: function () {
         let result = 0
-        for (let i=0; i<this.books.length;i++){
+        for (let i = 0; i < this.books.length; i++) {
           result += this.books[i].price
         }
         return result
@@ -875,11 +980,16 @@ cloak:斗篷
   })
 </script>
 ```
+
 ![Alt Text](/images/31e807a6d1eb47e79cbef21546aefff2.png)
+
 #### 2.3 setter和getter
- - 很好理解的`setter`和`getter`
- - 一般只是用`getter`来读取，而`setter`不常用
+
+- 很好理解的`setter`和`getter`
+- 一般只是用`getter`来读取，而`setter`不常用
+
 ```html
+
 <div id="app">
   <h2>{{fullName}}</h2>
 </div>
@@ -891,20 +1001,20 @@ cloak:斗篷
       firstName: 'kobe',
       lastName: 'Bryant'
     },
-    computed:{
+    computed: {
       // fullName:function (){
       //   return this.firstName + ' ' + this.lastName;
       // },
       // name: 'coderwhy',
       //计算属性一般是没有set方法，只读属性
-      fullName:{
-        set:function (newValue) {
-          console.log("---------"+ newValue);
+      fullName: {
+        set: function (newValue) {
+          console.log("---------" + newValue);
           const names = newValue.split(' ');
           this.firstName = names[0];
           this.lastName = names[1];
         },
-        get:function () {
+        get: function () {
           return this.firstName + ' ' + this.lastName;
         }
       },
@@ -915,12 +1025,15 @@ cloak:斗篷
   })
 </script>
 ```
+
 #### 2.4 缓存
+
 - `methods` 和 `computed`都可以实现功能
 - 计算属性会进行缓存，如果多次使用时，计算属性只调用一次
 - `computed`效率高
 
 ```html
+
 <div id="app">
   <!-- 1. 直接拼接 : 语法过于繁琐3-->
   <h2>{{firstName}} {{lastName}}</h2>
@@ -962,17 +1075,23 @@ cloak:斗篷
   })
 </script>
 ```
+
 ![Alt Text](/images/2b1456ec90c348a5b77acafb02a012d7.png)
+
 ### 3. ES6补充
+
 #### 3.1 let/var
+
 - 事实上var的设计可以看成JavaScript语言设计上的错误，但是这种错误多半不能修复和移除，以为需要向后兼容
-	-  大概十年前，Brendan Eich 就决定修复这个问题，于是他添加了一个新的关键词：`let`
+  - 大概十年前，Brendan Eich 就决定修复这个问题，于是他添加了一个新的关键词：`let`
 - 块级作用域
-	- JS中使用var来声明一个变量时，变量的作用域主要是和函数的定义有关
-	- 针对于其他块定义来说是没有作用域的，比如if/for等，这在我们开发中往往会引起一些问题
+  - JS中使用var来声明一个变量时，变量的作用域主要是和函数的定义有关
+  - 针对于其他块定义来说是没有作用域的，比如if/for等，这在我们开发中往往会引起一些问题
 
 - ES5之前因为if和for都没有块级作用域的概念，所以在很多时候，我们都必须借助于function的作用域来解决应用外面变量的问题
+
 ```html
+
 <script>
   // 1.变量作用域：变量在什么范围内是可用的
   // {
@@ -1003,20 +1122,23 @@ cloak:斗篷
   }
   const btns = document.getElementsByTagName('button');
   for (let i = 0; i < btns.length; i++) {
-      btns[i].addEventListener('click', function () {
-        console.log('第' + (i + 1) + '个按钮被点击');
-      })
+    btns[i].addEventListener('click', function () {
+      console.log('第' + (i + 1) + '个按钮被点击');
+    })
   }
 </script>
 ```
+
 #### 3.2 const的使用
+
 - const关键字
-	- 将某个变量变为常量
-	- 在js中，使用其标识后，不可再次赋值
+  - 将某个变量变为常量
+  - 在js中，使用其标识后，不可再次赋值
 - 不可修改
 - 定义必须赋值
 
 ### 4. 购物车案例
+
 #### index.html
 
 ```html
@@ -1067,6 +1189,7 @@ cloak:斗篷
 </body>
 </html>
 ```
+
 #### main.js
 
 ```js
@@ -1120,7 +1243,7 @@ const app = new Vue({
       // return totalPrice;
 
       // for(let i in/of this.books)
-      for(let item of this.books){
+      for (let item of this.books) {
         console.log(i);
         totalPrice += item.count * item.price;
       }
@@ -1152,52 +1275,59 @@ const app = new Vue({
 #### style.css
 
 ```css
-table{
-    border: 1px solid #e9e9e9;
-    border-collapse: collapse;
-    border-spacing: 0;
+table {
+  border: 1px solid #e9e9e9;
+  border-collapse: collapse;
+  border-spacing: 0;
 }
 
-th,td{
-    padding: 8px 16px;
-    border: 1px solid #e9e9e9;
-    text-align: left;
+th, td {
+  padding: 8px 16px;
+  border: 1px solid #e9e9e9;
+  text-align: left;
 }
 
-th{
-    background-color: #f7f7f7;
-    color: #5c6b77;
-    font-weight: 600;
+th {
+  background-color: #f7f7f7;
+  color: #5c6b77;
+  font-weight: 600;
 }
 ```
+
 #### 效果图
+
 ![Alt Text](/images/1719a220723845b883cf70849a14f3d1.png)
 ![Alt Text](/images/531b61ce07da4086a879718e32a56b09.png)
 如果为空
 ![Alt Text](/images/28888730103149d9a66df0523f0f2285.png)
+
 ### 5. JavaScript高阶函数
-#### filter() 
+
+#### filter()
+
 ```js
-const nums=[10,20,30,40,50,222,50,15]
+const nums = [10, 20, 30, 40, 50, 222, 50, 15]
 let newNums = nums.filter(function (n) {
-  return n>=100;
+  return n >= 100;
 })
 //newNums = [10, 20, 40, 50]
 ```
-#### map()  
+
+#### map()
 
 ```js
 const newNums = [10, 20, 40, 50]
 let new2Nums = newNums.map(function (n) {
-  return n*2;
+  return n * 2;
 })
 //new2Nums= [20, 40, 80, 100]
 ```
+
 #### reduce()
 
 ```js
-new2Nums= [20, 40, 80, 100]
-let total = new2Nums.reduce(function (preValue,n) {
+new2Nums = [20, 40, 80, 100]
+let total = new2Nums.reduce(function (preValue, n) {
   return preValue + n;
 }, 0)
 //240
@@ -1206,26 +1336,26 @@ let total = new2Nums.reduce(function (preValue,n) {
 #### 综合
 
 ```js
-const nums=[10,20,111,222,444,40,50]
+const nums = [10, 20, 111, 222, 444, 40, 50]
 
 let total = nums.filter(function (n) {
   return n < 100;
 }).map(function (n) {
-  return n*2;
-}).reduce(function (preValue,n) {
+  return n * 2;
+}).reduce(function (preValue, n) {
   return preValue + n;
 }, 0)
 
 console.log(total);
 ```
+
 #### 简化
+
 ```js
-const nums=[10,20,111,222,444,40,50]
-let total = nums.filter(n => n<100).map(n => n * 2).reduce((pre, n) => pre + n);
+const nums = [10, 20, 111, 222, 444, 40, 50]
+let total = nums.filter(n => n < 100).map(n => n * 2).reduce((pre, n) => pre + n);
 console.log(total);
 ```
-
-
 
 # Vue
 
@@ -1251,8 +1381,8 @@ console.log(total);
 
 ![Alt Text](/images/5a33043163de488e962b4ab590fc9a7e.png)
 
-
 ```html
+
 <div id="app">
   <!-- 3.使用组件 -->
   <my-cpn></my-cpn>
@@ -1274,7 +1404,7 @@ console.log(total);
   })
   //2.注册组件
   Vue.component('my-cpn', cpnC);
-  
+
   const app = new Vue({
     el: '#app',
     data: {
@@ -1290,6 +1420,7 @@ console.log(total);
 - 局部组件：在Vue实例内注册，可以在其Vue的实例下使用
 
 ```html
+
 <div id="app2">
   <cpn></cpn>
 </div>
@@ -1316,9 +1447,9 @@ console.log(total);
     data: {
       message: '你好啊！'
     },
-    components:{
+    components: {
       //cpn 使用组件时的标签名（局部组件）
-      cpn:cpnC
+      cpn: cpnC
     }
   })
   const app2 = new Vue({
@@ -1330,6 +1461,7 @@ console.log(total);
 ### 1.3 父组件和子组件
 
 ```html
+
 <div id="app">
   <cpn2></cpn2>
 </div>
@@ -1353,8 +1485,8 @@ console.log(total);
         <p>我是内容2</p>
         <cpn1></cpn1>
       </div>`,
-    components:{
-      cpn1:cpnC1
+    components: {
+      cpn1: cpnC1
     }
   })
 
@@ -1363,8 +1495,8 @@ console.log(total);
     data: {
       message: '你好啊！'
     },
-    components:{
-      cpn2:cpnC2
+    components: {
+      cpn2: cpnC2
     }
   })
 </script>
@@ -1375,6 +1507,7 @@ console.log(total);
 - 省去`Vue.extend()`
 
 ```html
+
 <div id="app">
   <cpn1></cpn1>
   <cpn2></cpn2>
@@ -1386,7 +1519,7 @@ console.log(total);
   // const cpn1 = Vue.extend()
   // 2. 注册组件
   //全局组件
-  Vue.component('cpn1',{
+  Vue.component('cpn1', {
     template: `
       <div>
         <h2>我是标题1</h2>
@@ -1401,9 +1534,9 @@ console.log(total);
       message: '你好啊！'
     },
     //注册局部组件的语法糖
-    components:{
-      'cpn2':{
-          template: `
+    components: {
+      'cpn2': {
+        template: `
             <div>
               <h2>我是标题2</h2>
               <p>我是内容2</p>
@@ -1423,10 +1556,11 @@ console.log(total);
 - template标签
 
 ```html
+
 <div id="app">
-<cpn></cpn>
-<cpn></cpn>
-<cpn></cpn>
+  <cpn></cpn>
+  <cpn></cpn>
+  <cpn></cpn>
 </div>
 <!--1. script标签，注意：类型必须是text/x-template-->
 <script type="text/x-template" id="cpn">
@@ -1446,7 +1580,7 @@ console.log(total);
 <script>
 
   //1.注册一个组件
-  Vue.component('cpn',{
+  Vue.component('cpn', {
     template: '#cpn1'
   })
 
@@ -1462,6 +1596,7 @@ console.log(total);
 ### 1.6 组件中的data
 
 ```html
+
 <div id="app">
   <cpn></cpn>
 </div>
@@ -1474,18 +1609,18 @@ console.log(total);
 </template>
 <script src="../js/vue.js"></script>
 <script>
-  Vue.component('cpn',{
+  Vue.component('cpn', {
     template: '#cpn',
-    data(){
-      return{
-        counter:0
+    data() {
+      return {
+        counter: 0
       }
     },
-    methods:{
-      increment(){
+    methods: {
+      increment() {
         this.counter++;
       },
-      decrement(){
+      decrement() {
         this.counter--;
       }
     }
@@ -1529,10 +1664,10 @@ console.log(total);
   - `Object`
   - `Date`
   - `Function`
-  - `Symbol` 
-
+  - `Symbol`
 
 ```html
+
 <div id="app">
   <cpn :cmovies="movies" :cmessage="message"></cpn>
 </div>
@@ -1550,7 +1685,7 @@ console.log(total);
   const cpn = {
     template: '#cpn',
     // props: ['cmovies','cmessage'],
-    props:{
+    props: {
       //1.类型限制
       // cmovies: Array,
       // cmessage: String,
@@ -1558,19 +1693,19 @@ console.log(total);
       //2.提供一些默认值
       cmessage: {
         type: String, //类型
-        default:'aaaaa',  //默认值
+        default: 'aaaaa',  //默认值
         required: true
       },
       //类型是对象或者数组时，默认值必须是一个函数
       cmovies: {
-        type:Array,
+        type: Array,
         default() {
           return []
         }
       }
     },
-    data(){
-      return{}
+    data() {
+      return {}
     },
   }
 
@@ -1578,9 +1713,9 @@ console.log(total);
     el: '#app',
     data: {
       message: '你好啊！',
-      movies:['海王','海贼王','海尔兄弟']
+      movies: ['海王', '海贼王', '海尔兄弟']
     },
-    components:{
+    components: {
       cpn,
     }
   })
@@ -1624,7 +1759,7 @@ console.log(total);
     },
     methods: {
       itemClick(item) {
-        this.$emit('item-click',item)
+        this.$emit('item-click', item)
         // console.log(item);
       }
     }
@@ -1641,8 +1776,8 @@ console.log(total);
       cpn,
     },
     methods: {
-      cpnClick(item){
-        console.log('aaaaa',item);
+      cpnClick(item) {
+        console.log('aaaaa', item);
       }
     }
   })
@@ -1652,6 +1787,7 @@ console.log(total);
 #### 父子组件通信案例
 
 ```html
+
 <div id="app">
   <cpn :number1="num1"
        :number2="num2"
@@ -1663,11 +1799,11 @@ console.log(total);
   <div>
     <h2>props:{{number1}}</h2>
     <h2>data:{{dnumber1}}</h2>
-<!--    <input type="text" v-model="dnumber1">-->
+    <!--    <input type="text" v-model="dnumber1">-->
     <input type="text" :value="dnumber1" @input="num1Input">
     <h2>props:{{number2}}</h2>
     <h2>data:{{dnumber2}}</h2>
-<!--    <input type="text" v-model="dnumber2">-->
+    <!--    <input type="text" v-model="dnumber2">-->
     <input type="text" :value="dnumber2" @input="num2Input">
   </div>
 </template>
@@ -1677,44 +1813,44 @@ console.log(total);
     el: '#app',
     data: {
       message: '你好啊！',
-      num1:1,
-      num2:0
+      num1: 1,
+      num2: 0
     },
     methods: {
-      num1change(value){
-        this.num1=parseInt(value);
+      num1change(value) {
+        this.num1 = parseInt(value);
       },
-      num2change(value){
-        this.num2=parseInt(value);
+      num2change(value) {
+        this.num2 = parseInt(value);
       }
     },
-    components:{
-      cpn:{
-        template:'#cpn',
-        props:{
-          number1:Number,
-          number2:Number
+    components: {
+      cpn: {
+        template: '#cpn',
+        props: {
+          number1: Number,
+          number2: Number
         },
-        data(){
+        data() {
           return {
-            dnumber1:this.number1,
-            dnumber2:this.number2,
+            dnumber1: this.number1,
+            dnumber2: this.number2,
           }
         },
-        methods:{
-          num1Input(event){
-            this.dnumber1=event.target.value;
+        methods: {
+          num1Input(event) {
+            this.dnumber1 = event.target.value;
             this.$emit('num1change', this.dnumber1);
 
-            this.dnumber2 = this.dnumber1*100;
-            this.$emit('num2change',this.dnumber2);
+            this.dnumber2 = this.dnumber1 * 100;
+            this.$emit('num2change', this.dnumber2);
           },
-          num2Input(event){
-            this.dnumber2=event.target.value;
+          num2Input(event) {
+            this.dnumber2 = event.target.value;
             this.$emit('num2change', this.dnumber2);
 
-            this.dnumber1 = this.dnumber2/100;
-            this.$emit('num1change',this.dnumber1)
+            this.dnumber1 = this.dnumber2 / 100;
+            this.$emit('num1change', this.dnumber1)
           },
         }
       }
@@ -1728,15 +1864,19 @@ console.log(total);
 
 ```js
  watch:{
-          dnumber1(newValue){
-            this.dnumber2 =  newValue*100;
-            this.$emit('num1change', newValue);
-          },
-          dnumber2(newValue){
-            this.dnumber1 =  newValue*100;
-            this.$emit('num2change', newValue);
-          }
-        },
+  dnumber1(newValue)
+  {
+    this.dnumber2 = newValue * 100;
+    this.$emit('num1change', newValue);
+  }
+,
+  dnumber2(newValue)
+  {
+    this.dnumber1 = newValue * 100;
+    this.$emit('num2change', newValue);
+  }
+}
+,
 ```
 
 #### 父子组件的访问方式: $children
@@ -1747,6 +1887,7 @@ console.log(total);
 ##### 父访问子
 
 ```html
+
 <div id="app">
   <cpn></cpn>
   <cpn></cpn>
@@ -1764,7 +1905,7 @@ console.log(total);
       message: '你好啊！'
     },
     methods: {
-      btnClick(){
+      btnClick() {
         //1.关于$children
         // console.log(this.$children);
         // for(let c of this.$children){
@@ -1777,16 +1918,16 @@ console.log(total);
 
       }
     },
-    components:{
-      cpn:{
-        template:'#cpn',
+    components: {
+      cpn: {
+        template: '#cpn',
         data() {
-          return{
+          return {
             name: '我是子组件的name'
           }
         },
-        methods:{
-          showMessage(){
+        methods: {
+          showMessage() {
             console.log('showMessage');
           }
         }
@@ -1799,6 +1940,7 @@ console.log(total);
 ##### 子访问父
 
 ```html
+
 <div id="app">
   <cpn></cpn>
 </div>
@@ -1821,19 +1963,19 @@ console.log(total);
     data: {
       message: '你好啊！'
     },
-    components:{
-      cpn:{
-        template:'#cpn',
-        data(){
-          return{
-            name:'我的cpn组件的name'
+    components: {
+      cpn: {
+        template: '#cpn',
+        data() {
+          return {
+            name: '我的cpn组件的name'
           }
         },
         components: {
-          ccpn:{
-            template:'#ccpn',
-            methods:{
-              btnClick(){
+          ccpn: {
+            template: '#ccpn',
+            methods: {
+              btnClick() {
                 //1.访问父组件
                 console.log(this.$parent);
                 console.log(this.$parent.name);
@@ -1912,6 +2054,7 @@ console.log(total);
 - 多个插槽，区分通过添加`name`
 
 ```html
+
 <div id="app">
   <cpn>
     <button slot="left">返回</button>
@@ -1932,9 +2075,9 @@ console.log(total);
     data: {
       message: '你好啊！'
     },
-    components:{
-      cpn:{
-        template:'#cpn'
+    components: {
+      cpn: {
+        template: '#cpn'
       }
     }
   })
@@ -1944,6 +2087,7 @@ console.log(total);
 ### 2.2 编译作用域
 
 ```html
+
 <div id="app">
   <cpn v-show="isShow"></cpn>
 </div>
@@ -1960,13 +2104,13 @@ console.log(total);
     el: '#app',
     data: {
       message: '你好啊！',
-      isShow:true
+      isShow: true
     },
-    components:{
-      cpn:{
-        template:'#cpn',
-        data(){
-          return{
+    components: {
+      cpn: {
+        template: '#cpn',
+        data() {
+          return {
             isShow: true
           }
         }
@@ -1979,12 +2123,13 @@ console.log(total);
 ### 2.3 作用域插槽
 
 ```html
+
 <div id="app">
   <cpn></cpn>
   <cpn>
     <!--<span v-for="item in pLanguages"></span>-->
     <template slot-scope="slot">
-<!--      <span v-for="item in slot.data"> {{item}}- </span>-->
+      <!--      <span v-for="item in slot.data"> {{item}}- </span>-->
       <span>{{slot.data.join(' - ')}}</span>
     </template>
   </cpn>
@@ -1992,7 +2137,7 @@ console.log(total);
   <cpn>
     <!--<span v-for="item in pLanguages"></span>-->
     <template slot-scope="slot">
-<!--      <span v-for="item in slot.data"> {{item}}* </span>-->
+      <!--      <span v-for="item in slot.data"> {{item}}* </span>-->
       <span>{{slot.data.join(' * ')}}</span>
     </template>
   </cpn>
@@ -2013,12 +2158,12 @@ console.log(total);
     data: {
       message: '你好啊！'
     },
-    components:{
-      cpn:{
-        template:"#cpn",
-        data(){
-          return{
-            pLanguages:['JavaScript','C++','Java','C#','Python','Go','Swift']
+    components: {
+      cpn: {
+        template: "#cpn",
+        data() {
+          return {
+            pLanguages: ['JavaScript', 'C++', 'Java', 'C#', 'Python', 'Go', 'Swift']
           }
         }
       }

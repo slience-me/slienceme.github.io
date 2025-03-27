@@ -7,7 +7,8 @@ function sidebarNotesBackend() {
       collapsed: false,
       items: [
         { text: 'Maven基础', link: 'maven' },
-        { text: 'SpringCloud', link: 'spring-cloud' }
+        { text: 'Spring集成', link: 'spring' },
+        { text: 'Thread', link: 'thread' }
       ]
     }
   ]
@@ -19,15 +20,11 @@ function sidebarNotesServer() {
       text: '服务器 (Server)',
       collapsed: false,
       items: [
-        { text: '【指令集】Nginx', link: 'nginx' },
-        { text: '【指令集】Docker', link: 'docker' },
-        { text: '【指令集】Linux', link: 'linux' },
-        { text: 'ElasticSearch', link: 'elasticsearch' },
-        { text: 'FRP', link: 'frp' },
-        { text: 'vagrant', link: 'vagrant' },
-        { text: 'Linux基础', link: 'linux-basic' },
-        { text: 'Linux高级', link: 'linux-advanced' },
-        { text: 'Nginx基础', link: 'nginx-basic' }
+
+        { text: '【服务器】Linux', link: 'linux' },
+        { text: '【服务器】Windows', link: 'windows' },
+        { text: '【服务器】FRP', link: 'frp' },
+        { text: '【服务器】vagrant', link: 'vagrant' }
       ]
     }
   ];
@@ -39,28 +36,28 @@ function sidebarNotesDatabase() {
       text: '数据库 (Databases)',
       collapsed: true,
       items: [
-        { text: 'MySQL', link: 'mysql' },
-        { text: 'Redis', link: 'redis' }
+        { text: '【数据库】MySQL', link: 'mysql' }
       ]
     }
   ];
 }
 
-function sidebarNotesDevOps() {
+function sidebarNotesSkill() {
   return [
     {
-      text: 'DevOps & 工具',
+      text: '技巧 & 工具',
       collapsed: false,
       items: [
         { text: '【指令集】Git', link: 'git' },
-        { text: 'gitignore', link: 'git-ignore' },
-        { text: 'Ubuntu系统重装', link: 'server-install' },
-        { text: 'nvm切换node', link: 'nvm-nodejs' },
-        { text: 'GitHub图床', link: 'img-bed' },
-        { text: 'Git&GitHub密钥配置', link: 'git-github-token' },
-        { text: 'Git基础', link: 'git-basic' },
-        { text: 'Bug合集', link: 'bugs' },
-        { text: '安装合集', link: 'install' }
+        { text: '【指令集】Curl', link: 'curl' },
+        { text: '【技巧】gitignore', link: 'git-ignore' },
+        { text: '【技巧】Ubuntu系统重装', link: 'server-install' },
+        { text: '【技巧】nvm切换node', link: 'nvm-nodejs' },
+        { text: '【技巧】GitHub图床', link: 'img-bed' },
+        { text: '【技巧】Git&GitHub密钥配置', link: 'git-github-token' },
+        { text: '【技巧】Bug合集', link: 'bugs' },
+        { text: '【技巧】安装合集', link: 'install' },
+        { text: '【技巧】VMware集群搭建', link: 'vmware-cluster' }
       ]
     }
   ];
@@ -70,15 +67,15 @@ function sidebarNotesFrontend() {
   return [
     {
       text: '前端 (Frontend)',
-      collapsed: false,
+      collapsed: true,
       items: [
-        { text: '【指令集】Nodejs', link: 'node' },
-        { text: 'HTML', link: 'html' },
-        { text: 'CSS', link: 'css' },
-        { text: 'Js', link: 'js' },
-        { text: 'Vue', link: 'vue' },
-        { text: 'webpack', link: 'webpack' },
-        { text: 'ES6新特性', link: 'es6' }
+        { text: '【前端】Nodejs', link: 'node' },
+        { text: '【前端】HTML', link: 'html' },
+        { text: '【前端】CSS', link: 'css' },
+        { text: '【前端】Js', link: 'js' },
+        { text: '【前端】Vue', link: 'vue' },
+        { text: '【前端】webpack', link: 'webpack' },
+        { text: '【前端】ES6新特性', link: 'es6' }
       ]
     }
   ];
@@ -90,7 +87,7 @@ function sidebarNotesPython() {
       text: 'AI (Python)',
       collapsed: true,
       items: [
-        { text: '【指令集】Anaconda', link: 'anaconda' },
+        { text: 'Anaconda', link: 'anaconda' },
         { text: 'Matplotlib', link: 'matplotlib' },
         { text: 'Numpy', link: 'numpy' },
         { text: 'Matlab', link: 'matlab' },
@@ -101,13 +98,52 @@ function sidebarNotesPython() {
   ];
 }
 
+function sidebarNotesMiddleware() {
+  return [
+    {
+      text: '中间件 (Middleware)',
+      collapsed: false,
+      items: [
+        { text: '【中间件】Nginx', link: 'nginx' },
+        { text: '【中间件】Docker', link: 'docker' },
+        { text: '【中间件】Nacos', link: 'nacos' },
+        { text: '【中间件】RabbitMQ', link: 'rabbitmq' },
+        { text: '【中间件】ElasticSearch', link: 'elasticsearch' },
+        { text: '【中间件】Kubernetes', link: 'kubernetes' },
+        { text: '【中间件】Redis', link: 'redis' },
+        { text: '【中间件】Sentinel', link: 'sentinel' },
+        { text: '【中间件】Zipkin', link: 'zipkin' },
+        { text: '【合集】集群', link: 'cluster' }
+      ]
+    }
+  ];
+}
+
+function sidebarNotesHidden() {
+  return [
+    {
+      text: '杂物',
+      collapsed: true,
+      items: [
+        { text: 'Redis基础', link: 'redis-basic' },
+        { text: 'Nginx基础', link: 'nginx-basic' },
+        { text: 'Linux基础', link: 'linux-basic' },
+        { text: 'Linux高级', link: 'linux-advanced' },
+        { text: 'Git基础', link: 'git-basic' },
+      ]
+    }
+  ];
+}
+
 export const sidebar: DefaultTheme.Config['sidebar'] = {
   '/notes/': [
     { base: '/notes/backend/', items: sidebarNotesBackend() },
+    { base: '/notes/middleware/', items: sidebarNotesMiddleware() },
     { base: '/notes/server/', items: sidebarNotesServer() },
     { base: '/notes/databases/', items: sidebarNotesDatabase() },
-    { base: '/notes/devops/', items: sidebarNotesDevOps() },
+    { base: '/notes/skill/', items: sidebarNotesSkill() },
     { base: '/notes/frontend/', items: sidebarNotesFrontend() },
-    { base: '/notes/python/', items: sidebarNotesPython() }
+    { base: '/notes/python/', items: sidebarNotesPython() },
+    { base: '/notes/hidden/', items: sidebarNotesHidden() }
   ]
 }

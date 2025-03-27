@@ -1,10 +1,10 @@
-
 # 虚拟机virtualbox与vagrant的使用
 
 ## 1. 虚拟机安装与基本使用
 
 由于VMware虚拟机收费，所以使用了[virtualbox](https://www.virtualbox.org/)，
-镜像文件通过[vagrant镜像地址](https://portal.cloud.hashicorp.com/vagrant/discover)网站进行下载  [vagrant下载地址](https://www.vagrantup.com/)  安装后USB可能不可用，记得下载拓展兼容包
+镜像文件通过[vagrant镜像地址](https://portal.cloud.hashicorp.com/vagrant/discover)
+网站进行下载  [vagrant下载地址](https://www.vagrantup.com/)  安装后USB可能不可用，记得下载拓展兼容包
 
 执行 `vagrant init centos/7` 命令后，Vagrant 在当前目录下创建一个 `Vagrantfile` 文件。该文件是Vagrant的配置文件，定义了虚拟机的配置信息。
 

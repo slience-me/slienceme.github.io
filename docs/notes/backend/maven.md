@@ -18,12 +18,14 @@
 把下边这句话复制一下里边填写你现在的本地仓库路径
 
 ```xml
+
 <localRepository>/path/to/local/repo</localRepository>
 ```
 
 像下边这个样子
 
 ```xml
+
 <settings xmlns="http://maven.apache.org/SETTINGS/1.2.0"
           xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
           xsi:schemaLocation="http://maven.apache.org/SETTINGS/1.2.0 http://maven.apache.org/xsd/settings-1.2.0.xsd">
@@ -41,7 +43,7 @@
 ![Alt Text](/images/20210418095500394.png)
 
 > **maven标准目录结构**
-> -  `src/main/java目录` —— 核心代码部分
+> - `src/main/java目录` —— 核心代码部分
 > - `src/main/resources` —— 配置文件部分，存放项目资源文件，如 spring, hibernate 配置文件
 > - `src/test/java` —— 测试代码部分，存放所有单元测试.java 文件，如 JUnit 测试类
 > - `src/test/resources` —— 测试配置文件，测试资源文件
@@ -52,21 +54,23 @@
 ## 4. maven常用命令
 
 - `mvn clean`
-	- clean 是清理命令，执行 clean 会删除 target 目录及内容。
+  - clean 是清理命令，执行 clean 会删除 target 目录及内容。
 - `mvn compile`
-	- compile 是编译命令，作将 src/main/java 下的文件编译为 class 文件输出到 target目录下。
+  - compile 是编译命令，作将 src/main/java 下的文件编译为 class 文件输出到 target目录下。
 - `mvn test`
-	- test 是测试命令会执行src/test/java下的单元测试类。同时编译`src/main下代码`
+  - test 是测试命令会执行src/test/java下的单元测试类。同时编译`src/main下代码`
 - `mvn package`
-	-  package 是打包命令，对java工程打成jar包，对于web工程打成war包。
+  - package 是打包命令，对java工程打成jar包，对于web工程打成war包。
 - `mvn install`
-	- install 是安装命令，执行 install 将 maven 打成 jar 包或 war 包发布到本地仓库。
-	
+  - install 是安装命令，执行 install 将 maven 打成 jar 包或 war 包发布到本地仓库。
+
 ## 5. maven生命周期
+
 主要有
-- 清理生命周期 
+
+- 清理生命周期
 - 默认生命周期
-- 站点生命周期 
+- 站点生命周期
 
 ![Alt Text](/images/20210418102038305.png)
 
@@ -74,7 +78,7 @@ maven概念模型图
 
 ![Alt Text](/images/20210418102553981.png)
 
-## 6. 配置IDEA 
+## 6. 配置IDEA
 
 [超链接上一篇文章](https://blog.csdn.net/Slience_me/article/details/115817902)
 
@@ -89,7 +93,7 @@ maven概念模型图
 ![Alt Text](/images/20210418170956443.png)
 
 每次创建项目时， IDEA 要使用插件进行创建，这些插件当你创建新的项目时，它每次都会去中央仓库下载，这样使得创建比较慢。应该创建时，让它找本地仓库中的插件进行创建项目。
- 
+
 加一条命令  `-DarchetypeCatalog=internal`
 
 ![Alt Text](/images/20210418103549345.png)
@@ -98,47 +102,50 @@ maven概念模型图
 加上  `<scope>test</scope>` 让其只在测试时起作用
 
 ```xml
+
 <dependencies>
-    <dependency>
-      <groupId>junit</groupId>
-      <artifactId>junit</artifactId>
-      <version>4.11</version>
-      <scope>test</scope>
-    </dependency>
-    <dependency>
-      <groupId>javax.servlet</groupId>
-      <artifactId>servlet-api</artifactId>
-      <version>2.5</version>
-      <scope>provided</scope>
-    </dependency>
-  </dependencies>
+  <dependency>
+    <groupId>junit</groupId>
+    <artifactId>junit</artifactId>
+    <version>4.11</version>
+    <scope>test</scope>
+  </dependency>
+  <dependency>
+    <groupId>javax.servlet</groupId>
+    <artifactId>servlet-api</artifactId>
+    <version>2.5</version>
+    <scope>provided</scope>
+  </dependency>
+</dependencies>
 ```
 
 为了防止项目在tomcat6，tomcat7,tomcat8都能运行，做以下配置
 
 ```xml
+
 <build>
-    <plugins>
-      <plugin>
-        <groupId>org.apache.tomcat.maven</groupId>
-        <artifactId>tomcat7-maven-plugin</artifactId>
-        <version>2.2</version>
-        <configuration>
-          <port>8888</port>
-        </configuration>
-      </plugin>
-      <plugin>
-          <groupId>org.apache.maven.plugins</groupId>
-          <artifactId>maven-compiler-plugin</artifactId>
-          <configuration>
-            <target>1.8</target>
-            <source>1.8</source>
-            <encoding>UTF-8</encoding>
-          </configuration>
-        </plugin>
-    </plugins>
-  </build>
+  <plugins>
+    <plugin>
+      <groupId>org.apache.tomcat.maven</groupId>
+      <artifactId>tomcat7-maven-plugin</artifactId>
+      <version>2.2</version>
+      <configuration>
+        <port>8888</port>
+      </configuration>
+    </plugin>
+    <plugin>
+      <groupId>org.apache.maven.plugins</groupId>
+      <artifactId>maven-compiler-plugin</artifactId>
+      <configuration>
+        <target>1.8</target>
+        <source>1.8</source>
+        <encoding>UTF-8</encoding>
+      </configuration>
+    </plugin>
+  </plugins>
+</build>
 ```
+
 添加动态模板，先创建group（Custom）再创建内容（live templete）
 
 ![Alt Text](/images/20210418164336943.png)
@@ -149,9 +156,8 @@ maven概念模型图
 
 解决MySQL驱动和数据库字符集设置不搭配问题  [链接](https://blog.csdn.net/Slience_me/article/details/115836984)
 
- * `要想从数据库中取出数据`
- * `必须有四个属性：数据库驱动，连接数据库的地址，数据库用户名称，数据库密码。`
-
+* `要想从数据库中取出数据`
+* `必须有四个属性：数据库驱动，连接数据库的地址，数据库用户名称，数据库密码。`
 
 ## 7. Linux下安装Maven
 
@@ -188,16 +194,17 @@ mvn –v
 设置镜像源和java版本
 
 ```xml
+
 <settings>
-<mirrors>
+  <mirrors>
     <mirror>
-        <id>nexus-aliyun</id>
-        <mirrorOf>central</mirrorOf>
-        <name>Nexus aliyun</name>
-        <url>http://maven.aliyun.com/nexus/content/groups/public/</url>
+      <id>nexus-aliyun</id>
+      <mirrorOf>central</mirrorOf>
+      <name>Nexus aliyun</name>
+      <url>http://maven.aliyun.com/nexus/content/groups/public/</url>
     </mirror>
-</mirrors>
-<profiles>
+  </mirrors>
+  <profiles>
     <profile>
       <id>jdk-1.8</id>
       <activation>
@@ -209,8 +216,8 @@ mvn –v
         <maven.compiler.target>1.8</maven.compiler.target>
         <maven.compiler.compilerVersion>1.8</maven.compiler.compilerVersion>
       </properties>
-    </profile> 
-</profiles>
+    </profile>
+  </profiles>
 </settings>
 ```
 

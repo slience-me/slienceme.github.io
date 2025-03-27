@@ -17,8 +17,6 @@ python默认指向python2的环境，python2默认指向python2.7环境，python
 
 ![image-20240118190053894](https://raw.githubusercontent.com/slience-me/picGo/master/images/image-20240118190053894.png)
 
-
-
 输入指令`python`指令，进入默认python环境，如下图所示：
 
 ![image-20240118190750740](https://raw.githubusercontent.com/slience-me/picGo/master/images/image-20240118190750740.png)
@@ -82,7 +80,6 @@ ubuntu操作步骤
 
 执行下面指令后，回车即可：
 
-
 ```bash
 [slience_me@VM-24-2-centos ~]$ bash Anaconda3-2023.09-0-Linux-x86_64.sh 
 Welcome to Anaconda3 2023.09-0
@@ -107,7 +104,6 @@ Do you accept the license terms? [yes|no]
 ```
 
 选择安装的路径，直接回车就使用默认路径`/home/slience_me/anaconda3`
-
 
 ```bash
 Anaconda3 will now be installed into this location:
@@ -166,6 +162,7 @@ vim ~/.bashrc
 ```
 
 发现有以下内容，即是anaconda的环境变量配置
+
 ```bash
 # >>> conda initialize >>>
 # !! Contents within this block are managed by 'conda init' !!
@@ -182,8 +179,6 @@ fi
 unset __conda_setup
 # <<< conda initialize <<<
 ```
-
-
 
 #### 1.2.2 查看python环境
 
@@ -236,8 +231,6 @@ conda remove -n your_env_name --all
 conda remove --name $your_env_name  $package_name 
 ```
 
-
-
 ## 1.3 venv虚拟环境配置
 
 创建一个虚拟环境
@@ -256,8 +249,6 @@ source activate
 ```
 
 然后执行相关的操作
-
-
 
 ## 2. pip相关操作
 
@@ -311,28 +302,30 @@ pip list
 
 > 要永久更改 `pip` 的软件包源，你可以编辑或创建 `pip` 的配置文件，并在其中设置新的源。以下是具体的步骤：
 >
-> 1. 打开或创建 `pip` 的配置文件。配置文件通常位于用户主目录下的 `.pip` 目录中。你可以使用文本编辑器打开或创建这个文件。如果不存在 `.pip` 目录，你可以创建它。
->
->     ```bash
+> 1. 打开或创建 `pip` 的配置文件。配置文件通常位于用户主目录下的 `.pip` 目录中。你可以使用文本编辑器打开或创建这个文件。如果不存在
+     `.pip` 目录，你可以创建它。
+     >
+     >     ```bash
 >     mkdir -p ~/.pip
 >     ```
 >
 > 2. 在 `.pip` 目录中创建一个文件，命名为 `pip.conf`（如果使用的是 Python 3，可能需要创建 `pip.ini` 文件）。
->
->     ```bash
+     >
+     >     ```bash
 >     touch ~/.pip/pip.conf
 >     ```
 >
 > 3. 打开 `pip.conf` 文件，并添加以下内容：
->
->     ```ini
+     >
+     >     ```ini
 >     [global]
 >     index-url = https://pypi.org/simple/
 >     ```
->
->     上述示例将 `index-url` 设置为 Python Package Index（PyPI）的默认源。你可以将 `https://pypi.org/simple/` 替换为其他源的地址，如清华大学的镜像源等。
->
->     ```ini
+     >
+     >     上述示例将 `index-url` 设置为 Python Package Index（PyPI）的默认源。你可以将 `https://pypi.org/simple/`
+     替换为其他源的地址，如清华大学的镜像源等。
+     >
+     >     ```ini
 >     [global]
 >     index-url = https://pypi.tuna.tsinghua.edu.cn/simple
 >     ```
