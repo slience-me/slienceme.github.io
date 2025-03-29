@@ -98,6 +98,12 @@ export const NAV_DATA: NavData[] = [
         desc: 'KubeSphere 容器平台',
         link: 'https://kubesphere.io/zh/',
       },
+      {
+        icon: 'https://docker.aityp.com/static/images/favicon.ico',
+        title: '渡渡鸟的容器镜像小站',
+        desc: 'dockerhub镜像小站',
+        link: 'https://docker.aityp.com/',
+      },
     ],
   },
   {

@@ -546,6 +546,14 @@ https://www.kubesphere.io/zh/docs/v3.4/quick-start/wordpress-deployment/
 ## 5. 直接新开
 
 > PS: 一站式
+>
+> 注意事项：主机名称 hostname必须是小写，要不可能出现找不到主机的问题
+>
+> 注意删除 Kubernetes 节点上的 taint，否则就会没有工作节点工作，导致任务分发不下去
+>
+> `kubectl taint nodes thinkpad-server node-role.kubernetes.io/master:NoSchedule-`
+>
+> `kubectl describe node thinkpad-server | grep Taints`
 
 [在 Linux 上安装 Kubernetes 和 KubeSphere](https://www.kubesphere.io/zh/docs/v4.1/03-installation-and-upgrade/02-install-kubesphere/02-install-kubernetes-and-kubesphere/)
 

@@ -61,6 +61,8 @@ tail
 uname        # 显示系统信息 uname -a
 lsb_release  # 显示发行版信息 lsb_release -a
 hostname     # 显示主机名 hostname
+cat /etc/os-release      # 查看当前的版本
+cat /etc/debian_version  # 查看当前的 Debian 版本
 
 ## 系统操作
 shutdown    # 关机或重启系统 shutdown -h now
@@ -400,6 +402,144 @@ service ssh start
 service ssh status
 service ssh restart  # 重启服务
 ```
+
+### 2.9 配置DNS
+
+#### 1）永久修改DNS
+
+修改 `/etc/systemd/resolved.conf` 文件：
+
+```bash
+vim /etc/systemd/resolved.conf
+```
+
+在文件中找到并修改以下参数： [Alidns](https://www.alidns.com/)
+
+```makefile
+# 指定 DNS 服务器，以空格分隔，支持 IPv4 或 IPv6 地址
+DNS=8.8.8.8 223.5.5.5 223.6.6.6 2400:3200::1 2400:3200:baba::1
+# 阿里DNS 
+# IPv4地址：223.5.5.5 223.6.6.6
+# IPv6地址：2400:3200::1, 2400:3200:baba::1
+
+# 备用 DNS 服务器
+FallbackDNS=8.8.4.4 114.114.114.114 1.1.1.1
+
+# 设置搜索域名
+Domains=domain.com
+
+# 设置 LLMNR 是否激活，选项有: yes, no, resolve
+# 启用或禁用 Link-Local Multicast Name Resolution (LLMNR)
+# LLMNR 允许设备在本地网络中通过广播的方式解析主机名，而不依赖于外部 DNS 服务器
+# 对于家庭或小型局域网环境，启用 LLMNR 是有益的，可以通过局域网内的主机名进行快速解析
+# 不过，在企业环境中，为了安全考虑，可能更倾向于禁用 LLMNR（设置为 no），以减少潜在的中间人攻击风险
+LLMNR=yes
+
+# 设置 MulticastDNS 是否激活，选项有: yes, no, resolve
+# 启用或禁用 Multicast DNS (mDNS)
+# mDNS 是一种通过多播协议进行局域网内设备发现的机制，常用于没有传统 DNS 服务器的小型网络
+# 如果你在局域网中使用 mDNS（例如，家庭网络中的智能设备或打印机），则建议启用 MulticastDNS
+# 类似于 LLMNR，在企业环境中，为了减少不必要的网络广播或避免安全问题，通常建议禁用 MulticastDNS
+MulticastDNS=yes
+
+# 设置 DNSSEC 是否激活，选项有: yes, no, allow-downgrade
+# 启用或禁用 DNS Security Extensions (DNSSEC)，DNSSEC 是用于防止 DNS 攻击（如缓存投毒、域名伪造等）的安全协议
+# 启用 DNSSEC 可以有效防止 DNS 投毒攻击，是一种提高 DNS 查询安全性的好方式。
+# 如果你对安全有较高要求，特别是在处理敏感数据时，建议启用（yes）。
+DNSSEC=yes
+
+# 设置缓存是否激活，选项有: yes, no, no-negative
+# 启用 DNS 缓存可以提高查询速度，减少延迟。
+# 对于大多数用户，启用缓存（yes）是有益的，特别是在访问相同站点或服务时。
+# 如果你希望减少缓存引起的过期记录问题，使用 no-negative 也是一个不错的选择。
+Cache=no-negative
+```
+
+根据需求修改 `resolved.conf` 文件中的 DNS 配置，然后保存文件。
+
+重启 `systemd-resolved` 服务：
+
+```bash
+systemctl restart systemd-resolved
+```
+
+设置 `systemd-resolved` 服务开机启动：
+
+```bash
+systemctl enable systemd-resolved
+```
+
+备份当前的 `resolv.conf` 文件：
+
+```bash
+mv /etc/resolv.conf /etc/resolv.conf.bak
+```
+
+重新生成 `resolv.conf` 文件的符号链接：
+
+```bash
+ln -s /run/systemd/resolve/resolv.conf /etc/
+```
+
+**参数解释**
+
+> 这些参数是用于配置 `systemd-resolved` 服务的行为，帮助你优化 DNS 解析、增强网络安全性以及调整缓存等设置。以下是每个参数的详细解释：
+>
+> ```makefile
+> # 设置搜索域名
+> # 作用：指定默认的搜索域名。这个设置会在你访问没有指定完全域名的主机时自动附加。例如，如果你设置了 `Domains=example.com`，然后访问 `webserver`，系统会尝试解析 `webserver.example.com`。
+> # 使用场景：如果你经常访问某个特定域名下的主机（比如公司内部网络），可以通过这个设置自动附加该域名。
+> Domains=domain.com
+> 
+> # 设置 LLMNR
+> # 作用：启用或禁用 **Link-Local Multicast Name Resolution (LLMNR)**。LLMNR 允许设备在本地网络中通过广播的方式解析主机名，而不依赖于外部 DNS 服务器。
+> # - `yes`：启用 LLMNR。
+> # - `no`：禁用 LLMNR。
+> # - `resolve`：只在本地无法通过 DNS 解析时使用 LLMNR。
+> # 使用场景：适用于局域网环境，尤其是没有配置完整 DNS 服务器的场合。在没有设置 DNS 的情况下，LLMNR 可帮助你通过主机名进行局域网内的通信。
+> LLMNR=yes
+> 
+> # 设置 MulticastDNS
+> # 作用：启用或禁用 **Multicast DNS (mDNS)**。mDNS 是一种通过多播协议进行局域网内设备发现的机制，常用于没有传统 DNS 服务器的小型网络。
+> # - `yes`：启用 mDNS。
+> # - `no`：禁用 mDNS。
+> # - `resolve`：只在无法通过其他 DNS 解析时使用 mDNS。
+> # 使用场景：在家庭网络或小型局域网中使用 mDNS 来进行设备发现（例如，通过 `hostname.local` 访问设备）。例如，Apple 的 **Bonjour** 服务使用 mDNS 进行设备自动发现。
+> MulticastDNS=yes
+> 
+> # 设置 DNSSEC
+> # 作用：启用或禁用 **DNS Security Extensions (DNSSEC)**，DNSSEC 是用于防止 DNS 攻击（如缓存投毒、域名伪造等）的安全协议。
+> # - `yes`：启用 DNSSEC，所有 DNS 请求会验证签名的合法性，增强安全性。
+> # - `no`：禁用 DNSSEC。
+> # - `allow-downgrade`：如果 DNSSEC 不可用，则允许降级使用普通 DNS（不进行安全验证）。
+> # 使用场景：如果你需要提高 DNS 查询的安全性，防止 DNS 相关的安全攻击，可以启用 DNSSEC。适用于有较高安全要求的环境。
+> DNSSEC=yes
+> 
+> # 设置缓存
+> # - 作用：控制 DNS 查询结果的缓存行为。
+> # - `yes`：启用缓存，DNS 结果会在缓存中存储并在一定时间内复用，减少 DNS 查询的延迟。
+> # - `no`：禁用 DNS 缓存。
+> # - `no-negative`：仅缓存正向（有效的）DNS 查询结果，不缓存负向查询（即没有找到的域名）。
+> # 使用场景：启用缓存可以加快后续的 DNS 查询速度，尤其是在频繁访问相同网站时。如果对 DNS 缓存的准确性有高要求，可以选择禁用缓存或只缓存有效结果。
+> Cache=no-negative
+> ```
+
+#### 2）临时修改DNS方法
+
+如果只需要临时修改DNS，可以直接编辑 `/etc/resolv.conf` 文件：
+
+```bash
+vi /etc/resolv.conf
+```
+
+在文件中添加你想使用的 DNS 服务器：
+
+```bash
+nameserver 8.8.8.8
+nameserver 8.8.4.4
+```
+
+每行一个 DNS 地址，修改后保存退出即可。此方法修改后即刻生效，但重启后失效。
 
 ## 3. 常用技巧
 
