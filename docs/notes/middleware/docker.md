@@ -144,6 +144,9 @@ docker network inspect <network_name> 		  # 查看网络的详细信息
 docker network create --driver <driver> --subnet <subnet> --gateway <gateway> <network_name> # bridge host
 docker network rm <network_name>			  # 删除指定网络
 
+# 查询所有容器的重启策略
+docker ps -q | xargs -I {} docker inspect --format '{{.Name}}: {{.HostConfig.RestartPolicy.Name}}' {}
+
 # 其他
 help  # 兜底
 ```
@@ -160,40 +163,55 @@ help  # 兜底
 ## 3. 镜像加速
 
 > 官方镜像源：https://hub.docker.com
+>
+> [DockerHub 国内加速镜像列表](https://github.com/dongyubin/DockerHub)
 
 ```bash
 sudo mkdir -p /etc/docker
-sudo tee /etc/docker/daemon.json <<-'EOF'
+sudo tee /etc/docker/daemon.json <<EOF
 {
-    "registry-mirrors": [
-        "https://do.nark.eu.org",
-        "https://dc.j8.work",
-        "https://docker.m.daocloud.io",
-        "https://dockerproxy.com",
-        "https://docker.mirrors.ustc.edu.cn",
-        "https://docker.nju.edu.cn",
-        "https://mirrors.tuna.tsinghua.edu.cn",
-        "https://ustc-edu-cn.mirror.aliyuncs.com",
-        "https://ccr.ccs.tencentyun.com",
-        "https://docker.m.daocloud.io",
-        "https://docker.awsl9527.cn"
-    ]
+  "registry-mirrors": [
+    "https://docker.1ms.run",
+    "https://docker.mybacc.com",
+    "https://dytt.online",
+    "https://lispy.org",
+    "https://docker.xiaogenban1993.com",
+    "https://docker.yomansunter.com",
+    "https://aicarbon.xyz",
+    "https://666860.xyz",
+    "https://docker.zhai.cm",
+    "https://a.ussh.net",
+    "https://hub.littlediary.cn",
+    "https://hub.rat.dev",
+    "https://docker.m.daocloud.io"
+  ]
 }
 EOF
 sudo systemctl daemon-reload
 sudo systemctl restart docker
 ```
 
-## 4. docker ufw端口管控
+## 4. docker常见问题汇总
 
-> 最近，我发现使用docker运行的容器，进行端口映射后，可以正常访问，但是ufw防火墙并没有开放端口；这样岂不是防火墙失效了，这哪里行！
+### 4.1 ufw端口管控
+
+> ~~最近，我发现使用docker运行的容器，进行端口映射后，可以正常访问，但是ufw防火墙并没有开放端口；这样岂不是防火墙失效了，这哪里行！~~
 >
-> 具体描述: Docker 默认使用自己的网络管理方式，导致 Docker 容器的端口不会直接与 UFW 配合，造成 Docker 容器端口不可访问或者
-> UFW 防火墙规则对容器端口不起作用。因此，UFW 并不会自动管理 Docker 容器的网络流量。
+> ~~具体描述: Docker 默认使用自己的网络管理方式，导致 Docker 容器的端口不会直接与 UFW 配合，造成 Docker 容器端口不可访问或者
+> UFW 防火墙规则对容器端口不起作用。因此，UFW 并不会自动管理 Docker 容器的网络流量。~~
 >
-> 通过调整 Docker 和 UFW 的配置，确保容器的端口能够正确地通过 UFW 的规则进行访问。
+> ~~通过调整 Docker 和 UFW 的配置，确保容器的端口能够正确地通过 UFW 的规则进行访问。~~
 >
-> 现在仍然没有更好的方案，我选择停用ufw，改为firewalld
+> ~~现在仍然没有更好的方案，我选择停用ufw，改为firewalld~~
+
+### 4.2 权限问题
+
+> 普通用户无法使用`docker ps`等相关的指令，我们需要授权，执行如下指令：
+
+```bash
+# 非root用户, 需要将用户添加到docker组
+sudo usermod -aG docker slienceme
+```
 
 ## 5. 常用软件安装
 
@@ -366,21 +384,27 @@ docker pull nginx:1.10
 mkdir -p /home/slienceme/docker/nginx/html  # 创建多级文件夹
 mkdir -p /home/slienceme/docker/nginx/logs
 mkdir -p /home/slienceme/docker/nginx/conf
-
+ 
+# 桥接
 docker run -p 80:80 --name nginx \
  -v /home/slienceme/docker/nginx/html:/usr/share/nginx/html \
  -v /home/slienceme/docker/nginx/logs:/var/log/nginx \
- -v /home/slienceme/docker/nginx/conf:/etc/nginx \
+ -v /home/slienceme/docker/nginx/conf/:/etc/nginx \
  -d nginx:1.10
+ 
+ # host
+docker run -p 80:80 --net=host --name nginx \
+ -v /home/slienceme/docker/nginx/html:/usr/share/nginx/html \
+ -v /home/slienceme/docker/nginx/logs:/var/log/nginx \
+ -v /home/slienceme/docker/nginx/conf/:/etc/nginx \
+ -d nginx:1.10
+ 
 
 docker run --name my-custom-nginx-container \
 	-v /host/path/nginx.conf:/etc/nginx/nginx.conf:ro -d nginx
 
 # 3. 设置开机启动
 docker update nginx --restart=always
-
-# 非root用户, 需要将用户添加到docker组
-sudo usermod -aG docker slienceme
 ```
 
 教程其他操作：PS：感觉没啥用，还多出很多操作，我喜欢上面的操作
@@ -432,9 +456,6 @@ docker update nginx --restart=always
 echo '<h2>hello nginx!</h2>' >index.html
 
 # 访问：http://ngix所在主机的IP:80/index.html
-
-# 非root用户, 需要将用户添加到docker组
-sudo usermod -aG docker slienceme
 ```
 
 ### 5.5 RabbitMQ
@@ -465,192 +486,6 @@ docker run --name rabbitmq \
 
 # 设置开机启动rabbitmq
 docker update rabbitmq --restart=always
-```
-
-### 5.6 Seata
-
-```bash
-# 目前版本为2.1(不全 先这样)
-
-# 1. 拉取镜像
-docker pull seataio/seata-server 
-
-# 2. 创建容器
-docker run --name seata-server -p 8091:8091 -d  seataio/seata-server
-# 复制配置文件到主机方便修改
-docker cp seata-server:/seata-server  /home/slienceme/docker/seata
-# 停止服务
-docker stop seata-server
-# 删除服务
-docker rm seata-server
-
-# 切换到seata配置目录
-cd /home/slienceme/docker/seata/seata-server/resource
-vim application.yml
-# 修改一下默认端口即可
-
-# 3. 启动SeaTa指定挂载文件
-docker run -p 8091:8091 --name seata-server \
--v /home/slienceme/docker/seata/seata-server:/seata-server  \
--d seataio/seata-server
-
-# 4. 设置开机启动
-docker update seata-server --restart=always
-```
-
-> 配置相关补充，修改application.yml的内容
-
-```bash
-# 原来的配置
-server:
-  port: 8091
-
-spring:
-  application:
-    name: seata-server
-
-logging:
-  config: classpath:logback-spring.xml
-  file:
-    path: ${log.home:${user.home}/logs/seata}
-  extend:
-    logstash-appender:
-      destination: 127.0.0.1:4560
-    kafka-appender:
-      bootstrap-servers: 127.0.0.1:9092
-      topic: logback_to_logstash
-
-console:
-  user:
-    username: seata
-    password: seata
-seata:
-  config:
-    # support: nacos, consul, apollo, zk, etcd3
-    type: file
-  registry:
-    # support: nacos, eureka, redis, zk, consul, etcd3, sofa
-    type: file
-  store:
-    # support: file 、 db 、 redis
-    mode: file
-    #  server:
-    #    service-port: 8091 #If not configured, the default is '${server.port} + 1000'
-  security:
-    secretKey: SeataSecretKey0c382ef121d778043159209298fd40bf3850a017
-    tokenValidityInMilliseconds: 1800000
-    ignore:
-      urls: /,/**/*.css,/**/*.js,/**/*.html,/**/*.map,/**/*.svg,/**/*.png,/**/*.jpeg,/**/*.ico,/api/v1/auth/login,/health,/error
-
-```
-
-> 现在我需要修改nacos
-
-```bash
-# 修改的配置
-server:
-  port: 8091
-
-spring:
-  application:
-    name: seata-server
-
-logging:
-  config: classpath:logback-spring.xml
-  file:
-    path: ${log.home:${user.home}/logs/seata}
-  extend:
-    logstash-appender:
-      destination: 127.0.0.1:4560
-    kafka-appender:
-      bootstrap-servers: 127.0.0.1:9092
-      topic: logback_to_logstash
-
-console:
-  user:
-    username: seata
-    password: seata
-seata:
-  config:
-    # support: nacos, consul, apollo, zk, etcd3  配置中心
-    # type: file
-    type: nacos
-    nacos:
-      # 配置nacos地址等信息
-      server-addr: 192.168.50.3:8848  # nacos的地址
-      namespace: c76a175e-3ad4-409b-8cab-9a6c820613be  # 去nacos生成
-      group: SEATA_GROUP
-      username: nacos
-      password: nacos
-      data-id: seataServer.properties
-  registry:
-    # support: nacos, eureka, redis, zk, consul, etcd3, sofa
-    # type: file
-    type: nacos
-    nacos:
-    # seata tc 服务注册到 nacos的服务名称，可以自定义
-      application: seata-server
-      server-addr: 192.168.50.3:8848  # nacos的地址
-      namespace: c76a175e-3ad4-409b-8cab-9a6c820613be  # 去nacos生成
-      group: SEATA_GROUP
-      username: nacos
-      password: nacos
-  store:
-    # support: file 、 db 、 redis
-    mode: db
-    #  server:
-    #    service-port: 8091 #If not configured, the default is '${server.port} + 1000'
-  security:
-    secretKey: SeataSecretKey0c382ef121d778043159209298fd40bf3850a017
-    tokenValidityInMilliseconds: 1800000
-    ignore:
-      urls: /,/**/*.css,/**/*.js,/**/*.html,/**/*.map,/**/*.svg,/**/*.png,/**/*.jpeg,/**/*.ico,/api/v1/auth/login,/health,/error
-```
-
-> 另外需要给nacos新建配置  `seataServer.properties` 分组Group`SEATA_GROUP`，格式`properties`
->
-> 
->
-> [Seata](https://so.csdn.net/so/search?q=Seata&spm=1001.2101.3001.7020)
->
-> - Server端存储模式（store.mode）现有file、db、redis三种，file模式无需改动，直接启动即可。
->   注： file模式为单机模式，全局事务会话信息内存中读写并持久化本地文件root.data，性能较高;
->
-> 
->
-> 如果是seata分布式集群时推荐使用Redis或者DB模式，
-> `在此配置Mysql进行储存`，[SQL语句Link](https://github.com/seata/seata/blob/develop/script/server/db/mysql.sql)
->
-> 可以看到需要一个数据库为`seata`，通过链接里面的SQL语句，创建4个表
->
-> 由于我数据库和seata都是docker部署，走一个相同的docker虚拟网卡，所以我只能用内网Ip docker inspect查询为172.17.0.*的地址
->
-> 否则可能访问不到 TODO: 后续研究这个问题再
-
-```properties
-# 配置事务组
-# default_tx_group 事务分组名称可以自定义为项目名称，比如:seata_demo
-# default表示registry.conf中配置的cluster名称
-service.vgroupMapping.default_tx_group=default
-#事务会话信息存储方式
-store.mode=db
-#事务锁信息存储方式
-store.lock.mode=db
-#事务回话信息存储方式
-store.session.mode=db
-#存储方式为db
-store.db.dbType=mysql
-store.db.datasource=druid
-store.db.driverClassName=com.mysql.cj.jdbc.Driver
-# 你的数据库地址
-store.db.url=jdbc:mysql://IP:3306/seata?useSSL=false&useUnicode=true&characterEncoding=utf-8&serverTimezone=Asia/Shanghai
-store.db.user=root
-store.db.password=123456
-store.db.minConn=5
-store.db.maxConn=30
-store.db.globalTable=global_table
-store.db.branchTable=branch_table
-store.db.distributedLockTable=distributed_lock
 ```
 
 ### 5.6 zipkin
@@ -851,17 +686,17 @@ CMD ["java", "-jar", "my-java-project.jar"]
 
 各个指令解释：
 
-- **FROM maven:3.8.4-jdk-11 AS build**： 使用 Maven 和 JDK 11 镜像作为构建阶段的基础镜像。`AS build` 是为了给该阶段起个名字，后续可以通过
+- `FROM maven:3.8.4-jdk-11 AS build`： 使用 Maven 和 JDK 11 镜像作为构建阶段的基础镜像。`AS build` 是为了给该阶段起个名字，后续可以通过
   `COPY --from=build` 引用它。
-- **WORKDIR /app**： 设置容器中的工作目录为 `/app`，所有后续的操作都会在该目录下进行。
-- **COPY pom.xml .**： 将项目的 `pom.xml` 文件复制到 Docker 镜像中的工作目录中。
-- **RUN mvn dependency:go-offline**： 通过 Maven 下载项目的依赖，利用 Docker 的缓存机制，避免每次构建都重新下载依赖。
-- **COPY src ./src**： 将项目的源代码复制到容器的 `/app/src` 目录下。
-- **RUN mvn clean package -DskipTests**： 执行 Maven 构建命令并打包项目，`-DskipTests` 是跳过测试阶段（如果你不想跳过测试，可以移除此参数）。
-- **FROM openjdk:11-jre-slim**： 使用轻量级的 JRE 镜像作为运行时环境，保证只包含运行 Java 应用所需的环境。
-- **COPY --from=build /app/target/my-java-project-1.0-SNAPSHOT.jar ./my-java-project.jar**： 将第一阶段构建出来的 JAR 文件从
+- `WORKDIR /app`： 设置容器中的工作目录为 `/app`，所有后续的操作都会在该目录下进行。
+- `COPY pom.xml .`： 将项目的 `pom.xml` 文件复制到 Docker 镜像中的工作目录中。
+- `RUN mvn dependency:go-offline`： 通过 Maven 下载项目的依赖，利用 Docker 的缓存机制，避免每次构建都重新下载依赖。
+- `COPY src ./src`： 将项目的源代码复制到容器的 `/app/src` 目录下。
+- `RUN mvn clean package -DskipTests`： 执行 Maven 构建命令并打包项目，`-DskipTests` 是跳过测试阶段（如果你不想跳过测试，可以移除此参数）。
+- `FROM openjdk:11-jre-slim`： 使用轻量级的 JRE 镜像作为运行时环境，保证只包含运行 Java 应用所需的环境。
+- `COPY --from=build /app/target/my-java-project-1.0-SNAPSHOT.jar ./my-java-project.jar`： 将第一阶段构建出来的 JAR 文件从
   `build` 阶段复制到新的镜像中。
-- **CMD ["java", "-jar", "my-java-project.jar"]**： 指定容器启动时运行的命令，这里是运行打包好的 Java JAR 文件。
+- `CMD ["java", "-jar", "my-java-project.jar"]`： 指定容器启动时运行的命令，这里是运行打包好的 Java JAR 文件。
 
 构建镜像和运行容器
 

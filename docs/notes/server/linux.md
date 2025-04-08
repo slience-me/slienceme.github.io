@@ -401,6 +401,12 @@ ps -e |grep ssh
 service ssh start
 service ssh status
 service ssh restart  # 重启服务
+
+# ssh配置文件
+vim /etc/ssh/sshd_config
+
+PermitRootLogin prohibit-password   # 禁止远程ssh
+PermitRootLogin yes                 # 允许远程ssh
 ```
 
 ### 2.9 配置DNS

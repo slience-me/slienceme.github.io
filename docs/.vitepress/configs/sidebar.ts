@@ -8,7 +8,9 @@ function sidebarNotesBackend() {
       items: [
         { text: 'Maven基础', link: 'maven' },
         { text: 'Spring集成', link: 'spring' },
-        { text: 'Thread', link: 'thread' }
+        { text: 'Thread', link: 'thread' },
+        { text: '设计模式', link: 'design-pattern' },
+        { text: '...临时', link: 'system-architect' }
       ]
     }
   ]
