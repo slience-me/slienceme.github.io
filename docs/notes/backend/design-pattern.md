@@ -14,13 +14,13 @@ outline: [2,3]
 
 :::
 
-![image-20240103193726391](https://file.kamacoder.com/baguwen1.0/image-20240103193726391.png)
+![image-20240103193726391](/images/design-pattern/image-20240103193726391.png)
 
 ## 快速跳转
 
 ::: info 创建型模式：
 
-- [单例模式](https://chatgpt.com/c/67f337ef-c214-8005-aac6-0d22e7499384#_1-单例模式)
+- [单例模式](/notes/backend/design-pattern#_1-单例模式)
 - [工厂方法模式](/notes/backend/design-pattern#_2-工厂方法模式)
 - [抽象工厂模式](/notes/backend/design-pattern#_3-抽象工厂模式)
 - [建造者模式](/notes/backend/design-pattern#_3-建造者模式)
@@ -64,9 +64,9 @@ outline: [2,3]
 
 **单例模式**`Singleton`是一种创建型设计模式， 让你能够保证一个类只有一个实例， 并提供一个访问该实例的全局节点。
 
-![单例模式](images/design-pattern/singleton.png)
+![单例模式](/images/design-pattern/singleton.png)
 
-![image-20250405204540562](images/design-pattern/image-20250405204540562.png)	
+![image-20250405204540562](/images/design-pattern/image-20250405204540562.png)	
 
 
 
@@ -605,7 +605,7 @@ public class Main {
 
 **UML**
 
-![image-20250407101255368](images/design-pattern/image-20250407101255368.png)
+![image-20250407101255368](/images/design-pattern/image-20250407101255368.png)
 
 **概念**
 
@@ -623,7 +623,7 @@ JDK中的`DateFormat`、`Calendar`类都有使⽤，通过不同参数返回我�
 
 **案例**
 
-![img](images/design-pattern/1419489-20190628144601084-563759643.png)
+![img](/images/design-pattern/1419489-20190628144601084-563759643.png)
 
 使用手机生产来讲解该模式：
 
@@ -684,7 +684,7 @@ public class Demo {
 
 **工厂方法模式**是一种创建型设计模式， 其在父类中提供一个创建对象的方法， 允许子类决定实例化对象的类型。
 
-![工厂方法模式](images/design-pattern/factory-method-zh.png)
+![工厂方法模式](/images/design-pattern/factory-method-zh.png)
 
 
 
@@ -699,7 +699,7 @@ public class Demo {
 
 **UML**
 
-![image-20250407114001233](images/design-pattern/image-20250407114001233.png)
+![image-20250407114001233](/images/design-pattern/image-20250407114001233.png)
 
 **应⽤**  
 
@@ -730,7 +730,7 @@ JDK中的`Collection`接⼝中`Iterator`的实现。`Collection`中不同的实�
 
 和简单工厂模式中工厂负责生产所有产品相比，工厂方法模式将生成具体产品的任务分发给具体的产品工厂，其UML类图如下：
 
-![img](images/design-pattern/1419489-20190628154133368-906051111.png)
+![img](/images/design-pattern/1419489-20190628154133368-906051111.png)
 
 也就是定义一个抽象工厂，其定义了产品的生产接口，但不负责具体的产品，将生产任务交给不同的派生类工厂。这样不用通过指定类型来创建对象了。
 
@@ -968,7 +968,7 @@ public class Main {
 
 **抽象工厂模式**是一种创建型设计模式， 它能创建一系列相关的对象， 而无需指定其具体类。
 
-![抽象工厂模式](images/design-pattern/abstract-factory-zh.png)
+![抽象工厂模式](/images/design-pattern/abstract-factory-zh.png)
 
 **为什么还有要抽象工厂模式呢？**
 
@@ -987,13 +987,13 @@ public class Main {
 
 **UML**
 
-![image-20250407144650115](images/design-pattern/image-20250407144650115.png)
+![image-20250407144650115](/images/design-pattern/image-20250407144650115.png)
 
 产品族：构成一个产品的一系列附件的集合
 
 如果将一台电脑比作一个产品族，那么CPU、主板、硬盘、内存这些内容构成一台电脑
 
-![image-20250407112734467](images/design-pattern/image-20250407112734467.png)
+![image-20250407112734467](/images/design-pattern/image-20250407112734467.png)
 
 **概念** 
 
@@ -1013,13 +1013,13 @@ Spring中的`BeanFactory`
 
 其UML类图如下：
 
-![img](images/design-pattern/1419489-20190628170705865-1781414242.png)
+![img](/images/design-pattern/1419489-20190628170705865-1781414242.png)
 
 从上面类图结构中可以清楚的看到如何在工厂方法模式中通过增加新产品接口来实现产品的增加的。
 
 为了弄清楚上面的结构，我们使用具体的产品和工厂来表示上面的UML类图，能更加清晰的看出模式是如何演变的：
 
-![img](images/design-pattern/1419489-20190628164001258-637961514.png)
+![img](/images/design-pattern/1419489-20190628164001258-637961514.png)
 
 ```java
 // PC类：定义PC产品的接口(AbstractPC)
@@ -1285,7 +1285,7 @@ public class Main {
 
 **生成器模式**`Builder`是一种创建型设计模式， 使你能够分步骤创建复杂对象。 该模式允许你使用相同的创建代码生成不同类型和形式的对象。
 
-![生成器设计模式](images/design-pattern/builder-zh.png)
+![生成器设计模式](/images/design-pattern/builder-zh.png)
 
 建造者模式（也被成为`生成器模式`），软件开发过程中有的时候需要创建很复杂的对象，而建造者模式的主要思想是<u>将对象的构建过程分为多个步骤，并为每个步骤定义一个抽象的接口。具体的构建过程由实现了这些接口的具体建造者类来完成。</u>同时有一个指导者类负责协调建造者的工作，按照一定的顺序或逻辑来执行构建步骤，最终生成产品。
 
@@ -1298,7 +1298,7 @@ public class Main {
 - 具体建造者`Concrete Builder`：实现抽象建造者接口，构建产品的各个组成部分，并提供一个方法返回最终的产品。
 - 指导者`Director`：调用具体建造者的方法，按照一定的`顺序或逻辑`来构建产品。
 
-![image-20250407163423192](images/design-pattern/image-20250407163423192.png)
+![image-20250407163423192](/images/design-pattern/image-20250407163423192.png)
 
 **简单实现演示：**
 
@@ -1580,7 +1580,7 @@ public class Main {
 
 **原型模式**`Prototype`是一种创建型设计模式， 使你能够复制已有对象， 而又无需使代码依赖它们所属的类。
 
-![原型设计模式](images/design-pattern/prototype.png)
+![原型设计模式](/images/design-pattern/prototype.png)
 
 该模式的核心思想是基于现有的对象创建新的对象，而不是从头开始创建。
 
@@ -1599,7 +1599,7 @@ public class Main {
 
 在客户端代码中，可以声明一个具体原型类的对象，然后调用`clone()`方法复制原对象生成一个新的对象。
 
-![image-20250407163350302](images/design-pattern/image-20250407163350302.png)
+![image-20250407163350302](/images/design-pattern/image-20250407163350302.png)
 
 原型模式的实现过程即上面描述模块的实现过程：
 
@@ -1904,7 +1904,7 @@ public class Main {
 
 可以将一个类的接口转换成客户希望的另一个接口，主要目的是充当两个不同接口之间的桥梁，使得原本接口不兼容的类能够一起工作。
 
-![适配器设计模式](images/design-pattern/adapter-zh.png)
+![适配器设计模式](/images/design-pattern/adapter-zh.png)
 
 适配器模式分为以下几个基本角色：
 
@@ -1916,7 +1916,7 @@ public class Main {
 
 **对象适配器图**
 
-![image-20250407183043832](images/design-pattern/image-20250407183043832.png)
+![image-20250407183043832](/images/design-pattern/image-20250407183043832.png)
 
 这样，客户端就可以使用目标接口，而不用对原来的`Adaptee`进行修改，`Adapter`起到一个转接扩展的作用
 
@@ -2146,7 +2146,7 @@ public class Main{
 
 **代理模式**`Proxy`是一种结构型设计模式， 让你能够提供对象的替代品或其占位符。 代理控制着对于原对象的访问，并允许在将请求提交给对象前后进行一些处理。
 
-![代理设计模式](images/design-pattern/proxy.png)
+![代理设计模式](/images/design-pattern/proxy.png)
 
 在代理模式中，允许一个对象（代理）充当另一个对象（真实对象）的接口，以控制对这个对象的访问。通常用于在访问某个对象时引入一些间接层(中介的作用)，这样可以在访问对象时添加额外的控制逻辑，比如限制访问权限，延迟加载。
 
@@ -2158,7 +2158,7 @@ public class Main{
 - `RealSubject（真实主题）`：定义了Proxy所代表的真实对象，是客户端最终要访问的对象。
 - `Proxy（代理）`：包含一个引用，该引用可以是RealSubject的实例，控制对RealSubject的访问，并可能负责创建和删除RealSubject的实例。
 
-![image-20250407192554304](images/design-pattern/image-20250407192554304.png)
+![image-20250407192554304](/images/design-pattern/image-20250407192554304.png)
 
 **简单实现：**
 
@@ -2316,7 +2316,7 @@ public class Main {
 
 **装饰模式**`Decorator`是一种结构型设计模式， 允许你通过将对象放入包含行为的特殊封装对象中来为原对象绑定新的行为。
 
-![装饰设计模式](images/design-pattern/decorator.png)
+![装饰设计模式](/images/design-pattern/decorator.png)
 
 通常情况下，扩展类的功能可以通过继承实现，但是扩展越多，子类越多，装饰模式可以在<u>不定义子类的情况下动态的给对象添加一些额外的功能。</u>具体的做法是将原始对象放入包含行为的特殊封装类(装饰类)，从而为原始对象动态添加新的行为，而无需修改其代码。
 
@@ -2329,7 +2329,7 @@ public class Main {
 - 装饰类`Decorator`: 一个抽象类，给具体组件添加功能，但是具体的功能由其子类具体装饰者完成，持有一个指向Component对象的引用。
 - 具体装饰类`ConcreteDecorator`: 扩展Decorator类，负责向Component对象添加新的行为，加牛奶的咖啡是一个具体装饰类，加糖的咖啡也是一个具体装饰类。
 
-![image-20250407200342273](images/design-pattern/image-20250407200342273.png)
+![image-20250407200342273](/images/design-pattern/image-20250407200342273.png)
 
 **简单实现：**
 
@@ -2699,7 +2699,7 @@ public class Main {
 
 **外观模式**`Facade`是一种结构型设计模式， 能为程序库、 框架或其他复杂类提供一个简单的接口。
 
-![外观设计模式](images/design-pattern/facade.png)
+![外观设计模式](/images/design-pattern/facade.png)
 
 该模式也被称为“门面模式”，外观模式定义了一个高层接口，这个接口使得子系统更容易使用，同时也隐藏了子系统的复杂性。
 
@@ -2716,7 +2716,7 @@ public class Main {
 - `外观类Facade`：对外提供一个统一的高层次接口，使复杂的子系统变得更易使用。
 - `子系统类Subsystem`：实现子系统的功能，处理外观类指派的任务。
 
-![image-20250407203503318](images/design-pattern/image-20250407203503318.png)
+![image-20250407203503318](/images/design-pattern/image-20250407203503318.png)
 
 **简易实现**
 
@@ -2912,13 +2912,13 @@ public class Main {
 
 **桥接模式**是一种结构型设计模式， 可将一个大类或一系列紧密相关的类拆分为抽象和实现两个独立的层次结构， 从而能在开发时分别使用。
 
-![桥接设计模式](images/design-pattern/bridge.png)
+![桥接设计模式](/images/design-pattern/bridge.png)
 
 桥接模式（Bridge Pattern）是一种结构型设计模式，它的UML图很像一座桥，它通过将【抽象部分】与【实现部分】分离，使它们可以独立变化，从而达到降低系统耦合度的目的。桥接模式的主要目的是通过组合建立两个类之间的联系，而不是继承的方式。
 
 举个简单的例子，图形编辑器中，每一种图形都需要蓝色、红色、黄色不同的颜色，如果不使用桥接模式，可能需要为每一种图形类型和每一种颜色都创建一个具体的子类，而使用桥接模式可以将图形和颜色两个维度分离，两个维度都可以独立进行变化和扩展，如果要新增其他颜色，只需添加新的 `Color` 子类，不影响图形类；反之亦然。
 
-![image-20250407211551331](images/design-pattern/image-20250407211551331.png)
+![image-20250407211551331](/images/design-pattern/image-20250407211551331.png)
 
 桥接模式的基本结构分为以下几个角色：
 
@@ -2927,7 +2927,7 @@ public class Main {
 - 实现`Implementor`： 定义实现部分的接口，提供具体的实现。这个接口通常是抽象化接口的实现。
 - 具体实现`ConcreteImplementor`：实现实现化接口的具体类。这些类负责实现实现化接口定义的具体操作。
 
-![image-20250407211143342](images/design-pattern/image-20250407211143342.png)
+![image-20250407211143342](/images/design-pattern/image-20250407211143342.png)
 
 再举个例子，遥控器就是抽象接口，它具有开关电视的功能，修正抽象就是遥控器的实例，对遥控器的功能进行实现和扩展，而电视就是实现接口，具体品牌的电视机是具体实现，遥控器中包含一个对电视接口的引用，通过这种方式，遥控器和电视的实现被分离，我们可以创建多个遥控器，每个遥控器控制一个品牌的电视机，它们之间独立操作，不受电视品牌的影响，可以独立变化。
 
@@ -3302,7 +3302,7 @@ public class Main {
 
 **组合模式**是一种结构型设计模式， 你可以使用它将对象组合成树状结构， 并且能像使用独立对象一样使用它们。
 
-![组合设计模式](images/design-pattern/composite.png)
+![组合设计模式](/images/design-pattern/composite.png)
 
 它**将对象组合成树状结构**来表示“部分-整体”的层次关系。组合模式使得客户端可以**统一处理单个对象和对象的组合**，而无需区分它们的具体类型。
 
@@ -3316,7 +3316,7 @@ public class Main {
 
 通过组合模式，整个省份的获取信息操作可以一次性地执行，而无需关心省份中的具体城市。这样就实现了对国家省份和城市的管理和操作。
 
-![image-20250407214203536](images/design-pattern/image-20250407214203536.png)
+![image-20250407214203536](/images/design-pattern/image-20250407214203536.png)
 
 **简单实现：**
 
@@ -3540,7 +3540,7 @@ public class Main {
 
 **享元模式**是一种结构型设计模式， 它摒弃了在每个对象中保存所有数据的方式， 通过共享多个对象所共有的相同状态， 让你能在有限的内存容量中载入更多对象。
 
-![享元设计模式](images/design-pattern/flyweight-zh.png)
+![享元设计模式](/images/design-pattern/flyweight-zh.png)
 
 享元模式是一种结构型设计模式，在享元模式中，对象被设计为可共享的，可以被多个上下文使用，而不必在每个上下文中都创建新的对象。
 
@@ -3562,7 +3562,7 @@ public class Main {
 - 享元工厂类`FlyweightFactory`: 创建并管理享元对象，当用户请求时，提供已创建的实例或者创建一个。
 - 客户端`Client`: 维护外部状态，在使用享元对象时，将外部状态传递给享元对象。
 
-![image-20250407220854012](images/design-pattern/image-20250407220854012.png)
+![image-20250407220854012](/images/design-pattern/image-20250407220854012.png)
 
 **简易实现**
 
@@ -3762,7 +3762,7 @@ public class Main {
 
 **观察者模式**是一种行为设计模式， 允许你定义一种订阅机制， 可在对象事件发生时通知多个 “观察” 该对象的其他对象。
 
-![观察者设计模式](images/design-pattern/observer.png)
+![观察者设计模式](/images/design-pattern/observer.png)
 
 
 
@@ -3773,7 +3773,7 @@ public class Main {
 - `Subject`(主题)：也就是被观察的对象，它可以维护一组观察者，当主题本身发生改变时就会通知观察者。
 - `Observer`(观察者)：观察主题的对象，当“被观察”的主题发生变化时，观察者就会得到通知并执行相应的处理。
 
-![image-20250408090254855](images/design-pattern/image-20250408090254855.png)
+![image-20250408090254855](/images/design-pattern/image-20250408090254855.png)
 
 使用观察者模式有很多好处，比如说观察者模式将主题和观察者之间的关系解耦，主题只需要关注自己的状态变化，而观察者只需要关注在主题状态变化时需要执行的操作，两者互不干扰，并且由于观察者和主题是相互独立的，可以轻松的增加和删除观察者，这样实现的系统更容易扩展和维护。
 
@@ -3784,7 +3784,7 @@ public class Main {
 - `具体主题ConcreteSubject`: 主题的具体实现, 维护一个观察者列表，包含了观察者的注册、删除和通知方法。
 - `具体观察者ConcreteObserver`: 观察者接口的具体实现，每个具体观察者都注册到具体主题中，当主题状态变化并通知到具体观察者，具体观察者进行处理。
 
-![image-20250408094213288](images/design-pattern/image-20250408094213288.png)
+![image-20250408094213288](/images/design-pattern/image-20250408094213288.png)
 
 **简单实现：**
 
@@ -3997,7 +3997,7 @@ public class Main {
 
 **策略模式**是一种行为设计模式， 它能让你定义一系列算法， 并将每种算法分别放入独立的类中， 以使算法的对象能够相互替换。
 
-![策略设计模式](images/design-pattern/strategy.png)
+![策略设计模式](/images/design-pattern/strategy.png)
 
 策略模式定义了一系列算法（这些算法完成的是相同的工作，只是实现不同），并将每个算法封装起来，使它们可以相互替换，而且算法的变化不会影响使用算法的客户。
 
@@ -4005,7 +4005,7 @@ public class Main {
 
 这就可以将不同的优惠算法封装成独立的类来避免大量的条件语句，如果新增优惠算法，可以添加新的策略类来实现，客户端在运行时选择不同的具体策略，而不必修改客户端代码改变优惠策略。
 
-![image-20250408101025748](images/design-pattern/image-20250408101025748.png)
+![image-20250408101025748](/images/design-pattern/image-20250408101025748.png)
 
 策略模式包含下面几个结构：
 
@@ -4013,7 +4013,7 @@ public class Main {
 - 具体策略类`ConcreteStrategy`: 实现了策略接口，提供具体的算法实现。
 - 上下文类`Context`: 包含一个策略实例，并在需要时调用策略对象的方法。
 
-![image-20250408102425091](images/design-pattern/image-20250408102425091.png)
+![image-20250408102425091](/images/design-pattern/image-20250408102425091.png)
 
 **简单实现：**
 
@@ -4330,7 +4330,7 @@ public class Main {
 
 **命令模式**是一种行为设计模式， 它可将请求转换为一个包含与请求相关的所有信息的独立对象。 该转换让你能根据不同的请求将方法参数化、 延迟请求执行或将其放入队列中， 且能实现可撤销操作。
 
-![命令设计模式](images/design-pattern/command-zh.png)
+![命令设计模式](/images/design-pattern/command-zh.png)
 
 命令模式其允许**将请求封装成一个对象**(命令对象，包含执行操作所需的所有信息)，**并将命令对象按照一定的顺序存储在队列中，然后再逐一调用执行，这些命令也可以支持反向操作，进行撤销和重做。**
 
@@ -4346,7 +4346,7 @@ public class Main {
 - 调用者类`Invoker`: 发起请求的对象，有一个将命令作为参数传递的方法。它不关心命令的具体实现，只负责调用命令对象的 `execute()` 方法来传递请求，在本例中，控制遥控器的“人”就是调用者。
 - 客户端：创建具体的命令对象和接收者对象，然后将它们组装起来。
 
-![image-20250408110515991](images/design-pattern/image-20250408110515991.png)
+![image-20250408110515991](/images/design-pattern/image-20250408110515991.png)
 
 **简易实现**
 
@@ -4680,17 +4680,17 @@ public class Main {
 
 **中介者模式**是一种行为设计模式， 能让你减少对象之间混乱无序的依赖关系。 该模式会限制对象之间的直接交互， 迫使它们通过一个中介者对象进行合作。
 
-![中介者设计模式](images/design-pattern/mediator.png)
+![中介者设计模式](/images/design-pattern/mediator.png)
 
 中介者模式（Mediator Pattern）也被称为调停者模式，是一种行为型设计模式，它通过一个中介对象来封装一组对象之间的交互，从而使这些对象不需要直接相互引用。这样可以降低对象之间的耦合度，使系统更容易维护和扩展。
 
 当一个系统中的对象有很多且多个对象之间有复杂的相互依赖关系时，其结构图可能是下面这样的。
 
-![用户界面中各元素间的混乱关系](images/design-pattern/problem1-zh.png)
+![用户界面中各元素间的混乱关系](/images/design-pattern/problem1-zh.png)
 
 这种依赖关系很难理清，这时我们可以引入一个中介者对象来进行协调和交互。中介者模式可以使得系统的网状结构变成以中介者为中心的星形结构，每个具体对象不再通过直接的联系与另一个对象发生相互作用，而是通过“中介者”对象与另一个对象发生相互作用。
 
-![UI 元素必须通过中介者进行沟通。](images/design-pattern/solution1-zh.png)
+![UI 元素必须通过中介者进行沟通。](/images/design-pattern/solution1-zh.png)
 
 中介者模式包括以下几个重要角色：
 
@@ -4699,7 +4699,7 @@ public class Main {
 - `抽象同事类（Colleague）`： 定义同事类的接口，维护一个对中介者对象的引用，用于通信。
 - `具体同事类（Concrete Colleague）`： 实现抽象同事类接口，每个具体同事类只知道自己的行为，而不了解其他同事类的情况，因为它们都需要与中介者通信，通过中介者协调与其他同事对象的交互。
 
-![image-20250408140739568](images/design-pattern/image-20250408140739568.png)
+![image-20250408140739568](/images/design-pattern/image-20250408140739568.png)
 
 **简单实现：**
 
@@ -4969,11 +4969,11 @@ public class Main {
 
 **备忘录模式**是一种行为设计模式， 允许在不暴露对象实现细节的情况下保存和恢复对象之前的状态。
 
-![4578](images/design-pattern/memento-zh.png)
+![4578](/images/design-pattern/memento-zh.png)
 
 备忘录模式（Memento Pattern）是一种行为型设计模式，它允许在**不暴露对象实现的情况下捕获对象的内部状态**并**在对象之外保存这个状态**，以便稍后可以将其还原到先前的状态。
 
-![image-20250408144440931](images/design-pattern/image-20250408144440931.png)
+![image-20250408144440931](/images/design-pattern/image-20250408144440931.png)
 
 备忘录模式包括以下几个重要角色：
 
@@ -4989,7 +4989,7 @@ public class Main {
 - 管理者`Caretaker`: 负责存储备忘录对象，但并不了解其内部结构，管理者可以存储多个备忘录对象。
 - 客户端：在需要恢复状态时，客户端可以从管理者那里获取备忘录对象，并将其传递给发起人进行状态的恢复。
 
-![image-20250408145510415](images/design-pattern/image-20250408145510415.png)
+![image-20250408145510415](/images/design-pattern/image-20250408145510415.png)
 
 **简单实现：**
 
@@ -5215,7 +5215,7 @@ public class Main {
 
 **模板方法模式**是一种行为设计模式， 它在超类中定义了一个算法的框架， 允许子类在不修改结构的情况下重写算法的特定步骤。
 
-![模板方法设计模式](images/design-pattern/template-method.png)
+![模板方法设计模式](/images/design-pattern/template-method.png)
 
 模板方法模式（Template Method Pattern）是一种行为型设计模式, 它定义了一个算法的骨架，将**一些步骤的实现延迟到子类。**模板方法模式使得子类可以在不改变算法结构的情况下，重新定义算法中的某些步骤。【引用自大话设计第10章】
 
@@ -5232,7 +5232,7 @@ public class Main {
 - 模板类`AbstractClass`：由一个模板方法和若干个基本方法构成，模板方法定义了逻辑的骨架，按照顺序调用包含的基本方法，基本方法通常是一些**抽象方法，这些方法由子类去实现**。基本方法还包含一些具体方法，它们是算法的一部分但已经有默认实现，在具体子类中可以继承或者重写。
 - 具体类`ConcreteClass`：继承自模板类，实现了在模板类中定义的抽象方法，以完成算法中特定步骤的具体实现。
 
-![image-20250408151157300](images/design-pattern/image-20250408151157300.png)
+![image-20250408151157300](/images/design-pattern/image-20250408151157300.png)
 
 **简易实现**
 
@@ -5581,7 +5581,7 @@ public class Main {
 
 **迭代器模式**是一种行为设计模式， 让你能在不暴露集合底层表现形式 （列表、 栈和树等） 的情况下遍历集合中所有的元素。
 
-![迭代器设计模式](images/design-pattern/iterator-zh.png)
+![迭代器设计模式](/images/design-pattern/iterator-zh.png)
 
 迭代器模式是一种行为设计模式，是一种使用频率非常高的设计模式，在各个语言中都有应用，其主要目的是**提供一种统一的方式来访问一个聚合对象中的各个元素，**而不需要暴露该对象的内部表示。通过迭代器，客户端可以顺序访问聚合对象的元素，而无需了解底层数据结构。
 
@@ -5594,7 +5594,7 @@ public class Main {
 - 抽象聚合类：定义了创建迭代器的接口，包括一个`createIterator`方法用于创建一个迭代器对象。
 - 具体聚合类：实现在抽象聚合类中声明的`createIterator()`方法，返回一个与具体聚合对应的具体迭代器
 
-![image-20250408153548942](images/design-pattern/image-20250408153548942.png)
+![image-20250408153548942](/images/design-pattern/image-20250408153548942.png)
 
 **简易实现**
 
@@ -5969,7 +5969,7 @@ public class Main {
 
 **状态模式**是一种行为设计模式， 让你能在一个对象的内部状态变化时改变其行为， 使其看上去就像改变了自身所属的类一样。
 
-![状态设计模式](images/design-pattern/state-zh.png)
+![状态设计模式](/images/design-pattern/state-zh.png)
 
 状态模式（State Pattern）是一种行为型设计模式，它适用于一个对象在在不同的状态下有不同的行为时，比如说电灯的开、关、闪烁是不停的状态，状态不同时，对应的行为也不同，在没有状态模式的情况下，为了添加新的状态或修改现有的状态，往往**需要修改已有的代码**，这违背了开闭原则，而且如果对象的状态切换逻辑和各个状态的行为都在同一个类中实现，就可能导致该类的职责过重，不符合单一职责原则。
 
@@ -5981,7 +5981,7 @@ public class Main {
 - `ConcreteState`（具体状态）： 负责处理Context在状态改变时的行为, 每一个具体状态子类实现一个与`Context`的一个状态相关的行为。
 - `Context`（上下文）: 维护一个具体状态子类的实例，这个实例定义当前的状态。
 
-![image-20250408155153177](images/design-pattern/image-20250408155153177.png)
+![image-20250408155153177](/images/design-pattern/image-20250408155153177.png)
 
 **简单实现：**
 
@@ -6176,13 +6176,13 @@ public class Main {
 
 **责任链模式**是一种行为设计模式， 允许你将请求沿着处理者链进行发送。 收到请求后， 每个处理者均可对请求进行处理， 或将其传递给链上的下个处理者。
 
-![责任链设计模式](images/design-pattern/chain-of-responsibility.png)
+![责任链设计模式](/images/design-pattern/chain-of-responsibility.png)
 
 责任链模式是一种行为型设计模式，它允许你构建一个对象链，让请求从链的一端进入，然后沿着链上的对象依次处理，直到链上的某个对象能够处理该请求为止。
 
 职责链上的处理者就是一个对象，可以对请求进行处理或者将请求转发给下一个节点，这个场景在生活中很常见，就是一个逐层向上递交的过程，最终的请求要么被处理者所处理，要么处理不了，这也因此可能导致请求无法被处理。
 
-![image-20250408161326022](images/design-pattern/image-20250408161326022.png)
+![image-20250408161326022](/images/design-pattern/image-20250408161326022.png)
 
 责任链模式包括以下几个基本结构：
 
@@ -6190,7 +6190,7 @@ public class Main {
 2. 具体处理者`ConcreteHandler`: 实现处理请求的方法，并判断能否处理请求，如果能够处理请求则进行处理，否则将请求传递给下一个处理者。
 3. 客户端：创建并组装处理者对象链，并将请求发送到链上的第一个处理者。
 
-![image-20250408162046701](images/design-pattern/image-20250408162046701.png)
+![image-20250408162046701](/images/design-pattern/image-20250408162046701.png)
 
 **简单实现：**
 
@@ -6609,7 +6609,7 @@ public class Main {
 
 举例来说，表达式 "3 + 5 * 2"，数字 "3" 和 "5"， "2" 是终结符，而运算符 "+", "*"都需要两个操作数, 属于非终结符
 
-![image-20250408164642105](images/design-pattern/image-20250408164642105.png)
+![image-20250408164642105](/images/design-pattern/image-20250408164642105.png)
 
 **简单实现**
 
@@ -6845,7 +6845,7 @@ public class Main{
 
 **访问者模式**是一种行为设计模式， 它能将算法与其所作用的对象隔离开来。
 
-![访问者设计模式](images/design-pattern/visitor.png)
+![访问者设计模式](/images/design-pattern/visitor.png)
 
 访问者模式（Visitor Pattern）是一种行为型设计模式，可以在不改变对象结构的前提下，对对象中的元素进行新的操作。
 
@@ -6942,7 +6942,7 @@ public class Main {
 - `具体元素（ConcreteElement）`：实现了accept方法，是访问者访问的目标。
 - `对象结构（Object Structure）`：包含元素的集合，可以是一个列表、一个集合或者其他数据结构。负责遍历元素，并调用元素的接受方法。
 
-![image-20250408185055160](images/design-pattern/image-20250408185055160.png)
+![image-20250408185055160](/images/design-pattern/image-20250408185055160.png)
 
 **简单实现：**
 
