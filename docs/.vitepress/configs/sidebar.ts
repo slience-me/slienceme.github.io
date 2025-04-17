@@ -94,7 +94,8 @@ function sidebarNotesPython() {
         { text: 'Numpy', link: 'numpy' },
         { text: 'Matlab', link: 'matlab' },
         { text: 'Python环境配置', link: 'python-env-config' },
-        { text: 'CUDA切换版本[Ubuntu]', link: 'cuda-version' }
+        { text: 'CUDA切换版本[Ubuntu]', link: 'cuda-version' },
+        { text: 'yolov8操作指南', link: 'yolov8' }
       ]
     }
   ];

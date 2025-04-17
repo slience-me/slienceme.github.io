@@ -143,6 +143,7 @@ docker network ls               			  # 查看所有 Docker 网络
 docker network inspect <network_name> 		  # 查看网络的详细信息
 docker network create --driver <driver> --subnet <subnet> --gateway <gateway> <network_name> # bridge host
 docker network rm <network_name>			  # 删除指定网络
+docker network connect <network> projectB     # 将项目与网络桥接
 
 # 查询所有容器的重启策略
 docker ps -q | xargs -I {} docker inspect --format '{{.Name}}: {{.HostConfig.RestartPolicy.Name}}' {}
@@ -235,6 +236,7 @@ sudo docker run -p 3306:3306 --name mysql \
 -e MYSQL_ROOT_PASSWORD=123456 \
 -d mysql:5.7
 
+# --network 指定网络 --ip 指定IP
 # -p 3306:3306 将主机的 3306 端口映射到容器的 3306 端口
 # --name mysql 设置容器名称为 mysql
 # -v /mydata/mysql/log:/var/log/mysql 将日志目录挂载到主机
@@ -292,8 +294,11 @@ touch /home/slienceme/docker/redis/conf/redis.conf
 # 2. 创建容器
 docker run -p 6379:6379 --name redis -v /home/slienceme/docker/redis/data:/data \
     -v /home/slienceme/docker/redis/conf/redis.conf:/etc/redis/redis.conf \
-    -d redis redis-server /etc/redis/redis.conf
-    
+    -d redis redis-server /etc/redis/redis.conf --requirepass redis_test
+
+# --network 指定网络 --ip 指定IP
+# --requirepass redis_test  设置密码
+
 # 3. 进入容器
 docker exec -it redis redis-cli
 
