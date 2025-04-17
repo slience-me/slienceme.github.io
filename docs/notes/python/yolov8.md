@@ -2020,3 +2020,17 @@ yolo detect predict model=./yolov8n.pt source=./BVN.mp4 show=True
 <img src="/images/yolov8/image-20250417103204254.png" alt="image-20250417103204254" style="zoom: 50%;" />
 
 ![image-20250417103219047](/images/yolov8/image-20250417103219047.png)
+
+#### 导出onnx
+
+```bash
+from ultralytics import YOLO
+
+# Load a model
+model = YOLO("yolo11n.pt")  # load an official model
+model = YOLO("path/to/best.pt")  # load a custom trained model
+
+# Export the model
+model.export(format="onnx")
+```
+
