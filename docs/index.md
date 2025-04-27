@@ -3,7 +3,7 @@ layout: home
 layoutClass: 'm-home-layout'
 
 hero:
-  name: Silence_me
+  name: Slience_me
   text: 编程随想录
   tagline: 从代码到世界的无限探索
   image:

@@ -407,6 +407,8 @@ vim /etc/ssh/sshd_config
 
 PermitRootLogin prohibit-password   # 禁止远程ssh
 PermitRootLogin yes                 # 允许远程ssh
+
+sudo systemctl daemon-reload   # 刷新配置
 ```
 
 ### 2.9 配置DNS
