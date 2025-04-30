@@ -31,8 +31,10 @@ conda install -n your_env_name [package]
 conda update conda
 
 # 创建python版本为x.x，名字为your_env_name的虚拟环境
-
 conda create -n your_env_name python=x.x
+
+# 指定路径
+conda create --prefix /home/slienceme/software/anaconda3/your_env_name python=x.x
 
 # 删除虚拟环境
 conda remove -n your_env_name --all
@@ -47,7 +49,7 @@ conda remove --name $your_env_name $package_name
 # 设置国内镜像
 [http://Anaconda.org](https://link.zhihu.com/?target=http%3A//Anaconda.org)的服务器在国外，安装多个packages时，conda下载的速度经常很慢。清华TUNA镜像源有Anaconda仓库的镜像，将其加入conda的配置即可：
 # 添加Anaconda的TUNA镜像
-conda config --add channels [https://mirrors.tuna.tsinghua.edu.cn/anaconda/pkgs/free/](https://link.zhihu.com/?target=https%3A//mirrors.tuna.tsinghua.edu.cn/anaconda/pkgs/free/)
+conda config --add channels https://mirrors.tuna.tsinghua.edu.cn/anaconda/pkgs/free/
 
 # TUNA的help中镜像地址加有引号，需要去掉
 # 设置搜索时显示通道地址
