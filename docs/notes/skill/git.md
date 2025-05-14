@@ -1,4 +1,6 @@
-# Git相关指令
+# Git&SVN
+
+## Git相关指令
 
 [跳转=>Git基础](/notes/hidden/git-basic)
 
@@ -129,3 +131,103 @@ git push --set-upstream origin master
 > 3.每个成员写完自己的程序后，基于“git add / git commit”把自己修改的内容存放到历史区，然后通过“git pull / git
 > push”把本地信息和远程仓库信息保持同步（可能涉及冲突s的处理）
 
+## SVN相关指令
+
+```bash
+sudo apt install subversion  # 安装
+
+# 查看版本
+svn --version
+
+# 检出（checkout）远程仓库到本地目录
+svn checkout <repository_url>
+svn co <repository_url>     # 简写
+
+# 向远程仓库导入本地目录（首次提交用）
+svn import <path> <repository_url> -m "import message"
+
+# 查看仓库信息
+svn info
+
+# 添加文件或目录到版本控制
+svn add <file_or_dir>
+
+# 删除版本控制的文件或目录
+svn delete <file_or_dir>
+svn del <file_or_dir>       # 简写
+
+# 提交更新到仓库
+svn commit -m "commit message"
+svn ci -m "commit message"  # 简写
+
+# 更新本地工作副本
+svn update
+svn up                      # 简写
+
+# 查看修改状态
+svn status
+svn st                      # 简写
+
+# 查看文件差异
+svn diff <file>
+svn di <file>               # 简写
+
+# 还原修改（回退工作副本的更改）
+svn revert <file_or_dir>
+
+# 查看提交日志
+svn log
+svn log -l 5                # 查看最近5条日志记录
+
+# 查看文件历史记录
+svn blame <file>
+svn praise <file>           # 等效命令
+
+# 创建分支或标签
+svn copy <src_url> <dst_url> -m "create branch or tag"
+
+# 合并其他分支的修改
+svn merge <branch_url>
+
+# 切换工作副本到其他分支或标签
+svn switch <branch_url>
+
+# 显示工作副本中文件的锁定状态
+svn status -u
+
+# 锁定文件（防止他人修改）
+svn lock <file> -m "lock reason"
+
+# 解锁文件
+svn unlock <file>
+
+# 清理工作副本（解决update或revert失败时）
+svn cleanup
+```
+
+## SVN 与 Git 命令对照表
+
+| 操作        | Git 命令                                                                       | SVN 命令                                                 |
+|-----------|------------------------------------------------------------------------------|--------------------------------------------------------|
+| 安装        | `sudo apt install git`                                                       | `sudo apt install subversion`                          |
+| 初始化仓库     | `git init`                                                                   | 无（通过 `svn import` 上传到仓库，或 `svn checkout` 检出）           |
+| 克隆远程仓库    | `git clone <url>`                                                            | `svn checkout <url>` 或 `svn co <url>`                  |
+| 添加文件到版本控制 | `git add <file>`                                                             | `svn add <file>`                                       |
+| 查看状态      | `git status`                                                                 | `svn status` 或 `svn st`                                |
+| 提交更改      | `git commit -m "message"`                                                    | `svn commit -m "message"` 或 `svn ci -m "message"`      |
+| 更新本地代码    | `git pull`                                                                   | `svn update` 或 `svn up`                                |
+| 推送到远程仓库   | `git push`                                                                   | 自动提交，无需单独推送                                            |
+| 删除文件      | `git rm <file>`                                                              | `svn delete <file>` 或 `svn del <file>`                 |
+| 查看日志      | `git log`                                                                    | `svn log`                                              |
+| 查看差异      | `git diff`                                                                   | `svn diff` 或 `svn di`                                  |
+| 回退文件更改    | `git checkout <file>`                                                        | `svn revert <file>`                                    |
+| 创建分支      | `git branch <branch>` + `git checkout <branch>` 或 `git checkout -b <branch>` | `svn copy <trunk_url> <branch_url> -m "create branch"` |
+| 合并分支      | `git merge <branch>`                                                         | `svn merge <branch_url>`                               |
+| 删除分支      | `git branch -d <branch>`                                                     | `svn delete <branch_url> -m "delete branch"`           |
+| 切换分支      | `git checkout <branch>`                                                      | `svn switch <branch_url>`                              |
+| 查看远程仓库    | `git remote -v`                                                              | 无，直接通过 URL 管理                                          |
+| 查看文件历史    | `git blame <file>`                                                           | `svn blame <file>`                                     |
+| 处理锁       | 无对应命令（Git 不锁文件）                                                              | `svn lock <file>` / `svn unlock <file>`                |
+| 清理工作区     | 无需，Git自动处理                                                                   | `svn cleanup`                                          |
+| 设置用户名邮箱   | `git config --global user.name` 等                                            | 全局配置，不通过命令设置，通常通过认证方式输入                                |
+| 设置代理      | `git config --global http.proxy`                                             | 通过环境变量设置，如 `http_proxy`                                |

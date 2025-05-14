@@ -50,7 +50,7 @@ function sidebarNotesSkill() {
       text: '技巧 & 工具',
       collapsed: false,
       items: [
-        { text: '【指令集】Git', link: 'git' },
+        { text: '【指令集】Git&SVN', link: 'git-svn' },
         { text: '【指令集】Curl', link: 'curl' },
         { text: '【技巧】gitignore', link: 'git-ignore' },
         { text: '【技巧】Ubuntu系统重装', link: 'server-install' },
