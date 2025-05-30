@@ -53,16 +53,12 @@ chown -R $USER:$USER /opt/svn/repository
 
 下面是优化后的 SVN 权限配置笔记，结构更清晰、注释更准确，方便后期复制使用：
 
-------
-
 ## 2. 修改配置文件
 
 开启账户与权限管理
 
 > 所有配置文件都在 SVN 仓库目录下的 `conf/` 文件夹中：
 >  示例仓库路径：`/opt/svn/repository/conf/`
-
-------
 
 ### 2.1 修改 `svnserve.conf` 文件（主配置）
 
@@ -82,8 +78,6 @@ authz-db = authz            # 启用路径权限控制，默认就是 authz
 realm = MySVNRepo           # 认证域名，客户端显示用，建议设定为项目名或组织名
 ```
 
-------
-
 ### 2.2 修改 `passwd` 文件（添加用户）
 
 ```bash
@@ -98,8 +92,6 @@ alice = alice123
 bob = bob123
 carol = carol123
 ```
-
-------
 
 ### 2.3 修改 `authz` 文件（配置路径权限）
 
@@ -135,8 +127,6 @@ alice = rw
 ```
 
 > 建议每个项目配置一组路径权限，确保隔离控制。
-
-------
 
 ## 3. 启动 svnserve 服务（测试用）
 
