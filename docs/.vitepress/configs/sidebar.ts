@@ -51,6 +51,7 @@ function sidebarNotesSkill() {
       collapsed: false,
       items: [
         { text: '【指令集】Git&SVN', link: 'git-svn' },
+        { text: '【技巧】Subversion', link: 'svn-server' },
         { text: '【指令集】Curl', link: 'curl' },
         { text: '【技巧】gitignore', link: 'git-ignore' },
         { text: '【技巧】Ubuntu系统重装', link: 'server-install' },
@@ -115,6 +116,7 @@ function sidebarNotesMiddleware() {
         { text: '【中间件】Redis', link: 'redis' },
         { text: '【中间件】Sentinel', link: 'sentinel' },
         { text: '【中间件】Zipkin', link: 'zipkin' },
+        { text: '【中间件】Jenkins', link: 'jenkins' },
         { text: '【合集】集群', link: 'cluster' }
       ]
     }

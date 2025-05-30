@@ -533,6 +533,34 @@ docker run -d \
     -e PORT=3308 -p13308:3308 apache/shardingsphere-proxy:latest
 ```
 
+### 5.8 Jenkins
+
+> `8080`: Web界面
+>
+> `50000`: 代理
+>
+> 官网: https://www.jenkins.io/zh/
+>
+> Docker: https://hub.docker.com/r/jenkins/jenkins
+>
+> 官方j教程: https://www.jenkins.io/zh/doc/book/installing/#docker
+
+```bash
+# 1. 拉取镜像
+docker pull jenkins/jenkins:2.504.2-lts
+
+# 2. 创建映射目录
+mkdir -p /home/slienceme/docker/jenkins
+
+# 3. 启动容器
+docker run -d \
+  -p 8080:8080 \
+  -p 50000:50000 \
+  -v /home/slienceme/docker/jenkins:/var/jenkins_home \
+  -u root \
+  jenkins/jenkins:2.504.2-lts
+```
+
 ## 6. Dockerfile
 
 > [官方教程](https://docs.docker.com/reference/dockerfile/#from)
