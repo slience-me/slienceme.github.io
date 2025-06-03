@@ -553,12 +553,45 @@ docker pull jenkins/jenkins:2.504.2-lts
 mkdir -p /home/slienceme/docker/jenkins
 
 # 3. 启动容器
-docker run -d \
+docker run --name jenkins \
   -p 8080:8080 \
   -p 50000:50000 \
   -v /home/slienceme/docker/jenkins:/var/jenkins_home \
   -u root \
-  jenkins/jenkins:2.504.2-lts
+  -d jenkins/jenkins:2.504.2-lts
+```
+
+### 5.9 Tomcat
+
+官网: https://tomcat.apache.org/
+
+Docker: https://hub.docker.com/_/tomcat
+
+```bash
+# 1. 拉取镜像 根据需要选择版本 这里是 bitnami/tomcat:10.1.41
+docker pull tomcat
+
+# 2. 创建映射目录(选择)
+mkdir -p /docker/tomcat/
+
+# webapps 目录将映射为 tomcat 容器配置的应用程序目录。
+# logs 目录将映射为 tomcat 容器的日志目录。
+# conf 目录里的配置文件将映射为 tomcat 容器的配置文件。
+
+# 3. 启动容器
+# 临时容器
+docker run --name temp -d tomcat:10.1.41
+docker cp temp:/usr/local/tomcat/conf /docker/tomcat/
+docker rm -f temp
+# 正式容器
+docker run --name tomcat \
+  -p 18080:8080 \
+  -v /docker/tomcat/conf:/usr/local/tomcat/conf \
+  -v /docker/tomcat/webapps:/usr/local/tomcat/webapps \
+  -d tomcat:10.1.41
+ 
+# 部署war包  只需要把demo.war包复制到/docker/tomcat/webapps下,他会自动解压缩
+# 访问即可：http://IP:端口/demo/
 ```
 
 ## 6. Dockerfile
