@@ -104,6 +104,108 @@
 
 ![image-20250530164330402](/images/jenkins/image-20250530164330402.png)
 
+
+
+## 4. 部署
+
+### 4.1 部署Vue项目
+
+#### ①安装配置插件`NodeJS`
+
+![image-20250604154403720](/images/jenkins/image-20250604154403720.png)
+
+![image-20250604154436842](/images/jenkins/image-20250604154436842.png)
+
+![image-20250604154555468](/images/jenkins/image-20250604154555468.png)
+
+![image-20250604154504817](/images/jenkins/image-20250604154504817.png)
+
+#### ②全局工具配置
+
+![image-20250604154707659](/images/jenkins/image-20250604154707659.png)
+
+最下面
+
+<img src="/images/jenkins/image-20250604154744871.png" alt="image-20250604154744871" style="zoom:50%;" />
+
+![image-20250604154843334](/images/jenkins/image-20250604154843334.png)
+
+#### ③创建任务
+
+<img src="/images/jenkins/image-20250604154951550.png" alt="image-20250604154951550" style="zoom:50%;" />
+
+<img src="/images/jenkins/image-20250604155019285.png" alt="image-20250604155019285" style="zoom:50%;" />
+
+<img src="/images/jenkins/image-20250604155118495.png" alt="image-20250604155118495" style="zoom:50%;" />
+
+<img src="/images/jenkins/image-20250604155138597.png" alt="image-20250604155138597" style="zoom:50%;" />
+
+下面再加一个Shell
+
+<img src="/images/jenkins/image-20250604155207439.png" alt="image-20250604155207439" style="zoom:50%;" />
+
+```bash
+#!/bin/sh -xe
+# 当前路径
+echo "当前路径：$(pwd)"
+
+# 输出 Node 和 npm 版本信息（便于排查环境问题）
+echo "Node 版本：$(node -v)"
+echo "npm 版本：$(npm -v)"
+
+# 清理旧依赖和缓存，确保干净构建
+rm -rf node_modules package-lock.json dist
+npm cache clean --force
+
+# 设置国内镜像源
+npm config set registry https://registry.npmmirror.com
+
+# 安装依赖（兼容旧版项目，跳过 peer 冲突）
+npm install --legacy-peer-deps
+
+# 构建项目
+npm run build
+
+# 检查构建结果
+if [ $? -eq 0 ]; then
+  echo "✅ 构建成功"
+else
+  echo "❌ 构建失败，请检查日志"
+  exit 1
+fi
+```
+
+#### ④ 部署（分离 待优化）
+
+这里使用docker去部署到nginx，jenkins也是运行在docker容器中的
+
+```bash
+# 创建部署目录（宿主机）
+DEPLOY_DIR=/docker/nginx/项目名
+mkdir -p "$DEPLOY_DIR"/html "$DEPLOY_DIR"/logs "$DEPLOY_DIR"/conf
+rm -rf "$DEPLOY_DIR"/html/*
+cp -r dist/* "$DEPLOY_DIR"/html/
+
+# 7. 首次部署：检查并启动 nginx 容器
+NGINX_CONTAINER_NAME=vue_nginx_container
+if [ ! "$(docker ps -aq -f name=^${NGINX_CONTAINER_NAME}$)" ]; then
+  echo "Nginx 容器不存在，首次启动..."
+  docker run -d \
+    --name "$NGINX_CONTAINER_NAME" \
+    -p 80:80 \
+    -v "$DEPLOY_DIR"/html:/usr/share/nginx/html \
+    -v "$DEPLOY_DIR"/logs:/var/log/nginx \
+    -v "$DEPLOY_DIR"/conf:/etc/nginx \
+    nginx
+else
+  echo "🔁 Nginx 容器已存在，拷贝新文件..."
+  docker cp "$DEPLOY_DIR"/html/. "$NGINX_CONTAINER_NAME":/usr/share/nginx/html
+  docker restart "$NGINX_CONTAINER_NAME"
+fi
+
+echo "✅ 首次部署完成！访问 http://localhost 或你的服务器地址查看效果"
+```
+
 ## 附录
 
 ### Maven配置
