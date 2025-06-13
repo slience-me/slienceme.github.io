@@ -56,7 +56,7 @@ export default defineConfig({
 
     footer: {
       message: `<a href="https://beian.miit.gov.cn/" target="_blank">冀公网安备13102202000626</a> | <a href="https://www.miit.gov.cn/" target="_blank">津ICP备2024026565号-1</a>`,
-      copyright: 'Copyright © 2019-present slience_me'
+      copyright: 'Copyright © 2019-2025 slience_me'
     },
 
     lastUpdated: {

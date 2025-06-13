@@ -120,7 +120,7 @@ apt         # 软件包管理器 apt install package
 yum         # 软件包管理器 yum install package
 
 ##  系统配置
-crontab     # 配置系统定时任务 crontab -e
+crontab     # 配置系统定时任务 crontab -e / -l
 vi/vim       # 编辑文件 vi/vim file.txt
 sudo        # 以管理员身份执行命令 sudo command
 
@@ -548,6 +548,15 @@ nameserver 8.8.4.4
 ```
 
 每行一个 DNS 地址，修改后保存退出即可。此方法修改后即刻生效，但重启后失效。
+
+### 2.10 设置定时任务
+
+```bash
+crontab [-u username]　　　　//省略用户表表示操作当前用户的crontab
+    -e      (编辑工作表)
+    -l      (列出工作表里的命令)
+    -r      (删除工作作)
+```
 
 ## 3. 常用技巧
 
