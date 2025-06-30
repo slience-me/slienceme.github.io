@@ -221,6 +221,191 @@ mvn –v
 </settings>
 ```
 
+## 8. 补充内容
+
+### 基础命令
+
+```bash
+# 清理项目（删除 target 目录）
+mvn clean
+
+# 编译项目
+mvn compile
+
+# 编译测试类
+mvn test-compile
+
+# 执行测试（运行 src/test/java 下的测试）
+mvn test
+
+# 打包（生成 jar/war 包）
+mvn package
+
+# 安装到本地仓库
+mvn install
+
+# 运行项目（需配置 exec 插件或 spring-boot 插件）
+mvn exec:java
+mvn spring-boot:run
+
+# 跳过测试
+mvn install -DskipTests
+mvn package -Dmaven.test.skip=true
+```
+
+### 常用生命周期阶段
+
+| 阶段       | 说明            |
+|----------|---------------|
+| validate | 验证项目是否正确      |
+| compile  | 编译源代码         |
+| test     | 使用合适的测试框架运行测试 |
+| package  | 打包生成 jar/war  |
+| verify   | 验证结果的合法性      |
+| install  | 安装到本地仓库       |
+| deploy   | 部署到远程仓库       |
+
+
+
+### 常用插件
+
+#### 1. Spring Boot 插件
+
+```xml
+
+<plugin>
+  <groupId>org.springframework.boot</groupId>
+  <artifactId>spring-boot-maven-plugin</artifactId>
+</plugin>
+```
+
+```bash
+# 启动
+mvn spring-boot:run
+
+# 生成可运行 jar
+mvn clean package
+```
+
+#### 2. 编译插件
+
+```xml
+
+<plugin>
+  <groupId>org.apache.maven.plugins</groupId>
+  <artifactId>maven-compiler-plugin</artifactId>
+  <configuration>
+    <source>1.8</source>
+    <target>1.8</target>
+  </configuration>
+</plugin>
+```
+
+#### 3. 打包跳过测试
+
+```bash
+mvn package -DskipTests
+```
+
+---
+
+### 依赖管理技巧
+
+#### 添加依赖
+
+```xml
+
+<dependencies>
+  <dependency>
+    <groupId>org.springframework.boot</groupId>
+    <artifactId>spring-boot-starter-web</artifactId>
+    <version>2.7.0</version>
+  </dependency>
+</dependencies>
+```
+
+#### 依赖排除（冲突解决）
+
+```xml
+
+<dependency>
+  <groupId>xxx</groupId>
+  <artifactId>xxx</artifactId>
+  <exclusions>
+    <exclusion>
+      <groupId>conflict-group</groupId>
+      <artifactId>conflict-artifact</artifactId>
+    </exclusion>
+  </exclusions>
+</dependency>
+```
+
+#### 依赖范围 scope
+
+```xml
+
+<scope>compile</scope>      <!-- 默认，编译/运行/测试都可用 -->
+<scope>provided</scope>     <!-- 编译期可用，运行时需外部提供 -->
+<scope>runtime</scope>      <!-- 编译不可用，运行时才加载 -->
+<scope>test</scope>         <!-- 只用于测试 -->
+```
+
+### 配置 Maven 镜像（加速）
+
+修改 `~/.m2/settings.xml` 添加阿里云镜像：
+
+```xml
+
+<mirrors>
+  <mirror>
+    <id>aliyun</id>
+    <mirrorOf>central</mirrorOf>
+    <name>Aliyun Maven</name>
+    <url>https://maven.aliyun.com/repository/central</url>
+  </mirror>
+</mirrors>
+```
+
+### 常用 trick
+
+* **查看依赖树**
+
+  ```bash
+  mvn dependency:tree
+  ```
+
+* **更新 SNAPSHOT**
+
+  ```bash
+  mvn clean install -U
+  ```
+
+* **跳过某个插件执行**
+
+  ```bash
+  mvn install -Dgpg.skip=true
+  ```
+
+* **执行某个阶段及之前阶段**
+
+  * `mvn package` 会执行 `validate -> compile -> test -> package`
+
+
+### 常见项目结构（标准 Maven）
+
+```
+project-root/
+├── src/
+│   ├── main/
+│   │   ├── java/
+│   │   ├── resources/
+│   └── test/
+│       ├── java/
+│       ├── resources/
+├── target/
+├── pom.xml
+```
+
 ::: tip 发布时间:
 2021-04-18
 :::
