@@ -10,7 +10,8 @@ function sidebarNotesBackend() {
         { text: 'Spring集成', link: 'spring' },
         { text: 'Thread', link: 'thread' },
         { text: '设计模式', link: 'design-pattern' },
-        { text: '...临时', link: 'system-architect' }
+        { text: '...临时', link: 'system-architect' },
+        { text: 'LangChain4j', link: 'langchain4j' }
       ]
     }
   ]
@@ -51,6 +52,7 @@ function sidebarNotesSkill() {
       collapsed: false,
       items: [
         { text: '【指令集】Git&SVN', link: 'git-svn' },
+        { text: '【指令集】Homebrew', link: 'homebrew' },
         { text: '【技巧】Subversion', link: 'svn-server' },
         { text: '【指令集】Curl', link: 'curl' },
         { text: '【技巧】gitignore', link: 'git-ignore' },

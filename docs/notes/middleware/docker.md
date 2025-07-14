@@ -594,6 +594,30 @@ docker run --name tomcat \
 # 访问即可：http://IP:端口/demo/
 ```
 
+### 5.10 Qdrant
+
+> 向量数据库
+
+```bash
+# 1. 拉取镜像 根据需要选择版本 这里是 qdrant/qdrant:1.14.0
+docker pull qdrant
+
+# 2. 创建映射目录(选择)
+mkdir -p /docker/qdrant/storage
+
+# 3. 启动容器
+# 正式容器
+docker run --name qdrant \
+  -p 6333:6333 \
+  -v /docker/qdrant/storage:/qdrant/storage \
+  -d qdrant/qdrant
+
+# -d：后台运行
+# --name：容器名称
+# -p 6333:6333：将容器的 API 端口映射到主机
+# -v：数据持久化，把容器中的数据挂载到本地目录（如 ./qdrant_storage）
+```
+
 ## 6. Dockerfile
 
 > [官方教程](https://docs.docker.com/reference/dockerfile/#from)
