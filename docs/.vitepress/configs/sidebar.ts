@@ -11,6 +11,7 @@ function sidebarNotesBackend() {
         { text: 'Thread', link: 'thread' },
         { text: '设计模式', link: 'design-pattern' },
         { text: '...临时', link: 'system-architect' },
+        { text: 'JavaSE知识点', link: 'javase-concepts' },
         { text: 'LangChain4j', link: 'langchain4j' }
       ]
     }

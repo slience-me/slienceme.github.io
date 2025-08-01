@@ -790,16 +790,108 @@ CMD ["java", "-jar", "my-java-project.jar"]
 
 构建镜像和运行容器
 
-1. **构建 Docker 镜像**：
+构建 Docker 镜像：
 
 ```bash
 docker build -t my-java-app .
 ```
 
-1. **运行容器**：
+运行容器：
 
 ```bash
 docker run -d -p 8080:8080 my-java-app
+```
+
+## 7. docker-compose
+
+可以使用 `docker-compose` 命令来**统一管理多个容器**
+
+```bash
+# 指定 Compose 文件版本
+version: '3.8'
+
+# 定义服务
+services:
+  # Web 服务示例
+  web:
+    image: nginx:latest                     # 使用已有镜像
+    # build: ./web                          # 或使用 Dockerfile 构建
+    ports:
+      - "8080:80"                           # 端口映射：主机端口:容器端口
+    volumes:
+      - ./html:/usr/share/nginx/html       # 目录挂载：主机路径:容器路径
+    environment:
+      - NODE_ENV=production                 # 设置环境变量
+      - TZ=Asia/Shanghai
+    depends_on:
+      - redis                               # 设置依赖服务，启动顺序
+      - db
+    container_name: my_web                  # 自定义容器名
+    restart: unless-stopped                 # 重启策略：no/always/unless-stopped/on-failure
+    working_dir: /app                       # 工作目录
+    command: ["nginx", "-g", "daemon off;"] # 启动命令（覆盖 CMD）
+    network_mode: bridge                    # 网络模式（默认 bridge）
+
+  # Redis 服务
+  redis:
+    image: redis:6.2
+    ports:
+      - "6379:6379"
+    volumes:
+      - redis_data:/data
+
+  # MySQL 数据库服务
+  db:
+    image: mysql:8.0
+    ports:
+      - "3306:3306"
+    environment:
+      - MYSQL_ROOT_PASSWORD=123456         # 设置 root 密码
+      - TZ=Asia/Shanghai
+    volumes:
+      - db_data:/var/lib/mysql
+
+# 定义卷（用于数据持久化）
+volumes:
+  redis_data:
+  db_data:
+
+# 可选：自定义网络
+networks:
+  default:
+    driver: bridge
+```
+
+常用指令：
+
+```bash
+docker-compose up -d                            # 启动所有服务（后台模式）
+docker-compose -p <指定服务名称> up -d            # 启动所有服务（指定项目名，后台模式）
+docker-compose up -d --build                    # 构建镜像后启动（适用于代码变更）
+docker-compose up                               # 前台启动（调试时用，可看到日志）
+docker-compose up -d 服务名                      # 启动指定服务
+docker-compose up -d web                        # 示例：启动名为 web 的服务
+
+docker-compose ps                               # 查看当前所有服务状态
+docker-compose logs -f                          # 查看所有服务的日志（实时输出）
+docker-compose logs -f 服务名                    # 查看指定服务的日志
+docker-compose logs -f redis                    # 示例：查看 redis 的日志
+
+docker-compose down                             # 停止并删除所有服务容器（不影响卷和镜像）
+docker-compose down -v                          # 停止并删除所有容器 + 卷（完全清理）
+docker-compose stop                             # 停止所有服务（容器未被删除）
+docker-compose start                            # 启动已停止的服务
+docker-compose restart                          # 重启所有服务
+
+docker-compose build                            # 只构建镜像，不启动
+docker-compose pull                             # 拉取镜像（适用于远程镜像服务）
+
+docker-compose exec 服务名 bash                 # 进入某个容器内部执行命令
+docker-compose exec web bash                    # 示例：进入 web 容器
+
+docker-compose -f docker-compose.prod.yml up -d                     # 使用指定 Compose 文件启动
+docker-compose -f docker-compose.yml -f docker-compose.override.yml up -d   # 使用多个 Compose 文件合并启动（覆盖策略）
+docker-compose --env-file .env up -d                                # 使用 .env 文件中的环境变量
 ```
 
 ::: tip 发布时间:
