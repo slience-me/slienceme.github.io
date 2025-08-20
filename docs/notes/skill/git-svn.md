@@ -5,15 +5,26 @@
 [跳转=>Git基础](/notes/hidden/git-basic)
 
 ```bash
-sudo apt install git  # 安装
+# ==============================
+# 1. 安装 Git
+# ==============================
+sudo apt update
+sudo apt install git -y   # 安装git
 
+# ==============================
+# 2. 配置 Git
+# ==============================
 # 查看配置信息
 git config --list
 git config --global --list
 git config -l  
 git config --global -l	
 
-# 设置代理
+# 初始化用户信息
+git config --global user.name "Your Name"
+git config --global user.email "email@example.com"
+
+# 配置代理
 git config --global http.proxy 'socks5://127.0.0.1:1080'
 git config --global https.proxy 'socks5://127.0.0.1:1080'
 git config --global https.proxy http://127.0.0.1:1080
@@ -23,103 +34,187 @@ git config --global https.proxy https://127.0.0.1:1080
 git config --global --unset http.proxy
 git config --global --unset https.proxy
 
-# 初始化Git配置
-git config --global user.name "Your Name"
-git config --global user.email "email@example.com"
+# 配置别名
+git config --global alias.co checkout
+git config --global alias.br branch
+git config --global alias.cm commit
+git config --global alias.st status
+git config --global alias.lg "log --oneline --graph --decorate"
 
-# 创建本地仓库
-git init
+# ==============================
+# 3. 本地仓库操作
+# ==============================
+git init   # 创建本地仓库
 
 # 添加文件到暂存区
 git add <file>
-git add xxx 	# 把某一个文件或者文件夹提交到暂存区
-git add . 	    # 把当前仓库中所有最新修改的文件都提交到暂存区
-git add -A	    # 把所有最新修改的文件都提交到暂存区
+git add xxx   # 提交某一个文件/文件夹
+git add .     # 提交当前目录所有文件
+git add -A    # 提交所有文件（包含新增/修改/删除）
 
-# 查看当前文件的状态（红色代表在工作区，绿色代表在暂存区，看不见表示已经提交到历史区）
-git status 
+# 查看状态
+git status
 
 # 提交文件到本地仓库
 git commit -m "Commit message"
 
-# 设置远程仓库
-git remote add origin <url>
+# ==============================
+# 4. 分支操作
+# ==============================
+git branch                # 查看本地分支
+git branch -r             # 查看远程分支
+git branch <branch>       # 创建分支
+git branch -d <branch>    # 删除分支
+git branch -f <branch> <commit>   # 强制修改分支指向
 
-# 查看远程仓库
-git remote show origin
-git remote -v 	        # 查看本地仓库和哪些远程仓库保持链接
-git remote rm origin 	# 删除origin这个关联信息
-git ls-remote --heads <repository_url>  # 查看有哪些分支
+# 切换分支
+git checkout <branch>     
+git checkout master       
+git checkout -b <branch>  # 创建并切换分支
 
-# 推送本地仓库到远程仓库
-git push -u origin master
+# 合并分支
+git merge <branch>        # 合并某分支到当前分支
+git rebase <branch>       # 变基到某分支
 
-# 克隆远程仓库到本地
+# 分支关联（设置本地分支跟踪远程分支）
+git branch -u origin/<branch>
+git branch --set-upstream-to=origin/<branch> <local_branch>
+
+# ==============================
+# 5. 远程仓库操作
+# ==============================
+git remote add origin <url>     # 设置远程仓库
+git remote -v                   # 查看远程仓库
+git remote show origin          # 查看远程仓库详情
+git remote rm origin            # 删除远程仓库
+git ls-remote --heads <url>     # 查看远程分支
+
+# 克隆仓库
 git clone <url>
-git clone -b develop <repository_url>  # -b 指定分支
+git clone -b develop <url>   # 克隆指定分支
 
-# 拉取远程仓库的更新
-git pull
-git pull origin 分支名  拉取远程仓库文件到本地   master
-git pull origin main --allow-unrelated-histories # 允许合并不相关的历史记录
+# 推送到远程仓库
+git push -u origin master    # 首次推送并建立关联
+git push origin <source>:<destination>  # 推送到指定分支
+git push origin --delete <branch>       # 删除远程分支
+git push origin :<branch>               # 删除远程分支（旧写法）
 
+# 拉取远程更新
+git pull                        # 拉取更新(fetch+merge)
+git pull origin <branch>        # 拉取指定分支
+git pull origin main --allow-unrelated-histories  # 合并不相关历史
+git pull origin <src>:<dst>     # 拉取远程src到本地dst
 
-# 创建分支并切换到该分支
-git checkout -b <branch>
+# 单独拉取
+git fetch origin
 
-# 切换到主分支
-git checkout master
+# ==============================
+# 6. 提交历史与回滚
+# ==============================
+git log         # 查看提交历史
+git reflog      # 查看操作历史（包含回滚）
 
-# 合并分支到主分支
-git merge <branch>
-
-# 删除分支
-git branch -d <branch>
-
-# 删除远程分支
-git push origin --delete <branch>
-
-# 查看分支
-git branch
-
-# 查看远程分支
-git branch -r
-
-# 查看提交历史
-git log
-git reflog   # 包含回滚的信息
-
-# 回滚到指定版本
+# 回退到某个版本
 git reset --hard <commit_id>
-git reset --hard  # 重置暂存区与工作区，与上一次commit保持一致
-git reset --hard 版本号  # 回退到某个版本
+git reset --hard   # 重置到上一次提交
+git reset --hard HEAD^   # 回退到上一个提交
 
 # 撤销未提交的修改
-git checkout -- <file>
+git checkout -- <file>  # 恢复文件到上一次提交的状态
 
-# 配置别名
-git config --global alias.<shortcut> <full_command>
-```
+# ==============================
+# 7. 高级操作
+# ==============================
+# 分离 HEAD（不依赖任何分支，仅指向某个提交）
+git checkout <commit_id>
 
-```bash
-# 常用的几个指令
--------------------------------------------------------------
-git init
-git add README.md
-git commit -m "first commit"
-git branch -M main  # 重命名分支
-git remote add origin git@github.com:slience-me/notebooks.git
-git push -u origin main  # -u 参数用于设置当前分支与远程分支的关联
--------------------------------------------------------------
-git pull origin main # 拉取并合并分支
+# 相对引用
+git checkout HEAD^   # 上一个提交
+git checkout HEAD~3  # 上3个提交
 
-git tag                # 查看标签
-git tag v1.0           # 创建标签
-git push origin v1.0   # 推送标签到远程仓库
-git push origin --tags # 推送所有标签到远程仓库
+# 撤销变更
+git revert <commit>    # 生成一个新的提交，撤销指定提交
+git reset --soft HEAD~1   # 回退上一次提交，但保留改动
+git reset --mixed HEAD~1  # 回退提交+暂存区，保留工作区改动
+git reset --hard HEAD~1   # 完全回退
 
-# 设置远程仓库的默认分支为master
-git push --set-upstream origin master 
+# Cherry-pick （挑选提交）
+git cherry-pick <commit_id>
+
+# 交互式 Rebase（修改历史）
+git rebase -i HEAD~3   # 修改最近3次提交
+
+# 标签操作
+git tag v1.0.0                 # 创建标签
+git tag -a v1.0.0 -m "msg"     # 创建附注标签
+git tag                        # 查看标签
+git push origin v1.0.0         # 推送标签
+git push origin --tags         # 推送所有标签
+git tag -d v1.0.0              # 删除本地标签
+git push origin :refs/tags/v1.0.0  # 删除远程标签
+
+# Git describe（显示标签信息）
+git describe --tags   # 最近的标签及之后的提交
+
+# ==============================
+# 8. 常用 Git 工作流
+# ==============================
+
+# --------------------------------
+# 1) Feature 开发流程 (推荐)
+# --------------------------------
+git checkout -b feature/xxx develop   # 从开发分支创建功能分支
+# (开发 & 提交代码)
+git add .
+git commit -m "feat: 新增功能 xxx"
+
+git push -u origin feature/xxx       # 推送到远程
+
+# 完成功能后合并到 develop
+git checkout develop
+git pull origin develop
+git merge feature/xxx
+git push origin develop
+
+# 清理功能分支
+git branch -d feature/xxx
+git push origin --delete feature/xxx
+
+# --------------------------------
+# 2) Release 发布流程
+# --------------------------------
+git checkout -b release/1.0.0 develop   # 从 develop 创建 release 分支
+# (修复 bug & 文档更新)
+git commit -m "chore: release 1.0.0"
+
+git checkout main                       # 切到主分支
+git merge release/1.0.0                 # 合并 release 到 main
+git tag -a v1.0.0 -m "Release 1.0.0"    # 打标签
+git push origin main
+git push origin v1.0.0                  # 推送标签
+
+git checkout develop
+git merge release/1.0.0                 # 将 release 分支的修改合并回 develop
+git branch -d release/1.0.0             # 删除本地 release
+git push origin --delete release/1.0.0  # 删除远程 release
+
+# --------------------------------
+# 3) Hotfix 紧急修复流程 （补丁patch分支）
+# --------------------------------
+git checkout -b hotfix/1.0.1 main       # 从主分支创建 hotfix
+# (修复 bug)
+git commit -m "fix: 紧急修复 xxx"
+
+git checkout main
+git merge hotfix/1.0.1
+git tag -a v1.0.1 -m "Hotfix 1.0.1"
+git push origin main
+git push origin v1.0.1
+
+git checkout develop
+git merge hotfix/1.0.1                  # 将 hotfix 也合并到 develop
+git branch -d hotfix/1.0.1
+git push origin --delete hotfix/1.0.1
 ```
 
 > 项目开发流程
