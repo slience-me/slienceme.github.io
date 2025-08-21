@@ -691,3 +691,404 @@ sudo chmod +x test.desktop
 # 然后鼠标右键选取Allow Lanuching即可
 ```
 
+### 3.2 彩色日志
+
+`lnav` 是交互式日志分析工具，可以自动解析时间戳、日志级别、过滤等。
+
+```bash
+# 安装：
+sudo apt install lnav
+
+# 查看日志：
+lnav app.log
+
+# `lnav` 会自动彩色高亮，并能用 `/` 搜索，`f` 过滤，`q` 退出
+```
+
+### 3.3 存储占用排查
+
+#### 常用命令速查表
+
+**Linux磁盘占用分析常用命令速查表**（ `du`、`df`、`ls`、`ncdu` 对比）
+
+```bash
+# ===============================
+# Linux 磁盘占用分析常用命令速查表
+# ===============================
+
+# ------- du (disk usage) -------
+# 查看目录/文件大小
+du -h --max-depth=1 /         # 查看根目录下一层大小
+du -ah --max-depth=1 /        # 查看根目录下一层，包含文件
+du -sh                        # 查看当前目录总大小
+du -sh *                      # 查看当前目录下各文件/文件夹大小
+du -ah . | sort -hr | head -20  # 查看当前目录下占用最大的20个文件/目录
+
+# ------- df (disk free) -------
+# 查看磁盘分区使用情况
+df -h                         # 以人类可读方式显示磁盘空间使用情况
+df -Th                        # 显示分区类型及使用情况
+df -i                         # 查看inode使用情况（文件数量限制）
+
+# ------- ls -------
+# 按大小列出文件
+ls -lh                        # 显示文件大小（人类可读）
+ls -lhS                       # 按文件大小排序
+ls -lhSr                      # 按文件大小逆序排序
+
+# ------- ncdu (需要安装) -------
+# 交互式查看目录占用（推荐）
+ncdu /                        # 打开根目录磁盘占用分析
+ncdu /var/log                 # 查看日志目录占用情况
+
+# ------- find -------
+# 查找大文件
+find / -type f -size +500M    # 查找大于500M的文件
+find . -type f -size +100M -exec ls -lh {} \; | sort -k 5 -h  # 当前目录大文件排序
+
+# ------- 其他常用 -------
+# 查看磁盘挂载点
+mount | column -t
+# 查看磁盘IO情况
+iostat -x 1 10   # 需安装 sysstat
+# 查看目录文件数
+ls -lR | wc -l
+
+# ===============================
+# 常见场景推荐命令
+# ===============================
+# 1. 查看目录占用情况：du -sh *
+# 2. 查找磁盘整体使用率：df -h
+# 3. 找出当前目录下最大文件/目录：du -ah . | sort -hr | head -20
+# 4. 交互式分析空间：ncdu /
+# 5. 定位大文件：find / -type f -size +1G
+```
+
+#### 磁盘爆满排查步骤
+
+**Linux 磁盘爆满排查步骤清单**
+
+```bash
+# ===============================
+# Linux 磁盘爆满排查步骤清单
+# ===============================
+
+# ① 先看磁盘整体情况
+df -h
+# 关注 Use% 超过 90% 的分区（如 /、/var、/home 等）
+# 如果 inode 用光（很多小文件），用：
+df -i
+
+# ② 定位到具体分区后，进入该目录
+cd /var   # 举例进入占用大的分区
+
+# ③ 用 du 查目录大小
+du -h --max-depth=1
+# 快速发现哪个子目录占用大
+
+# ④ 进一步深入目录
+cd log
+du -h --max-depth=1
+# 层层递进，直到找到占用空间的文件或目录
+
+# ⑤ 找大文件
+find . -type f -size +500M -exec ls -lh {} \; | sort -k 5 -h
+# 或者只要前20个最大文件
+du -ah . | sort -hr | head -20
+
+# ⑥ 如果想更直观，用 ncdu
+ncdu /
+# 支持交互式界面，可直接删除
+
+# ⑦ 常见“磁盘满”原因
+# 1. 日志文件过大 ( /var/log/ )
+# 2. 应用缓存、临时文件 ( /tmp/, /var/tmp/, /var/cache/ )
+# 3. Docker/Podman 镜像和容器数据 ( /var/lib/docker/ )
+# 4. 数据库数据文件 ( MySQL, PostgreSQL, MongoDB )
+# 5. 用户目录大文件 ( ~/Downloads, ~/Videos 等 )
+# 6. 已删除但仍被占用的文件（进程没释放）
+#    用 lsof 查：
+lsof | grep deleted
+
+# ⑧ 清理建议
+# - 日志：压缩或清空 (echo > xxx.log) 直接删除容易出问题
+# - 缓存：apt-get clean, yum clean all
+# - Docker：docker system prune -a
+# - 临时文件：rm -rf /tmp/*
+# - 已删除但占用：重启相关进程，或 kill -9 进程
+```
+
+### 3.4 日志轮转
+
+#### 基础操作
+
+1. 创建配置文件
+
+```bash
+vim /etc/logrotate.d/nginx_error_log
+```
+
+2. 填入以下内容（每周轮转一次，保留4周）
+
+```bash
+# 使用下面的定义，不能加注释
+# /data/logs/nginx/error.log {
+#   weekly              # 每周轮转一次
+#   rotate 4            # 保留4个旧日志文件
+#   compress            # 使用 gzip 压缩旧日志
+#   dateext             # 生成 error.log-20250821.gz 这种更直观的日期后缀; logrotate默认生成 error.log.1.gz
+#   missingok           # 忽略文件不存在的情况
+#   notifempty          # 空文件不处理
+#   copytruncate        # 复制一份再清空原始日志，nginx 无需重启
+#}
+
+/data/logs/nginx/error.log {
+    weekly
+    rotate 4
+    compress
+    missingok
+    notifempty
+    copytruncate
+}
+```
+
+3. 手动测试一次 logrotate 是否生效
+
+```bash
+logrotate -f /etc/logrotate.d/nginx_error_log
+```
+
+成功后，你会在 `/data/logs/nginx/` 下看到：
+
+```bash
+error.log
+error.log.1.gz
+```
+
+或是带日期后缀的 `.gz` 文件（和你系统的全局 logrotate 设置有关）
+
+4. 查看 logrotate 是否每天由系统调度运行（通常在 `/etc/cron.daily/logrotate`）
+
+确认自动生效即可。你可以手动执行看看：
+
+```bash
+sudo /etc/cron.daily/logrotate
+```
+
+可选：为整个目录配置轮转（统一管理）
+
+你也可以创建一个文件 `/etc/logrotate.d/nginx_all_logs`：
+
+```conf
+/data/logs/nginx/*.log {
+   weekly
+   rotate 4
+   compress
+   missingok
+   notifempty
+   copytruncate
+}
+```
+
+适合统一管理 `web.log`、`access.log`、`error.log` 等多个日志。
+
+---
+
+#### 常用模板
+
+**通用 Logrotate 模板库**
+
+1. Nginx / Apache Web 日志
+
+```conf
+# Web 服务器日志轮转配置
+/data/logs/nginx/*.log {
+    # 每日轮转
+    daily
+    # 保留最近 14 天的日志
+    rotate 14
+    # 压缩旧日志
+    compress
+    # 延迟压缩上一轮日志
+    delaycompress
+    # 使用日期后缀
+    dateext
+    # 如果日志不存在则忽略
+    missingok
+    # 空日志不轮转
+    notifempty
+    # 创建新日志文件并设置权限
+    create 0644 www-data www-data
+    # 不重启 Nginx，复制再清空
+    copytruncate
+}
+```
+
+2. 应用日志（Java / SpringBoot / Node.js 等）
+
+```conf
+# 应用日志轮转配置
+/data/logs/app/*.log {
+    # 每周轮转
+    weekly
+    # 保留最近 8 周日志
+    rotate 8
+    # 压缩旧日志
+    compress
+    # 延迟压缩上一轮日志
+    delaycompress
+    # 使用日期后缀
+    dateext
+    # 如果日志不存在则忽略
+    missingok
+    # 空日志不轮转
+    notifempty
+    # 创建新日志文件并设置权限
+    create 0644 appuser appgroup
+    # 不重启应用，复制再清空
+    copytruncate
+}
+```
+
+3. 系统日志
+
+```conf
+# 系统日志轮转配置
+/var/log/messages {
+    # 每周轮转
+    weekly
+    # 保留最近 12 周日志
+    rotate 12
+    # 压缩旧日志
+    compress
+    # 延迟压缩上一轮日志
+    delaycompress
+    # 空日志不轮转
+    notifempty
+    # 如果日志不存在则忽略
+    missingok
+    # 创建新日志文件并设置权限
+    create 0600 root root
+    # 轮转后通知 rsyslog 重载
+    postrotate
+        /usr/lib/rsyslog/rsyslog-rotate
+    endscript
+}
+```
+
+4. MySQL 数据库日志
+
+```conf
+# MySQL 日志轮转配置
+/var/log/mysql/*.log {
+    # 每日轮转
+    daily
+    # 保留最近 7 天日志
+    rotate 7
+    # 压缩旧日志
+    compress
+    # 使用日期后缀
+    dateext
+    # 如果日志不存在则忽略
+    missingok
+    # 空日志不轮转
+    notifempty
+    # 创建新日志文件并设置权限
+    create 0640 mysql adm
+    # 脚本共享，轮转后刷新日志
+    sharedscripts
+    postrotate
+        # 刷新 MySQL 日志文件
+        test -x /usr/bin/mysqladmin && /usr/bin/mysqladmin flush-logs
+    endscript
+}
+```
+
+5. PostgreSQL 日志
+
+```conf
+# PostgreSQL 日志轮转配置
+/var/log/postgresql/*.log {
+    # 每日轮转
+    daily
+    # 保留最近 10 天日志
+    rotate 10
+    # 压缩旧日志
+    compress
+    # 使用日期后缀
+    dateext
+    # 如果日志不存在则忽略
+    missingok
+    # 空日志不轮转
+    notifempty
+    # 创建新日志文件并设置权限
+    create 0640 postgres postgres
+    # 不重启 PostgreSQL，复制再清空
+    copytruncate
+}
+```
+
+6. Docker / 容器日志
+
+```conf
+# Docker 容器日志轮转配置
+/var/lib/docker/containers/*/*.log {
+    # 每日轮转
+    daily
+    # 保留最近 7 天日志
+    rotate 7
+    # 压缩旧日志
+    compress
+    # 使用日期后缀
+    dateext
+    # 如果日志不存在则忽略
+    missingok
+    # 空日志不轮转
+    notifempty
+    # 不重启容器，复制再清空日志
+    copytruncate
+}
+```
+
+说明：
+
+- **每条参数单独一行**，注释独立一行，安全无报错。
+- **copytruncate vs postrotate**：高并发日志建议用 `postrotate` reload，低并发或轻量日志用 `copytruncate`。
+- **dateext + delaycompress**：方便查阅历史日志，同时压缩节省空间。
+
+#### 日志轮转应用场景对照表
+
+| 日志类型            | 轮转周期     | 保留策略   | 说明 / 建议                                                  |
+| ------------------- | ------------ | ---------- | ------------------------------------------------------------ |
+| **Nginx / Apache**  | daily/weekly | 14天 / 4周 | 高并发建议 `postrotate` reload，低并发 `copytruncate` 足够   |
+| **应用日志**        | weekly       | 8周        | 日志量不大可直接 `copytruncate`，加 `dateext` 清楚历史       |
+| **系统日志**        | weekly       | 12周       | 轮转后通知 rsyslog reload，确保日志继续写入                  |
+| **MySQL 日志**      | daily        | 7天        | 使用 `mysqladmin flush-logs` 刷新日志，避免丢失              |
+| **PostgreSQL 日志** | daily        | 10天       | 轻量日志可用 copytruncate，高并发环境可用 postrotate + reload |
+| **Docker 容器日志** | daily        | 7天        | 高并发推荐直接用 Docker 自身 `log-opts` 配置 `max-size` + `max-file`，更高效 |
+
+| 日志类型            | 典型路径                             | 压缩     | 方式                           |
+| ------------------- | ------------------------------------ | -------- | ------------------------------ |
+| **Nginx / Apache**  | `/data/logs/nginx/*.log`             | compress | copytruncate / postrotate      |
+| **应用日志**        | `/data/logs/app/*.log`               | compress | copytruncate                   |
+| **系统日志**        | `/var/log/messages`                  | compress | postrotate                     |
+| **MySQL 日志**      | `/var/log/mysql/*.log`               | compress | postrotate                     |
+| **PostgreSQL 日志** | `/var/log/postgresql/*.log`          | compress | copytruncate                   |
+| **Docker 容器日志** | `/var/lib/docker/containers/*/*.log` | compress | copytruncate / docker log-opts |
+
+**关键配置说明**
+
+1. **轮转周期**
+  - 日志量大（Nginx、Docker、高并发应用） → `daily`
+  - 日志量适中（普通应用、系统日志） → `weekly`
+2. **保留策略**
+  - 保留天数或轮转次数，根据业务需求设置
+  - `rotate N` + `dateext` → N 个历史日志，带日期后缀
+3. **压缩**
+  - `compress` + `delaycompress` 推荐使用，节省空间同时保留最新日志未压缩
+4. **轮转方式**
+  - `copytruncate`：不重启应用，简单安全，轻量日志适用
+  - `postrotate ... endscript`：高并发应用或数据库，安全无日志丢失，但需要 reload
+5. **权限设置**
+  - 每个应用 / 服务使用自己的运行用户与组 (`create 0644 www-data www-data`)
+  - 避免新日志权限错误导致无法写入
