@@ -12,6 +12,7 @@ function sidebarNotesBackend() {
         { text: '设计模式', link: 'design-pattern' },
         { text: '...临时', link: 'system-architect' },
         { text: 'JavaSE知识点', link: 'javase-concepts' },
+        { text: 'Java便签', link: 'java-notes' },
         { text: 'LangChain4j', link: 'langchain4j' }
       ]
     }

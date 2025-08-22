@@ -13,7 +13,8 @@
 .vp-code-group {
   color: var(--vp-c-black-soft);
   border-radius: 8px;
-  box-shadow: 0 10px 30px 0 rgb(0 0 0 / 40%);
+  /*box-shadow: 0 10px 30px 0 rgb(0 0 0 / 40%);*/
+  box-shadow: 0 2px 4px 0 rgb(0 0 0 / 10%);
 }
 
 /* 代码组：添加macOS风格的小圆点 */
@@ -52,7 +53,6 @@
   top: 24px;
   height: calc(100% - 45px);
 }
-
 
 
 /* 代码组（无行号）：修正倒角、阴影、边距 */

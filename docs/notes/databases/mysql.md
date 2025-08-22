@@ -1,4 +1,4 @@
-﻿# MySQL
+# MySQL
 
 ## 0. 官网
 
@@ -16,7 +16,7 @@
 `DCL(Data Control Language)`数据控制语言(了解)：用来定义数据库的访问权限和安全级别，及创建用户。
 ![Alt Text](/images/20210129201353404.bmp.jpg)
 
-## 2. DDL:操作数据库、表
+## 2. DDL: 操作数据库、表
 
 ### 2.1 操作数据库：CRUD
 
@@ -170,7 +170,7 @@ drop table if exists 表名;
 :::
 
 
-## 3. DML：增删改表中数据
+## 3. DML: 增删改表中数据
 
 ::: code-group
 
@@ -220,7 +220,7 @@ update student set age = 30;
 
 明白了！我会将内容整理成一个清晰的代码块。以下是优化后的版本：
 
-## 4. DQL：查询表中的记录
+## 4. DQL: 查询表中的记录
 
 ### 4.1 查询所有记录
 
@@ -423,7 +423,168 @@ FROM dept t1,
 WHERE t1.id = t2.dept_id;
 ```
 
-这样整理后的内容更简洁且包含了多个常见的多表查询示例。如果您需要更多的例子或进一步优化，请告诉我！
+### 4.9 其他技巧
+
+#### TO_DAYS()
+
+```sql
+-- TO_DAYS() 是 MySQL 里的一个日期函数，用来把日期转换成 从公元 0000-01-01 到指定日期的天数（整数）
+
+-- 返回某日期的天数
+SELECT TO_DAYS('2025-08-22');  
+-- 结果：739496
+
+-- 可以计算两个日期的相差天数
+SELECT TO_DAYS('2025-08-22') - TO_DAYS('2025-08-20') AS diff_days;
+-- 结果：2
+
+-- 结合 NOW() 使用
+SELECT TO_DAYS(NOW()) - TO_DAYS('2025-01-01') AS days_passed;
+-- 结果：距离2025年1月1日的天数
+```
+
+#### CASE
+
+```sql
+-- UPPER 把字符串全部转换成 大写
+SELECT UCASE('hello world');    -- 结果: 'HELLO WORLD'
+-- LOWER 把字符串全部转换成 小写
+SELECT LCASE('HELLO WORLD');    -- 结果: 'hello world'
+------------------------------------------------------
+-- 简单 CASE（对某个字段进行匹配）
+CASE 字段
+    WHEN 值1 THEN 结果1
+    WHEN 值2 THEN 结果2
+    ELSE 默认结果
+END
+-- example:
+SELECT 
+    name,
+    CASE gender
+        WHEN 'M' THEN '男'
+        WHEN 'F' THEN '女'
+        ELSE '未知'
+    END AS gender_text
+FROM users;
+------------------------------------------------------
+-- 搜索 CASE（灵活条件判断，常用）
+CASE 
+    WHEN 条件1 THEN 结果1
+    WHEN 条件2 THEN 结果2
+    ELSE 默认结果
+END
+-- example:
+SELECT 
+    name,
+    score,
+    CASE 
+        WHEN score >= 90 THEN '优秀'
+        WHEN score >= 75 THEN '良好'
+        WHEN score >= 60 THEN '及格'
+        ELSE '不及格'
+    END AS grade
+FROM students;
+------------------------------------------------------
+```
+
+#### **子查询类型对比表**
+
+| 类型               | 子查询返回结果   | 父查询常用运算符       | 示例                                                         | 说明                   |
+| ------------------ | ---------------- | ---------------------- | ------------------------------------------------------------ | ---------------------- |
+| **单列单值子查询** | 一列一行（标量） | `=` 、`>` 、`<`        | `SELECT name FROM emp WHERE salary = (SELECT MAX(salary) FROM emp);` | 返回一个值，用标量比较 |
+| **单列多值子查询** | 一列多行         | `IN`、`ANY`、`ALL`     | `SELECT name FROM emp WHERE dept_id IN (SELECT id FROM dept WHERE location='北京');` | 最常见的 `IN` 用法     |
+| **多列多值子查询** | 多列多行         | `(col1,col2) IN (...)` | `SELECT name FROM emp WHERE (dept_id,job) IN (SELECT dept_id,job FROM job_rules);` | 父查询多字段同时匹配   |
+| **集合子查询**     | 结果集           | `EXISTS`、`NOT EXISTS` | `SELECT name FROM emp e WHERE EXISTS (SELECT 1 FROM dept d WHERE e.dept_id=d.id);` | 判断子查询结果是否存在 |
+
+总结口诀
+
+- **单列单值 → 用 =**
+- **单列多值 → 用 IN**
+- **多列多值 → 用 (col1,col2) IN**
+- **集合判断 → 用 EXISTS**
+
+#### UNION&UNION ALL
+
+| 特点         | **UNION**                                  | **UNION ALL**                              |
+| ------------ | ------------------------------------------ | ------------------------------------------ |
+| **作用**     | 合并两个或多个 `SELECT` 结果集，并**去重** | 合并两个或多个 `SELECT` 结果集，**不去重** |
+| **是否去重** | 自动去掉重复行                             | 保留所有行（包括重复行）                   |
+| **性能**     | 慢（因为要额外排序、去重）                 | 快（直接合并结果，不去重）                 |
+| **使用场景** | 需要唯一结果时                             | 允许重复、需要完整结果或提高性能时         |
+
+#### 行转列
+
+::: info
+假设表 `sc(sno, class, score)`，要把每个学生的多门课程成绩显示成一行：
+
+1. **CASE + 聚合函数（推荐）**
+
+```sql
+SELECT 
+    sno,
+    MAX(CASE WHEN class='english' THEN score END) AS english,
+    MAX(CASE WHEN class='math' THEN score END) AS math
+FROM sc
+GROUP BY sno;
+```
+
+- **原理**：用 `CASE` 挑出对应列的值，然后用聚合函数（MAX/SUM）汇总到一行
+- **优点**：标准 SQL，课程多可扩展
+- **缺点**：写法略长
+
+2. **IF + SUM 条件聚合**
+
+```sql
+SELECT 
+    sno,
+    SUM(IF(class='english', score, 0)) AS english,
+    SUM(IF(class='math', score, 0)) AS math
+FROM sc
+WHERE class IN ('english','math')
+GROUP BY sno;
+```
+
+- **原理**：用 `IF` 条件判断课程，然后聚合
+- **优点**：语法简洁，MySQL 支持
+- **缺点**：如果某门课程缺失，会返回 0 而不是 NULL
+3. **自连接**
+
+```sql
+SELECT 
+    e.sno,
+    e.score AS english,
+    m.score AS math
+FROM sc e
+JOIN sc m ON e.sno = m.sno
+WHERE e.class='english' AND m.class='math';
+```
+
+- **原理**：把每门课程单独作为一张表，按学生编号连接
+- **优点**：直观
+- **缺点**：课程多时 SQL 很长，性能差
+
+4. **MySQL 8.0+ JSON / 动态列（可选）**
+
+```sql
+SELECT 
+    sno,
+    JSON_OBJECTAGG(class, score) AS scores
+FROM sc
+GROUP BY sno;
+```
+
+- **原理**：把行数据转换为 JSON 对象
+- **优点**：课程多时不用手写列
+- **缺点**：结果是 JSON，不是普通列
+
+ | 方法           | 扩展性 | 结果类型 | 优点       | 缺点             |
+ | -------------- | ------ | -------- | ---------- | ---------------- |
+ | CASE + MAX     | 高     | 列       | 标准 SQL   | 写法略长         |
+ | IF + SUM       | 高     | 列       | 简洁       | 缺失课程返回 0   |
+ | 自连接         | 低     | 列       | 直观       | SQL 冗长、性能差 |
+ | JSON_OBJECTAGG | 高     | JSON     | 动态课程列 | 结果为 JSON      |
+
+:::
 
 ## 5. 约束
 
@@ -806,6 +967,140 @@ SHOW GRANTS FOR 'john'@'%';
 -- 示例：验证 'john' 用户是否已经拥有对 'mydb' 数据库的所有权限
 SHOW GRANTS FOR 'john'@'%';
 ```
+
+## 9. 后期补充内容
+
+### 9.1 MySQL 分区表
+
+> （Partitioned Table）
+
+1. 什么是分区表
+
+- **定义**：分区表是一个逻辑上的表，但底层被划分为多个物理分区，每个分区存储表的一部分数据。
+- **作用**：解决大表性能问题，提高查询和维护效率。
+- **适用场景**：
+  - 表数据量巨大（千万/亿级）。
+  - 典型查询带有分区键（如按日期、地区等）。
+  - 需要按时间范围、地区等清理或归档数据。
+
+2. 分区类型
+
+MySQL 支持四种分区方式：
+
+| 分区类型  | 特点             | 示例场景                  |
+| --------- | ---------------- | ------------------------- |
+| **RANGE** | 按范围分区       | 按年份、日期区间分区      |
+| **LIST**  | 按枚举值分区     | 按地区、省份分区          |
+| **HASH**  | 按表达式哈希取模 | 均匀分布数据，避免热点    |
+| **KEY**   | 系统内置哈希函数 | 主键/唯一键分区，随机分布 |
+
+3. 语法格式
+
+```sql
+CREATE TABLE 表名 (
+    字段定义,
+    PRIMARY KEY (分区键 [, 其他字段])
+)
+PARTITION BY {RANGE | LIST | HASH | KEY} (分区表达式)
+(
+    分区定义...
+);
+```
+
+4. 示例
+
+🔹 RANGE 分区 
+
+> 👉 按年份划分。
+
+```sql
+CREATE TABLE orders (
+    id INT NOT NULL,
+    order_date DATE NOT NULL,
+    amount DECIMAL(10,2),
+    PRIMARY KEY (id, order_date)
+)
+PARTITION BY RANGE (YEAR(order_date)) (
+    PARTITION p2022 VALUES LESS THAN (2023),
+    PARTITION p2023 VALUES LESS THAN (2024),
+    PARTITION p2024 VALUES LESS THAN (2025),
+    PARTITION pmax  VALUES LESS THAN MAXVALUE
+);
+```
+
+🔹 LIST 分区
+
+> 👉 按地区划分。
+
+```sql
+CREATE TABLE users (
+    id INT NOT NULL,
+    region VARCHAR(10),
+    PRIMARY KEY (id, region)
+)
+PARTITION BY LIST COLUMNS(region) (
+    PARTITION p_north VALUES IN ('北京','天津'),
+    PARTITION p_east  VALUES IN ('上海','杭州'),
+    PARTITION p_south VALUES IN ('广州','深圳'),
+    PARTITION p_other VALUES IN (DEFAULT)
+);
+```
+
+🔹 HASH 分区
+
+> 👉 根据 `YEAR(log_date)` 哈希值，均匀分成 4 个分区。
+
+```sql
+CREATE TABLE logs (
+    id INT NOT NULL,
+    log_date DATE NOT NULL,
+    message TEXT,
+    PRIMARY KEY (id, log_date)
+)
+PARTITION BY HASH (YEAR(log_date)) PARTITIONS 4;
+```
+
+🔹 KEY 分区
+
+> 👉 MySQL 内部哈希函数，基于 `id` 分区。
+
+```sql
+CREATE TABLE sales (
+    id INT NOT NULL AUTO_INCREMENT,
+    amount DECIMAL(10,2),
+    PRIMARY KEY (id)
+)
+PARTITION BY KEY (id) PARTITIONS 4;
+```
+
+5. 注意事项
+
+> 1. 分区键必须包含在 **主键/唯一索引** 中。
+> 2. 分区表不支持 **外键**。
+> 3. 每个分区是一个独立物理文件。
+> 4. 分区数目不要太多，一般几十个以内。
+> 5. 查询必须包含分区键，才能利用分区裁剪，否则扫描所有分区。
+>
+> 6. 常见用途
+>
+> - **大数据量查询优化**：按时间或区域分区，提高查询性能。
+> - **分区归档**：直接 `DROP PARTITION`，快速删除历史数据。
+> - **分区维护**：分区间数据独立，可单独管理。
+
+**总结口诀**
+
+- **RANGE：区间切分**
+- **LIST：枚举值**
+- **HASH：均匀分布**
+- **KEY：系统自动哈希**
+
+## 10. 小知识合集
+
+> 1. SQL Server中每一条select、insert、update、delete语句都是`隐形事务`的一部分，`显性事务`用`BEGIN TRANSACTION`明确指定事务
+> 2. `Mysql(版本8.0.25)`不支持full join，执行报错【1064 - You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near 'full join 】
+> 3. <> 不等于表示     WHERE p1.name <> p2.name;
+
+
 
 ::: tip 发布时间:
 2021-01-29

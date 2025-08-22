@@ -7,7 +7,8 @@
 
 /* 代码块：增加留空边距 增加阴影 */
 .vp-doc div[class*=language-] {
-  box-shadow: 0 10px 30px 0 rgb(0 0 0 / 40%);
+  /*box-shadow: 0 10px 30px 0 rgb(0 0 0 / 40%);*/
+  box-shadow: 0 2px 4px 0 rgb(0 0 0 / 10%);
   padding-top: 20px;
 }
 

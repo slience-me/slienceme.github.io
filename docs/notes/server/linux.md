@@ -27,6 +27,7 @@ chown [新的所有者用户名]:[新的所属组名] [文件名]
 chown newuser:newgroup example.txt
 
 # 更改文件的权限 `u` 表示所有者权限，`go` 表示所属组和其他用户权限，`rw` 表示读取和写入权限，`r` 表示只读权限。
+# -R 包括子文件操作
 chmod [权限设置] [文件名]
 chmod u=rw,go=r example.txt
 chmod 644 example.txt
@@ -56,6 +57,7 @@ more  # less largefile.txt  分页显示文件内容
 less
 head  # head -n 10 file.txt  显示文件开头或结尾的内容
 tail
+# 详细看 3.5 常用日志查看指令
 
 ## 系统信息
 uname        # 显示系统信息 uname -a
@@ -71,10 +73,10 @@ reboot      # 重新启动系统 reboot
 ## 用户相关
 su      	# 切换用户 su root
 who         # 显示当前登录用户信息
+
 useradd     # 添加新用户 useradd -m newuser
 userdel     # 删除用户 userdel -r newuser
 passwd      # 修改用户密码 passwd [选项] 用户名 -l 禁用账号 -u 口令解锁 -d 使账号无口令 -f 强迫用户下次登录时修改口令。
-
 
 ## 文件相关
 chmod       # 修改文件权限 chmod 777 file.txt
@@ -140,9 +142,75 @@ tasklist | findstr 进程ID			# 查看进程ID程序源
 ping 
 ```
 
-## 2. 配置相关
+## 2. 用户相关指令
 
-### 2.1 目录介绍
+```bash
+# ==============================
+# 1. 用户管理 (User Management)
+# ==============================
+
+useradd -m newuser                   # 添加新用户 (同时创建主目录)
+useradd -u 1001 -g users -s /bin/bash -c "Test User" newuser # 添加新用户并指定 UID、GID、默认 shell、描述信息
+useradd -r sysuser                   # 添加一个系统用户 (不登录)
+useradd -d /opt/myhome newuser       # 添加用户并设置家目录位置
+passwd newuser                       # 设置用户密码
+usermod -s /bin/zsh newuser          # 修改用户属性 (例如修改默认 shell)
+usermod -l newname oldname           # 修改用户名
+usermod -u 2000 newuser              # 修改用户 UID
+usermod -d /home/newhome -m newuser  # 修改用户的家目录 (并移动旧目录下的文件)
+usermod -L newuser                   # 锁定用户 (禁止登录)
+passwd -l newuser                    # 锁定用户 (禁止登录)
+usermod -U newuser                   # 解锁用户
+passwd -u newuser                    # 解锁用户
+userdel newuser                      # 删除用户 (保留家目录)
+userdel -r newuser                   # 删除用户及其家目录
+
+# ==============================
+# 2. 用户组管理 (Group Management)
+# ==============================
+
+groupadd developers            # 新建用户组
+usermod -aG developers newuser # 添加用户到组
+usermod -g developers newuser  # 修改用户主组
+groups newuser                 # 查看用户所属组
+id newuser                     # 查看用户所属组
+groupdel developers            # 删除用户组
+
+# ==============================
+# 3. 权限与切换用户 (Permissions & Switch User)
+# ==============================
+
+su - newuser                   # 切换用户 (需要密码)
+sudo -i -u newuser             # 切换用户 (root 免密码)
+sudo ls /root                  # 临时以 root 权限执行命令
+chown newuser:developers /data/file  # 修改文件/目录所属用户和组
+chmod 755 /data/file           # 修改权限 (读写执行 rwx = 421)  =mode & ~umask
+
+# ==============================
+# 4. 查看用户信息 (User Info)
+# ==============================
+
+id newuser                     # 查看用户 UID / GID / 组信息
+finger newuser                 # 查看用户详细信息 # 可能需要安装 finger
+cat /etc/passwd                # 查看所有用户
+cat /etc/group                 # 查看所有组
+cat /etc/shadow                # 查看 shadow 密码文件 (root)
+
+# ==============================
+# 5. 特殊案例 (Special Cases)
+# ==============================
+
+useradd -u 0 -o admin          # 创建一个 UID 为 0 的用户 (等于 root，危险!)
+passwd admin
+
+visudo                         # 添加 sudo 权限 (编辑 sudoers 文件)
+                							 # 在文件中添加一行:  newuser ALL=(ALL) ALL  
+usermod -aG sudo newuser       # 或者直接写入 sudo 组
+```
+
+## 3. 配置相关
+
+### 3.1 目录介绍
 
 ```bash
 # Linux根目录下每个文件夹的功能
@@ -206,7 +274,7 @@ systemctl list-unit-files --state=enabled  	# 列出所有已启用的服务
 systemctl list-unit-files --state=disabled  # 列出所有已禁用的服务
 ```
 
-### 2.2 配置Linux环境变量
+### 3.2 配置Linux环境变量
 
 ```bash
 # 配置Linux环境变量
@@ -214,7 +282,7 @@ export PATH=$PATH:/usr/local/bin  # 添加到PATH环境变量中
 source ~/.bashrc                  # 使环境变量生效
 ```
 
-### 2.3 ufw防火墙
+### 3.3 ufw防火墙
 
 ```bash
 # 配置防火墙操作 【ubuntu】
@@ -241,7 +309,7 @@ sudo ufw logging on         	# 启动日志记录
 sudo tail -f /var/log/ufw.log  	# 查询日志
 ```
 
-### 2.3 firewalld防火墙
+### 3.3 firewalld防火墙
 
 ```bash
 sudo apt update && sudo apt install firewalld  # 安装 firewalld
@@ -292,7 +360,7 @@ sudo firewall-cmd --zone=public --remove-masquerade --permanent 	# 关闭命令
 sudo firewall-cmd --add-forward-port=port=80:proto=tcp:toport=8080:toaddr=192.168.0.249 --permanent # 让外网访问服务器的80端口，然后 firewalld 转发到 内网设备的 8080
 ```
 
-### 2.4 查看IP
+### 3.4 查看IP
 
 ```bash
 # 查看IP 【ubuntu】
@@ -306,7 +374,7 @@ route -n     # 查看网关
 ifconfig     # 需要安装 yum install net-tools
 ```
 
-### 2.5 配置静态IP操作 ubuntu
+### 3.5 配置静态IP操作 ubuntu
 
 ```bash
 # 配置静态IP操作 【ubuntu】
@@ -341,7 +409,7 @@ DNS1=8.8.8.8             # 设置DNS服务器
 service network restart  # 重启网络服务
 ```
 
-### 2.6 MySQL(系统级)
+### 3.6 MySQL(系统级)
 
 ```bash
 # 配置MySQL操作  【ubuntu】系统
@@ -384,7 +452,7 @@ service mysql stop    # 停止MySQL状态
 mysql -u root -p        # 连接MySQL数据库
 ```
 
-### 2.7 配置uwsgi操作
+### 3.7 配置uwsgi操作
 
 ```bash
 # 配置uwsgi操作
@@ -392,7 +460,7 @@ uwsgi --ini uwsgi.ini  # 启动uwsgi服务
 uwsgi --stop uwsgi.pid  # 停止uwsgi服务
 ```
 
-### 2.8 安装SSH服务
+### 3.8 安装SSH服务
 
 ```bash
 # 安装SSH服务 ubuntu
@@ -411,7 +479,7 @@ PermitRootLogin yes                 # 允许远程ssh
 sudo systemctl daemon-reload   # 刷新配置
 ```
 
-### 2.9 配置DNS
+### 3.9 配置DNS
 
 #### 1）永久修改DNS
 
@@ -549,7 +617,7 @@ nameserver 8.8.4.4
 
 每行一个 DNS 地址，修改后保存退出即可。此方法修改后即刻生效，但重启后失效。
 
-### 2.10 设置定时任务
+### 3.10 设置定时任务
 
 ```bash
 crontab [-u username]　　　　//省略用户表表示操作当前用户的crontab
@@ -558,7 +626,7 @@ crontab [-u username]　　　　//省略用户表表示操作当前用户的cro
     -r      (删除工作作)
 ```
 
-### 2.11 硬盘扩容
+### 3.11 硬盘扩容
 
 ````bash
 root@slienceme-wmware:~# lsblk
@@ -668,9 +736,9 @@ df -h
 └───────────────────────────────┘
 ````
 
-## 3. 常用技巧
+## 4. 常用技巧(后期补充)
 
-### 3.1 添加应用快捷方式到桌面
+### 4.1 添加应用快捷方式到桌面
 
 ```bash
 # 在桌面创建一个名称为 应用名称.desktop的文件，例如 test.desktop
@@ -691,7 +759,7 @@ sudo chmod +x test.desktop
 # 然后鼠标右键选取Allow Lanuching即可
 ```
 
-### 3.2 彩色日志
+### 4.2 彩色日志
 
 `lnav` 是交互式日志分析工具，可以自动解析时间戳、日志级别、过滤等。
 
@@ -705,7 +773,7 @@ lnav app.log
 # `lnav` 会自动彩色高亮，并能用 `/` 搜索，`f` 过滤，`q` 退出
 ```
 
-### 3.3 存储占用排查
+### 4.3 存储占用排查
 
 #### 常用命令速查表
 
@@ -818,9 +886,11 @@ lsof | grep deleted
 # - 已删除但占用：重启相关进程，或 kill -9 进程
 ```
 
-### 3.4 日志轮转
+### 4.4 日志轮转
 
 #### 基础操作
+
+::: info 基础操作
 
 1. 创建配置文件
 
@@ -892,9 +962,11 @@ sudo /etc/cron.daily/logrotate
 
 适合统一管理 `web.log`、`access.log`、`error.log` 等多个日志。
 
----
+:::
 
 #### 常用模板
+
+::: info 常用模板
 
 **通用 Logrotate 模板库**
 
@@ -1056,39 +1128,414 @@ sudo /etc/cron.daily/logrotate
 - **copytruncate vs postrotate**：高并发日志建议用 `postrotate` reload，低并发或轻量日志用 `copytruncate`。
 - **dateext + delaycompress**：方便查阅历史日志，同时压缩节省空间。
 
+:::
+
 #### 日志轮转应用场景对照表
 
-| 日志类型            | 轮转周期     | 保留策略   | 说明 / 建议                                                  |
-| ------------------- | ------------ | ---------- | ------------------------------------------------------------ |
-| **Nginx / Apache**  | daily/weekly | 14天 / 4周 | 高并发建议 `postrotate` reload，低并发 `copytruncate` 足够   |
-| **应用日志**        | weekly       | 8周        | 日志量不大可直接 `copytruncate`，加 `dateext` 清楚历史       |
-| **系统日志**        | weekly       | 12周       | 轮转后通知 rsyslog reload，确保日志继续写入                  |
-| **MySQL 日志**      | daily        | 7天        | 使用 `mysqladmin flush-logs` 刷新日志，避免丢失              |
-| **PostgreSQL 日志** | daily        | 10天       | 轻量日志可用 copytruncate，高并发环境可用 postrotate + reload |
-| **Docker 容器日志** | daily        | 7天        | 高并发推荐直接用 Docker 自身 `log-opts` 配置 `max-size` + `max-file`，更高效 |
+::: info 日志轮转应用场景对照表
 
-| 日志类型            | 典型路径                             | 压缩     | 方式                           |
-| ------------------- | ------------------------------------ | -------- | ------------------------------ |
-| **Nginx / Apache**  | `/data/logs/nginx/*.log`             | compress | copytruncate / postrotate      |
-| **应用日志**        | `/data/logs/app/*.log`               | compress | copytruncate                   |
-| **系统日志**        | `/var/log/messages`                  | compress | postrotate                     |
-| **MySQL 日志**      | `/var/log/mysql/*.log`               | compress | postrotate                     |
-| **PostgreSQL 日志** | `/var/log/postgresql/*.log`          | compress | copytruncate                   |
-| **Docker 容器日志** | `/var/lib/docker/containers/*/*.log` | compress | copytruncate / docker log-opts |
+| 日志类型               | 轮转周期         | 保留策略     | 说明 / 建议                                                      |
+|--------------------|--------------|----------|--------------------------------------------------------------|
+| **Nginx / Apache** | daily/weekly | 14天 / 4周 | 高并发建议 `postrotate` reload，低并发 `copytruncate` 足够              |
+| **应用日志**           | weekly       | 8周       | 日志量不大可直接 `copytruncate`，加 `dateext` 清楚历史                     |
+| **系统日志**           | weekly       | 12周      | 轮转后通知 rsyslog reload，确保日志继续写入                                |
+| **MySQL 日志**       | daily        | 7天       | 使用 `mysqladmin flush-logs` 刷新日志，避免丢失                         |
+| **PostgreSQL 日志**  | daily        | 10天      | 轻量日志可用 copytruncate，高并发环境可用 postrotate + reload              |
+| **Docker 容器日志**    | daily        | 7天       | 高并发推荐直接用 Docker 自身 `log-opts` 配置 `max-size` + `max-file`，更高效 |
+
+| 日志类型               | 典型路径                                 | 压缩       | 方式                             |
+|--------------------|--------------------------------------|----------|--------------------------------|
+| **Nginx / Apache** | `/data/logs/nginx/*.log`             | compress | copytruncate / postrotate      |
+| **应用日志**           | `/data/logs/app/*.log`               | compress | copytruncate                   |
+| **系统日志**           | `/var/log/messages`                  | compress | postrotate                     |
+| **MySQL 日志**       | `/var/log/mysql/*.log`               | compress | postrotate                     |
+| **PostgreSQL 日志**  | `/var/log/postgresql/*.log`          | compress | copytruncate                   |
+| **Docker 容器日志**    | `/var/lib/docker/containers/*/*.log` | compress | copytruncate / docker log-opts |
 
 **关键配置说明**
 
 1. **轮转周期**
-  - 日志量大（Nginx、Docker、高并发应用） → `daily`
-  - 日志量适中（普通应用、系统日志） → `weekly`
+
+- 日志量大（Nginx、Docker、高并发应用） → `daily`
+- 日志量适中（普通应用、系统日志） → `weekly`
+
 2. **保留策略**
-  - 保留天数或轮转次数，根据业务需求设置
-  - `rotate N` + `dateext` → N 个历史日志，带日期后缀
+
+- 保留天数或轮转次数，根据业务需求设置
+- `rotate N` + `dateext` → N 个历史日志，带日期后缀
+
 3. **压缩**
-  - `compress` + `delaycompress` 推荐使用，节省空间同时保留最新日志未压缩
+
+- `compress` + `delaycompress` 推荐使用，节省空间同时保留最新日志未压缩
+
 4. **轮转方式**
-  - `copytruncate`：不重启应用，简单安全，轻量日志适用
-  - `postrotate ... endscript`：高并发应用或数据库，安全无日志丢失，但需要 reload
+
+- `copytruncate`：不重启应用，简单安全，轻量日志适用
+- `postrotate ... endscript`：高并发应用或数据库，安全无日志丢失，但需要 reload
+
 5. **权限设置**
-  - 每个应用 / 服务使用自己的运行用户与组 (`create 0644 www-data www-data`)
-  - 避免新日志权限错误导致无法写入
+
+- 每个应用 / 服务使用自己的运行用户与组 (`create 0644 www-data www-data`)
+- 避免新日志权限错误导致无法写入
+
+:::
+
+### 4.5 常用日志查看指令
+
+::: info 日志查看
+
+1. **日志浏览类命令**
+
+这些命令主要用于 **查看日志内容、翻页和搜索**
+
+| 命令               | 用法 / 特点                                 |
+|------------------|-----------------------------------------|
+| **cat 文件**       | 全部显示文件内容，适合小文件，不分页                      |
+| **more 文件**      | 分页显示，大文件可翻页（空格翻页、回车逐行）                  |
+| **less 文件**      | 分页显示，比 `more` 强，支持前后翻页、搜索 `/关键词`、退出 `q` |
+| **view 文件**      | 以只读模式打开文件，实际上是 `vim -R`                 |
+| **vim 文件**       | 可编辑或只读查看文件，支持搜索、跳转行、语法高亮                |
+| **tail -n N 文件** | 显示文件最后 N 行，常用于查看最新日志                    |
+| **tail -f 文件**   | 实时跟踪文件追加内容，常用于监控日志                      |
+| **tail -c 文件**   | 显示的是最后的字节数                              |
+| **head -n N 文件** | 查看文件前 N 行                               |
+
+**常用组合**：
+
+```bash
+tail -f /var/log/syslog | grep "error"
+```
+
+- 实时查看日志中包含 `error` 的行
+
+2. **日志处理/行操作类命令**
+
+这些命令主要用于 **格式化、筛选、加行号等**
+
+| 命令       | 用法 / 特点                                                        |
+|----------|----------------------------------------------------------------|
+| **sed**  | 流编辑器，可对文件逐行处理示例：`sed '3,7d' 文件` 删除第3-7行，`sed -n '5p' 文件` 打印第5行 |
+| **awk**  | 高级文本处理，按字段操作，统计、过滤示例：`awk '{print $1}' 文件` 输出每行第1列             |
+| **nl**   | 给文件加行号输出示例：`nl 文件`                                             |
+| **grep** | 按关键词过滤行示例：`grep "error" 文件`                                    |
+| **cut**  | 按列截取文本示例：`cut -d',' -f1 文件` 提取第1列（逗号分隔）                        |
+| **sort** | 排序文本示例：`sort 文件`                                               |
+| **uniq** | 去重相邻重复行，常和 `sort` 配合使用                                         |
+
+3. **使用场景总结**
+
+- **快速查看整个日志** → `cat` / `more` / `less`
+- **查看最新日志** → `tail -n` / `tail -f`
+- **查看特定行/行号** → `sed` / `awk` / `nl`
+- **筛选关键词** → `grep`
+- **处理列/字段** → `cut` / `awk`
+- **排序或去重** → `sort` / `uniq`
+
+:::
+
+### 4.6 fstab自动挂载的文件系统
+
+::: info fstab
+
+1. **fstab 简介**
+
+- 文件路径：`/etc/fstab`
+- 作用：定义系统启动时 **自动挂载** 的文件系统。
+- 每一行描述一个文件系统，格式如下：
+
+```text
+<device>   <mount_point>   <filesystem_type>   <options>   <dump>   <pass>
+```
+
+字段说明：
+
+1. **device**：设备名或UUID（推荐UUID，避免设备顺序变化导致出错）。
+2. **mount_point**：挂载点目录。
+3. **filesystem_type**：如 `ext4`、`xfs`、`swap`、`nfs` 等。
+4. **options**：挂载选项，比如 `defaults`、`ro`、`rw`、`noexec`。
+5. **dump**：`0`=不做dump备份，`1`=允许dump。
+6. **pass**：fsck检查顺序，`0`=不检查，`1`=root分区，`2`=其他分区。
+
+---
+
+2. **常用命令**
+
+（1）查看挂载状态
+
+```bash
+mount           # 查看当前已挂载的文件系统
+mount -a        # 按照 /etc/fstab 配置重新挂载所有
+findmnt         # 树状显示挂载点信息
+df -h           # 查看挂载分区的空间使用情况
+```
+
+（2）测试 fstab 配置
+
+```bash
+mount -a        # 检查 /etc/fstab 是否有配置错误
+```
+
+⚠️ 如果写错了，系统可能开机卡死（推荐测试时先 `mount -a` 验证）。
+
+（3）查看设备 UUID
+
+```bash
+blkid           # 列出所有分区及 UUID
+lsblk -f        # 列出文件系统类型、挂载点和UUID
+```
+
+（4）手动挂载/卸载
+
+```bash
+mount /dev/sdb1 /mnt/data   # 临时挂载
+umount /mnt/data            # 卸载
+```
+
+（5）修改 fstab 并生效
+
+```bash
+vim /etc/fstab
+mount -a        # 检查是否配置正确
+```
+
+3. **fstab 常见挂载选项**
+
+- `defaults`：常用默认选项（rw, suid, dev, exec, auto, nouser, async）。
+- `ro`：只读。
+- `rw`：可读写。
+- `noexec`：禁止执行文件。
+- `user`：允许普通用户挂载。
+- `auto`：开机自动挂载。
+- `noauto`：必须手动挂载。
+
+示例：
+
+```text
+UUID=xxxx-xxxx   /data   ext4    defaults    0  2
+```
+
+4. 常见应用场景
+
+1. **新增数据盘自动挂载**
+
+   ```text
+   UUID=1234-5678   /data   ext4    defaults    0  2
+   ```
+
+2. **挂载 swap 分区**
+
+   ```text
+   UUID=8765-4321   none    swap    sw          0  0
+   ```
+
+3. **挂载网络文件系统 (NFS)**
+
+   ```text
+   192.168.1.100:/share   /mnt/nfs   nfs   defaults  0  0
+   ```
+
+**常用操作步骤**
+
+```bash
+# 1. 查看当前挂载情况
+mount              # 查看所有已挂载的分区和挂载点
+findmnt            # 以树状结构显示挂载信息
+cat /proc/mounts   # 查看内核实际挂载表（比 mount 更真实）
+
+# 2. 测试 fstab 配置
+mount -a           # 重新挂载 /etc/fstab 中所有能挂载的项目（测试配置是否有误）
+
+# 3. 检查设备 UUID 和 LABEL
+blkid              # 查看磁盘设备的 UUID / LABEL
+lsblk -f           # 以树形结构显示文件系统类型、UUID、挂载点
+udevadm info -q all -n /dev/sda1 | grep ID_FS_UUID
+
+# 4. 手动挂载 / 卸载
+mount /dev/sda1 /mnt          # 临时挂载（不会写入 fstab）
+umount /mnt                   # 卸载挂载点
+umount /dev/sda1              # 卸载设备
+
+# 5. 使用 fstab 自动挂载（编辑配置文件）
+vim /etc/fstab                 # 编辑配置
+# 格式：
+# <设备>   <挂载点>   <文件系统>   <选项>         <dump>  <pass>
+# UUID=xxxx  /data   ext4         defaults       0       2
+
+# 6. 挂载指定 fstab 项
+mount /data        # 只挂载 fstab 中 /data 的配置项
+
+# 7. 检查挂载是否成功
+df -h              # 查看磁盘分区大小和挂载情况
+lsblk              # 查看设备和挂载点对应关系
+findmnt /data      # 查看某个挂载点的具体信息
+
+# 8. 常用挂载选项（fstab 第四列）
+defaults           # 默认选项，相当于 rw,suid,dev,exec,auto,nouser,async
+ro / rw            # 只读 / 读写
+noexec             # 禁止执行二进制文件
+nosuid             # 禁止 SUID/SGID
+nodev              # 禁止解释设备文件
+noauto             # 不随开机自动挂载
+user               # 普通用户可挂载
+nofail             # 启动时挂载失败不报错
+```
+
+:::
+
+### 4.7 Vim编辑器
+
+::: info Vim
+
+```bash
+# ========================
+# VIM 编辑器常用指令合集
+# ========================
+
+# 1. 进入和退出
+vim filename            # 打开文件
+:q                      # 退出
+:q!                     # 强制退出（不保存）
+:w                      # 保存
+:wq / :x                # 保存并退出
+ZZ                      # 保存并退出（大写ZZ）
+
+# 2. 光标移动
+h / l                   # 左 / 右
+j / k                   # 下 / 上
+0                       # 移动到行首
+^                       # 移动到行首第一个非空字符
+$                       # 移动到行尾
+gg                      # 跳到文件第一行
+G                       # 跳到文件最后一行
+:n                      # 跳到第 n 行
+Ctrl + f                # 向下翻页
+Ctrl + b                # 向上翻页
+
+# 3. 编辑操作
+i                       # 在光标前插入
+I                       # 在行首插入
+a                       # 在光标后插入
+A                       # 在行尾插入
+o                       # 在当前行下插入新行
+O                       # 在当前行上插入新行
+r                       # 替换光标处字符
+R                       # 替换模式（连续覆盖）
+
+# 4. 删除操作
+x                       # 删除光标所在字符
+dd                      # 删除整行
+ndd                     # 删除 n 行
+d$                      # 删除到行尾
+d0                      # 删除到行首
+D                       # 删除到行尾（等于 d$）
+
+# 5. 复制与粘贴
+yy                      # 复制当前行
+nyy                     # 复制 n 行
+p                       # 粘贴到光标后
+P                       # 粘贴到光标前
+
+# 6. 撤销与恢复
+u                       # 撤销
+Ctrl + r                # 恢复撤销
+
+# 7. 搜索与替换
+/word                   # 向下搜索“word”
+?word                   # 向上搜索“word”
+n                       # 重复上次搜索（同方向）
+N                       # 重复上次搜索（反方向）
+:%s/old/new/g           # 替换所有 old 为 new
+:n,m s/old/new/g        # 在 n 到 m 行之间替换
+
+# 8. 可视化模式（选择文本）
+v                       # 进入字符可视模式
+V                       # 进入行可视模式
+Ctrl + v                # 进入块选择模式
+y                       # 复制选中
+d                       # 删除选中
+p                       # 粘贴
+
+# 9. 窗口操作
+:sp filename            # 水平分屏并打开文件
+:vsp filename           # 垂直分屏并打开文件
+Ctrl + w s              # 水平分屏
+Ctrl + w v              # 垂直分屏
+Ctrl + w w              # 在分屏间切换
+Ctrl + w q              # 关闭当前分屏
+
+# 10. 文件操作
+:e filename             # 打开新文件
+:r filename             # 读入文件内容到当前位置
+:n                      # 打开下一个文件
+:prev                   # 打开上一个文件
+:ls                     # 查看已打开文件列表
+:b n                    # 切换到第 n 个 buffer
+
+# 11. 书签与跳转
+ma                      # 标记当前位置为 a
+`a                      # 跳转到标记 a
+''                      # 跳转到上一次光标位置
+
+# 12. 高级替换与正则
+:%s/\<old\>/new/g       # 只替换整个单词 old
+:%s/old/new/gi          # 全文替换，忽略大小写
+```
+
+建议学习顺序：
+
+1. **基本移动** → h j k l / 0 / $ / gg / G
+2. **编辑与删除** → i, a, o, dd, yy, p
+3. **搜索替换** → /word, :%s/old/new/g
+4. **分屏与 buffer** → :sp, :vsp, :ls, :b n
+5. **进阶** → 可视化模式 (v, V, Ctrl+v)，标记跳转 (ma, `a)
+
+:::
+
+### 4.8 Nano编辑器
+
+::: info nano
+
+**nano 常用操作对照表**
+
+| 命令 / 快捷键             | 功能说明                | 示例 / 说明            |
+|----------------------|---------------------|--------------------|
+| `nano file.txt`      | 打开或新建文件             | `nano /etc/hosts`  |
+| **Ctrl + O** (`^O`)  | 保存文件（Write Out）     | 按下后确认文件名，回车保存      |
+| **Ctrl + X** (`^X`)  | 退出 nano             | 如果有修改，会提示是否保存      |
+| **Ctrl + R** (`^R`)  | 读取文件并插入到当前光标处       | 可用于合并内容            |
+| **Ctrl + W** (`^W`)  | 搜索（Where Is）        | 输入关键字并回车           |
+| **Ctrl + \** (`^\\`) | 替换文本                | 输入要查找和替换的字符串       |
+| **Ctrl + K** (`^K`)  | 剪切整行                | 光标所在行会被剪切到缓冲区      |
+| **Ctrl + U** (`^U`)  | 粘贴剪切的行              | 在光标位置粘贴            |
+| **Ctrl + G** (`^G`)  | 帮助菜单（Get Help）      | 会显示所有快捷键           |
+| **Ctrl + T** (`^T`)  | 调用拼写检查（Spell Check） | 依赖拼写检查工具           |
+| **Ctrl + _** (`^_`)  | 跳转到指定行号             | 输入行号快速定位           |
+| **Alt + A**          | 选中文本（开始标记）          | 可配合 `Ctrl + K` 剪切块 |
+| **Alt + U**          | 撤销操作                | nano 2.3 以后支持      |
+| **Alt + E**          | 重做操作                | 撤销的再恢复             |
+
+**常见场景示例**
+
+1. **编辑配置文件**
+
+   ```bash
+   nano /etc/fstab
+   ```
+
+   修改后：`Ctrl + O` 保存 → 回车 → `Ctrl + X` 退出。
+
+2. **快速搜索关键词**
+
+- `Ctrl + W` → 输入 `mount` → 回车。
+
+3. **剪切多行**
+
+- 光标移到行首 → `Ctrl + K` 连按几次 → `Ctrl + U` 粘贴。
+
+**小技巧**
+
+- `^` 表示 **Ctrl**，`M-` 表示 **Alt**。
+  比如：`^X` = `Ctrl + X`，`M-U` = `Alt + U`。
+- 和 `vim` 不同，nano 一进入就能直接输入文本，不需要模式切换。
+
+:::
