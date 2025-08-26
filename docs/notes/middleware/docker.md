@@ -52,7 +52,8 @@ sudo docker pull mysql:5.7
 
 ### 【ubuntu】
 
-> [阿里云开源镜像源](https://developer.aliyun.com/mirror/docker-ce)
+> [阿里云开源镜像源](https://developer.aliyun.com/mirror/docker-ce)  <br/>
+> [=>安装脚本文件](https://github.com/slience-me/picGo/blob/master/img/docker-install.sh)
 
 ```bash
 #----------------------------------------------------------------
