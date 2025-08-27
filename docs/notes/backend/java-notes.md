@@ -632,3 +632,731 @@ D. `实现国际化应用常用的手段是利用ResourceBundle类`
 知识点：Java
 
 :::
+
+## 2025-08-27
+
+::: info 18. 存根（Stub）与以下哪种技术有关?(B)❌
+
+A. `交换` B.` 动态链接` C. `动态加载` D. `磁盘调度`
+
+官方解析：存根(Stub)是一种与`动态链接技术`密切相关的程序代码。当程序需要调用动态链接库中的函数时,存根代码充当了程序和实际函数之间的桥梁,负责完成函数调用的重定向工作。
+
+选项分析:
+B正确:存根代码是动态链接的重要组成部分。当程序调用动态链接库中的函数时,存根代码会在运行时完成函数地址的重定位,建立实际的函数调用链接。
+
+其他选项错误原因:
+- A. 交换与进程/内存管理相关,与存根技术无关
+- C. 动态加载虽然也涉及运行时加载,但更侧重于程序整体的加载过程,而非函数调用的重定向
+- D. 磁盘调度是操作系统进行磁盘访问优化的技术,与存根完全无关
+
+存根在动态链接中起着关键作用:
+1. 提供间接调用层,隐藏了实际函数地址的细节
+2. 支持运行时地址重定位
+3. 实现了程序与动态链接库之间的解耦
+4. 便于库函数的版本管理和更新
+
+知识点：Java
+
+:::
+
+---
+
+---
+
+---
+
+::: info 19. 下面关于Java 中 yield 和 sleep 方法说法正确的是（B）❌
+
+A. `yield 方法会导致当前线程暂停指定的时间，同时也会导致 CPU 时间片的消耗`
+
+B. `sleep 方法会导致当前线程暂停指定的时间，不会导致 CPU 时间片的消耗`
+
+C. `yield 方法调用后当前线程一定会让出 CPU 时间，而导致线程上下文切换`
+
+D. `yield 方法执行后，会使 running 状态的线程变为 waiting 状态.`
+
+官方解析：【答案】B
+
+【考察点】yield 和sleep 方法
+
+【解析】yield 方法调用后，CPU 调度器有可能忽略该提示指令，如果这样的话，此时当前线程继续占用CPU时间片，否则当前线程会让出CPU时间片，导致线程上线文切换，执行yield方法由运行状态变为就绪状态，让OS再次选择线程。因此yield 方法无法确定调用后线程的状态。
+
+知识点：Java
+
+- A：yield不能指定暂停的具体时间，可能会继续消耗（没让出去就继续跑） 
+
+- B：正确（sleep睡了 不会消耗cpu时间片） 
+
+- C：yield方法不一定会让出cpu，尝试让去 不保证 
+
+- D：yield方法执行后，会使running状态的线程变为runnable状态 
+
+作者：[学不会学不会学不会](https://www.nowcoder.com/exam/test/90795156/submission?pid=63524052&testCallback=https%3A%2F%2Fwww.nowcoder.com%2Fexam%2Ftest%2F90794284%2Fsubmission%3FexamPageSource%3DIntelligent%26pid%3D63523480%26testCallback%3Dhttps%3A%2F%2Fwww.nowcoder.com%2Fexam%2Fintelligent%3FquestionJobId%3D10%26subTabName%3Dintelligent_page%26testclass%3D软件开发)
+
+:::
+
+::: info 20.@SuppressWarnings(“deprecation”)的功能是什么？()✅
+
+A. `屏蔽不赞同使用的类和方法的警告`
+
+B. `屏蔽在强制类型转换的时候编译器给出的警告`
+
+C. `关闭所有警告信息`
+
+D. `当在可序列化的类上缺少serialVersionUID定义的警告`
+
+官方解析：`@SuppressWarnings("deprecation")`是Java中的一个注解,用于告诉编译器忽略代码中使用已过时的类和方法时产生的警告信息。A选项正确地描述了这个注解的主要功能。
+
+分析其他选项：
+- B错误：屏蔽强制类型转换警告使用的是`@SuppressWarnings("unchecked")`
+- C错误：关闭所有警告信息使用的是`@SuppressWarnings("all")`
+- D错误：序列化警告的抑制使用的是`@SuppressWarnings("serial")`
+
+补充说明：
+1. @SuppressWarnings注解可以接受不同的参数值来抑制不同类型的警告
+2. "deprecation"参数专门用于处理代码中使用了被@Deprecated标记的过时API时的警告
+3. 这个注解的使用场景通常是：
+- 在必须使用某些过时API的场合
+- 在过渡期间，还未来得及修改使用新API时
+- 为了保持对旧版本的兼容性
+
+使用这个注解需要谨慎，因为过时的API通常意味着在未来的版本中可能会被移除或者存在更好的替代方案。建议在可能的情况下使用推荐的新API来替代过时的API。
+
+知识点：Java
+
+:::
+
+::: info 21. 在 Java 中，下列语句可运行有误的是（AD）❌
+
+A. `short s = 2;s = s + 2;`
+
+B. `short s = 2;s += 2;`
+
+C. `short s = 2;s++;`
+
+D. `short s = 2;s = s + (short)2;`
+
+官方解析：
+
+Java中小于int精度的计算都会自动转换为int计算。A和D选项等号右边的表达式计算结果都为int型，所以会报错。B选项隐式地包含了类型的强制转换，C选项也不会报错。
+
+知识点：Java
+
+- A:  s = s + 2; //  右边的s会自动提升为int --->  short = int + int
+- B:  s += 2; //  等价于  s = (short) (s + 2)  
+- C:  ++或--操作 会做特殊处理--->自动转为原类型short
+- D:  s = s + (short)2; //  右边是int + int  左边是short 需要强转
+
+总结：在 Java 中，只要是**参与加、减、乘、除运算的整数类型**，**如果是byte、short或char，都会自动被提升为int**！ ... 
+
+作者：[xk1002](https://www.nowcoder.com/exam/test/90795156/submission?pid=63524052&testCallback=https%3A%2F%2Fwww.nowcoder.com%2Fexam%2Ftest%2F90794284%2Fsubmission%3FexamPageSource%3DIntelligent%26pid%3D63523480%26testCallback%3Dhttps%3A%2F%2Fwww.nowcoder.com%2Fexam%2Fintelligent%3FquestionJobId%3D10%26subTabName%3Dintelligent_page%26testclass%3D软件开发)
+
+:::
+
+---
+
+---
+
+---
+
+::: info 22. 在java中，无论在何处调用，使用静态属性必须以类名做前缀。(错误)❌
+
+官方解析：在Java中，静态属性可以使用类名作为前缀来访问，但这不是必须的。静态属性还可以直接在本类中访问，或者通过对象引用来访问（虽然不推荐）。
+
+例如，假设有一个类Student：
+```java
+class Student {
+public static int count = 0;
+  public void method() {
+    count++; // 直接访问静态属性
+    Student.count++; // 使用类名访问
+    Student s = new Student();
+    s.count++; // 通过对象引用访问（不推荐）
+  }	
+}
+```
+虽然使用类名作为前缀来访问静态属性是一种良好的编程习惯，可以提高代码的可读性和可维护性，但这并不是Java语法所强制要求的。这就是为什么选项A"必须以类名做前缀"的说法是错误的。
+
+开发中推荐使用类名访问静态属性的原因是：
+1. 代码更清晰，明确表明这是一个静态成员
+2. 避免与实例变量产生混淆
+3. 符合面向对象编程的规范
+
+所以B选项"错误"是正确答案。
+
+知识点：Java
+:::
+
+::: info 23. 下面 Java 代码的运行结果为（）✅
+
+`System.out.println(Math.round(10.5) + Math.round(-10.5));`
+
+A. `0` B. `1` C. `-1` D. `21`
+
+1. **四舍五入与取整**
+
+| 方法                   | 描述                                 | 示例                        |
+| ---------------------- | ------------------------------------ | --------------------------- |
+| `Math.round(double a)` | 四舍五入到最接近的 long              | `Math.round(10.5) → 11`     |
+| `Math.round(float a)`  | 四舍五入到最接近的 int               | `Math.round(-10.5f) → -10`  |
+| `Math.ceil(double a)`  | 向上取整（大于或等于参数的最小整数） | `Math.ceil(10.1) → 11.0`    |
+| `Math.floor(double a)` | 向下取整（小于或等于参数的最大整数） | `Math.floor(-10.1) → -11.0` |
+
+2. **绝对值和符号**
+
+| 方法                                            | 描述                         | 示例                       |
+| ----------------------------------------------- | ---------------------------- | -------------------------- |
+| `Math.abs(int a)` / `long` / `float` / `double` | 返回绝对值                   | `Math.abs(-5) → 5`         |
+| `Math.signum(double a)`                         | 返回符号：正 1，负 -1，0 → 0 | `Math.signum(-3.5) → -1.0` |
+
+3. **幂运算与开方**
+
+| 方法                           | 描述        | 示例                   |
+| ------------------------------ | ----------- | ---------------------- |
+| `Math.pow(double a, double b)` | a 的 b 次幂 | `Math.pow(2, 3) → 8.0` |
+| `Math.sqrt(double a)`          | 平方根      | `Math.sqrt(9) → 3.0`   |
+| `Math.cbrt(double a)`          | 立方根      | `Math.cbrt(27) → 3.0`  |
+
+4. **三角函数**
+
+| 方法                         | 描述         | 示例                            |
+| ---------------------------- | ------------ | ------------------------------- |
+| `Math.sin(double a)`         | 正弦（弧度） | `Math.sin(Math.PI/2) → 1.0`     |
+| `Math.cos(double a)`         | 余弦（弧度） | `Math.cos(0) → 1.0`             |
+| `Math.tan(double a)`         | 正切（弧度） | `Math.tan(Math.PI/4) → 1.0`     |
+| `Math.toRadians(double deg)` | 角度转弧度   | `Math.toRadians(180) → π`       |
+| `Math.toDegrees(double rad)` | 弧度转角度   | `Math.toDegrees(Math.PI) → 180` |
+
+5. **最大值/最小值 & 随机数**
+
+| 方法             | 描述                              | 示例                           |
+| ---------------- | --------------------------------- | ------------------------------ |
+| `Math.max(a, b)` | 返回最大值                        | `Math.max(3, 7) → 7`           |
+| `Math.min(a, b)` | 返回最小值                        | `Math.min(3, 7) → 3`           |
+| `Math.random()`  | 返回 [0.0, 1.0) 之间的随机 double | `Math.random() → 0.0 ~ 0.999…` |
+
+:::
+
+::: info 24.Java 中，下面哪些异常类属于运行期异常（AC）❌
+
+A. `NullPointerException` B. `IOException`
+
+C. `ArithmeticException` D. `NoSuchMethodException`
+
+官方解析：在Java中的异常分为两大类:编译时异常(checked exception)和运行时异常(runtime exception)。AC选项正确，因为：
+
+1. A选项NullPointerException是典型的运行时异常，它继承自RuntimeException类，当应用程序试图在需要对象的地方使用null时抛出。
+
+2. C选项ArithmeticException也是运行时异常，它同样继承自RuntimeException类，典型场景是除数为零的情况。
+
+分析错误选项：
+
+1. B选项IOException是编译时异常，它直接继承自Exception类而不是RuntimeException。编译器会强制要求程序员必须进行异常处理（使用try-catch或throws声明）。
+
+2. D选项NoSuchMethodException也是编译时异常，通常在反射操作中使用某个不存在的方法时抛出，它需要在编译期就处理。
+
+补充说明：
+- 运行时异常都是RuntimeException类及其子类
+- 运行时异常不需要显式处理，编译器不会强制要求
+- 运行时异常通常由程序逻辑错误引起，应该通过修改代码来避免
+
+这种区分有助于在编码时确定哪些异常必须处理，哪些可以通过良好的编程习惯来避免。
+
+知识点：Java
+
+```bash
+// ================== 编译时异常（Checked Exception） ==================
+// 特点：必须 try-catch 或 throws，否则编译报错
+IOException
+    └─ FileNotFoundException
+SQLException
+ClassNotFoundException
+NoSuchMethodException
+InstantiationException
+IllegalAccessException
+InterruptedException
+
+// ================== 运行时异常（Runtime Exception） ==================
+// 特点：编译器不强制处理，运行时可能抛出
+NullPointerException
+ClassCastException
+ArrayIndexOutOfBoundsException
+StringIndexOutOfBoundsException
+ArithmeticException
+ConcurrentModificationException
+NoSuchElementException
+IllegalArgumentException
+IllegalStateException
+```
+
+:::
+
+---
+
+---
+
+---
+
+::: info 25. 下面关于 Java 中异常处理的说法错误的是（C）❌
+
+A. `可以使用 try-catch-finally 块来捕获和处理异常` B. `可以使用 throws 关键字来声明方法可能抛出的异常`
+
+C. `运行期异常不需要进行捕获或者声明` D. `编译期异常需要在代码中显式地进行异常处理`
+
+官方解析：在Java异常处理机制中,运行时异常(RuntimeException)同样需要进行适当的处理,C选项的说法是错误的。虽然运行时异常在语法上不强制要求必须处理,但为了程序的健壮性和可靠性,也应当对其进行合理的捕获和处理。
+
+分析其他选项：
+
+- A正确:try-catch-finally是Java中最基本的异常处理结构,try块中包含可能抛出异常的代码,catch块用于捕获和处理特定类型的异常,finally块中的代码无论是否发生异常都会执行。
+
+- B正确:throws关键字用于在方法声明中指明该方法可能抛出的异常类型,这是Java异常处理机制的一个重要组成部分。
+
+- D正确:编译期异常(checked exception)必须在代码中通过try-catch显式捕获或者通过throws声明,否则代码将无法通过编译。这是Java编译器的强制要求。
+
+总的来说,不论是运行时异常还是编译期异常,都建议在代码中进行适当的异常处理,这样可以提高程序的稳定性和用户体验。
+
+知识点：Java
+
+:::
+
+::: info 26. 执行下列代码的输出结果是(`30`) ❌
+
+```java
+public class Demo{
+　public static void main(String args[]){
+　　　int num = 10;
+　　　System.out.println(test(num));
+}
+public static int test(int b){
+　　　try{
+　　　　b += 10;
+　　　　return b;
+　　　}
+　　　catch(RuntimeException e){}
+　　　catch(Exception e2){}
+　　　finally{
+　　　　b += 10;
+　　　　return b;
+　　　}
+　　}
+}
+```
+
+官方解析：这道题目考察了Java中try-catch-finally语句块的执行流程以及返回值的确定机制。
+
+代码执行过程分析:
+1. main方法中调用test方法,传入num=10
+2. 在test方法中,try块先执行 b+=10,此时b=20
+3. try块中的return b未能真正返回,因为finally块必定执行
+4. finally块执行 b+=10,此时b=30
+5. finally块中的return b是最终实际返回的值
+
+所以最终输出结果是30,C选项正确。
+
+分析其他选项:
+
+- A(10)错误:这是初始值,代码中经过了两次+=10操作,不可能返回初始值
+- B(20)错误:这只是try块中第一次+=10后的值,未考虑finally块的执行
+- D(40)错误:代码只进行了两次+=10操作,不可能得到40
+
+重要知识点:
+1. finally块一定会执行
+2. 当try和finally块都有return语句时,finally块的return会覆盖try块的return
+3. finally块主要用于资源清理,通常应避免在finally块中使用return语句,因为这会掩盖try块中的返回值
+
+知识点：Java、JavaSE
+
+注意⚠️：`如果finally块中有return语句的话，它将覆盖掉函数中其他return语句。`
+
+:::
+
+::: info 27. java如何返回request范围内存在的对象？(B)❌
+
+A. `request.getRequestURL()` B.` request.getAttribute()`
+
+C. `request.getParameter()` D. `request.getWriter()`
+
+官方解析：request.getAttribute()方法是从request范围内获取存储对象的标准方法。在JavaWeb开发中,我们可以使用request.setAttribute()方法在request作用域中存储对象,然后通过getAttribute()方法获取这些对象。
+
+分析其他选项:
+
+- A. request.getRequestURL() - 该方法返回客户端请求的完整URL,而不是获取request范围内存储的对象。
+
+- C. request.getParameter() - 该方法用于获取HTTP请求参数的值,通常用于获取表单提交的数据或URL中的查询参数,不是用来获取request范围内存储的对象。
+
+- D. request.getWriter() - 该方法返回一个PrintWriter对象,用于向客户端发送字符响应,与获取request范围内的对象无关。
+
+使用request.getAttribute()的典型场景是:
+1. 在Servlet中通过setAttribute()存储数据
+2. 在转发到JSP之前保存处理结果
+3. 在同一个请求范围内的不同组件之间传递数据
+
+需要注意的是,request范围的对象只在当前请求周期内有效,请求结束后对象就会被销毁。
+
+```java
+// 1. 获取请求相关信息
+String method = request.getMethod();          // 获取请求方式：GET / POST
+String uri = request.getRequestURI();         // 获取请求的资源路径
+String url = request.getRequestURL().toString(); // 获取完整的请求URL
+String query = request.getQueryString();      // 获取请求参数部分 ?a=1&b=2
+
+// 2. 获取请求参数（前端 form 或 query string 提交的数据）
+String value = request.getParameter("name");  // 获取单个参数
+String[] values = request.getParameterValues("hobby"); // 获取多个值
+Map<String, String[]> map = request.getParameterMap(); // 获取所有参数
+
+// 3. request 域属性操作（在一次请求转发中共享数据）
+request.setAttribute("key", obj);   // 保存对象到 request 域
+Object obj = request.getAttribute("key"); // 从 request 域获取对象
+request.removeAttribute("key");     // 删除 request 域中的对象
+
+// 4. 获取头信息
+String agent = request.getHeader("User-Agent"); // 获取请求头
+Enumeration<String> names = request.getHeaderNames(); // 获取所有头字段名
+
+// 5. 获取客户端信息
+String ip = request.getRemoteAddr();   // 客户端 IP
+int port = request.getRemotePort();    // 客户端端口
+String host = request.getRemoteHost(); // 客户端主机名
+
+// 6. 其他常用
+BufferedReader reader = request.getReader();  // 获取请求体字符流
+ServletInputStream in = request.getInputStream(); // 获取请求体字节流
+```
+
+知识点：Java
+
+:::
+
+::: info 28. 从以下哪一个选项中可以获得Servlet的初始化参数?(C)❌
+
+A. `Servlet` B. `ServletContext` C. `ServletConfig` D. `GenericServlet`
+
+官方解析： ServletConfig是用于获取Servlet初始化参数的标准接口。每个Servlet都有自己的ServletConfig对象,可以通过init()方法获得。开发者可以在web.xml中通过标签为Servlet配置初始化参数,然后在代码中通过ServletConfig的getInitParameter()方法获取这些参数值。
+
+分析其他选项:
+
+- A. Servlet错误:Servlet是一个接口,定义了Servlet的基本行为,本身不能获取初始化参数。
+
+- B. ServletContext错误:ServletContext用于获取整个Web应用程序的配置信息和共享数据,而不是专门用于获取Servlet的初始化参数。虽然也可以通过它获取上下文参数,但这些是应用级别的,不是Servlet级别的初始化参数。
+
+- D. GenericServlet错误:GenericServlet是一个抽象类,实现了Servlet接口。虽然它内部会使用ServletConfig,但它本身不是获取初始化参数的直接来源。它是通过持有的ServletConfig实例来间接获取初始化参数的。
+
+因此C选项ServletConfig是获取Servlet初始化参数的标准方式和正确答案。这也体现了Java Servlet规范中关于初始化参数处理的设计理念。
+
+知识点：Java、JavaSE
+
+:::
+
+---
+
+---
+
+---
+
+::: info 29. 下面关于 Java 中 this 关键字的说法正确的是（ABC）❌
+
+A. `this 可以用来访问本类中的普通成员变量`
+
+B. `this 可以调用本类中的普通成员方法和构造方法`
+
+C. `this 关键字用于引用当前对象的实例`
+
+D. `this 可以用来调用本类中的静态方法和静态变量`
+
+官方解析：this关键字是Java中的一个重要概念,用于引用当前对象的实例。选项ABC都是正确的。
+
+具体分析如下:
+
+- A正确: this关键字可以用来访问当前类的普通成员变量。例如在构造方法或普通方法中,可以使用this.name来访问类的name成员变量,这样可以明确区分成员变量和局部变量。
+
+- B正确: this可以调用本类的成员方法和构造方法。在一个构造方法中可以使用this()调用其他构造方法;在普通方法中可以使用this.methodName()调用其他成员方法。
+
+- C正确: this是对当前对象的引用,代表当前正在执行的对象实例。在实例方法中,this总是指向调用该方法的对象。
+
+- D错误: this不能用来调用静态方法和静态变量。因为静态成员属于类,不属于对象实例,所以不能通过this来访问。静态成员应该通过类名来访问,如ClassName.staticMethod()。
+
+使用this关键字的主要目的是:
+1. 区分同名的局部变量和成员变量
+2. 在构造方法中调用其他构造方法
+3. 将当前对象作为参数传递给其他方法
+4. 返回当前对象的引用
+
+知识点：Java
+
+`PS:我觉得D可以，但是强烈不推荐`
+
+:::
+
+::: info 30. java8中，忽略内部接口的情况，不能用来修饰interface里的方法的有（ AC）❌
+
+A. `private` B. `public` C. `protected` D. `static`
+
+官方解析：在Java 8中的interface中定义方法时，有特定的访问权限和修饰符规则。AC选项是正确答案，因为这两个修饰符确实不能用于接口方法。
+
+具体分析：
+
+1. private（A正确）：
+- 在Java 8中，接口中的方法不能使用private修饰符
+- 接口方法默认是public的，目的是为了保证实现类可以访问和重写这些方法
+- 注：在Java 9及以后的版本中才允许在接口中使用private方法
+
+2. protected（C正确）：
+- protected修饰符不能用于接口方法
+- 因为接口是用来定义公共行为的，而protected表示继承范围内的访问权限，这与接口的设计理念相违背
+
+3. public（B错误）：
+- public是接口方法的默认访问级别
+- 即使不显式声明，接口中的方法也默认是public的
+- 可以显式使用public来修饰接口方法
+
+4. static（D错误）：
+- Java 8允许在接口中定义静态方法
+- static方法可以在接口中使用，用于提供工具类性质的功能
+- 接口的静态方法必须有具体的实现
+
+总结：接口方法的修饰符使用有严格限制，主要是为了保持接口作为行为契约的纯粹性和公开性。在Java 8中，接口方法可以是public、default、static，但不能是private或protected。
+
+知识点：2014、Java、Java工程师
+
+:::
+
+::: info 31. 以下关于 Java 中 synchronized 锁和 ReentrantLock 锁说法错误的是（A）❌
+
+A. `synchronized 锁不可锁重入，ReentrantLock 锁可以锁重入`
+
+B. `synchronized 锁是非公平锁，而 ReentrantLock 锁可以实现公平锁`
+
+C. `synchronized 锁不能被打断，而 ReentrantLock 锁可以被打断`
+
+D. `synchronized 锁不支持多个条件变量，而 ReentrantLocK 锁支持多个条件变量`
+
+官方解析：
+
+- 选项A错误，synchronized锁和ReentrantLock锁都可以锁重入。
+- 选项B正确，synchronized锁是非公平锁，而ReentrantLock可以通过修改参数来实现公平锁。
+- 选项C正确，synchronized不能被主动打断，而ReentrantLock锁可以。
+- 选项D正确，synchronized不支持多个条件变量，而ReentrantLocK可以调用newCondition方法实现多个条件变量。
+
+知识点：Java
+
+1. 基本概念
+
+| 特性      | `synchronized`                         | `ReentrantLock`                          |
+| --------- | -------------------------------------- | ---------------------------------------- |
+| 类型      | 内置锁（JVM 提供）                     | 显式锁（java.util.concurrent 提供）      |
+| 可重入    | ✅ 支持                                 | ✅ 支持                                   |
+| 可中断    | ❌ 不可中断                             | ✅ 可中断 (`lockInterruptibly()`)         |
+| 公平性    | ❌ 不可公平                             | ⚪ 可选择公平锁或非公平锁（构造函数指定） |
+| 等待/通知 | ✅ 支持 (`wait()/notify()/notifyAll()`) | ✅ 支持 (`Condition`)                     |
+| 自动释放  | ✅ 方法或代码块结束自动释放             | ❌ 需要手动 `unlock()`，否则可能死锁      |
+
+2. 使用方式
+
+synchronized
+
+```java
+// 修饰方法
+public synchronized void method() { ... }
+
+// 修饰代码块
+synchronized(this) {
+    // 需要加锁的代码
+}
+```
+
+ReentrantLock
+
+```java
+ReentrantLock lock = new ReentrantLock();
+
+// 加锁 - 最常用
+lock.lock();
+try {
+    // 需要加锁的代码
+} finally {
+    lock.unlock();  // 必须在 finally 中释放锁
+}
+
+// 可中断锁
+lock.lockInterruptibly();
+
+// 尝试加锁，不阻塞
+if (lock.tryLock()) {
+    try { ... } finally { lock.unlock(); }
+}
+```
+
+:::
+
+::: info 32.下面哪个语句是创建数组的正确语句？( )
+
+A. `float f[][] = new float[6][6];`
+
+B. `float []f[] = new float[6][6];`
+
+C. `float f[][] = new float[][6];`
+
+D. `float [][]f = new float[6][6];`
+
+E. `float [][]f = new float[6][];`
+
+官方解析：
+
+在Java中创建二维数组有多种语法形式,ABDE都是合法的数组声明和创建方式。让我们逐个分析:
+
+A选项 正确: 这是最常见的二维数组声明方式,数组维度符号[][]可以放在变量名后面。
+
+B选项正确: Java允许将第一个维度符号放在类型和变量名之间,第二个维度符号放在变量名后面。
+
+C选项错误: 创建数组时必须指定第一维度的大小,不能只指定第二维度的大小。这种语法是非法的。
+
+D选项正确: 这种写法将维度符号都放在类型和变量名之间,是标准的数组声明方式。
+
+E选项正确: 这是创建不规则数组(交错数组)的方式,只指定第一维度的大小,第二维度的大小可以动态指定。
+
+总的来说,Java在数组声明语法上比较灵活,维度符号可以放在类型和变量名之间,也可以放在变量名后面,或者混合使用。<u>`唯一的要求是在创建数组时必须至少指定第一维度的大小。`</u>选项C错误是因为违反了这个基本规则。
+
+知识点：Java
+
+:::
+
+::: info 33. 类之间存在以下几种常见的关系：()
+
+A. `“USES-A”关系` B. `“HAS-A”关系` C. `“IS-A”关系` D. `“INHERIT-A”关系`
+
+官方解析：在面向对象设计中,主要存在三种基本的类关系："USES-A"(使用关系)、"HAS-A"(组合关系)和"IS-A"(继承关系)。这三种关系构成了面向对象设计的基础。
+
+分析每个选项：
+
+- A."USES-A"关系是正确的。这种关系表示一个类使用另一个类的服务,但两个类之间是松散耦合的。例如,当一个类的方法使用另一个类的对象作为参数或返回值时。
+
+- B."HAS-A"关系是正确的。这种关系表示一个类包含另一个类的实例作为其成员变量,表示整体与部分的关系。例如,汽车类中包含引擎类的实例。
+
+- C."IS-A"关系是正确的。这种关系表示继承关系,一个类是另一个类的特殊化。例如,猫类继承自动物类,表示猫是一种动物。
+
+- D."INHERIT-A"关系是错误的。在面向对象设计中并没有"INHERIT-A"这个专门的术语,继承关系已经由"IS-A"关系表示了。这个选项是冗余且不准确的。
+
+因此,ABC三个选项准确描述了面向对象中的三种基本类关系,而D选项是不恰当的表述。
+
+知识点：Java
+
+:::
+
+
+
+## 总结
+
+### 扩充相关
+
+::: info 扩充相关
+
+#### 1. ArrayList
+
+- **默认初始容量**：10
+- **扩容机制**：当 `size == capacity` 时，会扩容为 **原容量的 1.5 倍**（`newCapacity = oldCapacity + oldCapacity >> 1`）。
+- **避免扩容开销**：通过构造函数 `new ArrayList<>(initialCapacity)` 预估初始容量。
+- **扩容代价**：底层是数组，扩容会进行 **新数组分配 + 数据拷贝**，因此扩容是 **O(n)** 的操作。
+
+------
+
+#### 2. HashMap
+
+- **默认初始容量**：16（必须是 2 的幂）。
+- **负载因子**：0.75（即元素数量超过 16 × 0.75 = 12 时触发扩容）。
+- **扩容机制**：容量扩为原来的 **2 倍**，并进行 **rehash（重新计算 hash 桶位置）**。
+- **代价**：扩容时需要 **重新分配桶数组**，并且将所有节点重新挂载，开销大。
+
+------
+
+#### 3. HashSet
+
+- **底层实现**：基于 HashMap（只存 `key`，`value` 用一个固定对象 `PRESENT` 占位）。
+- **扩容机制**：和 HashMap 一致（容量 ×2，负载因子 0.75）。
+
+------
+
+#### 4. Hashtable
+
+- **默认初始容量**：11。
+- **负载因子**：0.75（即元素数量超过 11 × 0.75 = 8.25 时触发扩容）。
+- **扩容机制**：当元素数量超过 `容量 × 负载因子` 时，容量扩为 **2n + 1**。
+- **与 HashMap 区别**：线程安全（方法加锁），但扩容策略不同。
+
+------
+
+#### 5. ConcurrentHashMap
+
+- **JDK7**：分段锁（Segment 数组），扩容时逐段扩展。
+- **JDK8**：取消分段锁，改为 **CAS + synchronized**；扩容与 HashMap 类似，也是容量翻倍，但采用 **渐进式扩容**（迁移数据时允许并发完成）。
+
+------
+
+#### 6. StringBuilder / StringBuffer
+
+- **底层存储**：char[]（JDK9 之后是 byte[] + coder）。
+- **默认初始容量**：16。
+- **扩容机制**：扩容为 **原容量 ×2 + 2**。
+- **建议**：如果大致知道要拼接的字符串大小，使用 `new StringBuilder(int capacity)` 可以避免多次扩容。
+
+------
+
+#### 7. PriorityQueue
+
+- **默认初始容量**：11。
+- **扩容机制**：容量不足时，扩容为 **原容量 ×1.5**。
+
+------
+
+#### 8. Vector
+
+- **默认初始容量**：10。
+- **扩容机制**：如果没有设置 `capacityIncrement`，则扩容为 **2 倍**；否则扩容为 **oldCapacity + capacityIncrement**。
+- **线程安全**（方法加锁），但性能不如 ArrayList。
+
+------
+
+#### 9. 数据库连接池（例如 HikariCP、Druid）
+
+- **连接池大小**：通常有 `minIdle`（最小连接数）、`maxPoolSize`（最大连接数）。
+- **扩容机制**：当连接数不足时，会新建连接直到上限。
+- **代价**：频繁扩容会增加数据库连接压力，最好合理配置池大小。
+
+------
+
+#### 10. 缓存（Redis、Guava Cache）
+
+- **Redis**：字典（哈希表）扩容时会触发 **渐进式 rehash**，避免一次性卡顿。
+- **Guava Cache**：底层基于 ConcurrentHashMap，同样会有扩容逻辑。
+
+:::
+
+### 创建对象方式
+
+- new操作符适用于普通对象创建
+- 反射方式适用于动态加载场景
+- clone方式适用于对象复制场景
+- 反序列化方式适用于数据传输场景
+
+```bash
+使用new操作符创建对象是最基本也是最常用的方式。例如:
+Student student = new Student();
+这种方式直接调用构造方法创建对象,简单直接。
+
+通过反射机制创建对象是一种动态创建对象的方式。可以通过以下两种方式:
+- Class类的newInstance()方法
+- Constructor类的newInstance()方法
+这种方式的优点是可以动态加载类并创建对象。
+
+clone()方法是Object类的一个protected方法,可以创建一个对象的副本。使用这种方式需要:
+- 实现Cloneable接口
+- 重写clone()方法
+这种方式的特点是可以快速复制一个已有对象。
+
+通过反序列化方式创建对象是指:
+将之前序列化到磁盘的对象数据重新读取并转换成对象。需要:
+- 类实现Serializable接口
+- 使用ObjectInputStream的readObject()方法
+这种方式常用于网络传输或持久化场景。
+```
+

@@ -1539,3 +1539,76 @@ ma                      # 标记当前位置为 a
 - 和 `vim` 不同，nano 一进入就能直接输入文本，不需要模式切换。
 
 :::
+
+### 4.9 服务异常终止
+
+#### Tomcat(java)服务异常终止
+
+::: info Tomcat(java)服务异常终止
+
+Tomcat 下线但日志无异常的常见原因
+
+1. **操作系统 OOM Killer 杀死进程**
+
+- **现象**：Tomcat 直接被系统干掉，Tomcat 日志里啥都没有。
+
+- **原因**：JVM 占用内存超过物理内存，Linux 内核触发 OOM Killer。
+
+- **排查**：
+
+  - `dmesg -T | grep -i kill`
+
+  - `/var/log/messages` 或 `/var/log/syslog`
+
+  - 典型日志：
+
+    ```
+    Out of memory: Kill process 29172 (java) score 955 or sacrifice child
+    Killed process 29172 (java) total-vm:2048000kB, anon-rss:1800000kB
+    ```
+
+- **解决**：
+
+  - 调整 JVM 堆和 Metaspace 参数（`-Xmx`、`-XX:MaxMetaspaceSize`）。
+  - 增加物理内存/容器限制（K8s、Docker 的 memory limit）。
+
+2. **JVM 崩溃（本地代码、JNI、JIT Bug）**
+
+- **现象**：Tomcat 日志正常，但生成了 `hs_err_pid<pid>.log` 文件。
+- **原因**：JVM 层面崩溃，比如 native 库调用、JIT 优化 Bug、系统调用出错。
+- **排查**：
+  - 去 `$CATALINA_HOME/bin/` 或启动目录找 `hs_err_pid*.log`。
+  - 里面会有线程栈、信号（如 SIGSEGV）、GC 状态。
+- **解决**：
+  - 升级 JDK 到更稳定版本。
+  - 避免不安全的 native 库调用。
+
+3. **系统资源耗尽**
+
+- **文件句柄数 (ulimit -n)**：
+  - Tomcat 没法再打开 socket → 直接挂掉。
+  - 检查：`ulimit -n`，`lsof -p <PID> | wc -l`
+- **线程数过多 (ulimit -u)**：
+  - 报 `java.lang.OutOfMemoryError: unable to create new native thread`，有时没打印到日志。
+  - 检查：`ps -eLf | grep java | wc -l`
+- **磁盘写满**：
+  - GC 日志、应用日志写不进去，JVM 有时直接挂掉。
+  - 检查：`df -h`
+
+---
+
+建议排查路径
+
+1. **确认是否进程被系统杀掉**
+   - `dmesg -T | grep -i kill`
+   - 系统日志 `/var/log/messages` 或 `/var/log/syslog`
+   - 看是否有 `Killed process (java)`。
+2. **确认是否 JVM 崩溃**
+   - 查找 `hs_err_pid*.log` 是否生成。
+   - 检查 `core dump` 是否存在。
+3. **确认系统资源**
+   - `free -m` → 内存是否耗尽
+   - `ulimit -n` / `ulimit -u` → 是否过小
+   - `df -h` → 磁盘是否满
+
+:::
