@@ -12,15 +12,21 @@
   }
 
   /* 页脚横条隐藏 */
+
   .VPFooter {
     border-top: none;
   }
 
   .VPFooter .container .message {
-    a { text-decoration: none; }
+    a {
+      text-decoration: none;
+    }
   }
+
   .VPFooter .container .copyright {
-    a { text-decoration: none; }
+    a {
+      text-decoration: none;
+    }
   }
 
   @media (max-width: 960px) {
@@ -31,6 +37,7 @@
       justify-content: center;
       margin-left: 8px;
     }
+
     .VPFooter .container .copyright {
       font-size: 10px;
       display: flex;
@@ -41,21 +48,25 @@
   }
 
   /* 手机端菜单栏顶部横条隐藏 */
+
   .VPNavBar.screen-open {
     border-bottom: none;
   }
 
   /* 手机端菜单栏菜单分割线隐藏 */
+
   .VPNavScreenMenuLink {
     border-bottom: none;
   }
 
   /* 手机端菜单组隐藏 */
+
   .VPNavScreenMenuGroup {
     border-bottom: none;
   }
 
   /* 手机端大纲栏横条隐藏 */
+
   .VPLocalNav {
     border-bottom: none;
   }

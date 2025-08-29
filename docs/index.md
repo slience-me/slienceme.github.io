@@ -28,7 +28,7 @@ features:
   - icon: 💻
     title: 服务器 (Server)
     details: 配置和管理服务器环境
-    link: /notes/server/nginx
+    link: /notes/server/linux
     linkText: 服务器配置与管理
 
   - icon: 💾
@@ -40,7 +40,7 @@ features:
   - icon: 🛠️
     title: DevOps & 工具 (DevOps & Tools)
     details: 记录开发和运维中遇到的工具合集
-    link: /notes/devops/git
+    link: /notes/devops/git-svn
     linkText: DevOps 工具集
 
   - icon: 🔭

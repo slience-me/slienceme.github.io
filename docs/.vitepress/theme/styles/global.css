@@ -10,25 +10,30 @@
   --vp-home-body-bg-image-gradient: linear-gradient(rgba(255, 255, 255, 0.9), rgba(255, 255, 255, 0.9));
 
   /*整体背景图片*/
+
   body {
     background-image: var(--vp-home-body-bg-image), var(--vp-home-body-bg-image-gradient);
     background-size: auto;
     background-position: top left;
     background-repeat: repeat;
     background-blend-mode: soft-light; /* multiply  color-burn soft-light */
+    cursor: url('/default.cur'), default;  /*鼠标样式*/
   }
 
   /*文章主页左侧文章列表 浅色模式*/
+
   .VPSidebar {
     opacity: 0.7; /* 增加透明度 */
   }
 
   /*主页卡片背景显示效果 浅色模式*/
+
   .VPFeature {
     background-color: rgba(255, 255, 255, 0.7); /* 半透明背景 */
   }
 
   /*mobile模式 顶部右侧折叠nav显示效果 浅色模式*/
+
   .VPNavScreen .container {
     /* 毛玻璃效果 */
     /*  background-color: rgba(255, 255, 255, 0.6); !* 半透明背景 *!
@@ -48,7 +53,9 @@
     /* 这里使用了多层阴影，增强深度感 */
     padding: 20px; /* 内边距，避免内容紧贴边缘 */
   }
+
   /*mobile模式 顶部右侧折叠nav内部的切换小窗口 显示效果 浅色模式*/
+
   .VPNavScreenAppearance {
     background-color: rgba(255, 255, 255, 0.95);
     /* 边框效果 */
@@ -62,6 +69,7 @@
 .dark {
   --vp-home-body-bg-image-gradient: linear-gradient(rgba(0, 0, 0, 0.9), rgba(0, 0, 0, 0.9));
   /*整体背景图片*/
+
   body {
     background-image: var(--vp-home-body-bg-image), var(--vp-home-body-bg-image-gradient);
     background-size: auto;
@@ -71,11 +79,13 @@
   }
 
   /*主页卡片背景显示效果 深色模式*/
+
   .VPFeature {
     background-color: rgba(0, 0, 0, 0.7); /* 半透明背景 */
   }
 
   /*mobile模式 顶部右侧折叠nav显示效果 深色模式*/
+
   .VPNavScreen .container {
     /* 毛玻璃效果 */
     /*  background-color: rgba(255, 255, 255, 0.6); !* 半透明背景 *!
@@ -95,7 +105,9 @@
     /* 这里使用了多层阴影，增强深度感 */
     padding: 20px; /* 内边距，避免内容紧贴边缘 */
   }
+
   /*mobile模式 顶部右侧折叠nav内部的切换小窗口 显示效果 深色模式*/
+
   .VPNavScreenAppearance {
     background-color: rgba(0, 0, 0, 0.95);
     /* 边框效果 */
