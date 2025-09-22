@@ -14,15 +14,14 @@
 </p>
 
 <p align="center">
-  <img height='230' width='230' src="/avator_640_640.png" />
+  <img height='230' width='230' src="https://slienceme.oss-cn-beijing.aliyuncs.com/2025/_640_640.png" />
 </p>
-
 
 <p align="center">
   <picture>
-    <source media="(prefers-color-scheme: dark)" srcset="https://raw.githubusercontent.com/slience-me/slience-me/main/profile-snake-contrib/github-contribution-grid-snake-dark.svg">
-    <source media="(prefers-color-scheme: light)" srcset="https://raw.githubusercontent.com/slience-me/slience-me/main/profile-snake-contrib/github-contribution-grid-snake.svg">
-    <img alt="github-snake" src="https://raw.githubusercontent.com/slience-me/slience-me/main/profile-snake-contrib/github-contribution-grid-snake.svg">
+    <source media="(prefers-color-scheme: dark)" srcset="https://gh-proxy.com/https://raw.githubusercontent.com/slience-me/slience-me/main/profile-snake-contrib/github-contribution-grid-snake-dark.svg">
+    <source media="(prefers-color-scheme: light)" srcset="https://gh-proxy.com/https://raw.githubusercontent.com/slience-me/slience-me/main/profile-snake-contrib/github-contribution-grid-snake.svg">
+    <img alt="github-snake" src="https://gh-proxy.com/https://raw.githubusercontent.com/slience-me/slience-me/main/profile-snake-contrib/github-contribution-grid-snake.svg">
   </picture>
 </p>
 
