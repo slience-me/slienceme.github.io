@@ -87,6 +87,7 @@ find        # 在文件系统中查找文件 find / -name "*.txt"
 ps          # 显示进程状态 ps -ef | grep "uwsgi"
 kill        # 终止进程 kill -9 1234
 top         # 实时显示系统运行进程信息 top
+vmstat      # 显示虚拟内存统计信息 vmstat 1 5
 
 ## 网络相关
 ifconfig    # 显示网络接口信息 ifconfig -a
@@ -377,24 +378,27 @@ ifconfig     # 需要安装 yum install net-tools
 ### 3.5 配置静态IP操作 ubuntu
 
 ```bash
+# 没有则需要安装
+sudo apt install openvswitch-switch -y
+sudo systemctl enable --now openvswitch-switch
+
 # 配置静态IP操作 【ubuntu】
 cd /etc/netplan
 sudo cp 01-network-manager-all.yaml 01-network-manager-all.yaml-before
 sudo vim 01-network-manager-all.yaml
 ------------------------------------------------------------
 network:
-  ethernets:
-    ens33:
-      addresses: [192.168.5.130/24]  # 设置静态IP地址和掩码
-      routes:
-        - to: default
-          via: 192.168.5.2
-      # gateway4: 192.168.5.2 禁用了
-      dhcp4: false                   # 禁用dhcp
-      nameservers:
-        addresses: [114.114.114.114, 8.8.8.8]  # 设置主、备DNS
   version: 2
-  renderer: NetworkManager
+  ethernets:
+    ens3:
+      dhcp4: no
+      addresses: [192.168.1.100/24]
+      routes:
+        - to: 0.0.0.0/0
+          via: 192.168.1.1
+          metric: 100
+      nameservers:
+        addresses: [114.114.114.114, 8.8.8.8]
 -------------------------------------------------------------
 sudo netplan apply
 
@@ -735,6 +739,25 @@ df -h
 │    根分区容量已变大              │
 └───────────────────────────────┘
 ````
+
+### 3.12 修改时区
+
+修改宿主机时间（永久生效）**Ubuntu/Debian**：
+
+```bash
+# 查看当前时区
+timedatectl
+
+# 设置时区为上海（北京时间 UTC+8）
+sudo timedatectl set-timezone Asia/Shanghai
+
+# 同步系统时间（可选，用网络时间）
+sudo apt-get install -y ntpdate
+sudo ntpdate time.windows.com
+
+# 查看当前时间
+date
+```
 
 ## 4. 常用技巧(后期补充)
 
@@ -1610,5 +1633,302 @@ Tomcat 下线但日志无异常的常见原因
    - `free -m` → 内存是否耗尽
    - `ulimit -n` / `ulimit -u` → 是否过小
    - `df -h` → 磁盘是否满
+
+```bash
+########################################
+# 1. 确认 OOM 类型
+########################################
+# 查看应用日志、hs_err_pid.log，确认 OOM 是 heap / metaspace / direct / thread
+tail -n 1000 /path/to/app.log | grep "OutOfMemoryError"
+
+########################################
+# 2. 查看 GC 情况 (判断是否频繁 GC)
+########################################
+jstat -gc <pid> 1000 10
+
+########################################
+# 3. 快速查看对象分布 (直方图)
+########################################
+jmap -histo <pid> | head -30
+
+########################################
+# 4. 导出堆快照 (heap dump) 做深入分析
+########################################
+jmap -dump:format=b,file=/tmp/heap_<pid>.hprof <pid>
+
+# 用 Eclipse MAT / VisualVM 打开 heap.hprof 文件
+# - 找占用内存最多的对象
+# - 查看是否有泄漏的引用链 (Leak Suspects)
+
+########################################
+# 5. 如果怀疑线程过多 (unable to create new native thread)
+########################################
+# 查看进程线程数
+top -H -p <pid>
+# 或者
+ps -Lf <pid> | wc -l
+
+# 导出线程堆栈分析线程创建点
+jstack -l <pid> > /tmp/thread_<pid>.dump
+
+########################################
+# 6. 如果怀疑 Direct Memory / Metaspace
+########################################
+# 查看本地内存使用情况 (JDK 8+)
+jcmd <pid> VM.native_memory summary
+
+# 查看类加载情况
+jmap -clstats <pid> | head -50
+
+########################################
+# 7. 最终定位
+########################################
+# - heap.hprof 用 MAT 分析大对象、泄漏路径
+# - thread.dump 检查是否线程异常创建
+# - 结合源码 / Arthas trace/watch 进一步确认问题代码
+```
+
+:::
+
+#### CPU利用率排查
+
+**vmstat命令**
+
+::: info vmstat
+
+一、`vmstat` 基本使用
+
+`vmstat` (Virtual Memory Statistics) 用来观察 **虚拟内存、进程、CPU** 等系统整体状态。
+ 常见用法：
+
+```bash
+vmstat 1 5
+
+procs -----------memory---------- ---swap-- -----io---- -system-- ------cpu-----
+ r  b   swpd   free   buff  cache   si   so    bi    bo   in   cs us sy id wa st
+ 1  0      0 104592 117592 1070452   0    0     2     9    1    0  1  0 99  0  0
+ 0  0      0 104592 117592 1070488   0    0     0     0 1591 2726  2  1 97  0  0
+ 0  0      0 104592 117592 1070488   0    0     0     0 1546 2608  2  1 97  0  0
+ 0  0      0 104592 117596 1070488   0    0     0    52 1592 2628  3  1 96  0  0
+ 0  0      0 104592 117596 1070488   0    0     0     0 1532 2616  2  1 97  0  0
+```
+
+表示每 1 秒刷新一次，共采集 5 次。
+
+输出字段主要包括：
+
+- **procs**
+  - `r`：运行队列中的进程数（可理解为等待 CPU 的进程数）
+  - `b`：处于不可中断睡眠状态的进程数（如等待 IO）
+- **memory**
+  - `swpd`：使用的 swap 空间
+  - `free`：空闲内存
+  - `buff`：缓冲区使用的内存
+  - `cache`：缓存使用的内存
+- **swap**
+  - `si`：从 swap 分页到内存的速率（KB/s）
+  - `so`：从内存分页到 swap 的速率（KB/s）
+- **io**
+  - `bi`：块设备读速率
+  - `bo`：块设备写速率
+- **system**
+  - `in`：每秒中断次数
+  - `cs`：每秒上下文切换次数
+- **cpu**
+  - `us`：用户态 CPU 占比
+  - `sy`：内核态 CPU 占比
+  - `id`：空闲 CPU 占比
+  - `wa`：等待 IO 占比
+  - `st`：被虚拟机偷走的 CPU 占比
+
+特点：**轻量、概览型、趋势观察**。
+
+二、`top` 基本使用
+
+`top` 用来实时显示 **进程级别的资源使用情况**，支持交互操作。
+
+常见用法：
+
+```bash
+top
+
+top - 10:02:39 up 145 days, 14:08,  1 user,  load average: 0.04, 0.08, 0.02
+Tasks: 139 total,   1 running, 138 sleeping,   0 stopped,   0 zombie
+%Cpu(s):  2.5 us,  1.0 sy,  0.0 ni, 96.5 id,  0.0 wa,  0.0 hi,  0.0 si,  0.0 st
+MiB Mem :   1673.0 total,     99.7 free,    411.6 used,   1161.7 buff/cache
+MiB Swap:      0.0 total,      0.0 free,      0.0 used.   1076.3 avail Mem 
+    PID USER      PR  NI    VIRT    RES    SHR S  %CPU  %MEM     TIME+ COMMAND                                                                                                                                     
+ 773526 root      10 -10  126456   8476   4956 S   5.0   0.5 955:15.37 AliYunDunMonito                                            773500 root      20   0   99316   8624   5420 S   0.7   0.5 381:08.33 AliYunDun                                                 1839840 root      20   0 1748364 128572  40516 S   0.7   7.5  33:56.87 1panel                                                         425 root      rt   0  289312  27096   9072 S   0.3   1.6  13:00.22 multipathd                                                 1050525 root      20   0  686292   8872   5644 S   0.3   0.5  65:41.92 aliyun-service                                                   1 root      20   0  167732  10152   5168 S   0.0   0.6   7:57.21 systemd
+      2 root      20   0       0      0      0 S   0.0   0.0   0:00.78 kthreadd
+      3 root       0 -20       0      0      0 I   0.0   0.0   0:00.00 rcu_gp
+      4 root       0 -20       0      0      0 I   0.0   0.0   0:00.00 rcu_par_gp
+      5 root       0 -20       0      0      0 I   0.0   0.0   0:00.00 slub_flushwq
+      6 root       0 -20       0      0      0 I   0.0   0.0   0:00.00 netns
+      8 root       0 -20       0      0      0 I   0.0   0.0   0:00.00 kworker/0:0H-events_highpri            
+```
+
+常用交互命令：
+
+- `M`：按内存使用排序
+- `P`：按 CPU 使用排序
+- `H`:   线程模式 搭配`p`指定查看线程的ID
+- `1`：展开显示所有 CPU 核
+- `k`：杀掉进程
+- `h`：帮助
+
+输出信息：
+
+- 上方汇总区：系统运行时间、平均负载、任务数、CPU 使用率、内存和 swap 使用情况。
+- 下方进程区：每个进程的 PID、USER、%CPU、%MEM、VSZ、RSS、COMMAND 等。
+
+特点：**细节、交互性强、适合查找“谁在占用资源”**。
+
+三、对比总结
+
+| 特性         | `vmstat`                          | `top`                                |
+| ------------ | --------------------------------- | ------------------------------------ |
+| **定位层级** | 系统整体性能趋势                  | 单个进程的资源使用情况               |
+| **输出形式** | 概览统计，按间隔打印              | 动态刷新，交互式                     |
+| **优点**     | 轻量、低开销、适合监控和脚本化    | 直观、支持排序、能快速定位“罪魁祸首” |
+| **缺点**     | 无法看到具体进程，粒度较粗        | 开销比 `vmstat` 大，趋势分析不方便   |
+| **典型用途** | 判断系统是否有瓶颈（CPU/内存/IO） | 查找哪个进程占用过高资源             |
+
+四、实战场景
+
+1. **先用 `vmstat` 看系统趋势**
+   - 如果 `r` 很高，说明 CPU 忙不过来 → 需要排查进程。
+   - 如果 `wa` 很高，说明 IO 瓶颈严重。
+   - 如果 `si/so` 明显不为 0，说明发生 swap → 内存压力大。
+2. **再用 `top` 精细定位**
+   - 看哪个进程 `%CPU` 或 `%MEM` 高。
+   - 如果 IO 繁忙，可以结合 `iotop`、`iostat`。
+
+:::
+
+#### Java性能问题排查
+
+::: info java性能问题排查
+
+**1. `jstack` —— 线程栈分析**
+
+用于导出 Java 进程的 **线程堆栈信息**，常用于 **CPU 占用过高、死锁、线程阻塞** 排查。
+
+**基本用法**
+
+```bash
+jstack <pid>
+```
+
+- `<pid>`：Java 进程号，可用 `jps` 或 `ps -ef | grep java` 查到。
+
+**常见用法**
+
+```bash
+jstack -l <pid> > thread.dump
+```
+
+- `-l`：打印更多锁信息（锁的持有情况等）。
+- 导出的 `thread.dump` 文件可以配合 `grep`/分析工具看。
+
+**常见场景**
+
+- **CPU 飙高**：先用 `top -H -p <pid>` 找到占用高的线程 TID，再转十六进制对照 `jstack` 输出中的 `nid=0x...`，定位具体线程。
+- **死锁/卡死**：`jstack` 输出末尾会直接提示 “Found one Java-level deadlock”。
+
+**2. `jstat` —— JVM 运行时统计**
+
+用于实时监控 JVM 的 **内存、GC、JIT 编译** 等运行时信息。轻量、适合持续观测趋势。
+
+**基本用法**
+
+```bash
+jstat -gc <pid> 1000 5
+```
+
+- 每 1000ms 打印一次 GC 信息，共打印 5 次。
+- 常用选项：
+  - `-gc`：各个堆区（Eden/Survivor/Old/Metaspace）的容量、使用量，GC 次数/耗时。
+  - `-gccapacity`：堆区容量分布。
+  - `-gcutil`：各个堆区的利用率（更直观）。
+  - `-class`：已加载类数量、字节数。
+  - `-compiler`：JIT 编译统计。
+
+**常见场景**
+
+- **内存泄漏/GC 频繁**：通过 `-gc`/`-gcutil` 看 GC 次数、回收效率。
+- **调优验证**：观察 JVM 参数调整对 GC 的影响。
+
+**3. `jmap` —— 内存快照 & 对象统计**
+
+用于生成 **堆转储文件（heap dump）** 或统计堆中对象分布。
+
+**基本用法**
+
+```bash
+jmap -heap <pid>
+```
+
+查看 JVM 堆配置、使用情况。
+
+```bash
+jmap -histo <pid> | head -20
+```
+
+查看堆中对象的统计信息（类名、对象数、占用空间）。
+
+```bash
+jmap -dump:format=b,file=heap.hprof <pid>
+```
+
+生成堆转储文件，可用 **Eclipse MAT、VisualVM、JProfiler** 分析。
+
+**常见场景**
+
+- **内存泄漏**：dump 堆文件，分析哪些对象占用过多且无法释放。
+- **对象分布分析**：看是否有异常数量的某类对象。
+
+注意：
+
+- `jmap -dump` 对运行中的大内存应用可能有明显停顿（Full GC）。生产环境要谨慎操作。
+- JDK 8u92 之后，部分 `jmap` 命令对生产环境进程会有安全限制。
+
+**4. 三者对比总结**
+
+| 工具       | 作用                | 常用场景                        |
+| ---------- | ------------------- | ------------------------------- |
+| **jstack** | 导出线程堆栈        | CPU 飙高、死锁、线程卡住        |
+| **jstat**  | 实时 JVM 运行时统计 | GC 频繁、堆利用率分析、调优监控 |
+| **jmap**   | 堆信息 & dump 文件  | 内存泄漏排查、对象分布分析      |
+
+简单理解：
+
+- **CPU 问题** → `jstack`
+- **GC/内存波动问题** → `jstat`
+- **怀疑内存泄漏** → `jmap
+
+**分析过程：**
+
+```bash
+# 1. 找出进程的 CPU 使用情况
+top -p <pid>
+
+# 2. 定位高 CPU 的线程 (TID)
+top -H -p <pid>
+
+# 3. 将线程 ID 转换为 16 进制 (nid 用)
+printf "%x\n" <tid>
+
+# 4. 导出线程堆栈
+jstack -l <pid> > thread.dump
+
+# 5. 在堆栈文件里查找对应线程
+grep -A 30 "nid=0x<hex_tid>" thread.dump
+
+# 直接看
+jstack -l <pid> ｜ grep -A 30 "nid=0x<hex_tid>"
+
+# 6. 定位到具体 Java 代码 (类名 + 方法 + 行号)
+#    -> 进一步在源码里加 print/日志 或使用 Arthas trace/watch/stack 分析
+```
 
 :::
