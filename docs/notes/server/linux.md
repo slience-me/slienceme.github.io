@@ -413,6 +413,10 @@ DNS1=8.8.8.8             # 设置DNS服务器
 service network restart  # 重启网络服务
 ```
 
+> 注意有一种情况：此文件的配置可能会在每次系统重启时被cloud云文件配置的内容所进行覆盖，可以通过禁用 cloud-init 的网络配置来防止这种情况发生。
+>
+> 参考[Ubuntu Server 22.04.5 LTS重启后IP被重置问题](https://blog.csdn.net/hjl_and_djj/article/details/144293107)
+
 ### 3.6 MySQL(系统级)
 
 ```bash
