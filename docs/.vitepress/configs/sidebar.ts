@@ -29,7 +29,11 @@ function sidebarNotesServer() {
         { text: '【服务器】Linux', link: 'linux' },
         { text: '【服务器】Windows', link: 'windows' },
         { text: '【服务器】FRP', link: 'frp' },
-        { text: '【服务器】vagrant', link: 'vagrant' }
+        { text: '【服务器】vagrant', link: 'vagrant' },
+        { text: '【银河麒麟】nginx安装', link: 'kylin-nginx' },
+        { text: '【银河麒麟】redis安装', link: 'kylin-redis' },
+        { text: '【银河麒麟】yum源镜像挂载', link: 'kylin-mount' },
+        { text: '【银河麒麟】虚拟化环境搭建', link: 'kylin-vm' }
       ]
     }
   ];
