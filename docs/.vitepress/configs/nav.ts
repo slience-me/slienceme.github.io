@@ -6,7 +6,7 @@ export const nav: DefaultTheme.Config['nav'] = [
   { text: '开发笔记', link: '/notes/' },
   { text: '博客', link: 'https://blog.slienceme.cn' },
   // { text: 'CSDN', link: 'https://blog.csdn.net/slience_me' },
-  { text: '程序员做饭指南', link: 'https://cook.aiursoft.cn/' },
+  { text: '程序员做饭指南', link: 'https://howtocook.aiursoft.com/' },
   // {
   //   text: '游戏合集',
   //   items: [
