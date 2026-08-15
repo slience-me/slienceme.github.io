@@ -28,54 +28,87 @@
   </picture>
 </p>
 
-## 今年汇总 ✨
+[//]: # ()
+[//]: # (## 今年汇总 ✨)
 
-<p align="center" style="display: flex; justify-content: center; flex-wrap: wrap;">
-  <img alt="c_year_left" height="137px" src="https://github-readme-stats.vercel.app/api?username=slience-me&hide_title=true&hide_border=true&show_icons=true&include_all_commits=true&line_height=21&bg_color=0,EC6C6C,FFD479,FFFC79,73FA79&theme=graywhite&locale=cn" style="max-width: 100%; height: auto;" />
-  <img alt="c_year_right" height="137px" src="https://github-readme-stats.vercel.app/api/top-langs/?username=slience-me&hide_title=true&hide_border=true&layout=compact&bg_color=0,73FA79,73FDFF,D783FF&theme=graywhite&locale=cn" style="max-width: 100%; height: auto;" />
-</p>
+[//]: # ()
+[//]: # (<p align="center" style="display: flex; justify-content: center; flex-wrap: wrap;">)
 
----
+[//]: # (  <img alt="c_year_left" height="137px" src="https://github-readme-stats.vercel.app/api?username=slience-me&hide_title=true&hide_border=true&show_icons=true&include_all_commits=true&line_height=21&bg_color=0,EC6C6C,FFD479,FFFC79,73FA79&theme=graywhite&locale=cn" style="max-width: 100%; height: auto;" />)
 
-#### 🚀 About Me
+[//]: # (  <img alt="c_year_right" height="137px" src="https://github-readme-stats.vercel.app/api/top-langs/?username=slience-me&hide_title=true&hide_border=true&layout=compact&bg_color=0,73FA79,73FDFF,D783FF&theme=graywhite&locale=cn" style="max-width: 100%; height: auto;" />)
 
-🎓 **CS Graduate Student | Tech Enthusiast | Software Developer**  
-💼 **Currently pursuing a Master's in Computer Science**  
-🌍 **Based in [privacy]**  
-🛠️ **Tech Stack:**
+[//]: # (</p>)
 
-- **Frontend:** Vue, JavaScript, etc.
-- **Backend:** Java, Spring, Spring MVC, SpringBoot, SpringCloud, Mybatis, Python, etc.
-- **Operating Systems:** Linux, etc.
-- **Tools:** Docker, Kubernetes, etc.
-- **Databases:** MongoDB, MySQL, etc.
+[//]: # ()
+[//]: # (---)
 
----
+[//]: # ()
+[//]: # (#### 🚀 About Me)
 
-#### 🔧 My Open-Source Projects
+[//]: # ()
+[//]: # (🎓 **CS Graduate Student | Tech Enthusiast | Software Developer**  )
 
-- 🏡 作品：图云客户端 | 易物商城(合作) | 库管系统 | 诊所系统 | 谷粒学苑(学) | 谷粒商城(学) | 实验室小程序(合作), etc.
+[//]: # (💼 **Currently pursuing a Master's in Computer Science**  )
 
----
+[//]: # (🌍 **Based in [privacy]**  )
 
-#### 💡 My Skills
+[//]: # (🛠️ **Tech Stack:**)
 
-- **Development Tools:** Git, GitHub, VSCode, IntelliJ IDEA, Webpack, etc.
-- **Frontend:** Vue.js, JavaScript, etc.
-- **Backend:** Java, Spring, Spring MVC, Python, etc.
-- **Operating Systems:** Linux, etc.
-- **Containerization & Orchestration:** Docker, Kubernetes, etc.
-- **Automation & CI/CD:** GitHub Actions, Jenkins, etc.
-- **Databases:** MongoDB, MySQL, etc.
-- **Other:** REST APIs, TDD, Test Automation, etc.
+[//]: # ()
+[//]: # (- **Frontend:** Vue, JavaScript, etc.)
 
----
+[//]: # (- **Backend:** Java, Spring, Spring MVC, SpringBoot, SpringCloud, Mybatis, Python, etc.)
 
-#### 📬 How to Contact Me?
+[//]: # (- **Operating Systems:** Linux, etc.)
 
-- 📧 **Email:** slienceme.cn@gmail.com
+[//]: # (- **Tools:** Docker, Kubernetes, etc.)
 
----
+[//]: # (- **Databases:** MongoDB, MySQL, etc.)
+
+[//]: # ()
+[//]: # (---)
+
+[//]: # ()
+[//]: # (#### 🔧 My Open-Source Projects)
+
+[//]: # ()
+[//]: # (- 🏡 作品：图云客户端 | 易物商城&#40;合作&#41; | 库管系统 | 诊所系统 | 谷粒学苑&#40;学&#41; | 谷粒商城&#40;学&#41; | 实验室小程序&#40;合作&#41;, etc.)
+
+[//]: # ()
+[//]: # (---)
+
+[//]: # ()
+[//]: # (#### 💡 My Skills)
+
+[//]: # ()
+[//]: # (- **Development Tools:** Git, GitHub, VSCode, IntelliJ IDEA, Webpack, etc.)
+
+[//]: # (- **Frontend:** Vue.js, JavaScript, etc.)
+
+[//]: # (- **Backend:** Java, Spring, Spring MVC, Python, etc.)
+
+[//]: # (- **Operating Systems:** Linux, etc.)
+
+[//]: # (- **Containerization & Orchestration:** Docker, Kubernetes, etc.)
+
+[//]: # (- **Automation & CI/CD:** GitHub Actions, Jenkins, etc.)
+
+[//]: # (- **Databases:** MongoDB, MySQL, etc.)
+
+[//]: # (- **Other:** REST APIs, TDD, Test Automation, etc.)
+
+[//]: # ()
+[//]: # (---)
+
+[//]: # ()
+[//]: # (#### 📬 How to Contact Me?)
+
+[//]: # ()
+[//]: # (- 📧 **Email:** slienceme.cn@gmail.com)
+
+[//]: # ()
+[//]: # (---)
 
 #### 💬 My Philosophy
 
